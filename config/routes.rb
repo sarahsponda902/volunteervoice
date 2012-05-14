@@ -104,11 +104,11 @@ RMTest::Application.routes.draw do
     
     match "confirmations/new" => 'devise/confirmations#new'
     
-    match "users/confirmations/:confirmation_token", 'confirmations#show'
+    match "confirmations/:confirmation_token" => 'confirmations#show'
     
-    match "users/unlocks/:unlock_token", 'unlocks#show'
+    match "unlocks/:unlock_token" => 'unlocks#show'
     
-    match "users/passwords/:reset_password_token", 'devise/passwords#edit'
+    match "passwords/:reset_password_token" => 'devise/passwords#edit'
   
   end
   
