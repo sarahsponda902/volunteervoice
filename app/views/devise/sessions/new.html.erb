@@ -1,0 +1,37 @@
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#rememberMe').hide();
+});
+
+function beforeCheck() {
+	$('#checkBefore').toggle();
+	$('#userNotify').toggle();
+}
+
+function beforeCheckNoToggle() {
+	$('#checkBefore').toggle();
+}
+</script>
+
+<div class="container" align="center" style="color:#575758">
+	<div class="row">
+	<div class="six columns" style="float:center; text-align:left; margin-top:90px; border-left:1px solid #e67b5a; border-right:1px solid #e67b5a">
+	<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
+	<%= form_for(resource, :as => resource_name, :id => "sign_in", :url => session_path(resource_name)) do |f| %>
+	<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email</label>
+			  <%= f.text_field :email, :style => "height:20px" %></p>
+
+			  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
+			  <%= f.password_field :password, :style => "height:20px" %></p>
+
+			<image style="position:absolute; top:192px; height:25px; left:53px;" id="rememberMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
+			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:56px; margin-top:20px; padding-bottom:5px;" >
+			<%= f.check_box :remember_me, :onchange =>"$(rememberMeNoToggle())", :style =>"opacity:0;height:10px; width:10px"%></div><div style="margin-left:90px; margin-top:-20px; font-size:1.1em"> Remember me</div><br />
+	<p style="margin-left:55px"><%= link_to "Forgot your password?", new_password_path(resource) %></p>
+	  <div style="margin-top:30px; text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png" %></div>
+	<br />
+	<% end %>
+</div>
+</div>
+</div>
+

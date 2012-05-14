@@ -1,0 +1,95 @@
+<head>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+	$(document).ready(function(){
+
+	$(".question1").click(function(){
+	    $(".answer1").slideToggle(300);
+	  });
+	
+	$(".question2").click(function(){
+	    $(".answer2").slideToggle(300);
+	  });
+
+	$(".question3").click(function(){
+	    $(".answer3").slideToggle(300);
+	  });
+
+	$(".question4").click(function(){
+	    $(".answer4").slideToggle(300);
+	  });
+
+	$(".question5").click(function(){
+	    $(".answer5").slideToggle(300);
+	  });
+	});
+	
+	</script>
+
+	<style type="text/css"> 
+	div.answer1, div.answer2, div.answer3, div.answer4, div.answer5
+	{
+	margin:0px;
+	padding:10px;
+	text-align:left;
+	display:none;
+	font-size:1.1em;
+	}
+	div.question1, div.question2, div.question3, div.question4, div.question5
+	{
+		margin:0px;
+		padding:10px;
+		text-align:left;
+		cursor: pointer;
+		color: #68c2d8;
+		font-size:1.3em;
+	}
+	
+	</style>
+	</head>
+
+	<body>
+		<div class="container" style="color:#575758">
+			<div class="row" align="center" style="margin-top:30px">
+				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/faq.png"%>
+			</div>
+			<div class="row" style="margin-top:30px; margin-left:35px">
+		<h3 style="color:#9bce6c; font-family:chunkfiveregular; font-size:1.8em">For Users</h3>
+
+	<div class="question1">1. Question 1</div>
+
+	<div class="answer1">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Answer to question number one
+	</div>
+	<div class="question2">2. Question 2</div>
+
+	<div class="answer2">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Answer to question number two
+	</div>
+	<div class="question3">3. Question 3</div>
+
+	<div class="answer3">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Answer to question number three
+	</div>
+	
+	
+	
+	<h3 style="color:#9bce6c; font-family:chunkfiveregular; font-size:1.8em; margin-top:50px">For Volunteers</h3>
+	
+	<div class="question4">1. Question 1</div>
+	
+	<div class="answer4">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Answer to question number one
+	</div>
+	<div class="question5">2. Question 2</div>
+
+	<div class="answer5">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Answer to question number two
+	</div>
+	</div>
+	</div>
+
+	</body>
+
+
+

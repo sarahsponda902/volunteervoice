@@ -1,0 +1,877 @@
+<html>
+<head>
+    <% @nums = Array.new%>
+	<% @progNums = Array.new%>
+    <% @countries_with_programs.each do |f|%>
+	<% @progNums << Program.where(:location => f).count%>
+    <% @nums << @allCountries.index(f)%>
+    <% end %>
+	
+
+	<p style="text-align:center; margin-top:40px">
+    <%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/whereGo.png"%></p>
+
+    <!-- MAP!!!!! -->
+      <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      <script type="text/javascript">
+    var numbers = <%= escape_javascript(@nums.to_json)%>;
+	var programNumbers = <%= array_or_string_for_javascript(@progNums)%>;
+    var countries = ["AF", 
+    "AX", 
+    "AL", 
+    "DZ", 
+    "AS", 
+    "AD", 
+    "AO", 
+    "AI", 
+    "AG", 
+    "AR", 
+    "AM", 
+    "AW", 
+    "AU", 
+    "AT", 
+    "AZ", 
+    "BS", 
+    "BH", 
+    "BD", 
+    "BB", 
+    "BY", 
+    "BE", 
+    "BZ", 
+    "BJ", 
+    "BM", 
+    "BT", 
+    "BO", 
+    "BA", 
+    "BW", 
+    "BR", 
+    "BN", 
+    "BG", 
+    "BF", 
+    "BI", 
+    "KH", 
+    "CM", 
+    "CA", 
+    "CV", 
+    "KY", 
+    "CF", 
+    "TD", 
+    "CL", 
+    "CN", 
+    "CO", 
+    "KM", 
+    "CG", 
+    "CD", 
+    "CK", 
+    "CR", 
+    "CI", 
+    "HR", 
+    "CU", 
+    "CY", 
+    "CZ", 
+    "DK", 
+    "DJ", 
+    "DM", 
+    "DO", 
+    "EC", 
+    "EG", 
+    "SV", 
+    "GQ", 
+    "ER", 
+    "EE", 
+    "ET", 
+    "FK", 
+    "FO", 
+    "FJ", 
+    "FI", 
+    "FR", 
+    "GF", 
+    "PF", 
+    "GA", 
+    "GM", 
+    "GE", 
+    "DE", 
+    "GH", 
+    "GI", 
+    "GR", 
+    "GL", 
+    "GD", 
+    "GP", 
+    "GU", 
+    "GT", 
+    "GG", 
+    "GN", 
+    "GW", 
+    "GY", 
+    "HT", 
+    "VA", 
+    "HN", 
+    "HK", 
+    "HU", 
+    "IS", 
+    "IN", 
+    "ID", 
+    "IR", 
+    "IQ", 
+    "IE", 
+    "IM", 
+    "IL", 
+    "IT", 
+    "JM", 
+    "JP", 
+    "JE", 
+    "JO", 
+    "KZ", 
+    "KE", 
+    "KI", 
+    "KP", 
+    "KR", 
+    "KW", 
+    "KG", 
+    "LA", 
+    "LV", 
+    "LB", 
+    "LS", 
+    "LR", 
+    "LY", 
+    "LI", 
+    "LT", 
+    "LU", 
+    "MO", 
+    "MK", 
+    "MG", 
+    "MW", 
+    "MY", 
+    "MV", 
+    "ML", 
+    "MT", 
+    "MH", 
+    "MQ", 
+    "MR", 
+    "MU", 
+    "YT", 
+    "MX", 
+    "FM", 
+    "MD", 
+    "MC", 
+    "MN", 
+    "ME", 
+    "MS", 
+    "MZ", 
+    "MM", 
+    "NA", 
+    "NR", 
+    "NP", 
+    "NL", 
+    "NC", 
+    "NZ", 
+    "NI", 
+    "NE", 
+    "NG", 
+    "NU", 
+    "NF", 
+    "MP", 
+    "NO", 
+    "OM", 
+    "PK", 
+    "PW", 
+    "PS", 
+    "PA", 
+    "PG", 
+    "PY", 
+    "PE", 
+    "PH", 
+    "PN", 
+    "PL", 
+    "PT", 
+    "PR", 
+    "QA", 
+    "RE", 
+    "RO", 
+    "RU", 
+    "RW", 
+    "BL", 
+    "SH", 
+    "KN", 
+    "LC", 
+    "MF", 
+    "PM", 
+    "VC", 
+    "WS", 
+    "SM", 
+    "ST", 
+    "SA", 
+    "SN", 
+    "RS", 
+    "SC", 
+    "SL", 
+    "SG", 
+    "SK", 
+    "SI", 
+    "SB", 
+    "SO", 
+    "ZA", 
+    "ES", 
+    "LK", 
+    "SD", 
+    "SR", 
+    "SJ", 
+    "SZ", 
+    "SE", 
+    "CH", 
+    "SY", 
+    "TW", 
+    "TJ", 
+    "TZ", 
+    "TH", 
+    "TL", 
+    "TG", 
+    "TK", 
+    "TO", 
+    "TT", 
+    "TN", 
+    "TR", 
+    "TM", 
+    "TC", 
+    "TV", 
+    "UG", 
+    "UA", 
+    "AE", 
+    "GB", 
+    "US", 
+    "UY", 
+    "UZ", 
+    "VU", 
+    "VE", 
+    "VN", 
+    "VG", 
+    "VI", 
+    "WF", 
+    "EH", 
+    "YE", 
+    "ZM", 
+    "ZW"];
+
+
+    var names = [" Afghanistan", 
+    " Åland Islands", 
+    " Albania", 
+    " Algeria", 
+    " American Samoa", 
+    " Andorra", 
+    " Angola", 
+    " Anguilla", 
+    " Antigua and Barbuda", 
+    " Argentina", 
+    " Armenia", 
+    " Aruba", 
+    " Australia", 
+    " Austria", 
+    " Azerbaijan", 
+    " Bahamas", 
+    " Bahrain", 
+    " Bangladesh", 
+    " Barbados", 
+    " Belarus", 
+    " Belgium", 
+    " Belize", 
+    " Benin", 
+    " Bermuda", 
+    " Bhutan", 
+    " Bolivia, Plurinational State of", 
+    " Bosnia and Herzegovina", 
+    " Botswana", 
+    " Brazil", 
+    " Brunei Darussalam", 
+    " Bulgaria", 
+    " Burkina Faso", 
+    " Burundi", 
+    " Cambodia", 
+    " Cameroon", 
+    " Canada", 
+    " Cape Verde", 
+    " Cayman Islands", 
+    " Central African Republic", 
+    " Chad", 
+    " Chile", 
+    " China", 
+    " Colombia", 
+    " Comoros", 
+    " Congo", 
+    " Congo, the Democratic Republic of the", 
+    " Cook Islands", 
+    " Costa Rica", 
+    " Côte d'Ivoire", 
+    " Croatia", 
+    " Cuba", 
+    " Cyprus", 
+    " Czech Republic", 
+    " Denmark", 
+    " Djibouti", 
+    " Dominica", 
+    " Dominican Republic", 
+    " Ecuador", 
+    " Egypt", 
+    " El Salvador", 
+    " Equatorial Guinea", 
+    " Eritrea", 
+    " Estonia", 
+    " Ethiopia", 
+    " Falkland Islands (Malvinas)", 
+    " Faroe Islands", 
+    " Fiji", 
+    " Finland", 
+    " France", 
+    " French Guiana", 
+    " French Polynesia", 
+    " Gabon", 
+    " Gambia", 
+    " Georgia", 
+    " Germany", 
+    " Ghana", 
+    " Gibraltar", 
+    " Greece", 
+    " Greenland", 
+    " Grenada", 
+    " Guadeloupe", 
+    " Guam", 
+    " Guatemala", 
+    " Guernsey", 
+    " Guinea", 
+    " Guinea-Bissau", 
+    " Guyana", 
+    " Haiti", 
+    " Holy See (Vatican City State)", 
+    " Honduras", 
+    " Hong Kong", 
+    " Hungary", 
+    " Iceland", 
+    " India", 
+    " Indonesia", 
+    " Iran, Islamic Republic of", 
+    " Iraq", 
+    " Ireland", 
+    " Isle of Man", 
+    " Israel", 
+    " Italy", 
+    " Jamaica", 
+    " Japan", 
+    " Jersey", 
+    " Jordan", 
+    " Kazakhstan", 
+    " Kenya", 
+    " Kiribati", 
+    " Korea, Democratic People's Republic of", 
+    " Korea, Republic of", 
+    " Kuwait", 
+    " Kyrgyzstan", 
+    " Lao People's Democratic Republic", 
+    " Latvia", 
+    " Lebanon", 
+    " Lesotho", 
+    " Liberia", 
+    " Libya", 
+    " Liechtenstein", 
+    " Lithuania", 
+    " Luxembourg", 
+    " Macao", 
+    " Macedonia, the former Yugoslav Republic of", 
+    " Madagascar", 
+    " Malawi", 
+    " Malaysia", 
+    " Maldives", 
+    " Mali", 
+    " Malta", 
+    " Marshall Islands", 
+    " Martinique", 
+    " Mauritania", 
+    " Mauritius", 
+    " Mayotte", 
+    " Mexico", 
+    " Micronesia, Federated States of", 
+    " Moldova, Republic of", 
+    " Monaco", 
+    " Mongolia", 
+    " Montenegro", 
+    " Montserrat", 
+    " Mozambique", 
+    " Myanmar", 
+    " Namibia", 
+    " Nauru", 
+    " Nepal", 
+    " Netherlands", 
+    " New Caledonia", 
+    " New Zealand", 
+    " Nicaragua", 
+    " Niger", 
+    " Nigeria", 
+    " Niue", 
+    " Norfolk Island", 
+    " Northern Mariana Islands", 
+    " Norway", 
+    " Oman", 
+    " Pakistan", 
+    " Palau", 
+    " Palestinian Territory, Occupied", 
+    " Panama", 
+    " Papua New Guinea", 
+    " Paraguay", 
+    " Peru", 
+    " Philippines", 
+    " Pitcairn", 
+    " Poland", 
+    " Portugal", 
+    " Puerto Rico", 
+    " Qatar", 
+    " Réunion", 
+    " Romania", 
+    " Russian Federation", 
+    " Rwanda", 
+    " Saint Barthélemy", 
+    " Saint Helena, Ascension and Tristan da Cunha", 
+    " Saint Kitts and Nevis", 
+    " Saint Lucia", 
+    " Saint Martin (French part)", 
+    " Saint Pierre and Miquelon", 
+    " Saint Vincent and the Grenadines", 
+    " Samoa", 
+    " San Marino", 
+    " Sao Tome and Principe", 
+    " Saudi Arabia", 
+    " Senegal", 
+    " Serbia", 
+    " Seychelles", 
+    " Sierra Leone", 
+    " Singapore", 
+    " Slovakia", 
+    " Slovenia", 
+    " Solomon Islands", 
+    " Somalia", 
+    " South Africa", 
+    " Spain", 
+    " Sri Lanka", 
+    " Sudan", 
+    " Suriname", 
+    " Svalbard and Jan Mayen", 
+    " Swaziland", 
+    " Sweden", 
+    " Switzerland", 
+    " Syrian Arab Republic", 
+    " Taiwan, Province of China", 
+    " Tajikistan", 
+    " Tanzania, United Republic of", 
+    " Thailand", 
+    " Timor-Leste", 
+    " Togo", 
+    " Tokelau", 
+    " Tonga", 
+    " Trinidad and Tobago", 
+    " Tunisia", 
+    " Turkey", 
+    " Turkmenistan", 
+    " Turks and Caicos Islands", 
+    " Tuvalu", 
+    " Uganda", 
+    " Ukraine", 
+    " United Arab Emirates", 
+    " United Kingdom", 
+    " United States", 
+    " Uruguay", 
+    " Uzbekistan", 
+    " Vanuatu", 
+    " Venezuela, Bolivarian Republic of", 
+    " Viet Nam", 
+    " Virgin Islands, British", 
+    " Virgin Islands, U.S.", 
+    " Wallis and Futuna", 
+    " Western Sahara", 
+    " Yemen", 
+    " Zambia", 
+    " Zimbabwe"];
+
+
+
+    google.load("visualization", "1", {"packages": ["geochart"]});
+    google.setOnLoadCallback(drawRegionsMap);
+        function drawRegionsMap() {
+            var data = new google.visualization.DataTable();
+            data.addRows(numbers.length);
+            data.addColumn("string", "CountryID");
+            data.addColumn("string", "Country");
+            data.addColumn("number", "number");
+			data.addColumn({type:'number', role:'tooltip'});
+			data.addColumn({type:'string', role:'tooltip'});
+            
+            for (var i=0; i<numbers.length; i++) {
+                data.setValue(i, 0, countries[numbers[i]]);
+                data.setValue(i, 1, names[numbers[i]]);
+                data.setValue(i, 2, 200);
+				data.setValue(i, 3, 200);
+				data.setValue(i, 4, "Programs: "+ programNumbers[i].toString());
+            }
+            
+            
+         
+            var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
+            var container = document.getElementById("map_canvas");
+            var geochart = new google.visualization.GeoChart(container);
+            google.visualization.events.addListener(geochart, "error", function errorHandler(e) {
+                google.visualization.errors.removeError(e.id);
+            });
+            google.visualization.events.addListener(geochart, "regionClick", 
+            function(eventData) 
+                  { 
+                    document.location = "http://localhost:3000/pages/"+eventData.region+"/searches"; 
+                  });
+
+            geochart.draw(data, options);
+    };
+      </script>
+    </head>
+
+    <body>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="eleven columns" align="center" style="width:80%">
+      <div style="margin-left:6.5%" id="map_canvas" ></div>
+            </div>
+        <div class="one columns" style="float:right; text-align:center; line-height:2em; margin-top:200px; font-family:architectsDaughterRegular; color:#62acbd; width:13%">
+            Click a region or country to see which organizations can get you there!
+            </div>
+        </div>
+            
+
+
+<!-- THE DROP DOWN COUNTRIES -->
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function() {
+                // Slide
+                $("#menu1 > li > a.expanded + ul").slideToggle("medium");
+                $("#menu1 > li > a").click(function() {
+                    $(this).toggleClass("expanded").toggleClass("collapsed").parent().find("> ul").slideToggle("medium");
+                });
+                $("#example1 .expand_all").click(function() {
+                    $("#menu1 > li > a.collapsed").addClass("expanded").removeClass("collapsed").parent().find("> ul").slideDown("medium");
+                });
+                $("#example1 .collapse_all").click(function() {
+                    $("#menu1 > li > a.expanded").addClass("collapsed").removeClass("expanded").parent().find("> ul").slideUp("medium");
+                });
+            }, 250);
+            $("#AfricaRow").click(function(){
+                var count = 1;
+                $(".AfricaContent").fadeToggle(300);
+                $(".AfricaBackground").fadeToggle(300);
+                $(".AfricaNoBackground").toggle();
+                
+              });
+
+            $("#EuropeRow").click(function(){
+                $(".EuropeContent").fadeToggle(300);
+                $(".EuropeBackground").fadeToggle(300);
+                $(".EuropeNoBackground").toggle();
+              });
+
+            $("#AmericasRow").click(function(){
+                $(".AmericasContent").fadeToggle(300);
+                $(".AmericasBackground").fadeToggle(300);
+                $(".AmericasNoBackground").toggle();
+              });
+
+            $("#AsiaRow").click(function(){
+                $(".AsiaContent").fadeToggle(300);
+                $(".AsiaBackground").fadeToggle(300);
+                $(".AsiaNoBackground").toggle();
+              });
+                
+
+            $("#OceaniaRow").click(function(){
+                $(".OceaniaContent").fadeToggle(300);
+                $(".OceaniaBackground").fadeToggle(300);
+                $(".OceaniaNoBackground").toggle();
+              });
+            
+            $("#OtherRow").click(function(){
+                $(".OtherContent").fadeToggle(300);
+                $(".OtherBackground").fadeToggle(300);
+                $(".OtherNoBackground").toggle();
+              });
+            
+        });
+
+
+        </script>
+
+
+<br />
+<br />
+
+
+
+    <div class="container" style="width:95%">
+        
+<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
+
+<table id="AmericasDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%">
+    <tr id = "AmericasRow">
+        <td width="90%" style="padding:0;margin:0"><div class="AmericasBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Americas</font></div><div class="AmericasNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Americas </font></div></td>
+        <td width="10%" class="AmericasToggle" style="text-align:right; padding:0;margin:0"><div class="AmericasBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="AmericasNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
+    </tr>
+<table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="AmericasContent">
+            <tr style="background-color:#c1dfdb">
+                <td>
+        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+        <% @theRegions[10].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[11].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+                </td>
+                <td>
+
+        <table cellpadding="1" style="background-color:#c1dfdb">
+        <% @theRegions[12].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[13].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+            </td>
+        </tr>
+    </table>
+</table>
+</table>
+
+<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
+
+<table id="EuropeDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%">
+    <tr id = "EuropeRow">
+        <td width="90%" style="padding:0;margin:0"><div class="EuropeBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Europe</font></div><div class="EuropeNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Europe </font></div></td>
+        <td width="10%" class="EuropeToggle" style="text-align:right; padding:0;margin:0"><div class="EuropeBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="EuropeNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
+    </tr>
+    <table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="EuropeContent">
+            <tr style="background-color:#c1dfdb">
+                <td width="50%">
+        <table cellpadding="1" style="background-color:#c1dfdb;margin-left:50px">
+        <% @theRegions[6].each do |f|%>
+                                    <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[7].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+                </td>
+                <td width="50%">
+
+        <table cellpadding="1" style="background-color:#c1dfdb">
+        <% @theRegions[8].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[9].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+            </td>
+        </tr>
+    </table>
+</table>
+
+<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
+
+<table id = "AfricaDiv" cellpadding="5" cellspacing="3" style=" margin-left:15%; margin-right:15%; width:70%">
+    <tr id = "AfricaRow" style="background-color:#E3E6D5;">
+        <td width="90%" style="padding:0;margin:0"><div class="AfricaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Africa</font></div><div class="AfricaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%" style="margin-left:5%">Africa </font></div></td>
+        <td width="10%" class="AfricaToggle" style="text-align:right; padding:0;margin:0"><div class="AfricaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="AfricaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
+        </tr>
+        <table style="margin-left:15%; display:none; width:70%" class="AfricaContent">
+            <tr style="background-color:#c1dfdb">
+                <td>
+        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+        <% @theRegions[1].each do |f|%>
+            <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[2].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[3].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+                </td>
+                <td>
+
+        <table cellpadding="1" style="background-color:#c1dfdb">
+        <% @theRegions[4].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[5].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+            </td>
+        </tr>
+    </table>
+
+</table>
+
+
+<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
+
+
+<table id="AsiaDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%">
+    <tr id = "AsiaRow">
+        <td width="90%" style="padding:0;margin:0"><div class="AsiaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Asia</font></div><div class="AsiaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Asia </font></div></td>
+        <td width="10%" class="AsiaToggle" style="text-align:right; padding:0;margin:0"><div class="AsiaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="AsiaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
+    </tr>
+<table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="AsiaContent">
+            <tr style="background-color:#c1dfdb">
+                <td>
+        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+        <% @theRegions[14].each do |f|%>
+                                   <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[15].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[16].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[17].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+                </td>
+                <td>
+
+        <table cellpadding="1" style="background-color:#c1dfdb">
+        <% @theRegions[18].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+            </td>
+        </tr>
+    </table>
+    </table>
+</table>
+
+<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
+
+<table id="OceaniaDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%">
+    <tr id = "OceaniaRow">
+        <td width="90%" style="padding:0;margin:0"><div class="OceaniaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Oceania</font></div><div class="OceaniaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Oceania </font></div></td>
+        <td width="10%" class="OceaniaToggle" style="text-align:right; padding:0;margin:0"><div class="OceaniaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="OceaniaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
+    </tr>
+            <table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="OceaniaContent">
+            <tr style="background-color:#c1dfdb">
+                <td>
+        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+        <% @theRegions[19].each do |f|%>
+                                   <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        <% @theRegions[20].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+                <% @theRegions[21].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+                </td>
+                <td>
+
+        <table cellpadding="1" style="background-color:#c1dfdb">
+        <% @theRegions[22].each do |f|%>
+                        <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+            </table>
+            </td>
+        </tr>
+    </table>
+    </table>
+</table>
+
+<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
+
+<table id="OtherDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%; display:none">
+    <tr id = "OtherRow">
+        <td width="90%" style="padding:0;margin:0"><div class="OtherBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Other</font></div><div class="OtherNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Other </font></div></td>
+        <td width="10%" class="OtherToggle" style="text-align:right; padding:0;margin:0"><div class="OtherBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="OtherNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
+    </tr>
+            <table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="OtherContent">
+            <tr style="background-color:#c1dfdb">
+                <td>
+        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+        <% @theRegions[0].each do |f|%>
+                                    <% if !(Program.where(:location => f).empty?) %>
+                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/pages/<%=f%>/searches"><%=@theCountries[f]%></a></td></tr>
+            <%end%>
+        <% end %>
+        
+            </table>
+            </td>
+        </tr>
+    </table>
+</table>
+
+<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%; display:none"></div>
+</div>
+</div>
+</div>
+
+<div align="center" style="font-family:architectsDaughterRegular; margin-top:60px;color:#e67b5a; margin-bottom:30px; width:98%">
+    Note: if the country you want to visit isn't listed, we have not yet profiled a company with programs there.
+    </div>
+
+</body>
+</html>

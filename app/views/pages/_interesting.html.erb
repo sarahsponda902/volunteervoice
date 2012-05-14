@@ -1,0 +1,13 @@
+<table style="background-color:#E3E6D5; margin-bottom:15px;" width="100%">
+	<%if !(f.image.url == "/images/original/missing.png")%>
+	<tr style="background-color:#E3E6D5"><td> <div align="center"><p style="margin-top:-10px"><%= image_tag f.square_image, :style => "height:40px; width:80px"%></p></div></td></tr>
+	<% end %>
+	<tr style="background-color:#E3E6D5"><td><p style="margin-left:3%; margin-right:3%; margin-top:-20px" href= "#">Posted <%= f.published_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></p></td></tr>
+<tr style="background-color:#E3E6D5"><td><p style="margin-left:3%; margin-top:-10px; margin right:3%; font-size:2em; color:black"><a style="color:#62acbd; line-height:1.1em" href="<%=f.blog_link%>"><%= f.title %></p></td></tr>
+
+<tr style="background-color:#E3E6D5"><td><p style="margin-left:3%; margin-top:-5px; margin-right:1%"><%= truncate(f.body, :length => 125, :omission => '...')%> </p><br /> </td></tr>
+
+<tr style="background-color:#E3E6D5;"><td><p style="margin-left:10%; margin-right:6%; color: #575758; margin-top:-30px;"><font style="font-weight:600">From: </font><a href="<%=f.source%>"> <%= f.source_title%></a>	<% if !(current_user.nil?) && current_user.admin?%>
+	<%= link_to "<DELETE>", :controller => "blog_posts", :action => "destroy", :id => f.id%>
+	<% end %></p></td></tr>
+</table>

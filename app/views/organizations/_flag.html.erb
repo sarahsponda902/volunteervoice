@@ -1,0 +1,5 @@
+<% @theCountries2.keys.each do |f|%>
+<% if country == f%>
+	<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/country_flags/#{@theCountries2[f]}.png", :style => "height:200px; width:400px"%>
+	<% end %>
+<% end %>

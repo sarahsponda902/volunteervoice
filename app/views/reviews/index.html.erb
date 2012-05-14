@@ -1,0 +1,47 @@
+<% if user_signed_in? && current_user.admin?%>
+
+<p style="font-size:3em; line-height:2em; margin-top:20px;padding-bottom:20px;text-align:center; ">Listing reviews</h1>
+
+<table>
+  <tr>
+	<th>Date Created</th>
+    <th>Username</th>
+    <th>Overall</th>
+    <th>Body</th>
+    <th>Go to?</th>
+    <th>Homepage?</th>
+	<th>Edit?</th>
+	<th>Delete?</th>
+  </tr>
+
+<% @reviews.each do |f| %>
+
+  <tr>
+	<td width="10%"><p style="color:blue"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
+	<td width="15%"><%= link_to User.find(f.user_id).username, User.find(f.user_id)%></td>
+	<td width="5%">
+		<% if f.overall >= 4%>
+		<p style="color:green"><%= f.overall%></p>
+		<% end %>
+		<% if f.overall > 2 && f.overall < 4 %>
+		<p style="color:orange"><%= f.overall%></p>
+		<% end %>
+		<% if f.overall <= 2 %>
+		<p style="color:red"><%= f.overall%></p>
+		<% end %></td>
+	<td width ="40%"><%= truncate(f.body, :length => 200, :omission => "...") %></td>
+    <td width="7%"><p style="margin-left:11px"><%= link_to 'Go', f %></p></td>
+	<td width="7%"><% if f.show %>
+	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), "/reviews/#{f.id}/changeShow" %>
+	<% else %>
+	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), "/reviews/#{f.id}/changeShow" %>
+	<% end %>
+    <td width="7%"><p style="margin-left:11px"><%= link_to 'Edit', edit_review_path(f) %></p></td>
+    <td width="7%"><%= link_to 'Destroy', f, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% end %>

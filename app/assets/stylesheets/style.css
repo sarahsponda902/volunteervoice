@@ -1,0 +1,416 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Colors: 
+		red: #e67b5a
+
+		dark grey: #575758
+
+		greenish grey: #e0e4cc
+
+		light blue: #c1dfdb
+
+		bright blue: #68c2d8
+
+		dark blue: #6aaeba
+
+		green: #9bce6c
+
+		yellow: #d6a539
+		
+		light gray: #E9ECE9
+		
+		medium gray: #C1C4C2
+		
+		beige: #E3E6D5
+ */
+
+
+html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed, 
+	figure, figcaption, footer, header, hgroup, 
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font: inherit;
+		vertical-align: baseline;
+		
+}
+
+/* Main Header Text*/
+@font-face {
+    font-family: 'BebasRegular';
+    src: url('BEBAS___-webfont.eot');
+    src: url('BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('BEBAS___-webfont.woff') format('woff'),
+         url('BEBAS___-webfont.ttf') format('truetype'),
+         url('BEBAS___-webfont.svg#BebasRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'ArchitectsDaughterRegular';
+    src: url('ArchitectsDaughter-webfont.eot');
+    src: url('ArchitectsDaughter-webfont.eot?#iefix') format('embedded-opentype'),
+         url('ArchitectsDaughter-webfont.woff') format('woff'),
+         url('ArchitectsDaughter-webfont.ttf') format('truetype'),
+         url('ArchitectsDaughter-webfont.svg#ArchitectsDaughterRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'CabinRegular';
+    src: url('Cabin-Regular-webfont.eot');
+    src: url('Cabin-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-Regular-webfont.woff') format('woff'),
+         url('Cabin-Regular-webfont.ttf') format('truetype'),
+         url('Cabin-Regular-webfont.svg#CabinRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinItalic';
+    src: url('Cabin-Italic-webfont.eot');
+    src: url('Cabin-Italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-Italic-webfont.woff') format('woff'),
+         url('Cabin-Italic-webfont.ttf') format('truetype'),
+         url('Cabin-Italic-webfont.svg#CabinItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinMedium';
+    src: url('Cabin-Medium-webfont.eot');
+    src: url('Cabin-Medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-Medium-webfont.woff') format('woff'),
+         url('Cabin-Medium-webfont.ttf') format('truetype'),
+         url('Cabin-Medium-webfont.svg#CabinMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinMediumItalic';
+    src: url('Cabin-MediumItalic-webfont.eot');
+    src: url('Cabin-MediumItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-MediumItalic-webfont.woff') format('woff'),
+         url('Cabin-MediumItalic-webfont.ttf') format('truetype'),
+         url('Cabin-MediumItalic-webfont.svg#CabinMediumItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinSemiBold';
+    src: url('Cabin-SemiBold-webfont.eot');
+    src: url('Cabin-SemiBold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-SemiBold-webfont.woff') format('woff'),
+         url('Cabin-SemiBold-webfont.ttf') format('truetype'),
+         url('Cabin-SemiBold-webfont.svg#CabinSemiBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinSemiBoldItalic';
+    src: url('Cabin-SemiBoldItalic-webfont.eot');
+    src: url('Cabin-SemiBoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-SemiBoldItalic-webfont.woff') format('woff'),
+         url('Cabin-SemiBoldItalic-webfont.ttf') format('truetype'),
+         url('Cabin-SemiBoldItalic-webfont.svg#CabinSemiBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinBold';
+    src: url('Cabin-Bold-webfont.eot');
+    src: url('Cabin-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-Bold-webfont.woff') format('woff'),
+         url('Cabin-Bold-webfont.ttf') format('truetype'),
+         url('Cabin-Bold-webfont.svg#CabinBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'CabinBoldItalic';
+    src: url('Cabin-BoldItalic-webfont.eot');
+    src: url('Cabin-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Cabin-BoldItalic-webfont.woff') format('woff'),
+         url('Cabin-BoldItalic-webfont.ttf') format('truetype'),
+         url('Cabin-BoldItalic-webfont.svg#CabinBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'ChunkFiveRegular';
+    src: url('Chunkfive-webfont.eot');
+    src: url('Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Chunkfive-webfont.woff') format('woff'),
+         url('Chunkfive-webfont.ttf') format('truetype'),
+         url('Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'NeoRetroDrawRegular';
+    src: url('NEORD___-webfont.eot');
+    src: url('NEORD___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('NEORD___-webfont.woff') format('woff'),
+         url('NEORD___-webfont.ttf') format('truetype'),
+         url('NEORD___-webfont.svg#NeoRetroDrawRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'MuseoSlab500Regular';
+    src: url('Museo_Slab_500-webfont.eot');
+    src: url('Museo_Slab_500-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Museo_Slab_500-webfont.woff') format('woff'),
+         url('Museo_Slab_500-webfont.ttf') format('truetype'),
+         url('Museo_Slab_500-webfont.svg#MuseoSlab500Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+article, aside, figure, footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+
+body {background:#E3E6D5;
+font-family: Tahoma, Geneva, sans-serif;
+font-size:13px;
+color: #000000;
+line-height:1.25em;}
+
+.container {min-width:970px}
+
+p {}
+
+h2 {font-family:'ChunkFiveRegular', Georgia, "Times New Roman", serif;}
+
+h4 {font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif; font-size:24px; font-weight:600;}
+
+.lightBlue {color: #62acbd;}
+a.lightBlue:hover {color: #e67b5a;}
+.orange {color: #e67b5a;}
+a.orange:hover {color: #62acbd; }
+	
+.pageWrap{}
+
+header.row {}
+
+input[name="search"] {  
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+ 	border: 0;
+	height:30px;
+	width: 200px;
+	margin-bottom: 15px;
+	font-size:15px}
+
+a:active{color:#575758}
+a:visited{color:#575758}
+a:link{color:#575758}
+a:hover{color:white; background:none}
+
+/* Login */
+
+.login {background:#575758; padding:10px; color: white; font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600;} 
+
+
+.login a:visited{color: white;}
+
+.login a:active{color: white;}
+
+.login a:link{color:white;}
+
+.login a{color: white;}
+
+.login a:hover {color:#c1dfdb;}
+
+
+#adminNav li {list-style:none; display:inline-block; text-align:center; font-family:Arial}
+
+#adminNav li a:visited{color: white;}
+
+#adminNav li a:active{color: white;}
+
+#adminNav li a:link{color:white;}
+
+#adminNav li a{color: white;}
+
+#adminNav li a:hover {color:#c1dfdb;}
+
+#adminNav li:hover ul{visibility:visible; z-index:5;}
+
+#adminNav ul ul{position: absolute; opacity:0.9; right: 28%; top: 25px; visibility:hidden; font-size:.85em; display:block; z-index:5; padding:5px; padding-top:-5px; padding-bottom:10px;
+ background-color:#575758; border-bottom:3px solid #575758; border-left:3px solid #575758; border-right:3px solid #575758; }
+
+#adminNav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
+
+
+
+
+
+
+
+/* Universal Navigation */
+.container#globalNav {background-color:#575758;  -moz-box-shadow:    3px 3px 5px 6px #ccc; font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif; font-weight:600;
+  -webkit-box-shadow: 0px 8px 5px 0px #ccc;
+  box-shadow:         0px 8px 5px 0px #ccc;
+}
+
+nav {background:#575758; height: 45px;}
+
+nav li {list-style:none; display:inline-block; text-align:center; width: 24%;  padding-top: 15px; font-size: 1.5em; font-weight:0}
+
+nav li a:visited{color: white;}
+
+nav li a:active{color: white;}
+
+nav li a:link{color:white;}
+
+nav li a{color: white;}
+
+nav li a:hover {color:#c1dfdb;}
+
+nav li:hover ul{visibility:visible; z-index:5;}
+
+nav ul ul{position: absolute; opacity:0.9; right: 53%; top: 156px; visibility:hidden; font-size:.85em; display:block; z-index:5; padding:5px; padding-top:-5px; padding-bottom:10px;
+ background-color:#575758; border-bottom:3px solid #575758; border-left:3px solid #575758; border-right:3px solid #575758; }
+
+nav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
+
+/* Section One*/
+.homeOrgs {background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/homeArrows.png); height:140px; background-repeat:no-repeat;margin-top: 30px; margin-bottom: 30px; color: #fff;}
+.homeOrgs h1{font-family: 'BebasRegular',"Arial Black", Gadget, sans-serif; font-size: 3.5em; text-transform: uppercase; margin-top:10px; float: right; margin-right: 50px; text-align:center; width: 350px; line-height:1.5em;}
+
+.homeVoices{ height:140px;margin-top: 30px; margin-bottom: 30px; color: #fff;}
+.homeVoices h1{font-family: 'BebasRegular',"Arial Black", Gadget, sans-serif; font-size: 3em; text-transform: uppercase;margin-top:55px; float:left; margin-left: 25px;text-align:center; width: 350px; line-height:1.5em}
+
+/* Three Column Content Headers */
+.mainArticleHeader {border-top: 1px solid #575758; border-bottom: 1px solid #575758; height: 120px; color: #575758; margin-bottom: 5px; padding-top:5px}
+
+.mainArticleHeader h1 {font-family: 'BebasRegular',"Arial Black", Gadget, sans-serif; font-size: 3.0em; text-transform: uppercase; line-height:1.1em; text-align:center;}
+.mainArticleHeader h2 {font-family: 'BebasRegular',"Arial Black", Gadget, sans-serif; font-size: 5.3em; text-transform: uppercase;line-height: 1.1em;text-align:center;}
+
+.thin {font-size: 1em; font-weight: 100}
+.medium {font-size: 1.8em; font-weight: 300;}
+
+
+/* Three Column Content Headers */
+
+.homeAbout p {width: 100%; font-size: 1.1em; font-weight:lighter; text-align:left; line-height:1.4em;}
+.review {border-bottom: 1px solid #575758; margin-bottom: 5px; margin-top: 5px;}
+.review:first child {margin-top: 0px;}
+
+.homeReviews{}
+
+.homeOrgsCheckout{}
+
+
+ Section Three-
+
+.homeGlobe{}
+
+ Section Four-
+
+.homeUserReviews{}
+
+.bubbleBlue{
+	background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/darkBlueBubble.png); background-repeat:no-repeat; height:130px;width:430px; margin-right:20%}
+	
+.bubbleBlue p, .bubbleGreen p, .bubbleLightBlue p {font-size:11px; padding:15px; text-align:left}	
+
+.bubbleGreen{
+	background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/greenBubble.png); background-repeat:no-repeat; height:130px;width:430px; margin-right:10%}
+
+.bubbleLightBlue{
+	background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/lightBlueBubble.png); background-repeat:no-repeat; height:130px;width:430px; margin-right:10%}
+
+
+/* Footer */
+footer {}
+
+footerNav h4, .ourCommunity h4 { font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif;}
+.spreadWord li { list-style:none; display:inline;}
+
+
+.flash {
+  text-align: center;
+  width: 100%;
+  padding: 10px 0 10px 0;
+  margin-top: 1em;
+  color: #e67b5a;
+  border: 1px solid #575758; 
+  font-family:architectsDaughterRegular;
+}
+
+.flash.error, .flash.alert {
+    border: thin solid #e67b5a;
+    background: #c1dfdb;
+	line-height:2em;
+}
+
+.flash.notice, .flash.info {
+    border: thin solid #e67b5a;
+    background: #c1dfdb;
+	line-height:2em;
+}
+
+.flash.warning {
+    border: thin solid #e67b5a;
+    background: #c1dfdb;
+	line-height:2em;
+}
+
+.notice {
+  background: #c1dfdb; 
+}
+
+.field_with_errors{
+	background:none;
+}
+
+.field_with_errors input {
+	border:2px solid #e67b5a;
+}
+
+
+

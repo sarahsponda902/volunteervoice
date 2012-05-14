@@ -1,0 +1,1390 @@
+<html>
+<head>
+	
+	<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
+
+	<%= javascript_include_tag "/assets/smartpaginator.js"%>
+
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/latest/jquery.js' type="text/javascript"></script>
+<script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
+<script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.rating.js' type="text/javascript" language="javascript"></script>
+<link href='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.rating.css' type="text/css" rel="stylesheet"/>
+<script src='http://jquery-fyneworks.googlecode.com/svn/trunk/documentation/documentation.js' type="text/javascript"></script>
+
+<% @resulting_ids = []%>
+<% @results.each do |f| %>
+<% @resulting_ids << f.id%>
+<% end %>
+
+<% @resultsO = []%>
+<% @results.each do |f|%>
+<% @resultsO << Organization.find(f.organization_id) unless @resultsO.include?(Organization.find(f.organization_id))%>
+<% end %>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$('#Agriculture1').hide();
+	$('#OrganicFarming1').hide();
+	$('#Sustainable_Development1').hide();
+	$('#AnimalCare1').hide();
+	$('#AnimalRights1').hide();
+	$('#Wildlife_Conservation1').hide();
+	$('#Caregiving1').hide();
+	$('#ElderCare1').hide();
+	$('#ChildOrphanCare1').hide();
+	$('#DisabledCare1').hide();
+	$('#FeedtheHomeless1').hide();
+	$('#CommunityDevelopment1').hide();
+	$('#YouthDevelopmentandOutreach1').hide();
+	$('#Construction1').hide();
+	$('#CultureandCommunity1').hide();
+	$('#PerformingArts1').hide();
+	$('#Fashion1').hide();
+	$('#Music1').hide();
+	$('#SportsRecreation1').hide();
+	$('#Journalism1').hide();
+	$('#DisasterRelief1').hide();
+	$('#Economics1').hide();
+	$('#Microfinance1').hide();
+	$('#Education1').hide();
+	$('#TeachingEnglish1').hide();
+	$('#TeachingBuddhistMonks1').hide();
+	$('#TeachingChildren1').hide();
+	$('#Teaching_Computer_Literacy1').hide();
+	$('#EngineeringandInfrastructure1').hide();
+	$('#Environmental1').hide();
+	$('#EcologicalConservation1').hide();
+	$('#SustainableDevelopment1').hide();
+	$('#WildlifeConservation1').hide();
+	$('#HabitatRestoration1').hide();
+	$('#HealthandMedicine1').hide();
+	$('#HIVAIDS1').hide();
+	$('#Nutrition1').hide();
+	$('#FamilyPlanning1').hide();
+	$('#VeterinaryMedicine1').hide();
+	$('#ClinicalWork1').hide();
+	$('#DentalWork1').hide();
+	$('#MedicalResearch1').hide();
+	$('#HealthEducation1').hide();
+	$('#PublicHealth1').hide();
+	$('#HospitalCare-giving1').hide();
+	$('#HumanRights1').hide();
+	$('#WomensInitiatives1').hide();
+	$('#InternationalWorkCamp1').hide();
+	$('#Recreation1').hide();
+	$('#AdventureTravel1').hide();
+	$('#ScientificResearch1').hide();
+	$('#Archaeology1').hide();
+	$('#EnvironmentalBiology1').hide();
+	$('#Technology1').hide();
+	$('#TeachingComputerLiteracy1').hide();
+	$('#MediaMarketingandGraphicDesign1').hide();
+	
+	
+	$('#AF').hide();
+	$('#AX').hide();
+	$('#AL').hide();
+	$('#DZ').hide();
+	$('#AS').hide();
+	$('#AD').hide();
+	$('#AO').hide();
+	$('#AI').hide();
+	$('#AG').hide();
+	$('#AR').hide();
+	$('#AM').hide();
+	$('#AW').hide();
+	$('#AU').hide();
+	$('#AT').hide();
+	$('#AZ').hide();
+	$('#BS').hide();
+	$('#BH').hide();
+	$('#BD').hide();
+	$('#BB').hide();
+	$('#BY').hide();
+	$('#BE').hide();
+	$('#BZ').hide();
+	$('#BJ').hide();
+	$('#BM').hide();
+	$('#BT').hide();
+	$('#BO').hide();
+	$('#BA').hide();
+	$('#BW').hide();
+	$('#BR').hide();
+	$('#BN').hide();
+	$('#BG').hide();
+	$('#BF').hide();
+	$('#BI').hide();
+	$('#KH').hide();
+	$('#CM').hide();
+	$('#CA').hide();
+	$('#CV').hide();
+	$('#KY').hide();
+	$('#CF').hide();
+	$('#TD').hide();
+	$('#CL').hide();
+	$('#CN').hide();
+	$('#CO').hide();
+	$('#KM').hide();
+	$('#CG').hide();
+	$('#CD').hide();
+	$('#CK').hide();
+	$('#CR').hide();
+	$('#CI').hide();
+	$('#HR').hide();
+	$('#CU').hide();
+	$('#CY').hide();
+	$('#CZ').hide();
+	$('#DK').hide();
+	$('#DJ').hide();
+	$('#DM').hide();
+	$('#DO').hide();
+	$('#EC').hide();
+	$('#EG').hide();
+	$('#SV').hide();
+	$('#GQ').hide();
+	$('#ER').hide();
+	$('#EE').hide();
+	$('#ET').hide();
+	$('#FK').hide();
+	$('#FO').hide();
+	$('#FJ').hide();
+	$('#FI').hide();
+	$('#FR').hide();
+	$('#GF').hide();
+	$('#PF').hide();
+	$('#GA').hide();
+	$('#GM').hide();
+	$('#GE').hide();
+	$('#DE').hide();
+	$('#GH').hide();
+	$('#GI').hide();
+	$('#GR').hide();
+	$('#GL').hide();
+	$('#GD').hide();
+	$('#GP').hide();
+	$('#GU').hide();
+	$('#GT').hide();
+	$('#GG').hide();
+	$('#GN').hide();
+	$('#GW').hide();
+	$('#GY').hide();
+	$('#HT').hide();
+	$('#VA').hide();
+	$('#HN').hide();
+	$('#HK').hide();
+	$('#HU').hide();
+	$('#IS').hide();
+	$('#IN').hide();
+	$('#ID').hide();
+	$('#IR').hide();
+	$('#IQ').hide();
+	$('#IE').hide();
+	$('#IM').hide();
+	$('#IL').hide();
+	$('#IT').hide();
+	$('#JM').hide();
+	$('#JP').hide();
+	$('#JE').hide();
+	$('#JO').hide();
+	$('#KZ').hide();
+	$('#KE').hide();
+	$('#KI').hide();
+	$('#KP').hide();
+	$('#KR').hide();
+	$('#KW').hide();
+	$('#KG').hide();
+	$('#LA').hide();
+	$('#LV').hide();
+	$('#LB').hide();
+	$('#LS').hide();
+	$('#LR').hide();
+	$('#LY').hide();
+	$('#LI').hide();
+	$('#LT').hide();
+	$('#LU').hide();
+	$('#MO').hide();
+	$('#MK').hide();
+	$('#MG').hide();
+	$('#MW').hide();
+	$('#MY').hide();
+	$('#MV').hide();
+	$('#ML').hide();
+	$('#MT').hide();
+	$('#MH').hide();
+	$('#MQ').hide();
+	$('#MR').hide();
+	$('#MU').hide();
+	$('#YT').hide();
+	$('#MX').hide();
+	$('#FM').hide();
+	$('#MD').hide();
+	$('#MC').hide();
+	$('#MN').hide();
+	$('#ME').hide();
+	$('#MS').hide();
+	$('#MZ').hide();
+	$('#MM').hide();
+	$('#NA').hide();
+	$('#NR').hide();
+	$('#NP').hide();
+	$('#NL').hide();
+	$('#NC').hide();
+	$('#NZ').hide();
+	$('#NI').hide();
+	$('#NE').hide();
+	$('#NG').hide();
+	$('#NU').hide();
+	$('#NF').hide();
+	$('#MP').hide();
+	$('#NO').hide();
+	$('#OM').hide();
+	$('#PK').hide();
+	$('#PW').hide();
+	$('#PS').hide();
+	$('#PA').hide();
+	$('#PG').hide();
+	$('#PY').hide();
+	$('#PE').hide();
+	$('#PH').hide();
+	$('#PN').hide();
+	$('#PL').hide();
+	$('#PT').hide();
+	$('#PR').hide();
+	$('#QA').hide();
+	$('#RE').hide();
+	$('#RO').hide();
+	$('#RU').hide();
+	$('#RW').hide();
+	$('#BL').hide();
+	$('#SH').hide();
+	$('#KN').hide();
+	$('#LC').hide();
+	$('#MF').hide();
+	$('#PM').hide();
+	$('#VC').hide();
+	$('#WS').hide();
+	$('#SM').hide();
+	$('#ST').hide();
+	$('#SA').hide();
+	$('#SN').hide();
+	$('#RS').hide();
+	$('#SC').hide();
+	$('#SL').hide();
+	$('#SG').hide();
+	$('#SK').hide();
+	$('#SI').hide();
+	$('#SB').hide();
+	$('#SO').hide();
+	$('#ZA').hide();
+	$('#ES').hide();
+	$('#LK').hide();
+	$('#SD').hide();
+	$('#SR').hide();
+	$('#SJ').hide();
+	$('#SZ').hide();
+	$('#SE').hide();
+	$('#CH').hide();
+	$('#SY').hide();
+	$('#TW').hide();
+	$('#TJ').hide();
+	$('#TZ').hide();
+	$('#TH').hide();
+	$('#TL').hide();
+	$('#TG').hide();
+	$('#TK').hide();
+	$('#TO').hide();
+	$('#TT').hide();
+	$('#TN').hide();
+	$('#TR').hide();
+	$('#TM').hide();
+	$('#TC').hide();
+	$('#TV').hide();
+	$('#UG').hide();
+	$('#UA').hide();
+	$('#AE').hide();
+	$('#GB').hide();
+	$('#US').hide();
+	$('#UY').hide();
+	$('#UZ').hide();
+	$('#VU').hide();
+	$('#VE').hide();
+	$('#VN').hide();
+	$('#VG').hide();
+	$('#VI').hide();
+	$('#WF').hide();
+	$('#EH').hide();
+	$('#YE').hide();
+	$('#ZM').hide();
+	$('#ZW').hide();
+	
+	
+	$('#organizations-contents').hide();
+	$('#organizations-contents1').hide();
+	$('#sortByToggleO').hide();
+	
+	$('#program').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 5, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+	$('#organization').smartpaginator({ totalrecords: <%=@resultsO.count%>, recordsperpage: 5, datacontainer: 'divOrganization', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	
+	
+});
+
+function toggleDisplay(){
+		$("#programs-contents").toggle()
+		$('#organizations-contents').toggle();
+		$("#programs-contents1").toggle()
+		$('#organizations-contents1').toggle();
+		$("#sortByToggleO").toggle();
+		$('#sortByToggleP').toggle();
+}
+
+</script>
+</head>
+<body>
+	
+	
+<div id="programs-contents1">	
+<h1>International Volunteer Programs</h1>
+	Your search got <%=@results.length%> results...
+
+	<br />
+	<br />
+</div>
+<div id ="organizations-contents1">
+<h1>International Volunteer Organizations</h1>
+	Your search got <%=@resultsO.length%> results...
+	
+	<br />
+	<br />
+</div>
+
+<div id = "containerS">
+	<div id= "header4S">
+			Display:	<%= select_tag "display", "<option selected='selected'>Programs</option><option>Organizations</option>".html_safe, :onchange => "$(toggleDisplay())"%>
+		
+	</div>
+	<div id= "sortByToggleP">
+	<div id = "header2S">
+		Sort By:
+		<% @options = {:ratinghigh => 'ratinghigh' , :ratinglow => 'ratinglow', :alphabetical => 'alphabetical', :pricelow => 'pricelow', :pricehigh =>'pricehigh'} %>
+				<%= form_tag 'sorted_results', :method => 'get' do%>
+				<%= select_tag :sort, options_for_select(@options), :onchange => "this.form.submit()"%>
+				<%= hidden_field_tag :resulting_ids, @resulting_ids%>
+				<%= hidden_field_tag :type, @results.first.class.name%>
+				<% end %>
+	</div>
+</div>
+
+		<div id= "sortByToggleO">
+			<div id = "header2S">
+				Sort By:
+				<% @options = {:ratinghigh => 'ratinghigh' , :ratinglow => 'ratinglow', :alphabetical => 'alphabetical', :pricelow => 'pricelow', :pricehigh =>'pricehigh'} %>
+						<%= form_tag 'sorted_results', :method => 'get' do%>
+						<%= select_tag :sort, options_for_select(@options), :onchange => "this.form.submit()"%>
+						<%= hidden_field_tag :resulting_ids, @resulting_ids%>
+						<%= hidden_field_tag :type, @resultsO.first.class.name%>
+						<% end %>
+			</div>
+		</div>
+	</div>
+
+<div id="programs-contents" class="contents">
+	<div id="divProgram">
+		<% if !(@results.empty?)%>
+		<% @results.each do |f|%>	
+		<%= render :partial => "programs_results", :locals => {:f => f}%>
+		<% end %>
+	</div>
+	<div id="program" style="position: relative; top:20px">
+			</div>
+		<% else %>
+		<%= image_tag "/assets/nothin.png"%>
+		<% end %>
+		
+</div>
+
+
+
+	
+<div id="organizations-contents" class="contents">
+	<div id="divOrganization">
+		<% if !(@resultsO.empty?)%>
+		<% @resultsO.each do |f|%>	
+	<%= render :partial => "organizations_results", :locals => {:f => f}%>
+	<% end %>
+	</div>
+	<div id="organization" style="position: relative; top:20px">
+		
+	</div>
+	
+	<% else %>
+	<%= image_tag "/assets/nothin.png"%>
+	<% end %>
+</div>
+</div>
+</div>
+</div>
+
+
+				<div id= "bucket2S">
+
+					<form action="/pages/search_machine_results" method="get">
+					<div id="filtersS">
+						<h4>Search Filters</h4>
+						<b>Price Range:</b><br />
+						Min: <input type="number" value= 0 name="price_min" id= "price_min" /><br />
+						Max: <input type="number" value= 999 name="price_max" id = "price_max" />
+					</div>
+					<div id= "filtersS">
+						<b>Program Subjects:</b><br />
+						<input onClick='toggleBoxes1(this)'value="false" id='any' name='subject' type='checkbox' checked><label for='any'> Any |</label>
+						
+						<div id='Agriculture1'><input onclick='toggleBoxes1(this)' value='Agriculture' id='Agriculture2' name='subject[]' type='checkbox'><label for='Agriculture1'> Agriculture</label></div>
+						<div id='OrganicFarming1'><input onclick='toggleBoxes1(this)' value='Organic Farming' id='OrganicFarming2' name='subject[]' type='checkbox'><label for='OrganicFarming1'> Organic Farming</label></div>
+						<div id='Sustainable_Development1'><input onclick='toggleBoxes1(this)' value='Sustainable Development' id='Sustainable_Development2' name='subject[]' type='checkbox'><label for='Sustainable_Development1'> Sustainable Development</label></div>
+						<div id='AnimalCare1'><input onclick='toggleBoxes1(this)' value='Animal Care' id='AnimalCare2' name='subject[]' type='checkbox'><label for='AnimalCare1'> Animal Care</label></div>
+						<div id='AnimalRights1'><input onclick='toggleBoxes1(this)' value='Animal Rights' id='AnimalRights2' name='subject[]' type='checkbox'><label for='AnimalRights1'> Animal Rights</label></div>
+						<div id='Wildlife_Conservation1'><input onclick='toggleBoxes1(this)' value='Wildlife Conservation' id='Wildlife_Conservation2' name='subject[]' type='checkbox'><label for='Wildlife_Conservation1'> Wildlife Conservation</label></div>
+						<div id='Caregiving1'><input onclick='toggleBoxes1(this)' value='Caregiving' id='Caregiving2' name='subject[]' type='checkbox'><label for='Caregiving1'> Caregiving</label></div>
+						<div id='ElderCare1'><input onclick='toggleBoxes1(this)' value='Elder Care' id='ElderCare2' name='subject[]' type='checkbox'><label for='ElderCare1'> Elder Care</label></div>
+						<div id='ChildOrphanCare1'><input onclick='toggleBoxes1(this)' value='ChildOrphan Care' id='ChildOrphanCare2' name='subject[]' type='checkbox'><label for='ChildOrphanCare1'> ChildOrphan Care</label></div>
+						<div id='DisabledCare1'><input onclick='toggleBoxes1(this)' value='Disabled Care' id='DisabledCare2' name='subject[]' type='checkbox'><label for='DisabledCare1'> Disabled Care</label></div>
+						<div id='FeedtheHomeless1'><input onclick='toggleBoxes1(this)' value='Feed the Homeless' id='FeedtheHomeless2' name='subject[]' type='checkbox'><label for='FeedtheHomeless1'> Feed the Homeless</label></div>
+						<div id='CommunityDevelopment1'><input onclick='toggleBoxes1(this)' value='Community Development' id='CommunityDevelopment2' name='subject[]' type='checkbox'><label for='CommunityDevelopment1'> Community Development</label></div>
+						<div id='YouthDevelopmentandOutreach1'><input onclick='toggleBoxes1(this)' value='Youth Development and Outreach' id='YouthDevelopmentandOutreach2' name='subject[]' type='checkbox'><label for='YouthDevelopmentandOutreach1'> Youth Development and Outreach</label></div>
+						<div id='Construction1'><input onclick='toggleBoxes1(this)' value='Construction' id='Construction2' name='subject[]' type='checkbox'><label for='Construction1'> Construction</label></div>
+						<div id='CultureandCommunity1'><input onclick='toggleBoxes1(this)' value='Culture and Community' id='CultureandCommunity2' name='subject[]' type='checkbox'><label for='CultureandCommunity1'> Culture and Community</label></div>
+						<div id='PerformingArts1'><input onclick='toggleBoxes1(this)' value='Performing Arts' id='PerformingArts2' name='subject[]' type='checkbox'><label for='PerformingArts1'> Performing Arts</label></div>
+						<div id='Fashion1'><input onclick='toggleBoxes1(this)' value='Fashion' id='Fashion2' name='subject[]' type='checkbox'><label for='Fashion1'> Fashion</label></div>
+						<div id='Music1'><input onclick='toggleBoxes1(this)' value='Music' id='Music2' name='subject[]' type='checkbox'><label for='Music1'> Music</label></div>
+						<div id='SportsRecreation1'><input onclick='toggleBoxes1(this)' value='Sports & Recreation' id='SportsRecreation2' name='subject[]' type='checkbox'><label for='SportsRecreation1'> Sports & Recreation</label></div>
+						<div id='Journalism1'><input onclick='toggleBoxes1(this)' value='Journalism' id='Journalism2' name='subject[]' type='checkbox'><label for='Journalism1'> Journalism</label></div>
+						<div id='DisasterRelief1'><input onclick='toggleBoxes1(this)' value='Disaster Relief' id='DisasterRelief2' name='subject[]' type='checkbox'><label for='DisasterRelief1'> Disaster Relief</label></div>
+						<div id='Economics1'><input onclick='toggleBoxes1(this)' value='Economics' id='Economics2' name='subject[]' type='checkbox'><label for='Economics1'> Economics</label></div>
+						<div id='Microfinance1'><input onclick='toggleBoxes1(this)' value='Microfinance' id='Microfinance2' name='subject[]' type='checkbox'><label for='Microfinance1'> Microfinance</label></div>
+						<div id='Education1'><input onclick='toggleBoxes1(this)' value='Education' id='Education2' name='subject[]' type='checkbox'><label for='Education1'> Education</label></div>
+						<div id='TeachingEnglish1'><input onclick='toggleBoxes1(this)' value='Teaching English' id='TeachingEnglish2' name='subject[]' type='checkbox'><label for='TeachingEnglish1'> Teaching English</label></div>
+						<div id='TeachingBuddhistMonks1'><input onclick='toggleBoxes1(this)' value='Teaching Buddhist Monks' id='TeachingBuddhistMonks2' name='subject[]' type='checkbox'><label for='TeachingBuddhistMonks1'> Teaching Buddhist Monks</label></div>
+						<div id='TeachingChildren1'><input onclick='toggleBoxes1(this)' value='Teaching Children' id='TeachingChildren2' name='subject[]' type='checkbox'><label for='TeachingChildren1'> Teaching Children</label></div>
+						<div id='Teaching_Computer_Literacy1'><input onclick='toggleBoxes1(this)' value='Teaching Computer Literacy' id='Teaching_Computer_Literacy2' name='subject[]' type='checkbox'><label for='Teaching_Computer_Literacy1'> Teaching Computer Literacy</label></div>
+						<div id='EngineeringandInfrastructure1'><input onclick='toggleBoxes1(this)' value='Engineering and Infrastructure' id='EngineeringandInfrastructure2' name='subject[]' type='checkbox'><label for='EngineeringandInfrastructure1'> Engineering and Infrastructure</label></div>
+						<div id='Environmental1'><input onclick='toggleBoxes1(this)' value='Environmental' id='Environmental2' name='subject[]' type='checkbox'><label for='Environmental1'> Environmental</label></div>
+						<div id='EcologicalConservation1'><input onclick='toggleBoxes1(this)' value='Ecological Conservation' id='EcologicalConservation2' name='subject[]' type='checkbox'><label for='EcologicalConservation1'> Ecological Conservation</label></div>
+						<div id='SustainableDevelopment1'><input onclick='toggleBoxes1(this)' value='Sustainable Development' id='SustainableDevelopment2' name='subject[]' type='checkbox'><label for='SustainableDevelopment1'> Sustainable Development</label></div>
+						<div id='WildlifeConservation1'><input onclick='toggleBoxes1(this)' value='Wildlife Conservation' id='WildlifeConservation2' name='subject[]' type='checkbox'><label for='WildlifeConservation1'> Wildlife Conservation</label></div>
+						<div id='HabitatRestoration1'><input onclick='toggleBoxes1(this)' value='Habitat Restoration' id='HabitatRestoration2' name='subject[]' type='checkbox'><label for='HabitatRestoration1'> Habitat Restoration</label></div>
+						<div id='HealthandMedicine1'><input onclick='toggleBoxes1(this)' value='Health and Medicine' id='HealthandMedicine2' name='subject[]' type='checkbox'><label for='HealthandMedicine1'> Health and Medicine</label></div>
+						<div id='HIVAIDS1'><input onclick='toggleBoxes1(this)' value='HIVAIDS' id='HIVAIDS2' name='subject[]' type='checkbox'><label for='HIVAIDS1'> HIVAIDS</label></div>
+						<div id='Nutrition1'><input onclick='toggleBoxes1(this)' value='Nutrition' id='Nutrition2' name='subject[]' type='checkbox'><label for='Nutrition1'> Nutrition</label></div>
+						<div id='FamilyPlanning1'><input onclick='toggleBoxes1(this)' value='Family Planning' id='FamilyPlanning2' name='subject[]' type='checkbox'><label for='FamilyPlanning1'> Family Planning</label></div>
+						<div id='VeterinaryMedicine1'><input onclick='toggleBoxes1(this)' value='Veterinary Medicine' id='VeterinaryMedicine2' name='subject[]' type='checkbox'><label for='VeterinaryMedicine1'> Veterinary Medicine</label></div>
+						<div id='ClinicalWork1'><input onclick='toggleBoxes1(this)' value='Clinical Work' id='ClinicalWork2' name='subject[]' type='checkbox'><label for='ClinicalWork1'> Clinical Work</label></div>
+						<div id='DentalWork1'><input onclick='toggleBoxes1(this)' value='Dental Work' id='DentalWork2' name='subject[]' type='checkbox'><label for='DentalWork1'> Dental Work</label></div>
+						<div id='MedicalResearch1'><input onclick='toggleBoxes1(this)' value='Medical Research' id='MedicalResearch2' name='subject[]' type='checkbox'><label for='MedicalResearch1'> Medical Research</label></div>
+						<div id='HealthEducation1'><input onclick='toggleBoxes1(this)' value='Health Education' id='HealthEducation2' name='subject[]' type='checkbox'><label for='HealthEducation1'> Health Education</label></div>
+						<div id='PublicHealth1'><input onclick='toggleBoxes1(this)' value='Public Health' id='PublicHealth2' name='subject[]' type='checkbox'><label for='PublicHealth1'> Public Health</label></div>
+						<div id='HospitalCare-giving1'><input onclick='toggleBoxes1(this)' value='Hospital Care-giving' id='HospitalCare-giving2' name='subject[]' type='checkbox'><label for='HospitalCare-giving1'> Hospital Care-giving</label></div>
+						<div id='HumanRights1'><input onclick='toggleBoxes1(this)' value='Human Rights' id='HumanRights2' name='subject[]' type='checkbox'><label for='HumanRights1'> Human Rights</label></div>
+						<div id='WomensInitiatives1'><input onclick='toggleBoxes1(this)' value='Womens Initiatives' id='WomensInitiatives2' name='subject[]' type='checkbox'><label for='WomensInitiatives1'> Women's Initiatives</label></div>
+						<div id='InternationalWorkCamp1'><input onclick='toggleBoxes1(this)' value='International Work Camp' id='InternationalWorkCamp2' name='subject[]' type='checkbox'><label for='InternationalWorkCamp1'> International Work Camp</label></div>
+						<div id='Recreation1'><input onclick='toggleBoxes1(this)' value='Recreation' id='Recreation2' name='subject[]' type='checkbox'><label for='Recreation1'> Recreation</label></div>
+						<div id='AdventureTravel1'><input onclick='toggleBoxes1(this)' value='Adventure Travel' id='AdventureTravel2' name='subject[]' type='checkbox'><label for='AdventureTravel1'> Adventure Travel</label></div>
+						<div id='ScientificResearch1'><input onclick='toggleBoxes1(this)' value='Scientific Research' id='ScientificResearch2' name='subject[]' type='checkbox'><label for='ScientificResearch1'> Scientific Research</label></div>
+						<div id='Archaeology1'><input onclick='toggleBoxes1(this)' value='Archaeology' id='Archaeology2' name='subject[]' type='checkbox'><label for='Archaeology1'> Archaeology</label></div>
+						<div id='EnvironmentalBiology1'><input onclick='toggleBoxes1(this)' value='Environmental Biology' id='EnvironmentalBiology2' name='subject[]' type='checkbox'><label for='EnvironmentalBiology1'> Environmental Biology</label></div>
+						<div id='Technology1'><input onclick='toggleBoxes1(this)' value='Technology' id='Technology2' name='subject[]' type='checkbox'><label for='Technology1'> Technology</label></div>
+						<div id='TeachingComputerLiteracy1'><input onclick='toggleBoxes1(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' name='subject[]' type='checkbox'><label for='TeachingComputerLiteracy1'> Teaching Computer Literacy</label></div>
+						<div id='MediaMarketingandGraphicDesign1'><input onclick='toggleBoxes1(this)' value='Media, Marketing, and Graphic Design' id='MediaMarketingandGraphicDesign2' name='subject[]' type='checkbox'><label for='MediaMarketingandGraphicDesign1'> Media, Marketing, and Graphic Design</label></div>
+						<u1 id = "subject">
+							<a href="#subject-box" class="window">Choose Subjects</a>
+							</u1>
+					</div>
+					<div id = "filtersS">
+						<b>Program Countries:</b><br />
+						<input onClick='toggleBoxes1(this)'value="false" id='anycountry' name='countries' type='checkbox' checked><label for='anycountry'> Any |</label>
+						
+						<div id='AF'><input onclick='toggleBoxes1(this)' value='AF' id='AF2' name='countries[]' type='checkbox'><label for='AF2'> Afghanistan</label></div>
+						<div id='AX'><input onclick='toggleBoxes1(this)' value='AX' id='AX2' name='countries[]' type='checkbox'><label for='AX2'> ÅlandIslands</label></div>
+						<div id='AL'><input onclick='toggleBoxes1(this)' value='AL' id='AL2' name='countries[]' type='checkbox'><label for='AL2'> Albania</label></div>
+						<div id='DZ'><input onclick='toggleBoxes1(this)' value='DZ' id='DZ2' name='countries[]' type='checkbox'><label for='DZ2'> Algeria</label></div>
+						<div id='AS'><input onclick='toggleBoxes1(this)' value='AS' id='AS2' name='countries[]' type='checkbox'><label for='AS2'> AmericanSamoa</label></div>
+						<div id='AD'><input onclick='toggleBoxes1(this)' value='AD' id='AD2' name='countries[]' type='checkbox'><label for='AD2'> Andorra</label></div>
+						<div id='AO'><input onclick='toggleBoxes1(this)' value='AO' id='AO2' name='countries[]' type='checkbox'><label for='AO2'> Angola</label></div>
+						<div id='AI'><input onclick='toggleBoxes1(this)' value='AI' id='AI2' name='countries[]' type='checkbox'><label for='AI2'> Anguilla</label></div>
+						<div id='AG'><input onclick='toggleBoxes1(this)' value='AG' id='AG2' name='countries[]' type='checkbox'><label for='AG2'> AntiguaandBarbuda</label></div>
+						<div id='AR'><input onclick='toggleBoxes1(this)' value='AR' id='AR2' name='countries[]' type='checkbox'><label for='AR2'> Argentina</label></div>
+						<div id='AM'><input onclick='toggleBoxes1(this)' value='AM' id='AM2' name='countries[]' type='checkbox'><label for='AM2'> Armenia</label></div>
+						<div id='AW'><input onclick='toggleBoxes1(this)' value='AW' id='AW2' name='countries[]' type='checkbox'><label for='AW2'> Aruba</label></div>
+						<div id='AU'><input onclick='toggleBoxes1(this)' value='AU' id='AU2' name='countries[]' type='checkbox'><label for='AU2'> Australia</label></div>
+						<div id='AT'><input onclick='toggleBoxes1(this)' value='AT' id='AT2' name='countries[]' type='checkbox'><label for='AT2'> Austria</label></div>
+						<div id='AZ'><input onclick='toggleBoxes1(this)' value='AZ' id='AZ2' name='countries[]' type='checkbox'><label for='AZ2'> Azerbaijan</label></div>
+						<div id='BS'><input onclick='toggleBoxes1(this)' value='BS' id='BS2' name='countries[]' type='checkbox'><label for='BS2'> Bahamas</label></div>
+						<div id='BH'><input onclick='toggleBoxes1(this)' value='BH' id='BH2' name='countries[]' type='checkbox'><label for='BH2'> Bahrain</label></div>
+						<div id='BD'><input onclick='toggleBoxes1(this)' value='BD' id='BD2' name='countries[]' type='checkbox'><label for='BD2'> Bangladesh</label></div>
+						<div id='BB'><input onclick='toggleBoxes1(this)' value='BB' id='BB2' name='countries[]' type='checkbox'><label for='BB2'> Barbados</label></div>
+						<div id='BY'><input onclick='toggleBoxes1(this)' value='BY' id='BY2' name='countries[]' type='checkbox'><label for='BY2'> Belarus</label></div>
+						<div id='BE'><input onclick='toggleBoxes1(this)' value='BE' id='BE2' name='countries[]' type='checkbox'><label for='BE2'> Belgium</label></div>
+						<div id='BZ'><input onclick='toggleBoxes1(this)' value='BZ' id='BZ2' name='countries[]' type='checkbox'><label for='BZ2'> Belize</label></div>
+						<div id='BJ'><input onclick='toggleBoxes1(this)' value='BJ' id='BJ2' name='countries[]' type='checkbox'><label for='BJ2'> Benin</label></div>
+						<div id='BM'><input onclick='toggleBoxes1(this)' value='BM' id='BM2' name='countries[]' type='checkbox'><label for='BM2'> Bermuda</label></div>
+						<div id='BT'><input onclick='toggleBoxes1(this)' value='BT' id='BT2' name='countries[]' type='checkbox'><label for='BT2'> Bhutan</label></div>
+						<div id='BO'><input onclick='toggleBoxes1(this)' value='BO' id='BO2' name='countries[]' type='checkbox'><label for='BO2'> Bolivia,PlurinationalStateof</label></div>
+						<div id='BA'><input onclick='toggleBoxes1(this)' value='BA' id='BA2' name='countries[]' type='checkbox'><label for='BA2'> BosniaandHerzegovina</label></div>
+						<div id='BW'><input onclick='toggleBoxes1(this)' value='BW' id='BW2' name='countries[]' type='checkbox'><label for='BW2'> Botswana</label></div>
+						<div id='BR'><input onclick='toggleBoxes1(this)' value='BR' id='BR2' name='countries[]' type='checkbox'><label for='BR2'> Brazil</label></div>
+						<div id='BN'><input onclick='toggleBoxes1(this)' value='BN' id='BN2' name='countries[]' type='checkbox'><label for='BN2'> BruneiDarussalam</label></div>
+						<div id='BG'><input onclick='toggleBoxes1(this)' value='BG' id='BG2' name='countries[]' type='checkbox'><label for='BG2'> Bulgaria</label></div>
+						<div id='BF'><input onclick='toggleBoxes1(this)' value='BF' id='BF2' name='countries[]' type='checkbox'><label for='BF2'> BurkinaFaso</label></div>
+						<div id='BI'><input onclick='toggleBoxes1(this)' value='BI' id='BI2' name='countries[]' type='checkbox'><label for='BI2'> Burundi</label></div>
+						<div id='KH'><input onclick='toggleBoxes1(this)' value='KH' id='KH2' name='countries[]' type='checkbox'><label for='KH2'> Cambodia</label></div>
+						<div id='CM'><input onclick='toggleBoxes1(this)' value='CM' id='CM2' name='countries[]' type='checkbox'><label for='CM2'> Cameroon</label></div>
+						<div id='CA'><input onclick='toggleBoxes1(this)' value='CA' id='CA2' name='countries[]' type='checkbox'><label for='CA2'> Canada</label></div>
+						<div id='CV'><input onclick='toggleBoxes1(this)' value='CV' id='CV2' name='countries[]' type='checkbox'><label for='CV2'> CapeVerde</label></div>
+						<div id='KY'><input onclick='toggleBoxes1(this)' value='KY' id='KY2' name='countries[]' type='checkbox'><label for='KY2'> CaymanIslands</label></div>
+						<div id='CF'><input onclick='toggleBoxes1(this)' value='CF' id='CF2' name='countries[]' type='checkbox'><label for='CF2'> CentralAfricanRepublic</label></div>
+						<div id='TD'><input onclick='toggleBoxes1(this)' value='TD' id='TD2' name='countries[]' type='checkbox'><label for='TD2'> Chad</label></div>
+						<div id='CL'><input onclick='toggleBoxes1(this)' value='CL' id='CL2' name='countries[]' type='checkbox'><label for='CL2'> Chile</label></div>
+						<div id='CN'><input onclick='toggleBoxes1(this)' value='CN' id='CN2' name='countries[]' type='checkbox'><label for='CN2'> China</label></div>
+						<div id='CO'><input onclick='toggleBoxes1(this)' value='CO' id='CO2' name='countries[]' type='checkbox'><label for='CO2'> Colombia</label></div>
+						<div id='KM'><input onclick='toggleBoxes1(this)' value='KM' id='KM2' name='countries[]' type='checkbox'><label for='KM2'> Comoros</label></div>
+						<div id='CG'><input onclick='toggleBoxes1(this)' value='CG' id='CG2' name='countries[]' type='checkbox'><label for='CG2'> Congo</label></div>
+						<div id='CD'><input onclick='toggleBoxes1(this)' value='CD' id='CD2' name='countries[]' type='checkbox'><label for='CD2'> Congo,theDemocraticRepublicofthe</label></div>
+						<div id='CK'><input onclick='toggleBoxes1(this)' value='CK' id='CK2' name='countries[]' type='checkbox'><label for='CK2'> CookIslands</label></div>
+						<div id='CR'><input onclick='toggleBoxes1(this)' value='CR' id='CR2' name='countries[]' type='checkbox'><label for='CR2'> CostaRica</label></div>
+						<div id='CI'><input onclick='toggleBoxes1(this)' value='CI' id='CI2' name='countries[]' type='checkbox'><label for='CI2'> CôtedIvoire</label></div>
+						<div id='HR'><input onclick='toggleBoxes1(this)' value='HR' id='HR2' name='countries[]' type='checkbox'><label for='HR2'> Croatia</label></div>
+						<div id='CU'><input onclick='toggleBoxes1(this)' value='CU' id='CU2' name='countries[]' type='checkbox'><label for='CU2'> Cuba</label></div>
+						<div id='CY'><input onclick='toggleBoxes1(this)' value='CY' id='CY2' name='countries[]' type='checkbox'><label for='CY2'> Cyprus</label></div>
+						<div id='CZ'><input onclick='toggleBoxes1(this)' value='CZ' id='CZ2' name='countries[]' type='checkbox'><label for='CZ2'> CzechRepublic</label></div>
+						<div id='DK'><input onclick='toggleBoxes1(this)' value='DK' id='DK2' name='countries[]' type='checkbox'><label for='DK2'> Denmark</label></div>
+						<div id='DJ'><input onclick='toggleBoxes1(this)' value='DJ' id='DJ2' name='countries[]' type='checkbox'><label for='DJ2'> Djibouti</label></div>
+						<div id='DM'><input onclick='toggleBoxes1(this)' value='DM' id='DM2' name='countries[]' type='checkbox'><label for='DM2'> Dominica</label></div>
+						<div id='DO'><input onclick='toggleBoxes1(this)' value='DO' id='DO2' name='countries[]' type='checkbox'><label for='DO2'> DominicanRepublic</label></div>
+						<div id='EC'><input onclick='toggleBoxes1(this)' value='EC' id='EC2' name='countries[]' type='checkbox'><label for='EC2'> Ecuador</label></div>
+						<div id='EG'><input onclick='toggleBoxes1(this)' value='EG' id='EG2' name='countries[]' type='checkbox'><label for='EG2'> Egypt</label></div>
+						<div id='SV'><input onclick='toggleBoxes1(this)' value='SV' id='SV2' name='countries[]' type='checkbox'><label for='SV2'> ElSalvador</label></div>
+						<div id='GQ'><input onclick='toggleBoxes1(this)' value='GQ' id='GQ2' name='countries[]' type='checkbox'><label for='GQ2'> EquatorialGuinea</label></div>
+						<div id='ER'><input onclick='toggleBoxes1(this)' value='ER' id='ER2' name='countries[]' type='checkbox'><label for='ER2'> Eritrea</label></div>
+						<div id='EE'><input onclick='toggleBoxes1(this)' value='EE' id='EE2' name='countries[]' type='checkbox'><label for='EE2'> Estonia</label></div>
+						<div id='ET'><input onclick='toggleBoxes1(this)' value='ET' id='ET2' name='countries[]' type='checkbox'><label for='ET2'> Ethiopia</label></div>
+						<div id='FK'><input onclick='toggleBoxes1(this)' value='FK' id='FK2' name='countries[]' type='checkbox'><label for='FK2'> FalklandIslands(Malvinas)</label></div>
+						<div id='FO'><input onclick='toggleBoxes1(this)' value='FO' id='FO2' name='countries[]' type='checkbox'><label for='FO2'> FaroeIslands</label></div>
+						<div id='FJ'><input onclick='toggleBoxes1(this)' value='FJ' id='FJ2' name='countries[]' type='checkbox'><label for='FJ2'> Fiji</label></div>
+						<div id='FI'><input onclick='toggleBoxes1(this)' value='FI' id='FI2' name='countries[]' type='checkbox'><label for='FI2'> Finland</label></div>
+						<div id='FR'><input onclick='toggleBoxes1(this)' value='FR' id='FR2' name='countries[]' type='checkbox'><label for='FR2'> France</label></div>
+						<div id='GF'><input onclick='toggleBoxes1(this)' value='GF' id='GF2' name='countries[]' type='checkbox'><label for='GF2'> FrenchGuiana</label></div>
+						<div id='PF'><input onclick='toggleBoxes1(this)' value='PF' id='PF2' name='countries[]' type='checkbox'><label for='PF2'> FrenchPolynesia</label></div>
+						<div id='GA'><input onclick='toggleBoxes1(this)' value='GA' id='GA2' name='countries[]' type='checkbox'><label for='GA2'> Gabon</label></div>
+						<div id='GM'><input onclick='toggleBoxes1(this)' value='GM' id='GM2' name='countries[]' type='checkbox'><label for='GM2'> Gambia</label></div>
+						<div id='GE'><input onclick='toggleBoxes1(this)' value='GE' id='GE2' name='countries[]' type='checkbox'><label for='GE2'> Georgia</label></div>
+						<div id='DE'><input onclick='toggleBoxes1(this)' value='DE' id='DE2' name='countries[]' type='checkbox'><label for='DE2'> Germany</label></div>
+						<div id='GH'><input onclick='toggleBoxes1(this)' value='GH' id='GH2' name='countries[]' type='checkbox'><label for='GH2'> Ghana</label></div>
+						<div id='GI'><input onclick='toggleBoxes1(this)' value='GI' id='GI2' name='countries[]' type='checkbox'><label for='GI2'> Gibraltar</label></div>
+						<div id='GR'><input onclick='toggleBoxes1(this)' value='GR' id='GR2' name='countries[]' type='checkbox'><label for='GR2'> Greece</label></div>
+						<div id='GL'><input onclick='toggleBoxes1(this)' value='GL' id='GL2' name='countries[]' type='checkbox'><label for='GL2'> Greenland</label></div>
+						<div id='GD'><input onclick='toggleBoxes1(this)' value='GD' id='GD2' name='countries[]' type='checkbox'><label for='GD2'> Grenada</label></div>
+						<div id='GP'><input onclick='toggleBoxes1(this)' value='GP' id='GP2' name='countries[]' type='checkbox'><label for='GP2'> Guadeloupe</label></div>
+						<div id='GU'><input onclick='toggleBoxes1(this)' value='GU' id='GU2' name='countries[]' type='checkbox'><label for='GU2'> Guam</label></div>
+						<div id='GT'><input onclick='toggleBoxes1(this)' value='GT' id='GT2' name='countries[]' type='checkbox'><label for='GT2'> Guatemala</label></div>
+						<div id='GG'><input onclick='toggleBoxes1(this)' value='GG' id='GG2' name='countries[]' type='checkbox'><label for='GG2'> Guernsey</label></div>
+						<div id='GN'><input onclick='toggleBoxes1(this)' value='GN' id='GN2' name='countries[]' type='checkbox'><label for='GN2'> Guinea</label></div>
+						<div id='GW'><input onclick='toggleBoxes1(this)' value='GW' id='GW2' name='countries[]' type='checkbox'><label for='GW2'> Guinea-Bissau</label></div>
+						<div id='GY'><input onclick='toggleBoxes1(this)' value='GY' id='GY2' name='countries[]' type='checkbox'><label for='GY2'> Guyana</label></div>
+						<div id='HT'><input onclick='toggleBoxes1(this)' value='HT' id='HT2' name='countries[]' type='checkbox'><label for='HT2'> Haiti</label></div>
+						<div id='VA'><input onclick='toggleBoxes1(this)' value='VA' id='VA2' name='countries[]' type='checkbox'><label for='VA2'> HolySee(VaticanCityState)</label></div>
+						<div id='HN'><input onclick='toggleBoxes1(this)' value='HN' id='HN2' name='countries[]' type='checkbox'><label for='HN2'> Honduras</label></div>
+						<div id='HK'><input onclick='toggleBoxes1(this)' value='HK' id='HK2' name='countries[]' type='checkbox'><label for='HK2'> HongKong</label></div>
+						<div id='HU'><input onclick='toggleBoxes1(this)' value='HU' id='HU2' name='countries[]' type='checkbox'><label for='HU2'> Hungary</label></div>
+						<div id='IS'><input onclick='toggleBoxes1(this)' value='IS' id='IS2' name='countries[]' type='checkbox'><label for='IS2'> Iceland</label></div>
+						<div id='IN'><input onclick='toggleBoxes1(this)' value='IN' id='IN2' name='countries[]' type='checkbox'><label for='IN2'> India</label></div>
+						<div id='ID'><input onclick='toggleBoxes1(this)' value='ID' id='ID2' name='countries[]' type='checkbox'><label for='ID2'> Indonesia</label></div>
+						<div id='IR'><input onclick='toggleBoxes1(this)' value='IR' id='IR2' name='countries[]' type='checkbox'><label for='IR2'> Iran,IslamicRepublicof</label></div>
+						<div id='IQ'><input onclick='toggleBoxes1(this)' value='IQ' id='IQ2' name='countries[]' type='checkbox'><label for='IQ2'> Iraq</label></div>
+						<div id='IE'><input onclick='toggleBoxes1(this)' value='IE' id='IE2' name='countries[]' type='checkbox'><label for='IE2'> Ireland</label></div>
+						<div id='IM'><input onclick='toggleBoxes1(this)' value='IM' id='IM2' name='countries[]' type='checkbox'><label for='IM2'> IsleofMan</label></div>
+						<div id='IL'><input onclick='toggleBoxes1(this)' value='IL' id='IL2' name='countries[]' type='checkbox'><label for='IL2'> Israel</label></div>
+						<div id='IT'><input onclick='toggleBoxes1(this)' value='IT' id='IT2' name='countries[]' type='checkbox'><label for='IT2'> Italy</label></div>
+						<div id='JM'><input onclick='toggleBoxes1(this)' value='JM' id='JM2' name='countries[]' type='checkbox'><label for='JM2'> Jamaica</label></div>
+						<div id='JP'><input onclick='toggleBoxes1(this)' value='JP' id='JP2' name='countries[]' type='checkbox'><label for='JP2'> Japan</label></div>
+						<div id='JE'><input onclick='toggleBoxes1(this)' value='JE' id='JE2' name='countries[]' type='checkbox'><label for='JE2'> Jersey</label></div>
+						<div id='JO'><input onclick='toggleBoxes1(this)' value='JO' id='JO2' name='countries[]' type='checkbox'><label for='JO2'> Jordan</label></div>
+						<div id='KZ'><input onclick='toggleBoxes1(this)' value='KZ' id='KZ2' name='countries[]' type='checkbox'><label for='KZ2'> Kazakhstan</label></div>
+						<div id='KE'><input onclick='toggleBoxes1(this)' value='KE' id='KE2' name='countries[]' type='checkbox'><label for='KE2'> Kenya</label></div>
+						<div id='KI'><input onclick='toggleBoxes1(this)' value='KI' id='KI2' name='countries[]' type='checkbox'><label for='KI2'> Kiribati</label></div>
+						<div id='KP'><input onclick='toggleBoxes1(this)' value='KP' id='KP2' name='countries[]' type='checkbox'><label for='KP2'> Korea,DemocraticPeoplesRepublicof</label></div>
+						<div id='KR'><input onclick='toggleBoxes1(this)' value='KR' id='KR2' name='countries[]' type='checkbox'><label for='KR2'> Korea,Republicof</label></div>
+						<div id='KW'><input onclick='toggleBoxes1(this)' value='KW' id='KW2' name='countries[]' type='checkbox'><label for='KW2'> Kuwait</label></div>
+						<div id='KG'><input onclick='toggleBoxes1(this)' value='KG' id='KG2' name='countries[]' type='checkbox'><label for='KG2'> Kyrgyzstan</label></div>
+						<div id='LA'><input onclick='toggleBoxes1(this)' value='LA' id='LA2' name='countries[]' type='checkbox'><label for='LA2'> LaoPeoplesDemocraticRepublic</label></div>
+						<div id='LV'><input onclick='toggleBoxes1(this)' value='LV' id='LV2' name='countries[]' type='checkbox'><label for='LV2'> Latvia</label></div>
+						<div id='LB'><input onclick='toggleBoxes1(this)' value='LB' id='LB2' name='countries[]' type='checkbox'><label for='LB2'> Lebanon</label></div>
+						<div id='LS'><input onclick='toggleBoxes1(this)' value='LS' id='LS2' name='countries[]' type='checkbox'><label for='LS2'> Lesotho</label></div>
+						<div id='LR'><input onclick='toggleBoxes1(this)' value='LR' id='LR2' name='countries[]' type='checkbox'><label for='LR2'> Liberia</label></div>
+						<div id='LY'><input onclick='toggleBoxes1(this)' value='LY' id='LY2' name='countries[]' type='checkbox'><label for='LY2'> Libya</label></div>
+						<div id='LI'><input onclick='toggleBoxes1(this)' value='LI' id='LI2' name='countries[]' type='checkbox'><label for='LI2'> Liechtenstein</label></div>
+						<div id='LT'><input onclick='toggleBoxes1(this)' value='LT' id='LT2' name='countries[]' type='checkbox'><label for='LT2'> Lithuania</label></div>
+						<div id='LU'><input onclick='toggleBoxes1(this)' value='LU' id='LU2' name='countries[]' type='checkbox'><label for='LU2'> Luxembourg</label></div>
+						<div id='MO'><input onclick='toggleBoxes1(this)' value='MO' id='MO2' name='countries[]' type='checkbox'><label for='MO2'> Macao</label></div>
+						<div id='MK'><input onclick='toggleBoxes1(this)' value='MK' id='MK2' name='countries[]' type='checkbox'><label for='MK2'> Macedonia,theformerYugoslavRepublicof</label></div>
+						<div id='MG'><input onclick='toggleBoxes1(this)' value='MG' id='MG2' name='countries[]' type='checkbox'><label for='MG2'> Madagascar</label></div>
+						<div id='MW'><input onclick='toggleBoxes1(this)' value='MW' id='MW2' name='countries[]' type='checkbox'><label for='MW2'> Malawi</label></div>
+						<div id='MY'><input onclick='toggleBoxes1(this)' value='MY' id='MY2' name='countries[]' type='checkbox'><label for='MY2'> Malaysia</label></div>
+						<div id='MV'><input onclick='toggleBoxes1(this)' value='MV' id='MV2' name='countries[]' type='checkbox'><label for='MV2'> Maldives</label></div>
+						<div id='ML'><input onclick='toggleBoxes1(this)' value='ML' id='ML2' name='countries[]' type='checkbox'><label for='ML2'> Mali</label></div>
+						<div id='MT'><input onclick='toggleBoxes1(this)' value='MT' id='MT2' name='countries[]' type='checkbox'><label for='MT2'> Malta</label></div>
+						<div id='MH'><input onclick='toggleBoxes1(this)' value='MH' id='MH2' name='countries[]' type='checkbox'><label for='MH2'> MarshallIslands</label></div>
+						<div id='MQ'><input onclick='toggleBoxes1(this)' value='MQ' id='MQ2' name='countries[]' type='checkbox'><label for='MQ2'> Martinique</label></div>
+						<div id='MR'><input onclick='toggleBoxes1(this)' value='MR' id='MR2' name='countries[]' type='checkbox'><label for='MR2'> Mauritania</label></div>
+						<div id='MU'><input onclick='toggleBoxes1(this)' value='MU' id='MU2' name='countries[]' type='checkbox'><label for='MU2'> Mauritius</label></div>
+						<div id='YT'><input onclick='toggleBoxes1(this)' value='YT' id='YT2' name='countries[]' type='checkbox'><label for='YT2'> Mayotte</label></div>
+						<div id='MX'><input onclick='toggleBoxes1(this)' value='MX' id='MX2' name='countries[]' type='checkbox'><label for='MX2'> Mexico</label></div>
+						<div id='FM'><input onclick='toggleBoxes1(this)' value='FM' id='FM2' name='countries[]' type='checkbox'><label for='FM2'> Micronesia,FederatedStatesof</label></div>
+						<div id='MD'><input onclick='toggleBoxes1(this)' value='MD' id='MD2' name='countries[]' type='checkbox'><label for='MD2'> Moldova,Republicof</label></div>
+						<div id='MC'><input onclick='toggleBoxes1(this)' value='MC' id='MC2' name='countries[]' type='checkbox'><label for='MC2'> Monaco</label></div>
+						<div id='MN'><input onclick='toggleBoxes1(this)' value='MN' id='MN2' name='countries[]' type='checkbox'><label for='MN2'> Mongolia</label></div>
+						<div id='ME'><input onclick='toggleBoxes1(this)' value='ME' id='ME2' name='countries[]' type='checkbox'><label for='ME2'> Montenegro</label></div>
+						<div id='MS'><input onclick='toggleBoxes1(this)' value='MS' id='MS2' name='countries[]' type='checkbox'><label for='MS2'> Montserrat</label></div>
+						<div id='MZ'><input onclick='toggleBoxes1(this)' value='MZ' id='MZ2' name='countries[]' type='checkbox'><label for='MZ2'> Mozambique</label></div>
+						<div id='MM'><input onclick='toggleBoxes1(this)' value='MM' id='MM2' name='countries[]' type='checkbox'><label for='MM2'> Myanmar</label></div>
+						<div id='NA'><input onclick='toggleBoxes1(this)' value='NA' id='NA2' name='countries[]' type='checkbox'><label for='NA2'> Namibia</label></div>
+						<div id='NR'><input onclick='toggleBoxes1(this)' value='NR' id='NR2' name='countries[]' type='checkbox'><label for='NR2'> Nauru</label></div>
+						<div id='NP'><input onclick='toggleBoxes1(this)' value='NP' id='NP2' name='countries[]' type='checkbox'><label for='NP2'> Nepal</label></div>
+						<div id='NL'><input onclick='toggleBoxes1(this)' value='NL' id='NL2' name='countries[]' type='checkbox'><label for='NL2'> Netherlands</label></div>
+						<div id='NC'><input onclick='toggleBoxes1(this)' value='NC' id='NC2' name='countries[]' type='checkbox'><label for='NC2'> NewCaledonia</label></div>
+						<div id='NZ'><input onclick='toggleBoxes1(this)' value='NZ' id='NZ2' name='countries[]' type='checkbox'><label for='NZ2'> NewZealand</label></div>
+						<div id='NI'><input onclick='toggleBoxes1(this)' value='NI' id='NI2' name='countries[]' type='checkbox'><label for='NI2'> Nicaragua</label></div>
+						<div id='NE'><input onclick='toggleBoxes1(this)' value='NE' id='NE2' name='countries[]' type='checkbox'><label for='NE2'> Niger</label></div>
+						<div id='NG'><input onclick='toggleBoxes1(this)' value='NG' id='NG2' name='countries[]' type='checkbox'><label for='NG2'> Nigeria</label></div>
+						<div id='NU'><input onclick='toggleBoxes1(this)' value='NU' id='NU2' name='countries[]' type='checkbox'><label for='NU2'> Niue</label></div>
+						<div id='NF'><input onclick='toggleBoxes1(this)' value='NF' id='NF2' name='countries[]' type='checkbox'><label for='NF2'> NorfolkIsland</label></div>
+						<div id='MP'><input onclick='toggleBoxes1(this)' value='MP' id='MP2' name='countries[]' type='checkbox'><label for='MP2'> NorthernMarianaIslands</label></div>
+						<div id='NO'><input onclick='toggleBoxes1(this)' value='NO' id='NO2' name='countries[]' type='checkbox'><label for='NO2'> Norway</label></div>
+						<div id='OM'><input onclick='toggleBoxes1(this)' value='OM' id='OM2' name='countries[]' type='checkbox'><label for='OM2'> Oman</label></div>
+						<div id='PK'><input onclick='toggleBoxes1(this)' value='PK' id='PK2' name='countries[]' type='checkbox'><label for='PK2'> Pakistan</label></div>
+						<div id='PW'><input onclick='toggleBoxes1(this)' value='PW' id='PW2' name='countries[]' type='checkbox'><label for='PW2'> Palau</label></div>
+						<div id='PS'><input onclick='toggleBoxes1(this)' value='PS' id='PS2' name='countries[]' type='checkbox'><label for='PS2'> PalestinianTerritory,Occupied</label></div>
+						<div id='PA'><input onclick='toggleBoxes1(this)' value='PA' id='PA2' name='countries[]' type='checkbox'><label for='PA2'> Panama</label></div>
+						<div id='PG'><input onclick='toggleBoxes1(this)' value='PG' id='PG2' name='countries[]' type='checkbox'><label for='PG2'> PapuaNewGuinea</label></div>
+						<div id='PY'><input onclick='toggleBoxes1(this)' value='PY' id='PY2' name='countries[]' type='checkbox'><label for='PY2'> Paraguay</label></div>
+						<div id='PE'><input onclick='toggleBoxes1(this)' value='PE' id='PE2' name='countries[]' type='checkbox'><label for='PE2'> Peru</label></div>
+						<div id='PH'><input onclick='toggleBoxes1(this)' value='PH' id='PH2' name='countries[]' type='checkbox'><label for='PH2'> Philippines</label></div>
+						<div id='PN'><input onclick='toggleBoxes1(this)' value='PN' id='PN2' name='countries[]' type='checkbox'><label for='PN2'> Pitcairn</label></div>
+						<div id='PL'><input onclick='toggleBoxes1(this)' value='PL' id='PL2' name='countries[]' type='checkbox'><label for='PL2'> Poland</label></div>
+						<div id='PT'><input onclick='toggleBoxes1(this)' value='PT' id='PT2' name='countries[]' type='checkbox'><label for='PT2'> Portugal</label></div>
+						<div id='PR'><input onclick='toggleBoxes1(this)' value='PR' id='PR2' name='countries[]' type='checkbox'><label for='PR2'> PuertoRico</label></div>
+						<div id='QA'><input onclick='toggleBoxes1(this)' value='QA' id='QA2' name='countries[]' type='checkbox'><label for='QA2'> Qatar</label></div>
+						<div id='RE'><input onclick='toggleBoxes1(this)' value='RE' id='RE2' name='countries[]' type='checkbox'><label for='RE2'> Réunion</label></div>
+						<div id='RO'><input onclick='toggleBoxes1(this)' value='RO' id='RO2' name='countries[]' type='checkbox'><label for='RO2'> Romania</label></div>
+						<div id='RU'><input onclick='toggleBoxes1(this)' value='RU' id='RU2' name='countries[]' type='checkbox'><label for='RU2'> RussianFederation</label></div>
+						<div id='RW'><input onclick='toggleBoxes1(this)' value='RW' id='RW2' name='countries[]' type='checkbox'><label for='RW2'> Rwanda</label></div>
+						<div id='BL'><input onclick='toggleBoxes1(this)' value='BL' id='BL2' name='countries[]' type='checkbox'><label for='BL2'> SaintBarthélemy</label></div>
+						<div id='SH'><input onclick='toggleBoxes1(this)' value='SH' id='SH2' name='countries[]' type='checkbox'><label for='SH2'> SaintHelena,AscensionandTristandaCunha</label></div>
+						<div id='KN'><input onclick='toggleBoxes1(this)' value='KN' id='KN2' name='countries[]' type='checkbox'><label for='KN2'> SaintKittsandNevis</label></div>
+						<div id='LC'><input onclick='toggleBoxes1(this)' value='LC' id='LC2' name='countries[]' type='checkbox'><label for='LC2'> SaintLucia</label></div>
+						<div id='MF'><input onclick='toggleBoxes1(this)' value='MF' id='MF2' name='countries[]' type='checkbox'><label for='MF2'> SaintMartin(Frenchpart)</label></div>
+						<div id='PM'><input onclick='toggleBoxes1(this)' value='PM' id='PM2' name='countries[]' type='checkbox'><label for='PM2'> SaintPierreandMiquelon</label></div>
+						<div id='VC'><input onclick='toggleBoxes1(this)' value='VC' id='VC2' name='countries[]' type='checkbox'><label for='VC2'> SaintVincentandtheGrenadines</label></div>
+						<div id='WS'><input onclick='toggleBoxes1(this)' value='WS' id='WS2' name='countries[]' type='checkbox'><label for='WS2'> Samoa</label></div>
+						<div id='SM'><input onclick='toggleBoxes1(this)' value='SM' id='SM2' name='countries[]' type='checkbox'><label for='SM2'> SanMarino</label></div>
+						<div id='ST'><input onclick='toggleBoxes1(this)' value='ST' id='ST2' name='countries[]' type='checkbox'><label for='ST2'> SaoTomeandPrincipe</label></div>
+						<div id='SA'><input onclick='toggleBoxes1(this)' value='SA' id='SA2' name='countries[]' type='checkbox'><label for='SA2'> SaudiArabia</label></div>
+						<div id='SN'><input onclick='toggleBoxes1(this)' value='SN' id='SN2' name='countries[]' type='checkbox'><label for='SN2'> Senegal</label></div>
+						<div id='RS'><input onclick='toggleBoxes1(this)' value='RS' id='RS2' name='countries[]' type='checkbox'><label for='RS2'> Serbia</label></div>
+						<div id='SC'><input onclick='toggleBoxes1(this)' value='SC' id='SC2' name='countries[]' type='checkbox'><label for='SC2'> Seychelles</label></div>
+						<div id='SL'><input onclick='toggleBoxes1(this)' value='SL' id='SL2' name='countries[]' type='checkbox'><label for='SL2'> SierraLeone</label></div>
+						<div id='SG'><input onclick='toggleBoxes1(this)' value='SG' id='SG2' name='countries[]' type='checkbox'><label for='SG2'> Singapore</label></div>
+						<div id='SK'><input onclick='toggleBoxes1(this)' value='SK' id='SK2' name='countries[]' type='checkbox'><label for='SK2'> Slovakia</label></div>
+						<div id='SI'><input onclick='toggleBoxes1(this)' value='SI' id='SI2' name='countries[]' type='checkbox'><label for='SI2'> Slovenia</label></div>
+						<div id='SB'><input onclick='toggleBoxes1(this)' value='SB' id='SB2' name='countries[]' type='checkbox'><label for='SB2'> SolomonIslands</label></div>
+						<div id='SO'><input onclick='toggleBoxes1(this)' value='SO' id='SO2' name='countries[]' type='checkbox'><label for='SO2'> Somalia</label></div>
+						<div id='ZA'><input onclick='toggleBoxes1(this)' value='ZA' id='ZA2' name='countries[]' type='checkbox'><label for='ZA2'> SouthAfrica</label></div>
+						<div id='ES'><input onclick='toggleBoxes1(this)' value='ES' id='ES2' name='countries[]' type='checkbox'><label for='ES2'> Spain</label></div>
+						<div id='LK'><input onclick='toggleBoxes1(this)' value='LK' id='LK2' name='countries[]' type='checkbox'><label for='LK2'> SriLanka</label></div>
+						<div id='SD'><input onclick='toggleBoxes1(this)' value='SD' id='SD2' name='countries[]' type='checkbox'><label for='SD2'> Sudan</label></div>
+						<div id='SR'><input onclick='toggleBoxes1(this)' value='SR' id='SR2' name='countries[]' type='checkbox'><label for='SR2'> Suriname</label></div>
+						<div id='SJ'><input onclick='toggleBoxes1(this)' value='SJ' id='SJ2' name='countries[]' type='checkbox'><label for='SJ2'> SvalbardandJanMayen</label></div>
+						<div id='SZ'><input onclick='toggleBoxes1(this)' value='SZ' id='SZ2' name='countries[]' type='checkbox'><label for='SZ2'> Swaziland</label></div>
+						<div id='SE'><input onclick='toggleBoxes1(this)' value='SE' id='SE2' name='countries[]' type='checkbox'><label for='SE2'> Sweden</label></div>
+						<div id='CH'><input onclick='toggleBoxes1(this)' value='CH' id='CH2' name='countries[]' type='checkbox'><label for='CH2'> Switzerland</label></div>
+						<div id='SY'><input onclick='toggleBoxes1(this)' value='SY' id='SY2' name='countries[]' type='checkbox'><label for='SY2'> SyrianArabRepublic</label></div>
+						<div id='TW'><input onclick='toggleBoxes1(this)' value='TW' id='TW2' name='countries[]' type='checkbox'><label for='TW2'> Taiwan,ProvinceofChina</label></div>
+						<div id='TJ'><input onclick='toggleBoxes1(this)' value='TJ' id='TJ2' name='countries[]' type='checkbox'><label for='TJ2'> Tajikistan</label></div>
+						<div id='TZ'><input onclick='toggleBoxes1(this)' value='TZ' id='TZ2' name='countries[]' type='checkbox'><label for='TZ2'> Tanzania,UnitedRepublicof</label></div>
+						<div id='TH'><input onclick='toggleBoxes1(this)' value='TH' id='TH2' name='countries[]' type='checkbox'><label for='TH2'> Thailand</label></div>
+						<div id='TL'><input onclick='toggleBoxes1(this)' value='TL' id='TL2' name='countries[]' type='checkbox'><label for='TL2'> Timor-Leste</label></div>
+						<div id='TG'><input onclick='toggleBoxes1(this)' value='TG' id='TG2' name='countries[]' type='checkbox'><label for='TG2'> Togo</label></div>
+						<div id='TK'><input onclick='toggleBoxes1(this)' value='TK' id='TK2' name='countries[]' type='checkbox'><label for='TK2'> Tokelau</label></div>
+						<div id='TO'><input onclick='toggleBoxes1(this)' value='TO' id='TO2' name='countries[]' type='checkbox'><label for='TO2'> Tonga</label></div>
+						<div id='TT'><input onclick='toggleBoxes1(this)' value='TT' id='TT2' name='countries[]' type='checkbox'><label for='TT2'> TrinidadandTobago</label></div>
+						<div id='TN'><input onclick='toggleBoxes1(this)' value='TN' id='TN2' name='countries[]' type='checkbox'><label for='TN2'> Tunisia</label></div>
+						<div id='TR'><input onclick='toggleBoxes1(this)' value='TR' id='TR2' name='countries[]' type='checkbox'><label for='TR2'> Turkey</label></div>
+						<div id='TM'><input onclick='toggleBoxes1(this)' value='TM' id='TM2' name='countries[]' type='checkbox'><label for='TM2'> Turkmenistan</label></div>
+						<div id='TC'><input onclick='toggleBoxes1(this)' value='TC' id='TC2' name='countries[]' type='checkbox'><label for='TC2'> TurksandCaicosIslands</label></div>
+						<div id='TV'><input onclick='toggleBoxes1(this)' value='TV' id='TV2' name='countries[]' type='checkbox'><label for='TV2'> Tuvalu</label></div>
+						<div id='UG'><input onclick='toggleBoxes1(this)' value='UG' id='UG2' name='countries[]' type='checkbox'><label for='UG2'> Uganda</label></div>
+						<div id='UA'><input onclick='toggleBoxes1(this)' value='UA' id='UA2' name='countries[]' type='checkbox'><label for='UA2'> Ukraine</label></div>
+						<div id='AE'><input onclick='toggleBoxes1(this)' value='AE' id='AE2' name='countries[]' type='checkbox'><label for='AE2'> UnitedArabEmirates</label></div>
+						<div id='GB'><input onclick='toggleBoxes1(this)' value='GB' id='GB2' name='countries[]' type='checkbox'><label for='GB2'> UnitedKingdom</label></div>
+						<div id='US'><input onclick='toggleBoxes1(this)' value='US' id='US2' name='countries[]' type='checkbox'><label for='US2'> UnitedStates</label></div>
+						<div id='UY'><input onclick='toggleBoxes1(this)' value='UY' id='UY2' name='countries[]' type='checkbox'><label for='UY2'> Uruguay</label></div>
+						<div id='UZ'><input onclick='toggleBoxes1(this)' value='UZ' id='UZ2' name='countries[]' type='checkbox'><label for='UZ2'> Uzbekistan</label></div>
+						<div id='VU'><input onclick='toggleBoxes1(this)' value='VU' id='VU2' name='countries[]' type='checkbox'><label for='VU2'> Vanuatu</label></div>
+						<div id='VE'><input onclick='toggleBoxes1(this)' value='VE' id='VE2' name='countries[]' type='checkbox'><label for='VE2'> Venezuela,BolivarianRepublicof</label></div>
+						<div id='VN'><input onclick='toggleBoxes1(this)' value='VN' id='VN2' name='countries[]' type='checkbox'><label for='VN2'> VietNam</label></div>
+						<div id='VG'><input onclick='toggleBoxes1(this)' value='VG' id='VG2' name='countries[]' type='checkbox'><label for='VG2'> VirginIslands,British</label></div>
+						<div id='VI'><input onclick='toggleBoxes1(this)' value='VI' id='VI2' name='countries[]' type='checkbox'><label for='VI2'> VirginIslands,U.S.</label></div>
+						<div id='WF'><input onclick='toggleBoxes1(this)' value='WF' id='WF2' name='countries[]' type='checkbox'><label for='WF2'> WallisandFutuna</label></div>
+						<div id='EH'><input onclick='toggleBoxes1(this)' value='EH' id='EH2' name='countries[]' type='checkbox'><label for='EH2'> WesternSahara</label></div>
+						<div id='YE'><input onclick='toggleBoxes1(this)' value='YE' id='YE2' name='countries[]' type='checkbox'><label for='YE2'> Yemen</label></div>
+						<div id='ZM'><input onclick='toggleBoxes1(this)' value='ZM' id='ZM2' name='countries[]' type='checkbox'><label for='ZM2'> Zambia</label></div>
+						<div id='ZW'><input onclick='toggleBoxes1(this)' value='ZW' id='ZW2' name='countries[]' type='checkbox'><label for='ZW2'> Zimbabwe</label></div>
+
+						
+						
+						
+						
+						<u1 id = "countries">
+							<a href="#country-box" class="window">Choose Countries</a>
+						</u1>
+					</div>
+
+					<div id= "filtersS">
+						<b>Select some project lengths:</b><br />
+						<input onClick='toggleBoxes2(this)'value="false" id='any2' name='length' type='checkbox' checked><label for='any2'> Any </label><br />
+						<input onClick='toggleBoxes2(this)' value= 1 id='one_length' name='length[]' type='checkbox'><label for='one_length'> One |</label>
+						<input onClick='toggleBoxes2(this)' value= 2 id='two_length' name='length[]' type='checkbox'><label for='two_length'> Two |</label>
+						<input onClick='toggleBoxes2(this)' value= 3 id='three_length' name='length[]' type='checkbox'><label for='three_length'> Three </label>
+					</div>
+					<input type="submit" name="mysubmit" id="mysubmit" value="Search">
+					<input type="reset" value="Clear Form">
+					</form>
+				</div>
+				
+
+			</div>
+			
+
+
+</body>
+
+</html>
+
+<script type='text/javascript'>
+
+
+    var locations6 = new Array('AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BQ', 'BA', 'BW', 'BV', 'BR', 'IO', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CA', 'CV', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'VA', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'KP', 'KR', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MK', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'SS', 'ES', 'LK', 'SD', 'SR', 'SJ', 'SZ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UG', 'UA', 'AE', 'GB', 'US', 'UM', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW');
+
+    var anyId6 = 'any1';
+    
+    function toggleBoxes( el ) {
+        var i;
+        if ( el.id == anyId6 ) {
+            for( i = 0; i < locations.length6; i++ ){
+                var cb = document.getElementById(locations6[i]);
+                cb.checked = false;
+            }
+        } else {
+            var cb = document.getElementById(anyId6);
+            cb.checked = false; 
+        }
+    }    
+
+	    var locations2 = new Array('a', 'b', 'c');
+
+	    var anyId2 = 'any';
+
+	    function toggleBoxes1( el ) {
+	        var i;
+	        if ( el.id == anyId2 ) {
+	            for( i = 0; i < locations2.length; i++ ){
+	                var cb = document.getElementById(locations2[i]);
+	                cb.checked = false;
+	            }
+	        } else {
+	            var cb = document.getElementById(anyId2);
+	            cb.checked = false; 
+	        }
+	    }    
+	    </script>
+	
+		<script type='text/javascript'>
+		    var locations3 = new Array('one_length', 'two_length', 'three_length');
+
+		    var anyId3 = 'any2';
+
+		    function toggleBoxes2( el ) {
+		        var i;
+		        if ( el.id == anyId3 ) {
+		            for( i = 0; i < locations3.length; i++ ){
+		                var cb = document.getElementById(locations3[i]);
+		                cb.checked = false;
+		            }
+		        } else {
+		            var cb = document.getElementById(anyId3);
+		            cb.checked = false; 
+		        }
+		    }    
+		    </script>
+
+
+
+	<script type='text/javascript'>
+	    var locations4 = new Array('one_group', 'two_group', 'three_group');
+
+	    var anyId4 = 'any3';
+
+	    function toggleBoxes3( el ) {
+	        var i;
+	        if ( el.id == anyId4 ) {
+	            for( i = 0; i < locations4.length; i++ ){
+	                var cb = document.getElementById(locations4[i]);
+	                cb.checked = false;
+	            }
+	        } else {
+	            var cb = document.getElementById(anyId4);
+	            cb.checked = false; 
+	        }
+	    }    
+	    </script>
+	
+		<script type='text/javascript'>
+		    var locations5 = new Array('AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BQ', 'BA', 'BW', 'BV', 'BR', 'IO', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CA', 'CV', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'VA', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'KP', 'KR', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MK', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'SS', 'ES', 'LK', 'SD', 'SR', 'SJ', 'SZ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UG', 'UA', 'AE', 'GB', 'US', 'UM', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW');
+
+		    var anyId = 'any4';
+
+		    function toggleBoxes4( el ) {
+		        var i;
+		        if ( el.id == anyId5 ) {
+		            for( i = 0; i < locations5.length; i++ ){
+		                var cb = document.getElementById(locations5[i]);
+		                cb.checked = false;
+		            }
+		        } else {
+		            var cb = document.getElementById(anyId5);
+		            cb.checked = false; 
+		        }
+		    }    
+		    </script>
+		
+		
+		
+		
+			<!--- POPUP PLUGIN -->
+				
+				<div id="subject-box" class="popup" title="More Subjects:">
+					<a href="#" class="close"><img src="/assets/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+				  	<p class="do_box" id="ex2">
+					<div align="center"><label style="color: white; font-size:20px;" >More Subjects</label></div><br />
+					
+					 <input onclick= "$('#Agriculture1').show(); $('#any').attr('checked', false); $('#Agriculture2').attr('checked', true);"  type='checkbox' id='box-Agriculture1'/><label style='color: #CCFFFF; font-size:17px;' for='box-Agriculture1'>Agriculture: </label>
+										<input onclick= "$('#OrganicFarming1').show(); $('#any').attr('checked', false); $('#OrganicFarming2').attr('checked', true);" type='checkbox' id='box-OrganicFarming1'/><label style='color: #CCFFCC; font-size:13px;' for='box-OrganicFarming1'>Organic Farming</label>
+										<input onclick= "$('#Sustainable_Development1').show(); $('#any').attr('checked', false); $('#Sustainable_Development2').attr('checked', true);" type='checkbox' id='box-Sustainable_Development1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Sustainable_Development1'>Sustainable Development</label><br />
+										<input onclick= "$('#AnimalCare1').show(); $('#any').attr('checked', false); $('#AnimalCare2').attr('checked', true);" type='checkbox' id='box-AnimalCare1'/><label style='color: #CCFFFF; font-size:17px;' for='box-AnimalCare1'>Animal Care: </label>
+										<input onclick= "$('#AnimalRights1').show(); $('#any').attr('checked', false); $('#AnimalRights2').attr('checked', true);" type='checkbox' id='box-AnimalRights1'/><label style='color: #CCFFCC; font-size:13px;' for='box-AnimalRights1'>Animal Rights</label>
+										<input onclick= "$('#Wildlife_Conservation1').show(); $('#any').attr('checked', false); $('#Wildlife_Conservation2').attr('checked', true);" type='checkbox' id='box-Wildlife_Conservation1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Wildlife_Conservation1'>Wildlife Conservation</label><br />
+										<input onclick= "$('#Caregiving1').show(); $('#any').attr('checked', false); $('#Caregiving2').attr('checked', true);" type='checkbox' id='box-Caregiving1'/><label style='color: #CCFFFF; font-size:17px;' for='box-Caregiving1'>Caregiving: </label>
+										<input onclick= "$('#ElderCare1').show(); $('#any').attr('checked', false); $('#ElderCare2').attr('checked', true);" type='checkbox' id='box-ElderCare1'/><label style='color: #CCFFCC; font-size:13px;' for='box-ElderCare1'>Elder Care</label>
+										<input onclick= "$('#ChildOrphanCare1').show(); $('#any').attr('checked', false); $('#ChildOrphanCare2').attr('checked', true);" type='checkbox' id='box-ChildOrphanCare1'/><label style='color: #CCFFCC; font-size:13px;' for='box-ChildOrphanCare1'>ChildOrphan Care</label>
+										<input onclick= "$('#DisabledCare1').show(); $('#any').attr('checked', false); $('#DisabledCare2').attr('checked', true);" type='checkbox' id='box-DisabledCare1'/><label style='color: #CCFFCC; font-size:13px;' for='box-DisabledCare1'>Disabled Care</label>
+										<input onclick= "$('#FeedtheHomeless1').show(); $('#any').attr('checked', false); $('#FeedtheHomeless2').attr('checked', true);" type='checkbox' id='box-FeedtheHomeless1'/><label style='color: #CCFFCC; font-size:13px;' for='box-FeedtheHomeless1'>Feed the Homeless</label><br />
+										<input onclick= "$('#CommunityDevelopment1').show(); $('#any').attr('checked', false); $('#CommunityDevelopment2').attr('checked', true);" type='checkbox' id='box-CommunityDevelopment1'/><label style='color: #CCFFFF; font-size:17px;' for='box-CommunityDevelopment1'>Community Development: </label>
+										<input onclick= "$('#YouthDevelopmentandOutreach1').show(); $('#any').attr('checked', false); $('#YouthDevelopmentandOutreach2').attr('checked', true);" type='checkbox' id='box-YouthDevelopmentandOutreach1'/><label style='color: #CCFFCC; font-size:13px;' for='box-YouthDevelopmentandOutreach1'>Youth Development and Outreach</label><br />
+										<input onclick= "$('#Construction1').show(); $('#any').attr('checked', false); $('#Construction2').attr('checked', true);" type='checkbox' id='box-Construction1'/><label style='color: #CCFFFF; font-size:17px;' for='box-Construction1'>Construction</label><br />
+										<input onclick= "$('#CultureandCommunity1').show(); $('#any').attr('checked', false); $('#CultureandCommunity2').attr('checked', true);" type='checkbox' id='box-CultureandCommunity1'/><label style='color: #CCFFFF; font-size:17px;' for='box-CultureandCommunity1'>Culture and Community: </label>
+										<input onclick= "$('#PerformingArts1').show(); $('#any').attr('checked', false); $('#PerformingArts2').attr('checked', true);" type='checkbox' id='box-PerformingArts1'/><label style='color: #CCFFCC; font-size:13px;' for='box-PerformingArts1'>Performing Arts</label>
+										<input onclick= "$('#Fashion1').show(); $('#any').attr('checked', false); $('#Fashion2').attr('checked', true);" type='checkbox' id='box-Fashion1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Fashion1'>Fashion</label>
+										<input onclick= "$('#Music1').show(); $('#any').attr('checked', false); $('#Music2').attr('checked', true);" type='checkbox' id='box-Music1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Music1'>Music</label>
+										<input onclick= "$('#SportsRecreation1').show(); $('#any').attr('checked', false); $('#SportsRecreation2').attr('checked', true);" type='checkbox' id='box-SportsRecreation1'/><label style='color: #CCFFCC; font-size:13px;' for='box-SportsRecreation1'>SportsRecreation</label>
+										<input onclick= "$('#Journalism1').show(); $('#any').attr('checked', false); $('#Journalism2').attr('checked', true);" type='checkbox' id='box-Journalism1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Journalism1'>Journalism</label><br />
+										<input onclick= "$('#DisasterRelief1').show(); $('#any').attr('checked', false); $('#DisasterRelief2').attr('checked', true);" type='checkbox' id='box-DisasterRelief1'/><label style='color: #CCFFFF; font-size:17px;' for='box-DisasterRelief1'>Disaster Relief: </label>
+										<input onclick= "$('#Economics1').show(); $('#any').attr('checked', false); $('#Economics2').attr('checked', true);" type='checkbox' id='box-Economics1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Economics1'>Economics</label>
+										<input onclick= "$('#Microfinance1').show(); $('#any').attr('checked', false); $('#Microfinance2').attr('checked', true);" type='checkbox' id='box-Microfinance1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Microfinance1'>Microfinance</label><br />
+										<input onclick= "$('#Education1').show(); $('#any').attr('checked', false); $('#Education2').attr('checked', true);" type='checkbox' id='box-Education1'/><label style='color: #CCFFFF; font-size:17px;' for='box-Education1'>Education: </label>
+										<input onclick= "$('#TeachingEnglish1').show(); $('#any').attr('checked', false); $('#TeachingEnglish2').attr('checked', true);" type='checkbox' id='box-TeachingEnglish1'/><label style='color: #CCFFCC; font-size:13px;' for='box-TeachingEnglish1'>Teaching English</label>
+										<input onclick= "$('#TeachingBuddhistMonks1').show(); $('#any').attr('checked', false); $('#TeachingBuddhistMonks2').attr('checked', true);" type='checkbox' id='box-TeachingBuddhistMonks1'/><label style='color: #CCFFCC; font-size:13px;' for='box-TeachingBuddhistMonks1'>Teaching Buddhist Monks</label>
+										<input onclick= "$('#TeachingChildren1').show(); $('#any').attr('checked', false); $('#TeachingChildren2').attr('checked', true);" type='checkbox' id='box-TeachingChildren1'/><label style='color: #CCFFCC; font-size:13px;' for='box-TeachingChildren1'>Teaching Children</label>
+										<input onclick= "$('#Teaching_Computer_Literacy1').show(); $('#any').attr('checked', false); $('#Teaching_Computer_Literacy2').attr('checked', true);" type='checkbox' id='box-Teaching_Computer_Literacy1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Teaching_Computer_Literacy1'>Teaching Computer Literacy</label><br />
+										<input onclick= "$('#EngineeringandInfrastructure1').show(); $('#any').attr('checked', false); $('#EngineeringandInfrastructure2').attr('checked', true);" type='checkbox' id='box-EngineeringandInfrastructure1'/><label style='color: #CCFFFF; font-size:17px;' for='box-EngineeringandInfrastructure1'>Engineering and Infrastructure</label><br />
+										<input onclick= "$('#Environmental1').show(); $('#any').attr('checked', false); $('#Environmental2').attr('checked', true);" type='checkbox' id='box-Environmental1'/><label style='color: #CCFFFF; font-size:17px;' for='box-Environmental1'>Environmental: </label>
+										<input onclick= "$('#EcologicalConservation1').show(); $('#any').attr('checked', false); $('#EcologicalConservation2').attr('checked', true);" type='checkbox' id='box-EcologicalConservation1'/><label style='color: #CCFFCC; font-size:13px;' for='box-EcologicalConservation1'>Ecological Conservation</label>
+										<input onclick= "$('#SustainableDevelopment1').show(); $('#any').attr('checked', false); $('#SustainableDevelopment2').attr('checked', true);" type='checkbox' id='box-SustainableDevelopment1'/><label style='color: #CCFFCC; font-size:13px;' for='box-SustainableDevelopment1'>Sustainable Development</label>
+										<input onclick= "$('#WildlifeConservation1').show(); $('#any').attr('checked', false); $('#WildlifeConservation2').attr('checked', true);" type='checkbox' id='box-WildlifeConservation1'/><label style='color: #CCFFCC; font-size:13px;' for='box-WildlifeConservation1'>Wildlife Conservation</label>
+										<input onclick= "$('#HabitatRestoration1').show(); $('#any').attr('checked', false); $('#HabitatRestoration2').attr('checked', true);" type='checkbox' id='box-HabitatRestoration1'/><label style='color: #CCFFCC; font-size:13px;' for='box-HabitatRestoration1'>Habitat Restoration</label><br />
+										<input onclick= "$('#HealthandMedicine1').show(); $('#any').attr('checked', false); $('#HealthandMedicine2').attr('checked', true);" type='checkbox' id='box-HealthandMedicine1'/><label style='color: #CCFFFF; font-size:17px;' for='box-HealthandMedicine1'>Health and Medicine: </label>
+										<input onclick= "$('#HIVAIDS1').show(); $('#any').attr('checked', false); $('#HIVAIDS2').attr('checked', true);" type='checkbox' id='box-HIVAIDS1'/><label style='color: #CCFFCC; font-size:13px;' for='box-HIVAIDS1'>HIVAIDS</label>
+										<input onclick= "$('#Nutrition1').show(); $('#any').attr('checked', false); $('#Nutrition2').attr('checked', true);" type='checkbox' id='box-Nutrition1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Nutrition1'>Nutrition</label>
+										<input onclick= "$('#FamilyPlanning1').show(); $('#any').attr('checked', false); $('#FamilyPlanning2').attr('checked', true);" type='checkbox' id='box-FamilyPlanning1'/><label style='color: #CCFFCC; font-size:13px;' for='box-FamilyPlanning1'>Family Planning</label>
+										<input onclick= "$('#VeterinaryMedicine1').show(); $('#any').attr('checked', false); $('#VeterinaryMedicine2').attr('checked', true);" type='checkbox' id='box-VeterinaryMedicine1'/><label style='color: #CCFFCC; font-size:13px;' for='box-VeterinaryMedicine1'>Veterinary Medicine</label>
+										<input onclick= "$('#ClinicalWork1').show(); $('#any').attr('checked', false); $('#ClinicalWork2').attr('checked', true);" type='checkbox' id='box-ClinicalWork1'/><label style='color: #CCFFCC; font-size:13px;' for='box-ClinicalWork1'>Clinical Work</label>
+										<input onclick= "$('#DentalWork1').show(); $('#any').attr('checked', false); $('#DentalWork2').attr('checked', true);" type='checkbox' id='box-DentalWork1'/><label style='color: #CCFFCC; font-size:13px;' for='box-DentalWork1'>Dental Work</label>
+										<input onclick= "$('#MedicalResearch1').show(); $('#any').attr('checked', false); $('#MedicalResearch2').attr('checked', true);" type='checkbox' id='box-MedicalResearch1'/><label style='color: #CCFFCC; font-size:13px;' for='box-MedicalResearch1'>Medical Research</label>
+										<input onclick= "$('#HealthEducation1').show(); $('#any').attr('checked', false); $('#HealthEducation2').attr('checked', true);" type='checkbox' id='box-HealthEducation1'/><label style='color: #CCFFCC; font-size:13px;' for='box-HealthEducation1'>Health Education</label>
+										<input onclick= "$('#PublicHealth1').show(); $('#any').attr('checked', false); $('#PublicHealth2').attr('checked', true);" type='checkbox' id='box-PublicHealth1'/><label style='color: #CCFFCC; font-size:13px;' for='box-PublicHealth1'>Public Health</label>
+										<input onclick= "$('#HospitalCare-giving1').show(); $('#any').attr('checked', false); $('#HospitalCare-giving2').attr('checked', true);" type='checkbox' id='box-HospitalCare-giving1'/><label style='color: #CCFFCC; font-size:13px;' for='box-HospitalCare-giving1'>Hospital Care-giving</label><br />
+										<input onclick= "$('#HumanRights1').show(); $('#any').attr('checked', false); $('#HumanRights2').attr('checked', true);" type='checkbox' id='box-HumanRights1'/><label style='color: #CCFFFF; font-size:17px;' for='box-HumanRights1'>Human Rights:</label>
+										<input onclick= "$('#WomensInitiatives1').show(); $('#any').attr('checked', false); $('#WomensInitiatives2').attr('checked', true);" type='checkbox' id='box-WomensInitiatives1'/><label style='color: #CCFFCC; font-size:13px;' for='box-WomensInitiatives1'>Women's Initiatives</label><br />
+										<input onclick= "$('#InternationalWorkCamp1').show(); $('#any').attr('checked', false); $('#InternationalWorkCamp2').attr('checked', true);" type='checkbox' id='box-InternationalWorkCamp1'/><label style='color: #CCFFFF; font-size:17px;' for='box-InternationalWorkCamp1'>International Work Camp</label><br />
+										<input onclick= "$('#Recreation1').show(); $('#any').attr('checked', false); $('#Recreation2').attr('checked', true);" type='checkbox' id='box-Recreation1'/><label style='color: #CCFFFF; font-size:17px;' for='box-Recreation1'>Recreation: </label>
+										<input onclick= "$('#AdventureTravel1').show(); $('#any').attr('checked', false); $('#AdventureTravel2').attr('checked', true);" type='checkbox' id='box-AdventureTravel1'/><label style='color: #CCFFCC; font-size:13px;' for='box-AdventureTravel1'>Adventure Travel</label><br />
+										<input onclick= "$('#ScientificResearch1').show(); $('#any').attr('checked', false); $('#ScientificResearch2').attr('checked', true);" type='checkbox' id='box-ScientificResearch1'/><label style='color: #CCFFFF; font-size:17px;' for='box-ScientificResearch1'>Scientific Research: </label>
+										<input onclick= "$('#Archaeology1').show(); $('#any').attr('checked', false); $('#Archaeology2').attr('checked', true);" type='checkbox' id='box-Archaeology1'/><label style='color: #CCFFCC; font-size:13px;' for='box-Archaeology1'>Archaeology</label>
+										<input onclick= "$('#EnvironmentalBiology1').show(); $('#any').attr('checked', false); $('#EnvironmentalBiology2').attr('checked', true);" type='checkbox' id='box-EnvironmentalBiology1'/><label style='color: #CCFFCC; font-size:13px;' for='box-EnvironmentalBiology1'>Environmental Biology</label><br />
+										<input onclick= "$('#Technology1').show(); $('#any').attr('checked', false); $('#Technology2').attr('checked', true);" type='checkbox' id='box-Technology1'/><label style='color: #CCFFFF; font-size:17px;' for='box-Technology1'>Technology: </label>
+										<input onclick= "$('#TeachingComputerLiteracy1').show(); $('#any').attr('checked', false); $('#TeachingComputerLiteracy2').attr('checked', true);" type='checkbox' id='box-TeachingComputerLiteracy1'/><label style='color: #CCFFCC; font-size:13px;' for='box-TeachingComputerLiteracy1'>Teaching Computer Literacy</label>
+										<input onclick= "$('#MediaMarketingandGraphicDesign1').show(); $('#any').attr('checked', false); $('#MediaMarketingandGraphicDesign2').attr('checked', true);" type='checkbox' id='box-MediaMarketingandGraphicDesign1'/><label style='color: #CCFFCC; font-size:13px;' for='box-MediaMarketingandGraphicDesign1'>Media, Marketing, and Graphic Design</label>
+					
+					
+					<br /><br /><a href="#" class="close"><input type="button" class="btn_close" value="done">
+					</p>
+					</div>
+					
+					<div id="country-box" class="popup" title="More Subjects:">
+						<a href="#" class="close"><img src="/assets/close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+					  	<p class="do_box" id="ex2">
+						<div align="center"><label style="color: white; font-size:20px;" >More Countries</label></div><br />
+						
+						<input onclick= "$('#AF').show(); $('#anycountry').attr('checked', false); $('#AF2').attr('checked', true);" type='checkbox' id='box-AF'/><label style='color: #CCFFCC; font-size:13px;' for='box-AF'>Afghanistan</label>
+						<input onclick= "$('#AX').show(); $('#anycountry').attr('checked', false); $('#AX2').attr('checked', true);" type='checkbox' id='box-AX'/><label style='color: #CCFFCC; font-size:13px;' for='box-AX'>ÅlandIslands</label>
+						<input onclick= "$('#AL').show(); $('#anycountry').attr('checked', false); $('#AL2').attr('checked', true);" type='checkbox' id='box-AL'/><label style='color: #CCFFCC; font-size:13px;' for='box-AL'>Albania</label>
+						<input onclick= "$('#DZ').show(); $('#anycountry').attr('checked', false); $('#DZ2').attr('checked', true);" type='checkbox' id='box-DZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-DZ'>Algeria</label>
+						<input onclick= "$('#AS').show(); $('#anycountry').attr('checked', false); $('#AS2').attr('checked', true);" type='checkbox' id='box-AS'/><label style='color: #CCFFCC; font-size:13px;' for='box-AS'>AmericanSamoa</label>
+						<input onclick= "$('#AD').show(); $('#anycountry').attr('checked', false); $('#AD2').attr('checked', true);" type='checkbox' id='box-AD'/><label style='color: #CCFFCC; font-size:13px;' for='box-AD'>Andorra</label>
+						<input onclick= "$('#AO').show(); $('#anycountry').attr('checked', false); $('#AO2').attr('checked', true);" type='checkbox' id='box-AO'/><label style='color: #CCFFCC; font-size:13px;' for='box-AO'>Angola</label>
+						<input onclick= "$('#AI').show(); $('#anycountry').attr('checked', false); $('#AI2').attr('checked', true);" type='checkbox' id='box-AI'/><label style='color: #CCFFCC; font-size:13px;' for='box-AI'>Anguilla</label>
+						<input onclick= "$('#AG').show(); $('#anycountry').attr('checked', false); $('#AG2').attr('checked', true);" type='checkbox' id='box-AG'/><label style='color: #CCFFCC; font-size:13px;' for='box-AG'>AntiguaandBarbuda</label>
+						<input onclick= "$('#AR').show(); $('#anycountry').attr('checked', false); $('#AR2').attr('checked', true);" type='checkbox' id='box-AR'/><label style='color: #CCFFCC; font-size:13px;' for='box-AR'>Argentina</label>
+						<input onclick= "$('#AM').show(); $('#anycountry').attr('checked', false); $('#AM2').attr('checked', true);" type='checkbox' id='box-AM'/><label style='color: #CCFFCC; font-size:13px;' for='box-AM'>Armenia</label>
+						<input onclick= "$('#AW').show(); $('#anycountry').attr('checked', false); $('#AW2').attr('checked', true);" type='checkbox' id='box-AW'/><label style='color: #CCFFCC; font-size:13px;' for='box-AW'>Aruba</label>
+						<input onclick= "$('#AU').show(); $('#anycountry').attr('checked', false); $('#AU2').attr('checked', true);" type='checkbox' id='box-AU'/><label style='color: #CCFFCC; font-size:13px;' for='box-AU'>Australia</label>
+						<input onclick= "$('#AT').show(); $('#anycountry').attr('checked', false); $('#AT2').attr('checked', true);" type='checkbox' id='box-AT'/><label style='color: #CCFFCC; font-size:13px;' for='box-AT'>Austria</label>
+						<input onclick= "$('#AZ').show(); $('#anycountry').attr('checked', false); $('#AZ2').attr('checked', true);" type='checkbox' id='box-AZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-AZ'>Azerbaijan</label>
+						<input onclick= "$('#BS').show(); $('#anycountry').attr('checked', false); $('#BS2').attr('checked', true);" type='checkbox' id='box-BS'/><label style='color: #CCFFCC; font-size:13px;' for='box-BS'>Bahamas</label>
+						<input onclick= "$('#BH').show(); $('#anycountry').attr('checked', false); $('#BH2').attr('checked', true);" type='checkbox' id='box-BH'/><label style='color: #CCFFCC; font-size:13px;' for='box-BH'>Bahrain</label>
+						<input onclick= "$('#BD').show(); $('#anycountry').attr('checked', false); $('#BD2').attr('checked', true);" type='checkbox' id='box-BD'/><label style='color: #CCFFCC; font-size:13px;' for='box-BD'>Bangladesh</label>
+						<input onclick= "$('#BB').show(); $('#anycountry').attr('checked', false); $('#BB2').attr('checked', true);" type='checkbox' id='box-BB'/><label style='color: #CCFFCC; font-size:13px;' for='box-BB'>Barbados</label>
+						<input onclick= "$('#BY').show(); $('#anycountry').attr('checked', false); $('#BY2').attr('checked', true);" type='checkbox' id='box-BY'/><label style='color: #CCFFCC; font-size:13px;' for='box-BY'>Belarus</label>
+						<input onclick= "$('#BE').show(); $('#anycountry').attr('checked', false); $('#BE2').attr('checked', true);" type='checkbox' id='box-BE'/><label style='color: #CCFFCC; font-size:13px;' for='box-BE'>Belgium</label>
+						<input onclick= "$('#BZ').show(); $('#anycountry').attr('checked', false); $('#BZ2').attr('checked', true);" type='checkbox' id='box-BZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-BZ'>Belize</label>
+						<input onclick= "$('#BJ').show(); $('#anycountry').attr('checked', false); $('#BJ2').attr('checked', true);" type='checkbox' id='box-BJ'/><label style='color: #CCFFCC; font-size:13px;' for='box-BJ'>Benin</label>
+						<input onclick= "$('#BM').show(); $('#anycountry').attr('checked', false); $('#BM2').attr('checked', true);" type='checkbox' id='box-BM'/><label style='color: #CCFFCC; font-size:13px;' for='box-BM'>Bermuda</label>
+						<input onclick= "$('#BT').show(); $('#anycountry').attr('checked', false); $('#BT2').attr('checked', true);" type='checkbox' id='box-BT'/><label style='color: #CCFFCC; font-size:13px;' for='box-BT'>Bhutan</label>
+						<input onclick= "$('#BO').show(); $('#anycountry').attr('checked', false); $('#BO2').attr('checked', true);" type='checkbox' id='box-BO'/><label style='color: #CCFFCC; font-size:13px;' for='box-BO'>Bolivia,PlurinationalStateof</label>
+						<input onclick= "$('#BA').show(); $('#anycountry').attr('checked', false); $('#BA2').attr('checked', true);" type='checkbox' id='box-BA'/><label style='color: #CCFFCC; font-size:13px;' for='box-BA'>BosniaandHerzegovina</label>
+						<input onclick= "$('#BW').show(); $('#anycountry').attr('checked', false); $('#BW2').attr('checked', true);" type='checkbox' id='box-BW'/><label style='color: #CCFFCC; font-size:13px;' for='box-BW'>Botswana</label>
+						<input onclick= "$('#BR').show(); $('#anycountry').attr('checked', false); $('#BR2').attr('checked', true);" type='checkbox' id='box-BR'/><label style='color: #CCFFCC; font-size:13px;' for='box-BR'>Brazil</label>
+						<input onclick= "$('#BN').show(); $('#anycountry').attr('checked', false); $('#BN2').attr('checked', true);" type='checkbox' id='box-BN'/><label style='color: #CCFFCC; font-size:13px;' for='box-BN'>BruneiDarussalam</label>
+						<input onclick= "$('#BG').show(); $('#anycountry').attr('checked', false); $('#BG2').attr('checked', true);" type='checkbox' id='box-BG'/><label style='color: #CCFFCC; font-size:13px;' for='box-BG'>Bulgaria</label>
+						<input onclick= "$('#BF').show(); $('#anycountry').attr('checked', false); $('#BF2').attr('checked', true);" type='checkbox' id='box-BF'/><label style='color: #CCFFCC; font-size:13px;' for='box-BF'>BurkinaFaso</label>
+						<input onclick= "$('#BI').show(); $('#anycountry').attr('checked', false); $('#BI2').attr('checked', true);" type='checkbox' id='box-BI'/><label style='color: #CCFFCC; font-size:13px;' for='box-BI'>Burundi</label>
+						<input onclick= "$('#KH').show(); $('#anycountry').attr('checked', false); $('#KH2').attr('checked', true);" type='checkbox' id='box-KH'/><label style='color: #CCFFCC; font-size:13px;' for='box-KH'>Cambodia</label>
+						<input onclick= "$('#CM').show(); $('#anycountry').attr('checked', false); $('#CM2').attr('checked', true);" type='checkbox' id='box-CM'/><label style='color: #CCFFCC; font-size:13px;' for='box-CM'>Cameroon</label>
+						<input onclick= "$('#CA').show(); $('#anycountry').attr('checked', false); $('#CA2').attr('checked', true);" type='checkbox' id='box-CA'/><label style='color: #CCFFCC; font-size:13px;' for='box-CA'>Canada</label>
+						<input onclick= "$('#CV').show(); $('#anycountry').attr('checked', false); $('#CV2').attr('checked', true);" type='checkbox' id='box-CV'/><label style='color: #CCFFCC; font-size:13px;' for='box-CV'>CapeVerde</label>
+						<input onclick= "$('#KY').show(); $('#anycountry').attr('checked', false); $('#KY2').attr('checked', true);" type='checkbox' id='box-KY'/><label style='color: #CCFFCC; font-size:13px;' for='box-KY'>CaymanIslands</label>
+						<input onclick= "$('#CF').show(); $('#anycountry').attr('checked', false); $('#CF2').attr('checked', true);" type='checkbox' id='box-CF'/><label style='color: #CCFFCC; font-size:13px;' for='box-CF'>CentralAfricanRepublic</label>
+						<input onclick= "$('#TD').show(); $('#anycountry').attr('checked', false); $('#TD2').attr('checked', true);" type='checkbox' id='box-TD'/><label style='color: #CCFFCC; font-size:13px;' for='box-TD'>Chad</label>
+						<input onclick= "$('#CL').show(); $('#anycountry').attr('checked', false); $('#CL2').attr('checked', true);" type='checkbox' id='box-CL'/><label style='color: #CCFFCC; font-size:13px;' for='box-CL'>Chile</label>
+						<input onclick= "$('#CN').show(); $('#anycountry').attr('checked', false); $('#CN2').attr('checked', true);" type='checkbox' id='box-CN'/><label style='color: #CCFFCC; font-size:13px;' for='box-CN'>China</label>
+						<input onclick= "$('#CO').show(); $('#anycountry').attr('checked', false); $('#CO2').attr('checked', true);" type='checkbox' id='box-CO'/><label style='color: #CCFFCC; font-size:13px;' for='box-CO'>Colombia</label>
+						<input onclick= "$('#KM').show(); $('#anycountry').attr('checked', false); $('#KM2').attr('checked', true);" type='checkbox' id='box-KM'/><label style='color: #CCFFCC; font-size:13px;' for='box-KM'>Comoros</label>
+						<input onclick= "$('#CG').show(); $('#anycountry').attr('checked', false); $('#CG2').attr('checked', true);" type='checkbox' id='box-CG'/><label style='color: #CCFFCC; font-size:13px;' for='box-CG'>Congo</label>
+						<input onclick= "$('#CD').show(); $('#anycountry').attr('checked', false); $('#CD2').attr('checked', true);" type='checkbox' id='box-CD'/><label style='color: #CCFFCC; font-size:13px;' for='box-CD'>Congo,theDemocraticRepublicofthe</label>
+						<input onclick= "$('#CK').show(); $('#anycountry').attr('checked', false); $('#CK2').attr('checked', true);" type='checkbox' id='box-CK'/><label style='color: #CCFFCC; font-size:13px;' for='box-CK'>CookIslands</label>
+						<input onclick= "$('#CR').show(); $('#anycountry').attr('checked', false); $('#CR2').attr('checked', true);" type='checkbox' id='box-CR'/><label style='color: #CCFFCC; font-size:13px;' for='box-CR'>CostaRica</label>
+						<input onclick= "$('#CI').show(); $('#anycountry').attr('checked', false); $('#CI2').attr('checked', true);" type='checkbox' id='box-CI'/><label style='color: #CCFFCC; font-size:13px;' for='box-CI'>CôtedIvoire</label>
+						<input onclick= "$('#HR').show(); $('#anycountry').attr('checked', false); $('#HR2').attr('checked', true);" type='checkbox' id='box-HR'/><label style='color: #CCFFCC; font-size:13px;' for='box-HR'>Croatia</label>
+						<input onclick= "$('#CU').show(); $('#anycountry').attr('checked', false); $('#CU2').attr('checked', true);" type='checkbox' id='box-CU'/><label style='color: #CCFFCC; font-size:13px;' for='box-CU'>Cuba</label>
+						<input onclick= "$('#CY').show(); $('#anycountry').attr('checked', false); $('#CY2').attr('checked', true);" type='checkbox' id='box-CY'/><label style='color: #CCFFCC; font-size:13px;' for='box-CY'>Cyprus</label>
+						<input onclick= "$('#CZ').show(); $('#anycountry').attr('checked', false); $('#CZ2').attr('checked', true);" type='checkbox' id='box-CZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-CZ'>CzechRepublic</label>
+						<input onclick= "$('#DK').show(); $('#anycountry').attr('checked', false); $('#DK2').attr('checked', true);" type='checkbox' id='box-DK'/><label style='color: #CCFFCC; font-size:13px;' for='box-DK'>Denmark</label>
+						<input onclick= "$('#DJ').show(); $('#anycountry').attr('checked', false); $('#DJ2').attr('checked', true);" type='checkbox' id='box-DJ'/><label style='color: #CCFFCC; font-size:13px;' for='box-DJ'>Djibouti</label>
+						<input onclick= "$('#DM').show(); $('#anycountry').attr('checked', false); $('#DM2').attr('checked', true);" type='checkbox' id='box-DM'/><label style='color: #CCFFCC; font-size:13px;' for='box-DM'>Dominica</label>
+						<input onclick= "$('#DO').show(); $('#anycountry').attr('checked', false); $('#DO2').attr('checked', true);" type='checkbox' id='box-DO'/><label style='color: #CCFFCC; font-size:13px;' for='box-DO'>DominicanRepublic</label>
+						<input onclick= "$('#EC').show(); $('#anycountry').attr('checked', false); $('#EC2').attr('checked', true);" type='checkbox' id='box-EC'/><label style='color: #CCFFCC; font-size:13px;' for='box-EC'>Ecuador</label>
+						<input onclick= "$('#EG').show(); $('#anycountry').attr('checked', false); $('#EG2').attr('checked', true);" type='checkbox' id='box-EG'/><label style='color: #CCFFCC; font-size:13px;' for='box-EG'>Egypt</label>
+						<input onclick= "$('#SV').show(); $('#anycountry').attr('checked', false); $('#SV2').attr('checked', true);" type='checkbox' id='box-SV'/><label style='color: #CCFFCC; font-size:13px;' for='box-SV'>ElSalvador</label>
+						<input onclick= "$('#GQ').show(); $('#anycountry').attr('checked', false); $('#GQ2').attr('checked', true);" type='checkbox' id='box-GQ'/><label style='color: #CCFFCC; font-size:13px;' for='box-GQ'>EquatorialGuinea</label>
+						<input onclick= "$('#ER').show(); $('#anycountry').attr('checked', false); $('#ER2').attr('checked', true);" type='checkbox' id='box-ER'/><label style='color: #CCFFCC; font-size:13px;' for='box-ER'>Eritrea</label>
+						<input onclick= "$('#EE').show(); $('#anycountry').attr('checked', false); $('#EE2').attr('checked', true);" type='checkbox' id='box-EE'/><label style='color: #CCFFCC; font-size:13px;' for='box-EE'>Estonia</label>
+						<input onclick= "$('#ET').show(); $('#anycountry').attr('checked', false); $('#ET2').attr('checked', true);" type='checkbox' id='box-ET'/><label style='color: #CCFFCC; font-size:13px;' for='box-ET'>Ethiopia</label>
+						<input onclick= "$('#FK').show(); $('#anycountry').attr('checked', false); $('#FK2').attr('checked', true);" type='checkbox' id='box-FK'/><label style='color: #CCFFCC; font-size:13px;' for='box-FK'>FalklandIslands(Malvinas)</label>
+						<input onclick= "$('#FO').show(); $('#anycountry').attr('checked', false); $('#FO2').attr('checked', true);" type='checkbox' id='box-FO'/><label style='color: #CCFFCC; font-size:13px;' for='box-FO'>FaroeIslands</label>
+						<input onclick= "$('#FJ').show(); $('#anycountry').attr('checked', false); $('#FJ2').attr('checked', true);" type='checkbox' id='box-FJ'/><label style='color: #CCFFCC; font-size:13px;' for='box-FJ'>Fiji</label>
+						<input onclick= "$('#FI').show(); $('#anycountry').attr('checked', false); $('#FI2').attr('checked', true);" type='checkbox' id='box-FI'/><label style='color: #CCFFCC; font-size:13px;' for='box-FI'>Finland</label>
+						<input onclick= "$('#FR').show(); $('#anycountry').attr('checked', false); $('#FR2').attr('checked', true);" type='checkbox' id='box-FR'/><label style='color: #CCFFCC; font-size:13px;' for='box-FR'>France</label>
+						<input onclick= "$('#GF').show(); $('#anycountry').attr('checked', false); $('#GF2').attr('checked', true);" type='checkbox' id='box-GF'/><label style='color: #CCFFCC; font-size:13px;' for='box-GF'>FrenchGuiana</label>
+						<input onclick= "$('#PF').show(); $('#anycountry').attr('checked', false); $('#PF2').attr('checked', true);" type='checkbox' id='box-PF'/><label style='color: #CCFFCC; font-size:13px;' for='box-PF'>FrenchPolynesia</label>
+						<input onclick= "$('#GA').show(); $('#anycountry').attr('checked', false); $('#GA2').attr('checked', true);" type='checkbox' id='box-GA'/><label style='color: #CCFFCC; font-size:13px;' for='box-GA'>Gabon</label>
+						<input onclick= "$('#GM').show(); $('#anycountry').attr('checked', false); $('#GM2').attr('checked', true);" type='checkbox' id='box-GM'/><label style='color: #CCFFCC; font-size:13px;' for='box-GM'>Gambia</label>
+						<input onclick= "$('#GE').show(); $('#anycountry').attr('checked', false); $('#GE2').attr('checked', true);" type='checkbox' id='box-GE'/><label style='color: #CCFFCC; font-size:13px;' for='box-GE'>Georgia</label>
+						<input onclick= "$('#DE').show(); $('#anycountry').attr('checked', false); $('#DE2').attr('checked', true);" type='checkbox' id='box-DE'/><label style='color: #CCFFCC; font-size:13px;' for='box-DE'>Germany</label>
+						<input onclick= "$('#GH').show(); $('#anycountry').attr('checked', false); $('#GH2').attr('checked', true);" type='checkbox' id='box-GH'/><label style='color: #CCFFCC; font-size:13px;' for='box-GH'>Ghana</label>
+						<input onclick= "$('#GI').show(); $('#anycountry').attr('checked', false); $('#GI2').attr('checked', true);" type='checkbox' id='box-GI'/><label style='color: #CCFFCC; font-size:13px;' for='box-GI'>Gibraltar</label>
+						<input onclick= "$('#GR').show(); $('#anycountry').attr('checked', false); $('#GR2').attr('checked', true);" type='checkbox' id='box-GR'/><label style='color: #CCFFCC; font-size:13px;' for='box-GR'>Greece</label>
+						<input onclick= "$('#GL').show(); $('#anycountry').attr('checked', false); $('#GL2').attr('checked', true);" type='checkbox' id='box-GL'/><label style='color: #CCFFCC; font-size:13px;' for='box-GL'>Greenland</label>
+						<input onclick= "$('#GD').show(); $('#anycountry').attr('checked', false); $('#GD2').attr('checked', true);" type='checkbox' id='box-GD'/><label style='color: #CCFFCC; font-size:13px;' for='box-GD'>Grenada</label>
+						<input onclick= "$('#GP').show(); $('#anycountry').attr('checked', false); $('#GP2').attr('checked', true);" type='checkbox' id='box-GP'/><label style='color: #CCFFCC; font-size:13px;' for='box-GP'>Guadeloupe</label>
+						<input onclick= "$('#GU').show(); $('#anycountry').attr('checked', false); $('#GU2').attr('checked', true);" type='checkbox' id='box-GU'/><label style='color: #CCFFCC; font-size:13px;' for='box-GU'>Guam</label>
+						<input onclick= "$('#GT').show(); $('#anycountry').attr('checked', false); $('#GT2').attr('checked', true);" type='checkbox' id='box-GT'/><label style='color: #CCFFCC; font-size:13px;' for='box-GT'>Guatemala</label>
+						<input onclick= "$('#GG').show(); $('#anycountry').attr('checked', false); $('#GG2').attr('checked', true);" type='checkbox' id='box-GG'/><label style='color: #CCFFCC; font-size:13px;' for='box-GG'>Guernsey</label>
+						<input onclick= "$('#GN').show(); $('#anycountry').attr('checked', false); $('#GN2').attr('checked', true);" type='checkbox' id='box-GN'/><label style='color: #CCFFCC; font-size:13px;' for='box-GN'>Guinea</label>
+						<input onclick= "$('#GW').show(); $('#anycountry').attr('checked', false); $('#GW2').attr('checked', true);" type='checkbox' id='box-GW'/><label style='color: #CCFFCC; font-size:13px;' for='box-GW'>Guinea-Bissau</label>
+						<input onclick= "$('#GY').show(); $('#anycountry').attr('checked', false); $('#GY2').attr('checked', true);" type='checkbox' id='box-GY'/><label style='color: #CCFFCC; font-size:13px;' for='box-GY'>Guyana</label>
+						<input onclick= "$('#HT').show(); $('#anycountry').attr('checked', false); $('#HT2').attr('checked', true);" type='checkbox' id='box-HT'/><label style='color: #CCFFCC; font-size:13px;' for='box-HT'>Haiti</label>
+						<input onclick= "$('#VA').show(); $('#anycountry').attr('checked', false); $('#VA2').attr('checked', true);" type='checkbox' id='box-VA'/><label style='color: #CCFFCC; font-size:13px;' for='box-VA'>HolySee(VaticanCityState)</label>
+						<input onclick= "$('#HN').show(); $('#anycountry').attr('checked', false); $('#HN2').attr('checked', true);" type='checkbox' id='box-HN'/><label style='color: #CCFFCC; font-size:13px;' for='box-HN'>Honduras</label>
+						<input onclick= "$('#HK').show(); $('#anycountry').attr('checked', false); $('#HK2').attr('checked', true);" type='checkbox' id='box-HK'/><label style='color: #CCFFCC; font-size:13px;' for='box-HK'>HongKong</label>
+						<input onclick= "$('#HU').show(); $('#anycountry').attr('checked', false); $('#HU2').attr('checked', true);" type='checkbox' id='box-HU'/><label style='color: #CCFFCC; font-size:13px;' for='box-HU'>Hungary</label>
+						<input onclick= "$('#IS').show(); $('#anycountry').attr('checked', false); $('#IS2').attr('checked', true);" type='checkbox' id='box-IS'/><label style='color: #CCFFCC; font-size:13px;' for='box-IS'>Iceland</label>
+						<input onclick= "$('#IN').show(); $('#anycountry').attr('checked', false); $('#IN2').attr('checked', true);" type='checkbox' id='box-IN'/><label style='color: #CCFFCC; font-size:13px;' for='box-IN'>India</label>
+						<input onclick= "$('#ID').show(); $('#anycountry').attr('checked', false); $('#ID2').attr('checked', true);" type='checkbox' id='box-ID'/><label style='color: #CCFFCC; font-size:13px;' for='box-ID'>Indonesia</label>
+						<input onclick= "$('#IR').show(); $('#anycountry').attr('checked', false); $('#IR2').attr('checked', true);" type='checkbox' id='box-IR'/><label style='color: #CCFFCC; font-size:13px;' for='box-IR'>Iran,IslamicRepublicof</label>
+						<input onclick= "$('#IQ').show(); $('#anycountry').attr('checked', false); $('#IQ2').attr('checked', true);" type='checkbox' id='box-IQ'/><label style='color: #CCFFCC; font-size:13px;' for='box-IQ'>Iraq</label>
+						<input onclick= "$('#IE').show(); $('#anycountry').attr('checked', false); $('#IE2').attr('checked', true);" type='checkbox' id='box-IE'/><label style='color: #CCFFCC; font-size:13px;' for='box-IE'>Ireland</label>
+						<input onclick= "$('#IM').show(); $('#anycountry').attr('checked', false); $('#IM2').attr('checked', true);" type='checkbox' id='box-IM'/><label style='color: #CCFFCC; font-size:13px;' for='box-IM'>IsleofMan</label>
+						<input onclick= "$('#IL').show(); $('#anycountry').attr('checked', false); $('#IL2').attr('checked', true);" type='checkbox' id='box-IL'/><label style='color: #CCFFCC; font-size:13px;' for='box-IL'>Israel</label>
+						<input onclick= "$('#IT').show(); $('#anycountry').attr('checked', false); $('#IT2').attr('checked', true);" type='checkbox' id='box-IT'/><label style='color: #CCFFCC; font-size:13px;' for='box-IT'>Italy</label>
+						<input onclick= "$('#JM').show(); $('#anycountry').attr('checked', false); $('#JM2').attr('checked', true);" type='checkbox' id='box-JM'/><label style='color: #CCFFCC; font-size:13px;' for='box-JM'>Jamaica</label>
+						<input onclick= "$('#JP').show(); $('#anycountry').attr('checked', false); $('#JP2').attr('checked', true);" type='checkbox' id='box-JP'/><label style='color: #CCFFCC; font-size:13px;' for='box-JP'>Japan</label>
+						<input onclick= "$('#JE').show(); $('#anycountry').attr('checked', false); $('#JE2').attr('checked', true);" type='checkbox' id='box-JE'/><label style='color: #CCFFCC; font-size:13px;' for='box-JE'>Jersey</label>
+						<input onclick= "$('#JO').show(); $('#anycountry').attr('checked', false); $('#JO2').attr('checked', true);" type='checkbox' id='box-JO'/><label style='color: #CCFFCC; font-size:13px;' for='box-JO'>Jordan</label>
+						<input onclick= "$('#KZ').show(); $('#anycountry').attr('checked', false); $('#KZ2').attr('checked', true);" type='checkbox' id='box-KZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-KZ'>Kazakhstan</label>
+						<input onclick= "$('#KE').show(); $('#anycountry').attr('checked', false); $('#KE2').attr('checked', true);" type='checkbox' id='box-KE'/><label style='color: #CCFFCC; font-size:13px;' for='box-KE'>Kenya</label>
+						<input onclick= "$('#KI').show(); $('#anycountry').attr('checked', false); $('#KI2').attr('checked', true);" type='checkbox' id='box-KI'/><label style='color: #CCFFCC; font-size:13px;' for='box-KI'>Kiribati</label>
+						<input onclick= "$('#KP').show(); $('#anycountry').attr('checked', false); $('#KP2').attr('checked', true);" type='checkbox' id='box-KP'/><label style='color: #CCFFCC; font-size:13px;' for='box-KP'>Korea,DemocraticPeoplesRepublicof</label>
+						<input onclick= "$('#KR').show(); $('#anycountry').attr('checked', false); $('#KR2').attr('checked', true);" type='checkbox' id='box-KR'/><label style='color: #CCFFCC; font-size:13px;' for='box-KR'>Korea,Republicof</label>
+						<input onclick= "$('#KW').show(); $('#anycountry').attr('checked', false); $('#KW2').attr('checked', true);" type='checkbox' id='box-KW'/><label style='color: #CCFFCC; font-size:13px;' for='box-KW'>Kuwait</label>
+						<input onclick= "$('#KG').show(); $('#anycountry').attr('checked', false); $('#KG2').attr('checked', true);" type='checkbox' id='box-KG'/><label style='color: #CCFFCC; font-size:13px;' for='box-KG'>Kyrgyzstan</label>
+						<input onclick= "$('#LA').show(); $('#anycountry').attr('checked', false); $('#LA2').attr('checked', true);" type='checkbox' id='box-LA'/><label style='color: #CCFFCC; font-size:13px;' for='box-LA'>LaoPeoplesDemocraticRepublic</label>
+						<input onclick= "$('#LV').show(); $('#anycountry').attr('checked', false); $('#LV2').attr('checked', true);" type='checkbox' id='box-LV'/><label style='color: #CCFFCC; font-size:13px;' for='box-LV'>Latvia</label>
+						<input onclick= "$('#LB').show(); $('#anycountry').attr('checked', false); $('#LB2').attr('checked', true);" type='checkbox' id='box-LB'/><label style='color: #CCFFCC; font-size:13px;' for='box-LB'>Lebanon</label>
+						<input onclick= "$('#LS').show(); $('#anycountry').attr('checked', false); $('#LS2').attr('checked', true);" type='checkbox' id='box-LS'/><label style='color: #CCFFCC; font-size:13px;' for='box-LS'>Lesotho</label>
+						<input onclick= "$('#LR').show(); $('#anycountry').attr('checked', false); $('#LR2').attr('checked', true);" type='checkbox' id='box-LR'/><label style='color: #CCFFCC; font-size:13px;' for='box-LR'>Liberia</label>
+						<input onclick= "$('#LY').show(); $('#anycountry').attr('checked', false); $('#LY2').attr('checked', true);" type='checkbox' id='box-LY'/><label style='color: #CCFFCC; font-size:13px;' for='box-LY'>Libya</label>
+						<input onclick= "$('#LI').show(); $('#anycountry').attr('checked', false); $('#LI2').attr('checked', true);" type='checkbox' id='box-LI'/><label style='color: #CCFFCC; font-size:13px;' for='box-LI'>Liechtenstein</label>
+						<input onclick= "$('#LT').show(); $('#anycountry').attr('checked', false); $('#LT2').attr('checked', true);" type='checkbox' id='box-LT'/><label style='color: #CCFFCC; font-size:13px;' for='box-LT'>Lithuania</label>
+						<input onclick= "$('#LU').show(); $('#anycountry').attr('checked', false); $('#LU2').attr('checked', true);" type='checkbox' id='box-LU'/><label style='color: #CCFFCC; font-size:13px;' for='box-LU'>Luxembourg</label>
+						<input onclick= "$('#MO').show(); $('#anycountry').attr('checked', false); $('#MO2').attr('checked', true);" type='checkbox' id='box-MO'/><label style='color: #CCFFCC; font-size:13px;' for='box-MO'>Macao</label>
+						<input onclick= "$('#MK').show(); $('#anycountry').attr('checked', false); $('#MK2').attr('checked', true);" type='checkbox' id='box-MK'/><label style='color: #CCFFCC; font-size:13px;' for='box-MK'>Macedonia,theformerYugoslavRepublicof</label>
+						<input onclick= "$('#MG').show(); $('#anycountry').attr('checked', false); $('#MG2').attr('checked', true);" type='checkbox' id='box-MG'/><label style='color: #CCFFCC; font-size:13px;' for='box-MG'>Madagascar</label>
+						<input onclick= "$('#MW').show(); $('#anycountry').attr('checked', false); $('#MW2').attr('checked', true);" type='checkbox' id='box-MW'/><label style='color: #CCFFCC; font-size:13px;' for='box-MW'>Malawi</label>
+						<input onclick= "$('#MY').show(); $('#anycountry').attr('checked', false); $('#MY2').attr('checked', true);" type='checkbox' id='box-MY'/><label style='color: #CCFFCC; font-size:13px;' for='box-MY'>Malaysia</label>
+						<input onclick= "$('#MV').show(); $('#anycountry').attr('checked', false); $('#MV2').attr('checked', true);" type='checkbox' id='box-MV'/><label style='color: #CCFFCC; font-size:13px;' for='box-MV'>Maldives</label>
+						<input onclick= "$('#ML').show(); $('#anycountry').attr('checked', false); $('#ML2').attr('checked', true);" type='checkbox' id='box-ML'/><label style='color: #CCFFCC; font-size:13px;' for='box-ML'>Mali</label>
+						<input onclick= "$('#MT').show(); $('#anycountry').attr('checked', false); $('#MT2').attr('checked', true);" type='checkbox' id='box-MT'/><label style='color: #CCFFCC; font-size:13px;' for='box-MT'>Malta</label>
+						<input onclick= "$('#MH').show(); $('#anycountry').attr('checked', false); $('#MH2').attr('checked', true);" type='checkbox' id='box-MH'/><label style='color: #CCFFCC; font-size:13px;' for='box-MH'>MarshallIslands</label>
+						<input onclick= "$('#MQ').show(); $('#anycountry').attr('checked', false); $('#MQ2').attr('checked', true);" type='checkbox' id='box-MQ'/><label style='color: #CCFFCC; font-size:13px;' for='box-MQ'>Martinique</label>
+						<input onclick= "$('#MR').show(); $('#anycountry').attr('checked', false); $('#MR2').attr('checked', true);" type='checkbox' id='box-MR'/><label style='color: #CCFFCC; font-size:13px;' for='box-MR'>Mauritania</label>
+						<input onclick= "$('#MU').show(); $('#anycountry').attr('checked', false); $('#MU2').attr('checked', true);" type='checkbox' id='box-MU'/><label style='color: #CCFFCC; font-size:13px;' for='box-MU'>Mauritius</label>
+						<input onclick= "$('#YT').show(); $('#anycountry').attr('checked', false); $('#YT2').attr('checked', true);" type='checkbox' id='box-YT'/><label style='color: #CCFFCC; font-size:13px;' for='box-YT'>Mayotte</label>
+						<input onclick= "$('#MX').show(); $('#anycountry').attr('checked', false); $('#MX2').attr('checked', true);" type='checkbox' id='box-MX'/><label style='color: #CCFFCC; font-size:13px;' for='box-MX'>Mexico</label>
+						<input onclick= "$('#FM').show(); $('#anycountry').attr('checked', false); $('#FM2').attr('checked', true);" type='checkbox' id='box-FM'/><label style='color: #CCFFCC; font-size:13px;' for='box-FM'>Micronesia,FederatedStatesof</label>
+						<input onclick= "$('#MD').show(); $('#anycountry').attr('checked', false); $('#MD2').attr('checked', true);" type='checkbox' id='box-MD'/><label style='color: #CCFFCC; font-size:13px;' for='box-MD'>Moldova,Republicof</label>
+						<input onclick= "$('#MC').show(); $('#anycountry').attr('checked', false); $('#MC2').attr('checked', true);" type='checkbox' id='box-MC'/><label style='color: #CCFFCC; font-size:13px;' for='box-MC'>Monaco</label>
+						<input onclick= "$('#MN').show(); $('#anycountry').attr('checked', false); $('#MN2').attr('checked', true);" type='checkbox' id='box-MN'/><label style='color: #CCFFCC; font-size:13px;' for='box-MN'>Mongolia</label>
+						<input onclick= "$('#ME').show(); $('#anycountry').attr('checked', false); $('#ME2').attr('checked', true);" type='checkbox' id='box-ME'/><label style='color: #CCFFCC; font-size:13px;' for='box-ME'>Montenegro</label>
+						<input onclick= "$('#MS').show(); $('#anycountry').attr('checked', false); $('#MS2').attr('checked', true);" type='checkbox' id='box-MS'/><label style='color: #CCFFCC; font-size:13px;' for='box-MS'>Montserrat</label>
+						<input onclick= "$('#MZ').show(); $('#anycountry').attr('checked', false); $('#MZ2').attr('checked', true);" type='checkbox' id='box-MZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-MZ'>Mozambique</label>
+						<input onclick= "$('#MM').show(); $('#anycountry').attr('checked', false); $('#MM2').attr('checked', true);" type='checkbox' id='box-MM'/><label style='color: #CCFFCC; font-size:13px;' for='box-MM'>Myanmar</label>
+						<input onclick= "$('#NA').show(); $('#anycountry').attr('checked', false); $('#NA2').attr('checked', true);" type='checkbox' id='box-NA'/><label style='color: #CCFFCC; font-size:13px;' for='box-NA'>Namibia</label>
+						<input onclick= "$('#NR').show(); $('#anycountry').attr('checked', false); $('#NR2').attr('checked', true);" type='checkbox' id='box-NR'/><label style='color: #CCFFCC; font-size:13px;' for='box-NR'>Nauru</label>
+						<input onclick= "$('#NP').show(); $('#anycountry').attr('checked', false); $('#NP2').attr('checked', true);" type='checkbox' id='box-NP'/><label style='color: #CCFFCC; font-size:13px;' for='box-NP'>Nepal</label>
+						<input onclick= "$('#NL').show(); $('#anycountry').attr('checked', false); $('#NL2').attr('checked', true);" type='checkbox' id='box-NL'/><label style='color: #CCFFCC; font-size:13px;' for='box-NL'>Netherlands</label>
+						<input onclick= "$('#NC').show(); $('#anycountry').attr('checked', false); $('#NC2').attr('checked', true);" type='checkbox' id='box-NC'/><label style='color: #CCFFCC; font-size:13px;' for='box-NC'>NewCaledonia</label>
+						<input onclick= "$('#NZ').show(); $('#anycountry').attr('checked', false); $('#NZ2').attr('checked', true);" type='checkbox' id='box-NZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-NZ'>NewZealand</label>
+						<input onclick= "$('#NI').show(); $('#anycountry').attr('checked', false); $('#NI2').attr('checked', true);" type='checkbox' id='box-NI'/><label style='color: #CCFFCC; font-size:13px;' for='box-NI'>Nicaragua</label>
+						<input onclick= "$('#NE').show(); $('#anycountry').attr('checked', false); $('#NE2').attr('checked', true);" type='checkbox' id='box-NE'/><label style='color: #CCFFCC; font-size:13px;' for='box-NE'>Niger</label>
+						<input onclick= "$('#NG').show(); $('#anycountry').attr('checked', false); $('#NG2').attr('checked', true);" type='checkbox' id='box-NG'/><label style='color: #CCFFCC; font-size:13px;' for='box-NG'>Nigeria</label>
+						<input onclick= "$('#NU').show(); $('#anycountry').attr('checked', false); $('#NU2').attr('checked', true);" type='checkbox' id='box-NU'/><label style='color: #CCFFCC; font-size:13px;' for='box-NU'>Niue</label>
+						<input onclick= "$('#NF').show(); $('#anycountry').attr('checked', false); $('#NF2').attr('checked', true);" type='checkbox' id='box-NF'/><label style='color: #CCFFCC; font-size:13px;' for='box-NF'>NorfolkIsland</label>
+						<input onclick= "$('#MP').show(); $('#anycountry').attr('checked', false); $('#MP2').attr('checked', true);" type='checkbox' id='box-MP'/><label style='color: #CCFFCC; font-size:13px;' for='box-MP'>NorthernMarianaIslands</label>
+						<input onclick= "$('#NO').show(); $('#anycountry').attr('checked', false); $('#NO2').attr('checked', true);" type='checkbox' id='box-NO'/><label style='color: #CCFFCC; font-size:13px;' for='box-NO'>Norway</label>
+						<input onclick= "$('#OM').show(); $('#anycountry').attr('checked', false); $('#OM2').attr('checked', true);" type='checkbox' id='box-OM'/><label style='color: #CCFFCC; font-size:13px;' for='box-OM'>Oman</label>
+						<input onclick= "$('#PK').show(); $('#anycountry').attr('checked', false); $('#PK2').attr('checked', true);" type='checkbox' id='box-PK'/><label style='color: #CCFFCC; font-size:13px;' for='box-PK'>Pakistan</label>
+						<input onclick= "$('#PW').show(); $('#anycountry').attr('checked', false); $('#PW2').attr('checked', true);" type='checkbox' id='box-PW'/><label style='color: #CCFFCC; font-size:13px;' for='box-PW'>Palau</label>
+						<input onclick= "$('#PS').show(); $('#anycountry').attr('checked', false); $('#PS2').attr('checked', true);" type='checkbox' id='box-PS'/><label style='color: #CCFFCC; font-size:13px;' for='box-PS'>PalestinianTerritory,Occupied</label>
+						<input onclick= "$('#PA').show(); $('#anycountry').attr('checked', false); $('#PA2').attr('checked', true);" type='checkbox' id='box-PA'/><label style='color: #CCFFCC; font-size:13px;' for='box-PA'>Panama</label>
+						<input onclick= "$('#PG').show(); $('#anycountry').attr('checked', false); $('#PG2').attr('checked', true);" type='checkbox' id='box-PG'/><label style='color: #CCFFCC; font-size:13px;' for='box-PG'>PapuaNewGuinea</label>
+						<input onclick= "$('#PY').show(); $('#anycountry').attr('checked', false); $('#PY2').attr('checked', true);" type='checkbox' id='box-PY'/><label style='color: #CCFFCC; font-size:13px;' for='box-PY'>Paraguay</label>
+						<input onclick= "$('#PE').show(); $('#anycountry').attr('checked', false); $('#PE2').attr('checked', true);" type='checkbox' id='box-PE'/><label style='color: #CCFFCC; font-size:13px;' for='box-PE'>Peru</label>
+						<input onclick= "$('#PH').show(); $('#anycountry').attr('checked', false); $('#PH2').attr('checked', true);" type='checkbox' id='box-PH'/><label style='color: #CCFFCC; font-size:13px;' for='box-PH'>Philippines</label>
+						<input onclick= "$('#PN').show(); $('#anycountry').attr('checked', false); $('#PN2').attr('checked', true);" type='checkbox' id='box-PN'/><label style='color: #CCFFCC; font-size:13px;' for='box-PN'>Pitcairn</label>
+						<input onclick= "$('#PL').show(); $('#anycountry').attr('checked', false); $('#PL2').attr('checked', true);" type='checkbox' id='box-PL'/><label style='color: #CCFFCC; font-size:13px;' for='box-PL'>Poland</label>
+						<input onclick= "$('#PT').show(); $('#anycountry').attr('checked', false); $('#PT2').attr('checked', true);" type='checkbox' id='box-PT'/><label style='color: #CCFFCC; font-size:13px;' for='box-PT'>Portugal</label>
+						<input onclick= "$('#PR').show(); $('#anycountry').attr('checked', false); $('#PR2').attr('checked', true);" type='checkbox' id='box-PR'/><label style='color: #CCFFCC; font-size:13px;' for='box-PR'>PuertoRico</label>
+						<input onclick= "$('#QA').show(); $('#anycountry').attr('checked', false); $('#QA2').attr('checked', true);" type='checkbox' id='box-QA'/><label style='color: #CCFFCC; font-size:13px;' for='box-QA'>Qatar</label>
+						<input onclick= "$('#RE').show(); $('#anycountry').attr('checked', false); $('#RE2').attr('checked', true);" type='checkbox' id='box-RE'/><label style='color: #CCFFCC; font-size:13px;' for='box-RE'>Réunion</label>
+						<input onclick= "$('#RO').show(); $('#anycountry').attr('checked', false); $('#RO2').attr('checked', true);" type='checkbox' id='box-RO'/><label style='color: #CCFFCC; font-size:13px;' for='box-RO'>Romania</label>
+						<input onclick= "$('#RU').show(); $('#anycountry').attr('checked', false); $('#RU2').attr('checked', true);" type='checkbox' id='box-RU'/><label style='color: #CCFFCC; font-size:13px;' for='box-RU'>RussianFederation</label>
+						<input onclick= "$('#RW').show(); $('#anycountry').attr('checked', false); $('#RW2').attr('checked', true);" type='checkbox' id='box-RW'/><label style='color: #CCFFCC; font-size:13px;' for='box-RW'>Rwanda</label>
+						<input onclick= "$('#BL').show(); $('#anycountry').attr('checked', false); $('#BL2').attr('checked', true);" type='checkbox' id='box-BL'/><label style='color: #CCFFCC; font-size:13px;' for='box-BL'>SaintBarthélemy</label>
+						<input onclick= "$('#SH').show(); $('#anycountry').attr('checked', false); $('#SH2').attr('checked', true);" type='checkbox' id='box-SH'/><label style='color: #CCFFCC; font-size:13px;' for='box-SH'>SaintHelena,AscensionandTristandaCunha</label>
+						<input onclick= "$('#KN').show(); $('#anycountry').attr('checked', false); $('#KN2').attr('checked', true);" type='checkbox' id='box-KN'/><label style='color: #CCFFCC; font-size:13px;' for='box-KN'>SaintKittsandNevis</label>
+						<input onclick= "$('#LC').show(); $('#anycountry').attr('checked', false); $('#LC2').attr('checked', true);" type='checkbox' id='box-LC'/><label style='color: #CCFFCC; font-size:13px;' for='box-LC'>SaintLucia</label>
+						<input onclick= "$('#MF').show(); $('#anycountry').attr('checked', false); $('#MF2').attr('checked', true);" type='checkbox' id='box-MF'/><label style='color: #CCFFCC; font-size:13px;' for='box-MF'>SaintMartin(Frenchpart)</label>
+						<input onclick= "$('#PM').show(); $('#anycountry').attr('checked', false); $('#PM2').attr('checked', true);" type='checkbox' id='box-PM'/><label style='color: #CCFFCC; font-size:13px;' for='box-PM'>SaintPierreandMiquelon</label>
+						<input onclick= "$('#VC').show(); $('#anycountry').attr('checked', false); $('#VC2').attr('checked', true);" type='checkbox' id='box-VC'/><label style='color: #CCFFCC; font-size:13px;' for='box-VC'>SaintVincentandtheGrenadines</label>
+						<input onclick= "$('#WS').show(); $('#anycountry').attr('checked', false); $('#WS2').attr('checked', true);" type='checkbox' id='box-WS'/><label style='color: #CCFFCC; font-size:13px;' for='box-WS'>Samoa</label>
+						<input onclick= "$('#SM').show(); $('#anycountry').attr('checked', false); $('#SM2').attr('checked', true);" type='checkbox' id='box-SM'/><label style='color: #CCFFCC; font-size:13px;' for='box-SM'>SanMarino</label>
+						<input onclick= "$('#ST').show(); $('#anycountry').attr('checked', false); $('#ST2').attr('checked', true);" type='checkbox' id='box-ST'/><label style='color: #CCFFCC; font-size:13px;' for='box-ST'>SaoTomeandPrincipe</label>
+						<input onclick= "$('#SA').show(); $('#anycountry').attr('checked', false); $('#SA2').attr('checked', true);" type='checkbox' id='box-SA'/><label style='color: #CCFFCC; font-size:13px;' for='box-SA'>SaudiArabia</label>
+						<input onclick= "$('#SN').show(); $('#anycountry').attr('checked', false); $('#SN2').attr('checked', true);" type='checkbox' id='box-SN'/><label style='color: #CCFFCC; font-size:13px;' for='box-SN'>Senegal</label>
+						<input onclick= "$('#RS').show(); $('#anycountry').attr('checked', false); $('#RS2').attr('checked', true);" type='checkbox' id='box-RS'/><label style='color: #CCFFCC; font-size:13px;' for='box-RS'>Serbia</label>
+						<input onclick= "$('#SC').show(); $('#anycountry').attr('checked', false); $('#SC2').attr('checked', true);" type='checkbox' id='box-SC'/><label style='color: #CCFFCC; font-size:13px;' for='box-SC'>Seychelles</label>
+						<input onclick= "$('#SL').show(); $('#anycountry').attr('checked', false); $('#SL2').attr('checked', true);" type='checkbox' id='box-SL'/><label style='color: #CCFFCC; font-size:13px;' for='box-SL'>SierraLeone</label>
+						<input onclick= "$('#SG').show(); $('#anycountry').attr('checked', false); $('#SG2').attr('checked', true);" type='checkbox' id='box-SG'/><label style='color: #CCFFCC; font-size:13px;' for='box-SG'>Singapore</label>
+						<input onclick= "$('#SK').show(); $('#anycountry').attr('checked', false); $('#SK2').attr('checked', true);" type='checkbox' id='box-SK'/><label style='color: #CCFFCC; font-size:13px;' for='box-SK'>Slovakia</label>
+						<input onclick= "$('#SI').show(); $('#anycountry').attr('checked', false); $('#SI2').attr('checked', true);" type='checkbox' id='box-SI'/><label style='color: #CCFFCC; font-size:13px;' for='box-SI'>Slovenia</label>
+						<input onclick= "$('#SB').show(); $('#anycountry').attr('checked', false); $('#SB2').attr('checked', true);" type='checkbox' id='box-SB'/><label style='color: #CCFFCC; font-size:13px;' for='box-SB'>SolomonIslands</label>
+						<input onclick= "$('#SO').show(); $('#anycountry').attr('checked', false); $('#SO2').attr('checked', true);" type='checkbox' id='box-SO'/><label style='color: #CCFFCC; font-size:13px;' for='box-SO'>Somalia</label>
+						<input onclick= "$('#ZA').show(); $('#anycountry').attr('checked', false); $('#ZA2').attr('checked', true);" type='checkbox' id='box-ZA'/><label style='color: #CCFFCC; font-size:13px;' for='box-ZA'>SouthAfrica</label>
+						<input onclick= "$('#ES').show(); $('#anycountry').attr('checked', false); $('#ES2').attr('checked', true);" type='checkbox' id='box-ES'/><label style='color: #CCFFCC; font-size:13px;' for='box-ES'>Spain</label>
+						<input onclick= "$('#LK').show(); $('#anycountry').attr('checked', false); $('#LK2').attr('checked', true);" type='checkbox' id='box-LK'/><label style='color: #CCFFCC; font-size:13px;' for='box-LK'>SriLanka</label>
+						<input onclick= "$('#SD').show(); $('#anycountry').attr('checked', false); $('#SD2').attr('checked', true);" type='checkbox' id='box-SD'/><label style='color: #CCFFCC; font-size:13px;' for='box-SD'>Sudan</label>
+						<input onclick= "$('#SR').show(); $('#anycountry').attr('checked', false); $('#SR2').attr('checked', true);" type='checkbox' id='box-SR'/><label style='color: #CCFFCC; font-size:13px;' for='box-SR'>Suriname</label>
+						<input onclick= "$('#SJ').show(); $('#anycountry').attr('checked', false); $('#SJ2').attr('checked', true);" type='checkbox' id='box-SJ'/><label style='color: #CCFFCC; font-size:13px;' for='box-SJ'>SvalbardandJanMayen</label>
+						<input onclick= "$('#SZ').show(); $('#anycountry').attr('checked', false); $('#SZ2').attr('checked', true);" type='checkbox' id='box-SZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-SZ'>Swaziland</label>
+						<input onclick= "$('#SE').show(); $('#anycountry').attr('checked', false); $('#SE2').attr('checked', true);" type='checkbox' id='box-SE'/><label style='color: #CCFFCC; font-size:13px;' for='box-SE'>Sweden</label>
+						<input onclick= "$('#CH').show(); $('#anycountry').attr('checked', false); $('#CH2').attr('checked', true);" type='checkbox' id='box-CH'/><label style='color: #CCFFCC; font-size:13px;' for='box-CH'>Switzerland</label>
+						<input onclick= "$('#SY').show(); $('#anycountry').attr('checked', false); $('#SY2').attr('checked', true);" type='checkbox' id='box-SY'/><label style='color: #CCFFCC; font-size:13px;' for='box-SY'>SyrianArabRepublic</label>
+						<input onclick= "$('#TW').show(); $('#anycountry').attr('checked', false); $('#TW2').attr('checked', true);" type='checkbox' id='box-TW'/><label style='color: #CCFFCC; font-size:13px;' for='box-TW'>Taiwan,ProvinceofChina</label>
+						<input onclick= "$('#TJ').show(); $('#anycountry').attr('checked', false); $('#TJ2').attr('checked', true);" type='checkbox' id='box-TJ'/><label style='color: #CCFFCC; font-size:13px;' for='box-TJ'>Tajikistan</label>
+						<input onclick= "$('#TZ').show(); $('#anycountry').attr('checked', false); $('#TZ2').attr('checked', true);" type='checkbox' id='box-TZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-TZ'>Tanzania,UnitedRepublicof</label>
+						<input onclick= "$('#TH').show(); $('#anycountry').attr('checked', false); $('#TH2').attr('checked', true);" type='checkbox' id='box-TH'/><label style='color: #CCFFCC; font-size:13px;' for='box-TH'>Thailand</label>
+						<input onclick= "$('#TL').show(); $('#anycountry').attr('checked', false); $('#TL2').attr('checked', true);" type='checkbox' id='box-TL'/><label style='color: #CCFFCC; font-size:13px;' for='box-TL'>Timor-Leste</label>
+						<input onclick= "$('#TG').show(); $('#anycountry').attr('checked', false); $('#TG2').attr('checked', true);" type='checkbox' id='box-TG'/><label style='color: #CCFFCC; font-size:13px;' for='box-TG'>Togo</label>
+						<input onclick= "$('#TK').show(); $('#anycountry').attr('checked', false); $('#TK2').attr('checked', true);" type='checkbox' id='box-TK'/><label style='color: #CCFFCC; font-size:13px;' for='box-TK'>Tokelau</label>
+						<input onclick= "$('#TO').show(); $('#anycountry').attr('checked', false); $('#TO2').attr('checked', true);" type='checkbox' id='box-TO'/><label style='color: #CCFFCC; font-size:13px;' for='box-TO'>Tonga</label>
+						<input onclick= "$('#TT').show(); $('#anycountry').attr('checked', false); $('#TT2').attr('checked', true);" type='checkbox' id='box-TT'/><label style='color: #CCFFCC; font-size:13px;' for='box-TT'>TrinidadandTobago</label>
+						<input onclick= "$('#TN').show(); $('#anycountry').attr('checked', false); $('#TN2').attr('checked', true);" type='checkbox' id='box-TN'/><label style='color: #CCFFCC; font-size:13px;' for='box-TN'>Tunisia</label>
+						<input onclick= "$('#TR').show(); $('#anycountry').attr('checked', false); $('#TR2').attr('checked', true);" type='checkbox' id='box-TR'/><label style='color: #CCFFCC; font-size:13px;' for='box-TR'>Turkey</label>
+						<input onclick= "$('#TM').show(); $('#anycountry').attr('checked', false); $('#TM2').attr('checked', true);" type='checkbox' id='box-TM'/><label style='color: #CCFFCC; font-size:13px;' for='box-TM'>Turkmenistan</label>
+						<input onclick= "$('#TC').show(); $('#anycountry').attr('checked', false); $('#TC2').attr('checked', true);" type='checkbox' id='box-TC'/><label style='color: #CCFFCC; font-size:13px;' for='box-TC'>TurksandCaicosIslands</label>
+						<input onclick= "$('#TV').show(); $('#anycountry').attr('checked', false); $('#TV2').attr('checked', true);" type='checkbox' id='box-TV'/><label style='color: #CCFFCC; font-size:13px;' for='box-TV'>Tuvalu</label>
+						<input onclick= "$('#UG').show(); $('#anycountry').attr('checked', false); $('#UG2').attr('checked', true);" type='checkbox' id='box-UG'/><label style='color: #CCFFCC; font-size:13px;' for='box-UG'>Uganda</label>
+						<input onclick= "$('#UA').show(); $('#anycountry').attr('checked', false); $('#UA2').attr('checked', true);" type='checkbox' id='box-UA'/><label style='color: #CCFFCC; font-size:13px;' for='box-UA'>Ukraine</label>
+						<input onclick= "$('#AE').show(); $('#anycountry').attr('checked', false); $('#AE2').attr('checked', true);" type='checkbox' id='box-AE'/><label style='color: #CCFFCC; font-size:13px;' for='box-AE'>UnitedArabEmirates</label>
+						<input onclick= "$('#GB').show(); $('#anycountry').attr('checked', false); $('#GB2').attr('checked', true);" type='checkbox' id='box-GB'/><label style='color: #CCFFCC; font-size:13px;' for='box-GB'>UnitedKingdom</label>
+						<input onclick= "$('#US').show(); $('#anycountry').attr('checked', false); $('#US2').attr('checked', true);" type='checkbox' id='box-US'/><label style='color: #CCFFCC; font-size:13px;' for='box-US'>UnitedStates</label>
+						<input onclick= "$('#UY').show(); $('#anycountry').attr('checked', false); $('#UY2').attr('checked', true);" type='checkbox' id='box-UY'/><label style='color: #CCFFCC; font-size:13px;' for='box-UY'>Uruguay</label>
+						<input onclick= "$('#UZ').show(); $('#anycountry').attr('checked', false); $('#UZ2').attr('checked', true);" type='checkbox' id='box-UZ'/><label style='color: #CCFFCC; font-size:13px;' for='box-UZ'>Uzbekistan</label>
+						<input onclick= "$('#VU').show(); $('#anycountry').attr('checked', false); $('#VU2').attr('checked', true);" type='checkbox' id='box-VU'/><label style='color: #CCFFCC; font-size:13px;' for='box-VU'>Vanuatu</label>
+						<input onclick= "$('#VE').show(); $('#anycountry').attr('checked', false); $('#VE2').attr('checked', true);" type='checkbox' id='box-VE'/><label style='color: #CCFFCC; font-size:13px;' for='box-VE'>Venezuela,BolivarianRepublicof</label>
+						<input onclick= "$('#VN').show(); $('#anycountry').attr('checked', false); $('#VN2').attr('checked', true);" type='checkbox' id='box-VN'/><label style='color: #CCFFCC; font-size:13px;' for='box-VN'>VietNam</label>
+						<input onclick= "$('#VG').show(); $('#anycountry').attr('checked', false); $('#VG2').attr('checked', true);" type='checkbox' id='box-VG'/><label style='color: #CCFFCC; font-size:13px;' for='box-VG'>VirginIslands,British</label>
+						<input onclick= "$('#VI').show(); $('#anycountry').attr('checked', false); $('#VI2').attr('checked', true);" type='checkbox' id='box-VI'/><label style='color: #CCFFCC; font-size:13px;' for='box-VI'>VirginIslands,U.S.</label>
+						<input onclick= "$('#WF').show(); $('#anycountry').attr('checked', false); $('#WF2').attr('checked', true);" type='checkbox' id='box-WF'/><label style='color: #CCFFCC; font-size:13px;' for='box-WF'>WallisandFutuna</label>
+						<input onclick= "$('#EH').show(); $('#anycountry').attr('checked', false); $('#EH2').attr('checked', true);" type='checkbox' id='box-EH'/><label style='color: #CCFFCC; font-size:13px;' for='box-EH'>WesternSahara</label>
+						<input onclick= "$('#YE').show(); $('#anycountry').attr('checked', false); $('#YE2').attr('checked', true);" type='checkbox' id='box-YE'/><label style='color: #CCFFCC; font-size:13px;' for='box-YE'>Yemen</label>
+						<input onclick= "$('#ZM').show(); $('#anycountry').attr('checked', false); $('#ZM2').attr('checked', true);" type='checkbox' id='box-ZM'/><label style='color: #CCFFCC; font-size:13px;' for='box-ZM'>Zambia</label>
+						<input onclick= "$('#ZW').show(); $('#anycountry').attr('checked', false); $('#ZW2').attr('checked', true);" type='checkbox' id='box-ZW'/><label style='color: #CCFFCC; font-size:13px;' for='box-ZW'>Zimbabwe</label>
+						
+						
+
+						<br /><br /><a href="#" class="close"><input type="button" class="btn_close" value="done">
+						</p>
+						</div>
+
+
+					<style>
+					/* Mask for background, by default is not display */
+					#mask {
+						display: none;
+						background: #000; 
+						position: fixed; left: 0; top: 0; 
+						z-index: 10;
+						width: 100%; height: 100%;
+						opacity: 0.8;
+						z-index: 999;
+					}
+
+					/* You can customize to your needs  */
+					.popup{
+						display:none;
+						background: #333;
+						padding: 10px; 	
+						border: 2px solid #ddd;
+						float: left;
+						font-size: 1.2em;
+						position: absolute;
+						margin: 25px;
+						top: 50%; left: 50%;
+						z-index: 99999;
+						box-shadow: 0px 0px 20px #999; /* CSS3 */
+					        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+					        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+						border-radius:3px 3px 3px 3px;
+					        -moz-border-radius: 3px; /* Firefox */
+					        -webkit-border-radius: 3px; /* Safari, Chrome */
+						height: 575px;
+						width: 500px;
+					}
+
+					img.btn_close {
+						float: right; 
+						margin: -28px -28px 0 0;
+					}
+
+					fieldset { 
+						border:none; 
+					}
+
+					p.do_box .textbox label { 
+						display:block; 
+						padding-bottom:7px; 
+					}
+
+					p.do_box .textbox span { 
+						display:block;
+					}
+
+					p.do_box p, p.do_box span { 
+						color:#999; 
+						font-size:13px; 
+						line-height:18px;
+					} 
+
+					p.do_box .textbox input { 
+						background:#666666; 
+						border-bottom:1px solid #333;
+						border-left:1px solid #000;
+						border-right:1px solid #333;
+						border-top:1px solid #000;
+						color:#fff; 
+					        border-radius: 3px 3px 3px 3px;
+						-moz-border-radius: 3px;
+					        -webkit-border-radius: 3px;
+						font:13px Arial, Helvetica, sans-serif;
+						padding:6px 6px 4px;
+						width:200px;
+					}
+
+					p.do_box input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
+					p.do_box input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
+
+					.button { 
+						background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+						background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+						background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+					        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+						border-color:#000; 
+						border-width:1px;
+					        border-radius:4px 4px 4px 4px;
+						-moz-border-radius: 4px;
+					        -webkit-border-radius: 4px;
+						color:#333;
+						cursor:pointer;
+						display:inline-block;
+						padding:6px 6px 4px;
+						margin-top:10px;
+						font:12px; 
+						width:214px;
+					}
+					.button:hover { background:#ddd; }
+
+					</style>
+
+					<script type="text/javascript">
+
+
+					$(document).ready(function() {
+						$('a.window').click(function() {
+
+					                //Getting the variable's value from a link 
+							var box = $(this).attr('href');
+
+							//Fade in the Popup
+							$(box).fadeIn(300);
+
+							//Set the center alignment padding + border see css style
+							var popMargTop = ($(box).height() + 24) / 2; 
+							var popMargLeft = ($(box).width() + 24) / 2; 
+
+							$(box).css({ 
+								'margin-top' : -popMargTop,
+								'margin-left' : -popMargLeft
+							});
+
+							// Add the mask to body
+							$('body').append('<div id="mask"></div>')
+							$('#mask').fadeIn(300);
+
+							return false;
+						});
+
+						// When clicking on the button close or the mask layer the popup closed
+						$('a.close, #mask').live('click', function() { 
+						  $('#mask , .popup').fadeOut(300 , function() {
+							$('#mask').remove();  
+						}); 
+						return false;
+						});
+					});
+					
+
+					</script>
+
+
+					<style type="text/css">
+				        body
+				        {
+				            padding:0 20px;
+
+
+				        .contents
+				        {
+				            width: 91%; /*height: 150px;*/
+				            margin: 0;
+
+				        }
+				        .contents > p
+				        {
+				            padding: 8px;
+				        }
+
+				        .header
+				        {
+				            background-color: #4f7305;
+				            color: White;
+				        }
+				        #divProgram
+				        {
+				            margin: 10;
+				            font: verdana;
+				            font-size: 14px;
+				            background-color: White;
+				        }
+				        #divProgram > div
+				        {
+				            width: 98%;
+				            padding: 8px;
+				        }
+				        #divProgram > div p
+				        {
+				            width: 95%;
+				            padding: 8px;
+				        }
+						#divOrganization
+				        {
+				            margin: 10;
+				            font: verdana;
+				            font-size: 14px;
+				            background-color: White;
+				        }
+				        #divOrganization> div
+				        {
+				            width: 98%;
+				            padding: 8px;
+				        }
+				        #divOrganization > div p
+				        {
+				            width: 95%;
+				            padding: 8px;
+				        }
+			</style>
+
+				
+				

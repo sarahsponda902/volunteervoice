@@ -1,0 +1,30 @@
+<br \>
+
+<br \>
+<%= tabs_tag do |tab| %>
+  <%= tab.messages      'Messages', messages_path %>
+  <%= tab.reviews 'Reviews', reviews_path %>
+  <%= tab.favorites   'Favorites', favorites_path %>
+<% end %>
+
+<h3>Your messages</h3>
+
+<% @all_messages = current_user.received_messages%>
+<% if @all_messages.empty?%>
+You do not have any messages in your inbox.
+<% else %>
+<% @all_messages.each do |m| %>
+<% if !m.message_read? %>
+<%= link_to "Unread Message", m %> #<%= m.id %>
+<% else %>
+      <%= link_to "Message", m %> #<%= m.id %>
+<% end %>
+<%= link_to 'Delete', m, method: :delete %>
+<br \>
+<% end %>
+<% end %>
+
+<br />
+<br \>
+
+<%= link_to "Send New Message", new_message_path %>

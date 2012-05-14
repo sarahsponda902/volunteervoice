@@ -1,0 +1,35 @@
+
+
+<div class="container" style="color:#575758">
+	<div class="row">
+		<div class="twelve columns" style="margin-top:80px">
+						  <%= devise_error_messages! %>
+<p style="font-size:2em; font-family:architectsDaughterRegular; color:#62acbd; text-align:center;">Change your Password</p>
+	</div>
+	</div>
+	<div class="row">
+	<div class="twelve columns" style="margin-top:20px;">
+		<div style=" background-color:white; padding:30px; margin-left:15%; margin-right:15%; border:1px solid #e67b5a; height:250px;  background-color:#E9ECE9;">
+
+			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+			  <%= f.hidden_field :reset_password_token %>
+
+			  <div class="ten columns"><div><p style="line-height:1.5em; font-size:1.3em; margin-bottom:5px"> New password: </p>
+			   <input id="user_password" style="height:23px; width:190px; background-color:white;" name="user[password]" size="30" type="password" /></div><br />
+
+			  <div><p style="line-height:1.5em; font-size:1.3em; margin-bottom:5px">Confirm new password:</p>
+			  <input id="user_password_confirmation" name="user[password_confirmation]" style="height:23px; width:190px; background-color:white;" size="30" type="password" /></div></div>
+			
+			<div class="seven columns" style=" margin-left: 42%;font-family:architectsDaughterRegular; margin-top:-126px;color: #e67b5a; line-height:1.8em">You will need this password the next time that you log in.  So don’t do anything silly like forget it . . . again.</div>
+
+<br />
+<br />
+
+  <div align="center" style="margin-top:140px"><%=image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/change.png")%></div>
+<% end %>
+
+
+</div>
+</div>
+</div>
+</div>

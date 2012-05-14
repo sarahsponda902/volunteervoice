@@ -1,0 +1,138 @@
+
+<body>
+<div class="container" align="center" style="margin-top: 50px">
+<div class="row">
+	<div class="twelve columns" style="width:1050px">
+		<div style="margin-right:50px">
+			<img src= "https://s3-us-west-1.amazonaws.com/volunteervoice/images/programsBrowse.png">
+			</div>
+	<div style="position:absolute; right:9.5%; top:40px">
+		<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/programsArrow.png" width="65px"%>
+	</div>
+	<div style="position:absolute;top:145px; right:3%; width:130px; text-align:center; font-family:'ArchitectsDaughterRegular'; color:#e67b5a; line-height:2em">
+		Click on a subject of interest to see which organizations have programs in that field
+	</div>
+</div>
+</div>
+</div>
+<div class="container" style="margin-top:20px">
+
+
+<div class="row" style="background:#bdd99c;padding-top:20px;padding-bottom:30px;width:500px; padding-left:30px; padding-right:20px;">
+
+	<div class = "six columns" style="width:43%">
+		<font size="5px">
+			<%= link_to "Agriculture (#{@agriculture.count})", :id => "link", :action => "program_browse_results", :subject => "Agriculture"%><br />
+		</font>
+			&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@organic_farming.count})", :action => "program_browse_results", :subject => "Organic Farming" %><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", :action => "program_browse_results", :subject => "Sustainable Development" %><br /><br />
+			<font size="5px">
+			<%= link_to "Animal Care (#{@animal_care.count})", :action => "program_browse_results", :subject => "Animal Care" %><br />
+			</font>
+
+			&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@animal_rights.count})", :action => "program_browse_results", :subject => "Animal Rights" %><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", :action => "program_browse_results", :subject => "Wildlife Conservation" %><br /><br />
+
+			<font size="5px">
+			<%= link_to "Caregiving (#{@caregiving.count})", :action => "program_browse_results", :subject => "Caregiving" %><br />
+			</font>
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Elder Care (#{@elder_care.count})", :action => "program_browse_results", :subject => "Elder Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Child/Orphan Care (#{@child_orphan_care.count})", :action => "program_browse_results", :subject => "Child/Orphan Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Disabled Care (#{@disabled_care.count})", :action => "program_browse_results", :subject => "Disabled Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Feed the Homeless (#{@feed_the_homeless.count})", :action => "program_browse_results", :subject => "Feed the Homeless" %><br /><br />
+			<font size="5px">
+				<%= link_to "Community Development (#{@community_development.count})", :action => "program_browse_results", :subject => "Community Development" %><br />
+			</font>
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Youth Development and Outreach (#{@youth_development_and_outreach.count})", :action => "program_browse_results", :subject => "Youth Development and Outreach" %><br /><br />
+			<font size="5px">
+				<%= link_to "Culture & Community (#{@culture_and_community.count})", :action => "program_browse_results", :subject => "Culture & Community" %><br />
+			</font>
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Performing Arts (#{@performing_arts.count})", :action => "program_browse_results", :subject => "Performing Arts" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Fashion (#{@fashion.count})", :action => "program_browse_results", :subject => "Fashion" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Music (#{@music.count})", :action => "program_browse_results", :subject => "Music" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Sports & Recreation (#{@sports_and_recreation.count})", :action => "program_browse_results", :subject => "Sports & Recreation" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Journalism (#{@journalism.count})", :action => "program_browse_results", :subject => "Journalism" %><br /><br />
+			<font size="5px">
+				<%= link_to "Disaster Relief (#{@disaster_relief.count})", :action => "program_browse_results", :subject => "Disaster Relief" %><br />
+				</font>
+		&nbsp;&nbsp;&nbsp;		<%= link_to "Economics (#{@economics.count})", :action => "program_browse_results", :subject => "Economics" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Microfinance (#{@microfinance.count})", :action => "program_browse_results", :subject => "Microfinance" %><br /><br />
+				<font size="5px">
+					<%= link_to "Education (#{@education.count})", :action => "program_browse_results", :subject => "Education" %><br />
+				</font>
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching English (#{@teaching_english.count})", :action => "program_browse_results", :subject => "Teaching English" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Buddhist Monks (#{@teaching_buddhist_monks.count})", :action => "program_browse_results", :subject => "Teaching Buddhist Monks" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Children (#{@teaching_children.count})", :action => "program_browse_results", :subject => "Teaching Children" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", :action => "program_browse_results", :subject => "Teaching Computer Literacy" %><br /><br />
+				</div>
+
+			<div class= "four columns" style="width:52%">
+				<font size="5px">
+					<%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", :action => "program_browse_results", :subject => "Engineering and Infrastructure" %><br /><br />
+					<%= link_to "Environmental (#{@environmental.count})", :action => "program_browse_results", :subject => "Environmental" %><br />
+					</font>
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Ecological Conservation (#{@ecological_conservation.count})", :action => "program_browse_results", :subject => "Ecological Conservation" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Sustainable Development (#{@sustainable_development.count})", :action => "program_browse_results", :subject => "Sustainable Development" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", :action => "program_browse_results", :subject => "Wildlife Conservation" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Habitat Restoration (#{@habitat_restoration.count})", :action => "program_browse_results", :subject => "Habitat Restoration" %><br /><br />
+					<font size="5px">
+				<%= link_to "Health and Medicine (#{@health_and_medicine.count})", :action => "program_browse_results", :subject => "Health and Medicine" %><br />
+					</font>
+				&nbsp;&nbsp;&nbsp;	<%= link_to "HIV/AIDS (#{@hiv_aids.count})", :action => "program_browse_results", :subject => "HIV/AIDS" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Nutrition (#{@nutrition.count})", :action => "program_browse_results", :subject => "Nutrition" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Family Planning (#{@family_planning.count})", :action => "program_browse_results", :subject => "Family Planning" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Veterinary Medicine (#{@veterinary_medicine.count})", :action => "program_browse_results", :subject => "Veterinary Medicine" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Clinical Work (#{@clinical_work.count})", :action => "program_browse_results", :subject => "Clinical Work" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Dental Work (#{@dental_work.count})", :action => "program_browse_results", :subject => "Dental Work" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Medical Research (#{@medical_research.count})", :action => "program_browse_results", :subject => "Medical Research" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Health Education (#{@health_education.count})", :action => "program_browse_results", :subject => "Health Education" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Public Health (#{@public_health.count})", :action => "program_browse_results", :subject => "Public Health" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Hospital Care-giving (#{@hospital_care_giving.count})", :action => "program_browse_results", :subject => "Hospital Care-giving" %><br /><br />
+					<font size="5px">
+						<%= link_to "Human Rights (#{@human_rights.count})", :action => "program_browse_results", :subject => "Human Rights" %><br />
+					</font>
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Women's Initiatives (#{@womens_initiatives.count})", :action => "program_browse_results", :subject => "Women's Initiatives" %><br /><br />
+					<font size="5px">
+						<%= link_to "International Work Camp (#{@international_work_camp.count})", :action => "program_browse_results", :subject => "International Work Camp" %><br /><br />
+						<%= link_to "Recreation (#{@recreation.count})", :action => "program_browse_results", :subject => "Recreation" %><br />
+						</font>
+				&nbsp;&nbsp;&nbsp;		<%= link_to "Adventure Travel (#{@adventure_travel.count})", :action => "program_browse_results", :subject => "Adventure Travel" %><br /><br />
+						<font size="5px">
+							<%= link_to "Scientific Research (#{@scientific_research.count})", :action => "program_browse_results", :subject => "Scientific Research" %><br />
+							</font>
+					&nbsp;&nbsp;&nbsp;		<%= link_to "Archaeology (#{@archaeology.count})", :action => "program_browse_results", :subject => "Archaeology" %><br />
+					&nbsp;&nbsp;&nbsp;		<%= link_to "Environmental Biology (#{@environmental_biology.count})", :action => "program_browse_results", :subject => "Environmental Biology" %><br /><br />
+							<font size="5px">
+								<%= link_to "Technology (#{@technology.count})", :action => "program_browse_results", :subject => "Technology" %><br />
+							</font>
+						&nbsp;&nbsp;&nbsp;	<%= link_to "Teach Computer Literacy (#{@teaching_computer_literacy.count})", :action => "program_browse_results", :subject => "Teaching Computer Literacy" %><br />
+						&nbsp;&nbsp;&nbsp;	<%= link_to "Media, Marketing, and Graphic Design (#{@media_marketing_and_graphic_design.count})", :action => "program_browse_results", :subject => "Media, Marketing, and Graphic Design" %><br /><br />
+				</div>
+
+		</div>
+
+		</div>
+		</div>
+
+	</body>			
+			
+			
+			
+			A
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+

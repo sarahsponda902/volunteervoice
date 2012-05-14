@@ -1,0 +1,23 @@
+<h1>Listing organizations</h1>
+
+<%= link_to 'Create an Organization', new_organization_path %>
+
+
+<table>
+  <tr>
+     <th>Name</th>
+    <th>Description</th>
+     <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @organizations.each do |organization| %>
+  <tr>
+  	<td><%= link_to organization.name, organization %></td>
+    <td><%= organization.description %></td>
+	<td><%= image_tag organization.image.url %></td>
+  </tr>
+<% end %>
+
+</table>

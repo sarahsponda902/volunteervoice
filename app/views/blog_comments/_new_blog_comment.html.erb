@@ -1,0 +1,27 @@
+<div class="blogNewComment">
+	<% if !user_signed_in?  %>
+		<p>You must be logged in to post a comment.</p>
+	<% else %>
+		<%= form_for([@blog_post, blog_comment]) do |f| %>
+			<% if blog_comment.errors.size > 0 %>
+				<div id="errorExplanation">
+					<h2>The comment could not be saved:</h2>
+					<ul>
+						<% blog_comment.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+
+			<p>
+
+				<%= f.text_area :body, :style => 'width:100%; height:75px', :value => "Post a comment...", :onclick => "if (this.value == 'Post a comment...') {this.value =''}" %>
+
+			</p>
+			<p style="text-align:center">
+				<%= image_submit_tag 'https://s3-us-west-1.amazonaws.com/volunteervoice/images/post.png' %>
+			</p>
+		<% end %>
+	<% end %>
+</div>

@@ -1,0 +1,34 @@
+<div class="container" style="color:#575758">
+	  <%= devise_error_messages! %>
+	<div class="row">
+		<div class="twelve columns" style="margin-top:80px">
+
+<p style="font-size:2em; font-family:architectsDaughterRegular; color:#62acbd; text-align:center;">Resend Confirmation Instructions</p>
+	</div>
+	</div>
+	<div class="row">
+	<div class="twelve columns" style="margin-top:20px;">
+		<div style=" background-color:#E9ECE9; padding-top:30px; padding-left:10px; margin-top:20px; margin-left:15%; margin-right:15%; border:1px solid #e67b5a; height:250px; margin-top:20px">
+
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+
+
+  <div class="three columns"><p style="font-size:1.3em; margin-bottom:10px"> Email: </p>
+  <%= f.email_field :email, :style=>"height:23px; width:190px; background-color:white;" %></div>
+
+<div class="seven columns" style=" margin-left: 14%;font-family:architectsDaughterRegular; color: #e67b5a; line-height:1.8em">We apologize for the delay in your registration. Please enter your email here and we will resend your confirmation instructions.</div>
+
+<br />
+<br />
+
+  <div align="center" style="margin-top:125px;">
+<%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/resendConfirmationInstructions.png") %>
+	
+	</div>
+<% end %>
+
+
+</div>
+</div>
+</div>
+</div>

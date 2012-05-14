@@ -1,0 +1,145 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+
+<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
+
+<%= javascript_include_tag "/assets/smartpaginator.js"%>
+
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 3, datacontainer: 'divarticles', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+    $('#vv_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 4, datacontainer: 'divvvs', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+	
+});
+</script>
+
+
+<div class="container" style="padding-top:30px" style="color:#575758">
+	<div class="row" style="width:90%; float:center; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/resourcesTexture.png);">
+        <div class="six columns" style="margin-left:15px; padding-top:15px; padding-bottom:15px; font-family:ArchitectsDaughterRegular; font-size:1.2em; color:white; line-height:1.8em; width:50%">
+				A little research can go a long way in helping you make the most of your volunteer experience.  Use this section to find websites, articles, and blog posts on all things awesome.
+
+			</div>
+				<div class="six columns" style="margin-top: 51px; margin-right:-8px; width:44%; padding-left:0">
+					<form accept-charset="UTF-8" action="/pages/blog_search" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+						<div style="float:right; margin-right:20px; margin-left:10px">
+						        <input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlassSmaller.png" style="background:transparent; height:28px" alt="Search Button">
+						</div>
+					        <input id="searchfield" name="search" style="width:80%;float:right" type="text" />
+
+					</form>
+				</div>
+			</div>
+			<div class="row" style="float:center">
+<div class="four columns" style="float:left; width:30%;" id="practical_table">
+	<div align="center">
+<image style="height:30px; margin-top:25px; margin-bottom:5px;" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/practical.png"><br /></div>
+<div align="center" style="border-top: 1px solid #e67b5a; padding-top:10px;"><p style="font-family: BebasRegular;font-size:2.0em; line-height:1.1em; color:#575758; width:85%"><font color="#e67b5a">RESEARCH </font> WHERE YOU'RE GOING</p></div>
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br />
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br />
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p style="font-family: BebasRegular;font-size:2.0em; line-height:1.1em; color:#575758; width:70%">LEARN THE <font color="#e67b5a">LANGUAGE </font></p></div>
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p style="font-family: BebasRegular;font-size:2.0em; line-height:1.1em; width:70%; color:#575758;">GET A <font color="#e67b5a">VISA </font></p></div>
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br />
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p style="font-family: BebasRegular;font-size:2.0em; line-height:1.1em; width:70%; color:#575758;">HEALTH AND <font color="#e67b5a">SAFETY </font></p></div>
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p style="font-family: BebasRegular;font-size:2.0em; line-height:1.1em; width:70%; color:#575758;"> <font color="#e67b5a">FLIGHT  </font> &nbsp; INFO</p></div>
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p style="font-family: BebasRegular;font-size:2.0em; line-height:1.1em; width:70%; color:#575758;"><font color="#e67b5a">FUNDING </font> YOUR TRIP</p></div>
+<a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
+<p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+</div>
+
+
+
+
+<div class="four columns" id="interesting_table" style="float:left; width:30%;" class="contents">
+	<div align="center">
+<image style="height:30px; margin-top:25px; margin-bottom:5px;" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/interesting.png"><br /></div>
+	<div id="divarticles"style="height:100%;background-color:#E3E6D5; border-top: 1px solid #e67b5a; padding-top:10px;">
+	<% @interesting.each do |f| %>
+	<%= render :partial => "interesting", :locals => {:f => f}%>
+	<% end %>
+	</div>
+	<div id="article_pager" style="position:relative; width: 85%;top:10px">
+		</div>
+
+</div>
+
+
+<% @our_blog = @our_blog.sort_by(&:created_at).reverse%>
+<div class="four columns" id="our_blog_table"style="float:left; width:30%;" class="contents">
+	<div align="center">
+<a href="/blog_posts"><image style="height:28px; margin-top:25px; margin-bottom:5px" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/ourBlog.png" href="/blog_posts"></a><br /></div>
+	<div id="divvvs" style="height:100%;background-color:#E3E6D5; border-top: 1px solid #e67b5a; padding-top:10px;">
+	<% @our_blog.each do |f| %>
+	<%= render :partial => "our_blog", :locals => {:f => f}%>
+	<% end %>
+	</div>
+	<div id="vv_pager" style="position:relative; width: 85%;top:10px;">
+	</div>
+</div>
+</div>
+
+<style type="text/css">
+
+    .contents 
+    {
+        width: 33%; /*height: 150px;*/
+        margin: 0;
+
+    }
+
+	#divvvs
+    {
+        margin: 10;
+        font: verdana;
+        font-size: 14px;
+        background-color: White;
+    }
+    #divvvs > div
+    {
+        width: 33%;
+    }
+    #divvvs > div p
+    {
+        width: 33%;
+    }
+
+	#divarticles
+    {
+        margin: 10;
+        font: verdana;
+        font-size: 14px;
+        background-color: White;
+    }
+    #divarticles > div
+    {
+        width: 33%;
+    }
+    #divarticles > div p
+    {
+        width: 33%;
+    }
+</style>
+

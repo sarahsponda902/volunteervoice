@@ -1,0 +1,162 @@
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
+
+<script>
+	$(function() {
+		var availableTags = [
+			<% Organization.all.each do |f| %>
+			"<%=f.name%>",
+			<% end %>
+			];
+		$( "#tags" ).autocomplete({
+			source: availableTags
+		});
+	});
+	</script>
+
+
+
+
+<% if current_user.admin?%>
+<div class="container">
+	<div class="row">
+		HELPERS:<br />
+
+		* -> bullet point<br />
+		# -> numbered bullet point<br />
+		_word_ -> italic word<br />
+		*word* -> bolded word<br />
+		+word+ -> underlined word<br />
+		"link text":url -> link to url<br />
+		!image url! -> embedded image at url<br />
+		p{color:#color-code} paragraph -> paragraph in #color-code color. To exit color, hit 'enter' twice<br /><br />
+
+		For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
+		<div class="six columns">
+<%= form_for(@program) do |f| %>
+
+<% if @program.overall.nil?%>
+  <div class="field">
+	<%= f.hidden_field :overall, :value => 0%>
+	</div>
+<% end %>
+
+  <div class="field">
+    Name <br />
+    <%= f.text_field :name, :value => @program.name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, :value => @program.description %>
+  </div>
+  <div class="field">
+    Weekly Cost ($/week)<br />
+    <%= f.number_field :weekly_cost, :value => @program.weekly_cost %>
+  </div>
+<div class="field">
+	<%= f.label "Country "%>
+<%= f.select :location, [[' Afghanistan', 'AF'], [' Åland Islands', 'AX'], [' Albania', 'AL'], [' Algeria', 'DZ'], [' American Samoa', 'AS'], [' Andorra', 'AD'], [' Angola', 'AO'], [' Anguilla', 'AI'], [' Antarctica', 'AQ'], [' Antigua and Barbuda', 'AG'], [' Argentina', 'AR'], [' Armenia', 'AM'], [' Aruba', 'AW'], [' Australia', 'AU'], [' Austria', 'AT'], [' Azerbaijan', 'AZ'], [' Bahamas', 'BS'], [' Bahrain', 'BH'], [' Bangladesh', 'BD'], [' Barbados', 'BB'], [' Belarus', 'BY'], [' Belgium', 'BE'], [' Belize', 'BZ'], [' Benin', 'BJ'], [' Bermuda', 'BM'], [' Bhutan', 'BT'], [' Bolivia, Plurinational State of', 'BO'], [' Bonaire, Sint Eustatius and Saba', 'BQ'], [' Bosnia and Herzegovina', 'BA'], [' Botswana', 'BW'], [' Bouvet Island', 'BV'], [' Brazil', 'BR'], [' British Indian Ocean Territory', 'IO'], [' Brunei Darussalam', 'BN'], [' Bulgaria', 'BG'], [' Burkina Faso', 'BF'], [' Burundi', 'BI'], [' Cambodia', 'KH'], [' Cameroon', 'CM'], [' Canada', 'CA'], [' Cape Verde', 'CV'], [' Cayman Islands', 'KY'], [' Central African Republic', 'CF'], [' Chad', 'TD'], [' Chile', 'CL'], [' China', 'CN'], [' Christmas Island', 'CX'], [' Cocos (Keeling) Islands', 'CC'], [' Colombia', 'CO'], [' Comoros', 'KM'], [' Congo', 'CG'], [' Congo, the Democratic Republic of the', 'CD'], [' Cook Islands', 'CK'], [' Costa Rica', 'CR'], [" Côte d'Ivoire", 'CI'], [' Croatia', 'HR'], [' Cuba', 'CU'], [' Curaçao', 'CW'], [' Cyprus', 'CY'], [' Czech Republic', 'CZ'], [' Denmark', 'DK'], [' Djibouti', 'DJ'], [' Dominica', 'DM'], [' Dominican Republic', 'DO'], [' Ecuador', 'EC'], [' Egypt', 'EG'], [' El Salvador', 'SV'], [' Equatorial Guinea', 'GQ'], [' Eritrea', 'ER'], [' Estonia', 'EE'], [' Ethiopia', 'ET'], [' Falkland Islands (Malvinas)', 'FK'], [' Faroe Islands', 'FO'], [' Fiji', 'FJ'], [' Finland', 'FI'], [' France', 'FR'], [' French Guiana', 'GF'], [' French Polynesia', 'PF'], [' French Southern Territories', 'TF'], [' Gabon', 'GA'], [' Gambia', 'GM'], [' Georgia', 'GE'], [' Germany', 'DE'], [' Ghana', 'GH'], [' Gibraltar', 'GI'], [' Greece', 'GR'], [' Greenland', 'GL'], [' Grenada', 'GD'], [' Guadeloupe', 'GP'], [' Guam', 'GU'], [' Guatemala', 'GT'], [' Guernsey', 'GG'], [' Guinea', 'GN'], [' Guinea-Bissau', 'GW'], [' Guyana', 'GY'], [' Haiti', 'HT'], [' Heard Island and McDonald Islands', 'HM'], [' Holy See (Vatican City State)', 'VA'], [' Honduras', 'HN'], [' Hong Kong', 'HK'], [' Hungary', 'HU'], [' Iceland', 'IS'], [' India', 'IN'], [' Indonesia', 'ID'], [' Iran, Islamic Republic of', 'IR'], [' Iraq', 'IQ'], [' Ireland', 'IE'], [' Isle of Man', 'IM'], [' Israel', 'IL'], [' Italy', 'IT'], [' Jamaica', 'JM'], [' Japan', 'JP'], [' Jersey', 'JE'], [' Jordan', 'JO'], [' Kazakhstan', 'KZ'], [' Kenya', 'KE'], [' Kiribati', 'KI'], [" Korea, Democratic People's Republic of", 'KP'], [' Korea, Republic of', 'KR'], [' Kuwait', 'KW'], [' Kyrgyzstan', 'KG'], [" Lao People's Democratic Republic", 'LA'], [' Latvia', 'LV'], [' Lebanon', 'LB'], [' Lesotho', 'LS'], [' Liberia', 'LR'], [' Libya', 'LY'], [' Liechtenstein', 'LI'], [' Lithuania', 'LT'], [' Luxembourg', 'LU'], [' Macao', 'MO'], [' Macedonia, the former Yugoslav Republic of', 'MK'], [' Madagascar', 'MG'], [' Malawi', 'MW'], [' Malaysia', 'MY'], [' Maldives', 'MV'], [' Mali', 'ML'], [' Malta', 'MT'], [' Marshall Islands', 'MH'], [' Martinique', 'MQ'], [' Mauritania', 'MR'], [' Mauritius', 'MU'], [' Mayotte', 'YT'], [' Mexico', 'MX'], [' Micronesia, Federated States of', 'FM'], [' Moldova, Republic of', 'MD'], [' Monaco', 'MC'], [' Mongolia', 'MN'], [' Montenegro', 'ME'], [' Montserrat', 'MS'], [' Morocco', 'MA'], [' Mozambique', 'MZ'], [' Myanmar', 'MM'], [' Namibia', 'NA'], [' Nauru', 'NR'], [' Nepal', 'NP'], [' Netherlands', 'NL'], [' New Caledonia', 'NC'], [' New Zealand', 'NZ'], [' Nicaragua', 'NI'], [' Niger', 'NE'], [' Nigeria', 'NG'], [' Niue', 'NU'], [' Norfolk Island', 'NF'], [' Northern Mariana Islands', 'MP'], [' Norway', 'NO'], [' Oman', 'OM'], [' Pakistan', 'PK'], [' Palau', 'PW'], [' Palestinian Territory, Occupied', 'PS'], [' Panama', 'PA'], [' Papua New Guinea', 'PG'], [' Paraguay', 'PY'], [' Peru', 'PE'], [' Philippines', 'PH'], [' Pitcairn', 'PN'], [' Poland', 'PL'], [' Portugal', 'PT'], [' Puerto Rico', 'PR'], [' Qatar', 'QA'], [' Réunion', 'RE'], [' Romania', 'RO'], [' Russian Federation', 'RU'], [' Rwanda', 'RW'], [' Saint Barthélemy', 'BL'], [' Saint Helena, Ascension and Tristan da Cunha', 'SH'], [' Saint Kitts and Nevis', 'KN'], [' Saint Lucia', 'LC'], [' Saint Martin (French part)', 'MF'], [' Saint Pierre and Miquelon', 'PM'], [' Saint Vincent and the Grenadines', 'VC'], [' Samoa', 'WS'], [' San Marino', 'SM'], [' Sao Tome and Principe', 'ST'], [' Saudi Arabia', 'SA'], [' Senegal', 'SN'], [' Serbia', 'RS'], [' Seychelles', 'SC'], [' Sierra Leone', 'SL'], [' Singapore', 'SG'], [' Sint Maarten (Dutch part)', 'SX'], [' Slovakia', 'SK'], [' Slovenia', 'SI'], [' Solomon Islands', 'SB'], [' Somalia', 'SO'], [' South Africa', 'ZA'], [' South Georgia and the South Sandwich Islands', 'GS'], [' South Sudan', 'SS'], [' Spain', 'ES'], [' Sri Lanka', 'LK'], [' Sudan', 'SD'], [' Suriname', 'SR'], [' Svalbard and Jan Mayen', 'SJ'], [' Swaziland', 'SZ'], [' Sweden', 'SE'], [' Switzerland', 'CH'], [' Syrian Arab Republic', 'SY'], [' Taiwan, Province of China', 'TW'], [' Tajikistan', 'TJ'], [' Tanzania, United Republic of', 'TZ'], [' Thailand', 'TH'], [' Timor-Leste', 'TL'], [' Togo', 'TG'], [' Tokelau', 'TK'], [' Tonga', 'TO'], [' Trinidad and Tobago', 'TT'], [' Tunisia', 'TN'], [' Turkey', 'TR'], [' Turkmenistan', 'TM'], [' Turks and Caicos Islands', 'TC'], [' Tuvalu', 'TV'], [' Uganda', 'UG'], [' Ukraine', 'UA'], [' United Arab Emirates', 'AE'], [' United Kingdom', 'GB'], [' United States', 'US'], [' United States Minor Outlying Islands', 'UM'], [' Uruguay', 'UY'], [' Uzbekistan', 'UZ'], [' Vanuatu', 'VU'], [' Venezuela, Bolivarian Republic of', 'VE'], [' Viet Nam', 'VN'], [' Virgin Islands, British', 'VG'], [' Virgin Islands, U.S.', 'VI'], [' Wallis and Futuna', 'WF'], [' Western Sahara', 'EH'], [' Yemen', 'YE'], [' Zambia', 'ZM'], [' Zimbabwe', 'ZW'] ], :value => @program.location, :prompt => "Select Location" %>
+  </div>
+
+	<% if @program.organization_id.nil?%>
+	<div class="demo">
+
+	<div class="ui-widget">
+		<label for="tags">Organization: </label>
+		<input id="tags" name="program[organization_id]" />
+	</div>
+	</div>
+	<% else %>
+	<%= Organization.find(@program.organization_id).name%>
+	<% end %><br /><br />
+
+
+  <div class = "field">
+	<%= f.label :subject%>
+	<%= f.select :subject, ["-Category:", "Agriculture", "-Sub-categories:", "Organic Farming", "Sustainable Development", "==========", "-Category:", "Animal Care", "-Sub-categories:", "Animal Rights", "Wildlife Conservation", "==========", "-Category:", "Caregiving", "-Sub-categories:", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless", "==========", "-Category:", "Community Development", "-Sub-categories:", "Youth Development and Outreach", "==========", "-Category:", "Construction", "==========", "-Category:", "Culture & Community", "-Sub-categories:", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism", "==========", "-Category:", "Disaster Relief", "-Sub-categories:", "Economics", "Microfinance", "==========", "-Category:", "Education", "-Sub-categories:", "Teaching English", "Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy", "==========", "-Category:", "Engineering and Infrastructure", "==========", "-Category:", "Environmental", "-Sub-categories:", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration", "==========", "-Category:", "Health and Medicine", "-Sub-categories:", "HIV/AIDS", "Nutrition", "Family Planning", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Care-giving", "==========", "-Category:", "Human Rights", "-Sub-categories:", "Women's Initiatives", "==========", "-Category:", "International Work Camp", "==========", "-Category:", "Recreation", "-Sub-categories:", "Adventure Travel", "==========", "-Category:", "Scientific Research", "-Sub-categories:", "Archaeology", "Environmental Biology", "==========", "-Category:", "Technology", "-Sub-categories:", "Teaching Computer Literacy", "Media, Marketing, and Graphic Design" ], :prompt => "Select a Subject", :disabled => ["==========", "-Category:", "-Sub-categories:"], :value => @program.subject%>
+  </div>
+
+  <div class = "field">
+	<%= f.label :group_size%>
+	<%= f.select :group_size, ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (15+)"], :value => @program.group_size, :prompt =>"Select a Group Size"%>
+  </div>
+
+  <div class = "field">
+	<%= f.label :headquarters_location %>
+	<%= f.select :headquarters, [[' Afghanistan', 'AF'], [' Åland Islands', 'AX'], [' Albania', 'AL'], [' Algeria', 'DZ'], [' American Samoa', 'AS'], [' Andorra', 'AD'], [' Angola', 'AO'], [' Anguilla', 'AI'], [' Antarctica', 'AQ'], [' Antigua and Barbuda', 'AG'], [' Argentina', 'AR'], [' Armenia', 'AM'], [' Aruba', 'AW'], [' Australia', 'AU'], [' Austria', 'AT'], [' Azerbaijan', 'AZ'], [' Bahamas', 'BS'], [' Bahrain', 'BH'], [' Bangladesh', 'BD'], [' Barbados', 'BB'], [' Belarus', 'BY'], [' Belgium', 'BE'], [' Belize', 'BZ'], [' Benin', 'BJ'], [' Bermuda', 'BM'], [' Bhutan', 'BT'], [' Bolivia, Plurinational State of', 'BO'], [' Bonaire, Sint Eustatius and Saba', 'BQ'], [' Bosnia and Herzegovina', 'BA'], [' Botswana', 'BW'], [' Bouvet Island', 'BV'], [' Brazil', 'BR'], [' British Indian Ocean Territory', 'IO'], [' Brunei Darussalam', 'BN'], [' Bulgaria', 'BG'], [' Burkina Faso', 'BF'], [' Burundi', 'BI'], [' Cambodia', 'KH'], [' Cameroon', 'CM'], [' Canada', 'CA'], [' Cape Verde', 'CV'], [' Cayman Islands', 'KY'], [' Central African Republic', 'CF'], [' Chad', 'TD'], [' Chile', 'CL'], [' China', 'CN'], [' Christmas Island', 'CX'], [' Cocos (Keeling) Islands', 'CC'], [' Colombia', 'CO'], [' Comoros', 'KM'], [' Congo', 'CG'], [' Congo, the Democratic Republic of the', 'CD'], [' Cook Islands', 'CK'], [' Costa Rica', 'CR'], [" Côte d'Ivoire", 'CI'], [' Croatia', 'HR'], [' Cuba', 'CU'], [' Curaçao', 'CW'], [' Cyprus', 'CY'], [' Czech Republic', 'CZ'], [' Denmark', 'DK'], [' Djibouti', 'DJ'], [' Dominica', 'DM'], [' Dominican Republic', 'DO'], [' Ecuador', 'EC'], [' Egypt', 'EG'], [' El Salvador', 'SV'], [' Equatorial Guinea', 'GQ'], [' Eritrea', 'ER'], [' Estonia', 'EE'], [' Ethiopia', 'ET'], [' Falkland Islands (Malvinas)', 'FK'], [' Faroe Islands', 'FO'], [' Fiji', 'FJ'], [' Finland', 'FI'], [' France', 'FR'], [' French Guiana', 'GF'], [' French Polynesia', 'PF'], [' French Southern Territories', 'TF'], [' Gabon', 'GA'], [' Gambia', 'GM'], [' Georgia', 'GE'], [' Germany', 'DE'], [' Ghana', 'GH'], [' Gibraltar', 'GI'], [' Greece', 'GR'], [' Greenland', 'GL'], [' Grenada', 'GD'], [' Guadeloupe', 'GP'], [' Guam', 'GU'], [' Guatemala', 'GT'], [' Guernsey', 'GG'], [' Guinea', 'GN'], [' Guinea-Bissau', 'GW'], [' Guyana', 'GY'], [' Haiti', 'HT'], [' Heard Island and McDonald Islands', 'HM'], [' Holy See (Vatican City State)', 'VA'], [' Honduras', 'HN'], [' Hong Kong', 'HK'], [' Hungary', 'HU'], [' Iceland', 'IS'], [' India', 'IN'], [' Indonesia', 'ID'], [' Iran, Islamic Republic of', 'IR'], [' Iraq', 'IQ'], [' Ireland', 'IE'], [' Isle of Man', 'IM'], [' Israel', 'IL'], [' Italy', 'IT'], [' Jamaica', 'JM'], [' Japan', 'JP'], [' Jersey', 'JE'], [' Jordan', 'JO'], [' Kazakhstan', 'KZ'], [' Kenya', 'KE'], [' Kiribati', 'KI'], [" Korea, Democratic People's Republic of", 'KP'], [' Korea, Republic of', 'KR'], [' Kuwait', 'KW'], [' Kyrgyzstan', 'KG'], [" Lao People's Democratic Republic", 'LA'], [' Latvia', 'LV'], [' Lebanon', 'LB'], [' Lesotho', 'LS'], [' Liberia', 'LR'], [' Libya', 'LY'], [' Liechtenstein', 'LI'], [' Lithuania', 'LT'], [' Luxembourg', 'LU'], [' Macao', 'MO'], [' Macedonia, the former Yugoslav Republic of', 'MK'], [' Madagascar', 'MG'], [' Malawi', 'MW'], [' Malaysia', 'MY'], [' Maldives', 'MV'], [' Mali', 'ML'], [' Malta', 'MT'], [' Marshall Islands', 'MH'], [' Martinique', 'MQ'], [' Mauritania', 'MR'], [' Mauritius', 'MU'], [' Mayotte', 'YT'], [' Mexico', 'MX'], [' Micronesia, Federated States of', 'FM'], [' Moldova, Republic of', 'MD'], [' Monaco', 'MC'], [' Mongolia', 'MN'], [' Montenegro', 'ME'], [' Montserrat', 'MS'], [' Morocco', 'MA'], [' Mozambique', 'MZ'], [' Myanmar', 'MM'], [' Namibia', 'NA'], [' Nauru', 'NR'], [' Nepal', 'NP'], [' Netherlands', 'NL'], [' New Caledonia', 'NC'], [' New Zealand', 'NZ'], [' Nicaragua', 'NI'], [' Niger', 'NE'], [' Nigeria', 'NG'], [' Niue', 'NU'], [' Norfolk Island', 'NF'], [' Northern Mariana Islands', 'MP'], [' Norway', 'NO'], [' Oman', 'OM'], [' Pakistan', 'PK'], [' Palau', 'PW'], [' Palestinian Territory, Occupied', 'PS'], [' Panama', 'PA'], [' Papua New Guinea', 'PG'], [' Paraguay', 'PY'], [' Peru', 'PE'], [' Philippines', 'PH'], [' Pitcairn', 'PN'], [' Poland', 'PL'], [' Portugal', 'PT'], [' Puerto Rico', 'PR'], [' Qatar', 'QA'], [' Réunion', 'RE'], [' Romania', 'RO'], [' Russian Federation', 'RU'], [' Rwanda', 'RW'], [' Saint Barthélemy', 'BL'], [' Saint Helena, Ascension and Tristan da Cunha', 'SH'], [' Saint Kitts and Nevis', 'KN'], [' Saint Lucia', 'LC'], [' Saint Martin (French part)', 'MF'], [' Saint Pierre and Miquelon', 'PM'], [' Saint Vincent and the Grenadines', 'VC'], [' Samoa', 'WS'], [' San Marino', 'SM'], [' Sao Tome and Principe', 'ST'], [' Saudi Arabia', 'SA'], [' Senegal', 'SN'], [' Serbia', 'RS'], [' Seychelles', 'SC'], [' Sierra Leone', 'SL'], [' Singapore', 'SG'], [' Sint Maarten (Dutch part)', 'SX'], [' Slovakia', 'SK'], [' Slovenia', 'SI'], [' Solomon Islands', 'SB'], [' Somalia', 'SO'], [' South Africa', 'ZA'], [' South Georgia and the South Sandwich Islands', 'GS'], [' South Sudan', 'SS'], [' Spain', 'ES'], [' Sri Lanka', 'LK'], [' Sudan', 'SD'], [' Suriname', 'SR'], [' Svalbard and Jan Mayen', 'SJ'], [' Swaziland', 'SZ'], [' Sweden', 'SE'], [' Switzerland', 'CH'], [' Syrian Arab Republic', 'SY'], [' Taiwan, Province of China', 'TW'], [' Tajikistan', 'TJ'], [' Tanzania, United Republic of', 'TZ'], [' Thailand', 'TH'], [' Timor-Leste', 'TL'], [' Togo', 'TG'], [' Tokelau', 'TK'], [' Tonga', 'TO'], [' Trinidad and Tobago', 'TT'], [' Tunisia', 'TN'], [' Turkey', 'TR'], [' Turkmenistan', 'TM'], [' Turks and Caicos Islands', 'TC'], [' Tuvalu', 'TV'], [' Uganda', 'UG'], [' Ukraine', 'UA'], [' United Arab Emirates', 'AE'], [' United Kingdom', 'GB'], [' United States', 'US'], [' United States Minor Outlying Islands', 'UM'], [' Uruguay', 'UY'], [' Uzbekistan', 'UZ'], [' Vanuatu', 'VU'], [' Venezuela, Bolivarian Republic of', 'VE'], [' Viet Nam', 'VN'], [' Virgin Islands, British', 'VG'], [' Virgin Islands, U.S.', 'VI'], [' Wallis and Futuna', 'WF'], [' Western Sahara', 'EH'], [' Yemen', 'YE'], [' Zambia', 'ZM'], [' Zimbabwe', 'ZW'] ], :value => @program.headquarters, :prompt => "Select Headquarters Location"%>
+</div>
+
+  <div id= "field">
+	<%= f.label :length_of_program %>
+	<%= f.select :length, ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"], :prompt => "Select a Program Length", :value => @program.length  %></div>
+
+  <div>Add a Photo<br />
+  <%= f.file_field :photo, :value => @program.photo %></div><br />
+
+  <div>Add a Cost Chart Image<br />
+  <%= f.file_field :chart, :value => @program.chart %></div>
+	</div>
+	
+	
+	<div class="six columns">
+  <div id= "field">
+  Program Started (year)<br />
+  <%= f.number_field :program_started, :value => @program.program_started %></div><br />
+
+<div id= "field">
+Start Dates (mm/dd/yyyy)<br />
+<%= f.text_field :start_dates, :value => @program.start_dates %></div><br />
+	
+<div id= "field">
+Program Structure <br />
+<%= f.text_area :program_structure, :value => @program.program_structure %></div><br />
+
+<div id= "field">
+	<%= f.label :partnered_local_organizations %>
+	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations %><br />
+</div>
+<div id= "field">
+	Cost Includes<br />
+	<%= f.text_field :cost_includes, :value => @program.cost_includes %>
+</div><br />
+<div id= "field">
+	Cost Includes <br />
+	<%= f.text_field :cost_doesnt_include, :value => @program.cost_doesnt_include %>
+</div><br />
+<div id= "field">
+	Program Cost Breakdown<br />
+	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
+</div>
+<div id= "field">
+	Accommodations<br />
+	<%= f.text_field :accommodations, :value => @program.accommodations %>
+</div><br />
+<div id= "field">
+	Link to Site (http://www. ...)<br />
+	<%= f.text_field :check_it_out, :value => @program.check_it_out %>
+</div>
+</div>
+<div class="twelve columns" align="center">
+
+  <div class="actions" style="margin-top:60px">
+    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+<% end %>
+
+<style>
+textarea {
+	width:350px;
+	height:200px;
+}
+</style>
+
+
+

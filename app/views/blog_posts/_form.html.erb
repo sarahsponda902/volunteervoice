@@ -1,0 +1,133 @@
+<head>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script type="text/javascript">
+  // Some simple jQuery to remove the default search value when the user clicks the box
+  $(document).ready(function() {
+        $search_box = $("#body");
+
+        // If the user clicks the input box and the text is "search here!",
+        //    set it to blank
+        $search_box.click(function() {
+            if( $search_box.attr("value") == "If this is an 'Interesting' blog, copy-paste as much of the article as you like. It will be truncated anyway." ) {
+
+                // Set it to an empty string
+                $search_box.attr("value", "");
+            }
+        });
+		$search_box.focus(function() {
+            if( $search_box.attr("value") == "If this is an 'Interesting' blog, copy-paste as much of the article as you like. It will be truncated anyway." ) {
+
+                // Set it to an empty string
+                $search_box.attr("value", "");
+            }
+        });
+
+  });
+</script>
+
+</head>
+
+<body>
+<div class="container">
+	<div class="row">
+		<div class="twelve columns">
+HELPERS:<br />
+
+* -> bullet point<br />
+# -> numbered bullet point<br />
+_word_ -> italic word<br />
+*word* -> bolded word<br />
++word+ -> underlined word<br />
+"link text":url -> link to url<br />
+!image url! -> embedded image at url<br />
+p{color:#color-code} paragraph -> paragraph in #color-code color. To exit color, hit 'enter' twice<br /><br />
+
+For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
+
+
+
+
+<%= form_for(@blog_post, :html => { :multipart => true }) do |f| %>
+		<div class="five columns">
+			<% if @blog_post.errors.size > 0 %>
+				<div id="errorExplanation">
+					<h2>The blog post could not be saved:</h2>
+					<ul>
+						<% @blog_post.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+					</ul>
+				</div>
+			<% end %>
+			<p>
+				<p style="font-size:1.2em">Title </p>
+				<%= f.text_field :title %>
+			</p>
+			<br />
+			<p>
+				<p style="font-size:1.2em">Body </p>
+				<%= f.text_area :body, :value => "If this is an 'Interesting' blog, copy-paste about 10 sentences (or more) in this box.", :id => "body"%>
+			</p>
+			<br />
+			<p>
+				<p style="font-size:1.2em">Tags (comma separated) </p>
+				<%= f.text_field :tags %><font color="red">Alphanumeric ONLY.</font>
+			</p>
+			<br />	
+			
+			<p style="font-size:1.2em">Image  (crop on next page)</p><br />
+			  <%= f.file_field :image %>
+			<br />
+			</div>	
+		<div class="five columns">
+
+				<p style="font-size:1.2em; color:red">THE SECTION BELOW IS ONLY FOR ARTICLES:</p><br />
+
+				<p>
+				<p style="font-size:1.2em">Link to Article </p>
+				<%= f.text_field :blog_link%>
+				</p>
+
+				<p>
+				<p style="font-size:1.2em">Link to Source </p>
+				<%= f.text_field :source%>
+				</p>
+
+				<p>
+				<p style="font-size:1.2em">Title of Source </p>
+				<%= f.text_field :source_title%>
+				</p>
+
+			
+
+				
+				<br /><br /><br /><br /><br /><br /><br /><br /><br />
+				
+			
+				<p>
+					<p style="font-size:1.2em">Status </p>
+					<%= f.radio_button :published, false, :checked => true %><font style="font-size:1em"> Draft </font><br />
+					<%= f.radio_button :published, true %><font style="font-size:1em"> Publish </font>
+				</p>
+				<br />
+					<p> 
+						<p style="font-size:1.2em">Type </p>
+					<%= f.radio_button :is_our_blog, true, :checked => true %><font style="font-size:1em"> VV Blog Post ("Our Blog" column)</font><br />
+					<%= f.radio_button :is_our_blog, false%> <font style="font-size:1em">Article ("Interesting" column)</font>
+					</p>
+			
+				<br />
+				
+				<p>
+					<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png" %> 
+				</p>
+			
+
+<% end %>
+</div>
+</div>
+</div>
+
+</body>

@@ -1,0 +1,41 @@
+<% @program = Program.first%>
+<% star = @program.roundup(star) %>
+	<% if star.to_f == 1%>
+	<%= image_tag "/assets/one.png", :height => "50%"%>
+	<% end %>
+
+	<% if star.to_f == 2%>
+	<%= image_tag "/assets/two.png", :height => "50%"%>
+	<% end %>
+	
+	<% if star.to_f == 3%>
+	<%= image_tag "/assets/three.png", :height => "50%"%>
+	<% end %>
+	
+	<% if star.to_f == 4%>
+	<%= image_tag "/assets/four.png", :height => "50%"%>
+	<% end %>
+	
+	<% if star.to_f == 5%>
+	<%= image_tag "/assets/five.png", :height => "50%"%>
+	<% end %>
+	
+	<% if star.to_f == 0.5%>
+	<%= image_tag "/assets/half.png", :height => "50%"%>
+	<% end %>
+	
+	<% if star.to_f == 1.5%>
+	<%= image_tag "/assets/one_half.png", :height => "50%"%>
+	<% end %>
+	
+	<% if star.to_f == 2.5%>
+	<%= image_tag "/assets/two_half.png", :height => "50%"%>
+	<% end %>
+	
+	<% if star.to_f == 3.5%>
+	<%= image_tag "/assets/three_half.png", :height => "50%"%>
+	<% end %>
+	
+	<% if star.to_f == 4.5%>
+	<%= image_tag "/assets/four_half.png", :height => "50%"%>
+	<% end %>

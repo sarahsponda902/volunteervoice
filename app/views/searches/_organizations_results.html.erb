@@ -1,0 +1,16 @@
+<div>
+	<table cellspacing="0" border="0" cellpadding="0" width="700">
+		<tr>
+			<td rowspan="2"><%=image_tag f.image.url, :style => "height:30px"%></td>
+			<td><b><%= link_to f.name, f%></b></td>
+			<td align="right"><%=render :partial => 'star', :locals => {:star => f.overall}%><br />Based on <%=f.reviews_count%> reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2"><%= truncate(f.description, :length => 50, :omission => "...")%></td>
+		</tr>
+	</table>
+	<br />
+	<br />
+
+</div>
+

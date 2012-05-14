@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<meta charset="utf-8">
+
+<title>Volunteer Voice International</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="foundation.css">
+
+<script><!--for HTML5 syntax in IE-->
+	document.createElement('header');
+	document.createElement('footer');
+	document.createElement('nav');
+	document.createElement('article');
+	document.createElement('aside');
+	document.createElement('section');
+</script>
+		
+		
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Volunteer Voice</title>
+	<%= csrf_meta_tag %>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag "application"%>
+	<%= stylesheet_link_tag    "application", :media => "all"%>
+	
+
+	</head>
+
+	<body>
+		<!-- Header-->
+		<div class="container" id="header" style="min-width:970px; background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooterTexture.png)">
+		<header class="row">
+			
+			<div class="four columns" style="margin-top:15px">
+			<a href="/" style="cursor:pointer"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" style="height:95px"></a>
+			</div>
+			
+			
+			<div class="four columns" style="float:right">
+			<div class="row login" style="width:auto">
+
+				<% if !(user_signed_in?) %>
+				<a href="#login-box" class="login-window">LOGIN</a>
+				or <a href= "/sign_up">JOIN</a>
+				<% else %>
+				<a href="/messages_read"> <%=current_user.username%> 
+					<% if current_user.unread_message_count > 0 %>
+					<font style="color:#e67b5a">(<%=current_user.unread_message_count%>)</font><% end %></a>&nbsp;&nbsp;
+				<a href= "/signout">LOGOUT</a>
+				<% end %>
+				
+			</div>
+			</div>
+			
+			
+			
+			<% if user_signed_in? && current_user.admin?%>
+			
+			<div class="four columns" style="float:right" id="adminNav">
+			<div class="row" style="background-color:#575758; color:white; font-size:1.3em; text-align:center; padding-top:7px;padding-bottom:7px;">
+				<ul>
+					<li><p style="color:red">Admin Links</p>
+						<div>
+						<ul>
+							<li><a href="/organizations/new">New Organization</a></li>
+							<li><a href="/programs/new">New Program</a></li>
+							<li><a href="/blog_posts/new">New Blog Post</a></li>
+							<li><a href="/feedbacks">Feedbacks</a></li>
+							<li><a href="/flags">Flags</a></li>
+							<li><a href="/reviews">Reviews</a></li>
+							<li><a href="/new_reviews">Reviews: New Orgs</a></li>
+							<li><a href="/users">Users</a></li>
+						</ul>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+			</div>
+			
+			<% end %>
+			
+			<div class="six columns" style="float:right">
+			<form action="/searches/show" method="get">
+				<div style="margin-bottom:15px; float:right;">
+			    <input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png" style="background:transparent; margin-bottom:-57px" alt="Search Button"></div>
+				<div style="margin-top:40px; float:right; margin-right:5px">
+				<input type="text" name="search" id="searchfield"></div>
+			</form>
+
+		</div>
+		</div>
+		</header>
+		</div>	
+			
+		<!-- end header-->
+
+		<!-- Global Navigation-->
+		
+		<div class="container" id="globalNav">
+		<div class="row">
+		<nav class="nav">
+
+		<ul>
+		<li><a href="/">home</a></li>
+		<li style="height:100px"><p style="color:white" id="shower">find a program</p>
+			<div>
+			<ul>
+				<li><a href="/pages/program_browse">browse things to do</a></li>
+				<li><a href="/programs">browse places to go</a></li>
+				<li><a href="/pages/search_machine">use search machine</a></li>	
+			</ul>
+			</div>
+		</li>
+		<li><a href="/reviews/new">write a review</a></li>
+		<li><a href= "/pages/blogs">resources</a></li>
+		</ul>
+		
+		<div class="dropdown_background"></div>
+
+		</nav></div>
+		</div><!--end navigation-->	
+		
+		
+
+
+			<% flash.each do |key, value| %>
+			  <%= content_tag(:div, value, :class => "flash #{key}") %>
+			<% end %>
+			
+
+<%= yield%>
+</div>
+
+
+<!-- Footer-->
+<div class="container" id="footer" style="margin-top:75px; min-width:970px; color:#575758; background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooterTexture.png)">
+<div class="row">
+<footer class="footer">
+<div class="three columns">
+<article class="footerNav"style="margin-top:20px; line-height:1.5em; margin-left:20px;">
+<h4>More on us...</h4>
+<ul style="font-size:16px; line-height:2em;">
+<li><%= link_to "About Us", "/pages/about"%></li>
+<li><%= link_to "Contact Us", "/contacts/new"%></li>
+<li><%= link_to "Terms of Use", "/pages/terms"%></li>
+<li><%= link_to "Privacy Policy", "/pages/privacy"%></li>
+<li><a href="/pages/faq">FAQ</a></li>
+</ul>
+</article></div><!--end footerNav-->
+<div class="six columns" align="center">
+<article class="spreadWord" style="margin-top:30px;">
+<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/spreadTheWord.png" alt="Help Spread The Word" width="300px">
+<ul>
+<li style="margin-left:-5px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/facebook.png" height="35px" width="35px" alt="VolunteerVoice Facebook"></li>
+<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/twitter.png" height="35px" width="35px" alt="VolunteerVoice Twitter"></li>
+<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/google.png" height="35px" width="35px" alt="VolunteerVoice Google+"></li>
+<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/rss.png" height="35px" width="35px" alt="VolunteerVoice RSS"></li>
+</ul>
+
+</article></div><!--end spreadWord-->
+<div class="three columns">
+<article class="ourCommunity" style="margin-top:10px; width:190px; overflow:hidden; " align="right">
+
+    <div style="background-color:none; margin-top:5px" class="fb-like-box" data-href="https://www.facebook.com/pages/VolunteerVoice-International/309769649039582" data-width="190" data-height="210" data-show-faces="true" data-border-color="#c1dfdb" data-stream="false" data-header="false"></div>
+
+
+</article></div><!--end ourCommunity-->
+<div class="row">
+<div class="twelve columns">
+<article class="copyright" style="text-align:center; margin-top:30px; font-size:9px">
+
+<p><small>Copyright 2012 by VolunteerVoice International. All rights reserved. Site design by Anna Smith from <a href="www.secretsnacking.com">Secret Snacking Media</a>.</small></p>
+
+</article></div></div><!--end copyright-->
+</footer></div><!-- end footer -->
+
+
+
+
+</div><!-- end pageWrap-->
+
+</body>
+
+</html>
+
+
+<!--- POPUP PLUGIN -->
+
+<script type="text/javascript">
+function beforeCheck() {
+	$('#checkBefore').toggle();
+}
+</script>
+
+
+  	<div id="login-box" class="login-popup">
+	  	<%= form_for("user", :url => user_session_path) do |f| %>
+		  <div style="line-height:1.5em">Email:<br />
+		  <%= f.text_field :email, :style => "height:15px"%></div><br />
+
+		  <div style="line-height:1.5em">Password:<br />
+		  <%= f.password_field :password, :style => "height:15px"%></div>
+
+		    <image style="position:absolute; height:25px; top:113px; left:13px; display:none" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" >
+			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:10px; padding-bottom:5px;" >
+			<%= f.check_box :remember_me, :onclick => "$(beforeCheck())", :style =>"opacity:0;"%></div><div style="margin-left:33px; margin-top:-20px; font-size:.85em"> Remember me</div><br />
+	
+
+		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px"%></div><br />
+
+		<a class="forgotPassword" style="font-size:.85em" href="/users/password/new">Forgot your password?</a>
+		<%end%>
+	
+	
+	</div>
+	
+	
+	<style>
+	
+	a.forgotPassword:link{color:white}
+	a.forgotPassword:active{color:white}
+	a.forgotPassword:visited{color:white}
+	a.forgotPassword:hover{color:#e67b5a}
+	
+	/* Mask for background, by default is not display */
+	#mask {
+		display: none;
+		background: #000; 
+		position: fixed; left: 0; top: 0; 
+		z-index: 10;
+		width: 100%; height: 100%;
+		opacity: 0.8;
+	}
+
+	/* You can customize to your needs  */
+	.login-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 3px solid #575758;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		z-index:9999;
+		position: fixed;
+		top: 50%; left: 50%;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+
+	img.btn_close { Position the close button
+		float: right; 
+		margin: -28px -28px 0 0;
+	}
+
+	fieldset { 
+		border:none; 
+	}
+
+
+
+	.button { 
+		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+		border-color:#000; 
+		border-width:1px;
+	        border-radius:4px 4px 4px 4px;
+		-moz-border-radius: 4px;
+	        -webkit-border-radius: 4px;
+		color:#68c2d8;
+		cursor:pointer;
+		display:inline-block;
+		padding:6px 6px 4px;
+		margin-top:10px;
+		font:12px; 
+		width:214px;
+	}
+	.button:hover { background:#ddd; }
+	
+	</style>
+	
+	<script type="text/javascript">
+	
+	
+	$(document).ready(function() {
+
+		
+		
+		$('a.login-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var loginBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(loginBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(loginBox).height() + 24) / 2; 
+			var popMargLeft = ($(loginBox).width() + 24) / 2; 
+
+			$(loginBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="opacity:.5"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .login-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+	});
+
+</script>

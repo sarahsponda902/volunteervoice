@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link href="http://odyniec.net/projects/imgareaselect/css/imgareaselect-default.css" rel="stylesheet" type="text/css" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+	
+	<script src="http://odyniec.net/projects/imgareaselect/jquery.imgareaselect.pack.js"></script>
+
+	
+	<script type="text/javascript">
+	$(function(){
+   
+
+
+	    function updateVars (img, selection) {
+	        $("#crop_w").val(selection.width);
+	        $("#crop_h").val(selection.height);    
+	        $("#crop_x").val(selection.x1);
+			$("#crop_y").val(selection.y1);
+
+	    }         
+
+	    function init() {
+
+	        $('#crop_me').imgAreaSelect({
+	            hide:true,
+	            movable : true,
+	            autoHide : false,
+				aspectRatio: '2:1',
+				minHeight:200,
+	            onSelectEnd: updateVars
+	  			
+	        });
+
+
+	    }
+
+	    init();
+
+	});
+
+	
+
+	</script>
+
+</head>
+<body>
+	<div class="container" style="margin-top:30px">
+		<div class="row">
+			<div class="ten columns">
+
+	    <%= image_tag @blog_post.image.url, :id => "crop_me"%>
+
+		</div>
+	</div>
+</div>
+
+<div style="position:absolute; right:5%; top:300px; width: 150px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed width for a blog post image. It will not get any smaller</div>
+
+<div style="position:absolute; right:5%; top:200px; width:150px">
+	<%= form_for @blog_post do |f|%>
+	x: <%= f.number_field :crop_x, :id => "crop_x", :disabled => "true"%><br />
+	y: <%= f.number_field :crop_y, :id => "crop_y", :disabled => "true"%><br />
+	w: <%= f.number_field :crop_w, :id => "crop_w", :disabled => "true"%><br />
+	h: <%= f.number_field :crop_h, :id => "crop_h", :disabled => "true"%><br />
+	<%= f.submit "Crop"%>
+	<% end %>
+</div>	
+</html>

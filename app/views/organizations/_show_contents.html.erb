@@ -1,0 +1,155 @@
+<div class="container" style="margin-left:-15px; border:1px solid #575758; background-color:#E9ECE9; padding:bottom:25px; color:#575758; min-width:900px">
+	<div class="row">
+		<div class="two columns" style="margin:0;padding:0; width:18%; margin-top:20px">
+			<%= image_tag organization.image.url, :width => "150px" %>
+		</div>
+		
+		<div class="six columns" style="width:55%; text-align:left; margin:0; padding:0; margin-top:20px; padding-left:10px;">
+			<br />
+			<p style="font-size:3.5em; color:#62acbd; line-height:1em;"> <%= organization.name %></p>
+			<a style="font-size:1.2em; color:#62acbd;" href="<%=organization.url%>"><u> <%=organization.url%></u></a>
+
+		</div>
+		<div class="three columns"  style="text-align:center; margin:0; padding:0; width:25%">
+
+			<br />
+			<br />
+			<% if organization.overall.nil?%>
+			<% organization.overall = 0%>
+			<% organization.save %>
+			<% end %>
+			<p style="margin-top:10px"><%= render :partial => "bigStar", :locals => {:star => organization.roundup(organization.overall)}%></p>
+			<br />
+
+			<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em">Based on <%= organization.reviews_count%> reviews</p> 
+			<br />
+			<% if !(current_user.nil?) && current_user.admin? %>
+			<%= link_to "edit", "/programs/#{organization.id}/edit"%>
+			<% end %>
+		</div>
+	</div>
+
+
+
+<div class="row" style="margin-top:50px">
+	<div class="nine columns">
+		<div class="two columns" style="font-size:1.5em; width:20%">
+			<u><b>Mission:</b></u>
+		</div>
+		<div class="ten columns" style="border:1px solid #575758; height:130px; width:75%; margin:0;padding:10px">
+			<%= organization.mission%> There is no mission for this org
+		</div>
+
+		<div class = "two columns" style="font-size:1.5em; margin:0;padding:0; margin-top:25px; width:20%">
+
+			<u><b>Programs:</b></u>
+		</div>
+		<div class="ten columns" style="border: 1px solid #575758; height:130px; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
+			<% @types = []%>
+			<% organization.programs.each do |f|%>
+				<% @types << f.subject %>
+			<% end %>
+			<% @types = @types.uniq{|x| x}%>
+			<% @count = 1%>
+			<% @types.each do |f|%>
+				<% @count = @count + 1%>
+				<%= f %><%= "," unless @count == @types.count + 1;%>
+			<% end %>
+		</div>
+	</div>
+	<div class="three columns" style="float:left;margin-left:10px; padding:10px; background-color:#c1dfdb; height:310.5px">
+		<p style="font-weight:600; font-size:1.1em">headquarters address: </p>?? Should I add this to the "create an org" page?
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<p style="font-weight:600; font-size:1.1em">phone:</p> (<%= organization.phone[0..2]%>) <%=organization.phone[3..5]%>-<%=organization.phone[6..9]%>
+		<br />
+		<br />
+		<br />
+		
+		<p style="font-weight:600; font-size:1.1em">email: </p><%= organization.email%>
+		<br />
+		<br />
+		<br />
+		<br />
+		
+	</div>
+</div>
+<div class="row">
+	<div class="twelve columns" style="font-size:1.5em; margin-top:25px; width:20%">
+
+		<u><b>Details:</b></u>
+	</div>
+	<div class="twelve columns">
+		<div class="six columns" style="border-right:1px solid #e67b5a; font-size:1.1em;">
+			<br />
+			<p style="font-weight:600">Operating since: </p><%=organization.operating_since%><br />
+			
+			<p style="font-weight:600">Run by: </p><%=organization.run_by%><br />
+			
+			<p style="font-weight:600"># Volunteers each year: </p><%=organization.num_vols_yr%><br />
+			<p style="font-weight:600"># Volunteers to date: </p><%=organization.num_vols_date%><br />
+			<p style="font-weight:600">Application process: </p><%=organization.application_process%><br />
+			<p style="font-weight:600">Business Model: </p><%= organization.business_model%><br />
+			
+			<p style="font-weight:600">ID number: </p><%=organization.id_number%><br />
+			
+			<p style="font-weight:600">Volunteer Program Model: </p><%=organization.volunteer_program_model%><br />
+			
+			<% programTypes = []%>
+			<% groupSizes = []%>
+			<% programLengths = []%>
+			<% organization.programs.each do |f|%>
+			<% programTypes << f.subject unless programTypes.include?(f.subject)%>
+			<% groupSizes << f.group_size unless groupSizes.include?(f.group_size)%>
+			<% programLengths << f.length unless programLengths.include?(f.length)%>
+			<% end %>
+			
+			<p style="font-weight:600">Types of Programs: </p><% programTypes.each do |p|%> <%=p%>,<% end %><br />
+			
+		</div>
+		<div class="six columns" style="font-size:1.1em">
+			<br />
+			<p style="font-weight:600">Price Ranges: </p> <%=organization.price_ranges%><br />
+			
+			
+			<p style="font-weight:600">Average Volunteer Program Cost ($/year): </p><%=organization.program_costs%><br />
+			<p style="font-weight:600">Price Includes/Doesn't: </p><%= organization.program_costs_includes%><br />
+			<p style="font-weight:600">Price Breakdown: </p><%= organization.program_costs_breakdown%><br />
+			<p style="font-weight:600">Group Sizes: </p><% groupSizes.each do |f|%><%= f%>,<% end %><br />
+			
+			
+			
+			<p style="font-weight:600">Program Lengths: </p><% programLengths.each do |f|%><%=f%>,<%end%><br />
+			<p style="font-weight:600">Training Resources: </p><%=organization.training_resources%><br />
+			<p style="font-weight:600">Good to know: </p><%=organization.good_to_know%><br />
+		</div>
+	</div>
+
+
+	<div class="twelve columns">
+
+<br />
+<br />
+		<p style="text-align:center; margin-left:35px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewThisOrg2.png"), :controller => "reviews", :action => "new", :organization_id => organization.id, :style =>"height:20px"%></p>
+
+
+	<p style="text-align:right; margin-top:-85px; padding-bottom:20px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/vviInfo.png"), "pages/get_info"%> </p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

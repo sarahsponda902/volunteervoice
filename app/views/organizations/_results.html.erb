@@ -1,0 +1,18 @@
+	<p align="right" style="color:#e67b5a; font-size:1.1em; line-height:1.5em; margin-right:40px">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
+		<table cellspacing="0" style="border:1px solid #e67b5a; float:center; background-color:#E9ECE9; width:100%" cellpadding="0">
+			<tr style="background-color:#E9ECE9" height="30px">
+				<td style="width:40%"><p  style="margin-top:5px; font-size:1.1em;color:#575758" >	Program: <font style="font-family:architectsDaughterRegular"> <%=Program.find(f.program_id).name%></font></p></td>
+				<td style="width:30%"><p  style="margin-top:5px; font-size:1.1em;" >Trip Was: <font style="font-family:architectsDaughterRegular"> <%=Program.find(f.program_id).length%></font></p></td>
+				<td style="width:28%"><p align="right" style="width:150px"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
+			</tr>
+			<tr style="background-color:#E9ECE9">
+				<td colspan="3"><p style="color:#575758"><%= truncate(f.body, :length => 200, :omission => "...")%>This is just more text for the screenshot. This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.This is just more text for the screenshot.</p></td>
+			</tr>
+			<tr style="margin:0;padding:0; background-color:#E9ECE9;">
+				<td style="width:35%"></td>
+				<td style="width:5%"></td>
+				<td style="width:60%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><%=link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), "#flag-box", :class => "flag-window", :poster_id => f.user_id, :review_id => f.id%></p></td>
+			</tr>
+		</table>
+		<br />
+		<br />
