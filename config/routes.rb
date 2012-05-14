@@ -104,9 +104,9 @@ RMTest::Application.routes.draw do
     
     match "confirmations/new" => 'devise/confirmations#new'
     
-    match "confirmations/:confirmation_token", 'devise/confirmations#show'
+    match "confirmations/:confirmation_token", 'users/confirmations#show'
     
-    match "unlocks/:unlock_token", 'devise/unlocks#unlock_account'
+    match "unlocks/:unlock_token", 'users/unlocks#show'
     
     match "passwords/:reset_password_token", 'devise/passwords#edit'
   
