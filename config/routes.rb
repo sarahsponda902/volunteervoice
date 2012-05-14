@@ -106,11 +106,11 @@ RMTest::Application.routes.draw do
     
     match "confirmations/new" => 'confirmations#new'
     
-    match "confirmations/:confirmation_token", 'confirmations#show'
+    match "confirmations/:confirmation_token" => 'confirmations#show'
     
-    match "unlocks/:unlock_token", 'unlocks#unlock_account'
+    match "unlocks/:unlock_token" => 'unlocks#unlock_account'
     
-    match "passwords/:reset_password_token", 'passwords#edit'
+    match "passwords/:reset_password_token" => 'passwords#edit'
   
   end
   
