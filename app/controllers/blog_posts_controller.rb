@@ -1,9 +1,5 @@
 class BlogPostsController < ApplicationController
 	unloadable
-
-  require 'rubygems'
-  require 'RMagick'
-  include Magick
   
 	helper :blog
 
