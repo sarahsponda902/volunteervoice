@@ -152,6 +152,7 @@ GEM
       macaddr (~> 1.0)
     warden (1.1.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -176,3 +177,4 @@ DEPENDENCIES
   sunspot_rails
   thin
   uglifier (>= 1.0.3)
+  will_paginate
