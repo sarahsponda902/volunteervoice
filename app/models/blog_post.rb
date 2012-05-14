@@ -116,13 +116,12 @@ class BlogPost < ActiveRecord::Base
       blitline_service = Blitline.new
       blitline_service.jobs << job
       url = blitline_service.post_jobs["results"][0]["images"][0]["s3_url"]
-      temp = File.new('temp.jpg', 'wb+')
-      open('temp.jpg', 'wb+') do |file|
+      temp = File.new(self.id+'.jpg', 'wb+')
+      open(self.id+'.jpg', 'wb+') do |file|
         file << open(url).read
       end
       self.square_image = temp
       self.save
-      File.delete('temp.jpg')
     end
   end
 
