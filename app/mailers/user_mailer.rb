@@ -1,4 +1,6 @@
 class UserMailer < ActionMailer::Base  
+  default :from => "no-reply@volunteervoice.org"
+  
   require 'rubygems'
   require 'madmimi'
   
