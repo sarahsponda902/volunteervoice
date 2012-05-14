@@ -10,7 +10,10 @@ $(document).ready(function() {
 		}
 	});
 	
-	$('#volunteeredBefore').hide();
+	if ($('#volunteeredBefore').val() == "false"){
+		
+	$('#volunteeredBefore').hide();}
+	
 	
 	$('a.question-window').click(function() {
 

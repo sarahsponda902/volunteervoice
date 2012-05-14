@@ -18,7 +18,7 @@ module DeviseHelper
      line-height:1.5em;
      margin-top: 1em;
      color: #e67b5a;
-     border: 1px solid #575758; 
+     border: 1px solid #e67b5a; 
      font-family:architectsDaughterRegular;
      background: #c1dfdb;
      font-size:1.1em'>"

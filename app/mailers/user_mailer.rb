@@ -4,19 +4,19 @@ class UserMailer < ActionMailer::Base
   
   def confirmation_instructions(resource)
       @options = {"promotion_name" => "ConfirmEmail", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "VolunteerVoice Confirmation Email"}
-      @yaml_body = {'instrux' => confirmation_url(resource, :confirmation_token => resource.confirmation_token), 'usrname' => resource.username}
+      @yaml_body = {'instrux' => "/confirmations/#{resource.confirmation_token}", 'usrname' => resource.username}
       MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
   end
   
   def unlock_instructions(resource)
     @options = {"promotion_name" => "UnlockAccount", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "Unlock VolunteerVoice Account"}
-    @yaml_body = {'instrux' => unlock_url(resource, :unlock_token => resource.unlock_token), 'usrname' => resource.username}
+    @yaml_body = {'instrux' => "/unlocks/#{resource.unlock_token}", 'usrname' => resource.username}
     MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
   end
   
   def reset_password_instructions(resource)
     @options = {"promotion_name" => "ResetPassword", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "Reset Password on VolunteerVoice Account"}
-    @yaml_body = {'instrux' => edit_password_url(resource, :reset_password_token => resource.reset_password_token), 'usrname' => resource.username}
+    @yaml_body = {'instrux' => "/passwords/#{resouce.edit_password_token}", 'usrname' => resource.username}
     MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
   end
   
