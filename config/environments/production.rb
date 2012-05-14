@@ -56,5 +56,7 @@ RMTest::Application.configure do
   Progstr::Filer.access_key = "f14c68827a4f4df2b58d3e4e27b4851f"
   Progstr::Filer.secret_key = "e2d128c88b4d43f290ae0384ca0e995e"
   
+  config.load_paths.unshift "#{RAILS_ROOT}/vendor/gems/RedCloth-4.2.9/ext/redcloth_scan"
+  
   
 end
