@@ -121,7 +121,7 @@ class BlogPost < ActiveRecord::Base
         file << open(url).read
       end
       self.square_image = temp
-      self.square_image.save
+      self.save
     end
   end
 
