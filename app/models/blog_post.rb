@@ -37,7 +37,7 @@ class BlogPost < ActiveRecord::Base
 
 	before_save :check_published, :if => :not_resaving?
 	before_save :save_tags, :if => :not_resaving?
-	before_save :square_image
+	before_save :square_image_crop
 	
 	
   has_file :image, PhotoUploader
@@ -107,7 +107,7 @@ class BlogPost < ActiveRecord::Base
   end
   
   private
-  def square_image
+  def square_image_crop
     if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
       job = Blitline::Job.new(self.image.url)
       job.application_id = "UUVLpW9l2-s_hzz50zH4oQ"
