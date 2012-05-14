@@ -170,6 +170,7 @@ DEPENDENCIES
   progress_bar
   progstr-filer
   rails (= 3.2.2.rc1)
+  railties
   sass-rails (~> 3.2.3)
   sqlite3-ruby
   sunspot_rails

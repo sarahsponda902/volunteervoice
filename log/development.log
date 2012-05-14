@@ -1305,3 +1305,403 @@ ActionController::RoutingError (No route matches [GET] "/assets/BEBAS___-webfont
 
 
   Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-05-14 02:26:46 -0700
+Processing by PagesController#home as HTML
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'[0m
+  [1m[35mOrganization Load (0.1ms)[0m  SELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "organizations" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" [0m
+  Rendered pages/home.html.erb within layouts/application (49.5ms)
+Compiled builder.js  (0ms)  (pid 81872)
+Compiled demo.js  (0ms)  (pid 81872)
+Compiled example.js  (0ms)  (pid 81872)
+Compiled jquery.imgareaselect.min.js  (0ms)  (pid 81872)
+Compiled jquery.movingboxes.js  (0ms)  (pid 81872)
+Compiled mad_mimi_emails.js  (143ms)  (pid 81872)
+Compiled prototype.js  (1ms)  (pid 81872)
+Compiled smartpaginator.js  (0ms)  (pid 81872)
+Compiled smartpaginatorRight.js  (0ms)  (pid 81872)
+Compiled application.js  (712ms)  (pid 81872)
+Compiled blog_kit.css  (0ms)  (pid 81872)
+Compiled demo.css  (0ms)  (pid 81872)
+Compiled foundation.css  (0ms)  (pid 81872)
+Compiled imgareaselect-default.css  (0ms)  (pid 81872)
+Compiled movingboxes.css  (0ms)  (pid 81872)
+Compiled scaffolds.css  (33ms)  (pid 81872)
+Compiled smartpaginator.css  (0ms)  (pid 81872)
+Compiled style.css  (0ms)  (pid 81872)
+Compiled application.css  (192ms)  (pid 81872)
+Completed 200 OK in 1090ms (Views: 1050.3ms | ActiveRecord: 1.9ms | Solr: 0.0ms)
+
+
+Started GET "/style.css" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+
+ActionController::RoutingError (No route matches [GET] "/style.css"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/assets/defaults.js" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /defaults.js - 404 Not Found (9ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/defaults.js"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /application.css - 304 Not Modified (11ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /application.js - 304 Not Modified (8ms)
+
+
+Started GET "/foundation.css" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+
+ActionController::RoutingError (No route matches [GET] "/foundation.css"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /style.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /Museo_Slab_500-webfont.woff - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/Museo_Slab_500-webfont.woff"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /BEBAS___-webfont.woff - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/BEBAS___-webfont.woff"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.ttf" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /Museo_Slab_500-webfont.ttf - 404 Not Found (77ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/Museo_Slab_500-webfont.ttf"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/assets/BEBAS___-webfont.ttf" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /BEBAS___-webfont.ttf - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/BEBAS___-webfont.ttf"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.9ms)
+
+
+Started GET "/assets/BEBAS___-webfont.svg" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /BEBAS___-webfont.svg - 404 Not Found (2ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/BEBAS___-webfont.svg"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.0ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.svg" for 127.0.0.1 at 2012-05-14 02:26:48 -0700
+Served asset /Museo_Slab_500-webfont.svg - 404 Not Found (3ms)
+
+ActionController::RoutingError (No route matches [GET] "/assets/Museo_Slab_500-webfont.svg"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/backends/base.rb:61:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.3.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
