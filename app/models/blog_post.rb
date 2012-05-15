@@ -109,8 +109,8 @@ class BlogPost < ActiveRecord::Base
   def square_image_crop
     if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
       job = Blitline::Job.new(self.image.url)
-      job.application_id = "UUVLpW9l2-s_hzz50zH4oQ"
-      crop_function = job.add_function("crop", {:x => self.crop_x, :y => self.crop_y, :width => self.crop_w, :height => self.crop_h})
+      job.application_id = "jAASDDSHhhMbRwWF_IJQhg"
+      crop_function = job.add_function("crop", {:x => self.crop_x.to_i, :y => self.crop_y.to_i, :width => self.crop_w.to_i, :height => self.crop_h.to_i})
       crop_function.add_save(self.id.to_s)
       blitline_service = Blitline.new
       blitline_service.jobs << job
