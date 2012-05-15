@@ -112,7 +112,7 @@ class BlogPost < ActiveRecord::Base
       job = Blitline::Job.new(self.image.url)
       job.application_id = "UUVLpW9l2-s_hzz50zH4oQ"
       crop_function = job.add_function("crop", {:x => self.crop_x, :y => self.crop_y, :width => self.crop_w, :height => self.crop_h})
-      crop_function.add_save(self.id+"square")
+      crop_function.add_save(self.id.to_s+"square")
       blitline_service = Blitline.new
       blitline_service.jobs << job
       url = blitline_service.post_jobs["results"][0]["images"][0]["s3_url"]
