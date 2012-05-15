@@ -113,7 +113,8 @@ class BlogPost < ActiveRecord::Base
       blitline_service = Blitline.new
       blitline_service.jobs << job
       url = blitline_service.post_jobs
-      self.square_image = url["s3_url"]
+      self.square_image = url["results"][0]["images"][0]["s3_url"]
+      self.save
     end
   end
 
