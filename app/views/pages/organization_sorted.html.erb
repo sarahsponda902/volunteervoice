@@ -27,7 +27,7 @@
 	</div>
 
 	<div id="header1O">
-		<%= image_tag @organization.image.url, :style => "height:30px" %>
+		<%= image_tag @organization.square_image, :style => "height:30px" %>
 	</div>
 	
 	<div id= "header2O">
@@ -282,7 +282,7 @@
 
 		<div id= "contents1O">
 
-			<%= image_tag User.find(f.user_id).photo.url(:thumb) %>
+			<%= image_tag User.find(f.user_id).square_image, :style=> "height:100px" %>
 		</div>
 
 		<div id= "contents2O">

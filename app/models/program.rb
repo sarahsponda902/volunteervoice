@@ -37,10 +37,10 @@ def square_image_crop
     image = MiniMagick::Image.open(self.image.url)
     crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
     image.crop(crop_params)
-    image.write "tempfile.jpg"
-    AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile.jpg"), "volunteervoice_programsquareimages", :access=>:public_read)
-    FileUtils.rm "tempfile.jpg"
-    self.square_image = "https://s3.amazonaws.com/volunteervoice_blogsquareimages/#{self.id.to_s}_square.jpg"
+    image.write "tempfile_#{self.id}_program.jpg"
+    AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile_#{self.id}_program.jpg"), "volunteervoice_programsquareimages", :access=>:public_read)
+    FileUtils.rm "tempfile_#{self.id}_program.jpg"
+    self.square_image = "https://s3.amazonaws.com/volunteervoice_programsquareimages/#{self.id.to_s}_square.jpg"
   end
 end
 

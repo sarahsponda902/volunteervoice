@@ -52,8 +52,8 @@
 			</div>
 			<div class="row" style="margin-top:25px">
 				<div class="three columns" style="float:left; height:200px; width:200px; overflow:hidden;">
-					<% if !(@user.photo.url == "")%>
-				<%= image_tag @user.photo.url, :style => "height:200px" %>
+					<% if !(@user.square_image == "")%>
+				<%= image_tag @user.square_image, :style => "height:200px" %>
 					<% else %>
 					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
 					<% end %>

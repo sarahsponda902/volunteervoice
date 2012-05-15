@@ -91,7 +91,7 @@
 <% @show_organizations.each do |f|%>
 <div class="company review" style="height:164px">
 <div class="row" style="margin-top:10px">
-<p alt="Company Photo" class="left"><image src="<%=f.image.url%>" style="height:75px; width:75px; padding-right:10px"></p>
+<p alt="Company Photo" class="left"><image src="<%=f.square_image%>" style="height:75px; width:75px; padding-right:10px"></p>
 <h3 class="medium"><a class="lightBlue" style="color:#62acbd; margin-left:10px" href="/organizations/<%=f.id%>"><%=f.name %></a></h3><br />
 <div style="margin-left:85px; margin-bottom:5px"><%= render :partial => "star", :locals => {:star => f.overall}%></div>
 <div style="margin-left:85px"><p><%= truncate(f.description, :length => 75, :omission => '...')%></p></div></div>
