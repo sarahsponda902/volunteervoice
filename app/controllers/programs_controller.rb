@@ -4,6 +4,11 @@ class ProgramsController < ApplicationController
 	require 'aws/s3'
 	
 	
+	def crop
+    @program = Program.find(params[:id])
+
+  end
+	
   # GET /programs
   # GET /programs.json
   def index
@@ -1050,18 +1055,13 @@ class ProgramsController < ApplicationController
     end
 
     if current_user.admin?
-    respond_to do |format|
       if @program.save
-         @program.index!
-        format.html { redirect_to @program, notice: 'Program was successfully created.' }
-        format.json { render json: @program, status: :created, location: @program }
+            redirect_to "/programs/#{@program.id}/crop"
       else
-        format.html { render action: "new"}
-        format.json { render json: @program.errors, status: :unprocessable_entity }
+         render :action => "new" 
       end
-    end
-  end
-  end
+   end
+end
 
   # PUT /programs/1
   # PUT /programs/1.json

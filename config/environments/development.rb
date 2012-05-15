@@ -39,5 +39,6 @@ RMTest::Application.configure do
   config.action_mailer.delivery_method = :sendmail #:smtp
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
+
   
 end

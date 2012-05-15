@@ -83,6 +83,8 @@ RMTest::Application.routes.draw do
   
   ##### USERS
   
+  match 'users/:id/crop' => 'users#crop'
+  
   match 'users.:id' => 'users#show'
   
   match 'messages_read' => 'users#mark_messages_read'
@@ -192,9 +194,15 @@ RMTest::Application.routes.draw do
   
   match "searches/sorted_results" => 'pages#sorted_results'
   
+  ###### PROGRAMS
+  
+  match 'programs/:id/crop' => 'programs#crop'
+  
   
   
   ###### ORGANIZATIONS
+  
+  match 'organizations/:id/crop' => 'organizations#crop'
   
   match "organizations/:id/edit" => 'organizations#edit'
   

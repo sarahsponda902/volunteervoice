@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120514011140) do
+ActiveRecord::Schema.define(:version => 20120515075609) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -197,6 +198,11 @@ ActiveRecord::Schema.define(:version => 20120514011140) do
     t.string   "price_ranges"
     t.string   "image"
     t.string   "id_number"
+    t.string   "square_image"
+    t.integer  "crop_x"
+    t.integer  "crop_y"
+    t.integer  "crop_w"
+    t.integer  "crop_h"
   end
 
   create_table "pages", :force => true do |t|
@@ -233,6 +239,11 @@ ActiveRecord::Schema.define(:version => 20120514011140) do
     t.string   "group_size"
     t.string   "photo"
     t.string   "organization_name"
+    t.string   "square_image"
+    t.integer  "crop_x"
+    t.integer  "crop_y"
+    t.integer  "crop_w"
+    t.integer  "crop_h"
   end
 
   create_table "reviews", :force => true do |t|
@@ -310,10 +321,7 @@ ActiveRecord::Schema.define(:version => 20120514011140) do
     t.integer  "crop_y"
     t.integer  "crop_w"
     t.integer  "crop_h"
-    t.string   "square_photo_file_name"
     t.string   "square_photo_content_type"
-    t.integer  "square_photo_file_size"
-    t.datetime "square_photo_updated_at"
     t.boolean  "approved",                  :default => false, :null => false
     t.boolean  "volunteered_before"
     t.string   "admin_pass"
@@ -328,6 +336,8 @@ ActiveRecord::Schema.define(:version => 20120514011140) do
     t.integer  "failed_attempts",           :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "square_image"
+    t.boolean  "cropping?",                 :default => false
   end
 
   add_index "users", ["approved"], :name => "index_users_on_approved"

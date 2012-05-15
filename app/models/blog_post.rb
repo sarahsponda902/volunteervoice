@@ -113,7 +113,7 @@ class BlogPost < ActiveRecord::Base
       crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
       image.crop(crop_params)
       image.write "tempfile.jpg"
-      AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile.jpg"), "volunteervoice_blogsquareimages")
+      AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile.jpg"), "volunteervoice_blogsquareimages", :access=>:public_read)
       FileUtils.rm "tempfile.jpg"
       self.square_image = "https://s3.amazonaws.com/volunteervoice_blogsquareimages/#{self.id.to_s}_square.jpg"
     end

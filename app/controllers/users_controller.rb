@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
   
+  
+	require 'aws/s3'
+  
   helper :all
   helper_method :age
+  
+  def crop
+    @user = User.find(params[:id])
+
+  end
   
   # GET /users
   # GET /users.json
@@ -546,10 +554,16 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    @user = User.find(params[:id])
+        @user = User.find(params[:id])
         if @user.update_attributes(params[:user])
-          flash[:notice] = 'User was successfully updated.'
-          redirect_to("/pages/profile")
+          if @user.cropping?
+             redirect_to "/users/#{@user.id}/crop"
+          else
+             @user.cropping? = false
+             @user.save
+             flash[:notice] = 'Your profile was successfully updated.'
+             redirect_to("/pages/profile")
+          end
         else
           render :action => "edit"
         end

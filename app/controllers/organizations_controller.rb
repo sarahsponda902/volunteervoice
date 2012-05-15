@@ -13,6 +13,11 @@ class OrganizationsController < ApplicationController
 
 
   end
+  
+  def crop
+    @organization = Organization.find(params[:id])
+
+  end
 
   # GET /organizations/1
   # GET /organizations/1.json
@@ -349,17 +354,13 @@ class OrganizationsController < ApplicationController
     @organization.overall = 0
     @organization.index!
     if current_user.admin?
-    respond_to do |format|
       if @organization.save
-        format.html { redirect_to @organization, notice: "Organization was successfully created."}
-        format.json { render json: @organization, status: :created, location: @organization }
+            redirect_to "/organizations/#{@organization.id}/crop"
       else
-        format.html { render action: "new"}
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
+         render :action => "new" 
       end
-    end
-  end
-  end
+   end
+end
 
   # PUT /organizations/1
   # PUT /organizations/1.json
