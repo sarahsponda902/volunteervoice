@@ -559,8 +559,6 @@ class UsersController < ApplicationController
           if @user.cropping?
              redirect_to "/users/#{@user.id}/crop"
           else
-             @user.cropping? = false
-             @user.save
              flash[:notice] = 'Your profile was successfully updated.'
              redirect_to("/pages/profile")
           end
