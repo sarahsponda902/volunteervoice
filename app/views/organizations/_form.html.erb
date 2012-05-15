@@ -18,7 +18,7 @@
 		
 		
 		<div class="six columns">
-<%= form_for(@organization) do |f| %>
+<%= form_for(@organization), :html => {:multipart => true} do |f| %>
 
 	<div class = "field">
 		<%= f.check_box :show %>
