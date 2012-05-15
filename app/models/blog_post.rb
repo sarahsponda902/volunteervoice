@@ -2,7 +2,6 @@ class BlogPost < ActiveRecord::Base
 	include BlogKitModelHelper
 
   require 'open-uri'
-  require 'Blitline'
 
 	unloadable
 
