@@ -5,9 +5,9 @@ a:hover{color:#9bce6c;}
 
 <table style="background-color:#E3E6D5" width="100%">
 	<%if !(f.image.url == "/images/original/missing.png")%>
-	<tr style="background-color:#E3E6D5"><td> <div align="center"><p style="margin-top:-10px"><%= image_tag f.square_image, :style => "height:40px; width:80px"%></p></div></td></tr>
+	<tr style="background-color:#E3E6D5"><td> <div align="center"><p style="margin-top:-10px"><%= image_tag f.square_image, :style => "height:100px; width:200px"%></p></div></td></tr>
 	<% end %>
 <tr style="background-color:#E3E6D5"><td><p style="margin-left:3%; margin-right:3%; margin-top:-10px; font-size:2em; line-height:1.1em"><a href="<%=f%>"> <%=f.title%></a></p></td></tr>
 <tr style="background-color:#E3E6D5"><td><p style="margin-left:3%; margin-right:3%; margin-top:-10px" href= "#">Posted <%= f.published_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></p></td></tr>
-<tr style="background-color:#E3E6D5"><td><p style="margin-left:3%; margin-top:-15px; margin-right:3%"><%= truncate(f.body, :length => 100, :omission => '...')%> </p><br /> </td></tr>
+<tr style="background-color:#E3E6D5"><td><p style="margin-left:3%; margin-top:-15px; margin-right:3%"><%= truncate(f.body.html_safe, :length => 100, :omission => '...')%> </p><br /> </td></tr>
 </table>
