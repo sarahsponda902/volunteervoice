@@ -12,7 +12,7 @@ Created: <%= @new_review.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%
 Last updated: <%= @new_review.updated_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%><br />
 <br />
 	<p style="font-size:2em;">About the User</p>
-<%= image_tag @new_review.photo.url, :style=>"height:50px"%> <br />Username (link): <%= link_to User.find(@new_review.user_id).username, User.find(@new_review.user_id)%>
+<%= image_tag @new_review.photo, :style=>"height:50px"%> <br />Username (link): <%= link_to User.find(@new_review.user_id).username, User.find(@new_review.user_id)%>
 <br />
 Volunteered With This Company Before? <b>
 	<% if(@new_review.before)%> 

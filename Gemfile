@@ -15,8 +15,6 @@ gem 'devise'
 
 gem 'madmimi'
 
-gem 'carrierwave'
-
 gem 'RedCloth'
 
 gem "galetahub-simple_captcha", :require => "simple_captcha"
@@ -29,7 +27,6 @@ group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
 end
 
-gem 'fog'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
 

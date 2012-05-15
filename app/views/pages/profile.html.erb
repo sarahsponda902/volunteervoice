@@ -208,7 +208,7 @@ function clickReviewPhoto() {
 			</div>
 			<div class="row" style="margin-top:25px">
 				<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden">
-					<% if !(@user.photo.url.nil?)%>
+					<% if !(@user.photo.nil?)%>
 				<%=image_tag @user.square_image, :style => "height:50px"%>
 					<% else %>
 					
