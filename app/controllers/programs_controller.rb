@@ -1,5 +1,9 @@
 class ProgramsController < ApplicationController
 
+	
+	require 'aws/s3'
+	
+	
   # GET /programs
   # GET /programs.json
   def index

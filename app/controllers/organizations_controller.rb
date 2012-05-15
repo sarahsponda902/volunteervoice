@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   
+	require 'aws/s3'
   
   def index
     @organizations = Organization.all

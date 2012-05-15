@@ -1,5 +1,7 @@
 class BlogPostsController < ApplicationController
 	unloadable
+	
+	require 'aws/s3'
   
 	helper :blog
 
