@@ -2,7 +2,7 @@ class BlogPost < ActiveRecord::Base
 	include BlogKitModelHelper
 
   require 'open-uri'
-  
+  require 'Blitline'
 
 	unloadable
 
@@ -112,10 +112,11 @@ class BlogPost < ActiveRecord::Base
       job = Blitline::Job.new(self.image.url)
       job.application_id = "UUVLpW9l2-s_hzz50zH4oQ"
       crop_function = job.add_function("crop", {:x => self.crop_x, :y => self.crop_y, :width => self.crop_w, :height => self.crop_h})
-      crop_function.add_save(self.id.to_s+"square")
+      crop_function.add_save(self.id.to_s)
       blitline_service = Blitline.new
       blitline_service.jobs << job
-      url = blitline_service.post_jobs["results"][0]["images"][0]["s3_url"]
+      url = blitline_service.post_jobs
+      url = url["results"][0]["images"][0]["s3_url"]
       temp = File.new('temp.jpg', 'wb+')
       open('temp.jpg', 'wb+') do |file|
         file << open(url).read
