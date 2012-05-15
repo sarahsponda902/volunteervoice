@@ -7,6 +7,7 @@ validates_presence_of :image
 
 scope :random, :order=>'RAND()', :limit=>1
 validates_uniqueness_of :name
+before_create :image_save
 before_save :square_image_crop
 
 before_create :set_page_views_to_zero
@@ -15,7 +16,6 @@ before_create :set_page_views_to_zero
   end
 
 # Paperclip
-mount_uploader :image, PhotoUploader
     
 # Sunspot Search
 searchable do
@@ -26,6 +26,11 @@ end
 
 def roundup(overall)
     (overall*2).round / 2.0
+end
+
+def image_save
+  AWS::S3::S3Object.store(self.id.to_s+"_organization.jpg", open(self.image.path), "volunteervoice_uncropped", :access => :public_read)
+    self.image = "https://s3.amazonaws.com/volunteervoice_uncropped/#{self.id.to_s}_organization.jpg"
 end
 
 def square_image_crop

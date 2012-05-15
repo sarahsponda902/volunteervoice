@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => %r{.+@.+\..+}, :message => "is not valid"
   
   before_save :square_image_crop
-  
+  before_save :image_save
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -30,8 +30,11 @@ class User < ActiveRecord::Base
   end
   
   # Paperclip
-mount_uploader :photo, PhotoUploader
-      
+
+  def image_save
+    AWS::S3::S3Object.store(self.id.to_s+"_user.jpg", open(self.photo.path), "volunteervoice_uncropped", :access => :public_read)
+    self.photo = "https://s3.amazonaws.com/volunteervoice_uncropped/#{self.id.to_s}_user.jpg"
+  end    
       
       #Simple Private Messaging     
       has_private_messages

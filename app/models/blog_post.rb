@@ -33,10 +33,9 @@ class BlogPost < ActiveRecord::Base
 	before_save :check_published, :if => :not_resaving?
 	before_save :save_tags, :if => :not_resaving?
 	before_save :square_image_crop
+	before_create :image_save
 	before_save :parse_body
-	
-	
-  mount_uploader :image, PhotoUploader
+
   
   def parse_body
     self.body = RedCloth.new(body).to_html
@@ -104,6 +103,11 @@ class BlogPost < ActiveRecord::Base
   def replace_blog_image_tags
   end
   
+
+  def image_save
+    AWS::S3::S3Object.store(self.id.to_s+"_blog.jpg", open(self.image.path), "volunteervoice_uncropped", :access => :public_read)
+        self.image = "https://s3.amazonaws.com/volunteervoice_uncropped/#{self.id.to_s}_user.jpg"
+  end
 
   def square_image_crop
     if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)

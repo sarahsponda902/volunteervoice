@@ -9,6 +9,6 @@ class BlogImage < ActiveRecord::Base
 	attr_accessor :random_id
 
 	# Check for paperclip
-  mount_uploader :image, PhotoUploader
+  
 
 end
