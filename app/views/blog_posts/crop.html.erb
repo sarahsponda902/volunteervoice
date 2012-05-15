@@ -16,10 +16,10 @@
 
 
 	    function updateVars (img, selection) {
-	        $("#crop_w").val(selection.width);
-	        $("#crop_h").val(selection.height);    
-	        $("#crop_x").val(selection.x1);
-			$("#crop_y").val(selection.y1);
+	        $("#blog_post_crop_w").val(selection.width);
+	        $("#blog_post_crop_h").val(selection.height);    
+	        $("#blog_post_crop_x").val(selection.x1);
+			$("#blog_post_crop_y").val(selection.y1);
 
 	    }         
 
@@ -62,10 +62,10 @@
 
 <div style="position:absolute; right:5%; top:200px; width:150px">
 	<%= form_for @blog_post do |f|%>
-	x: <%= f.number_field :crop_x, :id => "crop_x", :disabled => "true"%><br />
-	y: <%= f.number_field :crop_y, :id => "crop_y", :disabled => "true"%><br />
-	w: <%= f.number_field :crop_w, :id => "crop_w", :disabled => "true"%><br />
-	h: <%= f.number_field :crop_h, :id => "crop_h", :disabled => "true"%><br />
+	x: <%= f.number_field :crop_x, :disabled => "true"%><br />
+	y: <%= f.number_field :crop_y, :disabled => "true"%><br />
+	w: <%= f.number_field :crop_w, :disabled => "true"%><br />
+	h: <%= f.number_field :crop_h, :disabled => "true"%><br />
 	<%= f.submit "Crop"%>
 	<% end %>
 </div>	

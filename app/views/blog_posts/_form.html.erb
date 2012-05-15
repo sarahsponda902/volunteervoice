@@ -49,7 +49,7 @@ For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 
 
 
-<%= form_for(@blog_post, :html => { :multipart => true }) do |f| %>
+<%= form_for(@blog_post, :html => {:multipart => true }) do |f| %>
 		<div class="five columns">
 			<% if @blog_post.errors.size > 0 %>
 				<div id="errorExplanation">
