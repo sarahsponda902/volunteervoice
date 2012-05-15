@@ -37,9 +37,14 @@ class BlogPost < ActiveRecord::Base
 	before_save :check_published, :if => :not_resaving?
 	before_save :save_tags, :if => :not_resaving?
 	before_save :square_image_crop
+	before_save :parse_body
 	
 	
   has_file :image, PhotoUploader
+  
+  def parse_body
+    self.body = RedCloth.new(body).to_html
+  end
 
 	def tags
 		@tags ||= self.blog_tags.map(&:tag).join(', ')
