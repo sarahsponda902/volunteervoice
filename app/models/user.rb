@@ -13,8 +13,6 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email, :dob
   validates_length_of :username, :maximum => 30
   validates_format_of :email, :with => %r{.+@.+\..+}, :message => "is not valid"
-  validates_file_extension_of :photo, :allowed => ["jpg", "png", "jpeg", "gif"], :message => "must have one of the following extensions: jpg, jpeg, png, gif"
-  validates_file_size_of :photo, :less_than => 1 * 1024 * 1024, :message => "must be no more than 1024x1024"
   
   before_save :square_image_crop
   
