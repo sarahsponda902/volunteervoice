@@ -105,7 +105,7 @@ class BlogPost < ActiveRecord::Base
   def replace_blog_image_tags
   end
   
-  private
+
   def square_image_crop
     if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
       job = Blitline::Job.new(self.image.url)
