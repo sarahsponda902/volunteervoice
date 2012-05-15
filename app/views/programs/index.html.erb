@@ -521,7 +521,7 @@
             google.visualization.events.addListener(geochart, "regionClick", 
             function(eventData) 
                   { 
-                    document.location = "http://localhost:3000/pages/"+eventData.region+"/searches"; 
+                    document.location = "http://volunteervoice.herokuapp.com/pages/"+eventData.region+"/searches"; 
                   });
 
             geochart.draw(data, options);
