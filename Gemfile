@@ -15,6 +15,10 @@ gem 'devise'
 
 gem 'madmimi'
 
+gem 'rmagick'
+
+gem 'paperclip'
+
 gem 'RedCloth'
 
 gem "galetahub-simple_captcha", :require => "simple_captcha"
