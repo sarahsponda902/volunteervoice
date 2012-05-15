@@ -12,7 +12,7 @@ class NewReview < ActiveRecord::Base
   attr_accessible :body, :rating, :photo, :show, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall, :user_id, :organization, :program
 
   # Paperclip
-
+mount_uploader :photo, ImageUploader
 
 
       def roundup(overall)

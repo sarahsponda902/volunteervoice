@@ -1,7 +1,7 @@
 <div class="blogPost" style="color:#575758; float:right; width:100%">
 
 		<% if !(blog_post.image.url == "")%>
-		<%= image_tag blog_post.square_image, :style => "float:right; margin-top:20px; padding-left:10px; height:100px" %>
+		<%= image_tag blog_post.square_image.url, :style => "float:right; margin-top:20px; padding-left:10px; height:100px" %>
 		<% end %>
 	
 	<p class="blogPostTitle" style="font-size:2.2em; line-height:1.2em">

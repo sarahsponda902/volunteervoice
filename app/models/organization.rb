@@ -1,4 +1,7 @@
 class Organization < ActiveRecord::Base
+  
+  include CarrierWave::MiniMagick
+  
 has_many :comments
 has_many :programs
 has_many :review_os
@@ -16,7 +19,8 @@ before_create :set_page_views_to_zero
   end
 
 # Paperclip
-    
+    mount_uploader :image, ImageUploader
+    mount_uploader :square_image, ImageUploader
 # Sunspot Search
 searchable do
   text :name, :boost => 10
@@ -28,20 +32,12 @@ def roundup(overall)
     (overall*2).round / 2.0
 end
 
-def image_save
-  AWS::S3::S3Object.store(self.id.to_s+"_organization.jpg", open(self.image.path), "volunteervoice_uncropped", :access => :public_read)
-    self.image = "https://s3.amazonaws.com/volunteervoice_uncropped/#{self.id.to_s}_organization.jpg"
-end
-
 def square_image_crop
   if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
     image = MiniMagick::Image.open(self.image.url)
     crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
     image.crop(crop_params)
-    image.write "tempfile_#{self.id}_organization.jpg"
-    AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile_#{self.id}_organization.jpg"), "volunteervoice_organizationsquareimages", :access=>:public_read)
-    FileUtils.rm "tempfile_#{self.id}_organization.jpg"
-    self.square_image = "https://s3.amazonaws.com/volunteervoice_organizationsquareimages/#{self.id.to_s}_square.jpg"
+    self.square_image = image
   end
 end
 

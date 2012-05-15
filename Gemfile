@@ -9,8 +9,6 @@ gem 'sunspot_rails'
 
 gem 'progress_bar'
 
-gem "progstr-filer", :require => "progstr-filer"
-
 gem 'devise'
 
 gem 'madmimi'
@@ -34,13 +32,15 @@ gem "google_visualr", "~> 2.1.0"
 
 gem 'thin'
 
-gem 'blitline'
+gem 'fog'
+
+gem 'mini_magick'
 
 gem 'railties'
 
 gem 'will_paginate'
 
-gem 'mini_magick'
+gem 'carrierwave'
 
 gem 'aws-s3'
 

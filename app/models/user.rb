@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   
+  include CarrierWave::MiniMagick
+  
   apply_simple_captcha :message => "did not match the secret code", :distortion => "high"
   
   attr_accessible :email, :password, :password_confirmation, :remember_me, :photo, :username, :id, :age, :country, :dob, :notify, :square_photo, :crop_x, :crop_y, :crop_w, :crop_h, :captcha, :captcha_key, :approved, :volunteered_before, :admin_update, :admin_pass, :messages_show, :profile_show, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :confirmation_token, :crops, :square_image 
@@ -24,17 +26,10 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
  
   
-  def photo_geometry(style = :original)
-    @geometry ||= {}
-    @geometry[style] ||= Paperclip::Geometry.from_file(photo.path(style))
-  end
-  
   # Paperclip
-
-  def image_save
-    AWS::S3::S3Object.store(self.id.to_s+"_user.jpg", open(self.photo.path), "volunteervoice_uncropped", :access => :public_read)
-    self.photo = "https://s3.amazonaws.com/volunteervoice_uncropped/#{self.id.to_s}_user.jpg"
-  end    
+mount_uploader :photo, ImageUploader
+mount_uploader :square_image, ImageUploader
+  
       
       #Simple Private Messaging     
       has_private_messages
@@ -49,10 +44,7 @@ def square_image_crop
     image = MiniMagick::Image.open(self.photo.url)
     crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
     image.crop(crop_params)
-    image.write "tempfile_#{self.id}_user.jpg"
-    AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile_#{self.id}_user.jpg"), "volunteervoice_usersquareimages", :access=>:public_read)
-    FileUtils.rm "tempfile_#{self.id}_user.jpg"
-    self.square_image = "https://s3.amazonaws.com/volunteervoice_usersquareimages/#{self.id.to_s}_square.jpg"
+    self.square_image = image
   end
 end
   

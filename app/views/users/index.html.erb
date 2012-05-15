@@ -38,7 +38,7 @@
 		<td><% @now = Time.now.utc.to_date%>
 		<%= @now.year - user.dob.year - ((@now.month > user.dob.month || (@now.month == user.dob.month && @now.day >= user.dob.day)) ? 0 : 1) %></td>
 		<td><%= @theCountries[user.country] %></td>
-		<td><%= image_tag user.square_image, :style => "height:30px" %></td>
+		<td><%= image_tag user.square_image.url, :style => "height:30px" %></td>
 		<td><% if user.confirmed? %>
 			<font style="font-weight:600;color:green">Yes</font>
 			<% else %>

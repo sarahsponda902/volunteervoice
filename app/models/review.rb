@@ -15,7 +15,7 @@ validates_file_size_of :photo, :less_than => 1 * 1024 * 1024, :message => "must 
 attr_accessible :user_id, :program_id, :body, :rating, :photo, :show, :organization_id, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall
 
 # Paperclip
-
+mount_uploader :photo, ImageUploader
 
 def image_save
   AWS::S3::S3Object.store(self.id.to_s+"_review.jpg", open(self.photo.path), "volunteervoice_uncropped", :access => :public_read)

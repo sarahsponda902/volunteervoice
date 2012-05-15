@@ -11,7 +11,7 @@
 <p style="margin-top:30px; line-height:2em; margin-bottom:20px; font-size:3em; text-align:center">Review by <%= (User.find(@review.user_id)).username%></p>
 
 <% if !(@review.photo_file_name.nil?)%>
-<p style="text-align:center"><%= image_tag @review.photo, :style => "height:50px" %></p>
+<p style="text-align:center"><%= image_tag @review.photo.url, :style => "height:50px" %></p>
 <% end %>
 <br />
 <br />

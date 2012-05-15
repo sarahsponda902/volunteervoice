@@ -1,5 +1,7 @@
 class BlogPost < ActiveRecord::Base
 	include BlogKitModelHelper
+	
+	include CarrierWave::MiniMagick
 
 	unloadable
 
@@ -35,6 +37,9 @@ class BlogPost < ActiveRecord::Base
 	before_save :square_image_crop
 	before_create :image_save
 	before_save :parse_body
+	
+	mount_uploader :image, ImageUploader
+	mount_uploader :square_image, ImageUploader
 
   
   def parse_body
@@ -104,22 +109,13 @@ class BlogPost < ActiveRecord::Base
   end
   
 
-  def image_save
-    AWS::S3::S3Object.store(self.id.to_s+"_blog.jpg", open(self.image.path), "volunteervoice_uncropped", :access => :public_read)
-        self.image = "https://s3.amazonaws.com/volunteervoice_uncropped/#{self.id.to_s}_user.jpg"
-  end
-
   def square_image_crop
     if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
       image = MiniMagick::Image.open(self.image.url)
       crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
       image.crop(crop_params)
-      image.write "tempfile.jpg"
-      AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile.jpg"), "volunteervoice_blogsquareimages", :access=>:public_read)
-      FileUtils.rm "tempfile.jpg"
-      self.square_image = "https://s3.amazonaws.com/volunteervoice_blogsquareimages/#{self.id.to_s}_square.jpg"
+      self.square_image = image
     end
   end
-
   
 end
