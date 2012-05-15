@@ -8,6 +8,7 @@ validates_file_size_of :photo, :less_than => 1 * 1024 * 1024, :message => "must 
 validates_file_extension_of :chart, :allowed => ["jpg", "png", "jpeg", "gif"], :message => "must have one of the following extensions: jpg, jpeg, png, gif"
 validates_file_size_of :chart, :less_than => 1 * 1024 * 1024, :message => "must be no more than 1024x1024"
 
+before_save :square_image_crop
 
 # Paperclip
   has_file :photo, PhotoUploader
@@ -29,6 +30,18 @@ end
 
 def roundup(overall)
     (overall*2).round / 2.0
+end
+
+def square_image_crop
+  if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
+    image = MiniMagick::Image.open(self.image.url)
+    crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
+    image.crop(crop_params)
+    image.write "tempfile.jpg"
+    AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile.jpg"), "volunteervoice_blogsquareimages")
+    FileUtils.rm "tempfile.jpg"
+    self.square_image = "https://s3.amazonaws.com/volunteervoice_blogsquareimages/#{self.id.to_s}_square.jpg"
+  end
 end
 
 end

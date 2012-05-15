@@ -9,6 +9,7 @@ validates_presence_of :image
 
 scope :random, :order=>'RAND()', :limit=>1
 validates_uniqueness_of :name
+before_save :square_image_crop
 
 before_create :set_page_views_to_zero
   def set_page_views_to_zero
@@ -27,6 +28,18 @@ end
 
 def roundup(overall)
     (overall*2).round / 2.0
+end
+
+def square_image_crop
+  if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
+    image = MiniMagick::Image.open(self.image.url)
+    crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
+    image.crop(crop_params)
+    image.write "tempfile.jpg"
+    AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile.jpg"), "volunteervoice_blogsquareimages")
+    FileUtils.rm "tempfile.jpg"
+    self.square_image = "https://s3.amazonaws.com/volunteervoice_blogsquareimages/#{self.id.to_s}_square.jpg"
+  end
 end
 
 

@@ -1,8 +1,6 @@
 class BlogPost < ActiveRecord::Base
 	include BlogKitModelHelper
 
-  require 'open-uri'
-
 	unloadable
 
   attr_accessible :blog_type, :image, :body, :title, :tags, :published, :g, :blog_link, :is_our_blog, :square_image, :thumbnail, :crop_x, :crop_y, :crop_h, :crop_w, :source_title, :source
@@ -112,7 +110,7 @@ class BlogPost < ActiveRecord::Base
   def square_image_crop
     if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
       image = MiniMagick::Image.open(self.image.url)
-      crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+      crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
       image.crop(crop_params)
       image.write "tempfile.jpg"
       AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile.jpg"), "volunteervoice_blogsquareimages")
