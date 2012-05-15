@@ -11,7 +11,7 @@ class BlogPostsController < ApplicationController
 	before_filter :require_admin, :except => [:index, :show, :tag]
 
   def index
-    @blog_posts = BlogPost.published
+    @blog_posts = BlogPost.published.paginate(:page => params[:page], :order => 'updated_at DESC')
     @index_title = BlogKit.instance.settings['blog_name'] || 'Blog'
 
     respond_to do |format|

@@ -35,7 +35,7 @@ class BlogPost < ActiveRecord::Base
 	before_save :check_published, :if => :not_resaving?
 	before_save :save_tags, :if => :not_resaving?
 	before_save :square_image_crop
-	before_create :image_save
+
 	before_save :parse_body
 	
 	mount_uploader :image, ImageUploader
