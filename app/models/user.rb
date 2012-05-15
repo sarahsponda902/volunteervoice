@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => %r{.+@.+\..+}, :message => "is not valid"
   
   before_save :square_image_crop
-  before_save :image_save
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

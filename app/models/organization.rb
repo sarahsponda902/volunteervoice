@@ -10,7 +10,7 @@ validates_presence_of :image
 
 scope :random, :order=>'RAND()', :limit=>1
 validates_uniqueness_of :name
-before_create :image_save
+
 before_save :square_image_crop
 
 before_create :set_page_views_to_zero
