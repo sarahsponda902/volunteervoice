@@ -558,7 +558,7 @@ class UsersController < ApplicationController
   def update
         @user = User.find(params[:id])
         if @user.update_attributes(params[:user])
-          if @user.cropping?
+          if @user.cropping
              redirect_to "/users/#{@user.id}/crop"
           else
              flash[:notice] = 'Your profile was successfully updated.'
