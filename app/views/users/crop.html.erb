@@ -16,10 +16,10 @@
 
 
 	    function updateVars (img, selection) {
-	        $("#blog_post_crop_w").val(selection.width);
-	        $("#blog_post_crop_h").val(selection.height);    
-	        $("#blog_post_crop_x").val(selection.x1);
-			$("#blog_post_crop_y").val(selection.y1);
+	        $("#user_crop_w").val(selection.width);
+	        $("#user_crop_h").val(selection.height);    
+	        $("#user_crop_x").val(selection.x1);
+			$("#user_crop_y").val(selection.y1);
 
 	    }         
 
@@ -58,7 +58,7 @@
 	</div>
 </div>
 
-<div style="position:absolute; right:5%; top:300px; width: 150px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed width for a blog post image. It will not get any smaller</div>
+<div style="position:absolute; right:5%; top:300px; width: 150px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed size for a user image. It will not get any smaller</div>
 
 <div style="position:absolute; right:5%; top:200px; width:150px">
 	<%= form_for @user do |f|%>
