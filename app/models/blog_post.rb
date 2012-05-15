@@ -38,7 +38,7 @@ class BlogPost < ActiveRecord::Base
 	before_save :parse_body
 	
 	
-  has_attached_file :image
+  mount_uploader :image, PhotoUploader
   
   def parse_body
     self.body = RedCloth.new(body).to_html

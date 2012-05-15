@@ -17,7 +17,7 @@ before_create :set_page_views_to_zero
   end
 
 # Paperclip
-has_attached_file :image
+mount_uploader :image, PhotoUploader
     
 # Sunspot Search
 searchable do

@@ -15,7 +15,7 @@ validates_file_size_of :photo, :less_than => 1 * 1024 * 1024, :message => "must 
 attr_accessible :user_id, :program_id, :body, :rating, :photo, :show, :organization_id, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall
 
 # Paperclip
-has_attached_file :photo
+mount_uploader :photo, PhotoUploader
 		
 		
     def roundup(overall)
