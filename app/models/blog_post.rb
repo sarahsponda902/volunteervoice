@@ -40,8 +40,6 @@ class BlogPost < ActiveRecord::Base
 	
 	
   has_file :image, PhotoUploader
-		
-	has_file :square_image, PhotoUploader
 
 	def tags
 		@tags ||= self.blog_tags.map(&:tag).join(', ')
@@ -111,18 +109,11 @@ class BlogPost < ActiveRecord::Base
       job = Blitline::Job.new(self.image.url)
       job.application_id = "jAASDDSHhhMbRwWF_IJQhg"
       crop_function = job.add_function("crop", {:x => self.crop_x.to_i, :y => self.crop_y.to_i, :width => self.crop_w.to_i, :height => self.crop_h.to_i})
-      crop_function.add_save(self.id.to_s)
+      crop_function.add_save(self.id.to_s).add_s3_destination(self.id.to_s+"_square", "volunteervoice_blogsquareimages")
       blitline_service = Blitline.new
       blitline_service.jobs << job
       url = blitline_service.post_jobs
-      url = url["results"][0]["images"][0]["s3_url"]
-      temp = File.new('temp.jpg', 'wb+')
-      open('temp.jpg', 'wb+') do |file|
-        file << open(URI.parse(url)).read
-      end
-      self.square_image = temp
-      self.save
-      File.delete('temp.jpg')
+      self.square_image = url["s3_url"]
     end
   end
 
