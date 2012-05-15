@@ -111,14 +111,13 @@ class BlogPost < ActiveRecord::Base
 
   def square_image_crop
     if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
-      job = Blitline::Job.new(self.image.url)
-      job.application_id = "jAASDDSHhhMbRwWF_IJQhg"
-      crop_function = job.add_function("crop", {:x => self.crop_x.to_i, :y => self.crop_y.to_i, :width => self.crop_w.to_i, :height => self.crop_h.to_i})
-      crop_function.add_save(self.id.to_s).add_s3_destination(self.id.to_s+"_square", "volunteervoice_blogsquareimages")
-      blitline_service = Blitline.new
-      blitline_service.jobs << job
-      url = blitline_service.post_jobs
-      self.square_image = url["results"][0]["images"][0]["s3_url"]
+      image = MiniMagick::Image.open(self.image.url)
+      crop_params = "#{params[:crop_w]}x#{params[:crop_h]}+#{params[:crop_x]}+#{params[:crop_y]}"
+      image.crop(crop_params)
+      image.write "tempfile.jpg"
+      AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile.jpg"), "volunteervoice_blogsquareimages")
+      FileUtils.rm "tempfile.jpg"
+      self.square_image = "https://s3.amazonaws.com/volunteervoice_blogsquareimages/#{self.id.to_s}_square.jpg"
     end
   end
 
