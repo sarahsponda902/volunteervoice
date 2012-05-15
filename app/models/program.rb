@@ -11,9 +11,9 @@ validates_file_size_of :chart, :less_than => 1 * 1024 * 1024, :message => "must 
 before_save :square_image_crop
 
 # Paperclip
-  has_file :photo, PhotoUploader
+  has_attached_file :photo
 		
-  has_file :chart, PhotoUploader
+  has_attached_file :chart
     
 # Sunspot Search
 searchable do

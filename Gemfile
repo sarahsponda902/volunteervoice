@@ -15,9 +15,7 @@ gem 'devise'
 
 gem 'madmimi'
 
-gem 'rmagick'
-
-gem 'paperclip'
+gem 'carrierwave'
 
 gem 'RedCloth'
 

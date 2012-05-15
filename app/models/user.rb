@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
   
   # Paperclip
-  has_file :photo, PhotoUploader
+  has_attached_file :photo
       
       
       #Simple Private Messaging     
