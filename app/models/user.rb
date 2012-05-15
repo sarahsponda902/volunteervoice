@@ -47,7 +47,7 @@ def square_image_crop
     crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
     image.crop(crop_params)
     image.write "tempfile_#{self.id}_user.jpg"
-    AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile_#{self.id}_user.jpg"), "volunteervoice_usersquareimages")
+    AWS::S3::S3Object.store(self.id.to_s+"_square.jpg", open("tempfile_#{self.id}_user.jpg"), "volunteervoice_usersquareimages", :access=>:public_read)
     FileUtils.rm "tempfile_#{self.id}_user.jpg"
     self.square_image = "https://s3.amazonaws.com/volunteervoice_usersquareimages/#{self.id.to_s}_square.jpg"
   end
