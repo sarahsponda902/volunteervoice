@@ -118,7 +118,7 @@ class BlogPost < ActiveRecord::Base
       url = url["results"][0]["images"][0]["s3_url"]
       temp = File.new('temp.jpg', 'wb+')
       open('temp.jpg', 'wb+') do |file|
-        file << open(url).read
+        file << open(url, "User-Agent" => "Ruby/#{RUBY_VERSION}").read
       end
       self.square_image = temp
       self.save
