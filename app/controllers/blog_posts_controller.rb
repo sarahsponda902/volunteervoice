@@ -22,7 +22,11 @@ class BlogPostsController < ApplicationController
   end
   
   def crop
-    @blog_post = BlogPost.find(params[:id])
+    if user_signed_in? && current_user.admin?
+      @blog_post = BlogPost.find(params[:id])
+    else
+      redirect_to "/pages/blogs"
+    end
 
   end
 

@@ -8,7 +8,9 @@ class UsersController < ApplicationController
   
   def crop
     @user = User.find(params[:id])
-
+    if !(user_signed_in? && current_user.id == @user.id)
+      redirect_to "/pages/blogs"
+    end
   end
   
   # GET /users

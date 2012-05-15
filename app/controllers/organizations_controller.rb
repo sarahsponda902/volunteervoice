@@ -15,8 +15,11 @@ class OrganizationsController < ApplicationController
   end
   
   def crop
-    @organization = Organization.find(params[:id])
-
+    if user_signed_in? && current_user.admin?
+      @organization = Organization.find(params[:id])
+    else
+      redirect_to "/pages/blogs"
+    end
   end
 
   # GET /organizations/1

@@ -5,8 +5,11 @@ class ProgramsController < ApplicationController
 	
 	
 	def crop
-    @program = Program.find(params[:id])
-
+    if user_signed_in? && current_user.admin?
+      @program = Program.find(params[:id])
+    else
+      redirect_to "/pages/blogs"
+    end
   end
 	
   # GET /programs
