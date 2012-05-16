@@ -228,7 +228,7 @@ $(document).ready(function() {
 <% else %>
 <% programs_array = Program.where(:organization_id => @review.organization_id).map { |p| [p.name, p.id]}%>
 <% end %>
-<%= form_for(@review, :id => "theForm") do |f| %>
+<%= nested_form_for(@review, :id => "theForm") do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<% if !(params[:created_at].nil?)%>
 	<%= f.hidden_field :created_at, :value => params[:created_at]%>
