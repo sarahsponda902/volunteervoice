@@ -1,5 +1,20 @@
 <%= stylesheet_link_tag '/assets/jquery.fileupload-ui.css'%>
 
+<head>
+<meta charset="utf-8">
+<!-- Bootstrap CSS Toolkit styles -->
+<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css">
+<!-- Bootstrap styles for responsive website layout, supporting different screen sizes -->
+<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-responsive.min.css">
+<!-- Bootstrap CSS fixes for IE6 -->
+<!--[if lt IE 7]><link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap-ie6.min.css"><![endif]-->
+<!-- Bootstrap Image Gallery styles -->
+<link rel="stylesheet" href="http://blueimp.github.com/Bootstrap-Image-Gallery/css/bootstrap-image-gallery.min.css">
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+<!-- Shim to make HTML5 elements usable in older Internet Explorer versions -->
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
 <h2><%= t('photos.title') %></h2>
 <%= form_for ReviewPhoto.new, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
@@ -115,6 +130,7 @@
 
 <!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
 <%= javascript_include_tag '/assets/jquery.ui.widget.js' %>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <!-- The Templates and Load Image plugins are included for the FileUpload user interface -->
 <script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
 <script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
@@ -122,6 +138,12 @@
 <%= javascript_include_tag '/assets/jquery.iframe-transport.js' %>
 <%= javascript_include_tag '/assets/jquery.fileupload.js' %>
 <%= javascript_include_tag '/assets/jquery.fileupload-ui.js' %>
+<script src="/assets/jquery.fileupload-fp.js"></script>
+<script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
+<script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
+<script src="http://blueimp.github.com/JavaScript-Canvas-to-Blob/canvas-to-blob.min.js"></script>
+<script src="http://blueimp.github.com/cdn/js/bootstrap.min.js"></script>
+<script src="http://blueimp.github.com/Bootstrap-Image-Gallery/js/bootstrap-image-gallery.min.js"></script>
 <!-- add include_tag js files to config.assets.precompile in ...environments/production.rb if you have it in vendor/ assets -->
 
 <script type="text/javascript" charset="utf-8">
