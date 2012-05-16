@@ -14,7 +14,7 @@ belongs_to :user
 
 
 
-attr_accessible :user_id, :program_id, :body, :rating, :photo, :show, :organization_id, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall, :review_photo_attributes
+attr_accessible :user_id, :program_id, :body, :rating, :photo, :show, :organization_id, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall, :review_photos_attributes
 
 # Paperclip
 mount_uploader :photo, ImageUploader
