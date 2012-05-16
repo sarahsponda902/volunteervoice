@@ -6,7 +6,6 @@ class ReviewsController < ApplicationController
       @review = Review.new(params[:review])
       @review.body = RedCloth.new(@review.body).to_html
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
-      @review.review_photos.build
        respond_to do |format|
          if @review.save
            @prog = Program.find(@review.program_id)
@@ -55,7 +54,9 @@ class ReviewsController < ApplicationController
        @review = Review.new
        if user_signed_in?
        @review.organization_id = params[:organization_id]
-
+       10.times do
+         review_photo = @review.review_photos.build
+       end
        respond_to do |format|
          format.html # new.html.erb
          format.json { render :json => @review }

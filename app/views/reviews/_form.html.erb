@@ -335,11 +335,9 @@ $(document).ready(function() {
 	   <%= f.text_area :body, :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Minimum 200 characters') {this.value = ''};this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :value => (if (params[:body].nil?); "Minimum 200 characters"; else params[:body]; end)%><br />
 
 	
-	<% @review.build_review_photos unless @review.review_photos %>
-	<%= f.fields_for @review.review_photos do |attachment_form| %>
+	<%= f.fields_for :review_photos do |builder| %>
 	<p>
-		<%= attachment_form.file_field :file %>
-		
+		<%= f.file_field :file %>
 		
 		<%= attachment_form.link_to_remove "Remove"%>	</p>
 		<br />
