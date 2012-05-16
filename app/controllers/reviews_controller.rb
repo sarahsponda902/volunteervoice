@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
       @review = Review.new(params[:review])
       @review.body = RedCloth.new(@review.body).to_html
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
-      
+      @review.review_photos.build
        respond_to do |format|
          if @review.save
            @prog = Program.find(@review.program_id)
