@@ -338,8 +338,8 @@ $(document).ready(function() {
 	<%= f.fields_for :review_photos do |attachment_form| %>
 	<p>
 		File: <%= attachment_form.file_field :file %>
-	</p>
-		<%= attachment_form.link_to_remove "Remove this attachment"%>
+		<%= attachment_form.link_to_remove "Remove this attachment"%>	</p>
+		<br />
 	<% end %>
 	<div><%= f.link_to_add "Add a photo", :review_photos%></div>
 	
