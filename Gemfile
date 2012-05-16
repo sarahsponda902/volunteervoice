@@ -25,7 +25,7 @@ group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
 end
 
-gem 'nested_form'
+gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
 
