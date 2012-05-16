@@ -113,7 +113,7 @@ class BlogPost < ActiveRecord::Base
     if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
       image = MiniMagick::Image.open(self.image.url)
       image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
-      image.set("page", "#{image[self.crop_w]}x#{image[self.crop_h]}+#{self.crop_x}+#{self.crop_y}") 
+      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
       self.square_image = image
     end
   end
