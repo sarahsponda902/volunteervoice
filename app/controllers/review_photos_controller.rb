@@ -5,7 +5,7 @@ class ReviewPhotosController < ApplicationController
     end
 
     def create
-      @review_photo = ReviewPhoto.new(params[:review_photo])
+      @review_photo = Review.find(params[:review_photo][:review_id]).review_photos.build(params[:review_photo])
       @review_photo.save
 
     end
