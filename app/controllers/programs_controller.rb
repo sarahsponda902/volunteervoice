@@ -1051,11 +1051,7 @@ class ProgramsController < ApplicationController
     @program.description = RedCloth.new(@program.description).to_html
     @program.program_structure = RedCloth.new(@program.program_structure).to_html
     @program.program_cost_breakdown = RedCloth.new(@program.program_cost_breakdown).to_html
-      image = params[:program][:photo]
-      image.write "program_#{@program.id}.jpg"
-      @program.photo = File.open("program_#{@program.id}.jpg")
-      File.delete("program_#{@program.id}.jpg")
-    
+      
     if (@program.overall.nil?) 
       @program.overall= 0;
     end
@@ -1073,12 +1069,7 @@ end
   # PUT /programs/1.json
   def update
     @program = Program.find(params[:id])
-    if !(params[:program][:photo].nil?)
-      image = params[:program][:photo]
-      image.write "program_#{@program.id}.jpg"
-      params[:program][:photo] = File.open("program_#{@program.id}.jpg")
-      File.delete("program_#{@program.id}.jpg")
-    end
+   
     if user_signed_in? && current_user.admin?
       if @program.update_attributes(params[:program])
             redirect_to "/programs/#{@program.id}/crop"

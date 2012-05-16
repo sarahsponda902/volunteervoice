@@ -92,12 +92,6 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.new(params[:blog_post])
 		@blog_post[:user_id] = current_user.id
 		@blog_post.body = RedCloth.new(@blog_post.body).to_html
-		if !(params[:blog_post][:image].nil?)
-      image = params[:blog_post][:image]
-      File.open(image.tempfile.to_path.to_s).write "blog_post_#{@blog_post.id}.jpg"
-      @blog_post.photo = File.open("blog_post_#{@blog_post.id}.jpg")
-      File.delete("blog_post_#{@blog_post.id}.jpg")
-    end
 
 		if params[:published_at].nil?
       @blog_post.published_at = Time.now
@@ -121,12 +115,6 @@ class BlogPostsController < ApplicationController
   def update
     if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.find(params[:id])
-    if !(params[:blog_post][:image].nil?)
-      image = params[:blog_post][:image]
-      image.write "blog_post_#{@blog_post.id}.jpg"
-      params[:blog_post][:image] = File.open("blog_post_#{@blog_post.id}.jpg")
-      File.delete("blog_post_#{@blog_post.id}.jpg")
-    end
     
          if @blog_post.update_attributes(params[:blog_post])
                redirect_to "/blog_post/#{@blog_post.id}/crop"

@@ -356,11 +356,6 @@ class OrganizationsController < ApplicationController
     @organization.reviews_count = 0
     @organization.overall = 0
     @organization.index!
-    image = params[:organization][:image]
-    image.write "organization_#{@organization.id}.jpg"
-    @organization.photo = File.open("organization_#{@organization.id}.jpg")
-    File.delete("organization_#{@organization.id}.jpg")
-    
     
     if user_signed_in? && current_user.admin?
       if @organization.save
@@ -375,12 +370,6 @@ end
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    if !(params[:organization][:image].nil?)
-      image = params[:organization][:image]
-      image.write "organization_#{@organization.id}.jpg"
-      params[:organization][:image] = File.open("organization_#{@organization.id}.jpg")
-      File.delete("organization_#{@organization.id}.jpg")
-    end
      if user_signed_in? && current_user.admin?
        if @organization.update_attributes(params[:organization])
              redirect_to "/organizations/#{@organization.id}/crop"
