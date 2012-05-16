@@ -116,6 +116,7 @@ class BlogPost < ActiveRecord::Base
       image.crop(crop_params)
       image.write "square_blog_#{self.id}.jpg"
       self.square_image = File.open("square_blog_#{self.id}.jpg")
+      File.delete("square_blog_#{self.id}.jpg")
     end
   end
   
