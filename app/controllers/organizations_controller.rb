@@ -375,7 +375,7 @@ end
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    if !([:organization][:image].nil?)
+    if !(params[:organization][:image].nil?)
       image = params[:organization][:image]
       image.write "organization_#{@organization.id}.jpg"
       params[:organization][:image] = File.open("organization_#{@organization.id}.jpg")

@@ -49,7 +49,7 @@ class NewReviewsController < ApplicationController
   def create
     @new_review = NewReview.new(params[:new_review])
     @new_review.body = RedCloth.new(@new_review.body).to_html
-    if !([:new_review][:photo].nil?)
+    if !(params[:new_review][:photo].nil?)
       image = params[:new_review][:photo]
       image.write "new_review_#{@new_review.id}.jpg"
       @new_review.photo = File.open("new_review_#{@new_review.id}.jpg")

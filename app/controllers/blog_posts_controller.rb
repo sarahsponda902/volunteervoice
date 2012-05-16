@@ -92,7 +92,7 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.new(params[:blog_post])
 		@blog_post[:user_id] = current_user.id
 		@blog_post.body = RedCloth.new(@blog_post.body).to_html
-		if !([:blog_post][:image].nil?)
+		if !(params[:blog_post][:image].nil?)
       image = params[:blog_post][:image]
       image.write "blog_post_#{@blog_post.id}.jpg"
       @blog_post.photo = File.open("blog_post_#{@blog_post.id}.jpg")
@@ -121,7 +121,7 @@ class BlogPostsController < ApplicationController
   def update
     if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.find(params[:id])
-    if !([:blog_post][:image].nil?)
+    if !(params[:blog_post][:image].nil?)
       image = params[:blog_post][:image]
       image.write "blog_post_#{@blog_post.id}.jpg"
       params[:blog_post][:image] = File.open("blog_post_#{@blog_post.id}.jpg")
