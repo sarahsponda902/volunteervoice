@@ -336,7 +336,7 @@ $(document).ready(function() {
 
 	
 	<% @review.build_review_photos unless @review.review_photos %>
-	<%= f.fields_for :review_photos do |attachment_form| %>
+	<%= f.fields_for @review.review_photos do |attachment_form| %>
 	<p>
 		<%= attachment_form.file_field :file %>
 		
