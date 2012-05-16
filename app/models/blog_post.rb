@@ -114,9 +114,8 @@ class BlogPost < ActiveRecord::Base
       image = MiniMagick::Image.open(self.image.url)
       crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
       image.crop(crop_params)
-      image.write "square_blog_#{self.id}.jpg"
-      self.square_image = File.open("square_blog_#{self.id}.jpg")
-      File.delete("square_blog_#{self.id}.jpg")
+      convert image -trim
+      self.square_image = image
     end
   end
   
