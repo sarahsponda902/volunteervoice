@@ -36,6 +36,8 @@ gem 'fog'
 
 gem 'mini_magick'
 
+gem 'google-analytics-rails'
+
 gem 'railties'
 
 gem 'will_paginate'
