@@ -265,7 +265,7 @@ $(document).ready(function() {
 				<% if @review.organization_id.nil?%>
 					
 				
-						<input id="tags" style="float:right; margin-right:10px; margin-top:5px; width:200px; height:20px">
+						<input id="tags" style="float:right; margin-right:10px; margin-top:5px; width:200px; height:20px" name="review[organization_name]">
 				
 				<% else %>
 				<%= Organization.find(@review.organization_id).name%>
@@ -335,7 +335,7 @@ $(document).ready(function() {
 	
 	<%= f.fields_for :review_photos do |attachment_form| %>
 	<p>
-		File: <%= attachment_form.form_field :file %>
+		File: <%= attachment_form.file_field :file %>
 	</p>
 		<%= attachment_form.link_to_remove "Remove this attachment"%>
 	<% end %>

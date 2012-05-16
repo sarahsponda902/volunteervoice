@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516061816) do
+ActiveRecord::Schema.define(:version => 20120516071453) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -253,8 +253,8 @@ ActiveRecord::Schema.define(:version => 20120516061816) do
   create_table "reviews", :force => true do |t|
     t.text     "body"
     t.integer  "program_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "user_id"
     t.boolean  "show"
     t.integer  "organization_id"
@@ -267,6 +267,7 @@ ActiveRecord::Schema.define(:version => 20120516061816) do
     t.decimal  "overall"
     t.string   "time_frame"
     t.string   "photo"
+    t.string   "organization_name"
   end
 
   create_table "searches", :force => true do |t|

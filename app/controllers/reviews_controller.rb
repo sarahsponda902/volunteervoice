@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
      if user_signed_in?
       @review = Review.new(params[:review])
       @review.body = RedCloth.new(@review.body).to_html
-      
+      @review.organization_id = Organization.where(:name => @review.organization_name).first.id
       
        respond_to do |format|
          if @review.save
