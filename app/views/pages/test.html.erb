@@ -14,7 +14,7 @@ $(document).ready(function(){
 			});
 		</script>
 		<p>
-		<%= image_tag Review.find(5).review_photos.each do |f|%>
+		<%= image_tag Review.find(6).review_photos.each do |f|%>
 		<a class="group1" href="<%=f.file.url%>"><%= image_tag f.file.url, :style => "height:50px"%></a>&nbsp;
 		<% end %>
 		</p>
