@@ -1,5 +1,6 @@
 class Review < ActiveRecord::Base
 has_many :review_photos, :dependent => :destroy
+accepts_nested_attributes_for :review_photos
   
   
 validates :terms, :acceptance => {:accept => true}
@@ -13,7 +14,7 @@ belongs_to :user
 
 
 
-attr_accessible :user_id, :program_id, :body, :rating, :photo, :show, :organization_id, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall
+attr_accessible :user_id, :program_id, :body, :rating, :photo, :show, :organization_id, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall, :review_photo_attributes
 
 # Paperclip
 mount_uploader :photo, ImageUploader
