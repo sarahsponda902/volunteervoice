@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516051254) do
+ActiveRecord::Schema.define(:version => 20120516061816) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -222,10 +222,6 @@ ActiveRecord::Schema.define(:version => 20120516051254) do
     t.string   "subject"
     t.string   "headquarters"
     t.decimal  "overall"
-    t.string   "chart_file_name"
-    t.string   "chart_content_type"
-    t.integer  "chart_file_size"
-    t.datetime "chart_updated_at"
     t.integer  "program_started"
     t.string   "start_dates"
     t.text     "program_structure"
@@ -244,6 +240,7 @@ ActiveRecord::Schema.define(:version => 20120516051254) do
     t.integer  "crop_y"
     t.integer  "crop_w"
     t.integer  "crop_h"
+    t.string   "chart"
   end
 
   create_table "review_photos", :force => true do |t|
