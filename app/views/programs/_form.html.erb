@@ -9,7 +9,7 @@
 	$(function() {
 		var availableTags = [
 			<% Organization.all.each do |f| %>
-			["<%=f.name%>", "<%=f.id%>"], 
+			"<%=f.name%>",  
 			<% end %>
 			];
 		$( "#tags" ).autocomplete({
@@ -67,7 +67,7 @@
 
 	<div class="ui-widget">
 		<label for="tags">Organization: </label>
-		<input id="tags" name="program[organization_id]" />
+		<input id="tags" name="program[organization_name]" />
 	</div>
 	</div>
 	<% else %>

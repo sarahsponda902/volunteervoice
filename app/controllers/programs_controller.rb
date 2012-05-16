@@ -1047,7 +1047,6 @@ class ProgramsController < ApplicationController
   # POST /programs.json
   def create
     @program = Program.new(params[:program])
-    @program.organization_id = Organization.where(:name => params[:organization_name]).first.id
     @program.description = RedCloth.new(@program.description).to_html
     @program.program_structure = RedCloth.new(@program.program_structure).to_html
     @program.program_cost_breakdown = RedCloth.new(@program.program_cost_breakdown).to_html
