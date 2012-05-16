@@ -54,9 +54,6 @@ class ReviewsController < ApplicationController
        @review = Review.new
        if user_signed_in?
        @review.organization_id = params[:organization_id]
-       10.times do
-         review_photo = @review.review_photos.build
-       end
        respond_to do |format|
          format.html # new.html.erb
          format.json { render :json => @review }
