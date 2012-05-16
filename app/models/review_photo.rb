@@ -1,7 +1,7 @@
 class ReviewPhoto < ActiveRecord::Base
-  attr_accessible :image, :review_id, :file
+  attr_accessible :file, :review_id
   belongs_to :review
-  mount_uploader :image, ReviewPhotoUploader
+  mount_uploader :file, ReviewPhotoUploader
   
   
 end
