@@ -24,6 +24,19 @@ $(function() {
 	});
 });
 
+function remove_fields(link) {
+  $(link).previous("input[type=hidden]").value = "1";
+  $(link).up(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).up().insert({
+    before: content.replace(regexp, new_id)
+  });
+}
+
 $(document).ready(function() {
 	$('#checkBefore').hide();
 	$('#checkTerms').hide();
@@ -231,7 +244,7 @@ $(document).ready(function() {
 <% else %>
 <% programs_array = Program.where(:organization_id => @review.organization_id).map { |p| [p.name, p.id]}%>
 <% end %>
-<%= nested_form_for(@review, :id => "theForm") do |f| %>
+<%= form_for @review do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<% if !(params[:created_at].nil?)%>
 	<%= f.hidden_field :created_at, :value => params[:created_at]%>
@@ -338,11 +351,10 @@ $(document).ready(function() {
 	<%= f.fields_for :review_photos do |builder| %>
 	<p>
 		<%= render :partial => "review_photos_form", :locals => {:f => builder} %>
-		
-		<%= builder.link_to_remove "Remove"%>	</p>
+			</p>
 		<br />
 	<% end %>
-	<div><%= f.link_to_add "Add photo", :review_photos%></div>
+	<div><%= f.link_to_add_fields "Add photo", f, :review_photos%></div>
 	
 		
 		
