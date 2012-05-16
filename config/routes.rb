@@ -252,9 +252,9 @@ RMTest::Application.routes.draw do
   	post :create_review, :on => :collection
   	end
 
-  resources :reviews do
-    resources :review_photos, :only => [:create, :destroy]
-  end
+  resources :reviews
+  
+  resources :review_photos, :only => [:index, :create, :destroy]
   
   resources :users do 
     post :send_message, :on => :collection
