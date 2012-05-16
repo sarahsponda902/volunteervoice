@@ -559,7 +559,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         if !(params[:user][:photo].nil?)
           image = params[:user][:photo]
-          image.write "user_#{@user.id}.jpg"
+          File.open(image.tempfile.to_path.to_s).write "user_#{@user.id}.jpg"
           params[:user][:photo] = File.open("user_#{@user.id}.jpg")
           File.delete("user_#{@user.id}.jpg")
         end

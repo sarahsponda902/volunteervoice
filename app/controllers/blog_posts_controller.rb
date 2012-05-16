@@ -94,7 +94,7 @@ class BlogPostsController < ApplicationController
 		@blog_post.body = RedCloth.new(@blog_post.body).to_html
 		if !(params[:blog_post][:image].nil?)
       image = params[:blog_post][:image]
-      image.write "blog_post_#{@blog_post.id}.jpg"
+      File.open(image.tempfile.to_path.to_s).write "blog_post_#{@blog_post.id}.jpg"
       @blog_post.photo = File.open("blog_post_#{@blog_post.id}.jpg")
       File.delete("blog_post_#{@blog_post.id}.jpg")
     end
