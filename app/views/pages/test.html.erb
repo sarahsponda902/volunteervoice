@@ -16,7 +16,9 @@
 </head>
 <div style = "margin-top:200px">
 <h2><%= t('photos.title') %></h2>
-<%= form_for ReviewPhoto.new, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+<% @review_photo = ReviewPhoto.new%>
+<%= form_for @review_photo, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
+<%= f.hidden_field :review_id, :value => 1%>
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">
             <div class="span7">
@@ -24,7 +26,7 @@
                 <span class="btn btn-success fileinput-button">
                     <i class="icon-plus icon-white"></i>
                     <span>Add files...</span>
-                    <%= f.file_field :path %>
+                    <input type="file" name="review_photo[file]" multiple>
                 </span>
                 <button type="submit" class="btn btn-primary start">
                     <i class="icon-upload icon-white"></i>
@@ -38,7 +40,7 @@
                     <i class="icon-trash icon-white"></i>
                     <span>Delete</span>
                 </button>
-                <input type="checkbox" class="toggle">
+
             </div>
             <div class="span5">
                 <!-- The global progress bar -->
