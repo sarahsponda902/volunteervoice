@@ -6,20 +6,8 @@ class ReviewPhotosController < ApplicationController
 
     def create
       @review_photo = ReviewPhoto.new(params[:review_photo])
-      if @review_photo.save
-        respond_to do |format|
-          format.html {  
-            render :json => [@review_photo.to_jq_upload].to_json, 
-            :content_type => 'text/html',
-            :layout => false
-          }
-          format.json {  
-            render :json => [@review_photo.to_jq_upload].to_json			
-          }
-        end
-      else 
-        render :json => [{:error => "custom_failure"}], :status => 304
-      end
+      @review_photo.save
+
     end
 
     def destroy

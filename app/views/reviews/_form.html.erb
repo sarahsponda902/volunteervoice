@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="http://blueimp.github.com/cdn/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://blueimp.github.com/Bootstrap-Image-Gallery/css/bootstrap-image-gallery.min.css">
+<%= stylesheet_link_tag '/assets/jquery.fileupload-ui.css'%>
+
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
@@ -338,8 +342,14 @@ $(document).ready(function() {
 	
 	<%= f.fields_for :review_photos do |attachment_form| %>
 	<p>
-		<%= attachment_form.file_field :file %>
-		<%= attachment_form.link_to_remove "Remove"%>	</p>
+		<span class="btn btn-success fileinput-button">
+            <i class="icon-plus icon-white"></i>
+            <span>Browse</span>
+		<%= attachment_form.file_field :file %></span>
+		
+		<button type="button" class="btn btn-danger delete">
+            <i class="icon-trash icon-white"></i>
+		<%= attachment_form.link_to_remove "Remove"%></button>	</p>
 		<br />
 	<% end %>
 	<div><%= f.link_to_add "Add photo", :review_photos%></div>
