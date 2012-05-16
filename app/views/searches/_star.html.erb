@@ -1,5 +1,4 @@
-<% @program = Program.first%>
-<% star = @program.roundup(star) %>
+<% star = (star*2).round / 2.0 %>
 	<% if star.to_f == 1%>
 	<%= image_tag "/assets/one.png", :height => "50%"%>
 	<% end %>
