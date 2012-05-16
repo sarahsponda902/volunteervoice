@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/ryanb/nested_form.git
-  revision: 38c7ef348f0e1b70cd4ca7d9e14548aef3dea607
-  specs:
-    nested_form (0.2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -188,7 +182,6 @@ DEPENDENCIES
   google_visualr (~> 2.1.0)
   madmimi
   mini_magick
-  nested_form!
   pg
   progress_bar
   rails (= 3.2.2.rc1)

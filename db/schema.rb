@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516090850) do
+ActiveRecord::Schema.define(:version => 20120516230643) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -243,13 +243,6 @@ ActiveRecord::Schema.define(:version => 20120516090850) do
     t.string   "chart"
   end
 
-  create_table "review_photos", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "review_id"
-    t.string   "file"
-  end
-
   create_table "reviews", :force => true do |t|
     t.text     "body"
     t.integer  "program_id"
@@ -268,6 +261,15 @@ ActiveRecord::Schema.define(:version => 20120516090850) do
     t.string   "time_frame"
     t.string   "photo"
     t.string   "organization_name"
+    t.string   "photo2"
+    t.string   "photo3"
+    t.string   "photo4"
+    t.string   "photo5"
+    t.string   "photo6"
+    t.string   "photo7"
+    t.string   "photo8"
+    t.string   "photo9"
+    t.string   "photo10"
   end
 
   create_table "searches", :force => true do |t|

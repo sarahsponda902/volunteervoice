@@ -123,6 +123,39 @@ $(document).ready(function() {
 		}); 
 		return false;
 		});
+		
+			$('a.addPhotos-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var allCompaniesBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(addPhotosBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(addPhotosBox).height() + 24) / 2; 
+				var popMargLeft = ($(addPhotosBox).width() + 24) / 2; 
+
+				$(addPhotosBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('a.close, #mask').live('click', function() { 
+			  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
+				$('#mask').remove();  
+			}); 
+			return false;
+			});
+		
 	});
 
 	var preparation = "notClicked";
@@ -333,18 +366,8 @@ $(document).ready(function() {
 	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:60px">Your Experience</div>
 
 	   <%= f.text_area :body, :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Minimum 200 characters') {this.value = ''};this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :value => (if (params[:body].nil?); "Minimum 200 characters"; else params[:body]; end)%><br />
-
 	
-	<%= f.fields_for :review_photos do |builder| %>
-	<p>
-		<%= render :partial => "review_photos_form", :locals => {:f => builder} %>
-		
-			</p>
-		<br />
-	<% end %>
-	<div><%= f.link_to_add "Add photo", :review_photos%></div>
-	
-		
+						<div style="margin-left:11%; margin-top:10px"><a href="#addPhotos-box" class="addPhotos-window">Attach Photos</a></div>
 		
 		<% if !(params[:before].nil?)%>
 		<br />
@@ -542,6 +565,26 @@ $(document).ready(function() {
 		<%= f.check_box :show %>	Show on Homepage? 
 		</div>
 		<% end %>
+		
+		
+		<div id="addPhotos-box" class="addPhotos-popup" style="text-align:left">
+			<p style="font-size:1.6em; text-align:center;margin-top:15px; margin-bottom:20px">Add Photos</p>
+
+		<%= f.file_field :photo %>
+		<%= f.file_field :photo2 %>
+		<%= f.file_field :photo3 %>
+		<%= f.file_field :photo4 %>
+		<%= f.file_field :photo5 %>
+		<%= f.file_field :photo6 %>
+		<%= f.file_field :photo7 %>
+		<%= f.file_field :photo8 %>
+		<%= f.file_field :photo9 %>
+		<%= f.file_field :photo10 %>
+
+		<input type="image" src="/assets/loading.gif"value="Done" id="btn_close">
+
+
+		</div>
 
 <% end %>
 
@@ -880,6 +923,28 @@ $(document).ready(function() {
 	}
 	
 	.allCompanies-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #6aaeba;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		position: fixed;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		height:550px;
+		width:350px;
+		overflow:auto;
+	}
+	
+	.addPhotos-popup{
 		display:none;
 		background: #D9DEDA;
 		padding: 10px; 	

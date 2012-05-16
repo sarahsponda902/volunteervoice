@@ -1,6 +1,4 @@
 class Review < ActiveRecord::Base
-has_many :review_photos, :as => :attachable, :dependent => :destroy
-accepts_nested_attributes_for :review_photos, :allow_destroy => true
   
   
 validates :terms, :acceptance => {:accept => true}
@@ -18,6 +16,15 @@ attr_accessible :user_id, :program_id, :body, :rating, :photo, :show, :organizat
 
 # Paperclip
 mount_uploader :photo, ImageUploader
+mount_uploader :photo2, ImageUploader
+mount_uploader :photo3, ImageUploader
+mount_uploader :photo4, ImageUploader
+mount_uploader :photo5, ImageUploader
+mount_uploader :photo6, ImageUploader
+mount_uploader :photo7, ImageUploader
+mount_uploader :photo8, ImageUploader
+mount_uploader :photo9, ImageUploader
+mount_uploader :photo10, ImageUploader
 
 
 end
