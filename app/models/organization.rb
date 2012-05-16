@@ -35,11 +35,9 @@ end
 def square_image_crop
    if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
      image = MiniMagick::Image.open(self.image.url)
-     crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
-     image.crop(crop_params)
-     image.write "square_organization_#{self.id}.jpg"
-     self.square_image = File.open("square_organization_#{self.id}.jpg")
-     File.delete("square_organization_#{self.id}.jpg")
+     image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
+     image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
+     self.square_image = image
    end
  end
 

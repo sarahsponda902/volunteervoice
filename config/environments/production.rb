@@ -52,6 +52,6 @@ RMTest::Application.configure do
     :domain         => 'heroku.com'
   }
   ActionMailer::Base.delivery_method = :smtp
-  
+  GA.tracker = "UA-31745240-1"
   
 end
