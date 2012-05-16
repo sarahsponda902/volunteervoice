@@ -9,6 +9,7 @@ attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :orga
 before_save :square_image_crop
 
 # Paperclip
+    mount_uploader :chart, ImageUploader
     mount_uploader :photo, ImageUploader
     mount_uploader :square_image, ImageUploader
 # Sunspot Search
