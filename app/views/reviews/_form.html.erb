@@ -337,7 +337,7 @@ $(document).ready(function() {
 	
 	<%= f.fields_for :review_photos do |builder| %>
 	<p>
-		<%= render "review_photos_form", :locals => {:f => builder} %>
+		<%= render :partial => "review_photos_form", :locals => {:f => builder} %>
 		
 		<%= builder.link_to_remove "Remove"%>	</p>
 		<br />
