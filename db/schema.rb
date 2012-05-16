@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120515091142) do
+ActiveRecord::Schema.define(:version => 20120516051254) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -244,6 +244,13 @@ ActiveRecord::Schema.define(:version => 20120515091142) do
     t.integer  "crop_y"
     t.integer  "crop_w"
     t.integer  "crop_h"
+  end
+
+  create_table "review_photos", :force => true do |t|
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "review_id"
   end
 
   create_table "reviews", :force => true do |t|

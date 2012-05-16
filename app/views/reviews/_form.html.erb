@@ -333,8 +333,12 @@ $(document).ready(function() {
 
 	
 	
-	  <div style=" display:block"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/uploadPhoto.png" style="height:40px; cursor:pointer; margin-left:11%; margin-top:20px" onclick = "$(clickReviewPhoto())"><input id="filename" disabled = "true" value="no file selected" type="textbox" style="border:none; font-size:1.1em; background:transparent; height:25px; width:150px; position:relative; top:-15px; left:20px" value ="<%=params[:photo] unless (params[:photo].nil?)%>">
-		  <input style="visibility:hidden" id="review_photo" onchange="nameFile();showRemove();" name="review[photo]" type="file" value = "<%=params[:photo] unless (params[:photo].nil?)%>"/><div id="removeThePhoto" style="display:none;"> <p style=" float:right; margin-left:5px; margin-top:-50px; font-size:1.1em; cursor:pointer; color:#6aaeba" onclick="removePhoto()" >Remove</p></div></div><br /><br />
+	<%= f.fields_for :review_photos do |attachment_form| %>
+	<p>
+		File: <%= attachment_form.form_field :file %>
+		<%= attachment_form.link_to_remove "Remove this attachment"%>
+	<% end %>
+		
 		
 		<% if !(params[:before].nil?)%>
 		<br />
