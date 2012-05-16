@@ -557,6 +557,13 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
         @user = User.find(params[:id])
+        if !(params[:user][:photo].nil?)
+          image = params[:user][:photo]
+          image.write "user_#{@user.id}.jpg"
+          params[:user][:photo] = File.open("user_#{@user.id}.jpg")
+          File.delete("user_#{@user.id}.jpg")
+        end
+        
         if @user.update_attributes(params[:user])
           if @user.crops
              redirect_to "/users/#{@user.id}/crop"

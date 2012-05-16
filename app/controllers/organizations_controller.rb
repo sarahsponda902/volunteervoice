@@ -356,7 +356,13 @@ class OrganizationsController < ApplicationController
     @organization.reviews_count = 0
     @organization.overall = 0
     @organization.index!
-    if current_user.admin?
+    image = params[:organization][:image]
+    image.write "organization_#{@organization.id}.jpg"
+    @organization.photo = File.open("organization_#{@organization.id}.jpg")
+    File.delete("organization_#{@organization.id}.jpg")
+    
+    
+    if user_signed_in? && current_user.admin?
       if @organization.save
             redirect_to "/organizations/#{@organization.id}/crop"
       else
@@ -369,17 +375,19 @@ end
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-if current_user.admin?
-    respond_to do |format|
-      if @organization.update_attributes(params[:organization])
-        format.html { redirect_to @organization, notice: "Organization was successfully updated."}
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit"}
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
-      end
+    if !([:organization][:image].nil?)
+      image = params[:organization][:image]
+      image.write "organization_#{@organization.id}.jpg"
+      params[:organization][:image] = File.open("organization_#{@organization.id}.jpg")
+      File.delete("organization_#{@organization.id}.jpg")
     end
-  end
+     if user_signed_in? && current_user.admin?
+       if @organization.update_attributes(params[:organization])
+             redirect_to "/organizations/#{@organization.id}/crop"
+       else
+          render :action => "edit" 
+       end
+    end
   end
 
   # DELETE /organizations/1

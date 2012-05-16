@@ -1051,13 +1051,16 @@ class ProgramsController < ApplicationController
     @program.description = RedCloth.new(@program.description).to_html
     @program.program_structure = RedCloth.new(@program.program_structure).to_html
     @program.program_cost_breakdown = RedCloth.new(@program.program_cost_breakdown).to_html
-    
+      image = params[:program][:photo]
+      image.write "program_#{@program.id}.jpg"
+      @program.photo = File.open("program_#{@program.id}.jpg")
+      File.delete("program_#{@program.id}.jpg")
     
     if (@program.overall.nil?) 
       @program.overall= 0;
     end
 
-    if current_user.admin?
+    if user_signed_in? && current_user.admin?
       if @program.save
             redirect_to "/programs/#{@program.id}/crop"
       else
@@ -1070,18 +1073,19 @@ end
   # PUT /programs/1.json
   def update
     @program = Program.find(params[:id])
-
-    if current_user.admin?
-    respond_to do |format|
-      if @program.update_attributes(params[:program])
-        format.html { redirect_to @program, notice: 'Program was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit"}
-        format.json { render :json => @program.errors, status: :unprocessable_entity }
-      end
+    if !(params[:program][:photo].nil?)
+      image = params[:program][:photo]
+      image.write "program_#{@program.id}.jpg"
+      params[:program][:photo] = File.open("program_#{@program.id}.jpg")
+      File.delete("program_#{@program.id}.jpg")
     end
-  end
+    if user_signed_in? && current_user.admin?
+      if @program.update_attributes(params[:program])
+            redirect_to "/programs/#{@program.id}/crop"
+      else
+         render :action => "edit" 
+      end
+   end
   end
 
   # DELETE /programs/1

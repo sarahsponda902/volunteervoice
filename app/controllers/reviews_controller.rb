@@ -5,6 +5,13 @@ class ReviewsController < ApplicationController
      if user_signed_in?
       @review = Review.new(params[:review])
       @review.body = RedCloth.new(@review.body).to_html
+      if !(params[:review][:photo].nil?)
+        image = params[:review][:photo]
+        image.write "review_#{@review.id}.jpg"
+        params[:review][:photo] = File.open("review_#{@review.id}.jpg")
+        File.delete("review_#{@review.id}.jpg")
+      end
+      
        respond_to do |format|
          if @review.save
            @prog = Program.find(@review.program_id)
