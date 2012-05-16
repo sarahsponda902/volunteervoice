@@ -1,0 +1,20 @@
+
+<!-- Add jQuery library -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<script type="text/javascript" src="/assets/jquery.colorbox-min.js"></script>
+
+<link rel="stylesheet" href="/assets/colorbox.css" />
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+				//Examples of how to assign the ColorBox event to elements
+				$(".group1").colorbox({rel:'group1'});
+			});
+		</script>
+		<p>
+		<%= image_tag photos.each do |f|%>
+		<a class="group1" href="<%=f.url%>"><%= image_tag f.url, :style => "height:50px"%></a>&nbsp;
+		<% end %>
+		</p>

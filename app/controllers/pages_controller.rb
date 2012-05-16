@@ -24,6 +24,19 @@ class PagesController < ApplicationController
   end
   
   def test
+    @review = Review.find(12)
+    photos = []
+    photos << @review.photo unless @review.photo.nil?
+    photos << @review.photo2 unless @review.photo2.nil?
+    photos << @review.photo3 unless @review.photo3.nil?
+    photos << @review.photo4 unless @review.photo4.nil?
+    photos << @review.photo5 unless @review.photo5.nil?
+    photos << @review.photo6 unless @review.photo6.nil?
+    photos << @review.photo7 unless @review.photo7.nil?
+    photos << @review.photo8 unless @review.photo8.nil?
+    photos << @review.photo9 unless @review.photo9.nil?
+    photos << @review.photo10 unless @review.photo10.nil?
+    
   end
   	
   	def profile
