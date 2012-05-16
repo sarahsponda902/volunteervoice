@@ -4,5 +4,12 @@ class ReviewPhoto < ActiveRecord::Base
   belongs_to :review
   mount_uploader :file, ReviewPhotoUploader
   
+  def file=(val)
+    if !val.is_a?(String) && valid?
+      file_will_change!
+      super
+    end
+  end
+  
   
 end
