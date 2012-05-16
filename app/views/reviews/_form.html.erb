@@ -153,6 +153,10 @@ $(document).ready(function() {
 			  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
 				$('#mask').remove();  
 			}); 
+			$('a.close, #btn_close').live('click', function() { 
+			  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
+				$('#mask').remove();  
+			});
 			return false;
 			});
 		
