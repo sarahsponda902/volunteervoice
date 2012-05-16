@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
-has_many :review_photos, :dependent => :destroy
-accepts_nested_attributes_for :review_photos, :reject_if => lambda { |a| a[:file].blank? }, :allow_destroy => true
+has_many :review_photos, :as => :review_photoable, :dependent => :destroy
+accepts_nested_attributes_for :review_photos, :allow_destroy => true
   
   
 validates :terms, :acceptance => {:accept => true}

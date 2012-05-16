@@ -53,11 +53,6 @@ RMTest::Application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
   GA.tracker = "UA-31745240-1"
-  
-  config.model ReviewPhoto do
-    create do
-      field :file, :carrierwave
-    end
-  end
+
   
 end
