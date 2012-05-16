@@ -1072,7 +1072,7 @@ end
    
     if user_signed_in? && current_user.admin?
       if @program.update_attributes(params[:program])
-            redirect_to "/programs/#{@program.id}/crop"
+            redirect_to "/programs/#{@program.id}"
       else
          render :action => "edit" 
       end

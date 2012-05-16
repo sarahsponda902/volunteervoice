@@ -372,7 +372,7 @@ end
     @organization = Organization.find(params[:id])
      if user_signed_in? && current_user.admin?
        if @organization.update_attributes(params[:organization])
-             redirect_to "/organizations/#{@organization.id}/crop"
+             redirect_to "/organizations/#{@organization.id}"
        else
           render :action => "edit" 
        end
