@@ -1,5 +1,5 @@
 class Review < ActiveRecord::Base
-has_many :review_photos, :as => :review_photoable, :dependent => :destroy
+has_many :review_photos, :as => :attachable, :dependent => :destroy
 accepts_nested_attributes_for :review_photos, :allow_destroy => true
   
   
