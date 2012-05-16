@@ -114,7 +114,7 @@ class BlogPost < ActiveRecord::Base
       image = MiniMagick::Image.open(self.image.url)
       crop_params = "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}"
       image.crop(crop_params)
-      self.square_image = image
+      self.square_image = image.to_blob
     end
   end
   
