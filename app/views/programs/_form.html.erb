@@ -9,7 +9,7 @@
 	$(function() {
 		var availableTags = [
 			<% Organization.all.each do |f| %>
-			"<%=f.name%>",  
+			"<%=f.name%>" 
 			<% end %>
 			];
 		$( "#tags" ).autocomplete({
