@@ -28,7 +28,7 @@
 				<td style="width:60%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><%=link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), "#flag-box", :class => "flag-window", :poster_id => f.user_id, :review_id => f.id%></p></td>
 			</tr>
 			<tr style="background-color:#E9ECE9">
-				<td><% @photos.each do |photo|%>
+				<td style="width:100%"><% @photos.each do |photo|%>
 				<a class="group1" href="<%=photo.url%>"><%= image_tag photo.url, :style => "height:30px"%></a>&nbsp;
 				<% end %></td>
 			</tr>
