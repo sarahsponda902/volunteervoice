@@ -376,7 +376,7 @@ $(document).ready(function() {
 
 		<% else %>
 	
-		<image style="position:absolute; top:86%; left:10%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
+		<image style="position:absolute; top:83%; left:10%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:11%" onclick="$(beforeCheck())">
 		<input id="review_before" name="review[before]" type="checkbox" onchange = "checkFields()" style=" opacity:0; height:25px; width:25px" value="<%=params[:before] unless (params[:before].nil?)%>"/>
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have volunteered with this company before">I have volunteered with this company before</label><br /><br /><br /></div>
@@ -390,7 +390,7 @@ $(document).ready(function() {
 		<% else %>
 		
 		
-		<image style="position:absolute; height:23px; top:90.5%; left:10%" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
+		<image style="position:absolute; height:23px; top:87.5%; left:10%" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; height:25px; margin-left:11%; margin-top:-45px;" onclick="$(termsCheck());">
 		<input id="terms" name="review[terms]" type="checkbox" onchange = "checkFields()" style="opacity:0; height:25px; width:25px" value="<%=params[:terms] unless (params[:terms].nil?)%>"/>
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have read the terms of use">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label></div><br /><br />
@@ -580,7 +580,7 @@ $(document).ready(function() {
 		<%= f.file_field :photo9 %><br /><br />
 		<%= f.file_field :photo10 %><br /><br />
 
-		<input type="image" src="/assets/loading.gif" value="Done" id="btn_close">
+		<input type="image" src="/assets/done.png" onclick="return false" id="btn_close">
 
 
 		</div>		
