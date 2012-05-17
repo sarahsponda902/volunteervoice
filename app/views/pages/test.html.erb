@@ -38,7 +38,7 @@
   	<div class="set">
 	<% @photos.each do |photo| %>
   	  <div class="single">
-  		  <a href="<%=photo.url%>"><img src="<%=photo.url%>" style="height:30px"/></a>
+  		  <a href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
   	  </div>
     <% end %> 
   	</div>
