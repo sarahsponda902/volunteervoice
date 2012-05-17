@@ -190,7 +190,7 @@
   -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  margin-right: 40px;
+  margin-right: 2px;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;
@@ -204,15 +204,6 @@
 /* line 335, ../sass/screen.sass */
 .single img:hover {
   background-color: white;
-}
-
-/* line 346, ../sass/screen.sass */
-.single img {
-  background: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  margin-right: 0;
 }
 
 
