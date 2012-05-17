@@ -252,67 +252,68 @@ var	count = 0;
 	
 	function changeCount(field) {
 	if (field == "one") {
-		if $("#"+field) {
+		if ($("#one".attr("value") != "") {
 			ones = 1;
 		} else {
 			ones = 0;
 		}
 	} else if (field == "two") {
-		if $("#"+field) {
+		if ($("#two").attr("value") != "") {
 			twos = 1;
 		} else {
 			twos = 0;
 		}
 	} else if (field == "three") {
-		if $("#"+field) {
+		if ($("#three").attr("value") != "") {
 			threes = 1;
 		} else {
 			threes = 0;
 		}
 	} else if (field == "four") {
-		if $("#"+field) {
+		if ($("#four").attr("value") != "") {
 			fours = 1;
 		} else {
 			fours = 0;
 		}
 	} else if (field == "five") {
-		if $("#"+field) {
+		if ($("#five").attr("value") != "") {
 			fives = 1;
 		} else {
 			fives = 0;
 		}
 	} else if (field == "six") {
-		if $("#"+field) {
+		if ($("#six").attr("value") != "") {
 			sixs = 1;
 		} else {
 			sixs = 0;
 		}
 	} else if (field == "seven") {
-		if $("#"+field) {
+		if ($("#seven").attr("value") != "") {
 			sevens = 1;
 		} else {
 			sevens = 0;
 		}
 	} else if (field == "eight") {
-		if $("#"+field) {
+		if ($("#eight").attr("value") != "") {
 			eights = 1;
 		} else {
 			eights = 0;
 		}
 	} else if (field == "nine") {
-		if $("#"+field) {
+		if ($("#nine").attr("value") != "") {
 			nines = 1;
 		} else {
 			nines = 0;
 		}
 	} else if (field == "ten") {
-		if $("#"+field) {
+		if ($("#ten").attr("value") != "") {
 			tens = 1;
 		} else {
 			tens = 0;
 		}
 	}
-
+	count = ones + twos + threes + fours + fives + sixs + sevens + eights + nines + tens;
+	$("#the_count").attr("value", count);
 
 	}
 	
