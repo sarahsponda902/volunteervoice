@@ -34,7 +34,7 @@ class PagesController < ApplicationController
   	  @reviews = @user.reviews.order('created_at DESC')
   	  @favorites = @user.favorites
   	  @messages = @user.received_messages
-  	  @sent_messages = @user.sent_messages
+  	  @sent_messages = Message.where(:sender_id => current_user.id, :sender_deleted => false)
   	  
   	  @theCountries = Hash["AF" => "Afghanistan", 
       "AX" => "Aland Islands", 
