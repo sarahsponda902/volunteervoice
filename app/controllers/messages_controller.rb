@@ -26,35 +26,9 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
-    @message.recipient_id = params[:recipient_id]
-    @message.sender_id = current_user.id
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @message }
-    end
-  end
-
-  # GET /messages/1/edit
-  def edit
-    @message = Message.find(params[:id])
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @message }
-    end
-  end
-  
-  def update
-    @message = Message.find(params[:id])
-
-    respond_to do |format|
-      if @message.update_attributes(params[:message])
-        @message.save
-        format.html { redirect_to @message, :notice => 'Message was sent.' }
-        format.json { head :no_content }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @message.errors, :status => :unprocessable_entity }
-      end
     end
   end
 
@@ -63,8 +37,9 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.recipient_id = params[:message][:recipient_id]
+    @message.sender_id = params[:message][:sender_id]
     @message.body = RedCloth.new(@message.body).to_html
-    @message.sender_id = current_user.id
     respond_to do |format|
       if @message.save
         format.html { redirect_to "/users/#{@message.recipient_id}", :notice =>'Message was sent' }
