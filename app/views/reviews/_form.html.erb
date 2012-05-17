@@ -25,17 +25,17 @@ $(function() {
 });
 
 $(document).ready(function() {
-	var_one = 0;
-	var_two = 0;
-	var_three = 0;
-	var_four = 0;
-	var_five = 0;
-	var_six = 0;
-	var_seven = 0;
-	var_eight = 0;
-	var_nine = 0;
-	var_ten = 0;
-	count = 0;
+var	var_one = 0;
+var	var_two = 0;
+var	var_three = 0;
+var	var_four = 0;
+var	var_five = 0;
+var	var_six = 0;
+var	var_seven = 0;
+var	var_eight = 0;
+var	var_nine = 0;
+var	var_ten = 0;
+var	count = 0;
 	$('#checkBefore').hide();
 	$('#checkTerms').hide();
 	$('a.terms-window').click(function() {
@@ -219,10 +219,6 @@ $(document).ready(function() {
 	    }
 	}
 
-	function removePhoto(){
-		$("#review_photo").attr("value", "" );
-		$("#filename").attr("value", "" );
-	}
 
 
 	function setClicked(theVar) {
@@ -250,15 +246,17 @@ $(document).ready(function() {
 
 	function changeCount(field) {
 		if $("#"+field) {
-			$("#var_"+field).value = 1;
+			$("#var_"+field).attr("value", 1);
 		} else {
-			$("#var_"+field).value = 0;
+			$("#var_"+field).attr("value", 0);
 		}
-		$("#total_count").value = var_one + var_two + var_three + var_four + var_five + var_six + var_seven + var_eight + var_nine + var_ten;
+		count = var_one + var_two + var_three + var_four + var_five + var_six + var_seven + var_eight + var_nine + var_ten;
+		$("#total_count").attr("value", count);
+
 	}
 	
-	function remove(field) {
-		$("#"+field).value = null;
+	function removePhoto(field) {
+		$("#"+field).attr("value", "");
 	}
 	</script>
 
