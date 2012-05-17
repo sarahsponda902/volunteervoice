@@ -437,7 +437,7 @@ function beforeCheck() {
 	<%= f.hidden_field :sender_id, :value => current_user.id %>
 	<% end %>
 	<%= f.hidden_field :recipient_id, :value => @user.id %>
-
+	<%= current_user.id %>
 	  <div class="field">
 	    <p style="font-size:1.2em; color:#575758; margin-left:25px; line-height:2em;">Subject:</p>
 	    <%= f.text_field :subject, :style => "width:380px; height:25px; margin-left:20px; margin-right:20px;" %>
