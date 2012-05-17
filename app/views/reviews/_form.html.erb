@@ -337,7 +337,7 @@ $(document).ready(function() {
 		<div align="center" style="font-family:ArchitectsDaughterRegular; font-size:2.5em; color:#62acbd; margin-bottom: 30px;"> The Details </div>
 	<section class="writeReviewContent">
 		<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%">How long did you work with them?</div>
-		<div class="three columns" style="position:absolute; left:40%;top:90px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+		<div class="three columns" style="position:absolute; left:40%;top:40px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 			<select id="review_time_frame" name="review[time_frame]" style="position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="checkFields()" value="<%=params[:time_frame] unless (params[:time_frame].nil?)%>"><option value="">Select a Time Frame</option>
 			<option value="1 week or less">1 week or less</option>
 			<option value="2-4 weeks">2-4 weeks</option>
@@ -355,7 +355,7 @@ $(document).ready(function() {
 
 
 	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Which Program?</div>
-	<div class="three columns" style="position:absolute; left:40%; top:165px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+	<div class="three columns" style="position:absolute; left:40%; top:115px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 	<select id="review_program_id"  onchange="checkFields()" name="review[program_id]" style="position:absolute; left:-5px; border:1px solid #575758; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;"><option value="">Select a Program</option>
 		<% Program.all.each do |f|%>
 			<option value="<%=f.id%>"><%=f.name%></option>
@@ -377,7 +377,7 @@ $(document).ready(function() {
 
 		<% else %>
 	
-		<image style="position:absolute; top:83%; left:10%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
+		<image style="position:absolute; top:85%; left:10%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:11%" onclick="$(beforeCheck())">
 		<input id="review_before" name="review[before]" type="checkbox" onchange = "checkFields()" style=" opacity:0; height:25px; width:25px" value="<%=params[:before] unless (params[:before].nil?)%>"/>
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have volunteered with this company before">I have volunteered with this company before</label><br /><br /><br /></div>
@@ -391,7 +391,7 @@ $(document).ready(function() {
 		<% else %>
 		
 		
-		<image style="position:absolute; height:23px; top:87.5%; left:10%" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
+		<image style="position:absolute; height:23px; top:89.5%; left:10%" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; height:25px; margin-left:11%; margin-top:-45px;" onclick="$(termsCheck());">
 		<input id="terms" name="review[terms]" type="checkbox" onchange = "checkFields()" style="opacity:0; height:25px; width:25px" value="<%=params[:terms] unless (params[:terms].nil?)%>"/>
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have read the terms of use">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label></div><br /><br />
@@ -403,7 +403,7 @@ $(document).ready(function() {
 	</section><!--end writeDetails-->
 	</div><!--end left columns-->
 
-	<div class="six columns" style="float:right; margin-top:-580px">
+	<div class="six columns" style="float:right; margin-top:-570px">
 		<section class="writeNumbers"><!-- Numbers section of write a review page-->
 		<div align="center" style="font-family:ArchitectsDaughterRegular; font-size:2.5em; color:#62acbd; margin-bottom: 30px;"> The Numbers </div>
 		<section class="writeReviewContent"><!-- overall styling the same for both The Details column and The Numbers column-->
