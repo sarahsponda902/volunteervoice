@@ -357,7 +357,7 @@ var	count = 0;
 		<div align="center" style="font-family:ArchitectsDaughterRegular; font-size:2.5em; color:#62acbd; margin-bottom: 30px;"> The Details </div>
 	<section class="writeReviewContent">
 		<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%">How long did you work with them?</div>
-		<div class="three columns" style="position:absolute; left:40%;top:50px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+		<div class="three columns" style="position:absolute; left:40%;top:57px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 			<select id="review_time_frame" name="review[time_frame]" style="position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="checkFields()" value="<%=params[:time_frame] unless (params[:time_frame].nil?)%>"><option value="">Select a Time Frame</option>
 			<option value="1 week or less">1 week or less</option>
 			<option value="2-4 weeks">2-4 weeks</option>
@@ -375,7 +375,7 @@ var	count = 0;
 
 
 	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Which Program?</div>
-	<div class="three columns" style="position:absolute; left:40%; top:125px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+	<div class="three columns" style="position:absolute; left:40%; top:132px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 	<select id="review_program_id"  onchange="checkFields()" name="review[program_id]" style="position:absolute; left:-5px; border:1px solid #575758; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;"><option value="">Select a Program</option>
 		<% Program.all.each do |f|%>
 			<option value="<%=f.id%>"><%=f.name%></option>
@@ -387,7 +387,7 @@ var	count = 0;
 
 	   <%= f.text_area :body, :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Minimum 200 characters') {this.value = ''};this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :value => (if (params[:body].nil?); "Minimum 200 characters"; else params[:body]; end)%><br />
 	
-						<div style="margin-left:11%; margin-top:10px; margin-bottom:30px"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/addPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-15px">You have <input id="total_count" disabled="true" style="width:20px; font-family:architectsDaughterRegular; height:20px; background:none; border:none;" value="0"/> photos attached</div></div>
+						<div style="margin-left:11%; margin-top:10px; margin-bottom:30px"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/addPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-35px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:20px; font-family:architectsDaughterRegular; height:20px; background:none; border:none;" value="0"/> photos attached</div></div>
 		
 		<% if !(params[:before].nil?)%>
 		<br />
