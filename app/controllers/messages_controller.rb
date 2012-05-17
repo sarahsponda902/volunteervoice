@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
   # GET /messages/new.json
   def new
     @message = Message.new
+    @message.recipient_id = params[:recipient_id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @message }
@@ -37,8 +38,6 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
-    @message.recipient_id = params[:message][:recipient_id]
-    @message.sender_id = params[:message][:sender_id]
     @message.body = RedCloth.new(@message.body).to_html
     respond_to do |format|
       if @message.save

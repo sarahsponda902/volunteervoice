@@ -33,9 +33,7 @@
 
 	<%= form_for(@message) do |f| %>
 
-	<%= f.hidden_field :sender_id, :value => 3 %>
-
-	<%= f.hidden_field :recipient_id, :value => @user.id %>
+	<%= f.hidden_field :sender_id, :value => current_user.id%>
 
 	  <div class="field">
 	    <p style="font-size:1.2em; color:#575758; margin-left:25px; line-height:2em;">Subject:</p>
