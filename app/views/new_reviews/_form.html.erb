@@ -126,7 +126,13 @@ function setClicked(theVar) {
 function checkFields(){
 	if(($("#put").attr("value") != "  Put the organization's name here")
 		&& ($("#new_review_time_frame").attr("value") != "Select a Time Frame")
-)
+		&& ($("#theBody").attr("value").length >= 200)
+		&& ($("#terms").attr("value"))
+		&& preparation == "clicked"
+		&& support == "clicked"
+		&& impact == "clicked"
+		&& structure == "clicked"
+		&& overall == "clicked")
 		{
 			$("#submitButtonDiv").show();
 			$("#submitButtonHidden").hide();
