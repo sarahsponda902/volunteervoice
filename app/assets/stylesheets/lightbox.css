@@ -180,11 +180,8 @@
   cursor: pointer;
 }
 
-.imageRow .single {
-  float: left;
-}
 /* line 322, ../sass/screen.sass */
-.imageRow .single a {
+ .single {
   float: left;
   display: block;
   background: rgba(255, 255, 255, 0.1);
@@ -201,28 +198,21 @@
   transition: all 0.2s ease-out;
 }
 /* line 332, ../sass/screen.sass */
-.imageRow .single a img {
+.single img {
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 /* line 335, ../sass/screen.sass */
-.imageRow .single a:hover {
+.single img:hover {
   background-color: white;
 }
 
 /* line 346, ../sass/screen.sass */
-.imageRow .set .single a {
+.single img {
   background: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   margin-right: 0;
-}
-/* line 351, ../sass/screen.sass */
-.imageRow .set .single a:hover {
-  background-color: white;
-  -webkit-box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.5);
 }
 
 
