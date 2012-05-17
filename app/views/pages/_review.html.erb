@@ -26,13 +26,10 @@
 	<td colspan="3"><p style="margin-left:10px; font-size:1.05em;margin-top:-10px; height:145px; width:96.5%; margin-left:2%; overflow:auto"><%= f.body %></td>
 </p></tr>
 <tr style="background-color:#E0EEEE">
-	<td colspan="3"><p class="imageRow set">
-	<% @photos.each do |photo| %>
-  	  <p class="single">
-  		  <a href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
-  	  </p>
-    <% end %> 
-  	</p>
+	<td colspan="3">
+		<% @photos.each do |photo| %>
+	  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
+	    <% end %>
 	</td>
 </tr>
 </table>

@@ -27,12 +27,9 @@
 		</tr>
 		<tr style="margin:0;padding:0; background-color:#E9ECE9;">
 			<td style="width:54%"><p class="imageRow set">
-			<% @photos.each do |photo| %>
-		  	  <p class="single">
-		  		  <a href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
-		  	  </p>
-		    <% end %> 
-		  	</p></td>
+				<% @photos.each do |photo| %>
+			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
+			    <% end %></td>
 			<td style="width:1%"></td>
 			<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><%=link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), "#flag-box", :class => "flag-window", :poster_id => f.user_id, :review_id => f.id%></p></td>
 		</tr>
