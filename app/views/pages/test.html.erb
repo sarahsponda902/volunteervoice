@@ -16,26 +16,31 @@
 	  });
 
 	</script>
+	
+	<%f = Review.find(12)%>
 
-
+	 <%@photos = [] %>
+	 <%@photos << f.photo unless f.photo.blank?%>
+	 <%@photos << f.photo2 unless f.photo2.blank?%>
+	 <%@photos << f.photo3 unless f.photo3.blank?%>
+	<% @photos << f.photo4 unless f.photo4.blank?%>
+	<% @photos << f.photo5 unless f.photo5.blank?%>
+	<% @photos << f.photo6 unless f.photo6.blank?%>
+	<% @photos << f.photo7 unless f.photo7.blank?%>
+	<% @photos << f.photo8 unless f.photo8.blank?%>
+	<% @photos << f.photo9 unless f.photo9.blank?%>
+	<% @photos << f.photo10 unless f.photo10.blank?%>
+	
+	
 <div class="section" id="example">
-
-	<h3 style="clear: both;">Image set</h3>
 
   <div class="imageRow">
   	<div class="set">
+	<% @photos.each do |photo| %>
   	  <div class="single">
-  		  <a href="/assets/image-3.jpg" rel="lightbox[plants]" title="Click on the right side of the image to move forward."><img src="/assets/thumb-3.jpg" alt="Plants: image 1 0f 4 thumb" /></a>
-  		</div>
-      <div class="single">
-  		  <a href="/assets/image-4.jpg" rel="lightbox[plants]" title="Alternately you can press the right arrow key." ><img src="/assets/thumb-4.jpg" alt="Plants: image 2 0f 4 thumb" /></a>
-      </div>
-      <div class="single">
-  		  <a href="/assets/image-5.jpg" rel="lightbox[plants]" title="The script preloads the next image in the set as you're viewing."><img src="/assets/thumb-5.jpg" alt="Plants: image 3 0f 4 thumb" /></a>
-      </div>
-      <div class="single">
-  		  <a href="/assets/image-6.jpg" rel="lightbox[plants]" title="Click the X or anywhere outside the image to close"><img src="/assets/thumb-6.jpg" alt="Plants: image 4 0f 4 thumb" /></a>
-      </div>
+  		  <a href="<%photo.url%>" rel="lightbox[plants]"><img src="<%photo.url%>" style="height:30px"/></a>
+  	  </div>
+    <% end %> 
   	</div>
   </div>
 	
