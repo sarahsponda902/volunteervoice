@@ -259,9 +259,16 @@ var	count = 0;
 
 
 	function checkFields(){
-		if(
-			 ($("#theBody").attr("value").length >= 200)
-)
+		if(($("#tags").attr("value") != "")
+			&& ($("#review_time_frame").attr("value") != "Select a Time Frame")
+			&& ($("#review_program_id").attr("value") != "Select a Program")
+			&& ($("#theBody").attr("value").length >= 200)
+			&& ($("#terms").attr("value"))
+			&& preparation == "clicked"
+			&& support == "clicked"
+			&& impact == "clicked"
+			&& structure == "clicked"
+			&& overall == "clicked")
 			{
 				$("#submitButtonDiv").show();
 				$("#submitButtonHidden").hide();
@@ -508,9 +515,10 @@ var	count = 0;
 		
 		<image style="position:absolute; height:23px; top:89.2%; left:10%" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; height:25px; margin-left:11%; margin-top:-45px;" onclick="$(termsCheck());">
-		<input id="terms" name="review[terms]" type="checkbox" onchange = "checkFields()" style="opacity:0; height:25px; width:25px" value="<%=params[:terms] unless (params[:terms].nil?)%>"/>
+		<input id="terms" name="review[terms]" type="checkbox" onchange = "checkFields()" style="opacity:0; height:25px; width:25px"/>
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have read the terms of use">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label></div><br /><br />
 		<%end%>
+		
 		
 	</section><!--end writeReviewContent-->
 
