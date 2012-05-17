@@ -39,6 +39,17 @@ var	count = 0;
 	$('#editImage').hide();
 	$('#checkBefore').hide();
 	$('#checkTerms').hide();
+	
+	$('.word_count').each(function(){
+		var length = $(this).val().length;
+		$(this).parent().find('.counter').html( length + ' characters');
+		$(this).keyup(function(){
+			var new_length = $(this).val().length;
+			$(this).parent().find('.counter').html( new_length + ' characters');
+		});
+	});
+	
+	
 	$('a.terms-window').click(function() {
 
                 //Getting the variable's value from a link 
@@ -454,8 +465,8 @@ var	count = 0;
 
 
 	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:60px">Your Experience</div>
-
-	   <%= f.text_area :body, :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Minimum 200 characters') {this.value = ''};this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :value => (if (params[:body].nil?); "Minimum 200 characters"; else params[:body]; end)%><br />
+	<span class="counter"></span>
+	   <%= f.text_area :body, :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Minimum 200 characters') {this.value = ''};this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :value => (if (params[:body].nil?); "Minimum 200 characters"; else params[:body]; end), :class => "word_count"%><br />
 	
 						<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/editPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:12px; font-family:architectsDaughterRegular; height:20px; background:none; border:none;" value="0"/> photos attached</div></div>
 						
