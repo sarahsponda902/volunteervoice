@@ -1,5 +1,11 @@
 <head>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+	<script type="text/javascript" src="/assets/jquery.colorbox-min.js"></script>
+
+	<link rel="stylesheet" href="/assets/colorbox.css" />
+
 
 <%= stylesheet_link_tag "/assets/jquery.rating.css"%>
 
@@ -21,6 +27,10 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	$('#reviewws_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 1, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+					//Examples of how to assign the ColorBox event to elements
+					$(".group1").colorbox({rel:'group1'});
+
 
 });
 
