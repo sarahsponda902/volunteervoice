@@ -11,6 +11,7 @@
 	<th style="width:15%">Sender ID</th>
 	<th style="width:10%;">Created At</th>
     <th style="width:40%;">Truncated Body</th>
+	<th style="width:5%">SD?</th>
     <th style="width:5%">View?</th>
     <th style="width:7%;">Destroy?</th>
   </tr>
@@ -22,6 +23,7 @@
 	<td><%= message.sender_id%></td>
 	<td><p style="color:blue"><%= message.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 	<td><%= truncate(message.body, :length => 100, :omission => "...")%></td>
+	<td><%= message.sender_deleted %></td>
     <td><%= link_to 'View', message %></td>
     <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
