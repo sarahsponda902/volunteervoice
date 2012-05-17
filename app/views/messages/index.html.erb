@@ -7,7 +7,8 @@
 
 <table>
   <tr>
-	<th style="width:15%">User</th>
+	<th style="width:15%">Recipient ID</th>
+	<th style="width:15%">Sender ID</th>
 	<th style="width:10%;">Created At</th>
     <th style="width:40%;">Truncated Body</th>
     <th style="width:5%">View?</th>
@@ -17,7 +18,8 @@
 <% @messages.each do |message| %>
 
   <tr>
-	<td><%= link_to User.find(message.user_id).username, User.find(message.user_id)%></td>
+	<td><%= message.recipient_id%></td>
+	<td><%= message.sender_id%></td>
 	<td><p style="color:blue"><%= message.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 	<td><%= truncate(message.body, :length => 100, :omission => "...")%></td>
     <td><%= link_to 'View', message %></td>
