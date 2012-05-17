@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516230643) do
+ActiveRecord::Schema.define(:version => 20120517001827) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -178,7 +178,6 @@ ActiveRecord::Schema.define(:version => 20120516230643) do
     t.decimal  "overall"
     t.integer  "num_reviews"
     t.text     "mission"
-    t.float    "phone"
     t.string   "email"
     t.integer  "operating_since"
     t.integer  "num_vols_date"
@@ -203,6 +202,7 @@ ActiveRecord::Schema.define(:version => 20120516230643) do
     t.integer  "crop_y"
     t.integer  "crop_w"
     t.integer  "crop_h"
+    t.string   "phone"
   end
 
   create_table "pages", :force => true do |t|
