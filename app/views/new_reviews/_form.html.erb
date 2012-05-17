@@ -24,11 +24,29 @@ var structure = "notClicked";
   // Some simple jQuery to remove the default search value when the user clicks the box
 
   $(document).ready(function() {
-	$('#checkBefore').hide();
-	$('#checkTerms').hide();
-	 $("input#autocomplete").autocomplete({
-	    source: <%=array_or_string_for_javascript(Organization.all.map{ |org| [org.name, org.id]})%>
-	});
+	var	ones = 0;
+	var	twos = 0;
+	var	threes = 0;
+	var	fours = 0;
+	var	fives = 0;
+	var	sixs = 0;
+	var	sevens = 0;
+	var	eights = 0;
+	var	nines = 0;
+	var	tens = 0;
+	var	count = 0;
+		$('#editImage').hide();
+		$('#checkBefore').hide();
+		$('#checkTerms').hide();
+
+		$('.word_count').each(function(){
+			var length = $(this).val().length;
+			$(this).parent().find('.counter').html( length + ' characters');
+			$(this).keyup(function(){
+				var new_length = $(this).val().length;
+				$(this).parent().find('.counter').html( new_length + ' characters');
+			});
+		});
 
 
   });
@@ -137,6 +155,88 @@ function removePeru() {
 	
 }
 
+
+		function changeCount() {
+
+			if ($("#one").attr("value") != "") {
+				ones = 1;
+			} else {
+				ones = 0;
+			}
+
+			if ($("#two").attr("value") != "") {
+				twos = 1;
+			} else {
+				twos = 0;
+			}
+
+			if ($("#three").attr("value") != "") {
+				threes = 1;
+			} else {
+				threes = 0;
+			}
+
+			if ($("#four").attr("value") != "") {
+				fours = 1;
+			} else {
+				fours = 0;
+			}
+
+			if ($("#five").attr("value") != "") {
+				fives = 1;
+			} else {
+				fives = 0;
+			}
+
+			if ($("#six").attr("value") != "") {
+				sixs = 1;
+			} else {
+				sixs = 0;
+			}
+
+			if ($("#seven").attr("value") != "") {
+				sevens = 1;
+			} else {
+				sevens = 0;
+			}
+
+			if ($("#eight").attr("value") != "") {
+				eights = 1;
+			} else {
+				eights = 0;
+			}
+
+			if ($("#nine").attr("value") != "") {
+				nines = 1;
+			} else {
+				nines = 0;
+			}
+
+			if ($("#ten").attr("value") != "") {
+				tens = 1;
+			} else {
+				tens = 0;
+			}
+
+		count = ones + twos + threes + fours + fives + sixs + sevens + eights + nines + tens;
+		$("#total_count").attr("value", count);
+
+		if (count > 0) {
+			$("#editImage").show();
+			$("#addImage").hide();
+		} else {
+			$("#editImage").hide();
+			$("#addImage").hide();
+		}
+	}
+	
+	function closePop() {
+		$('#mask').fadeOut(300); 
+		$('#mask').remove();
+		$('.addPhotos-popup').fadeOut(300);
+	}
+	
+
 </script>
 
 
@@ -215,12 +315,13 @@ function removePeru() {
 
 	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Your Experience</div>
 
-	   <%= f.text_area :body, :value => "Minimum 200 characters.", :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"removeTwoHundred();this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}"%><br />
+	   <%= f.text_area :body, :value => "Minimum 200 characters.", :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"removeTwoHundred();this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :class => "word_count"%>
+	<span style="float:right" class="counter"></span><br />
+	
+	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/editPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:12px; font-family:architectsDaughterRegular; height:20px; background:none; border:none;" value="0"/> photos attached</div></div>
+	
+	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/addPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:140px">No photos attached</div></div>
 
-	
-	
-	  <div style=" display:block;"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/uploadPhoto.png" style="height:40px; margin-left:11%; cursor:pointer; margin-top:40px" onclick = "$(clickReviewPhoto())"><input id="filename" type="textbox" style=" height:25px; width:250px; position:relative; top:-15px; left:20px;background:none;border:none;" disabled="true" value="no file selected" onchange = "checkFields()">
-		  <%= f.file_field :photo, :onchange =>"nameFile()", :id => "new_review_photo", :style => "visibility:hidden"%><p style=" float:right; margin-left:15px; margin-top:-38px; font-size:1.1em; cursor:pointer; color:#6aaeba" onclick="removePhoto()" >Remove</a></p></div><br /><br />
 	
 		<image style="position:absolute; top:85.3%; left:10%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:11%" onclick="$(beforeCheck())">
@@ -746,6 +847,41 @@ function removePeru() {
 		}); 
 		return false;
 		});
+		
+				$('a.addPhotos-window').click(function() {
+
+			                //Getting the variable's value from a link 
+					var addPhotosBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(addPhotosBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(addPhotosBox).height() + 24) / 2; 
+					var popMargLeft = ($(addPhotosBox).width() + 24) / 2; 
+
+					$(addPhotosBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="opacity:.5"></div>');
+					$('#mask').fadeIn(300);
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('a.close, #mask').live('click', function() { 
+				  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
+					$('#mask').remove();  
+				}); 
+				return false;
+				});
+
+		});
+		
 	});
 
 </script>
