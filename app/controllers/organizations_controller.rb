@@ -644,7 +644,7 @@ end
     "ZM"=> "Zambia", 
     "ZW"=> "Zimbabwe"]
     
-     @theCountries2 = [[AF,"Afghanistan"], 
+     @theCountries2 = [["AF","Afghanistan"], 
      ["AX","AlandIslands"], 
      ["AL","Albania"], 
      ["DZ","Algeria"], 
