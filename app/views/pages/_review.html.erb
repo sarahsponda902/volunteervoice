@@ -1,3 +1,15 @@
+ <%@photos = [] %>
+ <%@photos << f.photo unless f.photo.blank?%>
+ <%@photos << f.photo2 unless f.photo2.blank?%>
+ <%@photos << f.photo3 unless f.photo3.blank?%>
+<% @photos << f.photo4 unless f.photo4.blank?%>
+<% @photos << f.photo5 unless f.photo5.blank?%>
+<% @photos << f.photo6 unless f.photo6.blank?%>
+<% @photos << f.photo7 unless f.photo7.blank?%>
+<% @photos << f.photo8 unless f.photo8.blank?%>
+<% @photos << f.photo9 unless f.photo9.blank?%>
+<% @photos << f.photo10 unless f.photo10.blank?%>
+
 <div>
 	<br />
 	<p style="margin-left:50px; font-size:1.1em;">Your <a style="color:#62acbd;" href="<%=f%>">Review</a> of <a style="color:#62acbd;" href="<%=Organization.find(Program.find(f.program_id).organization_id)%>"> <%=Organization.find(Program.find(f.program_id).organization_id).name%></a></p>
@@ -11,8 +23,14 @@
 		<td ><p align="right" style="margin-top:-5px; margin-right:10px"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
 </tr>
 <tr style="background-color:#E0EEEE;">
-	<td colspan="3"><p style="margin-left:10px; font-size:1.05em;margin-top:-10px; height:145px; width:96.5%; margin-left:2%; overflow:auto"><%= f.body %>This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot.This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot.This is just more text for the screen shot. This is just more text for the screen shot.This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. This is just more text for the screen shot. </td>
+	<td colspan="3"><p style="margin-left:10px; font-size:1.05em;margin-top:-10px; height:145px; width:96.5%; margin-left:2%; overflow:auto"><%= f.body %></td>
 </p></tr>
+<tr style="background-color:#E0EEEE">
+	<td colspan="3"><% @photos.each do |photo|%>
+		<a class="group1" href="<%=photo.url%>"><%= image_tag photo.url, :style => "height:30px"%></a>&nbsp;
+		<% end %>
+	</td>
+</tr>
 </table>
 	<p style="margin-top:15px; float:right; text-align:right; margin-right:80px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteReview.png"), :controller => "reviews", :action => "destroy", :id =>f.id, :field => "reviews"%></p> <p align="right" style="float:right; margin-top:-31.7px; margin-right:15px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/edit.png"), :controller => "reviews", :action => "edit", :id => f.id%></p>
 
