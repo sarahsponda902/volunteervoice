@@ -187,22 +187,14 @@
   background: rgba(255, 255, 255, 0.1);
   padding: 2px;
   line-height: 1em;
-  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  margin-right: 2px;
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   -ms-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-/* line 332, ../sass/screen.sass */
-.single img {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-}
 /* line 335, ../sass/screen.sass */
-.single img:hover {
+a.single:hover {
   background-color: white;
 }
 
