@@ -453,7 +453,7 @@ var	count = 0;
 	
 						<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/editPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:12px; font-family:architectsDaughterRegular; height:20px; background:none; border:none;" value="0"/> photos attached</div></div>
 						
-						<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/addPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">No photos attached</div></div>
+						<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/addPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:140px">No photos attached</div></div>
 		
 		<% if !(params[:before].nil?)%>
 		<br />
@@ -667,8 +667,9 @@ var	count = 0;
 		<%= f.file_field :photo9, :onchange => "changeCount(nine)", :id => "nine"  %><a onclick="$('#nine').attr('value', '')">Remove</a><br /><br />
 		<%= f.file_field :photo10, :onchange => "changeCount(ten)", :id => "ten"  %><a onclick="$('#ten').attr('value', '')">Remove</a><br /><br />
 
+		<div align = "center" style="margin-top:30px">
 		<input type="image" src="/assets/done.png" onclick="return false" id="btn_close">
-
+		</div>
 
 		</div>		
 
