@@ -650,8 +650,10 @@ var	count = 0;
 		<div class="twelve columns" align="center" style="margin-top:20px;">
 
 	<section class="reviewSubmit"><!-- submit review button and FAQ link-->
-		<div id="submitButtonHidden" style="display:none; float:center; margin-top:30px; color:#e67b5a"> <i>You cannot submit your review until<br /> all form fields are filled out <br />(except upload a photo, that one can be left blank)</i></div>
-		<div style="text-align:center; margin-top:30px" id="submitButtonDiv"><%=image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png"), :id => "submitButton", :style => "cursor:pointer"%></div>
+
+
+		<div id="submitButtonHidden" style="text-align:center; margin-top:30px; color:#e67b5a"> <i>You cannot submit your review until<br /> all form fields are filled out <br />(except upload a photo, that one can be left blank)</i></div>
+		<div style="text-align:center; margin-top:30px; display:none" id="submitButtonDiv"><%=image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png"), :id => "submitButton", :style => "cursor:pointer"%></div>
 
 		<div style="margin-left:60%; margin-top:-60px">
 		<article class="formFAQ"><!-- FAQ information/link-->
@@ -660,8 +662,7 @@ var	count = 0;
 		</div>
 		</section><!--end reviewSubmit-->
 		<br />
-
-
+	
 		
 		<% if current_user.admin? %>
 		<div class = "field" style="height:40px;">
