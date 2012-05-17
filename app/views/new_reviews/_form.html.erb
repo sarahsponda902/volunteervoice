@@ -124,12 +124,9 @@ function setClicked(theVar) {
 
 
 function checkFields(){
-	if(
-		&& preparation == "clicked"
-		&& support == "clicked"
-		&& impact == "clicked"
-		&& structure == "clicked"
-		&& overall == "clicked")
+	if(($("#put").attr("value") != "  Put the organization's name here")
+		&& ($("#new_review_time_frame").attr("value") != "Select a Time Frame")
+)
 		{
 			$("#submitButtonDiv").show();
 			$("#submitButtonHidden").hide();
