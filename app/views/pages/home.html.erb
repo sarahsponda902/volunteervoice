@@ -63,7 +63,7 @@
 <% @star_count = 35%>
 <% if !(@show_reviews.nil?)%>
 <% @show_reviews.each do |f|%>
-<div class="review" style="height:106px">
+<div class="review" style="height:106px; overflow:hidden">
 <div class="row" style="margin-top:10px;">
 <h3 class="thin left"><a href="/users/<%=f.user_id%>" class="lightBlue" style="color:#62acbd;"> "<%=User.find(f.user_id).username%>"</a> on<br /> <a href= "/organizations/<%=f.organization_id%>" class="orange" style="color:#e67b5a"> "<%=Organization.find(f.organization_id).name%>"</a></h3>
 <p alt="Review Stars" class="right"> 
