@@ -246,6 +246,10 @@ $(document).ready(function() {
 		}
 		$("#total_count").value = count;
 	}
+	
+	function remove(field) {
+		document.getElementById(filed).value = null;
+	}
 	</script>
 
 
@@ -578,16 +582,16 @@ $(document).ready(function() {
 		<div id="addPhotos-box" class="addPhotos-popup" style="text-align:left">
 			<p style="font-size:1.6em; text-align:center;margin-top:15px; margin-bottom:20px">Add Photos</p>
 
-		<%= f.file_field :photo, :onchange => "changeCount(one)", :id => "one" %><br /><br />
-		<%= f.file_field :photo2, :onchange => "changeCount(two)", :id => "two"  %><br /><br />
-		<%= f.file_field :photo3, :onchange => "changeCount(three)", :id => "three"  %><br /><br />
-		<%= f.file_field :photo4, :onchange => "changeCount(four)", :id => "four"  %><br /><br />
-		<%= f.file_field :photo5, :onchange => "changeCount(five)", :id => "five"  %><br /><br />
-		<%= f.file_field :photo6, :onchange => "changeCount(six)", :id => "six"  %><br /><br />
-		<%= f.file_field :photo7, :onchange => "changeCount(seven)", :id => "seven"  %><br /><br />
-		<%= f.file_field :photo8, :onchange => "changeCount(eight)", :id => "eight"  %><br /><br />
-		<%= f.file_field :photo9, :onchange => "changeCount(nine)", :id => "nine"  %><br /><br />
-		<%= f.file_field :photo10, :onchange => "changeCount(ten)", :id => "ten"  %><br /><br />
+		<%= f.file_field :photo, :onchange => "changeCount(one)", :id => "one" %> <a onclick="remove(one)">Remove</a><br /><br />
+		<%= f.file_field :photo2, :onchange => "changeCount(two)", :id => "two"  %><a onclick="remove(two)">Remove</a><br /><br />
+		<%= f.file_field :photo3, :onchange => "changeCount(three)", :id => "three"  %><a onclick="remove(three)">Remove</a><br /><br />
+		<%= f.file_field :photo4, :onchange => "changeCount(four)", :id => "four"  %><a onclick="remove(four)">Remove</a><br /><br />
+		<%= f.file_field :photo5, :onchange => "changeCount(five)", :id => "five"  %><a onclick="remove(five)">Remove</a><br /><br />
+		<%= f.file_field :photo6, :onchange => "changeCount(six)", :id => "six"  %><a onclick="remove(six)">Remove</a><br /><br />
+		<%= f.file_field :photo7, :onchange => "changeCount(seven)", :id => "seven"  %><a onclick="remove(seven)">Remove</a><br /><br />
+		<%= f.file_field :photo8, :onchange => "changeCount(eight)", :id => "eight"  %><a onclick="remove(eight)">Remove</a><br /><br />
+		<%= f.file_field :photo9, :onchange => "changeCount(nine)", :id => "nine"  %><a onclick="remove(nine)">Remove</a><br /><br />
+		<%= f.file_field :photo10, :onchange => "changeCount(ten)", :id => "ten"  %><a onclick="remove(ten)">Remove</a><br /><br />
 
 		<input type="image" src="/assets/done.png" onclick="return false" id="btn_close">
 
