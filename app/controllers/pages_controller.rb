@@ -24,18 +24,6 @@ class PagesController < ApplicationController
   end
   
   def test
-    @review = Review.find(12)
-    @photos = []
-    @photos << @review.photo unless @review.photo.blank?
-    @photos << @review.photo2 unless @review.photo2.blank?
-    @photos << @review.photo3 unless @review.photo3.blank?
-    @photos << @review.photo4 unless @review.photo4.blank?
-    @photos << @review.photo5 unless @review.photo5.blank?
-    @photos << @review.photo6 unless @review.photo6.blank?
-    @photos << @review.photo7 unless @review.photo7.blank?
-    @photos << @review.photo8 unless @review.photo8.blank?
-    @photos << @review.photo9 unless @review.photo9.blank?
-    @photos << @review.photo10 unless @review.photo10.blank?
     
   end
   	
