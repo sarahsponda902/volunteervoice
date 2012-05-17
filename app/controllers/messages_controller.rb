@@ -27,6 +27,7 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @message.recipient_id = params[:recipient_id]
+    @message.sender_id = current_user.id
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @message }
@@ -63,6 +64,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(params[:message])
     @message.body = RedCloth.new(@message.body).to_html
+    @message.sender_id = current_user.id
     respond_to do |format|
       if @message.save
         format.html { redirect_to "/users/#{@message.recipient_id}", :notice =>'Message was sent' }

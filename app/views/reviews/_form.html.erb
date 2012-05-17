@@ -423,7 +423,7 @@ var	count = 0;
 						<input id="tags" style="float:right; margin-right:10px; margin-top:5px; width:200px; height:20px" name="review[organization_name]"></div>
 				
 				<% else %>
-				<%= Organization.find(@review.organization_id).name%>
+				<div style="float:right; margin-right:20px; margin-top:5px; "><%= Organization.find(@review.organization_id).name%></div>
 				<% end %>
 
 				</div>
