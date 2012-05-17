@@ -16,20 +16,7 @@
 	  });
 
 	</script>
-	
-	<%f = Review.find(12)%>
 
-	 <%@photos = [] %>
-	 <%@photos << f.photo unless f.photo.blank?%>
-	 <%@photos << f.photo2 unless f.photo2.blank?%>
-	 <%@photos << f.photo3 unless f.photo3.blank?%>
-	<% @photos << f.photo4 unless f.photo4.blank?%>
-	<% @photos << f.photo5 unless f.photo5.blank?%>
-	<% @photos << f.photo6 unless f.photo6.blank?%>
-	<% @photos << f.photo7 unless f.photo7.blank?%>
-	<% @photos << f.photo8 unless f.photo8.blank?%>
-	<% @photos << f.photo9 unless f.photo9.blank?%>
-	<% @photos << f.photo10 unless f.photo10.blank?%>
 	
 	
 <div class="section" id="example">
@@ -49,66 +36,3 @@
 
 </div><!-- end #content -->
 
-<style>
-.imageRow .single {
-  float: left;
-}
-/* line 322, ../sass/screen.sass */
-.imageRow .single a {
-  float: left;
-  display: block;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2px;
-  line-height: 1em;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  margin-right: 40px;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -ms-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-}
-/* line 332, ../sass/screen.sass */
-.imageRow .single a img {
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-}
-/* line 335, ../sass/screen.sass */
-.imageRow .single a:hover {
-  background-color: white;
-}
-
-/* line 346, ../sass/screen.sass */
-.imageRow .set .single a {
-  background: none;
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  -ms-border-radius: 0;
-  -o-border-radius: 0;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
-  margin-right: 0;
-}
-/* line 351, ../sass/screen.sass */
-.imageRow .set .single a:hover {
-  background-color: white;
-  -webkit-box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.5);
-}
-
-
-</style>

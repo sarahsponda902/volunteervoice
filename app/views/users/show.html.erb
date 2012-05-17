@@ -9,18 +9,30 @@
 <% end %>
 
 
+
+<link rel="stylesheet" href="/assets/screen.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/assetslightbox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 
-<script type="text/javascript" src="/assets/jquery.colorbox-min.js"></script>
+<script src="/assets/jquery.smooth-scroll.min.js"></script>
+<script src="/assets/lightbox.js"></script>
 
-<link rel="stylesheet" href="/assets/colorbox.css" />
+<script>
+  jQuery(document).ready(function($) {
+      $('a').smoothScroll({
+        speed: 1000,
+        easing: 'easeInOutCubic'
+      });
+  });
+
+</script>
 
 <%= stylesheet_link_tag "/assets/smartpaginator.css"%>
 
 <%= javascript_include_tag "/assets/smartpaginator.js"%>
 
 <head>
-	<%=%>
    
     <script type="text/javascript">
 
