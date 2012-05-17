@@ -167,11 +167,6 @@ var	count = 0;
 			}); 
 			return false;
 			});
-			
-			$('.btn_close').live('click', function() { 
-			  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			});
 		
 	});
 
@@ -186,6 +181,12 @@ var	count = 0;
 		var str="";
 		str= $("#review_photo").val();
 		document.getElementById('filename').value = str.substring(12, str.length);
+	}
+
+	function closePop() {
+		$('#mask , .addPhotos-popup').fadeOut(300 , function() {
+			$('#mask').remove();
+			return false;
 	}
 
 	function clickReviewPhoto() {
@@ -673,7 +674,7 @@ var	count = 0;
 		<%= f.file_field :photo10, :onblur => "changeCount(ten)", :id => "ten"  %><a onclick="$('#ten').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 
 		<div align = "center" style="margin-top:30px">
-		<input type="image" src="/assets/done.png" onclick="return false" class="btn_close">
+		<input type="image" src="/assets/done.png" onclick="closePop();" class="btn_close">
 		</div>
 
 		</div>		
