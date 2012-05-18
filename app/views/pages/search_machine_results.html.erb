@@ -193,7 +193,7 @@ function toggleDisplay(){
 
 
 
-<div id="page">
+<body>
 <div class="container">
 <div style="text-align:center; width:100%; margin-top:50px" id="programs-contents1">	
 <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteerPrograms.png"%><br /><br />
@@ -321,7 +321,7 @@ function toggleDisplay(){
 </div>
 </div>
 </div>
-</div>
+</body>
 <form action="/pages/search_machine_results" method="get">
 
 <div id="programSubjects" style="width:800px; padding-bottom:20px; color:#575758">
@@ -514,7 +514,7 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='LS' id='LS2' name='countries[]' type='checkbox'> Lesotho<br />
 	<input onclick='toggleBoxes(this)' value='NA' id='NA2' name='countries[]' type='checkbox'> Namibia<br />
 	<input onclick='toggleBoxes(this)' value='ZA' id='ZA2' name='countries[]' type='checkbox'> South Africa<br />
-	<input onclick='toggleBoxes(this)' value='SZ' id='SZ2' name='countries[]' type='checkbox'> Swaziland<br />
+	<input onclick='toggleBoxes(this)' value='SZ' id='SZ2' name='countries[]' type='checkbox'> Swaziland<br /><br /><br />
 	</div>
 	
 	
@@ -1424,6 +1424,6 @@ function toggleTechnology( el ) {
 					width:150px;
 				}
 				
-				#page{ min-height:1100px}
+				body{ min-height:1100px}
 			</style>			
 				
