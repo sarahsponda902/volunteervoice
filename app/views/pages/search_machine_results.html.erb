@@ -32,7 +32,7 @@ $('#programCountries').pullOut({
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
-  button: 'map128',
+  button: 'world',
   color: 'lightblue'
 });	
 	
@@ -42,7 +42,7 @@ $('#programSubjects').pullOut({
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
-  button: 'subjects',
+  button: 'folder',
   color: 'lightblue'
 });
 
@@ -52,7 +52,7 @@ $('#lengthOfTrip').pullOut({
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
-  button: 'schedule64',
+  button: 'clock',
   color: 'lightblue'
 });
 
@@ -62,7 +62,7 @@ $('#groupSize').pullOut({
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
-  button: 'organization64',
+  button: 'man',
   color: 'lightblue'
 });
 
@@ -72,8 +72,18 @@ $('#priceRange').pullOut({
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
-  button: 'earning-statements128',
+  button: 'piggy',
   color: 'lightblue'
+});
+
+$('#search').pullOut({
+  position: 'right',
+  top: '600px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'magnifyingglass',
+  color: 'green'
 });
 
 });
@@ -666,6 +676,8 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='WF' id='WF2' name='countries[]' type='checkbox'> Wallis and Futuna
 	
 </div>
+
+<div id="search"></div>
 
 <script type='text/javascript'>
 
