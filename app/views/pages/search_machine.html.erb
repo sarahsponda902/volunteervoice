@@ -38,66 +38,116 @@ $(document).ready(function() {
             <div class="six columns" style="width:45%; padding:10px">
                 <p style="font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; padding-bottom:6px; margin-top:-10px; margin-left:-10px; background-color:#E3E6D5; width:260%; padding-left:20px; margin-bottom:5px"><b>Program Subjects:</b></p>    
             <input onClick='toggleBoxes1(this)'value="false" id='any' name='subject' type='checkbox' checked><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
-            <div id='Agriculture1'><input onclick='toggleBoxes1(this)' value='Agriculture' id='Agriculture2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Agriculture</font></div>
-            <div id='OrganicFarming1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Organic Farming' id='OrganicFarming2' name='subject[]' type='checkbox'>Organic Farming</div>
-            <div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Sustainable Development' id='SustainableDevelopment2' name='subject[]' type='checkbox'>Sustainable Development</div><br />
-            <div id='AnimalCare1'><input onclick='toggleBoxes1(this)' value='Animal Care' id='AnimalCare2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Animal Care</font></div>
-            <div id='AnimalRights1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Animal Rights' id='AnimalRights2' name='subject[]' type='checkbox'>Animal Rights</div>
-            <div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Wildlife Conservation' id='WildlifeConservation2' name='subject[]' type='checkbox'>Wildlife Conservation</div><br />
-            <div id='Caregiving1'><input onclick='toggleBoxes1(this)' value='Caregiving' id='Caregiving2' name='subject[]' type='checkbox'><font style="font-size:1.2em;">Caregiving</font></div>
-            <div id='ElderCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Elder Care' id='ElderCare2' name='subject[]' type='checkbox'>Elder Care</div>
-            <div id='Child/OrphanCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Child/Orphan Care' id='Child/OrphanCare2' name='subject[]' type='checkbox'>Child/Orphan Care</div>
-            <div id='DisabledCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Disabled Care' id='DisabledCare2' name='subject[]' type='checkbox'>Disabled Care</div>
-            <div id='FeedtheHomeless1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Feed the Homeless' id='FeedtheHomeless2' name='subject[]' type='checkbox'>Feed the Homeless</div><br />
-            <div id='CommunityDevelopment1'><input onclick='toggleBoxes1(this)' value='Community Development' id='CommunityDevelopment2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Community Development</font></div>
-            <div id='YouthDevelopmentandOutreach1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Youth Development and Outreach' id='YouthDevelopmentandOutreach2' name='subject[]' type='checkbox'>Youth Development and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outreach</div><br />
+            
+
+<div id='Agriculture1'><input onclick='toggleBoxes1(this);toggleAgriculture(this)' value='Agriculture' id='Agriculture2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Agriculture</font></div>
+            <div id='OrganicFarming1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleAgriculture(this)' value='Organic Farming' id='OrganicFarming2' name='subject[]' type='checkbox'>Organic Farming</div>
+            <div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleAgriculture(this)' value='Sustainable Development' id='SustainableDevelopment2' name='subject[]' type='checkbox'>Sustainable Development</div><br />
+
+
+
+            <div id='AnimalCare1'><input onclick='toggleBoxes1(this);toggleAnimalCare(this)' value='Animal Care' id='AnimalCare2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Animal Care</font></div>
+            <div id='AnimalRights1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleAnimalCare(this)' value='Animal Rights' id='AnimalRights2' name='subject[]' type='checkbox'>Animal Rights</div>
+            <div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleAnimalCare(this)' value='Wildlife Conservation' id='WildlifeConservation2' name='subject[]' type='checkbox'>Wildlife Conservation</div><br />
+
+
+
+            <div id='Caregiving1'><input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Caregiving' id='Caregiving2' name='subject[]' type='checkbox'><font style="font-size:1.2em;">Caregiving</font></div>
+            <div id='ElderCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Elder Care' id='ElderCare2' name='subject[]' type='checkbox'>Elder Care</div>
+            <div id='ChildOrphanCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Child/Orphan Care' id='ChildOrphanCare2' name='subject[]' type='checkbox'>Child/Orphan Care</div>
+            <div id='DisabledCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Disabled Care' id='DisabledCare2' name='subject[]' type='checkbox'>Disabled Care</div>
+            <div id='FeedtheHomeless1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Feed the Homeless' id='FeedtheHomeless2' name='subject[]' type='checkbox'>Feed the Homeless</div><br />
+
+
+
+            <div id='CommunityDevelopment1'><input onclick='toggleBoxes1(this);toggleCommunityDevelopment(this)' value='Community Development' id='CommunityDevelopment2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Community Development</font></div>
+            <div id='YouthDevelopmentandOutreach1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCommunityDevelopment(this)' value='Youth Development and Outreach' id='YouthDevelopmentandOutreach2' name='subject[]' type='checkbox'>Youth Development and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outreach</div><br />
+
+
+
             <div id='Construction1'><input onclick='toggleBoxes1(this)' value='Construction' id='Construction2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Construction</font></div><br />
-            <div id='CultureandCommunity1'><input onclick='toggleBoxes1(this)' value='Culture and Community' id='CultureandCommunity2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Culture and Community</font></div>
-            <div id='PerformingArts1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Performing Arts' id='PerformingArts2' name='subject[]' type='checkbox'>Performing Arts</div>
-            <div id='Fashion1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Fashion' id='Fashion2' name='subject[]' type='checkbox'>Fashion</div>
-            <div id='Music1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Music' id='Music2' name='subject[]' type='checkbox'>Music</div>
-            <div id='Sports&Recreation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Sports & Recreation' id='Sports&Recreation2' name='subject[]' type='checkbox'>Sports & Recreation</div>
-            <div id='Journalism1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Journalism' id='Journalism2' name='subject[]' type='checkbox'>Journalism</div><br />
-            <div id='DisasterRelief1'><input onclick='toggleBoxes1(this)' value='Disaster Relief' id='DisasterRelief2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Disaster Relief</font></div>
-            <div id='Economics1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Economics' id='Economics2' name='subject[]' type='checkbox'>Economics</div>
-            <div id='Microfinance1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Microfinance' id='Microfinance2' name='subject[]' type='checkbox'>Microfinance</div><br />
-            <div id='Education1'><input onclick='toggleBoxes1(this)' value='Education' id='Education2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Education</font></div>
-            <div id='TeachingEnglish1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching English' id='TeachingEnglish2' name='subject[]' type='checkbox'>Teaching English</div>
-            <div id='TeachingBuddhistMonks1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching Buddhist Monks' id='TeachingBuddhistMonks2' name='subject[]' type='checkbox'>Teaching Buddhist Monks</div>
-            <div id='TeachingChildren1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching Children' id='TeachingChildren2' name='subject[]' type='checkbox'>Teaching Children</div>
-            <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' name='subject[]' type='checkbox'>Teaching Computer Literacy</div>
+
+
+
+            <div id='CultureandCommunity1'><input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Culture and Community' id='CultureandCommunity2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Culture and Community</font></div>
+            <div id='PerformingArts1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Performing Arts' id='PerformingArts2' name='subject[]' type='checkbox'>Performing Arts</div>
+            <div id='Fashion1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Fashion' id='Fashion2' name='subject[]' type='checkbox'>Fashion</div>
+            <div id='Music1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Music' id='Music2' name='subject[]' type='checkbox'>Music</div>
+            <div id='SportsRecreation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Sports & Recreation' id='SportsRecreation2' name='subject[]' type='checkbox'>Sports & Recreation</div>
+            <div id='Journalism1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Journalism' id='Journalism2' name='subject[]' type='checkbox'>Journalism</div><br />
+
+
+
+            <div id='DisasterRelief1'><input onclick='toggleBoxes1(this);toggleDisasterRelief(this)' value='Disaster Relief' id='DisasterRelief2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Disaster Relief</font></div>
+            <div id='Economics1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleDisasterRelief(this)' value='Economics' id='Economics2' name='subject[]' type='checkbox'>Economics</div>
+            <div id='Microfinance1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleDisasterRelief(this)' value='Microfinance' id='Microfinance2' name='subject[]' type='checkbox'>Microfinance</div><br />
+
+
+
+            <div id='Education1'><input onclick='toggleBoxes1(this);toggleEducation(this)' value='Education' id='Education2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Education</font></div>
+            <div id='TeachingEnglish1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching English' id='TeachingEnglish2' name='subject[]' type='checkbox'>Teaching English</div>
+            <div id='TeachingBuddhistMonks1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching Buddhist Monks' id='TeachingBuddhistMonks2' name='subject[]' type='checkbox'>Teaching Buddhist Monks</div>
+            <div id='TeachingChildren1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching Children' id='TeachingChildren2' name='subject[]' type='checkbox'>Teaching Children</div>
+            <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' name='subject[]' type='checkbox'>Teaching Computer Literacy</div>
+
+
+
             </div>
             <div class="six columns" style="width:45%; margin-top:30px">
 	
+	
+	
+	
 	            <div id='EngineeringandInfrastructure1'><input onclick='toggleBoxes1(this)' value='Engineering and Infrastructure' id='EngineeringandInfrastructure2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Engineering and <br />&nbsp;&nbsp;&nbsp;Infrastructure</font></div><br />
+	
+	
+	
 
-            <div id='Environmental1'><input onclick='toggleBoxes1(this)' value='Environmental' id='Environmental2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Environmental</font></div>
-            <div id='EcologicalConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Ecological Conservation' id='EcologicalConservation2' name='subject[]' type='checkbox'>Ecological Conservation</div>
-            <div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Sustainable Development' id='SustainableDevelopment2' name='subject[]' type='checkbox'>Sustainable Development</div>
-            <div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Wildlife Conservation' id='WildlifeConservation2' name='subject[]' type='checkbox'>Wildlife Conservation</div>
-            <div id='HabitatRestoration1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Habitat Restoration' id='HabitatRestoration2' name='subject[]' type='checkbox'>Habitat Restoration</div><br />
-            <div id='HealthandMedicine1'><input onclick='toggleBoxes1(this)' value='Health and Medicine' id='HealthandMedicine2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Health and Medicine</font></div>
-            <div id='HIV/AIDS1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='HIV/AIDS' id='HIV/AIDS2' name='subject[]' type='checkbox'>HIV/AIDS</div>
-            <div id='Nutrition1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Nutrition' id='Nutrition2' name='subject[]' type='checkbox'>Nutrition</div>
-            <div id='FamilyPlanning1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Family Planning' id='FamilyPlanning2' name='subject[]' type='checkbox'>Family Planning</div>
-            <div id='VeterinaryMedicine1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Veterinary Medicine' id='VeterinaryMedicine2' name='subject[]' type='checkbox'>Veterinary Medicine</div>
-            <div id='ClinicalWork1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Clinical Work' id='ClinicalWork2' name='subject[]' type='checkbox'>Clinical Work</div>
-            <div id='DentalWork1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Dental Work' id='DentalWork2' name='subject[]' type='checkbox'>Dental Work</div>
-            <div id='MedicalResearch1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Medical Research' id='MedicalResearch2' name='subject[]' type='checkbox'>Medical Research</div>
-            <div id='HealthEducation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Health Education' id='HealthEducation2' name='subject[]' type='checkbox'>Health Education</div>
-            <div id='PublicHealth1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Public Health' id='PublicHealth2' name='subject[]' type='checkbox'>Public Health</div>
-            <div id='HospitalCare-giving1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Hospital Care-giving' id='HospitalCare-giving2' name='subject[]' type='checkbox'>Hospital Care-giving</div><br />
-            <div id='HumanRights1'><input onclick='toggleBoxes1(this)' value='Human Rights' id='HumanRights2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Human Rights</font></div>
-            <div id='WomensInitiatives1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Womens Initiatives' id='WomensInitiatives2' name='subject[]' type='checkbox'>Women's Initiatives</div><br />
+            <div id='Environmental1'><input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Environmental' id='Environmental2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Environmental</font></div>
+            <div id='EcologicalConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Ecological Conservation' id='EcologicalConservation2' name='subject[]' type='checkbox'>Ecological Conservation</div>
+            <div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Sustainable Development' id='SustainableDevelopment2' name='subject[]' type='checkbox'>Sustainable Development</div>
+            <div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Wildlife Conservation' id='WildlifeConservation2' name='subject[]' type='checkbox'>Wildlife Conservation</div>
+            <div id='HabitatRestoration1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Habitat Restoration' id='HabitatRestoration2' name='subject[]' type='checkbox'>Habitat Restoration</div><br />
+
+
+
+            <div id='HealthandMedicine1'><input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Health and Medicine' id='HealthandMedicine2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Health and Medicine</font></div>
+            <div id='HIVAIDS1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='HIV/AIDS' id='HIVAIDS2' name='subject[]' type='checkbox'>HIV/AIDS</div>
+            <div id='Nutrition1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Nutrition' id='Nutrition2' name='subject[]' type='checkbox'>Nutrition</div>
+            <div id='FamilyPlanning1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Family Planning' id='FamilyPlanning2' name='subject[]' type='checkbox'>Family Planning</div>
+            <div id='VeterinaryMedicine1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Veterinary Medicine' id='VeterinaryMedicine2' name='subject[]' type='checkbox'>Veterinary Medicine</div>
+            <div id='ClinicalWork1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Clinical Work' id='ClinicalWork2' name='subject[]' type='checkbox'>Clinical Work</div>
+            <div id='DentalWork1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Dental Work' id='DentalWork2' name='subject[]' type='checkbox'>Dental Work</div>
+            <div id='MedicalResearch1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Medical Research' id='MedicalResearch2' name='subject[]' type='checkbox'>Medical Research</div>
+            <div id='HealthEducation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Health Education' id='HealthEducation2' name='subject[]' type='checkbox'>Health Education</div>
+            <div id='PublicHealth1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Public Health' id='PublicHealth2' name='subject[]' type='checkbox'>Public Health</div>
+            <div id='HospitalCaregiving1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Hospital Care-giving' id='HospitalCaregiving2' name='subject[]' type='checkbox'>Hospital Care-giving</div><br />
+
+
+
+            <div id='HumanRights1'><input onclick='toggleBoxes1(this);toggleHumanRights(this)' value='Human Rights' id='HumanRights2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Human Rights</font></div>
+            <div id='WomensInitiatives1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHumanRights(this)' value='Womens Initiatives' id='WomensInitiatives2' name='subject[]' type='checkbox'>Women's Initiatives</div><br />
+
+
+
             <div id='InternationalWorkCamp1'><input onclick='toggleBoxes1(this)' value='International Work Camp' id='InternationalWorkCamp2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">International Work Camp</font></div><br />
-            <div id='Recreation1'><input onclick='toggleBoxes1(this)' value='Recreation' id='Recreation2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Recreation</font></div>
-            <div id='AdventureTravel1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Adventure Travel' id='AdventureTravel2' name='subject[]' type='checkbox'>Adventure Travel</div><br />
-            <div id='ScientificResearch1'><input onclick='toggleBoxes1(this)' value='Scientific Research' id='ScientificResearch2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Scientific Research</font></div>
-            <div id='Archaeology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Archaeology' id='Archaeology2' name='subject[]' type='checkbox'>Archaeology</div>
-            <div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Environmental Biology' id='EnvironmentalBiology2' name='subject[]' type='checkbox'>Environmental Biology</div><br />
-            <div id='Technology1'><input onclick='toggleBoxes1(this)' value='Technology' id='Technology2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Technology</font></div>
-            <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' name='subject[]' type='checkbox'>Teaching Computer Literacy</div>
-            <div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Media, Marketing, and Graphic Design' id='MediaMarketingandGraphicDesign2' name='subject[]' type='checkbox'>Media, Marketing, and Graphic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design</div>
+
+
+
+            <div id='Recreation1'><input onclick='toggleBoxes1(this);toggleRecreation(this)' value='Recreation' id='Recreation2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Recreation</font></div>
+            <div id='AdventureTravel1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleRecreation(this)' value='Adventure Travel' id='AdventureTravel2' name='subject[]' type='checkbox'>Adventure Travel</div><br />
+
+
+
+            <div id='ScientificResearch1'><input onclick='toggleBoxes1(this);toggleScientificResearch(this)' value='Scientific Research' id='ScientificResearch2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Scientific Research</font></div>
+            <div id='Archaeology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleScientificResearch(this)' value='Archaeology' id='Archaeology2' name='subject[]' type='checkbox'>Archaeology</div>
+            <div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleScientificResearch(this)' value='Environmental Biology' id='EnvironmentalBiology2' name='subject[]' type='checkbox'>Environmental Biology</div><br />
+
+
+
+            <div id='Technology1'><input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Technology</font></div>
+            <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' name='subject[]' type='checkbox'>Teaching Computer Literacy</div>
+            <div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Media, Marketing, and Graphic Design' id='MediaMarketingandGraphicDesign2' name='subject[]' type='checkbox'>Media, Marketing, and Graphic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design</div>
 
 
 
@@ -462,62 +512,62 @@ $(document).ready(function() {
         }
     }    
 
-        var locations2 = new Array('Agriculture1', 
-		'OrganicFarming1', 
-		'SustainableDevelopment1', 
-		'AnimalCare1', 
-		'AnimalRights1', 
-		'WildlifeConservation1', 
-		'Caregiving1', 
-		'ElderCare1', 
-		'Child/OrphanCare1', 
-		'DisabledCare1', 
-		'FeedtheHomeless1', 
-		'CommunityDevelopment1', 
-		'YouthDevelopmentandOutreach1', 
-		'Construction1', 
-		'CultureandCommunity1', 
-		'PerformingArts1', 
-		'Fashion1', 
-		'Music1', 
-		'Sports&Recreation1', 
-		'Journalism1', 
-		'DisasterRelief1', 
-		'Economics1', 
-		'Microfinance1', 
-		'Education1', 
-		'TeachingEnglish1', 
-		'TeachingBuddhistMonks1', 
-		'TeachingChildren1', 
-		'TeachingComputerLiteracy1', 
-		'EngineeringandInfrastructure1', 
-		'Environmental1', 
-		'EcologicalConservation1', 
-		'SustainableDevelopment1', 
-		'WildlifeConservation1', 
-		'HabitatRestoration1', 
-		'HealthandMedicine1', 
-		'HIV/AIDS1', 
-		'Nutrition1', 
-		'FamilyPlanning1', 
-		'VeterinaryMedicine1', 
-		'ClinicalWork1', 
-		'DentalWork1', 
-		'MedicalResearch1', 
-		'HealthEducation1', 
-		'PublicHealth1', 
-		'HospitalCare-giving1', 
-		'HumanRights1', 
-		'WomensInitiatives1', 
-		'InternationalWorkCamp1', 
-		'Recreation1', 
-		'AdventureTravel1', 
-		'ScientificResearch1', 
-		'Archaeology1', 
-		'EnvironmentalBiology1', 
-		'Technology1', 
-		'TeachingComputerLiteracy1', 
-		'MediaMarketingandGraphicDesign1');
+        var locations2 = new Array('Agriculture2', 
+		'OrganicFarming2', 
+		'SustainableDevelopment2', 
+		'AnimalCare2', 
+		'AnimalRights2', 
+		'WildlifeConservation2', 
+		'Caregiving2', 
+		'ElderCare2', 
+		'ChildOrphanCare2', 
+		'DisabledCare2', 
+		'FeedtheHomeless2', 
+		'CommunityDevelopment2', 
+		'YouthDevelopmentandOutreach2', 
+		'Construction2', 
+		'CultureandCommunity2', 
+		'PerformingArts2', 
+		'Fashion2', 
+		'Music2', 
+		'SportsRecreation2', 
+		'Journalism2', 
+		'DisasterRelief2', 
+		'Economics2', 
+		'Microfinance2', 
+		'Education2', 
+		'TeachingEnglish2', 
+		'TeachingBuddhistMonks2', 
+		'TeachingChildren2', 
+		'TeachingComputerLiteracy2', 
+		'EngineeringandInfrastructure2', 
+		'Environmental2', 
+		'EcologicalConservation2', 
+		'SustainableDevelopment2', 
+		'WildlifeConservation2', 
+		'HabitatRestoration2', 
+		'HealthandMedicine2', 
+		'HIVAIDS2', 
+		'Nutrition2', 
+		'FamilyPlanning2', 
+		'VeterinaryMedicine2', 
+		'ClinicalWork2', 
+		'DentalWork2', 
+		'MedicalResearch2', 
+		'HealthEducation2', 
+		'PublicHealth2', 
+		'HospitalCaregiving2', 
+		'HumanRights2', 
+		'WomensInitiatives2', 
+		'InternationalWorkCamp2', 
+		'Recreation2', 
+		'AdventureTravel2', 
+		'ScientificResearch2', 
+		'Archaeology2', 
+		'EnvironmentalBiology2', 
+		'Technology2', 
+		'TeachingComputerLiteracy2', 
+		'MediaMarketingandGraphicDesign2');
 
         var anyId2 = 'any';
 
@@ -579,6 +629,267 @@ $(document).ready(function() {
 
 
 <!-- This is to uncheck the regions/subjects if their super is checked, and uncheck super if child is checked -->
+<script type="text/javascript">
+var locationsAgriculture = new Array('OrganicFarming2', 'SustainableDevelopment2');
+
+var anyAgriculture = 'Agriculture2';
+
+function toggleAgriculture( el ) {
+    var i;
+    if ( el.id == anyAgriculture ) {
+        for( i = 0; i < locationsAgriculture.length; i++ ){
+            var cb = document.getElementById(locationsAgriculture[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyAgriculture);
+        cb.checked = false; 
+    }
+}
+
+var locationsAnimalCare = new Array('AnimalRights2', 'WildlifeConservation2');
+
+var anyAnimalCare = 'AnimalCare2';
+
+function toggleAnimalCare( el ) {
+    var i;
+    if ( el.id == anyAnimalCare ) {
+        for( i = 0; i < locationsAnimalCare.length; i++ ){
+            var cb = document.getElementById(locationsAnimalCare[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyAnimalCare);
+        cb.checked = false; 
+    }
+}
+
+
+var locationsCaregiving = new Array('ElderCare2', 'ChildOrphanCare2', 'DisabledCare2', 'FeedtheHomeless2');
+
+var anyCaregiving = 'Caregiving2';
+
+function toggleCaregiving( el ) {
+    var i;
+    if ( el.id == anyCaregiving ) {
+        for( i = 0; i < locationsCaregiving.length; i++ ){
+            var cb = document.getElementById(locationsCaregiving[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyCaregiving);
+        cb.checked = false; 
+    }
+}
+
+
+
+var locationsCommunityDevelopment = new Array('YouthDevelopmentandOutreach2');
+
+var anyCommunityDevelopment = 'CommunityDevelopment2';
+
+function toggleCommunityDevelopment( el ) {
+    var i;
+    if ( el.id == anyCommunityDevelopment ) {
+        for( i = 0; i < locationsCommunityDevelopment.length; i++ ){
+            var cb = document.getElementById(locationsCommunityDevelopment[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyCommunityDevelopment);
+        cb.checked = false; 
+    }
+}
+
+
+
+var locationsCultureandCommunity = new Array('PerformingArts2', 'Fashion2', 'Music2', 'SportsRecreation2', 'Journalism2');
+
+var anyCultureandCommunity = 'CultureandCommunity2';
+
+function toggleCultureandCommunity( el ) {
+    var i;
+    if ( el.id == anyCultureandCommunity ) {
+        for( i = 0; i < locationsCultureandCommunity.length; i++ ){
+            var cb = document.getElementById(locationsCultureandCommunity[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyCultureandCommunity);
+        cb.checked = false; 
+    }
+}
+
+
+var locationsDisasterRelief = new Array('Economics2', 'Microfinance2');
+
+var anyDisasterRelief = 'DisasterRelief2';
+
+function toggleDisasterRelief( el ) {
+    var i;
+    if ( el.id == anyDisasterRelief ) {
+        for( i = 0; i < locationsDisasterRelief.length; i++ ){
+            var cb = document.getElementById(locationsDisasterRelief[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyDisasterRelief);
+        cb.checked = false; 
+    }
+}
+
+
+
+var locationsEducation = new Array('TeachingEnglish2', 'TeachingBuddhistMonks2', 'TeachingChildren2', 'TeachingComputerLiteracy2');
+
+var anyEducation = 'Education2';
+
+function toggleEducation( el ) {
+    var i;
+    if ( el.id == anyEducation ) {
+        for( i = 0; i < locationsEducation.length; i++ ){
+            var cb = document.getElementById(locationsEducation[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyEducation);
+        cb.checked = false; 
+    }
+}
+
+
+
+
+
+var locationsEnvironmental = new Array('EcologicalConservation2', 'SustainableDevelopment2', 'WildlifeConservation2', 'HabitatRestoration2');
+
+var anyEnvironmental = 'Environmental2';
+
+function toggleEnvironmental( el ) {
+    var i;
+    if ( el.id == anyEnvironmental ) {
+        for( i = 0; i < locationsEnvironmental.length; i++ ){
+            var cb = document.getElementById(locationsEnvironmental[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyEnvironmental);
+        cb.checked = false; 
+    }
+}
+
+
+
+
+
+var locationsHealthandMedicine = new Array('HIVAIDS2', 'Nutrition2', 'FamilyPlanning2', 'VeterinaryMedicine2', 'ClinicalWork2', 'DentalWork2', 'MedicalResearch2', 'HealthEducation2', 'PublicHealth2', 'HospitalCaregiving2');
+
+var anyHealthandMedicine = 'HealthandMedicine2';
+
+function toggleHealthandMedicine( el ) {
+    var i;
+    if ( el.id == anyHealthandMedicine ) {
+        for( i = 0; i < locationsHealthandMedicine.length; i++ ){
+            var cb = document.getElementById(locationsHealthandMedicine[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyHealthandMedicine);
+        cb.checked = false; 
+    }
+}
+
+
+
+
+
+var locationsHumanRights = new Array('WomensInitiatives2');
+
+var anyHumanRights = 'HumanRights2';
+
+function toggleHumanRights( el ) {
+    var i;
+    if ( el.id == anyHumanRights ) {
+        for( i = 0; i < locationsHumanRights.length; i++ ){
+            var cb = document.getElementById(locationsHumanRights[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyHumanRights);
+        cb.checked = false; 
+    }
+}
+
+
+
+
+var locationsRecreation = new Array('AdventureTravel2');
+
+var anyRecreation = 'Recreation2';
+
+function toggleRecreation( el ) {
+    var i;
+    if ( el.id == anyRecreation ) {
+        for( i = 0; i < locationsRecreation.length; i++ ){
+            var cb = document.getElementById(locationsRecreation[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyRecreation);
+        cb.checked = false; 
+    }
+}
+
+
+
+
+var locationsScientificResearch = new Array('Archaeology2', 'EnvironmentalBiology2');
+
+var anyScientificResearch = 'ScientificResearch2';
+
+function toggleScientificResearch( el ) {
+    var i;
+    if ( el.id == anyScientificResearch ) {
+        for( i = 0; i < locationsScientificResearch.length; i++ ){
+            var cb = document.getElementById(locationsScientificResearch[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyScientificResearch);
+        cb.checked = false; 
+    }
+}
+	
+
+
+
+var locationsTechnology = new Array('TeachingComputerLiteracy2', 'MediaMarketingandGraphicDesign2');
+
+var anyTechnology = 'Technology2';
+
+function toggleTechnology( el ) {
+    var i;
+    if ( el.id == anyTechnology ) {
+        for( i = 0; i < locationsTechnology.length; i++ ){
+            var cb = document.getElementById(locationsTechnology[i]);
+            cb.checked = false;
+        }
+    } else {
+        var cb = document.getElementById(anyTechnology);
+        cb.checked = false; 
+    }
+}
+	
+
+
+	
+
+	
+
+
+</script>
+
+
 
 <script type="text/javascript">
 
