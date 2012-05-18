@@ -386,10 +386,9 @@ function toggleDisplay(){
 </div>
 
 
-<div id="lengthOfTrip">
-	
+<div id="lengthOfTrip" style="width:600px">
+	<div class="six columns" style="width:45%">
 	<input onClick='toggleBoxes2(this)'value="false" id='any2' name='length' type='checkbox' checked>Any <br />
-<div class="six columns" style="width:45%">
     <input onclick='toggleBoxes2(this)' value='1 week or less' id='1_length' name='length[]' type='checkbox'>1 week or less<br />
 	<input onclick='toggleBoxes2(this)' value='2-4 weeks' id='2_length' name='length[]' type='checkbox'>2-4 weeks<br />
 	<input onclick='toggleBoxes2(this)' value='5-8 weeks' id='3_length' name='length[]' type='checkbox'>5-8 weeks<br />
@@ -404,9 +403,9 @@ function toggleDisplay(){
 </div>
 
 
-<div id="groupSize">
+<div id="groupSize" style="width:600px">
+	<div class="six columns" style="width:45%">
 	 <input onClick='toggleBoxes3(this)'value="false" id='any3' name='group_size' type='checkbox' checked>Any<br />
-		<div class="six columns" style="width:45%">
         <input onclick='toggleBoxes3(this)' value='Individual' id='1_group' name='group_size[]' type='checkbox'>Individual<br />
 		<input onclick='toggleBoxes3(this)' value='Small Groups (2-3)' id='2_group' name='group_size[]' type='checkbox'>Small Groups (2-3)<br />
 		</div>
@@ -428,7 +427,7 @@ function toggleDisplay(){
 
 <div id="programCountries">
 	<div class="six columns" style="width:45%">
-		<input onclick='toggleBoxes(this)' value='false' id='anyRegion' name='countries' type='checkbox'>Any<br />
+		<input onclick='toggleBoxes(this)' value='false' id='anyRegion' name='countries' type='checkbox' checked>Any<br />
 	<input onclick='toggleBoxes(this)' value='NorthernAfrica' id='NorthernAfrica2' name='countries[]' type='checkbox'>Northern Africa<br />
 	<input onclick='toggleBoxes(this)' value='WesternAfrica' id='WesternAfrica2' name='countries[]' type='checkbox'>Western Africa<br />
 	<input onclick='toggleBoxes(this)' value='MiddleAfrica' id='MiddleAfrica2' name='countries[]' type='checkbox'>Middle Africa<br />
