@@ -322,10 +322,10 @@ function toggleDisplay(){
 </div>
 </div>
 </div>
-<body>
+<body style="oveflow-x:hidden">
 <form action="/pages/search_machine_results" method="get">
 
-<div id="programSubjects" style="width:800px; padding-bottom:20px; color:#575758">
+<div id="programSubjects" style="width:800px; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	
 	<div class="four columns" style="width:29%">
 		<input onClick='toggleBoxes1(this)'value="false" id='any' name='subject' type='checkbox' checked><font style="font-size:1.2em; color:#575758">Any</font><br />
@@ -415,7 +415,7 @@ function toggleDisplay(){
 </div>
 
 
-<div id="lengthOfTrip" style="width:300px; padding-bottom:20px; color:#575758">
+<div id="lengthOfTrip" style="width:300px; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	<div class="six columns" style="width:45%">
 	<input onClick='toggleBoxes2(this)'value="false" id='any2' name='length' type='checkbox' checked>Any <br />
     <input onclick='toggleBoxes2(this)' value='1 week or less' id='1_length' name='length[]' type='checkbox'>1 week or less<br />
@@ -432,7 +432,7 @@ function toggleDisplay(){
 </div>
 
 
-<div id="groupSize" style="width:350px; padding-bottom:20px; color:#575758">
+<div id="groupSize" style="width:350px; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	<div class="six columns" style="width:45%">
 	 <input onClick='toggleBoxes3(this)'value="false" id='any3' name='group_size' type='checkbox' checked>Any<br />
         <input onclick='toggleBoxes3(this)' value='Individual' id='1_group' name='group_size[]' type='checkbox'>Individual<br />
@@ -445,7 +445,7 @@ function toggleDisplay(){
 
 
 
-<div id="priceRange" style="color:#575758">
+<div id="priceRange" style="color:#575758; overflow-x:hidden">
 <br />
     Min: <input type="number" value= 0 name="price_min" id= "price_min" style="background:white; width:150px"/>
     Max: <input type="number" value= 999 name="price_max" id = "price_max" style="background:white; margin-top:5px; width:150px"/><br /><br />
@@ -454,7 +454,7 @@ function toggleDisplay(){
 
 
 
-<div id="programCountries" style="color:#575758; width:900px">
+<div id="programCountries" style="color:#575758; width:900px; overflow-x:hidden">
 	<div class="two columns" style="width:16%">
 	
 	<input onclick='toggleBoxes(this);toggleAfrica(this)' value='Africa' id='anyAfrica' name='countries[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Africa</font><br />
@@ -723,7 +723,7 @@ function toggleDisplay(){
 
 </div>
 
-<div id="search"><br /><input type="button" value="submit"><br /><br /></div>
+<div id="search"><br /><input type="button" value="submit" style="overflow-x:hidden"><br /><br /></div>
 </form>
 </body>
 <script type='text/javascript'>
