@@ -31,7 +31,7 @@ $('#programCountries').pullOut({
   top: '180px',
   showOn: 'click',
   slideSpeed: 'normal',
-  scrollWithContent: true,
+  scrollWithContent: false,
   button: 'world',
   color: 'lightblue'
 });	
@@ -194,7 +194,7 @@ function toggleDisplay(){
 
 
 
-
+<div id="page">
 <div class="container">
 <div style="text-align:center; width:100%; margin-top:50px" id="programs-contents1">	
 <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteerPrograms.png"%><br /><br />
@@ -322,7 +322,7 @@ function toggleDisplay(){
 </div>
 </div>
 </div>
-
+</div>
 <form action="/pages/search_machine_results" method="get">
 
 <div id="programSubjects" style="width:800px; padding-bottom:20px; color:#575758">
@@ -1424,5 +1424,7 @@ function toggleTechnology( el ) {
 				input[type="number"] {
 					width:150px;
 				}
+				
+				#page{ min-height:1500px}
 			</style>			
 				
