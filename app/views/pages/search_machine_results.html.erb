@@ -448,20 +448,9 @@ function toggleDisplay(){
 
 
 <div id="programCountries" style="color:#575758; width:800px">
-	<div class="three columns" style="width:190px">
-	<input onclick='toggleBoxes(this)' value='AQ' id='AQ2' name='countries[]' type='checkbox'> Antarctica<br />
-	<input onclick='toggleBoxes(this)' value='BQ' id='BQ2' name='countries[]' type='checkbox'> Bonaire, Sint Eustatius and Saba<br />
-	<input onclick='toggleBoxes(this)' value='BV' id='BV2' name='countries[]' type='checkbox'> Bouvet Island<br />
-	<input onclick='toggleBoxes(this)' value='IO' id='IO2' name='countries[]' type='checkbox'> British Indian Ocean Territory<br />
-	<input onclick='toggleBoxes(this)' value='CX' id='CX2' name='countries[]' type='checkbox'> Christmas Island<br />
-	<input onclick='toggleBoxes(this)' value='CC' id='CC2' name='countries[]' type='checkbox'> Cocos (Keeling) Islands<br />
-	<input onclick='toggleBoxes(this)' value='CW' id='CW2' name='countries[]' type='checkbox'> Curaçao<br />
-	<input onclick='toggleBoxes(this)' value='TF' id='TF2' name='countries[]' type='checkbox'> French Southern Territories<br />
-	<input onclick='toggleBoxes(this)' value='HM' id='HM2' name='countries[]' type='checkbox'> Heard Island and McDonald Islands<br />
-	<input onclick='toggleBoxes(this)' value='SX' id='SX2' name='countries[]' type='checkbox'> Sint Maarten (Dutch part)<br />
-	<input onclick='toggleBoxes(this)' value='GS' id='GS2' name='countries[]' type='checkbox'> South Georgia and the South Sandwich Islands<br />
-	<input onclick='toggleBoxes(this)' value='SS' id='SS2' name='countries[]' type='checkbox'> South Sudan<br />
-	<input onclick='toggleBoxes(this)' value='UM' id='UM2' name='countries[]' type='checkbox'> United States Minor Outlying Islands<br />
+	<div class="three columns" style="width:20%">
+	
+	<input onclick='toggleBoxes(this);toggleAfrica(this)' value='Africa' id='anyAfrica' name='countries[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Africa</font>
 	<input onclick='toggleBoxes(this)' value='DZ' id='DZ2' name='countries[]' type='checkbox'> Algeria<br />
 	<input onclick='toggleBoxes(this)' value='EG' id='EG2' name='countries[]' type='checkbox'> Egypt<br />
 	<input onclick='toggleBoxes(this)' value='LY' id='LY2' name='countries[]' type='checkbox'> Libya<br />
@@ -518,10 +507,14 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='LS' id='LS2' name='countries[]' type='checkbox'> Lesotho<br />
 	<input onclick='toggleBoxes(this)' value='NA' id='NA2' name='countries[]' type='checkbox'> Namibia<br />
 	<input onclick='toggleBoxes(this)' value='ZA' id='ZA2' name='countries[]' type='checkbox'> South Africa<br />
+	<input onclick='toggleBoxes(this)' value='SZ' id='SZ2' name='countries[]' type='checkbox'> Swaziland<br />
 	</div>
 	
-	<div class="three columns" style="width:190px">
-	<input onclick='toggleBoxes(this)' value='SZ' id='SZ2' name='countries[]' type='checkbox'> Swaziland<br />
+	
+	
+	<div class="three columns" style="width:20%">
+		
+	<input onclick='toggleBoxes(this);toggleEurope(this)' value='Europe' id='anyEurope' name='countries[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Europe</font>	
 	<input onclick='toggleBoxes(this)' value='AX' id='AX2' name='countries[]' type='checkbox'> Åland Islands<br />
 	<input onclick='toggleBoxes(this)' value='DK' id='DK2' name='countries[]' type='checkbox'> Denmark<br />
 	<input onclick='toggleBoxes(this)' value='EE' id='EE2' name='countries[]' type='checkbox'> Estonia<br />
@@ -572,7 +565,10 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='SM' id='SM2' name='countries[]' type='checkbox'> San Marino<br />
 	<input onclick='toggleBoxes(this)' value='RS' id='RS2' name='countries[]' type='checkbox'> Serbia<br />
 	<input onclick='toggleBoxes(this)' value='SI' id='SI2' name='countries[]' type='checkbox'> Slovenia<br />
-	<input onclick='toggleBoxes(this)' value='ES' id='ES2' name='countries[]' type='checkbox'> Spain<br />
+	<input onclick='toggleBoxes(this)' value='ES' id='ES2' name='countries[]' type='checkbox'> Spain<br /><br />
+	
+	
+	<input onclick='toggleBoxes(this);toggleAmericas(this)' value='Americas' id='anyAmericas' name='countries[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Americas</font>
 	<input onclick='toggleBoxes(this)' value='BM' id='BM2' name='countries[]' type='checkbox'> Bermuda<br />
 	<input onclick='toggleBoxes(this)' value='CA' id='CA2' name='countries[]' type='checkbox'> Canada<br />
 	<input onclick='toggleBoxes(this)' value='GL' id='GL2' name='countries[]' type='checkbox'> Greenland<br />
@@ -603,9 +599,6 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='TC' id='TC2' name='countries[]' type='checkbox'> Turks and Caicos Islands<br />
 	<input onclick='toggleBoxes(this)' value='VG' id='VG2' name='countries[]' type='checkbox'> Virgin Islands, British<br />
 	<input onclick='toggleBoxes(this)' value='VI' id='VI2' name='countries[]' type='checkbox'> Virgin Islands, U.S.<br />
-	</div>
-	
-	<div class="three columns" style="width:190px">
 	<input onclick='toggleBoxes(this)' value='BZ' id='BZ2' name='countries[]' type='checkbox'> Belize<br />
 	<input onclick='toggleBoxes(this)' value='CR' id='CR2' name='countries[]' type='checkbox'> Costa Rica<br />
 	<input onclick='toggleBoxes(this)' value='SV' id='SV2' name='countries[]' type='checkbox'> El Salvador<br />
@@ -627,7 +620,13 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='PE' id='PE2' name='countries[]' type='checkbox'> Peru<br />
 	<input onclick='toggleBoxes(this)' value='SR' id='SR2' name='countries[]' type='checkbox'> Suriname<br />
 	<input onclick='toggleBoxes(this)' value='UY' id='UY2' name='countries[]' type='checkbox'> Uruguay<br />
-	<input onclick='toggleBoxes(this)' value='VE' id='VE2' name='countries[]' type='checkbox'> Venezuela, Bolivarian Republic of<br />
+	<input onclick='toggleBoxes(this)' value='VE' id='VE2' name='countries[]' type='checkbox'> Venezuela, Bolivarian Republic of<br /><br />
+	</div>
+	
+	
+	
+	<div class="three columns" style="width:20%">
+	<input onclick='toggleBoxes(this);toggleAsia(this)' value='Asia' id='anyAsia' name='countries[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Asia</font>
 	<input onclick='toggleBoxes(this)' value='KZ' id='KZ2' name='countries[]' type='checkbox'> Kazakhstan<br />
 	<input onclick='toggleBoxes(this)' value='KG' id='KG2' name='countries[]' type='checkbox'> Kyrgyzstan<br />
 	<input onclick='toggleBoxes(this)' value='TJ' id='TJ2' name='countries[]' type='checkbox'> Tajikistan<br />
@@ -672,9 +671,6 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='KW' id='KW2' name='countries[]' type='checkbox'> Kuwait<br />
 	<input onclick='toggleBoxes(this)' value='LB' id='LB2' name='countries[]' type='checkbox'> Lebanon<br />
 	<input onclick='toggleBoxes(this)' value='OM' id='OM2' name='countries[]' type='checkbox'> Oman<br />
-	</div>
-	
-	<div class="three columns" style="width:190px">
 	<input onclick='toggleBoxes(this)' value='PS' id='PS2' name='countries[]' type='checkbox'> Palestinian Territory, Occupied<br />
 	<input onclick='toggleBoxes(this)' value='QA' id='QA2' name='countries[]' type='checkbox'> Qatar<br />
 	<input onclick='toggleBoxes(this)' value='SA' id='SA2' name='countries[]' type='checkbox'> Saudi Arabia<br />
@@ -682,6 +678,12 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='TR' id='TR2' name='countries[]' type='checkbox'> Turkey<br />
 	<input onclick='toggleBoxes(this)' value='AE' id='AE2' name='countries[]' type='checkbox'> United Arab Emirates<br />
 	<input onclick='toggleBoxes(this)' value='YE' id='YE2' name='countries[]' type='checkbox'> Yemen<br />
+	</div>
+	
+	
+	
+	<div class="three columns" style="width:20%">
+	<input onclick='toggleBoxes(this)' value='Oceania' id='anyOceania' name='countries[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Oceania</font>
 	<input onclick='toggleBoxes(this)' value='AU' id='AU2' name='countries[]' type='checkbox'> Australia<br />
 	<input onclick='toggleBoxes(this)' value='NZ' id='NZ2' name='countries[]' type='checkbox'> New Zealand<br />
 	<input onclick='toggleBoxes(this)' value='NF' id='NF2' name='countries[]' type='checkbox'> Norfolk Island<br />
@@ -717,29 +719,241 @@ function toggleDisplay(){
 <script type='text/javascript'>
 
 
-    var locations6 = new Array(
-	'NorthernAfrica2', 
-	'WesternAfrica2', 
-	'MiddleAfrica2', 
-	'EasternAfrica2', 
-	'SouthernAfrica2', 
-	'NorthernEurope2', 
-	'WesternEurope2', 
-	'EasternEurope2', 
-	'SouthernEurope2', 
-	'NorthernAmerica2', 
-	'Caribbean2', 
-	'CentralAmerica2', 
-	'SouthAmerica2', 
-	'CentralAsia2', 
-	'EasternAsia2', 
-	'SouthernAsia2', 
-	'South-EasternAsia2', 
-	'WesternAsia2', 
-	'AustraliaandNewZealand2', 
-	'Melanesia2', 
-	'Micronesia2', 
-	'Polynesia2');
+   var locations6 = new Array('AQ2', 
+	'BQ2', 
+	'BV2', 
+	'IO2', 
+	'CX2', 
+	'CC2', 
+	'CW2', 
+	'TF2', 
+	'HM2', 
+	'SX2', 
+	'GS2', 
+	'SS2', 
+	'UM2', 
+	'DZ2', 
+	'EG2', 
+	'LY2', 
+	'MA2', 
+	'SD2', 
+	'TN2', 
+	'EH2', 
+	'BJ2', 
+	'BF2', 
+	'CV2', 
+	'CI2', 
+	'GM2', 
+	'GH2', 
+	'GN2', 
+	'GW2', 
+	'LR2', 
+	'ML2', 
+	'MR2', 
+	'NE2', 
+	'NG2', 
+	'SH2', 
+	'SN2', 
+	'SL2', 
+	'TG2', 
+	'AO2', 
+	'CM2', 
+	'CF2', 
+	'TD2', 
+	'CG2', 
+	'CD2', 
+	'GQ2', 
+	'GA2', 
+	'ST2', 
+	'BI2', 
+	'KM2', 
+	'DJ2', 
+	'ER2', 
+	'ET2', 
+	'KE2', 
+	'MG2', 
+	'MW2', 
+	'MU2', 
+	'YT2', 
+	'MZ2', 
+	'RE2', 
+	'RW2', 
+	'SC2', 
+	'SO2', 
+	'TZ2', 
+	'UG2', 
+	'ZM2', 
+	'ZW2', 
+	'BW2', 
+	'LS2', 
+	'NA2', 
+	'ZA2', 
+	'SZ2', 
+	'AX2', 
+	'DK2', 
+	'EE2', 
+	'FO2', 
+	'FI2', 
+	'GG2', 
+	'IS2', 
+	'IE2', 
+	'IM2', 
+	'JE2', 
+	'LV2', 
+	'LT2', 
+	'NO2', 
+	'SJ2', 
+	'SE2', 
+	'GB2', 
+	'AT2', 
+	'BE2', 
+	'FR2', 
+	'DE2', 
+	'LI2', 
+	'LU2', 
+	'MC2', 
+	'NL2', 
+	'CH2', 
+	'BY2', 
+	'BG2', 
+	'CZ2', 
+	'HU2', 
+	'MD2', 
+	'PL2', 
+	'RO2', 
+	'RU2', 
+	'SK2', 
+	'UA2', 
+	'AL2', 
+	'AD2', 
+	'BA2', 
+	'HR2', 
+	'GI2', 
+	'GR2', 
+	'VA2', 
+	'IT2', 
+	'MK2', 
+	'MT2', 
+	'ME2', 
+	'PT2', 
+	'SM2', 
+	'RS2', 
+	'SI2', 
+	'ES2', 
+	'BM2', 
+	'CA2', 
+	'GL2', 
+	'PM2', 
+	'US2', 
+	'AI2', 
+	'AG2', 
+	'AW2', 
+	'BS2', 
+	'BB2', 
+	'KY2', 
+	'CU2', 
+	'DM2', 
+	'DO2', 
+	'GD2', 
+	'GP2', 
+	'HT2', 
+	'JM2', 
+	'MQ2', 
+	'MS2', 
+	'PR2', 
+	'BL2', 
+	'KN2', 
+	'LC2', 
+	'MF2', 
+	'VC2', 
+	'TT2', 
+	'TC2', 
+	'VG2', 
+	'VI2', 
+	'BZ2', 
+	'CR2', 
+	'SV2', 
+	'GT2', 
+	'HN2', 
+	'MX2', 
+	'NI2', 
+	'PA2', 
+	'AR2', 
+	'BO2', 
+	'BR2', 
+	'CL2', 
+	'CO2', 
+	'EC2', 
+	'FK2', 
+	'GF2', 
+	'GY2', 
+	'PY2', 
+	'PE2', 
+	'SR2', 
+	'UY2', 
+	'VE2', 
+	'KZ2', 
+	'KG2', 
+	'TJ2', 
+	'TM2', 
+	'UZ2', 
+	'CN2', 
+	'HK2', 
+	'JP2', 
+	'KP2', 
+	'KR2', 
+	'MO2', 
+	'MN2', 
+	'TW2', 
+	'AF2', 
+	'BD2', 
+	'BT2', 
+	'IN2', 
+	'IR2', 
+	'MV2', 
+	'NP2', 
+	'PK2', 
+	'LK2', 
+	'BN2', 
+	'KH2', 
+	'ID2', 
+	'LA2', 
+	'MY2', 
+	'MM2', 
+	'PH2', 
+	'SG2', 
+	'TH2', 
+	'TL2', 
+	'VN2', 
+	'AM2', 
+	'AZ2', 
+	'BH2', 
+	'CY2', 
+	'GE2', 
+	'IQ2', 
+	'IL2', 
+	'JO2', 
+	'KW2', 
+	'LB2', 
+	'OM2', 
+	'PS2', 
+	'QA2', 
+	'SA2', 
+	'SY2', 
+	'TR2', 
+	'AE2', 
+	'YE2', 
+	'AU2', 
+	'NZ2', 
+	'NF2', 
+	'FJ2', 
+	'NC2', 
+	'PG2', 
+	'SB2', 
+	'VU2', 
+	'GU2', 
+	'KI2', 
+	'MH2', 'anyAfrica', 'anyEurope', 'anyAmericas', 'anyAsia', 'anyOceania');
 
     var anyId6 = 'any6';
     
