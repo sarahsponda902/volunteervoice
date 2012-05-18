@@ -12,6 +12,7 @@ var allTheLocations = new Array('AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 
 
 
 $(document).ready(function() {
+	$("#others").hide();
     var count = 0;
     for (count = 0; count <= allTheLocations.length; count++)
     {
@@ -146,7 +147,7 @@ $(document).ready(function() {
 <p style="font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; padding-right:10px; margin-top:-10px; margin-bottom:3px; padding-left:20px; margin-left:-10px; background-color:#E3E6D5;padding-bottom:8px; width:215%; "><b>Program Countries:</b></p>
 <input onClick='toggleBoxes(this)'value="false" id='any6' name='countries' type='checkbox' checked><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
 
-<div style="display:none">
+<div id="others">
 <div id='AQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this)' value='AQ' id='AQ2' name='countries[]' type='checkbox'> Antarctica</div>
 <div id='BQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this)' value='BQ' id='BQ2' name='countries[]' type='checkbox'> Bonaire, Sint Eustatius and <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Saba</div>
 <div id='BV'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this)' value='BV' id='BV2' name='countries[]' type='checkbox'> Bouvet Island</div>
