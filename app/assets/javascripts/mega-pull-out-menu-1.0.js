@@ -29,7 +29,7 @@
       'scrollWithContent': true,
       'button'           : 'plus-minus',
       'buttonTitle'      : 'Click to open/close the menu',
-      'buttonSize'       : 45,
+      'buttonSize'       : 55,
       'color'            : 'minimal',
       'maxWidth'         : 900,
       'debug'            : false
