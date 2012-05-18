@@ -82,7 +82,7 @@
     }
 
     // button
-    var tmp_button = ['catalog64', 'schedule64', 'organization64', 'earning-statements128', 'map128'];
+    var tmp_button = ['subjects','catalog64', 'schedule64', 'organization64', 'earning-statements128', 'map128'];
     if ($.inArray(options.button, tmp_button) !== -1) {
 
         options.button = '/assets/' + options.button + '.png';
