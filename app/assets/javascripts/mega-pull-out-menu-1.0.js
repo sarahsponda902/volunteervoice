@@ -26,7 +26,7 @@
       'bottom'           : false,
       'showOn'           : 'click',
       'slideSpeed'       : 'normal',
-      'scrollWithContent': false,
+      'scrollWithContent': true,
       'button'           : 'plus-minus',
       'buttonTitle'      : 'Click to open/close the menu',
       'buttonSize'       : 45,
