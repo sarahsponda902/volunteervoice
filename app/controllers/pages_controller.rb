@@ -1119,21 +1119,366 @@ class PagesController < ApplicationController
       @sort = "ratinghigh"
       
       if ((params["subject"] == "false") || params["subject"].nil?)
-      params["subject"] = ["a", "b", "c"]
+      params["subject"] = [  'Agriculture', 
+        'Organic Farming', 
+        'Sustainable Development', 
+        'Animal Care', 
+        'Animal Rights', 
+        'Wildlife Conservation', 
+        'Caregiving', 
+        'Elder Care', 
+        'Child/Orphan Care', 
+        'Disabled Care', 
+        'Feed the Homeless', 
+        'Community Development', 
+        'Youth Development and Outreach', 
+        'Construction', 
+        'Culture and Community', 
+        'Performing Arts', 
+        'Fashion', 
+        'Music', 
+        'Sports & Recreation', 
+        'Journalism', 
+        'Disaster Relief', 
+        'Economics', 
+        'Microfinance', 
+        'Education', 
+        'Teaching English', 
+        'Teaching Buddhist Monks', 
+        'Teaching Children', 
+        'Teaching Computer Literacy', 
+        'Engineering and Infrastructure', 
+        'Environmental', 
+        'Ecological Conservation', 
+        'Sustainable Development', 
+        'Wildlife Conservation', 
+        'Habitat Restoration', 
+        'Health and Medicine', 
+        'HIV/AIDS', 
+        'Nutrition', 
+        'Family Planning', 
+        'Veterinary Medicine', 
+        'Clinical Work', 
+        'Dental Work', 
+        'Medical Research', 
+        'Health Education', 
+        'Public Health', 
+        'Hospital Care-giving', 
+        'Human Rights', 
+        'Womens Initiatives', 
+        'International Work Camp', 
+        'Recreation', 
+        'Adventure Travel', 
+        'Scientific Research', 
+        'Archaeology', 
+        'Environmental Biology', 
+        'Technology', 
+        'Teaching Computer Literacy', 
+        'Media, Marketing, and Graphic Design']
     end
     if ((params["region"] == "false") || params["region"].nil?)
       params["region"] = ['AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BQ', 'BA', 'BW', 'BV', 'BR', 'IO', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CA', 'CV', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'VA', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'KP', 'KR', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MK', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'SS', 'ES', 'LK', 'SD', 'SR', 'SJ', 'SZ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UG', 'UA', 'AE', 'GB', 'US', 'UM', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW']
     end
     if ((params["group_size"] == "false") || params["group_size"].nil?)
-      params["group_size"] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      params["group_size"] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (15+)"]
     end
     
     if ((params["length"] == "false") || params["length"].nil?)
-      params["length"] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+      params["length"] = ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"]
     end
     
-    if ((params["headquarters"] == "false") || (params["headquarters"].nil?))
-      params["headquarters"] = ['AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BQ', 'BA', 'BW', 'BV', 'BR', 'IO', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CA', 'CV', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'VA', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'KP', 'KR', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MK', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'SS', 'ES', 'LK', 'SD', 'SR', 'SJ', 'SZ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UG', 'UA', 'AE', 'GB', 'US', 'UM', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW']
+    if params["subject"].include?("Agriculture")
+      params["subject"] = params["subject"] + ["Organic Farming", "Sustainable Development"]
+    end
+    if params["subject"].include?("Animal Care")
+      params["subject"] = params["subject"] + ["Animal Rights", "Wildlife Conservation"]
+    end
+    if params["subject"].include?("Caregiving")
+      params["subject"] = params["subject"] + ["Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless"]
+    end
+    if params["subject"].include?("Community Development")
+      params["subject"] = params["subject"]+["Youth Development and Outreach"]
+    end
+    if params["subject"].include?("Culture and Community")
+      params["subject"] = params["subject"] + ["Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism"]
+    end
+    if params["subject"].include?("Disaster Relief")
+      params["subject"] = params["subject"] + ["Economics", "Microfinance"]
+    end
+    if params["subject"].include?("Education")
+      params["subject"] = params["subject"] + ["Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy"]
+    end
+    if params["subject"].include?("Environmental")
+      params["subject"] = params["subject"] + ["Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration"]
+    end
+    if params["subject"].include?("Health and Medicine")
+      params["subject"] = params["subject"] + ["HIV/AIDS", "Family Planning", "Nutrition", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Caregiving"]
+    end
+    if params["subject"].include?("Human Rights")
+      params["subject"] = params["subject"] + ["Women's Initiatives"]
+    end
+    if params["subject"].include?("Recreation")
+      params["subject"] = params["subject"] + ["Adventure Travel"]
+    end
+    if params["subject"].include?("Scientific Research")
+      params["subject"] = params["subject"] + ["Archaeology", "Environmental Biology"]
+    end
+    if params["subject"].include?("Technology")
+      params["subject"] = params["subject"] + ["Teaching Computer Literacy", "Media, Marketing, and Graphic Design"]
+    end
+    
+    
+    
+    
+    if (params["region"] != "false" && params["region"].include?("Americas"))
+      params["region"] = params["region"] + ['DZ', 
+      'EG', 
+      'LY', 
+      'MA', 
+      'SD', 
+      'TN', 
+      'EH', 
+      'BJ', 
+      'BF', 
+      'CV', 
+      'CI', 
+      'GM', 
+      'GH', 
+      'GN', 
+      'GW', 
+      'LR', 
+      'ML', 
+      'MR', 
+      'NE', 
+      'NG', 
+      'SH', 
+      'SN', 
+      'SL', 
+      'TG', 
+      'AO', 
+      'CM', 
+      'CF', 
+      'TD', 
+      'CG', 
+      'CD', 
+      'GQ', 
+      'GA', 
+      'ST', 
+      'BI', 
+      'KM', 
+      'DJ', 
+      'ER', 
+      'ET', 
+      'KE', 
+      'MG', 
+      'MW', 
+      'MU', 
+      'YT', 
+      'MZ', 
+      'RE', 
+      'RW', 
+      'SC', 
+      'SO', 
+      'TZ', 
+      'UG', 
+      'ZM', 
+      'ZW', 
+      'BW', 
+      'LS', 
+      'NA', 
+      'ZA', 
+      'SZ']
+    end
+    
+    if (params["region"] != "false" && params["region"].include?("Europe"))
+      params["region"] = params["region"] + ['AX', 
+      'DK', 
+      'EE', 
+      'FO', 
+      'FI', 
+      'GG', 
+      'IS', 
+      'IE', 
+      'IM', 
+      'JE', 
+      'LV', 
+      'LT', 
+      'NO', 
+      'SJ', 
+      'SE', 
+      'GB', 
+      'AT', 
+      'BE', 
+      'FR', 
+      'DE', 
+      'LI', 
+      'LU', 
+      'MC', 
+      'NL', 
+      'CH', 
+      'BY', 
+      'BG', 
+      'CZ', 
+      'HU', 
+      'MD', 
+      'PL', 
+      'RO', 
+      'RU', 
+      'SK', 
+      'UA', 
+      'AL', 
+      'AD', 
+      'BA', 
+      'HR', 
+      'GI', 
+      'GR', 
+      'VA', 
+      'IT', 
+      'MK', 
+      'MT', 
+      'ME', 
+      'PT', 
+      'SM', 
+      'RS', 
+      'SI', 
+      'ES']
+    end
+    
+    if (params["region"] != "false" && params["region"].include?("Africa"))
+      params["region"] = params["region"] + ['BM', 
+      'CA', 
+      'GL', 
+      'PM', 
+      'US', 
+      'AI', 
+      'AG', 
+      'AW', 
+      'BS', 
+      'BB', 
+      'KY', 
+      'CU', 
+      'DM', 
+      'DO', 
+      'GD', 
+      'GP', 
+      'HT', 
+      'JM', 
+      'MQ', 
+      'MS', 
+      'PR', 
+      'BL', 
+      'KN', 
+      'LC', 
+      'MF', 
+      'VC', 
+      'TT', 
+      'TC', 
+      'VG', 
+      'VI', 
+      'BZ', 
+      'CR', 
+      'SV', 
+      'GT', 
+      'HN', 
+      'MX', 
+      'NI', 
+      'PA', 
+      'AR', 
+      'BO', 
+      'BR', 
+      'CL', 
+      'CO', 
+      'EC', 
+      'FK', 
+      'GF', 
+      'GY', 
+      'PY', 
+      'PE', 
+      'SR', 
+      'UY', 
+      'VE']
+    end
+    
+    if (params["region"] != "false" && params["region"].include?("Asia"))
+      params["region"] = params["region"] + ['KZ', 
+      'KG', 
+      'TJ', 
+      'TM', 
+      'UZ', 
+      'CN', 
+      'HK', 
+      'JP', 
+      'KP', 
+      'KR', 
+      'MO', 
+      'MN', 
+      'TW', 
+      'AF', 
+      'BD', 
+      'BT', 
+      'IN', 
+      'IR', 
+      'MV', 
+      'NP', 
+      'PK', 
+      'LK', 
+      'BN', 
+      'KH', 
+      'ID', 
+      'LA', 
+      'MY', 
+      'MM', 
+      'PH', 
+      'SG', 
+      'TH', 
+      'TL', 
+      'VN', 
+      'AM', 
+      'AZ', 
+      'BH', 
+      'CY', 
+      'GE', 
+      'IQ', 
+      'IL', 
+      'JO', 
+      'KW', 
+      'LB', 
+      'OM', 
+      'PS', 
+      'QA', 
+      'SA', 
+      'SY', 
+      'TR', 
+      'AE', 
+      'YE']
+    end
+    
+    if (params["region"] != "false" && params["region"].include?("Oceania"))
+      params["region"] = params["region"] + ['AU', 
+      'NZ', 
+      'NF', 
+      'FJ', 
+      'NC', 
+      'PG', 
+      'SB', 
+      'VU', 
+      'GU', 
+      'KI', 
+      'MH', 
+      'FM', 
+      'NR', 
+      'MP', 
+      'PW', 
+      'AS', 
+      'CK', 
+      'PF', 
+      'NU', 
+      'PN', 
+      'WS', 
+      'TK', 
+      'TO', 
+      'TV', 
+      'WF']
     end
       
       @search = Program.search do
@@ -1149,10 +1494,6 @@ class PagesController < ApplicationController
           with(:length).any_of(params["length"])
 
           with(:group_size).any_of(params["group_size"])
-
-          with(:headquarters).any_of(params["headquarters"])
-          
-          paginate :per_page => 2
 
         
       end
