@@ -449,7 +449,7 @@ function toggleDisplay(){
 
 <div id="programCountries" style="color:#575758; width:500px">
 	<div class="six columns" style="width:45%">
-		<input onclick='toggleBoxes(this)' value='false' id='anyRegion' name='countries' type='checkbox' checked>Any<br />
+		<input onclick='toggleBoxes(this)' value='false' id='anyRegion' name='countries' type='checkbox' checked>Any<br /><br />
 		<font style="font-size:1.2em; color:#575758">Africa:</font><br />
 	<input onclick='toggleBoxes(this)' value='NorthernAfrica' id='NorthernAfrica2' name='countries[]' type='checkbox'>Northern Africa<br />
 	<input onclick='toggleBoxes(this)' value='WesternAfrica' id='WesternAfrica2' name='countries[]' type='checkbox'>Western Africa<br />
@@ -961,15 +961,20 @@ function toggleTechnology( el ) {
 			</style>
 
 			<style>
-			input[type="checkbox"] {
-				margin-right:4px;
-				}
 
 				input::-webkit-outer-spin-button,
 				input::-webkit-inner-spin-button {
 				    /* display: none; <- Crashes Chrome on hover */
 				    -webkit-appearance: none;
 				    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+				}
+				
+				input[type="checkbox"] {
+					margin-right:4px;
+				}
+				
+				input[type="number"] {
+					width:150px;
 				}
 			</style>			
 				
