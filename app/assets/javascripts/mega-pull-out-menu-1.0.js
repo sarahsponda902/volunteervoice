@@ -28,8 +28,8 @@
       'slideSpeed'       : 'normal',
       'scrollWithContent': false,
       'button'           : 'plus-minus',
-      'buttonTitle'      : 'Hover to open/close the menu',
-      'buttonSize'       : 32,
+      'buttonTitle'      : 'Click to open/close the menu',
+      'buttonSize'       : 45,
       'color'            : 'minimal',
       'maxWidth'         : 500,
       'debug'            : false
@@ -82,7 +82,7 @@
     }
 
     // button
-    var tmp_button = ['catolog64', 'schedule64', 'organization64', 'earning-statements128', 'map128'];
+    var tmp_button = ['catalog64', 'schedule64', 'organization64', 'earning-statements128', 'map128'];
     if ($.inArray(options.button, tmp_button) !== -1) {
 
         options.button = '/assets/' + options.button + '.png';

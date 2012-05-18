@@ -8,7 +8,7 @@ Version : 1.0
 body { overflow-x: hidden; }
 
 .pull-out ,.pull-out-button {
-  background-image:url(../images/mpum-overlay.png);
+  background-image:url(/assets/mpum-overlay.png);
   background-position:0 0;
   background-repeat:repeat-x;
   -moz-border-radius:0 0 5px 0!important;
@@ -248,7 +248,7 @@ body { overflow-x: hidden; }
 }
 /* LIGHT BLUE */
 .pull-out.pull-out-lightblue ,.pull-out.pull-out-lightblue .pull-out-button {
-  background-color:#ccdbed;
+  background-color:#c1dfdb;
 }
 /* BROWN */
 .pull-out.pull-out-brown ,.pull-out.pull-out-brown .pull-out-button {
