@@ -22,6 +22,21 @@
 <% @resultsO << Organization.find(f.organization_id) unless @resultsO.include?(Organization.find(f.organization_id))%>
 <% end %>
 
+<script type="text/javascript" src="/assets/mega-pull-out-menu-1.0.js"></script>
+<script type="text/javascript">
+$(function() { 
+$('#my-menu').pullOut({
+  position: 'right',
+  top: '100px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'catalog64',
+  color: 'lightblue'
+});
+});
+</script>
+
 <script type="text/javascript">
 
 
@@ -257,20 +272,7 @@ function toggleDisplay(){
 </div>
 
 <div id="my-menu">Hello</div>
-<script type="text/javascript" src="/assets/mega-pull-out-menu-1.0.js"></script>
-<script type="text/javascript">
-$(function() { 
-$('#my-menu').pullOut({
-  position: 'right',
-  top: '100px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'catalog64',
-  color: 'lightblue'
-});
-});
-</script>
+
 
 
 
