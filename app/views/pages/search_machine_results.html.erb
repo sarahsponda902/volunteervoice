@@ -31,7 +31,7 @@ $('#programCountries').pullOut({
   top: '180px',
   showOn: 'click',
   slideSpeed: 'normal',
-  scrollWithContent: false,
+  scrollWithContent: true,
   button: 'world',
   color: 'lightblue'
 });	
@@ -41,7 +41,7 @@ $('#programSubjects').pullOut({
   top: '260px',
   showOn: 'click',
   slideSpeed: 'normal',
-  scrollWithContent: false,
+  scrollWithContent: true,
   button: 'folder',
   color: 'lightblue'
 });
@@ -51,7 +51,7 @@ $('#lengthOfTrip').pullOut({
   top: '340px',
   showOn: 'click',
   slideSpeed: 'normal',
-  scrollWithContent: false,
+  scrollWithContent: true,
   button: 'clock',
   color: 'lightblue'
 });
@@ -61,7 +61,7 @@ $('#groupSize').pullOut({
   top: '420px',
   showOn: 'click',
   slideSpeed: 'normal',
-  scrollWithContent: false,
+  scrollWithContent: true,
   button: 'man',
   color: 'lightblue'
 });
@@ -71,7 +71,7 @@ $('#priceRange').pullOut({
   top: '500px',
   showOn: 'click',
   slideSpeed: 'normal',
-  scrollWithContent: false,
+  scrollWithContent: true,
   button: 'piggy',
   color: 'lightblue'
 });
@@ -81,7 +81,7 @@ $('#search').pullOut({
   top: '580px',
   showOn: 'click',
   slideSpeed: 'normal',
-  scrollWithContent: false,
+  scrollWithContent: true,
   button: 'magnifyingglass',
   color: 'green'
 });
@@ -194,7 +194,6 @@ function toggleDisplay(){
 
 
 
-<div id="page">
 <div class="container">
 <div style="text-align:center; width:100%; margin-top:50px" id="programs-contents1">	
 <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteerPrograms.png"%><br /><br />
@@ -455,6 +454,8 @@ function toggleDisplay(){
 
 
 <div id="programCountries" style="color:#575758; width:900px">
+	<div class="container">
+		<div class="row">
 	<div class="two columns" style="width:16%">
 	
 	<input onclick='toggleBoxes(this);toggleAfrica(this)' value='Africa' id='anyAfrica' name='countries[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Africa</font><br />
@@ -719,6 +720,8 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='TO' id='TO2' name='countries[]' type='checkbox'> Tonga<br />
 	<input onclick='toggleBoxes(this)' value='TV' id='TV2' name='countries[]' type='checkbox'> Tuvalu<br />
 	<input onclick='toggleBoxes(this)' value='WF' id='WF2' name='countries[]' type='checkbox'> Wallis and Futuna<br />
+	</div>
+	</div>
 	</div>
 
 </div>
@@ -1424,7 +1427,6 @@ function toggleTechnology( el ) {
 				input[type="number"] {
 					width:150px;
 				}
-				
-				#page{ min-height:1500px}
+
 			</style>			
 				
