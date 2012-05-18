@@ -325,7 +325,7 @@ function toggleDisplay(){
 
 <form action="/pages/search_machine_results" method="get">
 
-<div id="programSubjects" style="width:600px; padding-bottom:20px">
+<div id="programSubjects" style="width:600px; padding-bottom:20px; color:#575758">
 	
 	<div class="six columns" style="width:45%">
 		<input onclick='toggleBoxes1(this)' value='Agriculture' id='Agriculture2 ' name='subject[]' type='checkbox'><font style="font-size:1.2em; color:#575758">Agriculture</font><br />
@@ -355,7 +355,7 @@ function toggleDisplay(){
 		&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching English' id='TeachingEnglish2 ' name='subject[]' type='checkbox'>Teaching English<br />
 		&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching Buddhist Monks' id='TeachingBuddhistMonks2 ' name='subject[]' type='checkbox'>Teaching Buddhist Monks<br />
 		&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching Children' id='TeachingChildren2 ' name='subject[]' type='checkbox'>Teaching Children<br />
-		&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching Computer Literacy' id='Teaching_Computer_Literacy2 ' name='subject[]' type='checkbox'>Teaching Computer Literacy<br />
+		&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this)' value='Teaching Computer Literacy' id='Teaching_Computer_Literacy2 ' name='subject[]' type='checkbox'>Teaching Computer Literacy<br /><br /><br /><br />
 		</div>
 		
 		
@@ -393,7 +393,7 @@ function toggleDisplay(){
 </div>
 
 
-<div id="lengthOfTrip" style="width:300px; padding-bottom:20px">
+<div id="lengthOfTrip" style="width:300px; padding-bottom:20px; color:#575758">
 	<div class="six columns" style="width:45%">
 	<input onClick='toggleBoxes2(this)'value="false" id='any2' name='length' type='checkbox' checked>Any <br />
     <input onclick='toggleBoxes2(this)' value='1 week or less' id='1_length' name='length[]' type='checkbox'>1 week or less<br />
@@ -410,7 +410,7 @@ function toggleDisplay(){
 </div>
 
 
-<div id="groupSize" style="width:300px; padding-bottom:20px">
+<div id="groupSize" style="width:300px; padding-bottom:20px; color:#575758">
 	<div class="six columns" style="width:45%">
 	 <input onClick='toggleBoxes3(this)'value="false" id='any3' name='group_size' type='checkbox' checked>Any<br />
         <input onclick='toggleBoxes3(this)' value='Individual' id='1_group' name='group_size[]' type='checkbox'>Individual<br />
@@ -423,7 +423,7 @@ function toggleDisplay(){
 
 
 
-<div id="priceRange">
+<div id="priceRange" style="color:#575758">
 
     Min: <input type="number" value= 0 name="price_min" id= "price_min" style="background:white; border:1px solid #575758; margin-left:5px"/><br />
     Max: <input type="number" value= 999 name="price_max" id = "price_max" style="background:white; border:1px solid #575758; margin-top:5px"/>
@@ -432,33 +432,33 @@ function toggleDisplay(){
 
 
 
-<div id="programCountries">
+<div id="programCountries" style="color:#575758">
 	<div class="six columns" style="width:45%">
 		<input onclick='toggleBoxes(this)' value='false' id='anyRegion' name='countries' type='checkbox' checked>Any<br />
 	<input onclick='toggleBoxes(this)' value='NorthernAfrica' id='NorthernAfrica2' name='countries[]' type='checkbox'>Northern Africa<br />
 	<input onclick='toggleBoxes(this)' value='WesternAfrica' id='WesternAfrica2' name='countries[]' type='checkbox'>Western Africa<br />
 	<input onclick='toggleBoxes(this)' value='MiddleAfrica' id='MiddleAfrica2' name='countries[]' type='checkbox'>Middle Africa<br />
 	<input onclick='toggleBoxes(this)' value='EasternAfrica' id='EasternAfrica2' name='countries[]' type='checkbox'>Eastern Africa<br />
-	<input onclick='toggleBoxes(this)' value='SouthernAfrica' id='SouthernAfrica2' name='countries[]' type='checkbox'>Southern Africa<br />
+	<input onclick='toggleBoxes(this)' value='SouthernAfrica' id='SouthernAfrica2' name='countries[]' type='checkbox'>Southern Africa<br /><br />
 	<input onclick='toggleBoxes(this)' value='NorthernEurope' id='NorthernEurope2' name='countries[]' type='checkbox'>Northern Europe<br />
 	<input onclick='toggleBoxes(this)' value='WesternEurope' id='WesternEurope2' name='countries[]' type='checkbox'>Western Europe<br />
 	<input onclick='toggleBoxes(this)' value='EasternEurope' id='EasternEurope2' name='countries[]' type='checkbox'>Eastern Europe<br />
-	<input onclick='toggleBoxes(this)' value='SouthernEurope' id='SouthernEurope2' name='countries[]' type='checkbox'>Southern Europe<br />
+	<input onclick='toggleBoxes(this)' value='SouthernEurope' id='SouthernEurope2' name='countries[]' type='checkbox'>Southern Europe<br /><br />
 	<input onclick='toggleBoxes(this)' value='NorthernAmerica' id='NorthernAmerica2' name='countries[]' type='checkbox'>Northern America<br />
 	<input onclick='toggleBoxes(this)' value='Caribbean' id='Caribbean2' name='countries[]' type='checkbox'>Caribbean<br />
 	</div>
 	<div class="six columns" style="width:45%">
 	<input onclick='toggleBoxes(this)' value='CentralAmerica' id='CentralAmerica2' name='countries[]' type='checkbox'>Central America<br />
-	<input onclick='toggleBoxes(this)' value='SouthAmerica' id='SouthAmerica2' name='countries[]' type='checkbox'>South America<br />
+	<input onclick='toggleBoxes(this)' value='SouthAmerica' id='SouthAmerica2' name='countries[]' type='checkbox'>South America<br /><br />
 	<input onclick='toggleBoxes(this)' value='CentralAsia' id='CentralAsia2' name='countries[]' type='checkbox'>Central Asia<br />
 	<input onclick='toggleBoxes(this)' value='EasternAsia' id='EasternAsia2' name='countries[]' type='checkbox'>Eastern Asia<br />
 	<input onclick='toggleBoxes(this)' value='SouthernAsia' id='SouthernAsia2' name='countries[]' type='checkbox'>Southern Asia<br />
 	<input onclick='toggleBoxes(this)' value='South-EasternAsia' id='South-EasternAsia2' name='countries[]' type='checkbox'>South-Eastern Asia<br />
-	<input onclick='toggleBoxes(this)' value='WesternAsia' id='WesternAsia2' name='countries[]' type='checkbox'>Western Asia<br />
+	<input onclick='toggleBoxes(this)' value='WesternAsia' id='WesternAsia2' name='countries[]' type='checkbox'>Western Asia<br /><br />
 	<input onclick='toggleBoxes(this)' value='AustraliaandNewZealand' id='AustraliaandNewZealand2' name='countries[]' type='checkbox'>Australia and New Zealand<br />
 	<input onclick='toggleBoxes(this)' value='Melanesia' id='Melanesia2' name='countries[]' type='checkbox'>Melanesia<br />
 	<input onclick='toggleBoxes(this)' value='Micronesia' id='Micronesia2' name='countries[]' type='checkbox'>Micronesia<br />
-	<input onclick='toggleBoxes(this)' value='Polynesia' id='Polynesia2' name='countries[]' type='checkbox'>Polynesia<br /><br /><br /><br />
+	<input onclick='toggleBoxes(this)' value='Polynesia' id='Polynesia2' name='countries[]' type='checkbox'>Polynesia<br /><br /><br />
 	</div>
 
 </div>
