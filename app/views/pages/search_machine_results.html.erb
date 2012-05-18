@@ -28,7 +28,7 @@ $(function() {
 
 $('#programCountries').pullOut({
   position: 'right',
-  top: '200px',
+  top: '280px',
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
@@ -38,7 +38,7 @@ $('#programCountries').pullOut({
 	
 $('#programSubjects').pullOut({
   position: 'right',
-  top: '280px',
+  top: '200px',
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
@@ -427,7 +427,7 @@ function toggleDisplay(){
 
 
 <div id="programCountries">
-	<div class="six columns">
+	<div class="six columns" style="width:45%">
 		<input onclick='toggleBoxes(this)' value='false' id='anyRegion' name='countries' type='checkbox'>Any<br />
 	<input onclick='toggleBoxes(this)' value='NorthernAfrica' id='NorthernAfrica2' name='countries[]' type='checkbox'>Northern Africa<br />
 	<input onclick='toggleBoxes(this)' value='WesternAfrica' id='WesternAfrica2' name='countries[]' type='checkbox'>Western Africa<br />
@@ -441,7 +441,7 @@ function toggleDisplay(){
 	<input onclick='toggleBoxes(this)' value='NorthernAmerica' id='NorthernAmerica2' name='countries[]' type='checkbox'>Northern America<br />
 	<input onclick='toggleBoxes(this)' value='Caribbean' id='Caribbean2' name='countries[]' type='checkbox'>Caribbean<br />
 	</div>
-	<div class="six columns">
+	<div class="six columns" style="width:45%">
 	<input onclick='toggleBoxes(this)' value='CentralAmerica' id='CentralAmerica2' name='countries[]' type='checkbox'>Central America<br />
 	<input onclick='toggleBoxes(this)' value='SouthAmerica' id='SouthAmerica2' name='countries[]' type='checkbox'>South America<br />
 	<input onclick='toggleBoxes(this)' value='CentralAsia' id='CentralAsia2' name='countries[]' type='checkbox'>Central Asia<br />

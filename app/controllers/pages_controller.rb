@@ -1176,9 +1176,315 @@ class PagesController < ApplicationController
         'Teaching Computer Literacy', 
         'Media, Marketing, and Graphic Design']
     end
-    if ((params["region"] == "false") || params["region"].nil?)
-      params["region"] = ['AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BQ', 'BA', 'BW', 'BV', 'BR', 'IO', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CA', 'CV', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'VA', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'KP', 'KR', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MK', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'SS', 'ES', 'LK', 'SD', 'SR', 'SJ', 'SZ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UG', 'UA', 'AE', 'GB', 'US', 'UM', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW']
+    if (params["countries"].include?("NorthernAfrica"))
+      params["countries"] = params["countries"] + ['DZ', 
+      'EG', 
+      'LY', 
+      'MA', 
+      'SD', 
+      'TN', 
+      'EH']
     end
+    
+    if (params["countries"].include?("WesternAfrica"))
+       params["countries"] = params["countries"] + ['BJ', 
+       'BF', 
+       'CV', 
+       'CI', 
+       'GM', 
+       'GH', 
+       'GN', 
+       'GW', 
+       'LR', 
+       'ML', 
+       'MR', 
+       'NE', 
+       'NG', 
+       'SH', 
+       'SN', 
+       'SL', 
+       'TG']
+  end
+     
+    if (params["countries"].include?("MiddleAfrica"))
+      params["countries"] = params["countries"] + ['AO', 
+      'CM', 
+      'CF', 
+      'TD', 
+      'CG', 
+      'CD', 
+      'GQ', 
+      'GA', 
+      'ST']
+    end
+    
+     if (params["countries"].include?("EasternAfrica"))
+        params["countries"] = params["countries"] + ['BI', 
+        'KM', 
+        'DJ', 
+        'ER', 
+        'ET', 
+        'KE', 
+        'MG', 
+        'MW', 
+        'MU', 
+        'YT', 
+        'MZ', 
+        'RE', 
+        'RW', 
+        'SC', 
+        'SO', 
+        'TZ', 
+        'UG', 
+        'ZM', 
+        'ZW']
+    end
+    
+     if (params["countries"].include?("SouthernAfrica"))
+        params["countries"] = params["countries"] + ['BW', 
+        'LS', 
+        'NA', 
+        'ZA', 
+        'SZ']
+    end
+    
+     if ((params["countries"] == "false") || params["countries"].nil?)
+        params["countries"] = ['AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BQ', 'BA', 'BW', 'BV', 'BR', 'IO', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CA', 'CV', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'VA', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'KP', 'KR', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MK', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'SS', 'ES', 'LK', 'SD', 'SR', 'SJ', 'SZ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UG', 'UA', 'AE', 'GB', 'US', 'UM', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW']
+    end
+    
+     if (params["countries"].include?("NorthernEurope"))
+        params["countries"] = params["countries"] + ['AX', 
+        'DK', 
+        'EE', 
+        'FO', 
+        'FI', 
+        'GG', 
+        'IS', 
+        'IE', 
+        'IM', 
+        'JE', 
+        'LV', 
+        'LT', 
+        'NO', 
+        'SJ', 
+        'SE', 
+        'GB']
+    end
+    
+     if (params["countries"].include?("WesternEurope"))
+        params["countries"] = params["countries"] + ['AT', 
+        'BE', 
+        'FR', 
+        'DE', 
+        'LI', 
+        'LU', 
+        'MC', 
+        'NL', 
+        'CH']
+    end
+    
+     if (params["countries"].include?("EasternEurope"))
+        params["countries"] = params["countries"] + ['BY', 
+        'BG', 
+        'CZ', 
+        'HU', 
+        'MD', 
+        'PL', 
+        'RO', 
+        'RU', 
+        'SK', 
+        'UA']
+    end
+     
+     if (params["countries"].include?("SouthernEurope"))
+         params["countries"] = params["countries"] + ['AL', 
+         'AD', 
+         'BA', 
+         'HR', 
+         'GI', 
+         'GR', 
+         'VA', 
+         'IT', 
+         'MK', 
+         'MT', 
+         'ME', 
+         'PT', 
+         'SM', 
+         'RS', 
+         'SI', 
+         'ES']
+    end
+    
+     if (params["countries"].include?("NorthernAmerica"))
+        params["countries"] = params["countries"] + ['BM', 
+        'CA', 
+        'GL', 
+        'PM', 
+        'US']
+    end
+    
+    if (params["countries"].include?("Caribbean"))
+        params["countries"] = params["countries"] + ['AI', 
+        'AG', 
+        'AW', 
+        'BS', 
+        'BB', 
+        'KY', 
+        'CU', 
+        'DM', 
+        'DO', 
+        'GD', 
+        'GP', 
+        'HT', 
+        'JM', 
+        'MQ', 
+        'MS', 
+        'PR', 
+        'BL', 
+        'KN', 
+        'LC', 
+        'MF', 
+        'VC', 
+        'TT', 
+        'TC', 
+        'VG', 
+        'VI']
+  end
+    
+    if (params["countries"].include?("CentralAmerica"))
+        params["countries"] = params["countries"] + ['BZ', 
+        'CR', 
+        'SV', 
+        'GT', 
+        'HN', 
+        'MX', 
+        'NI', 
+        'PA']
+    end
+    
+    if (params["countries"].include?("SouthAmerica"))
+        params["countries"] = params["countries"] + ['AR', 
+        'BO', 
+        'BR', 
+        'CL', 
+        'CO', 
+        'EC', 
+        'FK', 
+        'GF', 
+        'GY', 
+        'PY', 
+        'PE', 
+        'SR', 
+        'UY', 
+        'VE']
+  end
+    
+    if (params["countries"].include?("CentralAsia"))
+        params["countries"] = params["countries"] + ['KZ', 
+        'KG', 
+        'TJ', 
+        'TM', 
+        'UZ']
+  end
+    
+   if (params["countries"].include?("EasternAsia"))
+        params["countries"] = params["countries"] + ['CN', 
+        'HK', 
+        'JP', 
+        'KP', 
+        'KR', 
+        'MO', 
+        'MN', 
+        'TW']
+  end
+    
+    if (params["countries"].include?("SouthernAsia"))
+        params["countries"] = params["countries"] + ['AF', 
+        'BD', 
+        'BT', 
+        'IN', 
+        'IR', 
+        'MV', 
+        'NP', 
+        'PK', 
+        'LK']
+  end
+    
+   if (params["countries"].include?("SouthEasternAsia"))
+        params["countries"] = params["countries"] + ['BN', 
+        'KH', 
+        'ID', 
+        'LA', 
+        'MY', 
+        'MM', 
+        'PH', 
+        'SG', 
+        'TH', 
+        'TL', 
+        'VN']
+  end
+    
+   if (params["countries"].include?("WesternAsia"))
+        params["countries"] = params["countries"] + ['AM', 
+        'AZ', 
+        'BH', 
+        'CY', 
+        'GE', 
+        'IQ', 
+        'IL', 
+        'JO', 
+        'KW', 
+        'LB', 
+        'OM', 
+        'PS', 
+        'QA', 
+        'SA', 
+        'SY', 
+        'TR', 
+        'AE', 
+        'YE']
+  end
+    
+   if (params["countries"].include?("AustraliaandNewZealand"))
+        params["countries"] = params["countries"] + ['AU', 
+        'NZ', 
+        'NF']
+  end
+   
+   if (params["countries"].include?("Melanesia"))
+       params["countries"] = params["countries"] + ['FJ', 
+       'NC', 
+       'PG', 
+       'SB', 
+       'VU']
+  end
+  
+  if (params["countries"].include?("Micronesia"))
+      params["countries"] = params["countries"] + ['GU', 
+      'KI', 
+      'MH', 
+      'FM', 
+      'NR', 
+      'MP', 
+      'PW']
+  end
+  
+  if (params["countries"].include?("Polynesia"))
+      params["countries"] = params["countries"] + ['AS', 
+      'CK', 
+      'PF', 
+      'NU', 
+      'PN', 
+      'WS', 
+      'TK', 
+      'TO', 
+      'TV', 
+      'WF']
+  end
+    
+    
+    
+    
     if ((params["group_size"] == "false") || params["group_size"].nil?)
       params["group_size"] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (15+)"]
     end
@@ -1230,8 +1536,8 @@ class PagesController < ApplicationController
     
     
     
-    if (params["region"] != "false" && params["region"].include?("Americas"))
-      params["region"] = params["region"] + ['DZ', 
+    if (params["countries"] != "false" && params["countries"].include?("Americas"))
+      params["countries"] = params["countries"] + ['DZ', 
       'EG', 
       'LY', 
       'MA', 
@@ -1290,8 +1596,8 @@ class PagesController < ApplicationController
       'SZ']
     end
     
-    if (params["region"] != "false" && params["region"].include?("Europe"))
-      params["region"] = params["region"] + ['AX', 
+    if (params["countries"] != "false" && params["countries"].include?("Europe"))
+      params["countries"] = params["countries"] + ['AX', 
       'DK', 
       'EE', 
       'FO', 
@@ -1344,8 +1650,8 @@ class PagesController < ApplicationController
       'ES']
     end
     
-    if (params["region"] != "false" && params["region"].include?("Africa"))
-      params["region"] = params["region"] + ['BM', 
+    if (params["countries"] != "false" && params["countries"].include?("Africa"))
+      params["countries"] = params["countries"] + ['BM', 
       'CA', 
       'GL', 
       'PM', 
@@ -1399,8 +1705,8 @@ class PagesController < ApplicationController
       'VE']
     end
     
-    if (params["region"] != "false" && params["region"].include?("Asia"))
-      params["region"] = params["region"] + ['KZ', 
+    if (params["countries"] != "false" && params["countries"].include?("Asia"))
+      params["countries"] = params["countries"] + ['KZ', 
       'KG', 
       'TJ', 
       'TM', 
@@ -1453,8 +1759,8 @@ class PagesController < ApplicationController
       'YE']
     end
     
-    if (params["region"] != "false" && params["region"].include?("Oceania"))
-      params["region"] = params["region"] + ['AU', 
+    if (params["countries"] != "false" && params["countries"].include?("Oceania"))
+      params["countries"] = params["countries"] + ['AU', 
       'NZ', 
       'NF', 
       'FJ', 
@@ -1485,7 +1791,7 @@ class PagesController < ApplicationController
 
           with(:subject).any_of(params["subject"])
 
-          with(:location).any_of(params["region"])
+          with(:location).any_of(params["countries"])
           
           with(:weekly_cost).less_than(params["price_max"])
   
