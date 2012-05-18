@@ -25,9 +25,20 @@
 <script type="text/javascript" src="/assets/mega-pull-out-menu-1.0.js"></script>
 <script type="text/javascript">
 $(function() { 
-$('#programSubjects').pullOut({
+
+$('#programCountries').pullOut({
   position: 'right',
   top: '200px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'map128',
+  color: 'lightblue'
+});	
+	
+$('#programSubjects').pullOut({
+  position: 'right',
+  top: '280px',
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
@@ -37,7 +48,7 @@ $('#programSubjects').pullOut({
 
 $('#lengthOfTrip').pullOut({
   position: 'right',
-  top: '280px',
+  top: '360px',
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
@@ -47,7 +58,7 @@ $('#lengthOfTrip').pullOut({
 
 $('#groupSize').pullOut({
   position: 'right',
-  top: '360px',
+  top: '440px',
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
@@ -57,21 +68,11 @@ $('#groupSize').pullOut({
 
 $('#priceRange').pullOut({
   position: 'right',
-  top: '440px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'earning-statements128',
-  color: 'lightblue'
-});
-
-$('#programCountries').pullOut({
-  position: 'right',
   top: '520px',
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
-  button: 'map128',
+  button: 'earning-statements128',
   color: 'lightblue'
 });
 

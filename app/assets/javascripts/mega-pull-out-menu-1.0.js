@@ -31,7 +31,7 @@
       'buttonTitle'      : 'Click to open/close the menu',
       'buttonSize'       : 45,
       'color'            : 'minimal',
-      'maxWidth'         : 500,
+      'maxWidth'         : 1000,
       'debug'            : false
     };
     options = $.extend(defaults, options);
