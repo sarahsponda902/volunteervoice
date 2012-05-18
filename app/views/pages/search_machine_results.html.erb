@@ -20,6 +20,77 @@
 <% @resultsO << Organization.find(f.organization_id) unless @resultsO.include?(Organization.find(f.organization_id))%>
 <% end %>
 
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	$('a.window').click(function() {
+
+                //Getting the variable's value from a link 
+		var box = $(this).attr('href');
+
+		//Fade in the Popup
+		$(box).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(box).height() + 24) / 2; 
+		var popMargLeft = ($(box).width() + 24) / 2; 
+
+		$(box).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask"></div>')
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+		$('a.country-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var box = $(this).attr('href');
+
+			//Fade in the Popup
+			$(box).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(box).height() + 24) / 2; 
+			var popMargLeft = ($(box).width() + 24) / 2; 
+
+			$(box).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask"></div>')
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+});
+
+
+</script>
 
 <script type="text/javascript">
 
@@ -734,7 +805,7 @@ function toggleDisplay(){
 
 
 							<u1 id = "countries">
-								<a href="#country-box" class="window" style="color:#575758; float:right">Choose Countries</a>
+								<a href="#country-box" class="country-window" style="color:#575758; float:right">Choose Countries</a>
 							</u1><br />
 
 							<br /><p style="font-size:1.2em; font-weight:580; line-height:1.1em; color:#0489B1"><b> Project Lengths:</b></p>
@@ -744,7 +815,6 @@ function toggleDisplay(){
 							<input onClick='toggleBoxes2(this)' value= 3 id='three_length' name='length[]' type='checkbox'> Three <br /><br />
 
 						<input type="submit" name="mysubmit" id="mysubmit" value="Search">
-						<input type="reset" value="Clear Form">
 						</form>
 					</div>
 	</div>
@@ -1341,46 +1411,6 @@ function toggleDisplay(){
 					.button:hover { background:#ddd; }
 
 					</style>
-
-					<script type="text/javascript">
-
-
-					$(document).ready(function() {
-						$('a.window').click(function() {
-
-					                //Getting the variable's value from a link 
-							var box = $(this).attr('href');
-
-							//Fade in the Popup
-							$(box).fadeIn(300);
-
-							//Set the center alignment padding + border see css style
-							var popMargTop = ($(box).height() + 24) / 2; 
-							var popMargLeft = ($(box).width() + 24) / 2; 
-
-							$(box).css({ 
-								'margin-top' : -popMargTop,
-								'margin-left' : -popMargLeft
-							});
-
-							// Add the mask to body
-							$('body').append('<div id="mask"></div>')
-							$('#mask').fadeIn(300);
-
-							return false;
-						});
-
-						// When clicking on the button close or the mask layer the popup closed
-						$('a.close, #mask').live('click', function() { 
-						  $('#mask , .popup').fadeOut(300 , function() {
-							$('#mask').remove();  
-						}); 
-						return false;
-						});
-					});
-					
-
-					</script>
 
 
 					<style type="text/css">
