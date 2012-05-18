@@ -193,7 +193,7 @@ function toggleDisplay(){
 
 
 
-<body>
+<div id="page">
 <div class="container">
 <div style="text-align:center; width:100%; margin-top:50px" id="programs-contents1">	
 <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteerPrograms.png"%><br /><br />
@@ -321,7 +321,8 @@ function toggleDisplay(){
 </div>
 </div>
 </div>
-</body>
+</div>
+<body>
 <form action="/pages/search_machine_results" method="get">
 
 <div id="programSubjects" style="width:800px; padding-bottom:20px; color:#575758">
@@ -724,7 +725,7 @@ function toggleDisplay(){
 
 <div id="search"><br /><input type="button" value="submit"><br /><br /></div>
 </form>
-
+</body>
 <script type='text/javascript'>
 
 
@@ -1424,6 +1425,6 @@ function toggleTechnology( el ) {
 					width:150px;
 				}
 				
-				body{ min-height:1100px}
+				#page{ min-height:1100px}
 			</style>			
 				
