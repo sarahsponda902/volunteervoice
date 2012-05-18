@@ -447,42 +447,266 @@ function toggleDisplay(){
 
 
 
-<div id="programCountries" style="color:#575758; width:500px">
-	<div class="six columns" style="width:45%">
-		<input onclick='toggleBoxes(this)' value='false' id='anyRegion' name='countries' type='checkbox' checked>Any<br /><br />
-		<font style="font-size:1.2em; color:#575758">Africa:</font><br />
-	<input onclick='toggleBoxes(this)' value='NorthernAfrica' id='NorthernAfrica2' name='countries[]' type='checkbox'>Northern Africa<br />
-	<input onclick='toggleBoxes(this)' value='WesternAfrica' id='WesternAfrica2' name='countries[]' type='checkbox'>Western Africa<br />
-	<input onclick='toggleBoxes(this)' value='MiddleAfrica' id='MiddleAfrica2' name='countries[]' type='checkbox'>Middle Africa<br />
-	<input onclick='toggleBoxes(this)' value='EasternAfrica' id='EasternAfrica2' name='countries[]' type='checkbox'>Eastern Africa<br />
-	<input onclick='toggleBoxes(this)' value='SouthernAfrica' id='SouthernAfrica2' name='countries[]' type='checkbox'>Southern Africa<br /><br />
-	
-	<font style="font-size:1.2em; color:#575758">Europe:</font><br />
-	<input onclick='toggleBoxes(this)' value='NorthernEurope' id='NorthernEurope2' name='countries[]' type='checkbox'>Northern Europe<br />
-	<input onclick='toggleBoxes(this)' value='WesternEurope' id='WesternEurope2' name='countries[]' type='checkbox'>Western Europe<br />
-	<input onclick='toggleBoxes(this)' value='EasternEurope' id='EasternEurope2' name='countries[]' type='checkbox'>Eastern Europe<br />
-	<input onclick='toggleBoxes(this)' value='SouthernEurope' id='SouthernEurope2' name='countries[]' type='checkbox'>Southern Europe<br /><br />
-	
-	<font style="font-size:1.2em; color:#575758">Americas:</font><br />
-	<input onclick='toggleBoxes(this)' value='NorthernAmerica' id='NorthernAmerica2' name='countries[]' type='checkbox'>Northern America<br />
-	<input onclick='toggleBoxes(this)' value='Caribbean' id='Caribbean2' name='countries[]' type='checkbox'>Caribbean<br />
-	<input onclick='toggleBoxes(this)' value='CentralAmerica' id='CentralAmerica2' name='countries[]' type='checkbox'>Central America<br />
-	<input onclick='toggleBoxes(this)' value='SouthAmerica' id='SouthAmerica2' name='countries[]' type='checkbox'>South America<br /><br /><br />
+<div id="programCountries" style="color:#575758; width:800px">
+	<div class="three columns" style="width:190px">
+	<input onclick='toggleBoxes(this)' value='AQ' id='AQ2' name='countries[]' type='checkbox'> Antarctica<br />
+	<input onclick='toggleBoxes(this)' value='BQ' id='BQ2' name='countries[]' type='checkbox'> Bonaire, Sint Eustatius and Saba<br />
+	<input onclick='toggleBoxes(this)' value='BV' id='BV2' name='countries[]' type='checkbox'> Bouvet Island<br />
+	<input onclick='toggleBoxes(this)' value='IO' id='IO2' name='countries[]' type='checkbox'> British Indian Ocean Territory<br />
+	<input onclick='toggleBoxes(this)' value='CX' id='CX2' name='countries[]' type='checkbox'> Christmas Island<br />
+	<input onclick='toggleBoxes(this)' value='CC' id='CC2' name='countries[]' type='checkbox'> Cocos (Keeling) Islands<br />
+	<input onclick='toggleBoxes(this)' value='CW' id='CW2' name='countries[]' type='checkbox'> Curaçao<br />
+	<input onclick='toggleBoxes(this)' value='TF' id='TF2' name='countries[]' type='checkbox'> French Southern Territories<br />
+	<input onclick='toggleBoxes(this)' value='HM' id='HM2' name='countries[]' type='checkbox'> Heard Island and McDonald Islands<br />
+	<input onclick='toggleBoxes(this)' value='SX' id='SX2' name='countries[]' type='checkbox'> Sint Maarten (Dutch part)<br />
+	<input onclick='toggleBoxes(this)' value='GS' id='GS2' name='countries[]' type='checkbox'> South Georgia and the South Sandwich Islands<br />
+	<input onclick='toggleBoxes(this)' value='SS' id='SS2' name='countries[]' type='checkbox'> South Sudan<br />
+	<input onclick='toggleBoxes(this)' value='UM' id='UM2' name='countries[]' type='checkbox'> United States Minor Outlying Islands<br />
+	<input onclick='toggleBoxes(this)' value='DZ' id='DZ2' name='countries[]' type='checkbox'> Algeria<br />
+	<input onclick='toggleBoxes(this)' value='EG' id='EG2' name='countries[]' type='checkbox'> Egypt<br />
+	<input onclick='toggleBoxes(this)' value='LY' id='LY2' name='countries[]' type='checkbox'> Libya<br />
+	<input onclick='toggleBoxes(this)' value='MA' id='MA2' name='countries[]' type='checkbox'> Morocco<br />
+	<input onclick='toggleBoxes(this)' value='SD' id='SD2' name='countries[]' type='checkbox'> Sudan<br />
+	<input onclick='toggleBoxes(this)' value='TN' id='TN2' name='countries[]' type='checkbox'> Tunisia<br />
+	<input onclick='toggleBoxes(this)' value='EH' id='EH2' name='countries[]' type='checkbox'> Western Sahara<br />
+	<input onclick='toggleBoxes(this)' value='BJ' id='BJ2' name='countries[]' type='checkbox'> Benin<br />
+	<input onclick='toggleBoxes(this)' value='BF' id='BF2' name='countries[]' type='checkbox'> Burkina Faso<br />
+	<input onclick='toggleBoxes(this)' value='CV' id='CV2' name='countries[]' type='checkbox'> Cape Verde<br />
+	<input onclick='toggleBoxes(this)' value='CI' id='CI2' name='countries[]' type='checkbox'> Côte d'Ivoire<br />
+	<input onclick='toggleBoxes(this)' value='GM' id='GM2' name='countries[]' type='checkbox'> Gambia<br />
+	<input onclick='toggleBoxes(this)' value='GH' id='GH2' name='countries[]' type='checkbox'> Ghana<br />
+	<input onclick='toggleBoxes(this)' value='GN' id='GN2' name='countries[]' type='checkbox'> Guinea<br />
+	<input onclick='toggleBoxes(this)' value='GW' id='GW2' name='countries[]' type='checkbox'> Guinea-Bissau<br />
+	<input onclick='toggleBoxes(this)' value='LR' id='LR2' name='countries[]' type='checkbox'> Liberia<br />
+	<input onclick='toggleBoxes(this)' value='ML' id='ML2' name='countries[]' type='checkbox'> Mali<br />
+	<input onclick='toggleBoxes(this)' value='MR' id='MR2' name='countries[]' type='checkbox'> Mauritania<br />
+	<input onclick='toggleBoxes(this)' value='NE' id='NE2' name='countries[]' type='checkbox'> Niger<br />
+	<input onclick='toggleBoxes(this)' value='NG' id='NG2' name='countries[]' type='checkbox'> Nigeria<br />
+	<input onclick='toggleBoxes(this)' value='SH' id='SH2' name='countries[]' type='checkbox'> Saint Helena, Ascension and Tristan da Cunha<br />
+	<input onclick='toggleBoxes(this)' value='SN' id='SN2' name='countries[]' type='checkbox'> Senegal<br />
+	<input onclick='toggleBoxes(this)' value='SL' id='SL2' name='countries[]' type='checkbox'> Sierra Leone<br />
+	<input onclick='toggleBoxes(this)' value='TG' id='TG2' name='countries[]' type='checkbox'> Togo<br />
+	<input onclick='toggleBoxes(this)' value='AO' id='AO2' name='countries[]' type='checkbox'> Angola<br />
+	<input onclick='toggleBoxes(this)' value='CM' id='CM2' name='countries[]' type='checkbox'> Cameroon<br />
+	<input onclick='toggleBoxes(this)' value='CF' id='CF2' name='countries[]' type='checkbox'> Central African Republic<br />
+	<input onclick='toggleBoxes(this)' value='TD' id='TD2' name='countries[]' type='checkbox'> Chad<br />
+	<input onclick='toggleBoxes(this)' value='CG' id='CG2' name='countries[]' type='checkbox'> Congo<br />
+	<input onclick='toggleBoxes(this)' value='CD' id='CD2' name='countries[]' type='checkbox'> Congo, the Democratic Republic of the<br />
+	<input onclick='toggleBoxes(this)' value='GQ' id='GQ2' name='countries[]' type='checkbox'> Equatorial Guinea<br />
+	<input onclick='toggleBoxes(this)' value='GA' id='GA2' name='countries[]' type='checkbox'> Gabon<br />
+	<input onclick='toggleBoxes(this)' value='ST' id='ST2' name='countries[]' type='checkbox'> Sao Tome and Principe<br />
+	<input onclick='toggleBoxes(this)' value='BI' id='BI2' name='countries[]' type='checkbox'> Burundi<br />
+	<input onclick='toggleBoxes(this)' value='KM' id='KM2' name='countries[]' type='checkbox'> Comoros<br />
+	<input onclick='toggleBoxes(this)' value='DJ' id='DJ2' name='countries[]' type='checkbox'> Djibouti<br />
+	<input onclick='toggleBoxes(this)' value='ER' id='ER2' name='countries[]' type='checkbox'> Eritrea<br />
+	<input onclick='toggleBoxes(this)' value='ET' id='ET2' name='countries[]' type='checkbox'> Ethiopia<br />
+	<input onclick='toggleBoxes(this)' value='KE' id='KE2' name='countries[]' type='checkbox'> Kenya<br />
+	<input onclick='toggleBoxes(this)' value='MG' id='MG2' name='countries[]' type='checkbox'> Madagascar<br />
+	<input onclick='toggleBoxes(this)' value='MW' id='MW2' name='countries[]' type='checkbox'> Malawi<br />
+	<input onclick='toggleBoxes(this)' value='MU' id='MU2' name='countries[]' type='checkbox'> Mauritius<br />
+	<input onclick='toggleBoxes(this)' value='YT' id='YT2' name='countries[]' type='checkbox'> Mayotte<br />
+	<input onclick='toggleBoxes(this)' value='MZ' id='MZ2' name='countries[]' type='checkbox'> Mozambique<br />
+	<input onclick='toggleBoxes(this)' value='RE' id='RE2' name='countries[]' type='checkbox'> Réunion<br />
+	<input onclick='toggleBoxes(this)' value='RW' id='RW2' name='countries[]' type='checkbox'> Rwanda<br />
+	<input onclick='toggleBoxes(this)' value='SC' id='SC2' name='countries[]' type='checkbox'> Seychelles<br />
+	<input onclick='toggleBoxes(this)' value='SO' id='SO2' name='countries[]' type='checkbox'> Somalia<br />
+	<input onclick='toggleBoxes(this)' value='TZ' id='TZ2' name='countries[]' type='checkbox'> Tanzania, United Republic of<br />
+	<input onclick='toggleBoxes(this)' value='UG' id='UG2' name='countries[]' type='checkbox'> Uganda<br />
+	<input onclick='toggleBoxes(this)' value='ZM' id='ZM2' name='countries[]' type='checkbox'> Zambia<br />
+	<input onclick='toggleBoxes(this)' value='ZW' id='ZW2' name='countries[]' type='checkbox'> Zimbabwe<br />
+	<input onclick='toggleBoxes(this)' value='BW' id='BW2' name='countries[]' type='checkbox'> Botswana<br />
+	<input onclick='toggleBoxes(this)' value='LS' id='LS2' name='countries[]' type='checkbox'> Lesotho<br />
+	<input onclick='toggleBoxes(this)' value='NA' id='NA2' name='countries[]' type='checkbox'> Namibia<br />
+	<input onclick='toggleBoxes(this)' value='ZA' id='ZA2' name='countries[]' type='checkbox'> South Africa<br />
 	</div>
-	<div class="six columns" style="width:45%">
 	
-	<font style="font-size:1.2em; color:#575758">Asia:</font><br />
-	<input onclick='toggleBoxes(this)' value='CentralAsia' id='CentralAsia2' name='countries[]' type='checkbox'>Central Asia<br />
-	<input onclick='toggleBoxes(this)' value='EasternAsia' id='EasternAsia2' name='countries[]' type='checkbox'>Eastern Asia<br />
-	<input onclick='toggleBoxes(this)' value='SouthernAsia' id='SouthernAsia2' name='countries[]' type='checkbox'>Southern Asia<br />
-	<input onclick='toggleBoxes(this)' value='South-EasternAsia' id='South-EasternAsia2' name='countries[]' type='checkbox'>South-Eastern Asia<br />
-	<input onclick='toggleBoxes(this)' value='WesternAsia' id='WesternAsia2' name='countries[]' type='checkbox'>Western Asia<br /><br />
+	<div class="three columns" style="width:190px">
+	<input onclick='toggleBoxes(this)' value='SZ' id='SZ2' name='countries[]' type='checkbox'> Swaziland<br />
+	<input onclick='toggleBoxes(this)' value='AX' id='AX2' name='countries[]' type='checkbox'> Åland Islands<br />
+	<input onclick='toggleBoxes(this)' value='DK' id='DK2' name='countries[]' type='checkbox'> Denmark<br />
+	<input onclick='toggleBoxes(this)' value='EE' id='EE2' name='countries[]' type='checkbox'> Estonia<br />
+	<input onclick='toggleBoxes(this)' value='FO' id='FO2' name='countries[]' type='checkbox'> Faroe Islands<br />
+	<input onclick='toggleBoxes(this)' value='FI' id='FI2' name='countries[]' type='checkbox'> Finland<br />
+	<input onclick='toggleBoxes(this)' value='GG' id='GG2' name='countries[]' type='checkbox'> Guernsey<br />
+	<input onclick='toggleBoxes(this)' value='IS' id='IS2' name='countries[]' type='checkbox'> Iceland<br />
+	<input onclick='toggleBoxes(this)' value='IE' id='IE2' name='countries[]' type='checkbox'> Ireland<br />
+	<input onclick='toggleBoxes(this)' value='IM' id='IM2' name='countries[]' type='checkbox'> Isle of Man<br />
+	<input onclick='toggleBoxes(this)' value='JE' id='JE2' name='countries[]' type='checkbox'> Jersey<br />
+	<input onclick='toggleBoxes(this)' value='LV' id='LV2' name='countries[]' type='checkbox'> Latvia<br />
+	<input onclick='toggleBoxes(this)' value='LT' id='LT2' name='countries[]' type='checkbox'> Lithuania<br />
+	<input onclick='toggleBoxes(this)' value='NO' id='NO2' name='countries[]' type='checkbox'> Norway<br />
+	<input onclick='toggleBoxes(this)' value='SJ' id='SJ2' name='countries[]' type='checkbox'> Svalbard and Jan Mayen<br />
+	<input onclick='toggleBoxes(this)' value='SE' id='SE2' name='countries[]' type='checkbox'> Sweden<br />
+	<input onclick='toggleBoxes(this)' value='GB' id='GB2' name='countries[]' type='checkbox'> United Kingdom<br />
+	<input onclick='toggleBoxes(this)' value='AT' id='AT2' name='countries[]' type='checkbox'> Austria<br />
+	<input onclick='toggleBoxes(this)' value='BE' id='BE2' name='countries[]' type='checkbox'> Belgium<br />
+	<input onclick='toggleBoxes(this)' value='FR' id='FR2' name='countries[]' type='checkbox'> France<br />
+	<input onclick='toggleBoxes(this)' value='DE' id='DE2' name='countries[]' type='checkbox'> Germany<br />
+	<input onclick='toggleBoxes(this)' value='LI' id='LI2' name='countries[]' type='checkbox'> Liechtenstein<br />
+	<input onclick='toggleBoxes(this)' value='LU' id='LU2' name='countries[]' type='checkbox'> Luxembourg<br />
+	<input onclick='toggleBoxes(this)' value='MC' id='MC2' name='countries[]' type='checkbox'> Monaco<br />
+	<input onclick='toggleBoxes(this)' value='NL' id='NL2' name='countries[]' type='checkbox'> Netherlands<br />
+	<input onclick='toggleBoxes(this)' value='CH' id='CH2' name='countries[]' type='checkbox'> Switzerland<br />
+	<input onclick='toggleBoxes(this)' value='BY' id='BY2' name='countries[]' type='checkbox'> Belarus<br />
+	<input onclick='toggleBoxes(this)' value='BG' id='BG2' name='countries[]' type='checkbox'> Bulgaria<br />
+	<input onclick='toggleBoxes(this)' value='CZ' id='CZ2' name='countries[]' type='checkbox'> Czech Republic<br />
+	<input onclick='toggleBoxes(this)' value='HU' id='HU2' name='countries[]' type='checkbox'> Hungary<br />
+	<input onclick='toggleBoxes(this)' value='MD' id='MD2' name='countries[]' type='checkbox'> Moldova, Republic of<br />
+	<input onclick='toggleBoxes(this)' value='PL' id='PL2' name='countries[]' type='checkbox'> Poland<br />
+	<input onclick='toggleBoxes(this)' value='RO' id='RO2' name='countries[]' type='checkbox'> Romania<br />
+	<input onclick='toggleBoxes(this)' value='RU' id='RU2' name='countries[]' type='checkbox'> Russian Federation<br />
+	<input onclick='toggleBoxes(this)' value='SK' id='SK2' name='countries[]' type='checkbox'> Slovakia<br />
+	<input onclick='toggleBoxes(this)' value='UA' id='UA2' name='countries[]' type='checkbox'> Ukraine<br />
+	<input onclick='toggleBoxes(this)' value='AL' id='AL2' name='countries[]' type='checkbox'> Albania<br />
+	<input onclick='toggleBoxes(this)' value='AD' id='AD2' name='countries[]' type='checkbox'> Andorra<br />
+	<input onclick='toggleBoxes(this)' value='BA' id='BA2' name='countries[]' type='checkbox'> Bosnia and Herzegovina<br />
+	<input onclick='toggleBoxes(this)' value='HR' id='HR2' name='countries[]' type='checkbox'> Croatia<br />
+	<input onclick='toggleBoxes(this)' value='GI' id='GI2' name='countries[]' type='checkbox'> Gibraltar<br />
+	<input onclick='toggleBoxes(this)' value='GR' id='GR2' name='countries[]' type='checkbox'> Greece<br />
+	<input onclick='toggleBoxes(this)' value='VA' id='VA2' name='countries[]' type='checkbox'> Holy See (Vatican City State)<br />
+	<input onclick='toggleBoxes(this)' value='IT' id='IT2' name='countries[]' type='checkbox'> Italy<br />
+	<input onclick='toggleBoxes(this)' value='MK' id='MK2' name='countries[]' type='checkbox'> Macedonia, the former Yugoslav Republic of<br />
+	<input onclick='toggleBoxes(this)' value='MT' id='MT2' name='countries[]' type='checkbox'> Malta<br />
+	<input onclick='toggleBoxes(this)' value='ME' id='ME2' name='countries[]' type='checkbox'> Montenegro<br />
+	<input onclick='toggleBoxes(this)' value='PT' id='PT2' name='countries[]' type='checkbox'> Portugal<br />
+	<input onclick='toggleBoxes(this)' value='SM' id='SM2' name='countries[]' type='checkbox'> San Marino<br />
+	<input onclick='toggleBoxes(this)' value='RS' id='RS2' name='countries[]' type='checkbox'> Serbia<br />
+	<input onclick='toggleBoxes(this)' value='SI' id='SI2' name='countries[]' type='checkbox'> Slovenia<br />
+	<input onclick='toggleBoxes(this)' value='ES' id='ES2' name='countries[]' type='checkbox'> Spain<br />
+	<input onclick='toggleBoxes(this)' value='BM' id='BM2' name='countries[]' type='checkbox'> Bermuda<br />
+	<input onclick='toggleBoxes(this)' value='CA' id='CA2' name='countries[]' type='checkbox'> Canada<br />
+	<input onclick='toggleBoxes(this)' value='GL' id='GL2' name='countries[]' type='checkbox'> Greenland<br />
+	<input onclick='toggleBoxes(this)' value='PM' id='PM2' name='countries[]' type='checkbox'> Saint Pierre and Miquelon<br />
+	<input onclick='toggleBoxes(this)' value='US' id='US2' name='countries[]' type='checkbox'> United States<br />
+	<input onclick='toggleBoxes(this)' value='AI' id='AI2' name='countries[]' type='checkbox'> Anguilla<br />
+	<input onclick='toggleBoxes(this)' value='AG' id='AG2' name='countries[]' type='checkbox'> Antigua and Barbuda<br />
+	<input onclick='toggleBoxes(this)' value='AW' id='AW2' name='countries[]' type='checkbox'> Aruba<br />
+	<input onclick='toggleBoxes(this)' value='BS' id='BS2' name='countries[]' type='checkbox'> Bahamas<br />
+	<input onclick='toggleBoxes(this)' value='BB' id='BB2' name='countries[]' type='checkbox'> Barbados<br />
+	<input onclick='toggleBoxes(this)' value='KY' id='KY2' name='countries[]' type='checkbox'> Cayman Islands<br />
+	<input onclick='toggleBoxes(this)' value='CU' id='CU2' name='countries[]' type='checkbox'> Cuba<br />
+	<input onclick='toggleBoxes(this)' value='DM' id='DM2' name='countries[]' type='checkbox'> Dominica<br />
+	<input onclick='toggleBoxes(this)' value='DO' id='DO2' name='countries[]' type='checkbox'> Dominican Republic<br />
+	<input onclick='toggleBoxes(this)' value='GD' id='GD2' name='countries[]' type='checkbox'> Grenada<br />
+	<input onclick='toggleBoxes(this)' value='GP' id='GP2' name='countries[]' type='checkbox'> Guadeloupe<br />
+	<input onclick='toggleBoxes(this)' value='HT' id='HT2' name='countries[]' type='checkbox'> Haiti<br />
+	<input onclick='toggleBoxes(this)' value='JM' id='JM2' name='countries[]' type='checkbox'> Jamaica<br />
+	<input onclick='toggleBoxes(this)' value='MQ' id='MQ2' name='countries[]' type='checkbox'> Martinique<br />
+	<input onclick='toggleBoxes(this)' value='MS' id='MS2' name='countries[]' type='checkbox'> Montserrat<br />
+	<input onclick='toggleBoxes(this)' value='PR' id='PR2' name='countries[]' type='checkbox'> Puerto Rico<br />
+	<input onclick='toggleBoxes(this)' value='BL' id='BL2' name='countries[]' type='checkbox'> Saint Barthélemy<br />
+	<input onclick='toggleBoxes(this)' value='KN' id='KN2' name='countries[]' type='checkbox'> Saint Kitts and Nevis<br />
+	<input onclick='toggleBoxes(this)' value='LC' id='LC2' name='countries[]' type='checkbox'> Saint Lucia<br />
+	<input onclick='toggleBoxes(this)' value='MF' id='MF2' name='countries[]' type='checkbox'> Saint Martin (French part)<br />
+	<input onclick='toggleBoxes(this)' value='VC' id='VC2' name='countries[]' type='checkbox'> Saint Vincent and the Grenadines<br />
+	<input onclick='toggleBoxes(this)' value='TT' id='TT2' name='countries[]' type='checkbox'> Trinidad and Tobago<br />
+	<input onclick='toggleBoxes(this)' value='TC' id='TC2' name='countries[]' type='checkbox'> Turks and Caicos Islands<br />
+	<input onclick='toggleBoxes(this)' value='VG' id='VG2' name='countries[]' type='checkbox'> Virgin Islands, British<br />
+	<input onclick='toggleBoxes(this)' value='VI' id='VI2' name='countries[]' type='checkbox'> Virgin Islands, U.S.<br />
+	</div>
 	
-	<font style="font-size:1.2em; color:#575758">Oceania</font><br />
-	<input onclick='toggleBoxes(this)' value='AustraliaandNewZealand' id='AustraliaandNewZealand2' name='countries[]' type='checkbox'>Australia and New Zealand<br />
-	<input onclick='toggleBoxes(this)' value='Melanesia' id='Melanesia2' name='countries[]' type='checkbox'>Melanesia<br />
-	<input onclick='toggleBoxes(this)' value='Micronesia' id='Micronesia2' name='countries[]' type='checkbox'>Micronesia<br />
-	<input onclick='toggleBoxes(this)' value='Polynesia' id='Polynesia2' name='countries[]' type='checkbox'>Polynesia<br /><br /><br />
+	<div class="three columns" style="width:190px">
+	<input onclick='toggleBoxes(this)' value='BZ' id='BZ2' name='countries[]' type='checkbox'> Belize<br />
+	<input onclick='toggleBoxes(this)' value='CR' id='CR2' name='countries[]' type='checkbox'> Costa Rica<br />
+	<input onclick='toggleBoxes(this)' value='SV' id='SV2' name='countries[]' type='checkbox'> El Salvador<br />
+	<input onclick='toggleBoxes(this)' value='GT' id='GT2' name='countries[]' type='checkbox'> Guatemala<br />
+	<input onclick='toggleBoxes(this)' value='HN' id='HN2' name='countries[]' type='checkbox'> Honduras<br />
+	<input onclick='toggleBoxes(this)' value='MX' id='MX2' name='countries[]' type='checkbox'> Mexico<br />
+	<input onclick='toggleBoxes(this)' value='NI' id='NI2' name='countries[]' type='checkbox'> Nicaragua<br />
+	<input onclick='toggleBoxes(this)' value='PA' id='PA2' name='countries[]' type='checkbox'> Panama<br />
+	<input onclick='toggleBoxes(this)' value='AR' id='AR2' name='countries[]' type='checkbox'> Argentina<br />
+	<input onclick='toggleBoxes(this)' value='BO' id='BO2' name='countries[]' type='checkbox'> Bolivia, Plurinational State of<br />
+	<input onclick='toggleBoxes(this)' value='BR' id='BR2' name='countries[]' type='checkbox'> Brazil<br />
+	<input onclick='toggleBoxes(this)' value='CL' id='CL2' name='countries[]' type='checkbox'> Chile<br />
+	<input onclick='toggleBoxes(this)' value='CO' id='CO2' name='countries[]' type='checkbox'> Colombia<br />
+	<input onclick='toggleBoxes(this)' value='EC' id='EC2' name='countries[]' type='checkbox'> Ecuador<br />
+	<input onclick='toggleBoxes(this)' value='FK' id='FK2' name='countries[]' type='checkbox'> Falkland Islands (Malvinas)<br />
+	<input onclick='toggleBoxes(this)' value='GF' id='GF2' name='countries[]' type='checkbox'> French Guiana<br />
+	<input onclick='toggleBoxes(this)' value='GY' id='GY2' name='countries[]' type='checkbox'> Guyana<br />
+	<input onclick='toggleBoxes(this)' value='PY' id='PY2' name='countries[]' type='checkbox'> Paraguay<br />
+	<input onclick='toggleBoxes(this)' value='PE' id='PE2' name='countries[]' type='checkbox'> Peru<br />
+	<input onclick='toggleBoxes(this)' value='SR' id='SR2' name='countries[]' type='checkbox'> Suriname<br />
+	<input onclick='toggleBoxes(this)' value='UY' id='UY2' name='countries[]' type='checkbox'> Uruguay<br />
+	<input onclick='toggleBoxes(this)' value='VE' id='VE2' name='countries[]' type='checkbox'> Venezuela, Bolivarian Republic of<br />
+	<input onclick='toggleBoxes(this)' value='KZ' id='KZ2' name='countries[]' type='checkbox'> Kazakhstan<br />
+	<input onclick='toggleBoxes(this)' value='KG' id='KG2' name='countries[]' type='checkbox'> Kyrgyzstan<br />
+	<input onclick='toggleBoxes(this)' value='TJ' id='TJ2' name='countries[]' type='checkbox'> Tajikistan<br />
+	<input onclick='toggleBoxes(this)' value='TM' id='TM2' name='countries[]' type='checkbox'> Turkmenistan<br />
+	<input onclick='toggleBoxes(this)' value='UZ' id='UZ2' name='countries[]' type='checkbox'> Uzbekistan<br />
+	<input onclick='toggleBoxes(this)' value='CN' id='CN2' name='countries[]' type='checkbox'> China<br />
+	<input onclick='toggleBoxes(this)' value='HK' id='HK2' name='countries[]' type='checkbox'> Hong Kong<br />
+	<input onclick='toggleBoxes(this)' value='JP' id='JP2' name='countries[]' type='checkbox'> Japan<br />
+	<input onclick='toggleBoxes(this)' value='KP' id='KP2' name='countries[]' type='checkbox'> Korea, Democratic People's Republic of<br />
+	<input onclick='toggleBoxes(this)' value='KR' id='KR2' name='countries[]' type='checkbox'> Korea, Republic of<br />
+	<input onclick='toggleBoxes(this)' value='MO' id='MO2' name='countries[]' type='checkbox'> Macao<br />
+	<input onclick='toggleBoxes(this)' value='MN' id='MN2' name='countries[]' type='checkbox'> Mongolia<br />
+	<input onclick='toggleBoxes(this)' value='TW' id='TW2' name='countries[]' type='checkbox'> Taiwan, Province of China<br />
+	<input onclick='toggleBoxes(this)' value='AF' id='AF2' name='countries[]' type='checkbox'> Afghanistan<br />
+	<input onclick='toggleBoxes(this)' value='BD' id='BD2' name='countries[]' type='checkbox'> Bangladesh<br />
+	<input onclick='toggleBoxes(this)' value='BT' id='BT2' name='countries[]' type='checkbox'> Bhutan<br />
+	<input onclick='toggleBoxes(this)' value='IN' id='IN2' name='countries[]' type='checkbox'> India<br />
+	<input onclick='toggleBoxes(this)' value='IR' id='IR2' name='countries[]' type='checkbox'> Iran, Islamic Republic of<br />
+	<input onclick='toggleBoxes(this)' value='MV' id='MV2' name='countries[]' type='checkbox'> Maldives<br />
+	<input onclick='toggleBoxes(this)' value='NP' id='NP2' name='countries[]' type='checkbox'> Nepal<br />
+	<input onclick='toggleBoxes(this)' value='PK' id='PK2' name='countries[]' type='checkbox'> Pakistan<br />
+	<input onclick='toggleBoxes(this)' value='LK' id='LK2' name='countries[]' type='checkbox'> Sri Lanka<br />
+	<input onclick='toggleBoxes(this)' value='BN' id='BN2' name='countries[]' type='checkbox'> Brunei Darussalam<br />
+	<input onclick='toggleBoxes(this)' value='KH' id='KH2' name='countries[]' type='checkbox'> Cambodia<br />
+	<input onclick='toggleBoxes(this)' value='ID' id='ID2' name='countries[]' type='checkbox'> Indonesia<br />
+	<input onclick='toggleBoxes(this)' value='LA' id='LA2' name='countries[]' type='checkbox'> Lao People's Democratic Republic<br />
+	<input onclick='toggleBoxes(this)' value='MY' id='MY2' name='countries[]' type='checkbox'> Malaysia<br />
+	<input onclick='toggleBoxes(this)' value='MM' id='MM2' name='countries[]' type='checkbox'> Myanmar<br />
+	<input onclick='toggleBoxes(this)' value='PH' id='PH2' name='countries[]' type='checkbox'> Philippines<br />
+	<input onclick='toggleBoxes(this)' value='SG' id='SG2' name='countries[]' type='checkbox'> Singapore<br />
+	<input onclick='toggleBoxes(this)' value='TH' id='TH2' name='countries[]' type='checkbox'> Thailand<br />
+	<input onclick='toggleBoxes(this)' value='TL' id='TL2' name='countries[]' type='checkbox'> Timor-Leste<br />
+	<input onclick='toggleBoxes(this)' value='VN' id='VN2' name='countries[]' type='checkbox'> Viet Nam<br />
+	<input onclick='toggleBoxes(this)' value='AM' id='AM2' name='countries[]' type='checkbox'> Armenia<br />
+	<input onclick='toggleBoxes(this)' value='AZ' id='AZ2' name='countries[]' type='checkbox'> Azerbaijan<br />
+	<input onclick='toggleBoxes(this)' value='BH' id='BH2' name='countries[]' type='checkbox'> Bahrain<br />
+	<input onclick='toggleBoxes(this)' value='CY' id='CY2' name='countries[]' type='checkbox'> Cyprus<br />
+	<input onclick='toggleBoxes(this)' value='GE' id='GE2' name='countries[]' type='checkbox'> Georgia<br />
+	<input onclick='toggleBoxes(this)' value='IQ' id='IQ2' name='countries[]' type='checkbox'> Iraq<br />
+	<input onclick='toggleBoxes(this)' value='IL' id='IL2' name='countries[]' type='checkbox'> Israel<br />
+	<input onclick='toggleBoxes(this)' value='JO' id='JO2' name='countries[]' type='checkbox'> Jordan<br />
+	<input onclick='toggleBoxes(this)' value='KW' id='KW2' name='countries[]' type='checkbox'> Kuwait<br />
+	<input onclick='toggleBoxes(this)' value='LB' id='LB2' name='countries[]' type='checkbox'> Lebanon<br />
+	<input onclick='toggleBoxes(this)' value='OM' id='OM2' name='countries[]' type='checkbox'> Oman<br />
+	</div>
+	
+	<div class="three columns" style="width:190px">
+	<input onclick='toggleBoxes(this)' value='PS' id='PS2' name='countries[]' type='checkbox'> Palestinian Territory, Occupied<br />
+	<input onclick='toggleBoxes(this)' value='QA' id='QA2' name='countries[]' type='checkbox'> Qatar<br />
+	<input onclick='toggleBoxes(this)' value='SA' id='SA2' name='countries[]' type='checkbox'> Saudi Arabia<br />
+	<input onclick='toggleBoxes(this)' value='SY' id='SY2' name='countries[]' type='checkbox'> Syrian Arab Republic<br />
+	<input onclick='toggleBoxes(this)' value='TR' id='TR2' name='countries[]' type='checkbox'> Turkey<br />
+	<input onclick='toggleBoxes(this)' value='AE' id='AE2' name='countries[]' type='checkbox'> United Arab Emirates<br />
+	<input onclick='toggleBoxes(this)' value='YE' id='YE2' name='countries[]' type='checkbox'> Yemen<br />
+	<input onclick='toggleBoxes(this)' value='AU' id='AU2' name='countries[]' type='checkbox'> Australia<br />
+	<input onclick='toggleBoxes(this)' value='NZ' id='NZ2' name='countries[]' type='checkbox'> New Zealand<br />
+	<input onclick='toggleBoxes(this)' value='NF' id='NF2' name='countries[]' type='checkbox'> Norfolk Island<br />
+	<input onclick='toggleBoxes(this)' value='FJ' id='FJ2' name='countries[]' type='checkbox'> Fiji<br />
+	<input onclick='toggleBoxes(this)' value='NC' id='NC2' name='countries[]' type='checkbox'> New Caledonia<br />
+	<input onclick='toggleBoxes(this)' value='PG' id='PG2' name='countries[]' type='checkbox'> Papua New Guinea<br />
+	<input onclick='toggleBoxes(this)' value='SB' id='SB2' name='countries[]' type='checkbox'> Solomon Islands<br />
+	<input onclick='toggleBoxes(this)' value='VU' id='VU2' name='countries[]' type='checkbox'> Vanuatu<br />
+	<input onclick='toggleBoxes(this)' value='GU' id='GU2' name='countries[]' type='checkbox'> Guam<br />
+	<input onclick='toggleBoxes(this)' value='KI' id='KI2' name='countries[]' type='checkbox'> Kiribati<br />
+	<input onclick='toggleBoxes(this)' value='MH' id='MH2' name='countries[]' type='checkbox'> Marshall Islands<br />
+	<input onclick='toggleBoxes(this)' value='FM' id='FM2' name='countries[]' type='checkbox'> Micronesia, Federated States of<br />
+	<input onclick='toggleBoxes(this)' value='NR' id='NR2' name='countries[]' type='checkbox'> Nauru<br />
+	<input onclick='toggleBoxes(this)' value='MP' id='MP2' name='countries[]' type='checkbox'> Northern Mariana Islands<br />
+	<input onclick='toggleBoxes(this)' value='PW' id='PW2' name='countries[]' type='checkbox'> Palau<br />
+	<input onclick='toggleBoxes(this)' value='AS' id='AS2' name='countries[]' type='checkbox'> American Samoa<br />
+	<input onclick='toggleBoxes(this)' value='CK' id='CK2' name='countries[]' type='checkbox'> Cook Islands<br />
+	<input onclick='toggleBoxes(this)' value='PF' id='PF2' name='countries[]' type='checkbox'> French Polynesia<br />
+	<input onclick='toggleBoxes(this)' value='NU' id='NU2' name='countries[]' type='checkbox'> Niue<br />
+	<input onclick='toggleBoxes(this)' value='PN' id='PN2' name='countries[]' type='checkbox'> Pitcairn<br />
+	<input onclick='toggleBoxes(this)' value='WS' id='WS2' name='countries[]' type='checkbox'> Samoa<br />
+	<input onclick='toggleBoxes(this)' value='TK' id='TK2' name='countries[]' type='checkbox'> Tokelau<br />
+	<input onclick='toggleBoxes(this)' value='TO' id='TO2' name='countries[]' type='checkbox'> Tonga<br />
+	<input onclick='toggleBoxes(this)' value='TV' id='TV2' name='countries[]' type='checkbox'> Tuvalu<br />
+	<input onclick='toggleBoxes(this)' value='WF' id='WF2' name='countries[]' type='checkbox'> Wallis and Futuna<br />
 	</div>
 
 </div>
