@@ -323,6 +323,8 @@ function toggleDisplay(){
 </div>
 </div>
 
+<form action="/pages/search_machine_results" method="get">
+
 <div id="programSubjects">
 	<input onclick='toggleBoxes1(this)' value='Agriculture' id='Agriculture2 ' name='subject[]' type='checkbox'>Agriculture
 	<input onclick='toggleBoxes1(this)' value='Organic Farming' id='OrganicFarming2 ' name='subject[]' type='checkbox'>Organic Farming
@@ -677,7 +679,8 @@ function toggleDisplay(){
 	
 </div>
 
-<div id="search">Search</div>
+<div id="search"><input type="button" value="submit"></div>
+</form>
 
 <script type='text/javascript'>
 
