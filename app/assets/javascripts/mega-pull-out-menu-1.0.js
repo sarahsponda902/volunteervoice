@@ -29,7 +29,7 @@
       'scrollWithContent': false,
       'button'           : 'plus-minus',
       'buttonTitle'      : 'Click to open/close the menu',
-      'buttonSize'       : 32,
+      'buttonSize'       : 45,
       'color'            : 'minimal',
       'maxWidth'         : 500,
       'debug'            : false
@@ -208,7 +208,6 @@
           function() {
             tmp_pos[options.position] = 0;
             container.stop(true, false).animate(tmp_pos, options.slideSpeed);
-            buttonInner.css('background-position', 'center -' + options.buttonSize + 'px');
             container.css('z-index', 10000 + body_el.data('pullOut-nb-zindex'))
                      .addClass('pull-out-opened')
                      .removeClass('pull-out-closed');
@@ -230,7 +229,6 @@
           function() {
             tmp_pos[options.position] = 0;
             container.stop(true, false).animate(tmp_pos, options.slideSpeed);
-            buttonInner.css('background-position', 'center -' + options.buttonSize + 'px');
             container.css('z-index', 10000 + body_el.data('pullOut-nb-zindex'))
                      .addClass('pull-out-opened')
                      .removeClass('pull-out-closed');
