@@ -101,7 +101,16 @@ $(document).ready(function() {
     }
 });
 
-
+$(function() {
+	var availableTags = [
+		<% @hash.keys.each do |f| %>
+		"<%=f%>",
+		<% end %>
+		];
+	$( "#tags" ).autocomplete({
+		source: availableTags
+	});
+});
 
 </script>
 
@@ -471,6 +480,7 @@ function toggleDisplay(){
 
 
 <div id="programCountries" style="color:#575758; width:600px; overflow-x:hidden">
+	<input id="tags">
 	<div class="six columns" style="width:45%">
 	
 		<input onClick='toggleBoxes(this)'value="false" id='any6' name='countries' type='checkbox' checked><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
