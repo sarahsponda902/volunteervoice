@@ -1124,7 +1124,7 @@ class PagesController < ApplicationController
       "British Indian Ocean Territory"=>"IO", 
       "Christmas Island"=>"CX", 
       "Cocos (Keeling) Islands"=>"CC", 
-      "Curaçao"=>"CW", 
+      "Curacao"=>"CW", 
       "French Southern Territories"=>"TF", 
       "Heard Island and McDonald Islands"=>"HM", 
       "Sint Maarten (Dutch part)"=>"SX", 
