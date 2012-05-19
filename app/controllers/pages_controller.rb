@@ -1260,7 +1260,7 @@ class PagesController < ApplicationController
       "Martinique"=>"MQ", 
       "Montserrat"=>"MS", 
       "Puerto Rico"=>"PR", 
-      "Saint Barthélemy"=>"BL", 
+      "Saint Barthelemy"=>"BL", 
       "Saint Kitts and Nevis"=>"KN", 
       "Saint Lucia"=>"LC", 
       "Saint Martin (French part)"=>"MF", 
