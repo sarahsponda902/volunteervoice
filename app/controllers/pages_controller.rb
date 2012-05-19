@@ -1188,7 +1188,7 @@ class PagesController < ApplicationController
       "Namibia"=>"NA", 
       "South Africa"=>"ZA", 
       "Swaziland"=>"SZ", 
-      "Åland Islands"=>"AX", 
+      "Aland Islands"=>"AX", 
       "Denmark"=>"DK", 
       "Estonia"=>"EE", 
       "Faroe Islands"=>"FO", 
