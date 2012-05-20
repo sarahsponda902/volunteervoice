@@ -3,7 +3,7 @@
 <div style="padding:0; margin:0; width:100%;">
 	<table style="border-bottom:1px solid #575758;  background-color:#E9ECE9" width="100%">
 		<tr style="background-color:#E9ECE9">
-			<td width="12%"><p style="margin-top:7px"><%=image_tag f.square_image.url, :style => "height:150px; width:150px"%></p></td>
+			<td width="12%"><p style="margin-top:7px"><%=image_tag f.square_image.url%></p></td>
 			<td><p style="margin-top:7px"><a style="font-size:2em; color:#62acbd;" href="<%=f%>"><%= f.name%></a></p></td>
 			<td><p style="text-align:right"><%=render :partial => 'star', :locals => {:star => f.overall}%></p><p style="text-align:right; margin-top:-10px; font-family:architectsDaughterRegular; color: #e67b5a; font-size:.8em;">Based on <%=f.reviews_count%> reviews</p></td>
 		</tr>
