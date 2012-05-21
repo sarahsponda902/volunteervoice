@@ -1,16 +1,5 @@
 class MessagesController < ApplicationController
 
-  # GET /messages
-  # GET /messages.json
-  def index
-    @messages = Message.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @messages }
-    end
-  end
-
   # GET /messages/1
   # GET /messages/1.json
   def show
@@ -38,7 +27,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
-    @message.body = RedCloth.new(@message.body).to_html
+    @message.body = RedCloth.new( sanitize( @message.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     respond_to do |format|
       if @message.save
         format.html { redirect_to "/users/#{@message.recipient_id}", :notice =>'Message was sent' }

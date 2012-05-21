@@ -29,7 +29,7 @@
 		<% if f.overall <= 2 %>
 		<p style="color:red"><%= f.overall%></p>
 		<% end %></td>
-	<td width ="40%"><%= truncate(f.body.html_safe, :length => 200, :omission => "...") %></td>
+	<td width ="40%"><%= f.truncated200.html_safe %></td>
     <td width="7%"><p style="margin-left:11px"><%= link_to 'Go', f %></p></td>
 	<td width="7%"><% if f.show %>
 	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), "/reviews/#{f.id}/changeShow" %>

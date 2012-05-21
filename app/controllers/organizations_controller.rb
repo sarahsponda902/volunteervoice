@@ -344,15 +344,17 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(params[:organization])
-    @organization.description = RedCloth.new(@organization.description).to_html
-    @organization.application_process = RedCloth.new(@organization.application_process).to_html
-    @organization.business_model = RedCloth.new(@organization.business_model).to_html
-    @organization.program_model = RedCloth.new(@organization.program_model).to_html
-    @organization.good_to_know = RedCloth.new(@organization.good_to_know).to_html
-    @organization.training_resources = RedCloth.new(@organization.training_resources).to_html
-    @organization.program_costs_breakdown = RedCloth.new(@organization.program_costs_breakdown).to_html
-    @organization.run_by = RedCloth.new(@organization.run_by).to_html
-    @organization.price_ranges = RedCloth.new(@organization.price_ranges).to_html
+    @organization.description = RedCloth.new( sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.application_process = RedCloth.new( sanitize( @organization.application_process ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.business_model = RedCloth.new( sanitize( @organization.business_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.program_model = RedCloth.new( sanitize( @organization.program_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.good_to_know = RedCloth.new( sanitize( @organization.good_to_know ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.training_resources = RedCloth.new( sanitize( @organization.training_resources ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.program_costs_breakdown = RedCloth.new( sanitize( @organization.program_costs_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.run_by = RedCloth.new( sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.price_ranges = RedCloth.new(@organization.run_by).to_html
+    @organization.truncated75 = RedCloth.new( sanitize( truncate(@organization.description, :length => 75 )), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    
     @organization.reviews_count = 0
     @organization.overall = 0
     @organization.index!

@@ -133,7 +133,7 @@ if (document.URL.split("&slider1=")[1] == "6") {
 	<table style="border-bottom:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758; background-color: #E9ECE9">
 		<tr style="background-color:#E9ECE9">
 			<td style="width:200px"><a style="font-size:1.6em; color:#e67b5a" href="/programs/<%=p.id%>"><%= p.name %>- </p></td>
-			<td style="width:415px"><p style="font-size:1.2em; color:#575758"><%= truncate(p.description, :length => 100, :omission => "...")%></p></td>
+			<td style="width:415px"><p style="font-size:1.2em; color:#575758"><%= p.truncated_description100.html_safe%></p></td>
 		</tr>
 	</table>
 	<% end %>

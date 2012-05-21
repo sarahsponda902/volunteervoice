@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517001827) do
+ActiveRecord::Schema.define(:version => 20120521022150) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(:version => 20120517001827) do
     t.string   "source"
     t.string   "image"
     t.string   "square_image"
+    t.text     "truncated125"
+    t.text     "truncated100"
   end
 
   create_table "blog_tags", :force => true do |t|
@@ -109,10 +111,11 @@ ActiveRecord::Schema.define(:version => 20120517001827) do
   create_table "feedbacks", :force => true do |t|
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.boolean  "show"
     t.string   "email"
+    t.text     "truncated100"
   end
 
   create_table "flags", :force => true do |t|
@@ -165,6 +168,7 @@ ActiveRecord::Schema.define(:version => 20120517001827) do
     t.string   "program"
     t.string   "time_frame"
     t.string   "photo"
+    t.text     "truncated100"
   end
 
   create_table "organizations", :force => true do |t|
@@ -203,6 +207,7 @@ ActiveRecord::Schema.define(:version => 20120517001827) do
     t.integer  "crop_w"
     t.integer  "crop_h"
     t.string   "phone"
+    t.text     "truncated75"
   end
 
   create_table "pages", :force => true do |t|
@@ -241,6 +246,7 @@ ActiveRecord::Schema.define(:version => 20120517001827) do
     t.integer  "crop_w"
     t.integer  "crop_h"
     t.string   "chart"
+    t.text     "truncated_description100"
   end
 
   create_table "reviews", :force => true do |t|
@@ -270,6 +276,8 @@ ActiveRecord::Schema.define(:version => 20120517001827) do
     t.string   "photo8"
     t.string   "photo9"
     t.string   "photo10"
+    t.text     "truncated100"
+    t.text     "truncated200"
   end
 
   create_table "searches", :force => true do |t|

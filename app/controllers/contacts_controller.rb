@@ -16,7 +16,7 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(params[:contact])
-    @contact.body = RedCloth.new(@contact.body).to_html
+    @contact.body = RedCloth.new( sanitize( @contact.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 
     respond_to do |format|
       if @contact.save

@@ -13,7 +13,7 @@ class BlogCommentsController < ApplicationController
     @blog_comment = @blog_post.blog_comments.new(params[:blog_comment])
 		@blog_comment.user_id = current_user.id if current_user
 		@blog_comment.request = request
-		@blog_comment.body = RedCloth.new(@blog_comment.body).to_html
+		@blog_comment.body = RedCloth.new( sanitize( @blog_comment.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 
 
     respond_to do |format|
