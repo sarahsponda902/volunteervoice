@@ -1069,12 +1069,7 @@ end
   # PUT /programs/1.json
   def update
     @program = Program.find(params[:id])
-     @program.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description[0,99] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-     @program.description = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-     @program.program_structure = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_structure ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-     @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
-    
-    if user_signed_in? && current_user.admin?
+      if user_signed_in? && current_user.admin?
       if @program.update_attributes(params[:program])
             redirect_to "/programs/#{@program.id}"
       else
