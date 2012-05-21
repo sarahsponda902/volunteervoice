@@ -1,8 +1,8 @@
 class SearchesController < ApplicationController
 
   def show
-    @sunspot_search = Sunspot.search Program, Organization do |query| 
-      query.keywords params[:search]
+    @sunspot_search = Sunspot.search Program, Organization
+      keywords params[:search]
    end 
    @results = @sunspot_search.results
    
