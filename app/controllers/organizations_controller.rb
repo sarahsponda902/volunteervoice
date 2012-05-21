@@ -371,6 +371,7 @@ end
   # PUT /organizations/1
   # PUT /organizations/1.json
   def update
+    @organization = Organization.find(params[:id])
     @organization.truncated75 = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description[0,74] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.description = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.application_process = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.application_process ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
