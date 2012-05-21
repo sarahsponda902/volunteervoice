@@ -91,10 +91,9 @@ class BlogPostsController < ApplicationController
     if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.new(params[:blog_post])
 		@blog_post[:user_id] = current_user.id
-		@blog_post.body = RedCloth.new( sanitize( @blog_post.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @blog_post.truncated125 = RedCloth.new( sanitize( truncate(@blog_post.body, :length => 125) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+		@blog_post.truncated125 = RedCloth.new( sanitize( truncate(@blog_post.body, :length => 125) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @blog_post.truncated100 = RedCloth.new( sanitize( truncate(@blog_post.body, :length => 100) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    
+		@blog_post.body = RedCloth.new( sanitize( @blog_post.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 
 		if params[:published_at].nil?
       @blog_post.published_at = Time.now
@@ -118,6 +117,9 @@ class BlogPostsController < ApplicationController
   def update
     if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.find(params[:id])
+    @blog_post.truncated125 = RedCloth.new( sanitize( truncate(@blog_post.body, :length => 125) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @blog_post.truncated100 = RedCloth.new( sanitize( truncate(@blog_post.body, :length => 100) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    
       if @blog_post.update_attributes(params[:blog_post])
           flash[:notice] = 'BlogPost was successfully updated.'
           redirect_to "/blog_posts/#{@blog_post.id}"

@@ -18,7 +18,7 @@ class BlogCommentsController < ApplicationController
 
     respond_to do |format|
       if @blog_comment.save
-        flash[:notice] = 'Your comments has been posted.'
+        flash[:notice] = 'Your comment has been posted.'
         format.html { redirect_to(@blog_post) }
         format.xml  { render :xml => @blog_comment, :status => :created, :location => @blog_comment }
       else
