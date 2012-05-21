@@ -3,6 +3,7 @@ class SearchesController < ApplicationController
   def show
     @sunspot_search = Sunspot.search Program, Organization do
     keywords params[:search]
+    end
 
    @results = @sunspot_search.results
    
