@@ -36,7 +36,7 @@ class FlagsController < ApplicationController
   # POST /flags.json
   def create
     @flag = Flag.new(params[:flag])
-    @flag.truncated200 = RedCloth.new( sanitize( truncate(@flag.body, :length => 200) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @flag.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (@flag.body[0..199] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @flag.body = RedCloth.new( sanitize( @flag.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     respond_to do |format|
       if @flag.save

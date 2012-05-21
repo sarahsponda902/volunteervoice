@@ -371,18 +371,17 @@ end
   # PUT /organizations/1
   # PUT /organizations/1.json
   def update
-    @organization = Organization.find(params[:id])
-    @organization.truncated75 = RedCloth.new( sanitize( @organization.description[0,74] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.description = RedCloth.new( sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.application_process = RedCloth.new( sanitize( @organization.application_process ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.business_model = RedCloth.new( sanitize( @organization.business_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.program_model = RedCloth.new( sanitize( @organization.program_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.good_to_know = RedCloth.new( sanitize( @organization.good_to_know ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.training_resources = RedCloth.new( sanitize( @organization.training_resources ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.program_costs_breakdown = RedCloth.new( sanitize( @organization.program_costs_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.run_by = RedCloth.new( sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.price_ranges = RedCloth.new(@organization.run_by).to_html 
-     if user_signed_in? && current_user.admin?
+    @organization.truncated75 = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description[0,74] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.description = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.application_process = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.application_process ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.business_model = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.business_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.program_model = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.good_to_know = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.good_to_know ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.training_resources = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.training_resources ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.program_costs_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.run_by = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.price_ranges = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.price_ranges ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+        if user_signed_in? && current_user.admin?
        if @organization.update_attributes(params[:organization])
              redirect_to "/organizations/#{@organization.id}"
        else
