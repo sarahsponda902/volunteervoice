@@ -344,7 +344,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(params[:organization])
-    @organization.truncated75 = RedCloth.new( sanitize( truncate(@organization.description, :length => 75 )), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.truncated75 = RedCloth.new( sanitize( @organization.description[0,74] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.description = RedCloth.new( sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.application_process = RedCloth.new( sanitize( @organization.application_process ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.business_model = RedCloth.new( sanitize( @organization.business_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
