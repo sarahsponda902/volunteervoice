@@ -1,9 +1,9 @@
 class SearchesController < ApplicationController
 
   def show
-    @sunspot_search = Sunspot.search Program, Organization
-      keywords params[:search]
-   end 
+    @sunspot_search = Sunspot.search Program, Organization do
+    keywords params[:search]
+
    @results = @sunspot_search.results
    
    @theRegions = Hash.new ['AF' => 16, 
