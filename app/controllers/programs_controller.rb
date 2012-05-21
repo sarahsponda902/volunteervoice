@@ -1072,7 +1072,7 @@ end
      @program.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description[0,99] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
      @program.description = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
      @program.program_structure = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_structure ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-     @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+     @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
     
     if user_signed_in? && current_user.admin?
       if @program.update_attributes(params[:program])
