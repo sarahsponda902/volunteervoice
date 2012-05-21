@@ -6,7 +6,7 @@
 		<span class="blogPostDate"><%= comment.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></span>
 	</p>
 
-	<%= h(comment.parsed_body) %>
+	<%= h(comment.html_safe) %>
 
 	<% if user_signed_in? && current_user.admin? %>
 	

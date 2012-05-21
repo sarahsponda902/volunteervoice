@@ -22,7 +22,7 @@
 	<td><%= message.recipient_id%></td>
 	<td><%= message.sender_id%></td>
 	<td><p style="color:blue"><%= message.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
-	<td><%= truncate(message.body, :length => 100, :omission => "...")%></td>
+	<td><%= truncate(message.body, :length => 100, :omission => "...").html_safe%></td>
 	<td><%= message.sender_deleted %></td>
     <td><%= link_to 'View', message %></td>
     <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %></td>

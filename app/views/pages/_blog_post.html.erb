@@ -11,7 +11,7 @@
 <% end %>)
 
 <br />
-<%= truncate(f.parsed_body, :length => 100, :omission => "...")%>
+<%= truncate(f.parsed_body.html_safe, :length => 100, :omission => "...")%>
 </font>
 
 </div>

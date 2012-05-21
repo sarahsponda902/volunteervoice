@@ -15,7 +15,7 @@
 <% @organizations.each do |organization| %>
   <tr>
   	<td><%= link_to organization.name, organization %></td>
-    <td><%= organization.description %></td>
+    <td><%= organization.description.html_safe %></td>
 	<td><%= image_tag organization.square_image.url %></td>
   </tr>
 <% end %>

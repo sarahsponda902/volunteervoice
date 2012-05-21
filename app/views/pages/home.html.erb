@@ -72,7 +72,7 @@
 </div>
 <p style="float:right; margin-top:-5px; font-size:0.8em"><%= f.created_at.to_date.strftime("%B%e, %Y").gsub(/^0/,'')%></p>
 
-<p style="margin-bottom:10px; margin-top:15px"><%= truncate(f.body, :length => 150, :omission => '...')%></p>  
+<p style="margin-bottom:10px; margin-top:15px"><%= truncate(f.body.html_safe, :length => 100, :omission => '...')%></p>  
 </div>
 
 <% end %>
@@ -94,7 +94,7 @@
 <p alt="Company Photo" class="left"><image src="<%=f.square_image.url%>" style="height:75px; width:75px; padding-right:10px"></p>
 <h3 class="medium"><a class="lightBlue" style="color:#62acbd; margin-left:10px" href="/organizations/<%=f.id%>"><%=f.name %></a></h3><br />
 <div style="margin-left:85px; margin-bottom:5px"><%= render :partial => "star", :locals => {:star => f.overall}%></div>
-<div style="margin-left:85px"><p><%= truncate(f.description, :length => 75, :omission => '...')%></p></div></div>
+<div style="margin-left:85px"><p><%= truncate(f.description.html_safe, :length => 75, :omission => '...')%></p></div></div>
 <p style="color:#575758;margin-bottom:10px; margin-top:10px">Programs: <% @programs = Program.where(:organization_id => f.id).limit(6)%>
 <%if !(@programs.nil?)%>
 <% @count = 1%>
@@ -136,7 +136,7 @@
 <article style="margin-top:15px; margin-left:0px" class="bubbleBlue" style="font-size:.8em">
 	<% feedback = @show_feedbacks[0]%>
 <% if !(feedback).nil?%>
-<p style="font-family:architectsDaughterRegular">"<%= truncate(feedback.body, :length => 200, :omission => ' . . . ') %>"</p>
+<p style="font-family:architectsDaughterRegular">"<%= truncate(feedback.body.html_safe, :length => 200, :omission => ' . . . ') %>"</p>
 <% if feedback.body.length <= 100%>
 <p style="margin-top:-15px; font-family:architectsDaughterRegular; text-align:right">--<%if feedback.user_id.nil?%>
 <%="anonymous"%>
@@ -157,7 +157,7 @@
 
 <% feedback = @show_feedbacks[1]%>
 <% if !(feedback).nil?%>
-<p style="font-family:architectsDaughterRegular">"<%= truncate(feedback.body, :length => 200, :omission => ' . . .') %>"</p>
+<p style="font-family:architectsDaughterRegular">"<%= truncate(feedback.body.html_safe, :length => 200, :omission => ' . . .') %>"</p>
 <% if feedback.body.length <= 100%>
 <p style="margin-top:-15px; font-family:architectsDaughterRegular; text-align:right">--
 <%if feedback.user_id.nil?%>
@@ -179,7 +179,7 @@
 
 <% feedback = @show_feedbacks[2]%>
 <% if !(feedback).nil?%>
-<p style="font-family:architectsDaughterRegular">"<%= truncate(feedback.body, :length => 200, :omission => ' . . .') %>"</p>
+<p style="font-family:architectsDaughterRegular">"<%= truncate(feedback.body.html_safe, :length => 200, :omission => ' . . .') %>"</p>
 <% if feedback.body.length <= 100%>
 <p style="margin-top:-15px; font-family:architectsDaughterRegular; text-align:right">--<%if feedback.user_id.nil?%>
 <%="anonymous"%>

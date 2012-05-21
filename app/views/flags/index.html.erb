@@ -17,7 +17,7 @@
 	<td width="13%"><%= flag.category%></td>
 	<td width="5%"><%= User.find(flag.poster_id).username%></td>
 	<td width="12%"><%= User.find(flag.flagger_id).username%></td>
-	<td width="45%"><%= truncate(flag.body, :length => 200, :omission => "...")%></td>
+	<td width="45%"><%= truncate(flag.body.html_safe, :length => 200, :omission => "...")%></td>
 	<td width="10%"><%= link_to 'Review', Review.find(flag.review_id)%></td>
     <td width="7%"><%= link_to 'Flag', flag %></td>
     <td width="7%"><%= link_to 'Edit', edit_flag_path(flag) %></td>

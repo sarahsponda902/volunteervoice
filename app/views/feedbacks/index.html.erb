@@ -25,7 +25,7 @@
 	<% end %>
 	</td>
 	
-	<td width ="50%"><%= truncate(f.body, :length => 200, :omission => "...") %></td>
+	<td width ="50%"><%= truncate(f.body, :length => 200, :omission => "...").html_safe %></td>
     <td width="7%"><p style="margin-left:11px"><%= link_to 'Go', f %></p></td>
 	<td width="7%">
 	<% if f.show %>

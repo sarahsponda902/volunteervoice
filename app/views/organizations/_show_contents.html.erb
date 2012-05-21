@@ -89,16 +89,16 @@
 			<br />
 			<p style="font-weight:600">Operating since: </p><%=organization.operating_since%><br />
 			
-			<p style="font-weight:600">Run by: </p><%=organization.run_by%><br />
+			<p style="font-weight:600">Run by: </p><%=organization.run_by.html_safe%><br />
 			
 			<p style="font-weight:600"># Volunteers each year: </p><%=organization.num_vols_yr%><br />
 			<p style="font-weight:600"># Volunteers to date: </p><%=organization.num_vols_date%><br />
-			<p style="font-weight:600">Application process: </p><%=organization.application_process%><br />
-			<p style="font-weight:600">Business Model: </p><%= organization.business_model%><br />
+			<p style="font-weight:600">Application process: </p><%=organization.application_process.html_safe%><br />
+			<p style="font-weight:600">Business Model: </p><%= organization.business_model.html_safe%><br />
 			
 			<p style="font-weight:600">ID number: </p><%=organization.id_number%><br />
 			
-			<p style="font-weight:600">Volunteer Program Model: </p><%=organization.volunteer_program_model%><br />
+			<p style="font-weight:600">Volunteer Program Model: </p><%=organization.volunteer_program_model.html_safe%><br />
 			
 			<% programTypes = []%>
 			<% groupSizes = []%>
@@ -114,19 +114,19 @@
 		</div>
 		<div class="six columns" style="font-size:1.1em">
 			<br />
-			<p style="font-weight:600">Price Ranges: </p> <%=organization.price_ranges%><br />
+			<p style="font-weight:600">Price Ranges: </p> <%=organization.price_ranges.html_safe%><br />
 			
 			
 			<p style="font-weight:600">Average Volunteer Program Cost ($/year): </p><%=organization.program_costs%><br />
 			<p style="font-weight:600">Price Includes/Doesn't: </p><%= organization.program_costs_includes%><br />
-			<p style="font-weight:600">Price Breakdown: </p><%= organization.program_costs_breakdown%><br />
+			<p style="font-weight:600">Price Breakdown: </p><%= organization.program_costs_breakdown.html_safe%><br />
 			<p style="font-weight:600">Group Sizes: </p><% groupSizes.each do |f|%><%= f%>,<% end %><br />
 			
 			
 			
 			<p style="font-weight:600">Program Lengths: </p><% programLengths.each do |f|%><%=f%>,<%end%><br />
-			<p style="font-weight:600">Training Resources: </p><%=organization.training_resources%><br />
-			<p style="font-weight:600">Good to know: </p><%=organization.good_to_know%><br />
+			<p style="font-weight:600">Training Resources: </p><%=organization.training_resources.html_safe%><br />
+			<p style="font-weight:600">Good to know: </p><%=organization.good_to_know.html_safe%><br />
 		</div>
 	</div>
 

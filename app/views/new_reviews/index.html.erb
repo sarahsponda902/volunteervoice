@@ -31,7 +31,7 @@
 		<% if new_review.overall <= 2 %>
 		<p style="color:red"><%= new_review.overall%></p>
 		<% end %></td>
-	<td><%= truncate(new_review.body, :length => 100, :omission => "...")%></td>
+	<td><%= truncate(new_review.body.html_safe, :length => 100, :omission => "...")%></td>
 	<td><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/publishReview.png"), :controller => "reviews", :action =>"new", :created_at => new_review.created_at, :updated_at => new_review.updated_at, :body => new_review.body, :user_id => new_review.user_id, :photo => new_review.photo, :before => new_review.before, :terms => new_review.terms, :preparation => new_review.preparation, :support => new_review.support, :impact => new_review.impact, :structure => new_review.structure, :overall => new_review.overall, :time_frame => new_review.time_frame%></td>
 		
 		

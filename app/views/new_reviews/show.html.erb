@@ -43,7 +43,7 @@ Project Structure/Sustainability: <%=@new_review.structure%><br />
 Overall: <%=@new_review.overall%><br /><br />
 
 
-<%= link_to 'Edit', edit_new_review_path(@new_review) %> | <%= link_to 'Destroy', @new_review, confirm: 'Are you sure?', method: :delete %> | <%= link_to 'Publish', :controller => "reviews", :action =>"new", :created_at => @new_review.created_at, :updated_at => @new_review.updated_at, :body => @new_review.body, :user_id => @new_review.user_id, :photo => @new_review.photo, :before => @new_review.before, :terms => @new_review.terms, :preparation => @new_review.preparation, :support => @new_review.support, :impact => @new_review.impact, :structure => @new_review.structure, :overall => @new_review.overall, :time_frame => @new_review.time_frame%>
+<%= link_to 'Edit', edit_new_review_path(@new_review) %> | <%= link_to 'Destroy', @new_review, confirm: 'Are you sure?', method: :delete %> | <%= link_to 'Publish', :controller => "reviews", :action =>"new", :created_at => @new_review.created_at, :updated_at => @new_review.updated_at, :body => @new_review.body.html_safe, :user_id => @new_review.user_id, :photo => @new_review.photo, :before => @new_review.before, :terms => @new_review.terms, :preparation => @new_review.preparation, :support => @new_review.support, :impact => @new_review.impact, :structure => @new_review.structure, :overall => @new_review.overall, :time_frame => @new_review.time_frame%>
 </div>
 </div>
 </div>
