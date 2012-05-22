@@ -5,8 +5,6 @@ Item URI :
 Version : 1.0
 */
 
-body { overflow-x: hidden; }
-
 .pull-out ,.pull-out-button {
   background-image:url(/assets/mpum-overlay.png);
   background-position:0 0;
