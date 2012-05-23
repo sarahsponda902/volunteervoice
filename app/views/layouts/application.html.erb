@@ -3,6 +3,47 @@
 <html lang="en">
 
 <head>
+	<script type="text/javascript">
+	
+	
+	$(document).ready(function() {
+
+		
+		
+		$('a.log-in-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var loginBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(loginBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(loginBox).height() + 24) / 2; 
+			var popMargLeft = ($(loginBox).width() + 24) / 2; 
+
+			$(loginBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="opacity:.5"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .log-in-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+	});
+	
+	
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -55,7 +96,7 @@
 			<div class="row login" style="width:auto">
 
 				<% if !(user_signed_in?) %>
-				<a href="#login-box" class="login-window">LOGIN</a>
+				<a href="#log-in-box" class="log-in-window">LOGIN</a>
 				or <a href= "/sign_up">JOIN</a>
 				<% else %>
 				<a href="/messages_read"> <%=current_user.username%> 
@@ -136,12 +177,6 @@
 		</nav></div>
 		</div><!--end navigation-->	
 		
-		
-
-
-			<% flash.each do |key, value| %>
-			  <%= content_tag(:div, value, :class => "flash #{key}") %>
-			<% end %>
 			
 
 <%= yield%>
@@ -209,7 +244,7 @@ function beforeCheck() {
 </script>
 
 
-  	<div id="login-box" class="login-popup">
+  	<div id="log-in-box" class="log-in-popup">
 	  	<%= form_for("user", :url => user_session_path) do |f| %>
 		  <div style="line-height:1.5em">Email:<br />
 		  <%= f.text_field :email, :style => "height:15px"%></div><br />
@@ -249,7 +284,7 @@ function beforeCheck() {
 	}
 
 	/* You can customize to your needs  */
-	.login-popup{
+	.log-in-popup{
 		display:none;
 		background: #D9DEDA;
 		padding: 10px; 	
@@ -300,45 +335,4 @@ function beforeCheck() {
 	.button:hover { background:#ddd; }
 	
 	</style>
-	
-	<script type="text/javascript">
-	
-	
-	$(document).ready(function() {
 
-		
-		
-		$('a.login-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var loginBox = $(this).attr('href');
-
-			//Fade in the Popup
-			$(loginBox).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(loginBox).height() + 24) / 2; 
-			var popMargLeft = ($(loginBox).width() + 24) / 2; 
-
-			$(loginBox).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask" style="opacity:.5"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .login-popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-	});
-
-</script>
