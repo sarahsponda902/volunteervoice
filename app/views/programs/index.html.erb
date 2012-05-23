@@ -12,10 +12,10 @@
     <%= image_tag "/assets/whereGo.png"%></p>
 
     <!-- MAP!!!!! -->
-	<%= javascript_include_tag "/assets/jquery.js"%>
+
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript">
-    var numbers = <%= array_or_string_for_javascript(@nums)%>;
+    var numbers = <%= escape_javascript(@nums.to_json)%>;
 	var programNumbers = <%= array_or_string_for_javascript(@progNums)%>;
     var countries = ["AF", 
     "AX", 
@@ -506,10 +506,8 @@
                 data.setValue(i, 0, countries[numbers[i]]);
                 data.setValue(i, 1, names[numbers[i]]);
                 data.setValue(i, 2, 200);
-				data.setValue(i, 3, "Programs: "+ programNumbers[i].toString());
+				data.setValue(i, 3, "Programs: ");
             }
-            
-            
          
             var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
             var container = document.getElementById("map_canvas");
@@ -545,7 +543,7 @@
 
 
 <!-- THE DROP DOWN COUNTRIES -->
-
+	<%= javascript_include_tag "/assets/jquery.js"%>
     <script type="text/javascript">
         $(document).ready(function() {
             setTimeout(function() {
