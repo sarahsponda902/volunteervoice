@@ -546,55 +546,42 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            setTimeout(function() {
-                // Slide
-                $("#menu1 > li > a.expanded + ul").slideToggle("medium");
-                $("#menu1 > li > a").click(function() {
-                    $(this).toggleClass("expanded").toggleClass("collapsed").parent().find("> ul").slideToggle("medium");
-                });
-                $("#example1 .expand_all").click(function() {
-                    $("#menu1 > li > a.collapsed").addClass("expanded").removeClass("collapsed").parent().find("> ul").slideDown("medium");
-                });
-                $("#example1 .collapse_all").click(function() {
-                    $("#menu1 > li > a.expanded").addClass("collapsed").removeClass("expanded").parent().find("> ul").slideUp("medium");
-                });
-            }, 250);
             $("#AfricaRow").click(function(){
                 var count = 1;
-                $(".AfricaContent").fadeToggle(300);
-                $(".AfricaBackground").fadeToggle(300);
+                $(".AfricaContent").toggle(300);
+                $(".AfricaBackground").toggle(300);
                 $(".AfricaNoBackground").toggle();
                 
               });
 
             $("#EuropeRow").click(function(){
-                $(".EuropeContent").fadeToggle(300);
-                $(".EuropeBackground").fadeToggle(300);
+                $(".EuropeContent").toggle(300);
+                $(".EuropeBackground").toggle(300);
                 $(".EuropeNoBackground").toggle();
               });
 
             $("#AmericasRow").click(function(){
-                $(".AmericasContent").fadeToggle(300);
-                $(".AmericasBackground").fadeToggle(300);
+                $(".AmericasContent").toggle(300);
+                $(".AmericasBackground").toggle(300);
                 $(".AmericasNoBackground").toggle();
               });
 
             $("#AsiaRow").click(function(){
-                $(".AsiaContent").fadeToggle(300);
-                $(".AsiaBackground").fadeToggle(300);
+                $(".AsiaContent").toggle(300);
+                $(".AsiaBackground").toggle(300);
                 $(".AsiaNoBackground").toggle();
               });
                 
 
             $("#OceaniaRow").click(function(){
-                $(".OceaniaContent").fadeToggle(300);
-                $(".OceaniaBackground").fadeToggle(300);
+                $(".OceaniaContent").toggle(300);
+                $(".OceaniaBackground").toggle(300);
                 $(".OceaniaNoBackground").toggle();
               });
             
             $("#OtherRow").click(function(){
-                $(".OtherContent").fadeToggle(300);
-                $(".OtherBackground").fadeToggle(300);
+                $(".OtherContent").toggle(300);
+                $(".OtherBackground").toggle(300);
                 $(".OtherNoBackground").toggle();
               });
             
