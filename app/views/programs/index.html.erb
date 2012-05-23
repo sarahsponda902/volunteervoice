@@ -6,7 +6,8 @@
 	<% @progNums << Program.where(:location => f).count%>
     <% @nums << @allCountries.index(f)%>
     <% end %>
-	
+<%= @nums%>
+<%= @progNums%>	
 
 	<p style="text-align:center; margin-top:40px">
     <%= image_tag "/assets/whereGo.png"%></p>
