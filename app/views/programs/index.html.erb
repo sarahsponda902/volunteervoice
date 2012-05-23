@@ -494,22 +494,18 @@
 
     google.load("visualization", "1", {"packages": ["geochart"]});
     google.setOnLoadCallback(drawRegionsMap);
-        function drawRegionsMap() {
-            var data = new google.visualization.DataTable();
-            data.addRows(numbers.length);
-            data.addColumn("string", "CountryID");
-            data.addColumn("string", "Country");
-            data.addColumn("number", "Programs");
-
-            for (var i=0; i<numbers.length; i++) {
-                data.setValue(i, 0, countries[numbers[i]]);
-                data.setValue(i, 1, names[numbers[i]]);
-                data.setValue(i, 2, parseInt(programNumbers[i]));
-            }
+        function drawVisualization() {
+		  var data = google.visualization.arrayToDataTable([
+		    ['CountryID', 'Country', 'Programs'],
+			for (var i=0; i<numbers.length; i++) {
+			    [countries[numbers[i]], names[numbers[i]], parseInt(programNumbers[i])],
+			}
+		  ]);
             
             
          
             var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
+
             var container = document.getElementById("map_canvas");
             var geochart = new google.visualization.GeoChart(container);
             google.visualization.events.addListener(geochart, "error", function errorHandler(e) {
