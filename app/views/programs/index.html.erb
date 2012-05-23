@@ -16,7 +16,7 @@
 
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript">
-    var numbers = <%= escape_javascript(@nums.to_json)%>;
+    var numbers = <%= array_or_string_for_javascript(@nums)%>;
 	var programNumbers = <%= array_or_string_for_javascript(@progNums)%>;
     var countries = ["AF", 
     "AX", 
