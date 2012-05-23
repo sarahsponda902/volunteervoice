@@ -490,22 +490,30 @@
     " Zambia", 
     " Zimbabwe"];
 
-var dataElements=new Array[];
-for (var i=0; i<numbers.length; i++) {
-	dataElements.concat([[countries[numbers[0]], names[numbers[0]], programNumbers[0].toString()]]);
-}
 
 
     google.load("visualization", "1", {"packages": ["geochart"]});
     google.setOnLoadCallback(drawRegionsMap);
-        function drawVisualization() {
-		  var data = google.visualization.arrayToDataTable([
-		    ['CountryID', 'Country', 'Programs']].concat(dataElements))
+        function drawRegionsMap() {
+            var data = new google.visualization.DataTable();
+            data.addRows(numbers.length);
+            data.addColumn("string", "CountryID");
+            data.addColumn("string", "Country");
+            data.addColumn("number", "number of Programs");
+			data.addColumn('number', 'tooltip');
+			data.addColumn('string','tooltip');
+            
+            for (var i=0; i<numbers.length; i++) {
+                data.setValue(i, 0, countries[numbers[i]]);
+                data.setValue(i, 1, names[numbers[i]]);
+                data.setValue(i, 2, 200);
+				data.setValue(i, 3, 200);
+				data.setValue(i, 4, "Programs: "+ programNumbers[i].toString());
+            }
             
             
          
             var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
-
             var container = document.getElementById("map_canvas");
             var geochart = new google.visualization.GeoChart(container);
             google.visualization.events.addListener(geochart, "error", function errorHandler(e) {
@@ -542,42 +550,55 @@ for (var i=0; i<numbers.length; i++) {
 
     <script type="text/javascript">
         $(document).ready(function() {
+            setTimeout(function() {
+                // Slide
+                $("#menu1 > li > a.expanded + ul").slideToggle("medium");
+                $("#menu1 > li > a").click(function() {
+                    $(this).toggleClass("expanded").toggleClass("collapsed").parent().find("> ul").slideToggle("medium");
+                });
+                $("#example1 .expand_all").click(function() {
+                    $("#menu1 > li > a.collapsed").addClass("expanded").removeClass("collapsed").parent().find("> ul").slideDown("medium");
+                });
+                $("#example1 .collapse_all").click(function() {
+                    $("#menu1 > li > a.expanded").addClass("collapsed").removeClass("expanded").parent().find("> ul").slideUp("medium");
+                });
+            }, 250);
             $("#AfricaRow").click(function(){
                 var count = 1;
-                $(".AfricaContent").toggle(300);
-                $(".AfricaBackground").toggle(300);
+                $(".AfricaContent").toggle();
+                $(".AfricaBackground").toggle();
                 $(".AfricaNoBackground").toggle();
                 
               });
 
             $("#EuropeRow").click(function(){
-                $(".EuropeContent").toggle(300);
-                $(".EuropeBackground").toggle(300);
+                $(".EuropeContent").toggle();
+                $(".EuropeBackground").toggle();
                 $(".EuropeNoBackground").toggle();
               });
 
             $("#AmericasRow").click(function(){
-                $(".AmericasContent").toggle(300);
-                $(".AmericasBackground").toggle(300);
+                $(".AmericasContent").toggle();
+                $(".AmericasBackground").toggle();
                 $(".AmericasNoBackground").toggle();
               });
 
             $("#AsiaRow").click(function(){
-                $(".AsiaContent").toggle(300);
-                $(".AsiaBackground").toggle(300);
+                $(".AsiaContent").toggle();
+                $(".AsiaBackground").toggle();
                 $(".AsiaNoBackground").toggle();
               });
                 
 
             $("#OceaniaRow").click(function(){
-                $(".OceaniaContent").toggle(300);
-                $(".OceaniaBackground").toggle(300);
+                $(".OceaniaContent").toggle();
+                $(".OceaniaBackground").toggle();
                 $(".OceaniaNoBackground").toggle();
               });
             
             $("#OtherRow").click(function(){
-                $(".OtherContent").toggle(300);
-                $(".OtherBackground").toggle(300);
+                $(".OtherContent").toggle();
+                $(".OtherBackground").toggle();
                 $(".OtherNoBackground").toggle();
               });
             
