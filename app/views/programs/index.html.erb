@@ -490,14 +490,18 @@
     " Zambia", 
     " Zimbabwe"];
 
+var dataElements=new Array[];
+for (var i=0; i<numbers.length; i++) {
+	dataElements.concat([[countries[numbers[0]], names[numbers[0]], parseInt(programNumbers[0])]]);
+}
 
 
     google.load("visualization", "1", {"packages": ["geochart"]});
     google.setOnLoadCallback(drawRegionsMap);
         function drawVisualization() {
 		  var data = google.visualization.arrayToDataTable([
-		    ['CountryID', 'Country', 'Programs'],
-			    [countries[numbers[0]], names[numbers[0]], parseInt(programNumbers[0])],
+		    ['CountryID', 'Country', 'Programs']].concat(dataElements)
+			    [countries[numbers[0]], names[numbers[0]], programNumbers[0].toString()],
 
 		  ]);
             
