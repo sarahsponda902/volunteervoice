@@ -11,6 +11,8 @@ gem 'progress_bar'
 
 gem 'devise'
 
+gem 'jquery-rails'
+
 gem 'madmimi'
 
 gem 'RedCloth'
