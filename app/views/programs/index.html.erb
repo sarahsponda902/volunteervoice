@@ -12,6 +12,7 @@
     <%= image_tag "/assets/whereGo.png"%></p>
 
     <!-- MAP!!!!! -->
+	<%= javascript_include_tag "/assets/jquery.js"%>
       <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       <script type="text/javascript">
     var numbers = <%= escape_javascript(@nums.to_json)%>;
@@ -498,16 +499,12 @@
             data.addRows(numbers.length);
             data.addColumn("string", "CountryID");
             data.addColumn("string", "Country");
-            data.addColumn("number", "number");
-			data.addColumn({type:'number', role:'tooltip'});
-			data.addColumn({type:'string', role:'tooltip'});
-            
+            data.addColumn("number", "Number of Programs");
+
             for (var i=0; i<numbers.length; i++) {
                 data.setValue(i, 0, countries[numbers[i]]);
                 data.setValue(i, 1, names[numbers[i]]);
-                data.setValue(i, 2, 200);
-				data.setValue(i, 3, 200);
-				data.setValue(i, 4, "Programs: "+ programNumbers[i].toString());
+                data.setValue(i, 2, programNumbers[i]);
             }
             
             
@@ -547,7 +544,6 @@
 
 <!-- THE DROP DOWN COUNTRIES -->
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             setTimeout(function() {
