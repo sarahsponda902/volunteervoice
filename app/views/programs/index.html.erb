@@ -494,7 +494,7 @@
 
     google.load("visualization", "1", {"packages": ["geochart"]});
     google.setOnLoadCallback(drawRegionsMap);
-        function drawRegionsMap() {
+        function drawVisualization() {
             var data = new google.visualization.DataTable();
             data.addRows(numbers.length);
             data.addColumn("string", "CountryID");
