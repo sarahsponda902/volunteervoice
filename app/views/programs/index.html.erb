@@ -497,9 +497,8 @@
         function drawVisualization() {
 		  var data = google.visualization.arrayToDataTable([
 		    ['CountryID', 'Country', 'Programs'],
-			for (var i=0; i<numbers.length; i++) {
-			    [countries[numbers[i]], names[numbers[i]], 200],
-			}
+			    [countries[numbers[0]], names[numbers[0]], parseInt(programNumbers[0])],
+
 		  ]);
             
             
