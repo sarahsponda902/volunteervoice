@@ -5,7 +5,9 @@
 <head>
 <link rel="stylesheet" href="style.css">
 <meta charset="utf-8">
-
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>
 
 <!-- Javascript/Jquery files for star plugin -->
 <script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.js' type="text/javascript"></script>
