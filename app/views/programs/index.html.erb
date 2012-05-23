@@ -500,8 +500,8 @@
             data.addColumn("string", "CountryID");
             data.addColumn("string", "Country");
             data.addColumn("number", "number of Programs");
-			data.addColumn('number', 'tooltip');
-			data.addColumn('string','tooltip');
+			data.addColumn({type:'number', role:'tooltip'});
+			data.addColumn({type:'string', role:'tooltip'});
             
             for (var i=0; i<numbers.length; i++) {
                 data.setValue(i, 0, countries[numbers[i]]);
@@ -565,40 +565,40 @@
             }, 250);
             $("#AfricaRow").click(function(){
                 var count = 1;
-                $(".AfricaContent").toggle();
-                $(".AfricaBackground").toggle();
+                $(".AfricaContent").fadeToggle(300);
+                $(".AfricaBackground").fadeToggle(300);
                 $(".AfricaNoBackground").toggle();
                 
               });
 
             $("#EuropeRow").click(function(){
-                $(".EuropeContent").toggle();
-                $(".EuropeBackground").toggle();
+                $(".EuropeContent").fadeToggle(300);
+                $(".EuropeBackground").fadeToggle(300);
                 $(".EuropeNoBackground").toggle();
               });
 
             $("#AmericasRow").click(function(){
-                $(".AmericasContent").toggle();
-                $(".AmericasBackground").toggle();
+                $(".AmericasContent").fadeToggle(300);
+                $(".AmericasBackground").fadeToggle(300);
                 $(".AmericasNoBackground").toggle();
               });
 
             $("#AsiaRow").click(function(){
-                $(".AsiaContent").toggle();
-                $(".AsiaBackground").toggle();
+                $(".AsiaContent").fadeToggle(300);
+                $(".AsiaBackground").fadeToggle(300);
                 $(".AsiaNoBackground").toggle();
               });
                 
 
             $("#OceaniaRow").click(function(){
-                $(".OceaniaContent").toggle();
-                $(".OceaniaBackground").toggle();
+                $(".OceaniaContent").fadeToggle(300);
+                $(".OceaniaBackground").fadeToggle(300);
                 $(".OceaniaNoBackground").toggle();
               });
             
             $("#OtherRow").click(function(){
-                $(".OtherContent").toggle();
-                $(".OtherBackground").toggle();
+                $(".OtherContent").fadeToggle(300);
+                $(".OtherBackground").fadeToggle(300);
                 $(".OtherNoBackground").toggle();
               });
             
