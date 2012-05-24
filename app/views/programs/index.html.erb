@@ -496,7 +496,8 @@
     google.setOnLoadCallback(drawRegionsMap);
         function drawRegionsMap() {
             var data = new google.visualization.DataTable();
-            data.addRows(numbers.length);
+            //data.addRows(numbers.length);
+			data.addRows(1);
             data.addColumn("string", "CountryID");
             data.addColumn("string", "Country");
             data.addColumn("number", "Programs");
