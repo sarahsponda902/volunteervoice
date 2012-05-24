@@ -7,6 +7,9 @@
     <% @nums << @allCountries.index(f) unless (@allCountries.index(f).nil?)%>
     <% end %>
 	
+	
+	<%= javascript_include_tag "/assets/jquery.js"%>
+
 
 	<p style="text-align:center; margin-top:40px">
     <%= image_tag "/assets/whereGo.png"%></p>
@@ -545,7 +548,7 @@
 
 
 <!-- THE DROP DOWN COUNTRIES -->
-	<%= javascript_include_tag "/assets/jquery.js"%>
+
     <script type="text/javascript">
         $(document).ready(function() {
             setTimeout(function() {
