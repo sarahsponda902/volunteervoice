@@ -515,11 +515,11 @@
        //     google.visualization.events.addListener(geochart, "error", function errorHandler(e) {
          //       google.visualization.errors.removeError(e.id);
         //    });
-            google.visualization.events.addListener(geochart, "regionClick", 
-            function(eventData) 
-                  { 
-                    document.location = "http://volunteervoice.herokuapp.com/pages/"+eventData.region+"/searches"; 
-                  });
+          //  google.visualization.events.addListener(geochart, "regionClick", 
+           // function(eventData) 
+             //     { 
+               //     document.location = "http://volunteervoice.herokuapp.com/pages/"+eventData.region+"/searches"; 
+               //   });
 
             geochart.draw(data, options);
     };
