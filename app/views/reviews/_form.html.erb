@@ -258,7 +258,7 @@ var	count = 0;
 
 
 	function checkFields(){
-		if(($("#tags").attr("value") != "")
+		if(($("#tags").attr("value") != " Start typing...")
 			&& ($("#review_time_frame").attr("value") != "Select a Time Frame")
 			&& ($("#review_program_id").attr("value") != "Select a Program")
 			&& ($("#theBody").attr("value").length >= 200)
@@ -419,7 +419,7 @@ var	count = 0;
 				<% if @review.organization_id.nil?%>
 					
 						<div width="200px">
-						<input id="tags" style="float:right; margin-right:10px; margin-top:5px; width:200px; height:20px" name="review[organization_name]"></div>
+						<input id="tags" style="float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic" name="review[organization_name]" value=" Start typing..."></div>
 				
 				<% else %>
 				<div style="float:right; margin-right:20px; margin-top:5px; "><%= Organization.find(@review.organization_id).name%></div>
