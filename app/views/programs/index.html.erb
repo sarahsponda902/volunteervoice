@@ -495,63 +495,20 @@
     google.load("visualization", "1", {"packages": ["geochart"]});
     google.setOnLoadCallback(drawVisualization);
 	function drawVisualization() {
-    var data = new google.visualization.DataTable();
-    data.addRows(24);
-    data.addColumn('string', 'Country');
-    data.addColumn('number', 'Inability to heat home');
-    data.setValue(0, 0, 'Austria');
-    data.setValue(0, 1, 5);
-    data.setValue(1, 0, 'Belgium');
-    data.setValue(1, 1, 7);
-    data.setValue(2, 0, 'Bulgaria');
-    data.setValue(2, 1, 32);
-    data.setValue(3, 0, 'Cyprus');
-    data.setValue(3, 1, 31);
-    data.setValue(4, 0, 'Czech Republic');
-    data.setValue(4, 1, 7);
-    data.setValue(5, 0, 'Estonia');
-    data.setValue(5, 1, 1);
-    data.setValue(6, 0, 'Finland');
-    data.setValue(6, 1, 2);
-    data.setValue(7, 0, 'Germany');
-    data.setValue(7, 1, 7);
-    data.setValue(8, 0, 'Greece');
-    data.setValue(8, 1, 16);
-    data.setValue(9, 0, 'Hungary');
-    data.setValue(9, 1, 11);
-    data.setValue(10, 0, 'Ireland');
-    data.setValue(10, 1, 4);
-    data.setValue(11, 0, 'Italy');
-    data.setValue(11, 1, 11);
-    data.setValue(12, 0, 'Latvia');
-    data.setValue(12, 1, 19);
-    data.setValue(13, 0, 'Lithuania');
-    data.setValue(13, 1, 25);
-    data.setValue(14, 0, 'Luxembourg');
-    data.setValue(14, 1, 1);
-    data.setValue(15, 0, 'Netherlands');
-    data.setValue(15, 1, 2);
-    data.setValue(16, 0, 'Poland');
-    data.setValue(16, 1, 22); 
-    data.setValue(17, 0, 'Portugal');
-    data.setValue(17, 1, 35);
-    data.setValue(18, 0, 'Romania');
-    data.setValue(18, 1, 26);
-    data.setValue(19, 0, 'Slovakia');
-    data.setValue(19, 1, 6);
-    data.setValue(20, 0, 'Slovenia');
-    data.setValue(20, 1, 7);
-    data.setValue(21, 0, 'Spain');
-    data.setValue(21, 1, 5);
-    data.setValue(22, 0, 'Sweden');
-    data.setValue(22, 1, 2);
-    data.setValue(23, 0, 'United Kingdom');
-    data.setValue(23, 1, 6);
+	  var data = google.visualization.arrayToDataTable([
+	    ['Country', 'Popularity'],
+	    ['Germany', 200],
+	    ['United States', 300],
+	    ['Brazil', 400],
+	    ['Canada', 500],
+	    ['France', 600],
+	    ['RU', 700]
+	  ]);
 
-    var geochart = new google.visualization.GeoChart(
-      document.getElementById('visualization'));
-    geochart.draw(data, {width: 556, height: 347});
-    }
+	  var geochart = new google.visualization.GeoChart(
+	      document.getElementById('visualization'));
+	  geochart.draw(data, {width: 556, height: 347});
+	}
 
       </script>
     </head>
