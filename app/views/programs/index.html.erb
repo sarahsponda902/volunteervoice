@@ -17,7 +17,7 @@
       <script type="text/javascript">
     var numbers = <%= escape_javascript(@nums.to_json)%>;
 	var programNumbers = <%= array_or_string_for_javascript(@progNums)%>;
-    var countries = new Array["AF", 
+    var countries = ["AF", 
     "AX", 
     "AL", 
     "DZ", 
@@ -254,7 +254,7 @@
     "ZW"];
 
 
-    var names = new Array[" Afghanistan", 
+    var names = [" Afghanistan", 
     " Åland Islands", 
     " Albania", 
     " Algeria", 
@@ -496,19 +496,18 @@
     google.setOnLoadCallback(drawRegionsMap);
         function drawRegionsMap() {
             var data = new google.visualization.DataTable();
-            //data.addRows(numbers.length);
-			data.addRows(1);
+            data.addRows(numbers.length);
             data.addColumn("string", "CountryID");
             data.addColumn("string", "Country");
             data.addColumn("number", "Programs");
 			data.addColumn({type:'string', role:'tooltip'});
             
-           // for (var i=0; i<numbers.length; i++) {
-                data.setValue(i, 0, countries[numbers[0]]);
-                data.setValue(i, 1, names[numbers[0]]);
+            for (var i=0; i<numbers.length; i++) {
+                data.setValue(i, 0, countries[numbers[i]]);
+                data.setValue(i, 1, names[numbers[i]]);
                 data.setValue(i, 2, 200);
 				data.setValue(i, 3, "Programs: ");
-           // }
+            }
          
             var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
             var container = document.getElementById("map_canvas");
