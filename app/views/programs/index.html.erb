@@ -500,13 +500,13 @@
             data.addColumn("string", "CountryID");
             data.addColumn("string", "Country");
             data.addColumn("number", "Programs");
-			data.addColumn({type:'string', role:'tooltip'});
+
             
             for (var i=0; i<numbers.length; i++) {
                 data.setValue(i, 0, countries[numbers[i]]);
                 data.setValue(i, 1, names[numbers[i]]);
                 data.setValue(i, 2, 200);
-				data.setValue(i, 3, "Programs: ");
+
             }
          
             var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
@@ -515,11 +515,11 @@
        //     google.visualization.events.addListener(geochart, "error", function errorHandler(e) {
          //       google.visualization.errors.removeError(e.id);
         //    });
-          //  google.visualization.events.addListener(geochart, "regionClick", 
-           // function(eventData) 
-             //     { 
-               //     document.location = "http://volunteervoice.herokuapp.com/pages/"+eventData.region+"/searches"; 
-               //   });
+            google.visualization.events.addListener(geochart, "regionClick", 
+            function(eventData) 
+                  { 
+                    document.location = "http://volunteervoice.herokuapp.com/pages/"+eventData.region+"/searches"; 
+                  });
 
             geochart.draw(data, options);
     };
