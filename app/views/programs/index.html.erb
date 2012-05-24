@@ -17,7 +17,7 @@
 		 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 		      <script type="text/javascript">
 		    google.load("visualization", "1", {"packages": ["geochart"]});
-			google.setOnLoadCallback(drawRegionsMap);
+			google.setOnLoadCallback(drawVisualization);
 
 			var countries = [
 			    'US',
@@ -34,16 +34,13 @@
 			    2,
 			    3
 			];
-			function drawRegionsMap() {
+			function drawVisualization() {
 			    var data = new google.visualization.DataTable();
 			    data.addRows(numbers.length);
 			    data.addColumn("string", "CountryID");
 			    data.addColumn("string", "Country");
 			    data.addColumn("number", "Programs");
-			    data.addColumn({
-			        type: 'string',
-			        role: 'tooltip'
-			    });
+			    data.addColumn({type: 'string', role: 'tooltip'});
 
 			    for (var i = 0; i < numbers.length; i++) {
 			        data.setValue(i, 0, countries[i]);
@@ -67,7 +64,7 @@
 			    var geochart = new google.visualization.GeoChart(container);
 
 			    google.visualization.events.addListener(geochart, "regionClick", function(eventData) {
-			        document.location = "http://volunteervoice.herokuapp.com/pages/" + eventData.region + "/searches";
+			        document.location = "http://volunteervoice.herokuapp.com/pages/"+eventData.region+"/searches";
 			    });
 
 			    geochart.draw(data, options);
