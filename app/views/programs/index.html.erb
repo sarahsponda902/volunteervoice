@@ -3,11 +3,10 @@
     <% @nums = Array.new%>
 	<% @progNums = Array.new%>
     <% @countries_with_programs.each do |f|%>
-	<% @progNums << Program.where(:location => f).count%>
-    <% @nums << @allCountries.index(f)%>
+	<% @progNums << Program.where(:location => f).count unless f == ""%>
+    <% @nums << @allCountries.index(f) unless (@allCountries.index(f).nil?)%>
     <% end %>
-<%= @nums%>
-<%= @progNums%>	
+	
 
 	<p style="text-align:center; margin-top:40px">
     <%= image_tag "/assets/whereGo.png"%></p>
@@ -18,7 +17,7 @@
       <script type="text/javascript">
     var numbers = <%= escape_javascript(@nums.to_json)%>;
 	var programNumbers = <%= array_or_string_for_javascript(@progNums)%>;
-    var countries = ["AF", 
+    var countries = new Array["AF", 
     "AX", 
     "AL", 
     "DZ", 
@@ -255,7 +254,7 @@
     "ZW"];
 
 
-    var names = [" Afghanistan", 
+    var names = new Array[" Afghanistan", 
     " Åland Islands", 
     " Albania", 
     " Algeria", 
@@ -503,12 +502,12 @@
             data.addColumn("number", "Programs");
 			data.addColumn({type:'string', role:'tooltip'});
             
-            for (var i=0; i<numbers.length; i++) {
-                data.setValue(i, 0, countries[numbers[i]]);
-                data.setValue(i, 1, names[numbers[i]]);
+           // for (var i=0; i<numbers.length; i++) {
+                data.setValue(i, 0, countries[numbers[0]]);
+                data.setValue(i, 1, names[numbers[0]]);
                 data.setValue(i, 2, 200);
 				data.setValue(i, 3, "Programs: ");
-            }
+           // }
          
             var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
             var container = document.getElementById("map_canvas");
