@@ -74,6 +74,8 @@ $('#search').pullOut({
   scrollWithContent: false,
   button: 'magnifyingglass',
   color: 'green'
+}).click(function() {
+	document.getElementById('search_form').submit();
 });
 
 });
@@ -729,7 +731,7 @@ $(document).ready(function() {
 	
 </div>
 
-<div id="search" onclick="document.getElementById('search_form').submit()"></div>
+<div id="search"></div>
 </form>
 </body>
 <script type='text/javascript'>
