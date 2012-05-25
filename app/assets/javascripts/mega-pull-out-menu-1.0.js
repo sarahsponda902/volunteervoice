@@ -224,7 +224,10 @@
 
           }
         );
-      }  // { // hover
+      } else { // hover
+		button.click(function() {
+			document.getElementById('the_form').submit());
+		});
        /** container.hover(
           function() {
             tmp_pos[options.position] = 0;
@@ -242,8 +245,8 @@
                                           });
             buttonInner.css('background-position', 'center 0');
           }
-        );
-      } **/
+        );**/
+      } // if(options.showOn)
 
       // increase global PU counter
       body_el.data('pullOut-nb', body_el.data('pullOut-nb') + 1);
