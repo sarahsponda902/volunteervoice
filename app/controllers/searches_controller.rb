@@ -1515,7 +1515,7 @@ class SearchesController < ApplicationController
                @display = "Organizations"
                @resultsO = []
                @results.each do |f|
-                 @resultsO << Organization.find(f.organization_id) unless @results.include?(Organization.find(f.organization_id))
+                 @resultsO << Organization.find(f.organization_id) unless @resultsO.include?(Organization.find(f.organization_id))
                end
 
                @results = @resultsO

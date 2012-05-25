@@ -251,7 +251,7 @@ $(document).ready(function() {
 			<% if !(@results.empty?)%>
 			
 	<div id="divProgram" style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758s">
-		<% if (@display.nil?)%>
+		<% if (@results.first.is_a?(Program))%>
 			<% @results.each do |f|%>	
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
 			<% end %>
