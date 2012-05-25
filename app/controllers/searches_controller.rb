@@ -1937,6 +1937,7 @@ end
       params['price_min'] = @params[3]
       params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
       params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+      @searched1 = params['group_size']
 
     end
     if @params.last == 'region'
@@ -1958,6 +1959,7 @@ end
 
           else
             if params[:region].nil?
+              @search3= params['group_size']
               @search = Program.search do
 
                  with(:subject).any_of(params['subject'])
