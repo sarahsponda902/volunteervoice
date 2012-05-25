@@ -1175,12 +1175,12 @@ end
 else
      @params = params[:resulting_ids].split(';')
    if @params.last == 'all'
-     params['subject'] = @params[0].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
-     params['countries'] = @params[1].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+     params['subject'] = @params[0].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(', ')
+     params['countries'] = @params[1].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(', ')
      params['price_max'] = @params[2]
      params['price_min'] = @params[3]
-     params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
-     params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+     params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(', ')
+     params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(', ')
    end
    if @params.last == 'region'
       params[:region] = @params[0]
@@ -1931,13 +1931,13 @@ end
   else
      @params = params[:resulting_ids].split(';')
     if @params.last == 'all'
-      params['subject'] = @params[0].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
-      params['countries'] = @params[1].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+      params['subject'] = @params[0].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(', ')
+      params['countries'] = @params[1].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(', ')
       params['price_max'] = @params[2]
       params['price_min'] = @params[3]
-      params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
-      params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
-      @searched1 = params['group_size']
+      params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(', ')
+      params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(', ')
+
 
     end
     if @params.last == 'region'
@@ -1959,7 +1959,6 @@ end
 
           else
             if params[:region].nil?
-              @searched3= params['group_size']
               @search = Program.search do
 
                  with(:subject).any_of(params['subject'])
@@ -1977,7 +1976,7 @@ end
 
                end
                @resulting_ids = "#{params['subject']};#{params['countries']};#{params['price_max']};#{params['price_min']};#{params['length']};#{params['group_size']};all"
-
+               
              else
                @search = Program.search do
                  with(:location).equal_to(params[:region])
@@ -1987,7 +1986,7 @@ end
              end
               
             @results = @search.results
-            @searched2 = @results
+            @searched1 = @search
             
           end
 
