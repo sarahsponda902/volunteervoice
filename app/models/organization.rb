@@ -23,7 +23,7 @@ before_create :set_page_views_to_zero
     mount_uploader :square_image, ImageUploader
 # Sunspot Search
 searchable do
-  text :name, :boost => 10
+  string :name, :boost => 10
   text :description
 end
 
