@@ -1959,7 +1959,7 @@ end
 
           else
             if params[:region].nil?
-              @search3= params['group_size']
+              @searched3= params['group_size']
               @search = Program.search do
 
                  with(:subject).any_of(params['subject'])
