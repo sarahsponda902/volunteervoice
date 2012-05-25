@@ -1986,7 +1986,7 @@ end
              end
               
             @results = @search.results
-            @searched1 = @search
+            
             
           end
 
