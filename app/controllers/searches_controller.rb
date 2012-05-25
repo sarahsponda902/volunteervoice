@@ -1213,7 +1213,7 @@ end
    
     end
    
-   @sort = params[:list_by]
+   @sort = params[:sort]
    if @sort.nil?
      @sort = "ratinghigh"
    end
@@ -1938,7 +1938,7 @@ end
         end
        @results = @search.results
 
-       @sort = params[:list_by]
+       @sort = params[:sort]
        if @sort.nil?
          @sort = "ratinghigh"
        end
