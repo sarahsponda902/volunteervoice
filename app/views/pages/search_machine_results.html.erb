@@ -1,4 +1,4 @@
-<!-- PROBLEM WITH FOOTER IS IN SECOND COUNTRY-BOX-->
+
 	
 	<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
 
@@ -191,24 +191,18 @@ $(document).ready(function() {
 <script type="text/javascript">
 
 $(document).ready(function() {
-
-	$('#organizations-contents').hide();
-	$('#organizations-contents1').hide();
-	$('#sortByToggleO').hide();
 	
 	$('#program').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 5, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
 
-	$('#organization').smartpaginator({ totalrecords: <%=@resultsO.count%>, recordsperpage: 5, datacontainer: 'divOrganization', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
-	
 	
 });
 
 function toggleDisplay(){
 		$("#programs-contents").toggle();
-		$('#organizations-contents').toggle();
+
 		$("#programs-contents1").toggle();
-		$('#organizations-contents1').toggle();
-		$("#sortByToggleO").toggle();
+
+
 		$('#sortByToggleP').toggle();
 }
 
@@ -230,14 +224,8 @@ function toggleDisplay(){
 	<br />
 
 </div>
-<div style="text-align:center; width:100%; margin-top:50px" id ="organizations-contents1">
-	<%=image_tag "/assets/volunteerOrganizations.png"%><br /><br />
-	<p align="left" style="margin-left:50px; font-family:architectsDaughterRegular; color:#62acbd; font-size:1.3em"> Your search has <%=@resultsO.length%> matches:</p>
-	
-	<br />
-	<br />
 </div>
-</div>
+
 <div class = "container">
 	<div class= "row">
 		<div class="five columns">
@@ -246,36 +234,21 @@ function toggleDisplay(){
 			<select id="display" name="display" style="position:absolute; left:-5px; width:255px; height:30px; border: 1px solid #575758; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="$(toggleDisplay())"><option selected='selected'>Programs</option><option>Organizations</option></select>
 		</div>
 		</div>
-		
-	<div class="fivecolumns" id= "sortByToggleP">
-	<p style="font-size:1.5em; color:#575758; line-height:1.1em"> List By:</p>	
-	
-		<form accept-charset="UTF-8" action="sorted_results" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
-			<div style="position:absolute; left:47%;top:333px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-		<select id="sort" name="sort"  style="border:1px solid #575758; position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()"><option value="ratinghigh">Rating - High</option>
-		<option value="ratinglow">Rating - Low</option>
-		<option value="alphabetical">Alphabetical</option>
-		<option value="pricelow">Price - Low</option>
-		<option value="pricehigh">Price - High</option></select>
-						<input id="resulting_ids" name="resulting_ids" type="hidden" value="2 3" />
-						<input id="type" name="type" type="hidden" value="Program" />
-						</div>
-		</form>
-	</div>
 </div>
+
 <div class="container">
 
-			<div class="five columns"  id= "sortByToggleO">
+			<div class="five columns">
 				<p style="font-size:1.5em; color:#575758; line-height:1.1em"> List By:</p>
 				<form accept-charset="UTF-8" action="sorted_results" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
 		<div style="position:absolute; left:19.2%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-		<select id="sort" name="sort" style="position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">	<option value="ratinghigh">Rating - High</option>
+		<select id="sort" name="sort" style="position:relative; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">	<option value="ratinghigh">Rating - High</option>
 			<option value="ratinglow">Rating - Low</option>
 			<option value="alphabetical">Alphabetical</option>
 			<option value="pricelow">Price - Low</option>
 			<option value="pricehigh">Price - High</option></select>
 										<input id="resulting_ids" name="resulting_ids" type="hidden" value="2 3" />
-										<input id="type" name="type" type="hidden" value="Organization" />
+										<input id="type" name="type" type="hidden" value="Program" />
 				</div>
 				</form>
 
@@ -283,9 +256,7 @@ function toggleDisplay(){
 		</div>
 	</div>
 </div>
-</div>
-</div>
-</div>
+
 <div class="container">
 	<div class="row">	
 <div class="eleven columns">
@@ -315,39 +286,13 @@ function toggleDisplay(){
 
 
 	
-<div id="organizations-contents" class="contents" style="margin-left:30px; margin-top:60px;">
-			<% if !(@resultsO.empty?)%>
-	<div id="divOrganization" style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
-
-		<% @resultsO.each do |f|%>	
-	<%= render :partial => "organizations_results", :locals => {:f => f}%>
-	<% end %>
-	</div>
-	<div id="organization" style="position: relative; top:20px">
-		
-	</div>
-	</div>
-	<% else %>
-	<div style="border:1px solid #e67b5a; height:200px; background-color:white; margin-left:25px;">
-	<div style="margin:25px">
-	<div style="border-top:1px solid #68c2d8; height:150px; border-bottom:1px solid #68c2d8">
-		<p style="text-align:center; margin-top:50px; font-family:architectsDaughterRegular;font-size:3em; color: #68c2d8">We've got nothin'</p>
-	</div>
-	</div>
-	</div>
-	<% end %>
-
-</div>
 
 </div>
 
 
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
+
 <body style="oveflow-x:hidden">
 <form action="/pages/search_machine_results" method="get">
 
