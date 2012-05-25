@@ -1937,12 +1937,15 @@ end
       params['price_min'] = @params[3]
       params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
       params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+      @searched1 = "last is all"
     end
     if @params.last == 'region'
        params[:region] = @params[0]
+       @searched2 = "last is region"
     end
     if @params.last == 'search'
        params[:search] = @params[0]
+       @searched3 = "last is search"
     end
   end
   
@@ -1952,7 +1955,7 @@ end
             end
             @results = @search.results
             @resulting_ids = "#{params[:search]};search"
-            @searched1 = "searched1"
+
           else
             if params[:region].nil?
               @search = Program.search do
@@ -1972,13 +1975,13 @@ end
 
                end
                @resulting_ids = "#{params['subject']};#{params['countries']};#{params['price_max']};#{params['price_min']};#{params['length']};#{params['group_size']};all"
-               @searched2 = "searched2"
+
              else
                @search = Program.search do
                  with(:location).equal_to(params[:region])
                end
                @resulting_ids = "#{params[:region]};region"
-               @searched3 = "searched3"
+
              end
               
             @results = @search.results
