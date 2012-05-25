@@ -120,7 +120,6 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
-	$('sortByToggleX').hide();
 	$('a.window').click(function() {
 
                 //Getting the variable's value from a link 
@@ -196,6 +195,7 @@ $(document).ready(function() {
 	$('#organizations-contents').hide();
 	$('#organizations-contents1').hide();
 	$('#sortByToggleO').hide();
+	$('#sortByToggleX').hide();
 	
 	$('#program').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 5, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
 
