@@ -12,7 +12,9 @@
 
 <link href='/assets/mega-pull-out-menu-styles.css' type="text/css" rel="stylesheet"/>
 
-<%= @params%>
+<%= @params%><br />
+<%= @params.last%><br />
+<%= @params[0].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')%><br /><br />
 <script type="text/javascript" src="/assets/mega-pull-out-menu-1.0.js"></script>
 <script type="text/javascript">
 $(function() { 
