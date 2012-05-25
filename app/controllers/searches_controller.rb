@@ -503,7 +503,7 @@ class SearchesController < ApplicationController
 ####### START OF SEARCH PAGES ###########
 ## ORGANIZATION SEARCH ##
   def organization_search
- if (params[:resulting_ids].nil?)
+if (params[:resulting_ids].nil?)
     if ((params["subject"] == "false") || params["subject"].nil?)
     params["subject"] = [  "Agriculture", 
       "Organic Farming", 
@@ -1172,12 +1172,30 @@ end
     "TV", 
     "WF"]
   end
+else
+     @params = params[:resulting_ids].split(";")
+   if @params.last == "all"
+     params["subject"] = @params[0]
+     params["countries"] = @params[1]
+     params["price_max"] = @params[2]
+     params["price_min"] = @params[3]
+     params["length"] = @params[4]
+     params["group_size"] = @params[5]
+   end
+   if @params.last == "region"
+      params[:region] = @params[0]
+   end
+   if @params.last == "search"
+      params[:search] = @params[0]
+   end
+end
   
     if !(params[:search].nil?)
       @search = Organization.search do
         keywords params[:search]
       end
       @results = @search.results
+      @resulting_ids = "#{params[:search]};search"
     else
       if params[:region].nil?
         @search = Program.search do
@@ -1196,10 +1214,13 @@ end
 
         
          end
+         @resulting_ids = "#{params['subject']};#{params['countries']};#{params['price_max']};#{params['price_min']};#{params['length']};#{params['group_size']};all"
+         
        else
          @search = Program.search do
            with(:location).equal_to(params[:region])
          end
+         @resulting_ids = "#{params[:region]};region"
        end
     
       @results = @search.results
@@ -1218,38 +1239,25 @@ end
      @sort = "ratinghigh"
    end
    
-  else
-     @results = []
-     params[:resulting_ids].each do |f|
-       @results << Program.find(f)
-     end
-     @sort = params[:sort]
-   end 
-        if @sort == "ratinghigh"
-          @results = @results.sort_by(&:overall).reverse
-        end
-        if @sort == "ratinglow"
-          @results = @results.sort_by(&:overall)
-        end
-        if @sort == "alphabetical"
-          @results.sort! { |a,b| a.name.downcase <=> b.name.downcase }
-
-        end
-        if @sort == "pricelow"
-          @results = @results.sort_by(&:weekly_cost)
-        end
-        if @sort == "pricehigh"
-          @results = @results.sort_by(&:weekly_cost).reverse
-        end
-
-
- end
+   if @sort == "ratinghigh"
+     @results = @results.sort_by(&:overall).reverse
+   end
+   if @sort == "ratinglow"
+     @results = @results.sort_by(&:overall)
+   end
+   if @sort == "alphabetical"
+     @results.sort! { |a,b| a.name.downcase <=> b.name.downcase }
+    
+   end
+   if @sort == "pricelow"
+     @results = @results.sort_by(&:weekly_cost)
+   end
+   if @sort == "pricehigh"
+     @results = @results.sort_by(&:weekly_cost).reverse
+   end
+   
+  end
   
-  
-  
-  
-  
-  ## PROGRAM SEARCH ##
   def program_search
     if (params[:resulting_ids].nil?)
         if ((params["subject"] == "false") || params["subject"].nil?)
@@ -1920,7 +1928,24 @@ end
         "TV", 
         "WF"]
       end
-
+  else
+     @params = params[:resulting_ids].split(";")
+    if @params.last == "all"
+      params["subject"] = @params[0]
+      params["countries"] = @params[1]
+      params["price_max"] = @params[2]
+      params["price_min"] = @params[3]
+      params["length"] = @params[4]
+      params["group_size"] = @params[5]
+    end
+    if @params.last == "region"
+       params[:region] = @params[0]
+    end
+    if @params.last == "search"
+       params[:search] = @params[0]
+    end
+  end
+  
         if !(params[:search].nil?)
           @search = Program.search do
             keywords params[:search]
@@ -1951,18 +1976,12 @@ end
           end
         end
        @results = @search.results
-
+     
        @sort = params[:sort]
        if @sort.nil?
          @sort = "ratinghigh"
        end
-  else
-    @results = []
-    params[:resulting_ids].each do |f|
-      @results << Program.find(f)
-    end
-    @sort = params[:sort]
-  end 
+
        if @sort == "ratinghigh"
          @results = @results.sort_by(&:overall).reverse
        end
@@ -1979,9 +1998,9 @@ end
        if @sort == "pricehigh"
          @results = @results.sort_by(&:weekly_cost).reverse
        end
-    
-
-end
+       
+       @resulting_ids = "#{params['subject']};#{params['countries']};#{params['price_max']};#{params['price_min']};#{params['length']};#{params['group_size']}"
+  end
   
   
     

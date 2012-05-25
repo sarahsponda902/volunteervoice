@@ -12,15 +12,6 @@
 
 <link href='/assets/mega-pull-out-menu-styles.css' type="text/css" rel="stylesheet"/>
 
-<% @resulting_ids = ""%>
-<% @results.each do |f| %>
-<% @resulting_ids << " "+f.id%>
-<% end %>
-
-<% @resultsO = []%>
-<% @results.each do |f|%>
-<% @resultsO << Organization.find(f.organization_id) unless @resultsO.include?(Organization.find(f.organization_id))%>
-<% end %>
 
 <script type="text/javascript" src="/assets/mega-pull-out-menu-1.0.js"></script>
 <script type="text/javascript">
@@ -239,7 +230,7 @@ $(document).ready(function() {
 			<option value="alphabetical">Alphabetical</option>
 			<option value="pricelow">Price - Low</option>
 			<option value="pricehigh">Price - High</option></select>
-										<input id="resulting_ids" name="resulting_ids" type="hidden" value="<%=@resulting_ids%>" />
+										<input id="resulting_ids" name="resulting_ids" type="hidden" value="<%= @resulting_ids%>" />
 										<input id="type" name="type" type="hidden" value="Program" />
 				</div>
 				</form>
