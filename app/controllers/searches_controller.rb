@@ -1478,10 +1478,11 @@ class SearchesController < ApplicationController
             end
           
             @results = @search.results
+               
           end
             @resulting_ids = "#{params[:search]};search"
 
-          else
+        else
             if params[:region].nil?
               @search = Program.search do
 
@@ -1510,7 +1511,15 @@ class SearchesController < ApplicationController
              end
               
             @results = @search.results
-            
+             if params[:display] == "Organizations"
+               @display = "Organizations"
+               @resultsO = []
+               @results.each do |f|
+                 @resultsO << Organization.find(f.organization_id) unless @results.include?(Organization.find(f.organization_id))
+               end
+
+               @results = @resultsO
+            end
             
           end
 
