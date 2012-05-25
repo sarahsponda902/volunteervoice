@@ -1951,10 +1951,24 @@ end
   end
   
          if !(params[:search].nil?)
+           if params[:type] == "Organization"
+             @search = Organization.search do
+               keywords params[:search]
+             end
+             @results = @search.results
+             @resultsO = []
+             @results.each do |f|
+               @resultsO << Organization.find(f.organization_id) unless @results.include?(Organization.find(f.organization_id))
+             end
+
+             @results = @resultsO
+          else
             @search = Program.search do
               keywords params[:search]
             end
+          
             @results = @search.results
+          end
             @resulting_ids = "#{params[:search]};search"
 
           else

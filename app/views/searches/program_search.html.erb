@@ -246,14 +246,20 @@ $(document).ready(function() {
 <div class="eleven columns" style="margin-top:-50px">
 <div id="programs-contents" class="contents" style="margin-left:10px; margin-top:60px;">
 			<% if !(@results.empty?)%>
+			
 	<div id="divProgram" style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758s">
-		<% @results.each do |f|%>	
-		<%= render :partial => "programs_results", :locals => {:f => f}%>
+		<% @results.each do |f|%>
+			<% if !(@results.first.class.name == "Organization")%>	
+				<%= render :partial => "programs_results", :locals => {:f => f}%>
+			<% else %>
+				<%= render :partial => "organization_results", :locals => {:f => f}%>
+			<% end %>
 		<% end %>
 	</div>
 	<div id="program" style="position: relative; top:20px">
 			</div>
 			</div>
+			
 		<% else %>
 		<div style="border:1px solid #e67b5a; height:200px; background-color:white; margin-left:25px;">
 		<div style="margin:25px">
