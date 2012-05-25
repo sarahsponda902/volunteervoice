@@ -1931,7 +1931,7 @@ end
   else
      @params = params[:resulting_ids].split(";")
     if @params.last == "all"
-      params["subject"] = @params[0]
+      params["subject"] = @params[0].split("\\\", \\\"")
       params["countries"] = @params[1]
       params["price_max"] = @params[2]
       params["price_min"] = @params[3]
