@@ -1460,7 +1460,8 @@ class SearchesController < ApplicationController
   end
   
          if !(params[:search].nil?)
-           if params[:display] == "Organization"
+           if params[:display] == "Organizations"
+             @display = "Organizations"
              @search = Organization.search do
                keywords params[:search]
              end
