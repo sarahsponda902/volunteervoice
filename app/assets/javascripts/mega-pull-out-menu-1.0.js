@@ -224,8 +224,8 @@
 
           }
         );
-      } else { // hover
-        container.hover(
+      }  // { // hover
+       /** container.hover(
           function() {
             tmp_pos[options.position] = 0;
             container.stop(true, false).animate(tmp_pos, options.slideSpeed);
@@ -243,7 +243,7 @@
             buttonInner.css('background-position', 'center 0');
           }
         );
-      } // if(options.showOn)
+      } **/
 
       // increase global PU counter
       body_el.data('pullOut-nb', body_el.data('pullOut-nb') + 1);
