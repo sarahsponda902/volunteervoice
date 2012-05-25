@@ -1947,7 +1947,7 @@ end
   end
   
          if !(params[:search].nil?)
-            @search = Organization.search do
+            @search = Program.search do
               keywords params[:search]
             end
             @results = @search.results
@@ -1981,13 +1981,7 @@ end
 
             @results = @search.results
 
-            @resultsO = []
-            @results.each do |f|
-              @resultsO << Organization.find(f.organization_id) unless @results.include?(Organization.find(f.organization_id))
-            end
-
-            @results = @resultsO
-
+            
           end
 
          @sort = params[:sort]
