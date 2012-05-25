@@ -276,7 +276,7 @@ $(document).ready(function() {
 </div>
 
 <body style="oveflow-x:hidden">
-<form action="/pages/search_machine_results" method="get">
+<form action="program_search" method="get" id="the_form">
 
 <div id="programSubjects" style="width:600px; height:460px; overflow-y:auto; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	
@@ -729,7 +729,7 @@ $(document).ready(function() {
 	
 </div>
 
-<div id="search"><br /><input type="button" value="submit" style="overflow-x:hidden"><br /><br /></div>
+<div id="search" onclick="the_form.submit();"></div>
 </form>
 </body>
 <script type='text/javascript'>
