@@ -224,11 +224,9 @@
 
           }
         );
-      } else { // hover
-		button.click(function() {
-			document.getElementById('the_form').submit());
-		});
-       /** container.hover(
+     /** } else { // hover
+
+       container.hover(
           function() {
             tmp_pos[options.position] = 0;
             container.stop(true, false).animate(tmp_pos, options.slideSpeed);
