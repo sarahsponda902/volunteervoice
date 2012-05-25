@@ -560,7 +560,7 @@ if (params[:resulting_ids].nil?)
       'Environmental Biology', 
       'Technology', 
       'Teaching Computer Literacy', 
-      'Media, Marketing, and Graphic Design']
+      'Media Marketing and Graphic Design']
   end
   if (params['countries'].include?('NorthernAfrica'))
     params['countries'] = params['countries'] + ['DZ', 
@@ -916,7 +916,7 @@ end
     params['subject'] = params['subject'] + ['Archaeology', 'Environmental Biology']
   end
   if params['subject'].include?('Technology')
-    params['subject'] = params['subject'] + ['Teaching Computer Literacy', 'Media, Marketing, and Graphic Design']
+    params['subject'] = params['subject'] + ['Teaching Computer Literacy', 'Media Marketing and Graphic Design']
   end
   
   
@@ -1175,12 +1175,12 @@ end
 else
      @params = params[:resulting_ids].split(';')
    if @params.last == 'all'
-     params['subject'] = @params[0]
-     params['countries'] = @params[1]
+     params['subject'] = @params[0].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+     params['countries'] = @params[1].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
      params['price_max'] = @params[2]
      params['price_min'] = @params[3]
-     params['length'] = @params[4]
-     params['group_size'] = @params[5]
+     params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+     params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
    end
    if @params.last == 'region'
       params[:region] = @params[0]
@@ -1316,7 +1316,7 @@ end
           'Environmental Biology', 
           'Technology', 
           'Teaching Computer Literacy', 
-          'Media, Marketing, and Graphic Design']
+          'Media Marketing and Graphic Design']
       end
       if (params['countries'].include?('NorthernAfrica'))
         params['countries'] = params['countries'] + ['DZ', 
@@ -1672,7 +1672,7 @@ end
         params['subject'] = params['subject'] + ['Archaeology', 'Environmental Biology']
       end
       if params['subject'].include?('Technology')
-        params['subject'] = params['subject'] + ['Teaching Computer Literacy', 'Media, Marketing, and Graphic Design']
+        params['subject'] = params['subject'] + ['Teaching Computer Literacy', 'Media Marketing and Graphic Design']
       end
 
 
@@ -1931,12 +1931,12 @@ end
   else
      @params = params[:resulting_ids].split(';')
     if @params.last == 'all'
-      params['subject'] = @params[0]
-      params['countries'] = @params[1]
+      params['subject'] = @params[0].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+      params['countries'] = @params[1].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
       params['price_max'] = @params[2]
       params['price_min'] = @params[3]
-      params['length'] = @params[4]
-      params['group_size'] = @params[5]
+      params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
+      params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
     end
     if @params.last == 'region'
        params[:region] = @params[0]
