@@ -1261,7 +1261,7 @@ end
   def program_search
     if (params[:resulting_ids].nil?)
         if ((params['subject'] == 'false') || params['subject'].nil?)
-        params['subject'] = [  'Agriculture', 
+        params['subject'] = ['Agriculture', 
           'Organic Farming', 
           'Sustainable Development', 
           'Animal Care', 
@@ -1937,15 +1937,15 @@ end
       params['price_min'] = @params[3]
       params['length'] = @params[4].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
       params['group_size'] = @params[5].gsub(/[\[\]]/,'').gsub(/[\\\"]/,'').split(',')
-      @searched1 = "last is all"
+
     end
     if @params.last == 'region'
        params[:region] = @params[0]
-       @searched2 = "last is region"
+
     end
     if @params.last == 'search'
        params[:search] = @params[0]
-       @searched3 = "last is search"
+
     end
   end
   
@@ -1985,7 +1985,7 @@ end
              end
               
             @results = @search.results
-
+            @searches2 = @results
             
           end
 
