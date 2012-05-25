@@ -12,9 +12,9 @@
 
 <link href='/assets/mega-pull-out-menu-styles.css' type="text/css" rel="stylesheet"/>
 
-<% @resulting_ids = []%>
+<% @resulting_ids = ""%>
 <% @results.each do |f| %>
-<% @resulting_ids << f.id%>
+<% @resulting_ids << " "+f.id%>
 <% end %>
 
 <% @resultsO = []%>
