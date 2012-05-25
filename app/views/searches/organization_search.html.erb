@@ -226,11 +226,12 @@ $(document).ready(function() {
 				<p style="font-size:1.5em; color:#575758; line-height:1.1em"> List By:</p>
 				<form accept-charset="UTF-8" action="organization_search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
 		<div style="position:absolute; left:19.2%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-		<select id="sort" name="sort" style="position:relative; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()" value="<%=@results.list_by%>">	<option value="ratinghigh">Rating - High</option>
+		<select id="sort" name="sort" style="position:relative; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()" value="<%=@results.sort%>">	<option value="ratinghigh">Rating - High</option>
 			<option value="ratinglow">Rating - Low</option>
 			<option value="alphabetical">Alphabetical</option>
 			<option value="pricelow">Price - Low</option>
 			<option value="pricehigh">Price - High</option></select>
+										<input id="resulting_ids" name="resulting_ids" type="hidden" value="<%=@resulting_ids%>" />
 										<input id="type" name="type" type="hidden" value="Organization" />
 				</div>
 				</form>

@@ -503,7 +503,7 @@ class SearchesController < ApplicationController
 ####### START OF SEARCH PAGES ###########
 ## ORGANIZATION SEARCH ##
   def organization_search
-
+ if (params[:resulting_ids].nil?)
     if ((params["subject"] == "false") || params["subject"].nil?)
     params["subject"] = [  "Agriculture", 
       "Organic Farming", 
@@ -1218,26 +1218,40 @@ end
      @sort = "ratinghigh"
    end
    
-   if @sort == "ratinghigh"
-     @results = @results.sort_by(&:overall).reverse
-   end
-   if @sort == "ratinglow"
-     @results = @results.sort_by(&:overall)
-   end
-   if @sort == "alphabetical"
-     @results.sort! { |a,b| a.name.downcase <=> b.name.downcase }
-    
-   end
-   if @sort == "pricelow"
-     @results = @results.sort_by(&:weekly_cost)
-   end
-   if @sort == "pricehigh"
-     @results = @results.sort_by(&:weekly_cost).reverse
-   end
-   
-  end
+  else
+     @results = []
+     params[:resulting_ids].each do |f|
+       @results << Program.find(f)
+     end
+     @sort = params[:sort]
+   end 
+        if @sort == "ratinghigh"
+          @results = @results.sort_by(&:overall).reverse
+        end
+        if @sort == "ratinglow"
+          @results = @results.sort_by(&:overall)
+        end
+        if @sort == "alphabetical"
+          @results.sort! { |a,b| a.name.downcase <=> b.name.downcase }
+
+        end
+        if @sort == "pricelow"
+          @results = @results.sort_by(&:weekly_cost)
+        end
+        if @sort == "pricehigh"
+          @results = @results.sort_by(&:weekly_cost).reverse
+        end
+
+
+ end
   
+  
+  
+  
+  
+  ## PROGRAM SEARCH ##
   def program_search
+    if (params[:resulting_ids].nil?)
         if ((params["subject"] == "false") || params["subject"].nil?)
         params["subject"] = [  "Agriculture", 
           "Organic Farming", 
@@ -1942,7 +1956,13 @@ end
        if @sort.nil?
          @sort = "ratinghigh"
        end
-
+  else
+    @results = []
+    params[:resulting_ids].each do |f|
+      @results << Program.find(f)
+    end
+    @sort = params[:sort]
+  end 
        if @sort == "ratinghigh"
          @results = @results.sort_by(&:overall).reverse
        end
@@ -1959,7 +1979,9 @@ end
        if @sort == "pricehigh"
          @results = @results.sort_by(&:weekly_cost).reverse
        end
-  end
+    
+
+end
   
   
     
