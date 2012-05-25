@@ -25,9 +25,9 @@ RMTest::Application.routes.draw do
   match "update_messages/:id/send_message_preview" => "udate_messages#send_message_preview"
   
 
-  ##### SEARCH MACHINE
-  match "pages/:subject/:location/:price_max/:price_min/:length/:group_size/:headquarters/search_machine_results" => 'pages#search_machine_results'
-  
+  ##### SEARCHES
+  match "searches/organization_search" => "searches#organization_search"
+  match "searches/program_search" => "searches#program_search"
   
   ##### MESSAGES
   
@@ -145,7 +145,7 @@ RMTest::Application.routes.draw do
   
   get "pages/home"
   
-  get "pages/profile" ##Reviews
+  get "pages/profile" 
   
   get "pages/profile_messages"
   
@@ -186,13 +186,8 @@ RMTest::Application.routes.draw do
   get "pages/privacy"
   get "pages/faq"
   
-  match "pages/:region/searches" => 'pages#searches'
-  
-  match "pages/:country/sorted_results" => 'pages#sorted_results'
-  
-  match "organizations/sorted" => 'pages#organization_sorted'
-  
-  match "searches/sorted_results" => 'pages#sorted_results'
+  match "searches/:region/program_search" => 'pages#searches'
+
   
   ###### PROGRAMS
   
