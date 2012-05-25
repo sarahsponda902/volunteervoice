@@ -238,6 +238,7 @@ function toggleDisplay(){
 	<br />
 </div>
 </div>
+
 <div class = "container">
 	<div class= "row">
 		<div class="five columns">
@@ -245,23 +246,28 @@ function toggleDisplay(){
 		<div style="position:absolute; left:21%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 			<select id="display" name="display" style="position:absolute; left:-5px; width:255px; height:30px; border: 1px solid #575758; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="$(toggleDisplay())"><option selected='selected'>Programs</option><option>Organizations</option></select>
 		</div>
+	</div>
+</div>
+</div>
+</div>
+<div class="container">
+		<div id= "sortByToggleP">
+			<div class="five columns">
+				<p style="font-size:1.5em; color:#575758; line-height:1.1em"> List By:</p>
+				<form accept-charset="UTF-8" action="sorted_results" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+		<div style="position:absolute; left:19.2%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+		<select id="sort" name="sort" style="position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">	<option value="ratinghigh">Rating - High</option>
+			<option value="ratinglow">Rating - Low</option>
+			<option value="alphabetical">Alphabetical</option>
+			<option value="pricelow">Price - Low</option>
+			<option value="pricehigh">Price - High</option></select>
+										<input id="resulting_ids" name="resulting_ids" type="hidden" value="2 3" />
+										<input id="type" name="type" type="hidden" value="Organization" />
+				</div>
+				</form>
+
+			</div>
 		</div>
-		
-	<div id= "sortByToggleP">
-	<div class="fivecolumns">
-	<p style="font-size:1.5em; color:#575758; line-height:1.1em"> List By:</p>	
-	
-		<form accept-charset="UTF-8" action="sorted_results" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
-			<div style="position:absolute; left:47%;top:333px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-		<select id="sort" name="sort"  style="border:1px solid #575758; position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()"><option value="ratinghigh">Rating - High</option>
-		<option value="ratinglow">Rating - Low</option>
-		<option value="alphabetical">Alphabetical</option>
-		<option value="pricelow">Price - Low</option>
-		<option value="pricehigh">Price - High</option></select>
-						<input id="resulting_ids" name="resulting_ids" type="hidden" value="2 3" />
-						<input id="type" name="type" type="hidden" value="Program" />
-						</div>
-		</form>
 	</div>
 </div>
 <div class="container">
