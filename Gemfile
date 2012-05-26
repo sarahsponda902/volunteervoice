@@ -7,8 +7,6 @@ gem 'rails', '3.2.2.rc1'
 
 gem 'sunspot_rails'
 
-gem 'progress_bar'
-
 gem 'devise'
 
 gem 'jquery-rails'
