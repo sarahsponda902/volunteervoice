@@ -14,15 +14,13 @@ before_save :square_image_crop
     mount_uploader :square_image, ImageUploader
 # Sunspot Search
 searchable do
-  string :name
-  text :description 
-  string :location
-  string :subject
-  string :headquarters
-  string :organization_name
-  integer :weekly_cost
-  integer :group_size
-  integer :length
+  string :name, :boost =>8
+    string :location, :boost =>8
+    string :subject, :boost =>8
+    string :organization_name, :boost =>9
+    integer :weekly_cost, :boost =>6
+    integer :group_size, :boost =>3
+    string :length, :boost =>3
   
 end
 

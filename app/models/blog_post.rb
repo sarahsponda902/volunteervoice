@@ -16,10 +16,12 @@ class BlogPost < ActiveRecord::Base
 	
 	searchable do
 	  
-    text :body
-    text :title
-    integer :blog_type
-    string :blog_link
+    text :body, :boost =>3
+    string :title, :boost => 8
+    string :source_title, :boost => 6
+    string :source, :boost =>  5             
+    integer :blog_type, :boost => 3
+    string :blog_link, :boost => 3
     boolean :is_our_blog
   end
 
