@@ -20,7 +20,6 @@ class BlogPost < ActiveRecord::Base
     text :title, :boost => 8
     text :source_title, :boost => 6
     text :source, :boost =>  5             
-    integer :blog_type, :boost => 3
     text :blog_link, :boost => 3
     boolean :is_our_blog
   end

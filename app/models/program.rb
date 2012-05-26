@@ -18,8 +18,8 @@ searchable do
     text :location, :boost =>8
     text :subject, :boost =>8
     text :organization_name, :boost =>9
-    integer :weekly_cost, :boost =>6
-    integer :group_size, :boost =>3
+    integer :weekly_cost
+    integer :group_size
     text :length, :boost =>3
   
 end
