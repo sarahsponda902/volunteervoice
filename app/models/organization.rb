@@ -23,9 +23,9 @@ before_create :set_page_views_to_zero
     mount_uploader :square_image, ImageUploader
 # Sunspot Search
 searchable do
-  text :name, :default_boost =>9
-  text :business_model , :default_boost =>5
-  string :program_costs_includes , :default_boost =>5
+  text :name, :boost =>9
+  text :business_model , :boost =>5
+  text :program_costs_includes , :boost =>5
 end
 
 
