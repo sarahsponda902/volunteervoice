@@ -1533,13 +1533,14 @@ class SearchesController < ApplicationController
            @results.sort! { |a,b| a.name.downcase <=> b.name.downcase }
 
          end
+       if @display.nil?
          if @sort == 'pricelow'
            @results = @results.sort_by(&:weekly_cost)
          end
          if @sort == 'pricehigh'
            @results = @results.sort_by(&:weekly_cost).reverse
          end
-
+       end
         end
   
     

@@ -236,8 +236,10 @@ $(document).ready(function() {
 			<option value="ratinghigh">Rating - High</option>
 			<option value="ratinglow">Rating - Low</option>
 			<option value="alphabetical">Alphabetical</option>
+			<% if @display.nil?%>
 			<option value="pricelow">Price - Low</option>
 			<option value="pricehigh">Price - High</option></select>
+			<% end %>
 										<input id="resulting_ids" name="resulting_ids" type="hidden" value="<%= @resulting_ids%>" />
 										<input id="display" name="display" type="hidden" value="<%=@display%>" />
 										
