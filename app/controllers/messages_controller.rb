@@ -27,7 +27,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
-    @message.body = RedCloth.new( sanitize( @message.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @message.body = RedCloth.new( ActionController::Base.helpers.sanitize( @message.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     respond_to do |format|
       if @message.save
         format.html { redirect_to "/users/#{@message.recipient_id}", :notice =>'Message was sent' }

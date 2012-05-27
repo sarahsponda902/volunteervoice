@@ -48,8 +48,8 @@ class NewReviewsController < ApplicationController
   # POST /new_reviews.json
   def create
     @new_review = NewReview.new(params[:new_review])
-    @new_review.truncated100 = RedCloth.new( sanitize( (@new_review.body[0..99] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @new_review.body = RedCloth.new( sanitize( @new_review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @new_review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (@new_review.body[0..99] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @new_review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @new_review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
     respond_to do |format|
       if @new_review.save

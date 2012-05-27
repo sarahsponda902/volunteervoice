@@ -37,7 +37,7 @@ class FlagsController < ApplicationController
   def create
     @flag = Flag.new(params[:flag])
     @flag.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (@flag.body[0..199] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @flag.body = RedCloth.new( sanitize( @flag.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @flag.body = RedCloth.new( ActionController::Base.helpers.sanitize( @flag.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     respond_to do |format|
       if @flag.save
         format.html { redirect_to @flag, notice: 'Flag was successfully created.' }

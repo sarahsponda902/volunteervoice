@@ -41,7 +41,7 @@ class FeedbacksController < ApplicationController
   def create
     @feedback = Feedback.new(params[:feedback])
     @feedback.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (@feedback.body[0..199] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @feedback.body = RedCloth.new( sanitize( @feedback.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @feedback.body = RedCloth.new( ActionController::Base.helpers.sanitize( @feedback.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to '/pages/thank_you', notice: 'Feedback was successfully created.' }
