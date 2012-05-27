@@ -186,7 +186,7 @@ RMTest::Application.routes.draw do
   get "pages/privacy"
   get "pages/faq"
   
-  match "searches/:region/program_search" => 'pages#searches'
+  match "searches/:region/program_search" => 'searches#program_search'
 
   
   ###### PROGRAMS
