@@ -79,21 +79,21 @@ function submitForm() {
 
 <div class="container" align="center" style="color:#575758">
 	<div class="row">
-				<p style="font-family:chunkFiveRegular; font-size:3em; color:#e67b5a; text-align:center; margin-top:50px">You have to be logged in for that!</p>
+				<p style="font-family:ArchitectsDaughterRegular; font-size:3em; color:#e67b5a; text-align:center; margin-top:50px">You have to be logged in for that!</p>
 	
 	<div class="six columns" style="text-align:left; margin-top:90px;">
 		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
 		<%= form_for("user", :url => user_session_path) do |f| %>
 		<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email</label>
-				  <%= f.text_field :email, :style => "height:20px" %></p>
+				  <%= f.text_field :email, :style => "height:20px; width:200px" %></p>
 
 				  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
-				  <%= f.password_field :password, :style => "height:20px" %></p>
+				  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>
 
 				<image style="position:absolute; top:192px; height:25px; left:53px;" id="rememberMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
-				<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:56px; margin-top:20px; padding-bottom:5px;" >
+				<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:11%; margin-top:20px; padding-bottom:5px;" >
 				<%= f.check_box :remember_me, :onchange =>"$(rememberMeNoToggle())", :style =>"opacity:0;height:10px; width:10px"%></div><div style="margin-left:90px; margin-top:-20px; font-size:1.1em"> Remember me</div><br />
-		<p style="margin-left:55px"><%= link_to "Forgot your password?", new_password_path('user') %></p>
+		<p style="margin-left:11%"><%= link_to "Forgot your password?", new_password_path('user') %></p>
 		  <div style="margin-top:30px; text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png" %></div>
 		<br />
 		<% end %>
@@ -109,16 +109,16 @@ function submitForm() {
 
 
 		  <p  style="margin-top:30px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Username</label>
-				  <input id="user_username" name="user[username]" size="30" style="height:20px" type="text" style="border:1px solid #575758"/></p>
+				  <input id="user_username" name="user[username]" size="30" style="height:20px;width200px" type="text" style="border:1px solid #575758"/></p>
 
 				  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
-				  <input id="user_password" style="height:20px" name="user[password]" size="30" type="password" style="border:1px solid #575758"/></p>
+				  <input id="user_password" style="height:20px;width200px" name="user[password]" size="30" type="password" style="border:1px solid #575758"/></p>
 
 				  <p  style="margin-top:25px; margin-left:15%;margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Retype Password</label>
-				  <input id="user_password_confirmation" style="height:20px" name="user[password_confirmation]" size="30" type="password" style="border:1px solid #575758" /></p>
+				  <input id="user_password_confirmation" style="height:20px;width200px" name="user[password_confirmation]" size="30" type="password" style="border:1px solid #575758" /></p>
 
 				<p  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email</label>
-				  <input id="user_email" style="height:20px" name="user[email]" size="30" type="text" value="" style="border:1px solid #575758" /></p>
+				  <input id="user_email" style="height:20px;width200px" name="user[email]" size="30" type="text" value="" style="border:1px solid #575758" /></p>
 				
 
 				
