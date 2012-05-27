@@ -91,9 +91,9 @@ function submitForm() {
 				  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>
 
 				<image style="position:absolute; top:192px; height:25px; left:53px;" id="rememberMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
-				<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:11%; margin-top:20px; padding-bottom:5px;" >
+				<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:22%; margin-top:20px; padding-bottom:5px;" >
 				<%= f.check_box :remember_me, :onchange =>"$(rememberMeNoToggle())", :style =>"opacity:0;height:10px; width:10px"%></div><div style="margin-left:90px; margin-top:-20px; font-size:1.1em"> Remember me</div><br />
-		<p style="margin-left:11%"><%= link_to "Forgot your password?", new_password_path('user') %></p>
+		<p style="margin-left:22%"><%= link_to "Forgot your password?", new_password_path('user') %></p>
 		  <div style="margin-top:30px; text-align:center"><%= image_submit_tag "/assets/login.png" %></div>
 		<br />
 		<% end %>
