@@ -575,43 +575,43 @@ class SearchesController < ApplicationController
         end
 
         if params['subject'].include?('Agriculture')
-          params['subject'] = params['subject'] + ['Organic Farming', 'Sustainable Development']
+          params['subject'] = ['Organic Farming', 'Sustainable Development'] + params['subject']
         end
         if params['subject'].include?('Animal Care')
-          params['subject'] = params['subject'] + ['Animal Rights', 'Wildlife Conservation']
+          params['subject'] = ['Animal Rights', 'Wildlife Conservation'] + params['subject']
         end
         if params['subject'].include?('Caregiving')
-          params['subject'] = params['subject'] + ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless']
+          params['subject'] = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + params['subject']
         end
         if params['subject'].include?('Community Development')
-          params['subject'] = params['subject']+['Youth Development and Outreach']
+          params['subject'] = params['subject']+['Youth Development and Outreach'] + params['subject']
         end
         if params['subject'].include?('Culture and Community')
-          params['subject'] = params['subject'] + ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism']
+          params['subject'] = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + params['subject']
         end
         if params['subject'].include?('Disaster Relief')
-          params['subject'] = params['subject'] + ['Economics', 'Microfinance']
+          params['subject'] = ['Economics', 'Microfinance'] + params['subject']
         end
         if params['subject'].include?('Education')
-          params['subject'] = params['subject'] + ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy']
+          params['subject'] = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + params['subject']
         end
         if params['subject'].include?('Environmental')
-          params['subject'] = params['subject'] + ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration']
+          params['subject'] = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + params['subject']
         end
         if params['subject'].include?('Health and Medicine')
-          params['subject'] = params['subject'] + ['HIV/AIDS', 'Family Planning', 'Nutrition', 'Veterinary Medicine', 'Clinical Work', 'Dental Work', 'Medical Research', 'Health Education', 'Public Health', 'Hospital Caregiving']
+          params['subject'] = ['HIV/AIDS', 'Family Planning', 'Nutrition', 'Veterinary Medicine', 'Clinical Work', 'Dental Work', 'Medical Research', 'Health Education', 'Public Health', 'Hospital Caregiving'] + params['subject']
         end
         if params['subject'].include?('Human Rights')
-          params['subject'] = params['subject'] + ['Womens Initiatives']
+          params['subject'] = ['Womens Initiatives'] + params['subject']
         end
         if params['subject'].include?('Recreation')
-          params['subject'] = params['subject'] + ['Adventure Travel']
+          params['subject'] = ['Adventure Travel'] + params['subject']
         end
         if params['subject'].include?('Scientific Research')
-          params['subject'] = params['subject'] + ['Archaeology', 'Environmental Biology']
+          params['subject'] = ['Archaeology', 'Environmental Biology'] + params['subject']
         end
         if params['subject'].include?('Technology')
-          params['subject'] = params['subject'] + ['Teaching Computer Literacy', 'Media Marketing and Graphic Design']
+          params['subject'] = ['Teaching Computer Literacy', 'Media Marketing and Graphic Design'] + params['subject']
         end
     end
     
@@ -855,17 +855,17 @@ class SearchesController < ApplicationController
     else
 
       if (params['countries'].include?('NorthernAfrica'))
-        params['countries'] = params['countries'] + ['DZ', 
+        params['countries'] = ['DZ', 
         'EG', 
         'LY', 
         'MA', 
         'SD', 
         'TN', 
-        'EH']
+        'EH'] + params['countries']
       end
 
       if (params['countries'].include?('WesternAfrica'))
-         params['countries'] = params['countries'] + ['BJ', 
+         params['countries'] = ['BJ', 
          'BF', 
          'CV', 
          'CI', 
@@ -881,11 +881,11 @@ class SearchesController < ApplicationController
          'SH', 
          'SN', 
          'SL', 
-         'TG']
+         'TG'] + params['countries']
     end
 
       if (params['countries'].include?('MiddleAfrica'))
-        params['countries'] = params['countries'] + ['AO', 
+        params['countries'] = ['AO', 
         'CM', 
         'CF', 
         'TD', 
@@ -893,11 +893,11 @@ class SearchesController < ApplicationController
         'CD', 
         'GQ', 
         'GA', 
-        'ST']
+        'ST'] + params['countries']
       end
 
        if (params['countries'].include?('EasternAfrica'))
-          params['countries'] = params['countries'] + ['BI', 
+          params['countries'] = ['BI', 
           'KM', 
           'DJ', 
           'ER', 
@@ -915,23 +915,19 @@ class SearchesController < ApplicationController
           'TZ', 
           'UG', 
           'ZM', 
-          'ZW']
+          'ZW'] + params['countries']
       end
 
        if (params['countries'].include?('SouthernAfrica'))
-          params['countries'] = params['countries'] + ['BW', 
+          params['countries'] = ['BW', 
           'LS', 
           'NA', 
           'ZA', 
-          'SZ']
-      end
-
-       if ((params['countries'] == 'false') || params['countries'].nil?)
-          params['countries'] = ['AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG', 'AR', 'AM', 'AW', 'AU', 'AT', 'AZ', 'BS', 'BH', 'BD', 'BB', 'BY', 'BE', 'BZ', 'BJ', 'BM', 'BT', 'BO', 'BQ', 'BA', 'BW', 'BV', 'BR', 'IO', 'BN', 'BG', 'BF', 'BI', 'KH', 'CM', 'CA', 'CV', 'KY', 'CF', 'TD', 'CL', 'CN', 'CX', 'CC', 'CO', 'KM', 'CG', 'CD', 'CK', 'CR', 'CI', 'HR', 'CU', 'CW', 'CY', 'CZ', 'DK', 'DJ', 'DM', 'DO', 'EC', 'EG', 'SV', 'GQ', 'ER', 'EE', 'ET', 'FK', 'FO', 'FJ', 'FI', 'FR', 'GF', 'PF', 'TF', 'GA', 'GM', 'GE', 'DE', 'GH', 'GI', 'GR', 'GL', 'GD', 'GP', 'GU', 'GT', 'GG', 'GN', 'GW', 'GY', 'HT', 'HM', 'VA', 'HN', 'HK', 'HU', 'IS', 'IN', 'ID', 'IR', 'IQ', 'IE', 'IM', 'IL', 'IT', 'JM', 'JP', 'JE', 'JO', 'KZ', 'KE', 'KI', 'KP', 'KR', 'KW', 'KG', 'LA', 'LV', 'LB', 'LS', 'LR', 'LY', 'LI', 'LT', 'LU', 'MO', 'MK', 'MG', 'MW', 'MY', 'MV', 'ML', 'MT', 'MH', 'MQ', 'MR', 'MU', 'YT', 'MX', 'FM', 'MD', 'MC', 'MN', 'ME', 'MS', 'MA', 'MZ', 'MM', 'NA', 'NR', 'NP', 'NL', 'NC', 'NZ', 'NI', 'NE', 'NG', 'NU', 'NF', 'MP', 'NO', 'OM', 'PK', 'PW', 'PS', 'PA', 'PG', 'PY', 'PE', 'PH', 'PN', 'PL', 'PT', 'PR', 'QA', 'RE', 'RO', 'RU', 'RW', 'BL', 'SH', 'KN', 'LC', 'MF', 'PM', 'VC', 'WS', 'SM', 'ST', 'SA', 'SN', 'RS', 'SC', 'SL', 'SG', 'SX', 'SK', 'SI', 'SB', 'SO', 'ZA', 'GS', 'SS', 'ES', 'LK', 'SD', 'SR', 'SJ', 'SZ', 'SE', 'CH', 'SY', 'TW', 'TJ', 'TZ', 'TH', 'TL', 'TG', 'TK', 'TO', 'TT', 'TN', 'TR', 'TM', 'TC', 'TV', 'UG', 'UA', 'AE', 'GB', 'US', 'UM', 'UY', 'UZ', 'VU', 'VE', 'VN', 'VG', 'VI', 'WF', 'EH', 'YE', 'ZM', 'ZW']
+          'SZ'] + params['countries']
       end
 
        if (params['countries'].include?('NorthernEurope'))
-          params['countries'] = params['countries'] + ['AX', 
+          params['countries'] = ['AX', 
           'DK', 
           'EE', 
           'FO', 
@@ -946,11 +942,11 @@ class SearchesController < ApplicationController
           'NO', 
           'SJ', 
           'SE', 
-          'GB']
+          'GB'] + params['countries']
       end
 
        if (params['countries'].include?('WesternEurope'))
-          params['countries'] = params['countries'] + ['AT', 
+          params['countries'] = ['AT', 
           'BE', 
           'FR', 
           'DE', 
@@ -958,11 +954,11 @@ class SearchesController < ApplicationController
           'LU', 
           'MC', 
           'NL', 
-          'CH']
+          'CH'] + params['countries']
       end
 
        if (params['countries'].include?('EasternEurope'))
-          params['countries'] = params['countries'] + ['BY', 
+          params['countries'] = ['BY', 
           'BG', 
           'CZ', 
           'HU', 
@@ -971,11 +967,11 @@ class SearchesController < ApplicationController
           'RO', 
           'RU', 
           'SK', 
-          'UA']
+          'UA'] + params['countries']
       end
 
        if (params['countries'].include?('SouthernEurope'))
-           params['countries'] = params['countries'] + ['AL', 
+           params['countries'] = ['AL', 
            'AD', 
            'BA', 
            'HR', 
@@ -990,19 +986,19 @@ class SearchesController < ApplicationController
            'SM', 
            'RS', 
            'SI', 
-           'ES']
+           'ES'] + params['countries']
       end
 
        if (params['countries'].include?('NorthernAmerica'))
-          params['countries'] = params['countries'] + ['BM', 
+          params['countries'] = ['BM', 
           'CA', 
           'GL', 
           'PM', 
-          'US']
+          'US'] + params['countries']
       end
 
       if (params['countries'].include?('Caribbean'))
-          params['countries'] = params['countries'] + ['AI', 
+          params['countries'] = ['AI', 
           'AG', 
           'AW', 
           'BS', 
@@ -1026,22 +1022,22 @@ class SearchesController < ApplicationController
           'TT', 
           'TC', 
           'VG', 
-          'VI']
+          'VI'] + params['countries']
     end
 
       if (params['countries'].include?('CentralAmerica'))
-          params['countries'] = params['countries'] + ['BZ', 
+          params['countries'] = ['BZ', 
           'CR', 
           'SV', 
           'GT', 
           'HN', 
           'MX', 
           'NI', 
-          'PA']
+          'PA'] + params['countries']
       end
 
       if (params['countries'].include?('SouthAmerica'))
-          params['countries'] = params['countries'] + ['AR', 
+          params['countries'] = ['AR', 
           'BO', 
           'BR', 
           'CL', 
@@ -1054,30 +1050,30 @@ class SearchesController < ApplicationController
           'PE', 
           'SR', 
           'UY', 
-          'VE']
+          'VE'] + params['countries']
     end
 
       if (params['countries'].include?('CentralAsia'))
-          params['countries'] = params['countries'] + ['KZ', 
+          params['countries'] = ['KZ', 
           'KG', 
           'TJ', 
           'TM', 
-          'UZ']
+          'UZ'] + params['countries']
     end
 
      if (params['countries'].include?('EasternAsia'))
-          params['countries'] = params['countries'] + ['CN', 
+          params['countries'] = ['CN', 
           'HK', 
           'JP', 
           'KP', 
           'KR', 
           'MO', 
           'MN', 
-          'TW']
+          'TW'] + params['countries']
     end
 
       if (params['countries'].include?('SouthernAsia'))
-          params['countries'] = params['countries'] + ['AF', 
+          params['countries'] = ['AF', 
           'BD', 
           'BT', 
           'IN', 
@@ -1085,11 +1081,11 @@ class SearchesController < ApplicationController
           'MV', 
           'NP', 
           'PK', 
-          'LK']
+          'LK'] + params['countries']
     end
 
      if (params['countries'].include?('SouthEasternAsia'))
-          params['countries'] = params['countries'] + ['BN', 
+          params['countries'] = ['BN', 
           'KH', 
           'ID', 
           'LA', 
@@ -1099,11 +1095,11 @@ class SearchesController < ApplicationController
           'SG', 
           'TH', 
           'TL', 
-          'VN']
+          'VN'] + params['countries']
     end
 
      if (params['countries'].include?('WesternAsia'))
-          params['countries'] = params['countries'] + ['AM', 
+          params['countries'] = ['AM', 
           'AZ', 
           'BH', 
           'CY', 
@@ -1120,35 +1116,35 @@ class SearchesController < ApplicationController
           'SY', 
           'TR', 
           'AE', 
-          'YE']
+          'YE'] + params['countries']
     end
 
      if (params['countries'].include?('AustraliaandNewZealand'))
-          params['countries'] = params['countries'] + ['AU', 
+          params['countries'] = ['AU', 
           'NZ', 
-          'NF']
+          'NF'] + params['countries']
     end
 
      if (params['countries'].include?('Melanesia'))
-         params['countries'] = params['countries'] + ['FJ', 
+         params['countries'] = ['FJ', 
          'NC', 
          'PG', 
          'SB', 
-         'VU']
+         'VU'] + params['countries']
     end
 
     if (params['countries'].include?('Micronesia'))
-        params['countries'] = params['countries'] + ['GU', 
+        params['countries'] = ['GU', 
         'KI', 
         'MH', 
         'FM', 
         'NR', 
         'MP', 
-        'PW']
+        'PW'] + params['countries']
     end
 
     if (params['countries'].include?('Polynesia'))
-        params['countries'] = params['countries'] + ['AS', 
+        params['countries'] = ['AS', 
         'CK', 
         'PF', 
         'NU', 
@@ -1157,7 +1153,7 @@ class SearchesController < ApplicationController
         'TK', 
         'TO', 
         'TV', 
-        'WF']
+        'WF'] + params['countries']
     end
 
 
@@ -1165,7 +1161,7 @@ class SearchesController < ApplicationController
 
 
       if (params['countries'] != 'false' && params['countries'].include?('Americas'))
-        params['countries'] = params['countries'] + ['DZ', 
+        params['countries'] = ['DZ', 
         'EG', 
         'LY', 
         'MA', 
@@ -1221,11 +1217,11 @@ class SearchesController < ApplicationController
         'LS', 
         'NA', 
         'ZA', 
-        'SZ']
+        'SZ'] + params['countries']
       end
 
       if (params['countries'] != 'false' && params['countries'].include?('Europe'))
-        params['countries'] = params['countries'] + ['AX', 
+        params['countries'] = ['AX', 
         'DK', 
         'EE', 
         'FO', 
@@ -1275,11 +1271,11 @@ class SearchesController < ApplicationController
         'SM', 
         'RS', 
         'SI', 
-        'ES']
+        'ES'] + params['countries']
       end
 
       if (params['countries'] != 'false' && params['countries'].include?('Africa'))
-        params['countries'] = params['countries'] + ['BM', 
+        params['countries'] = ['BM', 
         'CA', 
         'GL', 
         'PM', 
@@ -1330,11 +1326,11 @@ class SearchesController < ApplicationController
         'PE', 
         'SR', 
         'UY', 
-        'VE']
+        'VE'] + params['countries']
       end
 
       if (params['countries'] != 'false' && params['countries'].include?('Asia'))
-        params['countries'] = params['countries'] + ['KZ', 
+        params['countries'] = ['KZ', 
         'KG', 
         'TJ', 
         'TM', 
@@ -1384,11 +1380,11 @@ class SearchesController < ApplicationController
         'SY', 
         'TR', 
         'AE', 
-        'YE']
+        'YE'] + params['countries']
       end
 
       if (params['countries'] != 'false' && params['countries'].include?('Oceania'))
-        params['countries'] = params['countries'] + ['AU', 
+        params['countries'] = ['AU', 
         'NZ', 
         'NF', 
         'FJ', 
@@ -1412,7 +1408,7 @@ class SearchesController < ApplicationController
         'TK', 
         'TO', 
         'TV', 
-        'WF']
+        'WF'] + params['countries']
       end
     end
     
