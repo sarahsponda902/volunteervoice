@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
              @org.overall = (((@org.overall.to_f)*(@org.reviews_count.to_f) + @review.overall.to_f)/(@org.reviews_count.to_f + 1))
              @org.reviews_count = @org.reviews_count + 1
              @org.save
-             format.html { redirect_to "/pages/thank_you" }
+             format.html { redirect_to "/pages/thank_you_review" }
               format.json { render json: @review, status: :created, location: @review }
          else
            format.html { render :action => "new" }
