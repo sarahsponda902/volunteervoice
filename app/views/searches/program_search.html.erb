@@ -81,7 +81,7 @@ $('#search').pullOut({
 });
 </script>
 
-<!--$("#"+allTheLocations[count]).hide();-->
+
     
     <% @locations = [] %>
     <% Program.all.each do |f| %>
@@ -96,7 +96,7 @@ $(document).ready(function() {
     var count = 0;
     for (count = 0; count <= allTheLocations.length; count++)
     {
-        
+        $("#"+allTheLocations[count]).hide();
         if (theLocations.indexOf(allTheLocations[count]) != -1)
          {
 			$("#"+allTheLocations[count]).show();
