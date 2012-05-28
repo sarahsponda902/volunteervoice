@@ -30,10 +30,10 @@ class ContactsController < ApplicationController
           NotificationsMailer.to_questions(@contact).deliver
         end
         
-        format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully created.' }
+        format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
         format.json { render json: @contact, status: :created, location: @contact }
       else
-        format.html { render action: "new" }
+        format.html { render action: "new", notice: 'Error! Please make sure to include both your email and a message.' }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
