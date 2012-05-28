@@ -1,8 +1,9 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
+<% flash.each do |key, value| %>
+  <%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>
+
 <div class="container" style="color:#575758">
-	<% flash.each do |key, value| %>
-	  <%= content_tag(:div, value, :class => "flash #{key}") %>
-	<% end %>
 	<div class="row">
 		<div class="twelve columns" align="center" style="font-size:3em; margin:40px">
 			<%= image_tag "/assets/sayItToOurFace.png"%>

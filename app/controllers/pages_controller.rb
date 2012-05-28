@@ -668,5 +668,7 @@ class PagesController < ApplicationController
     def thank_you
     end
     
+    def thank_you_review
+    end
   
 end
