@@ -106,7 +106,7 @@
 		<% @favorite = Favorite.find(:first, :conditions => {:user_id => current_user.id, :program_id => @program.id}) %>
 
 		<% if !(@favorite.nil?) %>
-		<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/removeFavs.png"), :controller => "favorites", :action => "destroy", :id =>@favorite.id, :field => "programs", :location => @program %>
+		<%= link_to (image_tag "/assets/removeFromFavorites.png"), :controller => "favorites", :action => "destroy", :id =>@favorite.id, :field => "programs", :location => @program %>
 		<% else %>
 		<p><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/addFavs.png"), :controller => "favorites", :action => "create", :program_id => @program.id %></p>
 		<% end %>

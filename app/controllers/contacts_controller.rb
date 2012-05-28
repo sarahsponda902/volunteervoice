@@ -33,7 +33,7 @@ class ContactsController < ApplicationController
         format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
         format.json { render json: @contact, status: :created, location: @contact }
       else
-        format.html { render action: "new", flash: 'Error! Please make sure to include both your email and a message.' }
+        format.html { render action: "new", notice: 'Error! Please make sure to include both your email and a message.' }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
