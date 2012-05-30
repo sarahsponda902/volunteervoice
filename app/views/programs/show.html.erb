@@ -18,6 +18,83 @@
 	  });
 
 	</script>
+	
+		<script type="text/javascript">
+
+
+		$(document).ready(function() {
+
+				$('#reviews_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 1, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+
+			$('a.popup-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var popupBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(popupBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(popupBox).height() + 24) / 2; 
+				var popMargLeft = ($(popupBox).width() + 24) / 2; 
+
+				$(popupBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('a.close, #mask').live('click', function() { 
+			  $('#mask , .popup-box').fadeOut(300 , function() {
+				$('#mask').remove();  
+			}); 
+			return false;
+			});
+
+			$('a.flag-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var flagBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(flagBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(flagBox).height() + 24) / 2; 
+				var popMargLeft = ($(flagBox).width() + 24) / 2; 
+
+				$(flagBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('a.close, #mask').live('click', function() { 
+			  $('#mask , .flag-popup').fadeOut(300 , function() {
+				$('#mask').remove();  
+			}); 
+			return false;
+			});
+
+		});
+
+
+	</script>
 
 
 	<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
@@ -39,7 +116,7 @@
 		</div>
 		<div class="seven columns" style="width:53%; text-align:left; margin:0; padding:0; margin-top:20px">
 			<br />
-			<p style="font-size:3em; color:#62acbd; line-height:1em;"> <%=link_to Organization.find(@program.organization_id).name, Organization.find(@program.organization_id)%></p>
+			<p style="font-size:3em; line-height:1em;"> <%=link_to Organization.find(@program.organization_id).name, Organization.find(@program.organization_id), :id => "orgLink"%></p>
 			<a style="font-size:1.2em; color:#62acbd;" href="<%=Organization.find(@program.organization_id).url%>"><u> <%=Organization.find(@program.organization_id).url%></u></a>
 
 		</div>
@@ -330,83 +407,6 @@
 	/* END jQuery.Rating Plugin CSS */
 	
 	</style>
-	
-	<script type="text/javascript">
-	
-	
-	$(document).ready(function() {
-		
-			$('#reviews_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 1, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
-		
-		
-		$('a.popup-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var popupBox = $(this).attr('href');
-
-			//Fade in the Popup
-			$(popupBox).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(popupBox).height() + 24) / 2; 
-			var popMargLeft = ($(popupBox).width() + 24) / 2; 
-
-			$(popupBox).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .popup-box').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-		
-		$('a.flag-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var flagBox = $(this).attr('href');
-
-			//Fade in the Popup
-			$(flagBox).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(flagBox).height() + 24) / 2; 
-			var popMargLeft = ($(flagBox).width() + 24) / 2; 
-
-			$(flagBox).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask" style="opacity:.5"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .flag-popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-
-	});
-
-
-</script>
 
 
 

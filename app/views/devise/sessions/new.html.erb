@@ -4,9 +4,8 @@ $(document).ready(function() {
 	$('#rememberMe').hide();
 });
 
-function rememberMeToggle() {
-	$('#rememberMe').toggle();
-	$('#rememberMes').toggle();
+function beforeCheck5() {
+	$("#checkBefore5").toggle();
 }
 
 </script>
@@ -25,9 +24,10 @@ function rememberMeToggle() {
 			  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
 			  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>
 
-			<image style="position:absolute; top:192px; height:25px; left:53px;" id="rememberMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="rememberMeToggle()">
+			<image style="position:absolute; top:192px; height:25px; left:53px;display:none" id="checkBefore5" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:56px; margin-top:20px; padding-bottom:5px; margin-left:15%" >
-			<%= f.check_box :remember_me, :style =>"opacity:0;height:10px; width:10px", :id => "rememberMes"%></div><div style="margin-left:22%; margin-top:-20px; font-size:1.1em"> Remember me</div><br />
+			<%= f.check_box :remember_me, :style =>"opacity:0;height:10px; width:10px", :onclick => "$(beforeCheck5())"%></div><div style="margin-left:22%; margin-top:-20px; font-size:1.1em"> Remember me</div><br />
+			
 	<p style="margin-left:15%"><%= link_to "Forgot your password?", new_password_path(resource) %></p>
 	  <div style="margin-top:30px; text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png" %></div>
 	<br />
