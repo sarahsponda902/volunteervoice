@@ -86,9 +86,6 @@ class ReviewsController < ApplicationController
          respond_to do |format|
            if @review.update_attributes(params[:review])
              @review.save
-             @prog = Program.find(@review.program_id)
-               @prog.overall = ((@prog.overall)*(@prog.reviews.count) + @review.overall)/(@prog.reviews.count + 1)
-               @prog.save
              format.html { redirect_to @review, :notice => 'Review Submitted' }
              format.json { head :no_content }
            else
