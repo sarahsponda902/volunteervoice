@@ -64,7 +64,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				<div class="six columns">
 			    <div class="field">
 			      Email<br />
-			      <%= f.text_field :email, :style => "height:20px; width:238px"  %>
+			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-contact"  %>
 			    </div>
 				</div>
 			    <div class="field">
@@ -74,13 +74,17 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 			    <div class="field">
 			      <%= f.label :body %>
-			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'" %>
+			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact" %>
 			    </div>
 
 
-			  <fieldset class="actions">
+			  <div id="submit-contact">
 			    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitShortLong.png" %></p>
-			  </fieldset>
+			  </div>
+			
+			 <div id="nosubmit-contact">
+				<p style="text-align:center; color:#E67B5A">Please include both an<br />email and a message<br />before submitting.</p>
+			</div>
 			<% end %>
 	
 	
@@ -219,7 +223,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				<div class="six columns">
 			    <div class="field">
 			      Email<br />
-			      <%= f.text_field :email, :style => "height:20px; width:238px"  %>
+			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-organizations"  %>
 			    </div>
 				</div>
 			    <div class="field">
@@ -229,13 +233,17 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 			    <div class="field">
 			      <%= f.label :body %>
-			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'" %>
+			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations" %>
 				</div>
 
 
-			  <fieldset class="actions">
-			    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitShortLong.png" %></p>
-			  </fieldset>
+				  <div id="submit-organizations">
+				    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitShortLong.png" %></p>
+				  </div>
+
+				 <div id="nosubmit-organizations">
+					<p style="text-align:center; color:#E67B5A">Please include both an<br />email and a message<br />before submitting.</p>
+				</div>
 			<% end %>
 	
 	</div>
@@ -334,7 +342,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 			<div class="six columns">
 		    <div class="field">
 		      Email<br />
-		      <%= f.text_field :email, :style => "height:20px; width:238px"  %>
+		      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-questions", :onblur => "checkQuestionsForSubmit();"  %>
 		    </div>
 			</div>
 		    <div class="field">
@@ -344,13 +352,17 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 		    <div class="field">
 		      <%= f.label :body %>
-		      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'" %>
+		      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions" %>
 		    </div>
 
 
-		  <fieldset class="actions">
-		    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitShortLong.png" %></p>
-		  </fieldset>
+			  <div id="submit-questions">
+			    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitShortLong.png" %></p>
+			  </div>
+			
+			 <div id="nosubmit-questions">
+				<p style="text-align:center; color:#E67B5A">Please include both an<br />email and a message<br />before submitting.</p>
+			</div>
 		<% end %>
 	
 	
@@ -424,3 +436,11 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 </script>
 
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#submit-questions").hide();
+	$("#submit-organizations").hide();
+	$("#submit-contact").hide();
+});
+
+</script>
