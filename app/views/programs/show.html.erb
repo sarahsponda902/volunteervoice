@@ -116,7 +116,7 @@
 		</div>
 		<div class="seven columns" style="width:53%; text-align:left; margin:0; padding:0; margin-top:20px">
 			<br />
-			<p style="font-size:3em; line-height:1em;"> <%=link_to Organization.find(@program.organization_id).name, Organization.find(@program.organization_id), :id => "orgLink"%></p>
+			<p style="font-size:3em; line-height:1em;"> <a href="<%= Organization.find(@program.organization_id).name%>" id="orgLink"><%= Organization.find(@program.organization_id)%></a></p>
 			<a style="font-size:1.2em; color:#62acbd;" href="<%=Organization.find(@program.organization_id).url%>"><u> <%=Organization.find(@program.organization_id).url%></u></a>
 
 		</div>
@@ -408,4 +408,9 @@
 	
 	</style>
 
-
+<style>
+a.orgLink:active{color:#68c2d8}
+a.orgLink:visited{color:#68c2d8}
+a.orgLink:link{color:#68c2d8}
+a.orgLink:hover{color:white; background:none}
+</style>
