@@ -3,6 +3,44 @@
   <%= content_tag(:div, value, :class => "flash #{key}") %>
 <% end %>
 
+
+<script type="text/javascript">
+$(document).ready(function () {
+	$("#submit-questions").hide();
+	$("#submit-organizations").hide();
+	$("#submit-contact").hide();
+});
+
+function checkContactForSubmit() {
+	if ($("#email-contact") != ""
+	 && $("#body-contact") != "Must be at least 5 characters"
+	 && $("#body-contact").length >= 5) {
+		$("#nosubmit-contact").hide();
+		$("#submit-contact").show();
+	}
+}
+
+function checkOrganizationsForSubmit() {
+	if ($("#email-organizations") != ""
+	 && $("#body-organizations") != "Must be at least 5 characters"
+	 && $("#body-organizations").length >= 5) {
+		$("#nosubmit-organizations").hide();
+		$("#submit-organizations").show();
+	}
+	
+}
+
+function checkQuestionsForSubmit() {
+	if ($("#email-questions") != ""
+	 && $("#body-questions") != "Must be at least 5 characters"
+	 && $("#body-questions").length >= 5) {
+		$("#nosubmit-questions").hide();
+		$("#submit-questions").show();
+	}
+	
+}
+</script>
+
 <div class="container" style="color:#575758">
 	<div class="row">
 		<div class="twelve columns" align="center" style="font-size:3em; margin:40px">
@@ -64,7 +102,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				<div class="six columns">
 			    <div class="field">
 			      Email<br />
-			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-contact"  %>
+			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-contact", :onkeyup => "checkContactForSubmit();"  %>
 			    </div>
 				</div>
 			    <div class="field">
@@ -74,7 +112,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 			    <div class="field">
 			      <%= f.label :body %>
-			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact" %>
+			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onkeyup => "checkContactForSubmit();" %>
 			    </div>
 
 
@@ -223,7 +261,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				<div class="six columns">
 			    <div class="field">
 			      Email<br />
-			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-organizations"  %>
+			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-organizations", :onkeyup => "checkOrganizationsForSubmit()"  %>
 			    </div>
 				</div>
 			    <div class="field">
@@ -233,7 +271,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 			    <div class="field">
 			      <%= f.label :body %>
-			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations" %>
+			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations", :onkeyup => "checkOrganizationsForSubmit();" %>
 				</div>
 
 
@@ -342,7 +380,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 			<div class="six columns">
 		    <div class="field">
 		      Email<br />
-		      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-questions", :onblur => "checkQuestionsForSubmit();"  %>
+		      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-questions", :onkeyup => "checkQuestionsForSubmit();"  %>
 		    </div>
 			</div>
 		    <div class="field">
@@ -352,7 +390,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 		    <div class="field">
 		      <%= f.label :body %>
-		      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions" %>
+		      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions", :onkeyup => "checkQuestionsForSubmit();" %>
 		    </div>
 
 
@@ -433,14 +471,5 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 		return false;
 		});
 	});
-
-</script>
-
-<script type="text/javascript">
-$(document).ready(function () {
-	$("#submit-questions").hide();
-	$("#submit-organizations").hide();
-	$("#submit-contact").hide();
-});
 
 </script>
