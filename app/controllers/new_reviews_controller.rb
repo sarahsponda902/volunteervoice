@@ -53,7 +53,7 @@ class NewReviewsController < ApplicationController
     
     respond_to do |format|
       if @new_review.save
-        format.html { redirect_to "/pages/thank_you" }
+        format.html { redirect_to "/pages/thank_you_review" }
         format.json { render json: @new_review, status: :created, location: @new_review }
       else
         format.html { render action: "new" }
