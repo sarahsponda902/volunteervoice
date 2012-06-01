@@ -69,7 +69,7 @@
 			<div class="row" style="margin-top:25px">
 				<div class="three columns" style="float:left; height:200px; width:200px; overflow:hidden;">
 					<% if !(@user.square_image.url.nil?)%>
-				<%= image_tag @user.square_image.url, :style => "height:185px; width:185px" %>
+				<%= image_tag @user.square_image.url, :style => "height:165px; width:165px" %>
 					<% else %>
 					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
 					<% end %>
