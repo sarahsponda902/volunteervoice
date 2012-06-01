@@ -93,7 +93,9 @@
   <div class="field">
     Price Ranges<br />
     <%= f.text_area :price_ranges, :value => @organization.price_ranges %></div>
-
+  <div class="field">
+    <%= f.label :url%>
+    <%= f.text_field :url, :value => @organization.url %></div>
 
 </div>
 <div class="twelve columns" style="text-align:center">
