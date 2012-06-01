@@ -23,7 +23,7 @@
 		<td ><p align="right" style="margin-top:-5px; margin-right:10px"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
 </tr>
 <tr style="background-color:#E0EEEE;">
-	<td colspan="3"><p style="margin-left:10px; font-size:1.05em;margin-top:-10px;height:75px; width:96.5%; margin-left:2%; overflow:auto"><%= f.body.html_safe %><%=link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), "#flag-box", :class => "flag-window", :poster_id => f.user_id, :review_id => f.id, :style => "float:right; margin-right:20px"%></td>
+	<td colspan="3"><p style="margin-left:10px; font-size:1.05em;margin-top:-10px;height:60px; width:96.5%; margin-left:2%; overflow:auto"><%= f.body.html_safe %><%=link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), "#flag-box", :class => "flag-window", :poster_id => f.user_id, :review_id => f.id, :style => "float:right; margin-right:20px"%></td>
 </p></tr>
 <tr style="background-color:#E0EEEE">
 	<td colspan="3">
