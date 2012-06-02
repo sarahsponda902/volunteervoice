@@ -9,6 +9,9 @@ class ReviewsController < ApplicationController
       if !(params[:body].nil?)
         @review.body = params[:body]
       end
+      if !(params[:time_frame].nil?)
+        @review.time_frame = params[:time_frame]
+      end
       @review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
        respond_to do |format|
