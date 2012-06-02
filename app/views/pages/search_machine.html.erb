@@ -22,6 +22,40 @@ $(document).ready(function() {
 			$("#"+allTheLocations[count]).show();
 		 }
     }
+
+	$('a.qMark-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var qMarkBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(qMarkBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(qMarkBox).height() + 24) / 2; 
+		var popMargLeft = ($(qMarkBox).width() + 24) / 2; 
+
+		$(qMarkBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .qMark-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+
+
 });
 
 
@@ -489,10 +523,147 @@ $(document).ready(function() {
 </div>
 </div>
 <div class="twelve columns" style="float:left; margin-top:-65px">
-<%= image_tag "/assets/clickLearnForm.png" %>
+<a href="#qMark-box" class="qMark-window"><image src="/assets/clickLearnForm.png"></a>
 </div>
 </div>
 </div>
+</div>
+
+<div id="qMark-box" class="qMark-popup" style="text-align:left">
+
+<p style="font-size:1.7em; text-align:center; color:#6aaeba"><u>Help! Search Machine</u></p>
+<br /><p style="font-size:1.3em; font-weight:600">1. Program Subjects</p><br />
+
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What happens if I select "Any" here?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Selecting “any” means that you are interested in every single category of program subjects, and that all of those categories and options will be applied to your search.  Selecting “Any” basically makes the Program Subject section of this form obsolete.</li>
+<li>So, if you’re only interested in 1 or 5 of these categories, then you should select those, rather than any, in order to narrow down your search and make it easier to find programs that you are actually interested in.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What are these different categories?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>These categories are general subjects that volunteer programs tend to fall in to.  We selected them after doing lots and lots and lots of research on all the different things that people can do with a volunteer organization.  And there are tons of options. </li>
+<li>We have put all of our registered programs into these categories in order to simplify the big wide world of volunteering (as it appears on our site, anyway), and to make it a lot easier to search for programs, and actually get some pertinent results.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Why are some categories large and some small? How do I use them?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>The larger categories are “Major Categories”.  The smaller categories indented below them are “Sub-Categories”,  which are there to let you get a little more specific if you care to. </li>
+<li>You would use the sub-categories if you are interested in a Major Category (like Health and Medicine), but you’re not interested in all aspects of that subject.  For example, if you only want to do dental volunteer work, for the obvious reason that you’re going to school for it, then “Dental Work” would be the only box that you selected in this section.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Can I select as many options as I want?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Yes, of course.  The more subjects you select here, the more programs you will have to choose from.  Do whatever you want.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Why do the checkmarks disappear on the sub-categories when I select a major category?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Because if you select a Major Category, then all of those Sub-Categories are implied in the search.  They are automatically included in the search, so you don’t need to check them!</li>
+</div>
+
+<p style="font-size:1.3em; font-weight:600">2. Length of Trip</p><br />
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What happens if I select "Any" here?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Selecting “Any” means that you are going to include any length of program in your search and don’t have any preferences, so it basically makes the “Length of Trip” section of the form obsolete. </li>
+<li>If you do have an idea about how long you would like your volunteer trip to be, you should definitely select those options.  Different programs sometimes have different time constraints, whether its a minimum or a maximum, so making some selections here is helpful in narrowing your search to pertinent programs.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What are these different categories?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>These are general time periods representing how long you will be working with a program for.  Different programs can have fixed or absent constraints on the time that you spend there, so these categories can help you narrow down program options based on how long you’re interested in volunteering for.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Can I select as many options as I want?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Yes, of course.  The more options that you select, the more programs that you will have to choose from. But, if you do have time constraints on your upcoming volunteer trip, you should definitely select that time-period here.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What if the amount of time I want to volunteer isn’t on here?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>It is here!</li>
+</div>
+
+<p style="font-size:1.3em; font-weight:600">3. Group Size</p><br />
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What happens if I select "Any" here?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Selecting “any” means that you could not care less about how many people are involved in your volunteer trip, whether its just you on your own or a group of 50 traveling the world.  “Any” essentially makes the Group Size section of this form.</li>
+<li>If you do have a preference over how many other volunteers are involved in your own experience, then you should definitely select some options here, as different programs can vary greatly in the number of volunteers on the ground with you.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What are these different categories?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>These different categories represent the general options for volunteer work and travel, in regards to how many volunteers you will be working with on your project.  The numbers in parenthesis next to each category represent the approximate number of people in your group.</li>
+</div>
+
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> You have the option of 9-12 weeks, and also 3-6 months...but 12 weeks is 3 months. Why don’t you make any sense?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Well, we’re a little embarrassed you brought this up...but if you MUST know, we had no choice. Well we had a choice, but thought this would be better/less annoying than breaking everything down into weeks.  Months are nice and concise.  Don’t you agree?! </li>
+<li>If you want to volunteer for 3 months, and you’re freaking out because you have two options to choose from here and its terribly confusing, we are sorry about that.  But, it’s really no big deal when you think about it.  Just pick either one!  If I were you, I might pick the 3-6 months and the 9-12 weeks, because you will have more flexibility.  Easy.</li>
+</div>
+
+<p style="font-size:1.3em; font-weight:600">4. Price Range (avg. per week)</p><br />
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What the heck is this?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>This is awesome! Other volunteer sites don’t have this option, because they mostly just want to redirect you to organization websites.  This right here allows you to search through volunteer programs, according to how much money you would like to or are willing to pay.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What happens if I don’t update these numbers?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>If they stay “0” and “999” then this section becomes obsolete basically.  This can be a useful tool if you do have a budget, or if you want to keep the price low, but that’s totally your choice.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What if I don’t want to pay to volunteer? Like I want it to be free?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Then put “0” as your max! We definitely have free program options on this site, and it is definitely a great route to take.  Bear in mind though that “free” means you don’t have to pay anyone to actually volunteer, but it also means that you are responsible probably for most of your own travel expenses and basic needs. </li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Why can’t I just put in an overall amount that I want to pay?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Well, we were GOING to do that.  But for so many reasons, we went with this option instead.  One reason being that the vast majority of programs are broken down into weekly costs anyway.   </li>
+<li>Another reason is that some organizations have program costs where the first week is maybe $1500, and then every week after is $100.  For our from-scratch software, that is confusing if you’re trying to get to overall costs.  From our own research and numbers, a weekly average is the best way to gauge how expensive a program experience is.  And we’ve done that for you! So just do some basic math, and put in your numbers.  Let the computer do its magic.  </li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How is this helpful? Why is this a search option? </p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Once you start researching volunteer options, you will notice that the prices can vary from free, to very little, to a whole freaking lot.  Now, these program costs obviously vary because programs vary a lot.  You can bet that in free or inexpensive programs you’re probably roughing it, and that expensive programs have a lot more structure and service to them.  This isn’t always the case, but its a general trend.     </li>
+<li>Being able to search according to budget is helpful because it reminds you that you have options! You don’t have to pay a lot if you don’t want to, or you can pay a lot and have a more structured experience.  If you are more budget-conscious, this is a great way to weed out the high-price volunteer experiences.</li>
+</div>
+
+<p style="font-size:1.3em; font-weight:600">5. Region/Country</p><br />
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What happens if I select "Any" here?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>If you select “any”, it means you don’t mind where in the world you end up, and volunteering options in every country will be included in your search.  “Any” makes this section of the search form obsolete.</li>
+<li>If you do have a preference in certain countries or regions of others, then you should definitely include them here.  There are a lot of programs out there, so narrowing them down according to regions of interest is a great technique.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u>Why are some options large and some small?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>The large options are Regions of the world, so if you select one of them, then all of the countries within that region are applied to your search.</li>
+<li>The smaller options are obviously countries, so they allow you to get more specific about the country that you end up in.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u>Can I select as many options as I want?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Yes you can.  Click anywhere in the world that you’d be interested in going! There are a lot of options, so take your pick.</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u>Why do the checkmarks disappear on the countries when I select a region?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Because if you select a region, then all of those countries are implied in the search.  They are automatically included in the search, so you don’t need to check them!</li>
+</div>
+
+<p style="margin-left:20px; font-size:1em;"><u>Q:</u>Why do only some of the world’s countries appear here?  What do I do if the country I want to visit isn’t on this list?</p>
+<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
+<li>Only countries appear here that we have programs registered for on our site.  If we don’t have a country listed here, its because we don’t yet have any programs there which are registered with us.  Makes sense!</li>
+<li>If you don’t want to end your search there, you can always do a little reserach online and send us some links or info on programs in that country, and we will add them to the site to help out other prospective volunteers.</li>
+</div>
+
+
+
+
 </div>
 
 <script type='text/javascript'>
@@ -1475,4 +1646,74 @@ input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
+</style>
+
+<style>
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+/* You can customize to your needs  */
+.qMark-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 2px solid #6aaeba;
+	float: left;
+	color:#575758;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+	height:550px;
+	width:500px;
+	overflow: auto;
+	
+}
+
+
+img.btn_close { Position the close button
+	float: right; 
+	margin: -28px -28px 0 0;
+}
+
+fieldset { 
+	border:none; 
+}
+
+
+
+.button { 
+	background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+	background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+	background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+	border-color:#000; 
+	border-width:1px;
+        border-radius:4px 4px 4px 4px;
+	-moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+	color:#68c2d8;
+	cursor:pointer;
+	display:inline-block;
+	padding:6px 6px 4px;
+	margin-top:10px;
+	font:12px; 
+	width:214px;
+}
+.button:hover { background:#ddd; }
+
 </style>
