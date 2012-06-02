@@ -6,7 +6,9 @@ class ReviewsController < ApplicationController
       @review = Review.new(params[:review])
       @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (@review.body[0..99] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
        @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (@review.body[0..199] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-      
+      if !(params[:body].nil?)
+        @review.body = params[:body]
+      end
       @review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
        respond_to do |format|

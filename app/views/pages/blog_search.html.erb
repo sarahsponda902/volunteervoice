@@ -12,11 +12,11 @@ $(document).ready(function() {
 	$('#Article').hide();
 	$('#Both').show();
 	
-	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 1, datacontainer: 'divarticles', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 15, datacontainer: 'divarticles', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-    $('#vv_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 1, datacontainer: 'divvvs', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+    $('#vv_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 15, datacontainer: 'divvvs', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-    $('#both_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 1, datacontainer: 'divboths', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+    $('#both_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 15, datacontainer: 'divboths', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 	
 });
 
