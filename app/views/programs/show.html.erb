@@ -24,7 +24,7 @@
 
 		$(document).ready(function() {
 
-				$('#reviews_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 1, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+				$('#reviews_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 
 			$('a.popup-window').click(function() {
