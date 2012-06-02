@@ -102,7 +102,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				<div class="six columns">
 			    <div class="field">
 			      Email<br />
-			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-contact", :onkeyup => "checkContactForSubmit();"  %>
+			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-contact", :onblur => "checkContactForSubmit();"  %>
 			    </div>
 				</div>
 			    <div class="field">
@@ -112,7 +112,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 			    <div class="field">
 			      <%= f.label :body %>
-			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onkeyup => "checkContactForSubmit();" %>
+			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onblur => "checkContactForSubmit();" %>
 			    </div>
 
 
@@ -261,7 +261,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				<div class="six columns">
 			    <div class="field">
 			      Email<br />
-			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-organizations", :onkeyup => "checkOrganizationsForSubmit()"  %>
+			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-organizations", :onblur => "checkOrganizationsForSubmit()"  %>
 			    </div>
 				</div>
 			    <div class="field">
@@ -271,7 +271,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 			    <div class="field">
 			      <%= f.label :body %>
-			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations", :onkeyup => "checkOrganizationsForSubmit();" %>
+			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations", :onblur => "checkOrganizationsForSubmit();" %>
 				</div>
 
 
@@ -380,7 +380,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 			<div class="six columns">
 		    <div class="field">
 		      Email<br />
-		      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-questions", :onkeyup => "checkQuestionsForSubmit();"  %>
+		      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-questions", :onblur => "checkQuestionsForSubmit();"  %>
 		    </div>
 			</div>
 		    <div class="field">
@@ -390,7 +390,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 		    <div class="field">
 		      <%= f.label :body %>
-		      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions", :onkeyup => "checkQuestionsForSubmit();" %>
+		      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions", :onblur => "checkQuestionsForSubmit();" %>
 		    </div>
 
 
