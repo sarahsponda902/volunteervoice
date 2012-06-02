@@ -81,6 +81,8 @@ function submitForm() {
 	<% flash.each do |key, value| %>
 	  <%= content_tag(:div, value, :class => "flash #{key}") %>
 	<% end %>
+	<%= flash[:notice] %>
+	<%= devise_error_messages!%>
 	<div class="row">
 				<p style="font-family:ArchitectsDaughterRegular; font-size:3em; color:#e67b5a; text-align:center; margin-top:50px">You have to be logged in for that!</p>
 	
