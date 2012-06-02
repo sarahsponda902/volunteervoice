@@ -38,6 +38,8 @@ var	count = 0;
 	$('#editImage').hide();
 	$('#checkBefore').hide();
 	$('#checkTerms').hide();
+	$('#review_time_frame').val(<%=@review.time_frame%>);
+	$('#review_program_id').val(<%=@review.program_id%>);
 	
 	$('.word_count').each(function(){
 		var length = $(this).val().length;
