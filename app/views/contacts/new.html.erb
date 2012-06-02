@@ -12,18 +12,18 @@ $(document).ready(function () {
 });
 
 function checkContactForSubmit() {
-	if ($("#email-contact") != ""
-	 && $("#body-contact") != "Must be at least 5 characters"
-	 && $("#body-contact").length >= 5) {
+	if ($("#email-contact").attr("value") != ""
+	 && $("#body-contact").attr("value") != "Must be at least 5 characters"
+	 && $("#body-contact").attr("value").length >= 5) {
 		$("#nosubmit-contact").hide();
 		$("#submit-contact").show();
 	}
 }
 
 function checkOrganizationsForSubmit() {
-	if ($("#email-organizations") != ""
-	 && $("#body-organizations") != "Must be at least 5 characters"
-	 && $("#body-organizations").length >= 5) {
+	if ($("#email-organizations").attr("value") != ""
+	 && $("#body-organizations").attr("value") != "Must be at least 5 characters"
+	 && $("#body-organizations").attr("value").length >= 5) {
 		$("#nosubmit-organizations").hide();
 		$("#submit-organizations").show();
 	}
@@ -31,9 +31,9 @@ function checkOrganizationsForSubmit() {
 }
 
 function checkQuestionsForSubmit() {
-	if ($("#email-questions") != ""
-	 && $("#body-questions") != "Must be at least 5 characters"
-	 && $("#body-questions").length >= 5) {
+	if ($("#email-questions").attr("value") != ""
+	 && $("#body-questions").attr("value") != "Must be at least 5 characters"
+	 && $("#body-questions").attr("value").length >= 5) {
 		$("#nosubmit-questions").hide();
 		$("#submit-questions").show();
 	}
@@ -102,7 +102,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				<div class="six columns">
 			    <div class="field">
 			      Email<br />
-			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-contact", :onblur => "checkContactForSubmit();"  %>
+			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-contact", :onkeyup => "checkContactForSubmit();"  %>
 			    </div>
 				</div>
 			    <div class="field">
@@ -112,7 +112,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 			    <div class="field">
 			      <%= f.label :body %>
-			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onblur => "checkContactForSubmit();" %>
+			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onkeyup => "checkContactForSubmit();" %>
 			    </div>
 
 
@@ -261,7 +261,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				<div class="six columns">
 			    <div class="field">
 			      Email<br />
-			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-organizations", :onblur => "checkOrganizationsForSubmit()"  %>
+			      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-organizations", :onkeyup => "checkOrganizationsForSubmit()"  %>
 			    </div>
 				</div>
 			    <div class="field">
@@ -271,7 +271,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 			    <div class="field">
 			      <%= f.label :body %>
-			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations", :onblur => "checkOrganizationsForSubmit();" %>
+			      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations", :onkeyup => "checkOrganizationsForSubmit();" %>
 				</div>
 
 
@@ -380,7 +380,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 			<div class="six columns">
 		    <div class="field">
 		      Email<br />
-		      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-questions", :onblur => "checkQuestionsForSubmit();"  %>
+		      <%= f.text_field :email, :style => "height:20px; width:238px", :id => "email-questions", :onkeyup => "checkQuestionsForSubmit();"  %>
 		    </div>
 			</div>
 		    <div class="field">
@@ -390,7 +390,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 		    <div class="field">
 		      <%= f.label :body %>
-		      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions", :onblur => "checkQuestionsForSubmit();" %>
+		      <%= f.text_area :body, :style => "height:200px; width:500px; font-style:italic", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions", :onkeyup => "checkQuestionsForSubmit();" %>
 		    </div>
 
 
