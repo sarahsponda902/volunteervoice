@@ -51,7 +51,6 @@ class RegistrationsController < Devise::RegistrationsController
              respond_with resource, :location => after_inactive_sign_up_path_for(resource)
            end
     else
-      flash[:notice] = "Are you human??"
       clean_up_passwords resource
       respond_with resource
     end
