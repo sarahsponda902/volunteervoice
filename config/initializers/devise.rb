@@ -8,7 +8,7 @@ Devise.setup do |config|
   config.mailer_sender = "no_reply@volunteervoice.org"
 
   # Configure the class responsible to send e-mails.
-  config.mailer = "ActionMailer::UserMailer"
+  config.mailer = "UserMailer"
 
   # Automatically apply schema changes in tableless databases
   config.apply_schema = false
