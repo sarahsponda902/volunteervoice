@@ -21,13 +21,13 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
         if @contact.to_whom == "contact"
-          NotificationsMailer.to_contact(@contact).deliver
+          ContactMailer.to_contact(@contact).deliver
         end
         if @contact.to_whom == "organizations"
-          NotificationsMailer.to_organizations(@contact).deliver
+          ContactMailer.to_organizations(@contact).deliver
         end
         if @contact.to_whom == "questions"
-          NotificationsMailer.to_questions(@contact).deliver
+          ContactMailer.to_questions(@contact).deliver
         end
         
         format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
