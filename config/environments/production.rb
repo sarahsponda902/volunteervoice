@@ -40,7 +40,7 @@ RMTest::Application.configure do
   
   config.action_mailer.perform_deliveries = true
   
-  config.action_mailer.default_url_options = { :host => 'furious-mountain-4546.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'volunteervoice.heroku.com' }
 end
 
 
