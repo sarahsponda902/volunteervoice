@@ -41,19 +41,18 @@ RMTest::Application.configure do
   config.action_mailer.perform_deliveries = true
   
   config.action_mailer.default_url_options = { :host => 'furious-mountain-4546.heroku.com' }
-
-
-  # Configuration for using SendGrid on Heroku
-  ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com'
-  }
-  ActionMailer::Base.delivery_method = :smtp
-  GA.tracker = "UA-31745240-1"
-
-  
 end
+
+
+
+# Configuration for using SendGrid on Heroku
+ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => 'heroku.com'
+}
+ActionMailer::Base.delivery_method = :smtp
+GA.tracker = "UA-31745240-1"
