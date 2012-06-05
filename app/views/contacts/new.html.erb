@@ -11,8 +11,16 @@ $(document).ready(function () {
 	$("#submit-contact").hide();
 });
 
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\
+".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA
+-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
 function checkContactForSubmit() {
 	if ($("#email-contact").attr("value") != ""
+	 &&  (validateEmail($("#email-contact").attr("value")))
 	 && $("#body-contact").attr("value") != "Must be at least 5 characters"
 	 && $("#body-contact").attr("value").length >= 5) {
 		$("#nosubmit-contact").hide();
@@ -22,6 +30,7 @@ function checkContactForSubmit() {
 
 function checkOrganizationsForSubmit() {
 	if ($("#email-organizations").attr("value") != ""
+	&&  (validateEmail($("#email-organizations").attr("value")))
 	 && $("#body-organizations").attr("value") != "Must be at least 5 characters"
 	 && $("#body-organizations").attr("value").length >= 5) {
 		$("#nosubmit-organizations").hide();
@@ -32,6 +41,7 @@ function checkOrganizationsForSubmit() {
 
 function checkQuestionsForSubmit() {
 	if ($("#email-questions").attr("value") != ""
+	&&  (validateEmail($("#email-questions").attr("value")))
 	 && $("#body-questions").attr("value") != "Must be at least 5 characters"
 	 && $("#body-questions").attr("value").length >= 5) {
 		$("#nosubmit-questions").hide();
