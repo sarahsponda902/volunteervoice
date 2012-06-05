@@ -6,15 +6,13 @@ class RemoveManyManyThingsFromOrganization < ActiveRecord::Migration
         remove_column :organizations, :business_model
         remove_column :organizations, :run_by
         remove_column :organizations, :price_ranges
-        remove_column :organizations, :price_breakdown
-        remove_column :organizations, :program_costs_breakdown
+        remove_column :organizations, :program_cost_breakdown
         remove_column :organizations, :program_costs
       end
 
   def down
     add_column :organizations, :program_costs, :string
-    add_column :organizations, :program_costs_breakdown, :string
-    add_column :organizations, :price_breakdown, :string
+    add_column :organizations, :program_cost_breakdown, :string
     add_column :organizations, :price_ranges, :string
     add_column :organizations, :run_by, :string
     add_column :organizations, :business_model, :string

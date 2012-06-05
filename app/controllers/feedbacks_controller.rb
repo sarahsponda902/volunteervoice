@@ -40,8 +40,7 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(params[:feedback])
-    @feedback.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( @feedback.body[0..199] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @feedback.body = RedCloth.new( ActionController::Base.helpers.sanitize( @feedback.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @feedback.truncated100 = @feedback.body[0..199] + "..."
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to '/pages/thank_you', notice: 'Feedback was successfully created.' }
