@@ -349,7 +349,7 @@ class OrganizationsController < ApplicationController
     @organization.program_costs_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.run_by = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.price_ranges = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.price_ranges ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.mission = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.mission ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.misson = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.misson ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.program_costs_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.program_cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
