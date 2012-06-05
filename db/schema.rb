@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120521022150) do
+ActiveRecord::Schema.define(:version => 20120605181636) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -174,31 +174,22 @@ ActiveRecord::Schema.define(:version => 20120521022150) do
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "program_id"
     t.boolean  "show"
     t.integer  "page_views"
     t.decimal  "overall"
     t.integer  "num_reviews"
-    t.text     "mission"
     t.string   "email"
     t.integer  "operating_since"
     t.integer  "num_vols_date"
     t.integer  "num_vols_yr"
-    t.text     "application_process"
-    t.text     "business_model"
-    t.text     "program_model"
     t.text     "good_to_know"
     t.integer  "reviews_count"
     t.text     "training_resources"
-    t.integer  "program_costs"
-    t.string   "program_costs_includes"
-    t.text     "program_costs_breakdown"
     t.string   "url"
-    t.string   "run_by"
     t.text     "volunteer_program_model"
-    t.string   "price_ranges"
     t.string   "image"
     t.string   "id_number"
     t.string   "square_image"
@@ -208,6 +199,15 @@ ActiveRecord::Schema.define(:version => 20120521022150) do
     t.integer  "crop_h"
     t.string   "phone"
     t.text     "truncated75"
+    t.text     "misson"
+    t.text     "program_costs_includes"
+    t.string   "application_process"
+    t.string   "program_model_string"
+    t.string   "business_model"
+    t.string   "run_by"
+    t.string   "price_ranges"
+    t.string   "price_breakdown"
+    t.text     "program_costs_doesnt_include"
   end
 
   create_table "pages", :force => true do |t|
@@ -227,12 +227,10 @@ ActiveRecord::Schema.define(:version => 20120521022150) do
     t.string   "subject"
     t.string   "headquarters"
     t.decimal  "overall"
-    t.integer  "program_started"
     t.string   "start_dates"
     t.text     "program_structure"
     t.string   "partnered_local_organizations"
     t.text     "cost_includes"
-    t.text     "cost_doesnt_include"
     t.text     "program_cost_breakdown"
     t.text     "accommodations"
     t.string   "check_it_out"
@@ -247,6 +245,8 @@ ActiveRecord::Schema.define(:version => 20120521022150) do
     t.integer  "crop_h"
     t.string   "chart"
     t.text     "truncated_description100"
+    t.string   "program_started"
+    t.text     "cost_doesnt_include"
   end
 
   create_table "reviews", :force => true do |t|
