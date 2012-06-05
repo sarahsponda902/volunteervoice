@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605181636) do
+ActiveRecord::Schema.define(:version => 20120605221224) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -247,6 +247,7 @@ ActiveRecord::Schema.define(:version => 20120605181636) do
     t.text     "truncated_description100"
     t.string   "program_started"
     t.text     "cost_doesnt_include"
+    t.string   "url"
   end
 
   create_table "reviews", :force => true do |t|
