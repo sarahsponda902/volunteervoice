@@ -344,14 +344,16 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(params[:organization])
     @organization.truncated75 = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description[0,74] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.description = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.application_process = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.application_process ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.business_model = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.business_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.program_model = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_model ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.good_to_know = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.good_to_know ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.training_resources = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.training_resources ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.program_costs_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.run_by = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.price_ranges = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.price_ranges ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.mission = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.mission ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.program_costs_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.program_cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    
+    
     
     @organization.reviews_count = 0
     @organization.overall = 0
