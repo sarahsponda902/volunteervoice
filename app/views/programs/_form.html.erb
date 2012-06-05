@@ -8,16 +8,16 @@
 <link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn-history/r3882/trunk/themes/base/jquery.ui.autocomplete.css" type="text/css" />
 
 <script>
-	$(function() {
-		var availableTags = [
-			<% Organization.all.each do |f| %>
-			"<%=f.name%>" 
-			<% end %>
-			];
-		$( "#tags" ).autocomplete({
-			source: availableTags
-		});
+$(function() {
+	var availableTags = [
+		<% Organization.all.each do |f| %>
+		"<%=f.name%>",
+		<% end %>
+		];
+	$( "#tags" ).autocomplete({
+		source: availableTags
 	});
+});
 	</script>
 
 
@@ -83,8 +83,8 @@
   </div>
 
   <div class = "field">
-	<%= f.label :group_size%>
-	<%= f.select :group_size, ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"], :value => @program.group_size, :prompt =>"Select a Group Size"%>
+	<%= f.label "Group Size - NOTE: you must reselect on edit"%>
+	<%= f.select :group_size, ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"], :multiple => true, :prompt =>"Select a Group Size"%>
   </div>
 
   <div class = "field">
@@ -93,8 +93,8 @@
 </div>
 
   <div id= "field">
-	<%= f.label :length_of_program %>
-	<%= f.select :length, ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"], :prompt => "Select a Program Length", :value => @program.length  %></div>
+	<%= f.label "Length of Program - NOTE: you must reselect on edit" %>
+	<%= f.select :length, ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"], :prompt => "Select a Program Length", :multiple => true  %></div>
 
   <div>Add a Photo<br />
   <%= f.file_field :photo, :value => @program.photo %></div><br />
@@ -107,7 +107,7 @@
 	<div class="six columns">
   <div id= "field">
   Program Started (year)<br />
-  <%= f.number_field :program_started, :value => @program.program_started %></div><br />
+  <%= f.text_field :program_started, :value => @program.program_started %></div><br />
 
 <div id= "field">
 Start Dates (mm/dd/yyyy)<br />
@@ -127,7 +127,7 @@ Program Structure <br />
 </div><br />
 <div id= "field">
 	Cost Includes <br />
-	<%= f.text_field :cost_doesnt_include, :value => @program.cost_doesnt_include %>
+	<%= f.text_area :cost_doesnt_include, :value => @program.cost_doesnt_include %>
 </div><br />
 <div id= "field">
 	Program Cost Breakdown<br />
