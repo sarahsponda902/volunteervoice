@@ -21,6 +21,10 @@ class MessagesController < ApplicationController
       format.json { render :json => @message }
     end
   end
+  
+  def index
+    @messages = Message.all
+  end
 
 
   # POST /messages
