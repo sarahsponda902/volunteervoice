@@ -346,7 +346,6 @@ class OrganizationsController < ApplicationController
     @organization.description = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.good_to_know = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.good_to_know ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.training_resources = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.training_resources ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.program_costs_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.run_by = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.price_ranges = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.price_ranges ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.misson = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.misson ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
