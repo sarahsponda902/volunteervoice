@@ -14,6 +14,8 @@ $(document).ready(function () {
 
 function checkContactForSubmit() {
 	if ($("#email-contact").attr("value") != ""
+	 && $("#email-contact").attr("value").indexOf("@") > 0
+	 && $("#email-contact").attr("value").indexOf(".") > 0
 	 && $("#body-contact").attr("value") != "Must be at least 5 characters"
 	 && $("#body-contact").attr("value").length >= 5) {
 		$("#nosubmit-contact").hide();
@@ -23,6 +25,8 @@ function checkContactForSubmit() {
 
 function checkOrganizationsForSubmit() {
 	if ($("#email-organizations").attr("value") != ""
+	 && $("#email-organizations").attr("value").indexOf("@") > 0
+	 && $("#email-organizations").attr("value").indexOf(".") > 0
 	 && $("#body-organizations").attr("value") != "Must be at least 5 characters"
 	 && $("#body-organizations").attr("value").length >= 5) {
 		$("#nosubmit-organizations").hide();
@@ -33,6 +37,8 @@ function checkOrganizationsForSubmit() {
 
 function checkQuestionsForSubmit() {
 	if ($("#email-questions").attr("value") != ""
+	 && $("#email-questions").attr("value").indexOf("@") > 0
+	 && $("#email-questions").attr("value").indexOf(".") > 0
 	 && $("#body-questions").attr("value") != "Must be at least 5 characters"
 	 && $("#body-questions").attr("value").length >= 5) {
 		$("#nosubmit-questions").hide();
