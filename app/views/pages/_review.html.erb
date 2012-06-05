@@ -33,7 +33,8 @@
 	</td>
 </tr>
 </table>
-	<p style="margin-top:15px; float:right; text-align:right; margin-right:160px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/edit.png"), :controller => "reviews", :action => "edit", :id => f.id%></p> <p align="right" style="float:right; margin-top:-31.7px; margin-right:15px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteReview.png"), :controller => "reviews", :action => "destroy", :id =>f.id, :field => "reviews", :confirm => "Are you sure you want to delete this review?"%></p>
+<p align="right" style="float:right; margin-top:-31.7px; margin-right:15px"><%= link_to "Delete", :controller => "reviews", :action => "destroy", :id =>f.id, :field => "reviews", :confirm => "Are you sure you want to delete this review?", :style => "font-family:museoSlab500Regular; font-weight:600", :class => "deleteReview"%></p>
+	<p style="margin-top:15px; float:right; text-align:right; margin-right:160px"><%= link_to "Edit", :controller => "reviews", :action => "edit", :id => f.id, :style => "font-family:museoSlab500Regular; font-weight:600", :class => "deleteReview"%></p> 
 
 
 
@@ -41,4 +42,9 @@
 </table>
 	
 </div>
-
+<style>
+.deleteReview:active{color:#68c2d8}
+.deleteReview:visited{color:#68c2d8}
+.deleteReview:link{color:#68c2d8}
+.deleteReview:hover{color:#e67b5a; background:none}
+</style>
