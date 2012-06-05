@@ -17,7 +17,7 @@
 		For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 		
 		
-		<div class="six columns">
+		<div class="six columns" style="width:45%">
 <%= form_for @organization, :html => {:multipart => true} do |f| %>
 
 	<div class = "field">
@@ -38,7 +38,7 @@
 	<%= f.file_field :image, :value => @organization.image %></div>
   <div class="field">
 	Mission<br />
-	<%= f.text_field :mission, :value => @organization.mission %> </div>
+	<%= f.text_area :mission, :value => @organization.mission %> </div>
   <div class="field">
 	Phone (numbers only, 10 digits)<br />
 	<%= f.text_field :phone, :value => @organization.phone %></div>
@@ -56,15 +56,15 @@
     <%= f.number_field :num_vols_yr, :value => @organization.num_vols_yr %></div>
   <div class="field">
     <%= f.label :application_process %>
-    <%= f.text_area :application_process, :value => @organization.application_process %></div>
+    <%= f.text_field :application_process, :value => @organization.application_process %></div>
   <div class="field">
     <%= f.label :business_model %>
-    <%= f.text_area :business_model, :value => @organization.business_model %></div>
+    <%= f.text_field :business_model, :value => @organization.business_model %></div>
   <div class="field">
     <%= f.label :program_model %>
-    <%= f.text_area :program_model, :value => @organization.program_model%></div>
+    <%= f.text_field :program_model, :value => @organization.program_model%></div>
 </div>
-<div class="six columns">
+<div class="six columns" style="width:45%">
   <div class="field">
     Good To Know<br />
     <%= f.text_area :good_to_know, :value => @organization.good_to_know %></div>
@@ -75,15 +75,15 @@
     Average Program Cost (number, in $/year)
     <%= f.number_field :program_costs, :value => @organization.program_costs %></div>
   <div class="field">
-    <%= f.label "program costs includes/doesn't" %>
-    <%= f.text_field :program_costs_includes, :value => @organization.program_costs_includes %></div>
+    <%= f.label "program costs includes" %>
+    <%= f.text_area :program_costs_includes, :value => @organization.program_costs_includes %></div>
   <div class="field">
-    Program Cost Breakdown<br />
-    <%= f.text_area :program_costs_breakdown, :value => @organization.program_costs_breakdown %></div>
+    <%= f.label "program costs includes" %>
+    <%= f.text_area :program_costs_doesnt_include, :value => @organization.program_costs_doesnt_includes %></div>
 
   <div class="field">
     Run By<br />
-    <%= f.text_area :run_by, :value => @organization.run_by %></div>
+    <%= f.text_field :run_by, :value => @organization.run_by %></div>
   <div class="field">
     <%= f.label :id_number %>
     <%= f.text_field :id_number, :value => @organization.id_number %></div>
@@ -91,11 +91,14 @@
     <%= f.label :volunteer_program_model%>
     <%= f.text_field :volunteer_program_model, :value => @organization.volunteer_program_model %></div>
   <div class="field">
-    Price Ranges<br />
-    <%= f.text_area :price_ranges, :value => @organization.price_ranges %></div>
-  <div class="field">
     <%= f.label :url%>
     <%= f.text_field :url, :value => @organization.url %></div>
+  <div class="field">
+    Price Ranges<br />
+    <%= f.file_field :price_ranges, :value => @organization.price_ranges %></div>
+  <div class="field">
+    Program Cost Breakdown<br />
+    <%= f.file_field :price_breakdown, :value => @organization.price_breakdown %></div>
 
 </div>
 <div class="twelve columns" style="text-align:center">
