@@ -35,7 +35,7 @@
 	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), "/feedbacks/#{f.id}/changeShow" %>
 	<% end %>
     <td width="7%"><p style="margin-left:11px"><%= link_to 'Edit', edit_review_path(f) %></p></td>
-    <td width="7%"><%= link_to 'Destroy', f, confirm: 'Are you sure?', method: :delete %></td>
+    <td width="7%"><%= link_to 'Destroy', :controller => "feedbacks", :action => "destroy", :id =>f.id, :confirm => "Are you sure?" %></td>
   </tr>
 <% end %>
 </table>
