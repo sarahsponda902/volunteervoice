@@ -19,7 +19,7 @@ class UserMailer < ActionMailer::Base
   
   def reset_password_instructions(resource)
     @options = {"promotion_name" => "ResetPassword", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "Reset Password on VolunteerVoice Account"}
-    @yaml_body = {'instrux' => "volunteervoice.herokuapp.com/passwords/#{resource.edit_password_token}", 'usrname' => resource.username}
+    @yaml_body = {'instrux' => "volunteervoice.herokuapp.com/passwords/#{resource.reset_password_token}", 'usrname' => resource.username}
     @errors = MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
     mail(:from => "no-reply@volunteervoice.org", :to => "sarahsponda902@gmail.com", :body => @errors)
   end
