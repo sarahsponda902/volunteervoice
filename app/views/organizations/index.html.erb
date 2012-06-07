@@ -20,7 +20,7 @@
 	<td><%= organization.programs.count %></td>
     <td><%= organization.description.html_safe %></td>
 	<td><%= image_tag organization.square_image.url, :style => "height:100px;width:100px" %></td>
-	<td><%= link_to "Delete", organization, :confirm => "Are you sure?", :method => :delete %></td>
+	<td><%= link_to "Delete", :controller => "organizations", :action => "destroy", :id => organization.id %></td>
 	<td><%= link_to "Edit", edit_organization_path(organization) %></td>
   </tr>
 <% end %>
