@@ -130,7 +130,7 @@
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{@program.id}/edit"%> | 
-			<%= link_to "delete", :controller => "programs", :action => "destroy", :id => @program.id%>
+			<%= button_to "Delete", program_path(@program.id), :method => :delete, :confirm => "Are you sure?" %>
 			<% end %>
 		</div>
 	</div>

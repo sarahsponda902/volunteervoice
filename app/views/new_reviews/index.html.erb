@@ -38,7 +38,7 @@
 		
     <td><%= link_to 'View', new_review %></td>
     <td><%= link_to 'Edit', edit_new_review_path(new_review) %></td>
-    <td><%= link_to 'Destroy', new_review, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= button_to "Delete", new_review_path(new_review.id), :method => :delete, :confirm => "Are you sure?" %></td>
   </tr>
 <% end %>
 </table>
