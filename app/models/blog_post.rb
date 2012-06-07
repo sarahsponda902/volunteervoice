@@ -16,11 +16,11 @@ class BlogPost < ActiveRecord::Base
 	
 	searchable do
 	  
-    text :body, :boost =>3
-    text :title, :boost => 8
-    text :source_title, :boost => 6
-    text :source, :boost =>  5             
-    text :blog_link, :boost => 3
+    text :body
+    text :title
+    text :source_title
+    text :source            
+    text :blog_link
     boolean :is_our_blog
   end
 
