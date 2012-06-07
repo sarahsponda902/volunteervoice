@@ -1055,17 +1055,6 @@ class ProgramsController < ApplicationController
     @program.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
-    @the_length = ""
-    @the_size = ""
-    
-    @program.length.each do |f|
-      @the_length << f
-    end
-    
-    @program.group_size.each do |g|
-      @the_size << g
-    end
-    
     @program.length = @the_length
     @program.group_size = @the_size
     
