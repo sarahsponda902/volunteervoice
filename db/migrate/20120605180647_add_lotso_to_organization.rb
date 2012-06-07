@@ -14,7 +14,7 @@ class AddLotsoToOrganization < ActiveRecord::Migration
 
     add_column :organizations, :price_ranges, :string
 
-    add_column :organizations, :program_costs_breakdown, :string
+    add_column :organizations, :price_breakdown, :string
 
     add_column :organizations, :program_costs_doesnt_include, :text
 
