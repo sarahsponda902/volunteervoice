@@ -1052,8 +1052,8 @@ class ProgramsController < ApplicationController
     @program.description = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.program_structure = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_structure ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
-    @program.program_costs_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_costs_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @program.program_costs_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_costs_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @program.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_costs_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @program.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_costs_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
     @the_length = ""
     @the_size = ""
