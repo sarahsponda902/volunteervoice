@@ -130,7 +130,7 @@ class BlogPostsController < ApplicationController
 
 
   def destroy
-    if (user_signed_in && current_user.admin?)
+    if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.find(params[:id])
     @blog_post.destroy
 
