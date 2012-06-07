@@ -1,10 +1,10 @@
-
-<p style="font-size:3em; text-align:center">Listing organizations</p><br />
+<br /><br />
+<p style="font-size:3em; text-align:center; line-height:1.3em">Listing organizations</p><br />
 
 <%= link_to 'Create New Organization', new_organization_path %>
 
 
-<table>
+<table align="center">
   <tr>
      <th>Name</th>
 	<th># of Programs</th>
@@ -20,7 +20,7 @@
 	<td><%= organization.programs.count %></td>
     <td><%= organization.description.html_safe %></td>
 	<td><%= image_tag organization.square_image.url, :style => "height:100px;width:100px" %></td>
-	<td><%= link_to "Delete", :controller => "organizations", :action => "destroy", :id => organization.id %></td>
+	<td><%= button_to "Delete", :controller => "organizations", :action => "destroy", :id => organization.id %></td>
 	<td><%= link_to "Edit", edit_organization_path(organization) %></td>
   </tr>
 <% end %>
