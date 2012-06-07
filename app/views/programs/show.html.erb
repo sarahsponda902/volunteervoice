@@ -129,7 +129,8 @@
 			<p style="font-family:ArchitectsDaughterRegular; font-size:.9em; color:#e67b5a; line-height:1.3em">Based on <%= @program.reviews.count%> reviews</p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
-			<%= link_to "edit", "/programs/#{@program.id}/edit"%>
+			<%= link_to "edit", "/programs/#{@program.id}/edit"%> | 
+			<%= link_to "delete", :controller => "programs", :action => "destroy", :id => @program.id%>
 			<% end %>
 		</div>
 	</div>
