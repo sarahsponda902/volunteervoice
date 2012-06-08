@@ -34,7 +34,7 @@
 </tr>
 </table>
 
-	<p style="margin-top:-37.5px; float:right; text-align:right; margin-right:160px"><%= link_to "Edit", :controller => "reviews", :action => "edit", :id => f.id, :style => "font-family:museoSlab500Regular; font-weight:600", :class => "deleteReview"%>  <%= link_to "Delete", "#delete-box", :class => "delete-window", :onclick => "$('#buttonToDeleteReview').setAttribute('action', '/reviews/#{f.id}')" %></p> 
+	<p style="margin-top:-37.5px; float:right; text-align:right; margin-right:160px"><%= link_to "Edit", :controller => "reviews", :action => "edit", :id => f.id, :style => "font-family:museoSlab500Regular; font-weight:600", :class => "deleteReview"%>  <%= link_to "Delete", "#delete-box", :class => "delete-window", :onclick => "$('#buttonToDeleteReview').action = '/reviews/#{f.id}'" %></p> 
 
 </table>
 	
