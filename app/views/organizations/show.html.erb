@@ -11,133 +11,6 @@
 
 	<script type="text/javascript">
 	  $(document).ready(function() {
-	  		$('a.flag-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var flagBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(flagBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(flagBox).height() + 24) / 2; 
-				var popMargLeft = ($(flagBox).width() + 24) / 2; 
-
-				$(flagBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="opacity:.5"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .flag-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-			
-			$('a.info-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var infoBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(infoBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(infoBox).height() + 24) / 2; 
-				var popMargLeft = ($(infoBox).width() + 24) / 2; 
-
-				$(infoBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="opacity:.5"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .info-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-			
-			$('a.price-ranges-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var price-rangesBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(price-rangesBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(price-rangesBox).height() + 24) / 2; 
-				var popMargLeft = ($(price-rangesBox).width() + 24) / 2; 
-
-				$(price-rangesBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="opacity:.5"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .price-ranges-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-			
-			$('a.price-breakdown-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var price-breakdownBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(price-breakdownBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(price-breakdownBox).height() + 24) / 2; 
-				var popMargLeft = ($(price-breakdownBox).width() + 24) / 2; 
-
-				$(price-breakdownBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="opacity:.5"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .price-breakdown-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
 	      $('a').smoothScroll({
 	        speed: 1000,
 	        easing: 'easeInOutCubic'
@@ -170,8 +43,136 @@
 $(document).ready(function () {
 	$('#reviewws_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-					//Examples of how to assign the ColorBox event to elements
-					$(".group1").colorbox({rel:'group1'});
+//Examples of how to assign the ColorBox event to elements
+$(".group1").colorbox({rel:'group1'});
+
+$('a.flag-window').click(function() {
+
+            //Getting the variable's value from a link 
+	var flagBox = $(this).attr('href');
+
+	//Fade in the Popup
+	$(flagBox).fadeIn(300);
+
+	//Set the center alignment padding + border see css style
+	var popMargTop = ($(flagBox).height() + 24) / 2; 
+	var popMargLeft = ($(flagBox).width() + 24) / 2; 
+
+	$(flagBox).css({ 
+		'margin-top' : -popMargTop,
+		'margin-left' : -popMargLeft
+	});
+
+	// Add the mask to body
+	$('body').append('<div id="mask" style="opacity:.5"></div>');
+	$('#mask').fadeIn(300);
+
+	return false;
+});
+
+// When clicking on the button close or the mask layer the popup closed
+$('a.close, #mask').live('click', function() { 
+  $('#mask , .flag-popup').fadeOut(300 , function() {
+	$('#mask').remove();  
+}); 
+return false;
+});
+
+$('a.info-window').click(function() {
+
+            //Getting the variable's value from a link 
+	var infoBox = $(this).attr('href');
+
+	//Fade in the Popup
+	$(infoBox).fadeIn(300);
+
+	//Set the center alignment padding + border see css style
+	var popMargTop = ($(infoBox).height() + 24) / 2; 
+	var popMargLeft = ($(infoBox).width() + 24) / 2; 
+
+	$(infoBox).css({ 
+		'margin-top' : -popMargTop,
+		'margin-left' : -popMargLeft
+	});
+
+	// Add the mask to body
+	$('body').append('<div id="mask" style="opacity:.5"></div>');
+	$('#mask').fadeIn(300);
+
+	return false;
+});
+
+// When clicking on the button close or the mask layer the popup closed
+$('a.close, #mask').live('click', function() { 
+  $('#mask , .info-popup').fadeOut(300 , function() {
+	$('#mask').remove();  
+}); 
+return false;
+});
+
+$('a.price-ranges-window').click(function() {
+
+            //Getting the variable's value from a link 
+	var price-rangesBox = $(this).attr('href');
+
+	//Fade in the Popup
+	$(price-rangesBox).fadeIn(300);
+
+	//Set the center alignment padding + border see css style
+	var popMargTop = ($(price-rangesBox).height() + 24) / 2; 
+	var popMargLeft = ($(price-rangesBox).width() + 24) / 2; 
+
+	$(price-rangesBox).css({ 
+		'margin-top' : -popMargTop,
+		'margin-left' : -popMargLeft
+	});
+
+	// Add the mask to body
+	$('body').append('<div id="mask" style="opacity:.5"></div>');
+	$('#mask').fadeIn(300);
+
+	return false;
+});
+
+// When clicking on the button close or the mask layer the popup closed
+$('a.close, #mask').live('click', function() { 
+  $('#mask , .price-ranges-popup').fadeOut(300 , function() {
+	$('#mask').remove();  
+}); 
+return false;
+});
+
+$('a.price-breakdown-window').click(function() {
+
+            //Getting the variable's value from a link 
+	var price-breakdownBox = $(this).attr('href');
+
+	//Fade in the Popup
+	$(price-breakdownBox).fadeIn(300);
+
+	//Set the center alignment padding + border see css style
+	var popMargTop = ($(price-breakdownBox).height() + 24) / 2; 
+	var popMargLeft = ($(price-breakdownBox).width() + 24) / 2; 
+
+	$(price-breakdownBox).css({ 
+		'margin-top' : -popMargTop,
+		'margin-left' : -popMargLeft
+	});
+
+	// Add the mask to body
+	$('body').append('<div id="mask" style="opacity:.5"></div>');
+	$('#mask').fadeIn(300);
+
+	return false;
+});
+
+// When clicking on the button close or the mask layer the popup closed
+$('a.close, #mask').live('click', function() { 
+  $('#mask , .price-breakdown-popup').fadeOut(300 , function() {
+	$('#mask').remove();  
+}); 
+return false;
+});
 
 
 });
