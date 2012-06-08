@@ -35,6 +35,52 @@
 	<%= javascript_include_tag "application"%>
 
 
+		<script type="text/javascript">
+
+
+		$(document).ready(function() {
+
+
+			$('a.login-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var termsBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(termsBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(termsBox).height() + 24) / 2; 
+				var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+				$(termsBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('#mask').live('click', function() { 
+			  $('#mask').fadeOut(300);
+			  $('#login-box').fadeOut(300);
+			  $('#mask').remove();  
+			  return false;
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+	function beforeCheck2() {
+		$('#checkBefore2').toggle();
+	}
+	</script>
+
 	</head>
 
 	<body>
@@ -287,49 +333,5 @@
 	
 	</style>
 	
-		<script type="text/javascript">
 
-
-		$(document).ready(function() {
-
-
-			$('a.login-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var termsBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(termsBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(termsBox).height() + 24) / 2; 
-				var popMargLeft = ($(termsBox).width() + 24) / 2; 
-
-				$(termsBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="opacity:.5"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('#mask').live('click', function() { 
-			  $('#mask').fadeOut(300);
-			  $('#login-box').fadeOut(300);
-			  $('#mask').remove();  
-			  return false;
-			});
-		});
-	</script>
-
-	<script type="text/javascript">
-	function beforeCheck2() {
-		$('#checkBefore2').toggle();
-	}
-	</script>
 
