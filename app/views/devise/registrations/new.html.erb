@@ -85,8 +85,8 @@ function submitForm() {
 </script>
 
 <div class="container" align="center" style="color:#575758">
-	<% flash.each do |key, value| %>
-	  <%= content_tag(:div, value, :class => "flash #{key}") %>
+	<% flash.each do |key| %>
+	  <%= key %><br />
 	<% end %>
 	<div class="row">
 	<div class="six columns" style="float:center; text-align:left; margin-top:90px; border-left:1px solid #e67b5a; border-right:1px solid #e67b5a">
