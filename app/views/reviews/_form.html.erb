@@ -258,9 +258,9 @@ var	count = 0;
 
 	function checkValueAutocomplete() {
 		var orgsArray = <%= array_or_string_for_javascript(orgs_array)%>
-		if (orgsArray.indexOf($("#tags").attr("value")) < 0)
+		if (availableTags.indexOf($("#tags").attr("value")) < 0)
 		{
-			$("#tags").attr("value") = ""
+			$("#tags").attr("value") = "";
 		} 
 	}
 
