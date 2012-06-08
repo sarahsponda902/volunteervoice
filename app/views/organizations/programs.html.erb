@@ -111,7 +111,7 @@ if (document.URL.split("&slider1=")[1] == "6") {
 		
 
 		<div>
-			<%=render :partial => "flag", :locals => {:country => f}%>
+				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/#{@theCountries2[f]}.png", :style => "height:200px; width:400px"%>
 			<h2><span><%= @theCountries[f]%></span></h2>
 			<p>Programs: <%=@countries[f]%>  </p>
 		</div>
