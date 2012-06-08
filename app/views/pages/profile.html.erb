@@ -169,6 +169,12 @@
 				}); 
 				return false;
 				});
+				
+				$('#close-delete-pop').click(function () {
+					$('#mask').fadeOut(300);
+					$('#delete-popup').fadeOut(300);
+					$('#mask').remove();
+				});
 			
 				if (message) 
 				{
@@ -378,9 +384,9 @@ function clickReviewPhoto() {
 			</div>
 			
 			<div id="delete-box" class="delete-popup">
-			Blah your face
-			BLAH YOUR FACE
-
+			<p style="font-size:2em">Are you sure?</p>
+			<a id="close-delete-pop"> <%=image_tag "/assets/noKeepIt.png" %></a>
+			<%= button_to (image_tag "/assets/realDeleteReviewButton.png"), :method => :delete%>
 			</div>
 			
 			<div id="upload-box" class="upload-popup">

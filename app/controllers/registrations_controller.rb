@@ -37,6 +37,9 @@ class RegistrationsController < Devise::RegistrationsController
   def email_confirm
   end
   
+  def are_you_sure
+  end
+  
   def must_be
     build_resource
      
