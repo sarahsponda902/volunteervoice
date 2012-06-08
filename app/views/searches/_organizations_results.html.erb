@@ -10,7 +10,7 @@
 			<td colspan="2" style="width:60%"><p style="margin-top:-80px; font-size:1.3em;color:#e67b5a">
 			<% count = 1%>
 			<% f.programs.each do |p| %>
-				<%=p.name%><%=", " unless count == f.programs.count%>
+				<%=link_to p.name, p, :class => "programLink"%><%=", " unless count == f.programs.count%>
 				<% count = count + 1%>
 			<% end%>
 				</p></td>
@@ -19,4 +19,3 @@
 
 
 </div>
-
