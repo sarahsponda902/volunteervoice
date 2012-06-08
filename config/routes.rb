@@ -106,6 +106,8 @@ RMTest::Application.routes.draw do
     
     match "registrations/email_confirm" => 'registrations#email_confirm'
     
+    match "registration/are_you_sure" => 'registrations#are_you_sure'
+    
     match "confirmations/new" => 'devise/confirmations#new'
     
     match "confirmations/:confirmation_token" => 'devise/confirmations#show'
