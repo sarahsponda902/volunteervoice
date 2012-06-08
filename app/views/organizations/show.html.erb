@@ -9,12 +9,8 @@
 	<script src="/assets/jquery.smooth-scroll.min.js"></script>
 	<script src="/assets/lightbox.js"></script>
 
-	<script>
-	  (document).ready(function() {
-	      $('a').smoothScroll({
-	        speed: 1000,
-	        easing: 'easeInOutCubic'
-	      });
+	<script type="text/javascript">
+	  $(document).ready(function() {
 	  		$('a.flag-window').click(function() {
 
 		                //Getting the variable's value from a link 
@@ -142,7 +138,10 @@
 			}); 
 			return false;
 			});
-
+	      $('a').smoothScroll({
+	        speed: 1000,
+	        easing: 'easeInOutCubic'
+	      });
 		});
 
 	</script>
