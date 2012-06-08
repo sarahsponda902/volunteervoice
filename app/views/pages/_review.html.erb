@@ -41,7 +41,7 @@
 	<table id="delete-box" class="delete-popup">
 		<tr><td><p style="font-size:2em">Are you sure?</p></td></tr>
 		<tr>
-			<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %><% button_to " ", review_path(), :method => :delete, :id => "buttonToDelete"%></a></td>
+			<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %><% button_to " ", review_path(f.id), :method => :delete, :id => "buttonToDelete"%></a></td>
 			<td><%= image_tag "/assets/RealDeleteReviewButton.png", :style => "cursor:pointer", :onclick => "$('#buttonToDelete').click()"%></td></tr>
 	</table>
 	
