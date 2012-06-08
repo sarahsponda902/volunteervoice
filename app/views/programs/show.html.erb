@@ -129,7 +129,7 @@
 			<p style="font-family:ArchitectsDaughterRegular; font-size:.9em; color:#e67b5a; line-height:1.3em">Based on <%= @program.reviews.count%> reviews</p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
-			<%= link_to "edit", "/programs/#{@program.id}/edit"%> | 
+			<%= link_to "edit", "/programs/#{@program.id}/edit"%> 
 			<%= button_to "Delete", program_path(@program.id), :method => :delete, :confirm => "Are you sure?" %>
 			<% end %>
 		</div>
@@ -178,7 +178,7 @@
 		<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkItOut.png"), @program.check_it_out, :target => "_blank"%>
 		<br />
 	</div>
-	<div class="four columns" align="right" style="float:right; margin-right:5px; margin-top:10px; margin-bottom:-15px">
+	<div class="four columns" align="right" style="float:right; margin-right:5px; margin-top:10px; margin-bottom:-30px">
 		<br />
 		<% if !(current_user.nil?)%>
 
