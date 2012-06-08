@@ -1058,6 +1058,10 @@ class ProgramsController < ApplicationController
     if (@program.overall.nil?) 
       @program.overall= 0;
     end
+    
+    if @program.check_it_out[0..3] != "http"
+      @program.check_it_out = "http://"+@program.check_it_out
+    end
 
     if user_signed_in? && current_user.admin?
       if @program.save

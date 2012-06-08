@@ -117,7 +117,7 @@
 		<div class="seven columns" style="width:53%; text-align:left; margin:0; padding:0; margin-top:20px">
 			<br />
 			<p style="font-size:3em; line-height:1em;"> <a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
-			<a style="font-size:1.2em; color:#62acbd;" href="<%=Organization.find(@program.organization_id).url%>"><u> <%=Organization.find(@program.organization_id).url%></u></a>
+			<a style="font-size:1.2em; color:#62acbd;" href="<%=Organization.find(@program.organization_id).url%>" target="_blank"><u> <%=Organization.find(@program.organization_id).url%></u></a>
 
 		</div>
 		<div class="two columns"  style="text-align:center; margin:0; padding:0; width:28%">
@@ -170,7 +170,7 @@
 </div>
 	<div class="eleven columns" style="border:1px solid #575758; margin-left:4%; padding-bottom:2%; padding-right:1%;">
 
-	<p style="padding-left:2%; padding-top:2%; padding-right:2%">	<%=@program.description.html_safe%></p>
+	<p style="margin-left:2%; padding-top:2%; margin-right:2%">	<%=@program.description.html_safe%></p>
 
 </div>
 	<div class="three columns" style="margin-left:4%; width:17%; margin-top:3px; padding-bottom:7px">
@@ -213,7 +213,7 @@
 			</div>
 			<% end %>
 		</div>
-		<div id="reviews_pager" style="position:absolute; top:87%; width:900px">
+		<div id="reviews_pager" style="position:absolute; top:84%; width:900px">
 		</div>
 
 		
