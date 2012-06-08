@@ -258,18 +258,15 @@ var	count = 0;
 
 	function checkValueAutocomplete() {
 		var orgsArray = <%= array_or_string_for_javascript(orgs_array)%>
-		if (orgsArray.indexOf($("#tags").attr("value")) == -1)
+		if (orgsArray.indexOf($("#tags").attr("value")) < 0)
 		{
-			return false;
-		} else {
-			return true;
-		}
+			$("#tags").attr("value") = ""
+		} 
 	}
 
 	function checkFields(){
 		if(($("#tags").attr("value") != " Start typing...")
 		    && ($("#tags").attr("value") !="")
-		    && ($('checkValueAutocomplete'))
 			&& ($("#review_time_frame").attr("value") != "Select a Time Frame")
 			&& ($("#review_program_id").attr("value") != "Select a Program")
 			&& ($("#theBody").attr("value").length >= 200)
@@ -431,7 +428,7 @@ var	count = 0;
 				<% if @review.organization_id.nil?%>
 					
 						<div width="200px">
-						<%= f.text_field :organization_name, :id =>"tags", :style => "float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onblur => "if "%></div>
+						<%= f.text_field :organization_name, :id =>"tags", :style => "float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onblur => "checkValueAutocomplete()"%></div>
 				
 				<% else %>
 				<div style="float:right; margin-right:20px; margin-top:5px; "><%= Organization.find(@review.organization_id).name%>
