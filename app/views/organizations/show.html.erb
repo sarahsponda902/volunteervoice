@@ -238,7 +238,7 @@ $(document).ready(function () {
 <div class = "row">
 	<div id= "four columns" align="center" style="margin-top:20px; margin-bottom:5px">
 		<% if !(current_user.nil?) && current_user.admin? %>
-		<%= link_to "edit", :controller => "organizations", :action => "edit", :id => @organization.id%>
+		<%= link_to "edit", "/organizations/#{@organization.id}/edit%>
 		 <%= @organization.page_views%>
 		<% end %>
 	</div>
