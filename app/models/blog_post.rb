@@ -17,10 +17,10 @@ class BlogPost < ActiveRecord::Base
 	searchable do
 	  
     text :body
-    text :title
-    text :source_title
-    text :source            
-    text :blog_link
+    string :title
+    string :source_title
+    string :source            
+    string :blog_link
     boolean :is_our_blog
   end
 

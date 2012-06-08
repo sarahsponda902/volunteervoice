@@ -26,7 +26,7 @@ before_create :set_page_views_to_zero
 # Sunspot Search
 searchable do
   text :name
-  text :business_model
+  string :business_model
   text :program_costs_includes
 end
 
