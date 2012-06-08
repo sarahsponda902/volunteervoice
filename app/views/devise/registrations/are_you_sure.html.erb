@@ -1,5 +1,5 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<div class="container" style="margin-top:30px">
+<div class="container" style="margin-top:70px">
 	<div class="row">
 		<div class="twelve columns" style="text-align:center">
 
@@ -11,8 +11,8 @@
 <%= link_to (image_tag "/assets/DontTerminateButton.png"), "/pages/profile"%>
 	</div>
 	<div class="six columns" style="width:46%">	
-<%= button_to " ", user_registration_path, :method => :delete, :id => "buttonToDeleteUser"%>
-<%= image_tag "/assets/ConfirmTerminationButton.png", :style => "cursor:pointer; margin-top:-15px", :onclick => "$(buttonToDeleteUser).click()"%>
+<%= button_to " ", user_registration_path, :method => :delete, :id => "buttonToDeleteUser", :style => "margin-top:5px"%>
+<%= image_tag "/assets/ConfirmTerminationButton.png", :style => "cursor:pointer; margin-top:-20px", :onclick => "$(buttonToDeleteUser).click()"%>
 	</div>
 </div>
 </div>
