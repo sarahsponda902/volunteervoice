@@ -386,8 +386,8 @@ function clickReviewPhoto() {
 			<div id="delete-box" class="delete-popup">
 			<p style="font-size:2em">Are you sure?</p>
 			<a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a>
-			<%= button_to " ", :method => :delete, :style => "opacity:0", :id => "buttonToDelete"%>
-			<%= image_tag "/assets/realDeleteReviewButton.png", :style => "cursor:pointer", :onclick => "$('#buttonToDelete').click()"%>
+			<%= button_to " ", :method => :delete, :style => "display:none", :id => "buttonToDelete"%>
+			<%= image_tag "/assets/RealDeleteReviewButton.png", :style => "cursor:pointer", :onclick => "$('#buttonToDelete').click()"%>
 			</div>
 			
 			<div id="upload-box" class="upload-popup">
