@@ -281,11 +281,19 @@ return false;
 </div>
 	
 	<div id="price-breakdown-popup" class="price-breakdown-box">
-		<%= image_tag @organization.price_breakdown.url %>
+		<% if !(@organization.price_breakdown.nil?)%>	
+		<font style="font-size:2em">Information not available</font>
+		<% else %>	
+		<%= image_tag @organization.price_breakdown.url%>
+		<% end %>
     </div>
 		
-	<div id="price-ranges-popup" class="price-ranges-box">		
+	<div id="price-ranges-popup" class="price-ranges-box">
+		<% if !(@organization.price_ranges.nil?)%>	
+		<font style="font-size:2em">Information not available</font>
+		<% else %>	
 		<%= image_tag @organization.price_ranges.url%>
+		<% end %>
     </div>
 
 	<div id="info-popup" class="info-box">
