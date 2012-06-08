@@ -10,7 +10,7 @@
 	<script src="/assets/lightbox.js"></script>
 
 	<script>
-	  jQuery(document).ready(function($) {
+	  (document).ready(function() {
 	      $('a').smoothScroll({
 	        speed: 1000,
 	        easing: 'easeInOutCubic'
@@ -42,6 +42,38 @@
 			// When clicking on the button close or the mask layer the popup closed
 			$('a.close, #mask').live('click', function() { 
 			  $('#mask , .flag-popup').fadeOut(300 , function() {
+				$('#mask').remove();  
+			}); 
+			return false;
+			});
+			
+			$('a.info-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var infoBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(infoBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(infoBox).height() + 24) / 2; 
+				var popMargLeft = ($(infoBox).width() + 24) / 2; 
+
+				$(infoBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('a.close, #mask').live('click', function() { 
+			  $('#mask , .info-popup').fadeOut(300 , function() {
 				$('#mask').remove();  
 			}); 
 			return false;
@@ -267,6 +299,10 @@ $(document).ready(function () {
 		<%= image_tag @organization.price_ranges.url%>
     </div>
 
+	<div id="info-popup" class="info-box">
+		THIS IS THE INFO BOX.
+    </div>
+
 <style type="text/css">
 
 
@@ -344,6 +380,24 @@ $(document).ready(function () {
 
 /* You can customize to your needs  */
 .price-breakdown-box{
+	display:none;
+	background: #333;
+	padding: 10px; 	
+	border: 2px solid #ddd;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+.info-box{
 	display:none;
 	background: #333;
 	padding: 10px; 	

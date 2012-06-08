@@ -7,7 +7,7 @@
 		<div class="six columns" style="width:53%; text-align:left; margin:0; padding:0; margin-top:20px; padding-left:10px;">
 			<br />
 			<p style="font-size:3.5em; color:#62acbd; line-height:1.3em;"> <%= organization.name %></p>
-			<a style="font-size:1.2em; color:#62acbd;" href="<%=organization.url%>"><u> <%=organization.url%></u></a>
+			<a style="font-size:1.2em; color:#62acbd;" href="<%=organization.url%>" target="_blank"><u> <%=organization.url%></u></a>
 
 		</div>
 		<div class="three columns"  style="text-align:center; margin:0; padding:0; width:23%">
@@ -138,7 +138,7 @@
 		<p style="text-align:center; margin-left:35px">	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewThisOrg2.png"), :controller => "reviews", :action => "new", :organization_id => organization.id, :style =>"height:20px"%></p>
 
 
-	<p style="text-align:right; margin-top:-85px; padding-bottom:20px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/vviInfo.png"), "pages/get_info"%> </p>
+	<p style="text-align:right; margin-top:-85px; padding-bottom:20px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/vviInfo.png"), "#info-box", :class => "info-window"%> </p>
 
 </div>
 </div>
