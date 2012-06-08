@@ -77,6 +77,8 @@ RMTest::Application.routes.draw do
   
   match "reviews/reviewNew" => 'reviews#reviewNew'
   
+  match "reviews/already_reviewed" => 'reviews#already_reviewed'
+  
   ##### FEEDBACKS
   
   match "feedbacks/:id/changeShow" => 'feedbacks#changeShow'

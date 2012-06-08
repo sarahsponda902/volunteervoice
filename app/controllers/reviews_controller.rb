@@ -14,7 +14,15 @@ class ReviewsController < ApplicationController
       end
       @review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
+      
+      @user_review_orgs = []
+      if !(current_user.reviews.empty?)
+        current_user.reviews.each do |f|
+          @user_review_orgs << f.organization_id
+        end
+      end
        respond_to do |format|
+        if !(@user_review_orgs.include?(@review.organization_id))
          if @review.save
            @prog = Program.find(@review.program_id)
             @prog.overall = (((@prog.overall.to_f)*(@prog.reviews.count.to_f) + @review.overall.to_f)/(@prog.reviews.count.to_f + 1))
@@ -29,6 +37,9 @@ class ReviewsController < ApplicationController
            format.html { render :action => "new" }
            format.json { render :json => @review.errors, :status => :unprocessable_entity }
          end
+        else
+          redirect_to "/reviews/already_reviewed"
+        end
        end
      else
        redirect_to "/registrations/mustBe"
@@ -149,6 +160,9 @@ class ReviewsController < ApplicationController
       else
         redirect_to root_path
       end
+  end
+  
+  def already_reviewed
   end
 
 end
