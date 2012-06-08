@@ -386,7 +386,7 @@ function clickReviewPhoto() {
 			<div id="delete-box" class="delete-popup">
 			<p style="font-size:2em">Are you sure?</p>
 			<a id="close-delete-pop"> <%=image_tag "/assets/noKeepIt.png" %></a>
-			<%= button_to (image_tag "/assets/realDeleteReviewButton.png"), :method => :delete%>
+			<%= button_to " ", :method => :delete, :style => "background-image:url(/assets/realDeleteReviewButton.png) no-repeat"%>
 			</div>
 			
 			<div id="upload-box" class="upload-popup">
