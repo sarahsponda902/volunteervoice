@@ -21,8 +21,8 @@ class ReviewsController < ApplicationController
           @user_review_orgs << f.organization_id
         end
       end
+    if !(@user_review_orgs.include?(@review.organization_id))
        respond_to do |format|
-        if !(@user_review_orgs.include?(@review.organization_id))
          if @review.save
            @prog = Program.find(@review.program_id)
             @prog.overall = (((@prog.overall.to_f)*(@prog.reviews.count.to_f) + @review.overall.to_f)/(@prog.reviews.count.to_f + 1))
@@ -37,9 +37,9 @@ class ReviewsController < ApplicationController
            format.html { render :action => "new" }
            format.json { render :json => @review.errors, :status => :unprocessable_entity }
          end
-        else
-          redirect_to "/reviews/already_reviewed"
-        end
+       end
+       else
+         redirect_to "/reviews/already_reviewed"
        end
      else
        redirect_to "/registrations/mustBe"
