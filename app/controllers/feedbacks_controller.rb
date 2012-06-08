@@ -58,8 +58,10 @@ class FeedbacksController < ApplicationController
     if (user_signed_in? && current_user.admin?)
       @feedback = Feedback.find(params[:id])
       @feedback.destroy
+      redirect_to "/feedbacks"
+    else
+      redirect_to root_path
     end
-  redirect_to root_path
   end
 
 def changeShow
