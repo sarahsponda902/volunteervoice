@@ -221,7 +221,7 @@ function clickReviewPhoto() {
 
 
 </head>
-<input id="whichReview"/>
+
 	<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
 	        <div class="row">
 				<div class="twelve columns">
@@ -387,7 +387,8 @@ function clickReviewPhoto() {
 				<tr style="background-color:#E9ECE9">
 					<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 					<td>
-					<%= image_tag "/assets/RealDeleteReviewButton.png", :style => "cursor:pointer;margin-top:0px", :onclick => "document.getElementById('buttonToDelete'+$('#whichReview').value).click()"%></td></tr>
+					<form action="" class="button_to" method="post" id="buttonToDeleteReview"><div><input name="_method" type="hidden" value="delete" /><input id="buttonToDelete" type="submit" value=" " style="display:none"/><input name="authenticity_token" type="hidden" value="NbH0n/1mDBDgZ1x5DyVWPCII/nMdJ6PVqn1eOWO7fls=" /></div></form>>
+					<%= image_tag "/assets/RealDeleteReviewButton.png", :style => "cursor:pointer;margin-top:0px", :onclick => "$('buttonToDeleteReview').click()"%></td></tr>
 			</table>
 			
 			
