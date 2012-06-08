@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class RegistrationsController < Devise::RegistrationsController 
   include SimpleCaptcha::ControllerHelpers
   
   def after_sign_up_path_for(resource)
