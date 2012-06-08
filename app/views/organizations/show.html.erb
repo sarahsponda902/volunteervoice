@@ -87,14 +87,14 @@
 			$('a.price-ranges-window').click(function() {
 
 			            //Getting the variable's value from a link 
-				var price-rangesBox = $(this).attr('href');
+				var priceRangesBox = $(this).attr('href');
 
 				//Fade in the Popup
 				$(price-rangesBox).fadeIn(300);
 
 				//Set the center alignment padding + border see css style
-				var popMargTop = ($(price-rangesBox).height() + 24) / 2; 
-				var popMargLeft = ($(price-rangesBox).width() + 24) / 2; 
+				var popMargTop = ($(priceRangesBox).height() + 24) / 2; 
+				var popMargLeft = ($(priceRangesBox).width() + 24) / 2; 
 
 				$(price-rangesBox).css({ 
 					'margin-top' : -popMargTop,
@@ -119,14 +119,14 @@
 			$('a.price-breakdown-window').click(function() {
 
 			            //Getting the variable's value from a link 
-				var price-breakdownBox = $(this).attr('href');
+				var priceBreakdownBox = $(this).attr('href');
 
 				//Fade in the Popup
 				$(price-breakdownBox).fadeIn(300);
 
 				//Set the center alignment padding + border see css style
-				var popMargTop = ($(price-breakdownBox).height() + 24) / 2; 
-				var popMargLeft = ($(price-breakdownBox).width() + 24) / 2; 
+				var popMargTop = ($(priceBreakdownBox).height() + 24) / 2; 
+				var popMargLeft = ($(priceBreakdownBox).width() + 24) / 2; 
 
 				$(price-breakdownBox).css({ 
 					'margin-top' : -popMargTop,
