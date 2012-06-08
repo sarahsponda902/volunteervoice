@@ -346,6 +346,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(params[:organization])
     @organization.truncated75 = RedCloth.new( ActionController::Base.helpers.sanitize( truncate @organization.description, :length => 75), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.description = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.headquarters_location = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.headquarters_location ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html   
     @organization.good_to_know = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.good_to_know ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.training_resources = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.training_resources ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.run_by = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.run_by ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html

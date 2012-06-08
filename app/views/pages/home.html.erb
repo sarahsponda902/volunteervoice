@@ -143,7 +143,7 @@
 <%= link_to User.find(feedback.user_id).username, User.find(feedback.user_id) %><%end%></p>
 <% end %>
 <% if feedback.body.length > 100 %>
-<p style="margin-top:-25px; font-family:architectsDaughterRegular; text-align:right">--<%if feedback.user_id.nil?%>
+<p style="margin-top:-35px; font-family:architectsDaughterRegular; text-align:right">--<%if feedback.user_id.nil?%>
 <%="anonymous"%>
 <%else%>
 <%= link_to User.find(feedback.user_id).username, User.find(feedback.user_id) %><%end%></p>

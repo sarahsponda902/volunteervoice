@@ -78,6 +78,12 @@
     <%= f.label "program costs doesn't include" %><br />
     <%= f.text_area :program_costs_doesnt_include, :value => @organization.program_costs_doesnt_include %></div>
 
+
+  <div class = "field">
+	<%= f.label "Headquarters address" %>
+	<%= f.text_area :headquarters_location, :value => @organization.headquarters_location%>
+  </div>
+
   <div class="field">
     Run By<br />
     <%= f.text_field :run_by, :value => @organization.run_by %></div>

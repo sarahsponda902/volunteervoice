@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605221224) do
+ActiveRecord::Schema.define(:version => 20120608174943) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -208,6 +208,7 @@ ActiveRecord::Schema.define(:version => 20120605221224) do
     t.string   "price_ranges"
     t.string   "price_breakdown"
     t.text     "program_costs_doesnt_include"
+    t.text     "headquarters_location"
   end
 
   create_table "pages", :force => true do |t|
