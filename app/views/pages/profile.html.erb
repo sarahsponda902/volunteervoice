@@ -355,7 +355,7 @@ function clickReviewPhoto() {
 	<div align="right" style="font-family:architectsDaughterRegular; color: #e67b5a; font-size:1em; margin-right:55px; margin-top:-15px">
 		<%=@reviews.count%> Reviews
 		</div>
-            <div id="divs" style="overflow:hidden">
+            <div id="divs">
                 <% if @reviews.count != 0 %>
                 <% @reviews.each do |f|%>
 
