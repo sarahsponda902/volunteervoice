@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
              format.html { redirect_to "/pages/thank_you_review" }
               format.json { render json: @review, status: :created, location: @review }
          else
+           flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
            format.html { render :action => "new" }
            format.json { render :json => @review.errors, :status => :unprocessable_entity }
          end
