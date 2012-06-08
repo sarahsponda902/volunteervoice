@@ -86,9 +86,12 @@ function submitForm() {
 
 <div class="container" align="center" style="color:#575758">
 	<% flash.each do |key, value| %>
-	  <div class="flash <%=key%>"><%=value.count%> errors prevented your account from being created:<br />
+	  <div class="flash <%=key%>">
+	<% if value.count == 1 %>
+		*<>
+	<%=value.count%> errors prevented your account from being created:<br />
 		<% value.each do |f|%>
-			<li>f</li>
+			<li><%=f%></li>
 		<% end %>
 	  </div>
 	<% end %>
