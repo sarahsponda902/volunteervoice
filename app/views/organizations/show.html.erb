@@ -249,7 +249,8 @@ $(".group1").colorbox({rel:'group1'});
 	</div>
 </div>
 </div>
-
+</div>
+</div>
 <div id="flag-box" class="flag-popup">
 	<% if user_signed_in? %>
   	<%= form_tag ('/flags') %>
@@ -290,6 +291,8 @@ $(".group1").colorbox({rel:'group1'});
 	<% end %>
 
 </div>
+</div>
+</div>
 	
 	<div id="price-breakdown-popup" class="price-breakdown-box">
 		<% if !(@organization.price_breakdown.nil?)%>	
@@ -298,7 +301,8 @@ $(".group1").colorbox({rel:'group1'});
 		<%= image_tag @organization.price_breakdown.url%>
 		<% end %>
     </div>
-		
+	</div>
+	</div>	
 	<div id="price-ranges-popup" class="price-ranges-box">
 		<% if !(@organization.price_ranges.nil?)%>	
 		<font style="font-size:2em">Information not available</font>
@@ -306,11 +310,13 @@ $(".group1").colorbox({rel:'group1'});
 		<%= image_tag @organization.price_ranges.url%>
 		<% end %>
     </div>
-
+</div>
+</div>
 	<div id="info-popup" class="info-box">
 		THIS IS THE INFO BOX.
     </div>
-
+</div>
+</div>
 <style type="text/css">
 
 
