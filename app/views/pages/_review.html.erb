@@ -12,7 +12,7 @@
 
 <div>
 	<br />
-	<p style="margin-left:50px; font-size:1.1em;">Your <a style="color:#62acbd;" href="<%=f%>">Review</a> of <a style="color:#62acbd;" href="<%=Organization.find(Program.find(f.program_id).organization_id)%>"> <%=Organization.find(Program.find(f.program_id).organization_id).name%></a></p>
+	<p style="margin-left:50px; font-size:1.1em;">Your Review of <a style="color:#62acbd;" href="<%=Organization.find(Program.find(f.program_id).organization_id)%>"> <%=Organization.find(Program.find(f.program_id).organization_id).name%></a></p>
 <p style="text-align:right; font-size:1.1em; margin-top:-15px"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 </tr>
 	
