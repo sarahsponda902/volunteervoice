@@ -387,7 +387,7 @@ function clickReviewPhoto() {
 				<tr style="background-color:#E9ECE9">
 					<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 					<td>
-					<form action="" class="button_to" method="post" id="buttonToDeleteReview"><div><input name="_method" type="hidden" value="delete" /><input id="buttonToDelete" type="submit" value=" " style="display:none"/><input name="authenticity_token" type="hidden" value="NbH0n/1mDBDgZ1x5DyVWPCII/nMdJ6PVqn1eOWO7fls=" /></div></form>
+					<form action="" class="button_to" method="post" name="deleteReviewForm"><div><input name="_method" type="hidden" value="delete" /><input id="buttonToDelete" type="submit" value=" " style="display:none"/><input name="authenticity_token" type="hidden" value="NbH0n/1mDBDgZ1x5DyVWPCII/nMdJ6PVqn1eOWO7fls=" /></div></form>
 					<%= image_tag "/assets/RealDeleteReviewButton.png", :style => "cursor:pointer;margin-top:0px", :onclick => "$('#buttonToDelete').click()"%></td></tr>
 			</table>
 			
@@ -677,7 +677,7 @@ function clickReviewPhoto() {
 				<div style="margin-top:25px; margin-left:215px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :style =>"height:40px" %></div>
 				
 				
-								<p style="margin-top:10px"><%= link_to "Cancel my account, I hate everyone.", :controller => "registrations", :action => "destroy", :id =>@user.id, :confirm => "Are you sure you want to delete your account?" %></p>
+								<p style="margin-top:10px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure" %></p>
 				</div>
 				<div class="six columns" style=" margin-top:-365px; width:250px; padding-left:30px">
 					
