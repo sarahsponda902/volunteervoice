@@ -6,10 +6,14 @@
 		<%= image_tag "/assets/AreYouSure.png"%>
 		
 		
-<div style="text-align:center; margin-top:75px">		
+<div style="text-align:center; margin-top:75px">
+	<div class="six columns" style="width:46%">		
 <%= link_to (image_tag "/assets/DontTerminateButton.png"), "/pages/profile"%>
+	</div>
+	<div class="six columns" style="width:46%">	
 <%= button_to " ", user_registration_path, :method => :delete, :id => "buttonToDeleteUser"%>
 <%= image_tag "/assets/ConfirmTerminationButton.png", :style => "cursor:pointer; margin-top:-15px", :onclick => "$(buttonToDeleteUser).click()"%>
+	</div>
 </div>
 </div>
 </div>
