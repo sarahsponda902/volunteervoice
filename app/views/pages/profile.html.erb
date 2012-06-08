@@ -221,7 +221,7 @@ function clickReviewPhoto() {
 
 
 </head>
-<input id="whichReview" style="display:none"/>
+
 	<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
 	        <div class="row">
 				<div class="twelve columns">
@@ -386,7 +386,7 @@ function clickReviewPhoto() {
 				<tr><td colspan="2"><p style="font-size:2em; color:#575758; text-align:center">Are you sure?</p></td></tr>
 				<tr style="background-color:#E9ECE9">
 					<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
-					<td><%= button_to " ", review_path("($('#whichReview').value)"), :method => :delete, :id => "buttonToDelete"%>
+					<td><%= button_to " ", review_path(params[:whichReview]), :method => :delete, :id => "buttonToDelete"%>
 					<%= image_tag "/assets/RealDeleteReviewButton.png", :style => "cursor:pointer;margin-top:0px", :onclick => "$('#buttonToDelete').click()"%></td></tr>
 			</table>
 			
