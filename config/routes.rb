@@ -93,7 +93,6 @@ RMTest::Application.routes.draw do
   
     match 'sign_up' => 'devise/registrations#new'
     
-    
     match 'unlock' => 'devise/unlocks#new'
   
     match 'sign_in' => 'devise/sessions#new'
