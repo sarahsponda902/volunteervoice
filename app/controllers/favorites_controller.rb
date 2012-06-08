@@ -1,5 +1,6 @@
 class FavoritesController < ApplicationController
 
+  
   # POST /favorites
   # POST /favorites.json
   def create

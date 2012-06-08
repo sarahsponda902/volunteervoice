@@ -1,5 +1,5 @@
 class Feedback < ActiveRecord::Base
-  belongs_to :page
+  belongs_to :user
   attr_accessible :body, :user_id, :show, :email
   validates_length_of :body, :minimum => 5
   before_save :validates_email
