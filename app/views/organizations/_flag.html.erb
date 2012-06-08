@@ -1,5 +1,5 @@
-<% @theCountries2.keys.each do |f|%>
+<% @theCountries.keys.each do |f|%>
 <% if country == f%>
-	<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/AmericanSamoa.png", :style => "height:200px; width:400px"%>
+	<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/#{@theCountries2[f]}.png", :style => "height:200px; width:400px"%>
 	<% end %>
 <% end %>
