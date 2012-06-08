@@ -8,7 +8,7 @@
   <tr>
      <th>Name</th>
 	<th># of Programs</th>
-    <th>Description</th>
+    <th style="width:50%">Description</th>
      <th>Image</th>
     <th>Delete?</th>
     <th>Edit?</th>
@@ -20,7 +20,7 @@
 	<td><%= organization.programs.count %></td>
     <td><%= organization.description.html_safe %></td>
 	<td><%= image_tag organization.square_image.url, :style => "height:100px;width:100px" %></td>
-	<td><%= button_to "Delete", organization_path(organization.id), :confirm => "Are you sure?" , :method => :delete%></td>
+	<td><%= button_to "Delete", organization_path(organization.id), :confirm => "Are you sure?", :method => :delete%></td>
 	<td><%= link_to "Edit", edit_organization_path(organization) %></td>
   </tr>
 <% end %>

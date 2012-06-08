@@ -36,7 +36,7 @@ RMTest::Application.configure do
   config.assets.compile = true
 
   # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.debug = false
   
   config.action_mailer.perform_deliveries = true
   
