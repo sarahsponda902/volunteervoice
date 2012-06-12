@@ -1425,7 +1425,7 @@ class SearchesController < ApplicationController
     end
     
     if (params['group_size'].nil? || params['group_size'] == "false")
-      params['group_size'] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (15+)"]
+      params['group_size'] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
     end
     
     
@@ -1474,8 +1474,8 @@ class SearchesController < ApplicationController
             @resulting_ids = "#{params[:search]};search"
 
         else
-          if params[:subject].class.name == "String"
-            params[:subject] = [] << (params[:subject])
+          if params['subject'].class.name == "String"
+            params['subject'] = [] << (params['subject'])
           end
           
             if params[:region].nil?
