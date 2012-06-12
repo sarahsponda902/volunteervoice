@@ -575,43 +575,43 @@ class SearchesController < ApplicationController
         end
 
         if params['subject'].include?('Agriculture')
-          params['subject'] = ['Organic Farming', 'Sustainable Development'] + params['subject']
+          params['subject'] = ['Organic Farming', 'Sustainable Development'] + params['subject'].to_a
         end
         if params['subject'].include?('Animal Care')
-          params['subject'] = ['Animal Rights', 'Wildlife Conservation'] + params['subject']
+          params['subject'] = ['Animal Rights', 'Wildlife Conservation'] + params['subject'].to_a
         end
         if params['subject'].include?('Caregiving')
-          params['subject'] = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + params['subject']
+          params['subject'] = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + params['subject'].to_a
         end
         if params['subject'].include?('Community Development')
-          params['subject'] = params['subject']+['Youth Development and Outreach'] + params['subject']
+          params['subject'] = params['subject']+['Youth Development and Outreach'] + params['subject'].to_a
         end
         if params['subject'].include?('Culture and Community')
-          params['subject'] = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + params['subject']
+          params['subject'] = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + params['subject'].to_a
         end
         if params['subject'].include?('Disaster Relief')
-          params['subject'] = ['Economics', 'Microfinance'] + params['subject']
+          params['subject'] = ['Economics', 'Microfinance'] + params['subject'].to_a
         end
         if params['subject'].include?('Education')
-          params['subject'] = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + params['subject']
+          params['subject'] = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + params['subject'].to_a
         end
         if params['subject'].include?('Environmental')
-          params['subject'] = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + params['subject']
+          params['subject'] = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + params['subject'].to_a
         end
         if params['subject'].include?('Health and Medicine')
-          params['subject'] = ['HIV/AIDS', 'Family Planning', 'Nutrition', 'Veterinary Medicine', 'Clinical Work', 'Dental Work', 'Medical Research', 'Health Education', 'Public Health', 'Hospital Caregiving'] + params['subject']
+          params['subject'] = ['HIV/AIDS', 'Family Planning', 'Nutrition', 'Veterinary Medicine', 'Clinical Work', 'Dental Work', 'Medical Research', 'Health Education', 'Public Health', 'Hospital Caregiving'] + params['subject'].to_a
         end
         if params['subject'].include?('Human Rights')
-          params['subject'] = ['Womens Initiatives'] + params['subject']
+          params['subject'] = ['Womens Initiatives'] + params['subject'].to_a
         end
         if params['subject'].include?('Recreation')
-          params['subject'] = ['Adventure Travel'] + params['subject']
+          params['subject'] = ['Adventure Travel'] + params['subject'].to_a
         end
         if params['subject'].include?('Scientific Research')
-          params['subject'] = ['Archaeology', 'Environmental Biology'] + params['subject']
+          params['subject'] = ['Archaeology', 'Environmental Biology'] + params['subject'].to_a
         end
         if params['subject'].include?('Technology')
-          params['subject'] = ['Teaching Computer Literacy', 'Media Marketing and Graphic Design'] + params['subject']
+          params['subject'] = ['Teaching Computer Literacy', 'Media Marketing and Graphic Design'] + params['subject'].to_a
         end
     end
     
