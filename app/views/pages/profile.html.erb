@@ -387,7 +387,7 @@ function clickReviewPhoto() {
 				<tr style="background-color:#E9ECE9">
 					<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 					<td>
-					<%= form_tag :action => "/reviews/#{params[:review_id]}", :method => :delete, :name => "deleteReviewForm" do%>
+					<%= form_tag :action => "", :method => :delete, :name => "deleteReviewForm" do%>
 					<%= image_submit_tag "/assets/RealDeleteReviewButton.png"%>
 				<%end%></td></tr>
 			</table>

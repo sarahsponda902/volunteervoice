@@ -261,7 +261,9 @@ var	count = 0;
 		if (availableTags.indexOf($("#tags").attr("value")) < 0)
 		{
 			$("#tags").val("");
-		} 
+		} else {
+			
+		}
 	}
 
 	function checkFields(){
@@ -495,7 +497,10 @@ var	count = 0;
 
 	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Which Program?</div>
 	<div class="three columns" style="position:absolute; left:40%; top:132px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-	<select id="review_program_id"  onchange="checkFields()" name="review[program_id]" style="position:absolute; left:-5px; border:1px solid #575758; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;" value="<%=@review.program_id%>"><option value="">Select a Program</option></select>
+	<select id="review_program_id"  onchange="checkFields()" name="review[program_id]" style="position:absolute; left:-5px; border:1px solid #575758; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;" value="<%=@review.program_id%>"><option value="">Select a Program</option>
+		<% Program.all.each do |f|%>
+			<option value="<%=f.id%>"><%=f.name%></option>
+		<% end %></select>
 		</div>
 
 
