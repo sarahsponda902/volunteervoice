@@ -34,7 +34,7 @@
 </tr>
 </table>
 
-	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/edit.png"), :controller => "reviews", :action => "edit", :id => f.id, :style => "margin-top: -2px"%>  <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteReview.png"), "#delete-box", :class => "delete-window", :onclick => "document.deleteReviewForm.action = '/reviews/#{f.id}'" %></p> 
+	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/edit.png"), :controller => "reviews", :action => "edit", :id => f.id, :style => "margin-top: -2px"%>  <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteReview.png"), "#delete-box", :class => "delete-window", :review_id => "#{f.id}" %></p> 
 
 </table>
 	
