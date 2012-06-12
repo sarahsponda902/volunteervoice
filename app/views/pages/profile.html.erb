@@ -387,8 +387,7 @@ function clickReviewPhoto() {
 				<tr style="background-color:#E9ECE9">
 					<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 					<td>
-					<%= form_tag :action =>"", :class => "button_to", :method => "post", :name => "deleteReviewForm" do%><div><input name="_method" type="hidden" value="delete" /><input id="buttonToDelete" type="submit" value=" " style="display:none"/>
-					<% end %>
+					<%= button_to "delete", "/reviews/3", :method => :delete, :id => "buttonToDelete"%>
 					<%= image_tag "/assets/RealDeleteReviewButton.png", :style => "cursor:pointer;margin-top:0px", :onclick => "$('#buttonToDelete').click()"%></td></tr>
 			</table>
 			
