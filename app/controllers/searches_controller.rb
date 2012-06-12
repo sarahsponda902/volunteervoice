@@ -1474,6 +1474,9 @@ class SearchesController < ApplicationController
             @resulting_ids = "#{params[:search]};search"
 
         else
+          if params[:subject].class.name == "String"
+            params[:subject] = params[:subject].to_a
+          end
             if params[:region].nil?
               @search = Program.search do
 
