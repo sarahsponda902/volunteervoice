@@ -7,14 +7,16 @@
 <div class="container">
 	<div class="row" style="margin-top:120px">
 		<div class="ten columns" style="margin-left:8.45%; margin-right:8.45%; border-left:1px solid #e67b5a; border-right: 1px solid #e67b5a">
-			<p style="font-size:2.3em;font-family:architectsDaughterRegular;color:#e67b5a;margin-left:10%">Review Add-on:</p>
+			<p style="font-size:2.3em;font-family:architectsDaughterRegular;color:#e67b5a;margin-left:10%; line-height:1.3em">Review Add-on:</p>
 			<%= form_for @review do |f|%>
 			<%= f.text_area :body, :value => "", :style => "width:700px;height:150px; margin-left:10%"%>
 			<p style="margin-left:10%; margin-right:10%"><%= @review.body.html_safe%></p>
 		</div>
-
-		<div class="ten columns" style="float:center; margin-top:60px">
-			<div class="eight columns">
+		<br />
+		<br />
+		<br />
+		<div class="ten columns" style="margin-left:8.45%; marin-right:8.45%">
+			<div class="nine columns">
 				<div class="five columns">
 					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.3em; line-height:1.1em;"> Preparation/Orientation</p>
 					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.3em; line-height:1.1em;">Support</p>
@@ -39,7 +41,7 @@
 					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "5"/>
 				</div>
 			</div>
-			<div class="three columns">
+			<div class="two columns">
 				<%=image_submit_tag "/assets/submit.png"%>
 				<% end %>
 			</div>
