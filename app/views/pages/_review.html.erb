@@ -34,8 +34,18 @@
 </tr>
 </table>
 
-	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/edit.png"), :controller => "reviews", :action => "edit", :id => f.id, :style => "margin-top: -2px"%>  <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteReview.png"), "#delete-box", :class => "delete-window", :onclick => "setReviewNum(#{f.id})" %></p> 
+	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/edit.png"), :controller => "reviews", :action => "edit", :id => f.id, :style => "margin-top: -2px"%>  <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteReview.png"), "#delete-box#{f.id}", :class => "delete-window"%></p> 
 
+</table>
+
+<table id="delete-box<%=f.id%>" class="delete-popup">
+	<tr><td colspan="2"><p style="font-size:2em; color:#575758; text-align:center">Are you sure?</p></td></tr>
+	<tr style="background-color:#E9ECE9">
+		<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
+		<td>
+		<%= button_to "", "/reviews/#{f.id}", :method => :delete, :id => "deleteReview"%>
+		<%= image_tag "/assets/RealDeleteReviewButton.png", :onclick => "$('#deleteReview').click()", :style => "margin-top:0px"%>
+		</form></td></tr>
 </table>
 	
 </div>
