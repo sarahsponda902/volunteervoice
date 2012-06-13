@@ -14,8 +14,37 @@
 		</div>
 		<div class="ten columns" style="float:center;">
 			<div class="six columns" style="width:45%">
+				<div class="five columns">
+					<p style="font-family:architectsDaughterRegular;color:#575758"> Preparation/Orientation</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758">Support</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758">Project Impact</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758">Project Structure/Sustainability</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.3em">Overall?</p>
+				</div>
+				<div class="five columns">
+					<%= render :partial => "star", :locals => {:star => @review.preparation}%><br />
+					<%= render :partial => "star", :locals => {:star => @review.support}%><br />
+					<%= render :partial => "star", :locals => {:star => @review.impact}%><br />
+					<%= render :partial => "star", :locals => {:star => @review.structure}%><br />
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "0.5"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "1"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "1.5"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "2"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "2.5"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "3"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "3.5"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "4"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "4.5"/>
+					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "5"/>
+				</div>
+			</div>
+			<div class="six columns" style="width:45%">
+				<%=image_submit_tag "/assets/submit.png"%>
+				<% end %>
+			</div>
 		</div>
 	</div>
+</div>
 </div>
 	
 	
