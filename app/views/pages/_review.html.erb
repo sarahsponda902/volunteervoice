@@ -44,7 +44,7 @@
 		<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 		<td>
 		<%= button_to "", "/reviews/#{f.id}", :method => :delete, :id => "deleteReview"%>
-		<%= image_tag "/assets/RealDeleteReviewButton.png", :onclick => "$('#deleteReview').click()", :style => "margin-top:0px"%>
+		<%= image_tag "/assets/RealDeleteReviewButton.png", :onclick => "$('#deleteReview').click()", :style => "margin-top:0px; cursor:pointer"%>
 </td></tr>
 </table>
 	
