@@ -1,33 +1,19 @@
-<div style="margin-top:-100px;">
-	
-<table cellspacing="0" border="0" cellpadding="0" width="80%" style="margin-left:175px; margin-right:20px; margin-top:5px; color:#575758">
-		<tr style="background-color:#E0EEEE">
-			<td><p style="font-size:1.2em;margin-left:20px; color:#575758"><font style="font-weight:600">Date: </font><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
-	</tr>
-	<tr style="background-color:#E0EEEE">
-		<td><p style="font-size:1.2em;  margin-top:-10px;margin-left:20px; color:#575758" class = "fromMessage"><font style="font-weight:600;">From: </font>
-			<% if User.where(:id => m.sender_id).empty? || User.where(:id => m.sender_id).nil? %>
-			Deleted Account
+<div >
+<table style="margin-left:10px;" cellspacing="0" border="0" cellpadding="0" width="100%">
+	<tr>
+		<td width="18%"><b>
+			<% if User.where(:id => f.sender_id).empty? %>
+			<font style="margin-left:-5px; font-size:2.5em; font-family:chunkFiveRegular; color:#68c2d8">???</font>
 			<% else %>
-			<a href="/users/<%=User.find(m.sender_id).id%>"> <%= User.find(m.sender_id).username%> </a>
+			<a style="margin-left:-5px; font-size:2.5em; font-family:chunkFiveRegular; color:#68c2d8" href= "/users/<%=User.find(f.sender_id)%>"> <%=User.find(f.sender_id).username)%></a>
 			<% end %>
-			</td></tr>
-	<tr style="background-color:#E0EEEE">
-		<td><p style="font-size:1.2em;margin-left:20px; margin-top:-10px; color:#575758"><font style="font-weight:600">Subject: </font><%= m.subject %></p></td>
+			</td>
+		<td width="12%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
+		<td width="50%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%=f.subject%></p></td>
+		<td width="9%"><p style="margin-right:25px;margin-top:-5px" align="center"><%= button_to "", "/messages/#{f.id}", :method => :delete, :id => "deleteMessage"%>
+		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/favoritesX.png", :onclick => "$('#deleteMessage').click();"%>
+		</p></td>
 </tr>
-<tr style="background-color:#E0EEEE;">
-	<td><p style="margin-left:10px; color:#575758; font-size:1.05em;margin-top:0px; height:125px; width:100%; margin-left:0; overflow:auto;"><%= m.body.html_safe %> </td>
-</p></tr>
+<br />
 </table>
-	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/messageDelete.png"), "/messages/#{m.id}/mark_deleted", :confirm => "Are you sure?", :style => "float:right; margin-top:10px; margin-right:10px"%><% if !(User.where(:id => m.sender_id).empty? || User.where(:id => m.sender_id).nil?) %><a href="#popup-box" class="popup-window" style="float:right; margin-right:10px; margin-top:10px" recipient_id = "<%=m.sender_id%>"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messageReply.png"></a>
-<% end %>
-	
 </div>
-
-
-<style>
-.fromMessage a:visited{color:#68c2d8}
-.fromMessage a:active{color:#68c2d8}
-.fromMessage a:link{color:#68c2d8}
-.fromMessage a:hover{color:#e67b5a}
-</style>

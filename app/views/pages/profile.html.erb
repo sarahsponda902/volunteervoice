@@ -96,7 +96,7 @@
 
             $('#green').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 1, datacontainer: 'divvys', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green' });
 
-            $('#red').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 1, datacontainer: 'divyeas', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'red' });
+            $('#red').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divyeas', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'red' });
 
 			$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 1, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'red' });
 			
