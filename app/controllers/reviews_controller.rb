@@ -93,8 +93,8 @@ class ReviewsController < ApplicationController
 
      def update
        @review = Review.find(params[:id])
-        @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (@review.body[0..99] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-        @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (@review.body[0..199] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+        @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (params[:review][:body][0..99] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+        @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (params[:review][:body][0..199] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 
         params[:review][:body] = "<b>Update!  </b><br />"+RedCloth.new( ActionController::Base.helpers.sanitize( params[:review][:body] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html.html_safe + "<br /><br />"+@review.body
        
