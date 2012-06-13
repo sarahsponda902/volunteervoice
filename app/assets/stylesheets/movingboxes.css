@@ -107,11 +107,11 @@ a.mb-scrollButtons.disabled {
 	text-align: center;
 	background: #68c2d8;
 	position: relative;
-	left:65%;
-	top:-269px;
+	left:75%;
+	top:-290px;
 	z-index: 100;
 	width:150px;
-	height:310px;
+	height:500px;
 }
 .mb-controls a {
 	color: #444;
