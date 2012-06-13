@@ -16,7 +16,7 @@
 <% progNames = []%>
 <% Program.all.each do |f|%>
 <% progs << f.id%>
-<% orgNames << Organziation.find(f.organization_id).name%>
+<% orgNames << Organization.find(f.organization_id).name%>
 <% progNames << f.name %>
 <% end %>
 
