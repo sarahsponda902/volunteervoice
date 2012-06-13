@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120608174943) do
+ActiveRecord::Schema.define(:version => 20120613123931) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -142,7 +142,6 @@ ActiveRecord::Schema.define(:version => 20120608174943) do
 
   create_table "messages", :force => true do |t|
     t.string   "subject"
-    t.string   "body"
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.datetime "created_at",                           :null => false
@@ -150,6 +149,7 @@ ActiveRecord::Schema.define(:version => 20120608174943) do
     t.boolean  "recipient_deleted", :default => false
     t.datetime "read_at"
     t.boolean  "sender_deleted"
+    t.text     "body"
   end
 
   create_table "new_reviews", :force => true do |t|
