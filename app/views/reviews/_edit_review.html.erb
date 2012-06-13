@@ -12,14 +12,15 @@
 			<%= f.text_area :body, :value => "", :style => "width:600px;height:200px; margin-left:10%"%>
 			<p style="margin-left:10%; margin-right:10%"><%= @review.body.html_safe%></p>
 		</div>
-		<div class="ten columns" style="float:center;">
-			<div class="six columns" style="width:45%">
+
+		<div class="ten columns" style="float:center; margin-top:60px">
+			<div class="eight columns">
 				<div class="five columns">
-					<p style="font-family:architectsDaughterRegular;color:#575758"> Preparation/Orientation</p>
-					<p style="font-family:architectsDaughterRegular;color:#575758">Support</p>
-					<p style="font-family:architectsDaughterRegular;color:#575758">Project Impact</p>
-					<p style="font-family:architectsDaughterRegular;color:#575758">Project Structure/Sustainability</p>
-					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.3em">Overall (adjustable)</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.3em; line-height:1.1em;"> Preparation/Orientation</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.3em; line-height:1.1em;">Support</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.3em; line-height:1.1em;">Project Impact</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.3em; line-height:1.1em;">Project Structure/Sustainability</p>
+					<p style="font-family:architectsDaughterRegular;color:#575758; font-size:1.6em; line-height:1.2em">Overall (adjustable)</p>
 				</div>
 				<div class="five columns">
 					<%= render :partial => "star", :locals => {:star => @review.preparation}%><br />
@@ -38,7 +39,7 @@
 					<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "5"/>
 				</div>
 			</div>
-			<div class="six columns" style="width:45%">
+			<div class="three columns">
 				<%=image_submit_tag "/assets/submit.png"%>
 				<% end %>
 			</div>
