@@ -6,7 +6,13 @@
 
 <div class="container">
 	<div class="row">
-		<div class="ten columns" style="border-left:1px solid #e67b5a; border-right: 1px solid #e67b5a">
+		<div class="ten columns" style="float:center; border-left:1px solid #e67b5a; border-right: 1px solid #e67b5a">
+			<p style="font-size:1.5em;font-family:architectsDaughterRegular;color:#e67b5a">Review Add-on:</p><br />
+			<%= form_for @review do |f|%>
+			<%= f.text_area :body%>
+			<%= @review.body.html_safe%>
+		</div>
+		<div class="ten columns" style="float:center;">
 	</div>
 </div>
 	
