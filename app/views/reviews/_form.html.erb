@@ -288,7 +288,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 	}
 	
 	function removeOptions() {
-		$("#review_program_id").html('<option value="">Select a Program</option>');
+		$("#review_program_id").html('');
 	}
 
 	function checkFields(){
