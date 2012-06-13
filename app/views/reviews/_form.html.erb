@@ -273,8 +273,8 @@ var	count = 0;
 	
 	
 var allProgs = <%= array_or_string_for_javascript(progs) %>;
-var allProgNames = <%= (progNames).to_json %>;
-var orgNames = <%= (orgNames).to_json %>;
+var allProgNames = <%= escape_javascript(progNames.to_json) %>;
+var orgNames = <%= escape_javascript(orgNames.to_json) %>;
 
 
 	function checkValueAutocomplete() {
