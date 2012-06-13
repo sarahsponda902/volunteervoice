@@ -283,7 +283,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 		{
 			$("#tags").val("");
 		} else {
-			for (i = 0; i < orgNames.length; i++;) {
+			for (i = 0; i < orgNames.length; i++) {
 				if (orgNames[i] == $("#tags").attr("value")) {
 					$("#review_program_id").append("<option value"+allProgs[i]+">"+allProgNames[i]+"</option>");
 				}
