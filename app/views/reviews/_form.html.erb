@@ -288,7 +288,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 	}
 	
 	function removeOptions() {
-		$("#review_program_id").options.length = 0;
+		$("#review_program_id").html('');
 	}
 
 	function checkFields(){
@@ -464,7 +464,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 				<% if @review.organization_id.nil?%>
 					
 						<div width="200px">
-						<%= f.text_field :organization_name, :id =>"tags", :style => "float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onkeyup => "removeOptions();", :onblur => "checkValueAutocomplete()"%></div>
+						<%= f.text_field :organization_name, :id =>"tags", :style => "float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onclick => "removeOptions();", :onblur => "checkValueAutocomplete()"%></div>
 				
 				<% else %>
 				<div style="float:right; margin-right:20px; margin-top:5px; "><%= Organization.find(@review.organization_id).name%>
