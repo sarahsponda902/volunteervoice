@@ -7,9 +7,9 @@
 <div class="container">
 	<div class="row" style="margin-top:120px">
 		<div class="ten columns" style="margin-left:8.45%; margin-right:8.45%; border-left:1px solid #e67b5a; border-right: 1px solid #e67b5a">
-			<p style="font-size:2.3em;font-family:architectsDaughterRegular;color:#e67b5a;">Review Add-on:</p>
+			<p style="font-size:2.3em;font-family:architectsDaughterRegular;color:#e67b5a;margin-left:10%">Review Add-on:</p>
 			<%= form_for @review do |f|%>
-			<%= f.text_area :body, :value => "", :style => "width:600px;height:200px; margin-left:10%"%>
+			<%= f.text_area :body, :value => "", :style => "width:700px;height:150px; margin-left:10%"%>
 			<p style="margin-left:10%; margin-right:10%"><%= @review.body.html_safe%></p>
 		</div>
 
