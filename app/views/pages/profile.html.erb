@@ -393,10 +393,11 @@ function setReviewNum(num) {
 				<tr style="background-color:#E9ECE9">
 					<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 					<td>
-					<%= form_tag :action => "destroy", :method => :delete, :id => "deleteReviewForm" do%>
-					<%= hidden_field_tag :id %>
+					<form action="", method="post", id = "deleteReviewForm" >
+						<input type="hidden" name="_method" value="delete">
+						<%= form_authenticity_token %>
 					<%= image_submit_tag "/assets/RealDeleteReviewButton.png"%>
-				<%end%></td></tr>
+					</form></td></tr>
 			</table>
 			
 			
