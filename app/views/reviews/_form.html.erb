@@ -274,7 +274,7 @@ var	count = 0;
 	
 var allProgs = <%= array_or_string_for_javascript(progs) %>;
 var allProgNames = <%= array_or_string_for_javascript(progNames.map {|s| s.gsub("'", '')}) %>;
-var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", '')}) ) %>;
+var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", '')}) %>;
 
 
 	function checkValueAutocomplete() {
