@@ -19,7 +19,12 @@
 <% orgNames << Organization.find(f.organization_id).name%>
 <% progNames << f.name %>
 <% end %>
-
+<%=orgNames%>
+<br />
+<%= progNames%>
+<br />
+<%= progs%>
+<br />
 <script>
 
 var availableTags = [
@@ -278,6 +283,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames) %>
 		{
 			$("#tags").val("");
 		} else {
+			$("#tags").val("blah");
 			int i = 0;
 			for (i = 0; i < orgNames.length; i = i + 1;) {
 				if (orgNames[i] == $("#tags").attr("value")) {
