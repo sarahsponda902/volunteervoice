@@ -2,7 +2,7 @@
 <table style="margin-left:10px;" cellspacing="0" border="0" cellpadding="0" width="100%">
 	<tr>
 		<td width="18%"><b>
-			<a style="margin-left:-5px; font-size:2.5em; font-family:chunkFiveRegular; color:#68c2d8" href= "/users/<%=User.find(f.recipient_id)%>"> <%=User.find(f.sender_id).username)%></a>
+			<a style="margin-left:-5px; font-size:2.5em; font-family:chunkFiveRegular; color:#68c2d8" href= "/users/<%=User.find(f.recipient_id)%>"> <%=User.find(f.sender_id).username%></a>
 			</td>
 		<td width="12%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 		<td width="50%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%=f.subject%></p></td>
