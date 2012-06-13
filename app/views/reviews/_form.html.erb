@@ -272,9 +272,9 @@ var	count = 0;
 	}
 	
 	
-var allProgs = <%= array_or_string_for_javascript(progs) %>
-var allProgNames = <%= array_or_string_for_javascript(progNames) %>
-var orgNames = <%= array_or_string_for_javascript(orgNames) %>
+var allProgs = <%= array_or_string_for_javascript(progs) %>;
+var allProgNames = <%= array_or_string_for_javascript(progNames) %>;
+var orgNames = <%= array_or_string_for_javascript(orgNames) %>;
 
 
 	function checkValueAutocomplete() {
@@ -283,9 +283,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames) %>
 		{
 			$("#tags").val("");
 		} else {
-			$("#tags").val("blah");
-			int i = 0;
-			for (i = 0; i < orgNames.length; i = i + 1;) {
+			for (i = 0; i < orgNames.length; i++;) {
 				if (orgNames[i] == $("#tags").attr("value")) {
 					$("#review_program_id").append("<option value"+allProgs[i]+">"+allProgNames[i]+"</option>");
 				}
