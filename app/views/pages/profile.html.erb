@@ -220,7 +220,7 @@ function clickReviewPhoto() {
 
 
 function setReviewNum(num) {
-	document.deleteReviewForm.action = "/reviews/"+num;
+	$("#deleteReviewForm").action = "/reviews/"+num;
 }
 
  </script>
@@ -393,7 +393,7 @@ function setReviewNum(num) {
 				<tr style="background-color:#E9ECE9">
 					<td><a id="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 					<td>
-					<%= form_tag :action => "", :method => :delete, :name => "deleteReviewForm" do%>
+					<%= form_tag :action => "", :method => :delete, :id => "deleteReviewForm" do%>
 					<%= image_submit_tag "/assets/RealDeleteReviewButton.png"%>
 				<%end%></td></tr>
 			</table>
