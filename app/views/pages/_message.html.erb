@@ -7,9 +7,11 @@
 	<tr style="background-color:#E0EEEE">
 		<td><p style="font-size:1.2em;  margin-top:-10px;margin-left:20px; color:#575758" class = "fromMessage"><font style="font-weight:600;">From: </font>
 			<% if User.where(:id => m.sender_id).empty? || User.where(:id => m.sender_id).nil? %>
-			
+			Deleted Account
+			<% else %>
+			<a href="/users/<%=User.find(m.sender_id).id%>"> <%= User.find(m.sender_id).username%> </a>
 			<% end %>
-			<a href="/users/<%=User.find(m.sender_id).id%>"> <%= User.find(m.sender_id).username%> </a></td></tr>
+			</td></tr>
 	<tr style="background-color:#E0EEEE">
 		<td><p style="font-size:1.2em;margin-left:20px; margin-top:-10px; color:#575758"><font style="font-weight:600">Subject: </font><%= m.subject %></p></td>
 </tr>
@@ -17,8 +19,8 @@
 	<td><p style="margin-left:10px; color:#575758; font-size:1.05em;margin-top:0px; height:125px; width:100%; margin-left:0; overflow:auto;"><%= m.body.html_safe %> </td>
 </p></tr>
 </table>
-	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/messageDelete.png"), "/messages/#{m.id}/mark_deleted", :confirm => "Are you sure?", :style => "float:right; margin-top:10px; margin-right:10px"%><a href="#popup-box" class="popup-window" style="float:right; margin-right:10px; margin-top:10px" recipient_id = "<%=m.sender_id%>"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messageReply.png"></a>
-
+	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/messageDelete.png"), "/messages/#{m.id}/mark_deleted", :confirm => "Are you sure?", :style => "float:right; margin-top:10px; margin-right:10px"%><% if !(User.where(:id => m.sender_id).empty? || User.where(:id => m.sender_id).nil?) %><a href="#popup-box" class="popup-window" style="float:right; margin-right:10px; margin-top:10px" recipient_id = "<%=m.sender_id%>"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messageReply.png"></a>
+<% end %>
 	
 </div>
 
