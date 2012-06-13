@@ -1,9 +1,9 @@
 <div >
-<table style="margin-left:10px;" cellspacing="0" border="0" cellpadding="0" width="100%">
+<table style="margin-left:175px;" cellspacing="0" border="0" cellpadding="0" width="80%">
 	<tr>
 		<td width="18%"><b>
 			<% if User.where(:id => m.sender_id).empty? %>
-			<font style="margin-left:-5px; font-size:2.5em; font-family:chunkFiveRegular; color:#68c2d8">???</font>
+			<font style="margin-left:-5px; font-size:1.8em; font-family:chunkFiveRegular; color:#68c2d8">???</font>
 			<% else %>
 			<a style="margin-left:-5px; font-size:2.5em; font-family:chunkFiveRegular; color:#68c2d8" href= "/users/<%=User.find(m.sender_id)%>"> <%=User.find(m.sender_id).username%></a>
 			<% end %>
@@ -20,4 +20,5 @@
 </div>
 
 <table id="message-box" class="message-popup">
+	
 </table>
