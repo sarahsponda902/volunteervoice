@@ -263,7 +263,7 @@ var	count = 0;
 		{
 			$("#tags").val("");
 		} else {
-			<% @the_org = Organization.where(:name => $("#tags").attr("value"))).first %>
+			<% @the_org = Organization.where(:name => "$('#tags').attr('value')")).first %>
 			<%= @the_org.name %>
 		}
 	}
