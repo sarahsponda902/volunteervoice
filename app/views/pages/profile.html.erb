@@ -1241,7 +1241,15 @@ $(document).ready(function() {
 	}); 
 	return false;
 	});
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .delete-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
 	});
+	
+});
 	function showDeleteWindow() {
 
                 //Getting the variable's value from a link 
@@ -1264,14 +1272,6 @@ $(document).ready(function() {
 		$('#mask').fadeIn(300);
 
 		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .delete-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
 	});
 	
 
