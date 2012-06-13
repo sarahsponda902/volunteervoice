@@ -291,7 +291,7 @@ $(document).ready(function () {
 	
 	<div class="price-breakdown-popup" id="price-breakdown-box">
 		<% if !(@organization.price_breakdown.nil?)%>	
-		<p style="font-size:2em; line-height:2em; text-align:center">Information not available</p>
+		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758">Information not available</p>
 		<p style="font-family:architectsDaughterRegular; font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 		<% else %>	
 		<%= image_tag @organization.price_breakdown.url%>
@@ -301,7 +301,7 @@ $(document).ready(function () {
 	</div>	
 	<div class="price-ranges-popup" id="price-ranges-box">
 		<% if !(@organization.price_ranges.nil?)%>	
-		<p style="font-size:2em; line-height:2em; text-align:center">Information not available</p>
+		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758">Information not available</p>
 		<p style="font-family:architectsDaughterRegular;  font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 		<% else %>	
 		<%= image_tag @organization.price_ranges.url%>

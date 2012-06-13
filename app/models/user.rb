@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :message => "is already in use"
   validates_presence_of :username, :dob
   validates_length_of :username, :maximum => 30
-  validates_format_of :email, :with => %r{.+@.+\..+}, :message => "is not valid"
   
   before_save :square_image_crop
 
