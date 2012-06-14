@@ -36,7 +36,7 @@ $(function() {
 $(document).ready(function() {
 	if ((<%=@review.organization_name%>) != null) {
 		$("#tags").val(<%=@review.organization_name%>);
-		<%= Organizaion.where(:name => @review.organization_name).first.programs.each do |f| %>
+		<%= Organization.where(:name => @review.organization_name).first.programs.each do |f| %>
 		$("#review_program_id").append("<option value="+<%=f.id%>+">"+<%=f.name%>+"</option>");
 		<%end%>
 	}
