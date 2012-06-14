@@ -35,7 +35,7 @@
 		
 		<table id="flag-box<%=f.id%>" class="flag-popup">
 			<% if user_signed_in? %>
-		  	<%= form_tag ('/flags') do %>
+		  	<%= form_tag ('/flags') %>
 
 
 			    <p style="text-align:center; font-size:1.05em; font-family:cabinRegular; padding-bottom:80px; color:#575758">Report this review for<br />inappropriate content</p>
@@ -43,16 +43,15 @@
 				<tr><td style="width:200px">
 			<p style="width:150px; height:100px"><textarea id="body" style="height:115px; font-size:0.7em; font-style:italic" onclick="if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');" name="body">Please describe.</textarea></td></tr>
 
-			    <%hidden_field_tag :flagger_id, :value => current_user.id %>
+			    <%=hidden_field_tag :flagger_id, :value => current_user.id %>
 
-			    <%hidden_field_tag :poster_id, :value => f.user_id %>
+			    <%=hidden_field_tag :poster_id, :value => f.user_id %>
 
-			    <%hidden_field_tag :review_id, :value => f.id %>
+			    <%=hidden_field_tag :review_id, :value => f.id %>
 
 
 
 			    <p style="text-align:center; padding-top:15px"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px" %></p>
-				<% end %>
 
 			<% else %>
 			You must be signed in to flag a review.
