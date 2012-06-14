@@ -29,6 +29,7 @@ class OrganizationsController < ApplicationController
   
    
   def show
+    @flag = Flag.new
      @theCountries = Hash["AF" => "Afghanistan", 
      "AX" => "Aland Islands", 
      "AL"=> "Albania", 
