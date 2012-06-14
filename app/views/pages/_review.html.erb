@@ -1,4 +1,6 @@
- <%@photos = [] %>
+<div> 
+
+<%@photos = [] %>
  <%@photos << f.photo unless f.photo.blank?%>
  <%@photos << f.photo2 unless f.photo2.blank?%>
  <%@photos << f.photo3 unless f.photo3.blank?%>
@@ -10,7 +12,7 @@
 <% @photos << f.photo9 unless f.photo9.blank?%>
 <% @photos << f.photo10 unless f.photo10.blank?%>
 
-<div>
+
 	<br />
 	<p style="margin-left:50px; font-size:1.1em;">Your Review of <a class="reviewOrgLink" href="/organizations/<%=Organization.find(Program.find(f.program_id).organization_id)%>"> <%=  Organization.find(Program.find(f.program_id).organization_id).name%></a></p>
 <p style="text-align:right; font-size:1.1em; margin-top:-15px"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
