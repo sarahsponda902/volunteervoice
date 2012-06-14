@@ -36,19 +36,19 @@
 	
 		<table id="flag-box<%=f.id%>" class="flag-popup">
 			<% if user_signed_in? %>
-		  	<%= form_for @flag do |f| %>
+		  	<%= form_for @flag do |g| %>
 
 
 			    <p style="text-align:center; font-size:1.05em; font-family:cabinRegular; padding-bottom:80px; color:#575758">Report this review for<br />inappropriate content</p>
 
 				<tr><td>
-			<%=f.text_area :style => "height:115px; font-size:0.7em; font-style:italic", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe"%></td></tr>
+			<%=g.text_area :style => "height:115px; font-size:0.7em; font-style:italic", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe"%></td></tr>
 
-			    <%=f.hidden_field :flagger_id, :value => current_user.id %>
+			    <%=g.hidden_field :flagger_id, :value => current_user.id %>
 
-			    <%=f.hidden_field :poster_id, :value => f.user_id %>
+			    <%=g.hidden_field :poster_id, :value => f.user_id %>
 
-			    <%=f.hidden_field :review_id, :value => f.id %>
+			    <%=g.hidden_field :review_id, :value => f.id %>
 
 
 
