@@ -14,10 +14,6 @@
 
 			<br />
 			<br />
-			<% if organization.overall.nil?%>
-			<% organization.overall = 0%>
-			<% organization.save %>
-			<% end %>
 			<p style="margin-top:10px"><%= render :partial => "bigStar", :locals => {:star => organization.roundup(organization.overall)}%></p>
 			<br />
 

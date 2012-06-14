@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :reviews, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
+  has_many :feedbacks, :dependent => :destroy
   validates_uniqueness_of :username
   validates_uniqueness_of :email, :message => "is already in use"
   validates_presence_of :username, :dob
