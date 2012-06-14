@@ -1,4 +1,5 @@
-    <%@photos = [] %>
+	<div>  
+  <%@photos = [] %>
     <%@photos << f.photo unless f.photo.blank?%>
     <%@photos << f.photo2 unless f.photo2.blank?%>
     <%@photos << f.photo3 unless f.photo3.blank?%>
@@ -11,7 +12,7 @@
    <% @photos << f.photo10 unless f.photo10.blank?%>
 	
 	
-	
+
 	<p align="right" style="color:#e67b5a; font-size:1.1em; line-height:1.5em; margin-right:40px">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
 		<table cellspacing="0" style="border:1px solid #e67b5a; float:center; background-color:#E9ECE9; margin-left:40px;margin-right:40px" cellpadding="0">
 			<tr style="background-color:#E9ECE9" height="30px">
@@ -32,7 +33,7 @@
 				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><a href="#flag-box<%=f.id%>" class="flag-window"><%= (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png") %></a></p></td>
 			</tr>
 		</table>
-		
+	</div>	
 		<table id="flag-box<%=f.id%>" class="flag-popup">
 			<% if user_signed_in? %>
 		  	<%= form_tag ('/flags') %>
