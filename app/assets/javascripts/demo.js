@@ -16,20 +16,7 @@ $(function(){
 
 	});
 
-	// Add a slide
-	var imageNumber = 0,
-	// Set up demo external navigation links
-	navLinks = function(){
-		var i, t = '', len = $('#slider-one').getMovingBoxes().totalPanels + 1;
-		for ( i = 1; i < len; i++ ) {
-			t += '<a href="#">' + i + '</a> ';
-		}
-		$('.dlinks').find('span').html(t);
-	},
-	panel = '<li><img src="demo/*1.jpg" alt="picture" /><h2>News Heading #*2</h2><p>A very short exerpt goes here... <a href="#">more</a></p></li>',
-	// to test adding/removing panels to the second slider, comment out the line above and uncomment out the line below - slider-two uses divs instead of UL & LIs
-	// panel = '<div><img src="demo/*1.jpg" alt="picture" /><h2>News Heading #*2</h2><p>A very short exerpt goes here... <a href="#">more</a></p></div>',
-	slider = $('#slider-one'); // $('#slider-two'); // second slider
+
 
 	$('button.add').click(function(){
 		slider
