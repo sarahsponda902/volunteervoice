@@ -35,9 +35,9 @@ $(function() {
 
 $(document).ready(function() {
 	if ((<%=!(@review.organization_id.nil?)%>)) {
-		$("#tags").val(""+(<%=Organization.find(@review.organization_id).name%>));
+		$("#tags").val((<%=Organization.find(@review.organization_id).name.to_s%>).toString());
 		$("#review_program_id").append("<option value=''>Select a Program</option>");
-		<%= Organization.find(@review.organization_id).programs.each do |f| %>
+		<% Organization.find(@review.organization_id).programs.each do |f| %>
 		$("#review_program_id").append("<option value="+<%=f.id%>+">"+<%=f.name%>+"</option>");
 		<%end%>
 	}
