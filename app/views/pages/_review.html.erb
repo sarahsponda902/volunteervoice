@@ -15,8 +15,7 @@
 
 	<br />
 	<p style="margin-left:50px; font-size:1.1em;">Your Review of <a class="reviewOrgLink" href="/organizations/<%=Organization.find(Program.find(f.program_id).organization_id)%>"> <%=  Organization.find(Program.find(f.program_id).organization_id).name%></a></p>
-<p style="text-align:right; font-size:1.1em; margin-top:-15px"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
-</tr>
+<p style="text-align:right; font-size:1.1em; margin-top:-15px"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
 	
 <table cellspacing="0" border="0" cellpadding="0" width="100%" style="margin-left:20px; margin-right:20px; background-color:#E0EEEE; margin-top:5px">		
 	<tr style="background-color:#E0EEEE">
@@ -38,7 +37,6 @@
 
 	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/edit.png"), :controller => "reviews", :action => "edit", :id => f.id, :style => "margin-top: -2px"%>  <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteReview.png"), "#delete-box#{f.id}", :class => "delete-window"%></p> 
 
-</table>
 
 <table id="delete-box<%=f.id%>" class="delete-popup">
 	<tr><td colspan="2"><p style="font-size:2em; color:#575758; text-align:center">Are you sure?</p></td></tr>
