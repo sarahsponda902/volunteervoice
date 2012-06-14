@@ -34,7 +34,7 @@ $(function() {
 });
 
 $(document).ready(function() {
-	if ((<%=!(@review.organization_id.nil?)%>)) {
+	if ((<%=(@review.organization_id.class.name == "Integer")%>)) {
 		$("#tags").val(("<%=Organization.find(@review.organization_id).name.to_s%>"));
 		$("#review_program_id").append("<option value=''>Select a Program</option>");
 		<% Organization.find(@review.organization_id).programs.each do |f| %>
