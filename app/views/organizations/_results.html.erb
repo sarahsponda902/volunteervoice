@@ -33,7 +33,7 @@
 				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><a href="#flag-box<%=f.id%>" class="flag-window"><%= (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png") %></a></p></td>
 			</tr>
 		</table>
-	</div>	
+	
 		<table id="flag-box<%=f.id%>" class="flag-popup">
 			<% if user_signed_in? %>
 		  	<%= form_tag ('/flags') %>
@@ -61,3 +61,4 @@
 		</table>
 		<br />
 		<br />
+			</div>
