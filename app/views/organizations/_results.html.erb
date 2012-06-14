@@ -42,7 +42,7 @@
 			    <p style="text-align:center; font-size:1.05em; font-family:cabinRegular; padding-bottom:80px; color:#575758">Report this review for<br />inappropriate content</p>
 
 				<tr><td>
-			<%=f.text_area :style => "height:115px; font-size:0.7em; font-style:italic" :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe"%></td></tr>
+			<%=f.text_area :style => "height:115px; font-size:0.7em; font-style:italic", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe"%></td></tr>
 
 			    <%=f.hidden_field :flagger_id, :value => current_user.id %>
 
