@@ -34,6 +34,9 @@ $(function() {
 });
 
 $(document).ready(function() {
+	if ((<%=@review.organization_name%>) != null) {
+		$("#tags").val(<%=@review.organization_name%>);
+	}
 var	ones = 0;
 var	twos = 0;
 var	threes = 0;
@@ -461,16 +464,11 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 		<label for="review_Select a Company" style="font-size:2em; margin-left:3%">Select a Company:</label>
 	<div style="margin-top: -30px; height:30px;">
 				       
-				<% if @review.organization_id.nil?%>
+
 					
 						<div width="200px">
 						<%= f.text_field :organization_name, :id =>"tags", :style => "float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onblur => "removeOptions(); checkValueAutocomplete()"%></div>
 				
-				<% else %>
-				<div style="float:right; margin-right:20px; margin-top:5px; "><%= Organization.find(@review.organization_id).name%>
-				<%= f.hidden_field :organization_name, :value => Organization.find(@review.organization_id).name%>	
-				</div>
-				<% end %>
 
 				</div>
 				<div style="margin-left:55%; margin-top:3px"><a href="#allCompanies-box" id="allCompaniesShow" class="allCompanies-window">List All</a> | <a href="/new_reviews/new" id="reviewNew">Review New Company</a>
