@@ -103,7 +103,7 @@ class ReviewsController < ApplicationController
          respond_to do |format|
            if @review.update_attributes(params[:review])
              @review.save
-             format.html { redirect_to @review, :notice => 'Review Submitted' }
+             format.html { redirect_to "/pages/profile", :notice => 'Review Submitted' }
              format.json { head :no_content }
            else
              format.html { render :action => "edit" }
