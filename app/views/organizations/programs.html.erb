@@ -4,19 +4,19 @@
 <head>
 	<meta charset="utf-8">
 
-
+	
 	<!-- Required CSS -->
 	<link href="/assets/movingboxes.css" media="screen" rel="stylesheet">
+	<link href="/assets/demo.css" media="screen" rel="stylesheet">
 	<!--[if lt IE 9]>
 	<link href="css/movingboxes-ie.css" rel="stylesheet" media="screen" />
 	<![endif]-->
 
 	<!-- Required script -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<%= javascript_include_tag "/assets/jquery.js"%>
 	<script src="/assets/jquery.movingboxes.js"></script>
 
 	<!-- Demo only -->
-	<link href="/assets/demo.css" media="screen" rel="stylesheet">
 	<script src="/assets/demo.js"></script>
 	<style>
 		/* Overall & panel width defined using css in MovingBoxes version 2.2.2+ */
@@ -29,7 +29,7 @@
 </head>
 
 
-<body onclick="showPrograms()">
+<body>
 	
 	<div class="container">
 	    <div class="row" style="margin-left:40px;">
