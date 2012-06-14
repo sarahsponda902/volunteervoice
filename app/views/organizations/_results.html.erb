@@ -29,7 +29,7 @@
 			    <% end %> 
 			  	</td>
 				<td style="width:1%"></td>
-				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><%=link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), "#flag-box#{f.id}", :class => "flag-window"%></p></td>
+				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><%=link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), :id => "#flag-box#{f.id}", :class => "flag-window"%></p></td>
 			</tr>
 		</table>
 		
