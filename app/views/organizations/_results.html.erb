@@ -1,4 +1,4 @@
-	<div>  
+ 
   <%@photos = [] %>
     <%@photos << f.photo unless f.photo.blank?%>
     <%@photos << f.photo2 unless f.photo2.blank?%>
@@ -12,7 +12,7 @@
    <% @photos << f.photo10 unless f.photo10.blank?%>
 	
 	
-
+	<div> 
 	<p align="right" style="color:#e67b5a; font-size:1.1em; line-height:1.5em; margin-right:40px">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
 		<table cellspacing="0" style="border:1px solid #e67b5a; float:center; background-color:#E9ECE9; margin-left:40px;margin-right:40px" cellpadding="0">
 			<tr style="background-color:#E9ECE9" height="30px">
