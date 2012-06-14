@@ -38,7 +38,7 @@ $(document).ready(function() {
 		$("#tags").val(("<%=Organization.find(@review.organization_id).name.to_s%>"));
 		$("#review_program_id").append("<option value=''>Select a Program</option>");
 		<% Organization.find(@review.organization_id).programs.each do |f| %>
-		$("#review_program_id").append("<option value="+<%=f.id%>+">"+<%=f.name%>+"</option>");
+		$("#review_program_id").append("<option value="+"<%=f.id%>"+">"+"<%=f.name%>"+"</option>");
 		<%end%>
 	}
 var	ones = 0;
