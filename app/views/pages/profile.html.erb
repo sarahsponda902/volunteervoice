@@ -80,7 +80,7 @@
                 $('#green-contents').css('display', 'none');
                 $('#black-contents').css('display', 'none');
 				$('#sent-contents').css('display', 'none');
-                if ($(this).attr('id') == '1') {$('#red-contents').fadeIn(300); switchTabs('1');}
+                if ($(this).attr('id') == '1') {$('#red-contents').fadeIn(300); switchTabs('1'); messagesRead();}
                 if ($(this).attr('id') == '2') {$('#green-contents').fadeIn(300); switchTabs('2');}
                 if ($(this).attr('id') == '3') {$('#black-contents').fadeIn(300); switchTabs('3');}
 				if ($(this).attr('id') == '4') {$('#red-contents').fadeIn(300); switchTabs('4');}
@@ -218,6 +218,15 @@ function setReviewNum(num) {
 	$("#deleteReviewForm").action = "/reviews/"+num.toString();
 }
 
+function messagesRead() {
+	<% @user.received_messages.each do |f| %>
+ 		<% if !(f.message_read?) %>
+   			<% f.read_at = Time.now %>
+  		<% end %>
+  		<% f.save! %>
+	<% end %>
+}
+
  </script>
 
 
@@ -277,7 +286,11 @@ function setReviewNum(num) {
             <ul class="tab" style="margin-left:15px; margin-top:-20px; margin-bottom:0;">
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="3">My Reviews</li>
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="2">My Favorites</li>
+				<% if current_user.unread_message_count = 0 %>
                 <li style="font-family:architectsDaughterRegular; font-size:1.4em; margin-left:-9px" id="1">My Messages</li>
+				<% else %>
+				<li style="font-family:architectsDaughterRegular; font-size:1.4em; margin-left:-9px; color:#e67b5a" id="1">My Messages</li>
+				<% end %>
             </ul>
         </div>
 
