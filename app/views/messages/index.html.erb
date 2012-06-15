@@ -4,13 +4,15 @@
   <tr>
     <th>Sender</th>
 	<th>Recipient</th>
+	<th>Message #</th>
   </tr>
 
 <% @messages.each do |f| %>
 
   <tr>
-	<td><%=User.find(f.sender_id).username%></td>
-	<td><%=User.find(f.recipient_id).username%></td>
+	<td><%=f.sender_id%></td>
+	<td><%=f.recipient_id%></td>
+	<td><%=f.id%></td>
   </tr>
 
 <% end %>

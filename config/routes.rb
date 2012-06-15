@@ -89,8 +89,6 @@ RMTest::Application.routes.draw do
   
   match 'users.:id' => 'users#show'
   
-  match 'messages_read' => 'users#mark_messages_read'
-  
   devise_scope :user do
   
     match 'sign_up' => 'devise/registrations#new'
