@@ -43,8 +43,9 @@
 	<tr style="background-color:#E9ECE9">
 		<td><a class="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 		<td>
-
-		<%= image_tag "/assets/RealDeleteReviewButton.png", :style => "margin-top:0px; cursor:pointer"%>
+		<%= form_tag "/reviews/#{f.id}", :method => :delete do%>
+		<%= image_submit_tag "/assets/RealDeleteReviewButton.png"%>
+		<% end %>
 </td></tr>
 </table>
 	
