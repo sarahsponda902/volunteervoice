@@ -7,14 +7,19 @@ class OrganizationsController < ApplicationController
   
   
   def index
-    @organizations = Organization.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @organizations }
+    if user_signed_in? && current_user.admin?
+      @organizations = Organization.all
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @organizations }
+      end
+    else
+        redirect_to root_path
     end
-
-
   end
+
+
+
   
   def crop
     if user_signed_in? && current_user.admin?
