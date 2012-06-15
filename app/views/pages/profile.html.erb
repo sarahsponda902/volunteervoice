@@ -286,7 +286,7 @@ function messagesRead() {
             <ul class="tab" style="margin-left:15px; margin-top:-20px; margin-bottom:0;">
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="3">My Reviews</li>
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="2">My Favorites</li>
-				<% if current_user.unread_message_count = 0 %>
+				<% if current_user.unread_message_count == 0 %>
                 <li style="font-family:architectsDaughterRegular; font-size:1.4em; margin-left:-9px" id="1">My Messages</li>
 				<% else %>
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em; margin-left:-9px; color:#e67b5a" id="1">My Messages</li>
