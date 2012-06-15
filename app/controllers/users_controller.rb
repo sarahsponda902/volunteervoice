@@ -616,10 +616,7 @@ class UsersController < ApplicationController
   format.json { render :json => !@user }
   end
   end
-  
-  def mark_messages_read
-      
-  end
+
   
 
 end
