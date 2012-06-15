@@ -618,14 +618,6 @@ class UsersController < ApplicationController
   end
   
   def mark_messages_read
-    @user = current_user
-    @user.received_messages.each do |f|
-     if !(f.message_read?)
-       f.read_at = Time.now
-      end
-      f.save!
-    end
-    redirect_to "/pages/profile"
       
   end
   
