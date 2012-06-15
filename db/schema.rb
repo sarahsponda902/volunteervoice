@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120613123931) do
+ActiveRecord::Schema.define(:version => 20120615234152) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -356,6 +356,7 @@ ActiveRecord::Schema.define(:version => 20120613123931) do
     t.string   "square_image"
     t.boolean  "cropping"
     t.boolean  "crops"
+    t.integer  "unread_messages"
   end
 
   add_index "users", ["approved"], :name => "index_users_on_approved"
