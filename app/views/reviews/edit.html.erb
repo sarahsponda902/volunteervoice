@@ -1,5 +1,4 @@
-
-<% if !(current_user.nil?)%>
+<%= javascript_include_tag "/assets/jquery.js"%>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -41,10 +40,6 @@ $(document).ready(function() {
 });
 </script>
 
-	
-<%= render "edit_review" %>
-
-
 <style>
 #mask {
 	display: none;
@@ -79,6 +74,14 @@ fieldset {
 	border:none; 
 }
 </style>
+
+
+<% if !(current_user.nil?)%>
+
+
+<%= render "edit_review" %>
+
+
 <% end %>
 
 <% if current_user.nil?%>
