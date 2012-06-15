@@ -610,11 +610,11 @@ class UsersController < ApplicationController
   end
   
   def check_username
-  @user = User.find_by_email(params[:user][:username])
+    @user = User.find_by_email(params[:user][:username])
 
-  respond_to do |format|
-  format.json { render :json => !@user }
-  end
+    respond_to do |format|
+      format.json { render :json => !@user }
+    end
   end
 
   

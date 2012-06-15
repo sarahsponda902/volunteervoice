@@ -11,6 +11,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource 
+    resource.unread_messages = 0
     resource.admin_pass = Digest::SHA1.hexdigest("#{salt}:#{resource.admin_pass}") 
     if resource.admin_pass == "4e5d0ed9183ebf2fed541412497e15a30e72f9cb" && resource.admin_update == true
       resource.admin = true;
@@ -43,7 +44,7 @@ class RegistrationsController < Devise::RegistrationsController
   
   def must_be
     build_resource
-     
+    resource.unread_messages = 0
      if resource.save_with_captcha
            if resource.confirmed?
              set_flash_message :notice, :signed_up if is_navigational_format?

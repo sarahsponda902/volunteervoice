@@ -55,8 +55,8 @@
 				or <a href= "/sign_up">JOIN</a>
 				<% else %>
 				<a href="/pages/profile"> <%=current_user.username%> 
-					<% if current_user.unread_message_count > 0 %>
-					<font style="color:#e67b5a">(<%=current_user.unread_message_count%>)</font><% end %></a>&nbsp;&nbsp;
+					<% if current_user.unread_messages > 0 %>
+					<font style="color:#e67b5a">(<%=current_user.unread_messages%>)</font><% end %></a>&nbsp;&nbsp;
 				<a href= "/signout">LOGOUT</a>
 				<% end %>
 				
