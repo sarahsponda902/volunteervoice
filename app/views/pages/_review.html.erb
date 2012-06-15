@@ -38,6 +38,9 @@
 	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/edit.png"), :controller => "reviews", :action => "edit", :id => f.id, :style => "margin-top: -2px"%>  <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteReview.png"), "#delete-box#{f.id}", :class => "delete-window"%></p> 
 
 
+<table id="delete-box<%=f.id%>" class="delete-popup">
+
+</table>
 	
 </div>
 	
