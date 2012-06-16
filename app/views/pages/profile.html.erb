@@ -314,7 +314,7 @@ function openReplyBox(message_id) {
 		<font style="font-size:1.2em; color:#575758; line-height:2em">Subject:</font>
 		<%= f.text_field :subject, :id => "subject_field", :style => "height:20px;width:325px; margin-left:20px"%></td></tr>
 	<tr><td>
-			<%= f.text_area :body, :style => "width:410px;height:75px;overflow:scroll; margin-left:20px; margin-right:20px"%>
+			<%= f.text_area :body, :style => "width:410px;height:75px;overflow:auto; margin-left:20px; margin-right:20px"%>
 			<%= f.hidden_field :sender_id, :id => "sender_id_field"%>
 			<%= f.hidden_field :recipient_id, :id => "recipient_id_field"%>
 			<p style="text-align:center"><%= image_submit_tag "/assets/reply.png"%></p>

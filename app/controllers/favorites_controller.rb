@@ -22,7 +22,11 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     
     respond_to do |format|
-      format.html { redirect_to "/programs/#{@program_id}" }
+      if params[:the_place] == "profile"
+        format.html { redirect_to "/pages/profile" }
+      else
+        format.html { redirect_to "/programs/#{@program_id}" }
+      end
       format.json { head :no_content }
     end
   end
