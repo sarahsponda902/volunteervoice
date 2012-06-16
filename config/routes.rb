@@ -20,6 +20,9 @@ RMTest::Application.routes.draw do
   
   resources :ratings
   
+  ##### FLAGS
+  match "flags/thank_you" => "flags#thank_you"
+  
   ##### UPDATE MESSAGES
   match "update_messages/:id/send_message" => "update_messages#send_message"
   match "update_messages/:id/send_message_preview" => "udate_messages#send_message_preview"

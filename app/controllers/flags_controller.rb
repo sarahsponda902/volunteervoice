@@ -22,16 +22,8 @@ class FlagsController < ApplicationController
     end
   end
 
-  # GET /flags/new
-  # GET /flags/new.json
-  def new
-    @flag = Flag.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @flag }
-    end
-  end
+ def thank_you
+ end
 
   # POST /flags
   # POST /flags.json
