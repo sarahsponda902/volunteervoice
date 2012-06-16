@@ -268,7 +268,7 @@ $(document).ready(function () {
 				<% end %>
 		
 			</div>
-			<div id="reviewws_pager" style=" width:80%">
+			<div id="reviewws_pager" style=" width:80%; position:absolute; bottom:300px">
 			</div>
 	
 </div>
@@ -282,7 +282,7 @@ $(document).ready(function () {
 	<div id= "four columns" align="center" style="margin-top:20px; margin-bottom:5px">
 		<% if !(current_user.nil?) && current_user.admin? %>
 		<%= link_to "edit", "/organizations/#{@organization.id}/edit"%>
-		 <%= @organization.page_views%>
+		  | Page views: <%= @organization.page_views%>
 		<% end %>
 	</div>
 </div>
