@@ -18,13 +18,6 @@
 
 	<!-- Demo only -->
 	<script src="/assets/demo.js"></script>
-	<style>
-		/* Overall & panel width defined using css in MovingBoxes version 2.2.2+ */
-		ul#slider-one { width: 300px; }
-		ul#slider-one > li { width: 150px; }
-		div#slider-two { width: 500px; }
-		div#slider-two > div { width: 360px; }
-	</style>
 
 </head>
 
@@ -42,9 +35,9 @@
 					<li style="background-color: #E9ECE9; border-top:1px solid #575758; border-right:1px solid #575758; border-left:1px solid #575758; height:20px; padding-left:20px;padding-right:20px; font-size:1.3em; text-align:center;"><a href="/organizations/<%= @organization.id%>/programs">Programs</a></li></div>
 	            </ul>
 	        </div>
-	<div class="row" style="margin-top:100px; border:1px solid #575758; background-color:#E9ECE9; padding-bottom:200px; color:#575758;">
+	<div class="row" style="margin-top:100px; border:1px solid #575758; background-color:#E9ECE9; padding-bottom:200px; color:#575758;width:760px; overflow-x:hidden">
 
-<div id="wrapper" style="width:760px; overflow-x:hidden">
+<div id="wrapper">
 
 
 	
@@ -52,7 +45,7 @@
 
 
 	<!-- Slider #2 (images of slider #1 reversed) -->
-	<div id="slider-two">
+	<div id="slider-two" style="width:500px">
 
 
 		<% @countries = Hash.new %>
@@ -77,7 +70,7 @@
 		
 		
 
-		<div>
+		<div style="width:360px">
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/#{@theCountries2[f]}.png", :style => "height:200px; width:400px"%>
 			<h2><span><%= @theCountries2[f]%></span></h2>
 			<p>Programs: <%=@countries[f]%>  </p>
