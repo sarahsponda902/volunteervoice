@@ -66,11 +66,19 @@
 		<% @isAre = "are"%>
 		<% @isProgram = "programs"%>
 		<% end %>
-		<% end %>
+		
 		
 		
 
+		<div style="width:360px">
+				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/#{@theCountries2[f]}.png", :style => "height:200px; width:400px"%>
+			<h2><span><%= @theCountries2[f]%></span></h2>
+			<p>Programs: <%=@countries[f]%>  </p>
+			<br />
+
 		</div>
+		<% end %>
+	</div>
 	<br />
 	<br />
 	<br />
