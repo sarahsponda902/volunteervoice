@@ -29,13 +29,18 @@
 		return false;
 	}
 	</script>
-	
+	<% reviews_count = 0%>
+	<% @results.each do |f|%>
+	<% if f.flag_show != false%>
+	<% reviews_count = reviews_count + 1%>
+	<% end %>
+	<% end %>
 		<script type="text/javascript">
 
 
 		$(document).ready(function() {
 
-				$('#reviews_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+				$('#reviews_pager').smartpaginator({ totalrecords: <%=reviews_count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 
 			$('a.popup-window').click(function() {
@@ -261,9 +266,11 @@
 	<div class="row">
 		<div id="results">
 			<% @results.each do |f| %>
+			<% if f.flag_show != false%>
 			<div>
 				<%= render :partial => "results", :locals => {:f => f, :program => @program}%>
 			</div>
+			<% end %>
 			<% end %>
 		</div>
 		<div id="reviews_pager" style="position:absolute; bottom:300px; width:900px">
