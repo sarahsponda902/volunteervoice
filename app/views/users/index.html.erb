@@ -46,8 +46,8 @@
 			<font style="font-weight:600;color:red">No</font>
 			<% end %>
 		</td>
-		<td><%= link_to "Edit", user, method: :edit%></td>
-		<td><%= link_to "Delete", user, method: :delete%></td>
+		<td><%= link_to "Edit", user_registration_path(user), method: :edit%></td>
+		<td><%= link_to "Delete", user_registration_path(user), method: :delete%></td>
 	</tr>
 <% end %>
 </table>
