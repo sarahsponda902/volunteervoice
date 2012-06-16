@@ -70,10 +70,8 @@
 		
 		
 
-		<div>
-				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/#{@theCountries2[f]}.png", :style => "height:200px; width:400px"%>
-			<h2><span><%= @theCountries2[f]%></span></h2>
-			<p>Programs: <%=@countries[f]%>  </p>
+		<div style="width:360px">
+
 			<br />
 			<% Program.where(:location => f, :organization_id => @organization.id).each do |p|%>
 			<table style="border-bottom:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758; background-color: #E9ECE9">
