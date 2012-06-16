@@ -6,7 +6,7 @@
 #title img { border: 0; }
 
 /* panel images */
-.mb-inside img { width: 80%; }
+.mb-inside img { width: 100%; }
 
 /* height of the placeholder until image completely loads - needed for
    webkit browsers, add this only if you don't want the height animation
