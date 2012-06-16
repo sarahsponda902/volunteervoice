@@ -25,6 +25,8 @@
 #lightbox img {
   width: auto;
   height: auto;
+  max-width:600px;
+  max-height:500px;
 }
 /* line 27, ../sass/lightbox.sass */
 #lightbox a img {
