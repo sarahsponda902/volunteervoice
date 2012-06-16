@@ -1,4 +1,8 @@
 RMTest::Application.routes.draw do
+  
+  
+  ##### FLAGS
+  get "flags/thank_you"
 
   resources :mad_mimi_emails
 
@@ -19,9 +23,6 @@ RMTest::Application.routes.draw do
   resources :favorites
   
   resources :ratings
-  
-  ##### FLAGS
-  get "flags/thank_you"
   
   ##### UPDATE MESSAGES
   match "update_messages/:id/send_message" => "update_messages#send_message"
