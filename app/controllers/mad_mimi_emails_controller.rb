@@ -1,5 +1,5 @@
 class MadMimiEmailsController < ApplicationController
-  
+  include ActionView::Helpers::TextHelper
   require 'rubygems'
   require 'madmimi'
   

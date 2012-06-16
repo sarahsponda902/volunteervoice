@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-
+include ActionView::Helpers::TextHelper
   
    def create
      if user_signed_in?

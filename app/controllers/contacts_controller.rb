@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-
+include ActionView::Helpers::TextHelper
   # GET /contacts/new
   # GET /contacts/new.json
   def new

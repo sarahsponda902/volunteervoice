@@ -1,6 +1,6 @@
 class ProgramsController < ApplicationController
 
-	
+	include ActionView::Helpers::TextHelper
 	require 'aws/s3'
 	
 	

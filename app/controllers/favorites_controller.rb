@@ -1,5 +1,5 @@
 class FavoritesController < ApplicationController
-
+include ActionView::Helpers::TextHelper
   
   # POST /favorites
   # POST /favorites.json

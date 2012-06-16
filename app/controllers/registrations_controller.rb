@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController 
   include SimpleCaptcha::ControllerHelpers
-  
+  include ActionView::Helpers::TextHelper
   def after_sign_up_path_for(resource)
          "/pages/profile"
   end

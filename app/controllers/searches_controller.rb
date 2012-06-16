@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  
+  include ActionView::Helpers::TextHelper
    @theRegions = Hash.new ['AF' => 16, 
     'AX' => 6, 
     'AL' => 9, 

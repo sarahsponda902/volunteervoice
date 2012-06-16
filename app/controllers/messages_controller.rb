@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-
+include ActionView::Helpers::TextHelper
   # GET /messages/1
   # GET /messages/1.json
   def show

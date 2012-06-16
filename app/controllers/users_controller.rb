@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  
+  include ActionView::Helpers::TextHelper
 	require 'aws/s3'
   
   helper :all

@@ -1,6 +1,7 @@
 class NewReviewsController < ApplicationController
   # GET /new_reviews
   # GET /new_reviews.json
+  include ActionView::Helpers::TextHelper
   def index
     if user_signed_in? && current_user.admin?
     @new_reviews = NewReview.all.reverse

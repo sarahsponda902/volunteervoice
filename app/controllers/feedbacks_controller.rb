@@ -1,6 +1,8 @@
 class FeedbacksController < ApplicationController
   # GET /feedbacks
   # GET /feedbacks.json
+  include ActionView::Helpers::TextHelper
+  
   def index
     if (user_signed_in? && current_user.admin?)
     @feedbacks = Feedback.all.reverse

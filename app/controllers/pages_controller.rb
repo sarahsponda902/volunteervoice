@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  
+  include ActionView::Helpers::TextHelper
   def home
     @feedbacks = Feedback.where(:show => true)
     @reviews = Review.where(:show => true)

@@ -2,7 +2,7 @@ class BlogPostsController < ApplicationController
 	unloadable
 	
 	require 'aws/s3'
-  
+  include ActionView::Helpers::TextHelper
 	helper :blog
 
 	layout :choose_layout
