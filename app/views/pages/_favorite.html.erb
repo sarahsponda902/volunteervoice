@@ -4,7 +4,7 @@
 			<td width="7%"><image style="margin-top:-10px" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/astrick.png"></td>
 			<td width="75%"><b><a style="margin-left:-5px; font-size:2.5em; font-family:chunkFiveRegular; color:#68c2d8" href= "<%=Organization.find(Program.find(f.program_id).organization_id)%>"> <%=(Organization.find((Program.find(f.program_id)).organization_id).name)%></a></b><a style="font-size:1.8em; color:gray" href= "<%= Program.find(f.program_id)%>"> - <%=(Program.find(f.program_id)).name%></a></td>
 		<% if @user == current_user %>
-			<td><p style="margin-right:25px;margin-top:-5px" align="center"><%= button_to "", "/favorites/#{f.id}", :method => :delete, :id => "deleteFavorite#{f.id}", :the_place => "profile"%>
+			<td><p style="margin-right:25px;margin-top:-5px" align="center"><%= button_to "", "/favorites/#{f.id}", :method => :delete, :id => "deleteFavorite#{f.id}"%>
 			<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/favoritesX.png", :onclick => "$('#deleteFavorite#{f.id}').click();"%>
 			<%end%></p></td>
 	</tr>

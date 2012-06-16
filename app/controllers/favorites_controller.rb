@@ -22,10 +22,10 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     
     respond_to do |format|
-      if params[:the_place] == "profile"
+      if params[:the_place].class.name != "Integer"
         format.html { redirect_to "/pages/profile" }
       else
-        format.html { redirect_to "/programs/#{params[:the_place]}" }
+        format.html { redirect_to "/programs/#{@program_id}}" }
       end
       format.json { head :no_content }
     end
