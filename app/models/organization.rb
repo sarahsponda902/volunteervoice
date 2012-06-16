@@ -11,7 +11,7 @@ scope :random, :order=>'RAND()', :limit=>1
 validates_uniqueness_of :name
 
 before_save :square_image_crop
-after_save :change_file_name
+
 
 before_create :set_page_views_to_zero
   def set_page_views_to_zero
@@ -43,22 +43,6 @@ def square_image_crop
      self.square_image = image
    end
  end
- def change_file_name 
-   if self.image 
-     @name ||= Digest::MD5.hexdigest(self.image.original_filename)
-     self.image.original_filename = "#{@name}.#{file.extension}"
-     self.image.save
-   end
-   if self.price_breakdown 
-     @name ||= Digest::MD5.hexdigest(self.price_breakdown.original_filename)
-     self.price_breakdown.original_filename = "#{@name}.#{file.extension}"
-     self.price_breakdown.save
-   end
-   if self.price_ranges 
-     @name ||= Digest::MD5.hexdigest(self.price_ranges.original_filename)
-     self.price_ranges.original_filename = "#{@name}.#{file.extension}"
-     self.price_ranges.save
-   end
- end
+ 
 
 end

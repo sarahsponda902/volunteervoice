@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_length_of :username, :maximum => 30
   
   before_save :square_image_crop
-  after_save :change_file_name
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -48,13 +48,6 @@ def square_image_crop
      self.square_image = image
    end
  end
- 
- def change_file_name 
-   if self.photo 
-     @name ||= Digest::MD5.hexdigest(self.photo.original_filename)
-     self.photo.original_filename = "#{@name}.#{file.extension}"
-     self.photo.save
-   end
- end
+
   
 end

@@ -36,7 +36,7 @@ class BlogPost < ActiveRecord::Base
 	before_save :check_published, :if => :not_resaving?
 	before_save :save_tags, :if => :not_resaving?
 	before_save :square_image_crop
-	after_save :change_file_name
+
 
 	before_save :parse_body
 	
@@ -119,13 +119,6 @@ class BlogPost < ActiveRecord::Base
       self.square_image = image
     end
   end
-  
-  def change_file_name 
-    if self.image
-      @name ||= Digest::MD5.hexdigest(self.image.original_filename)
-      self.image.original_filename = "#{@name}.#{file.extension}"
-      self.image.save
-    end
-  end
+
   
 end
