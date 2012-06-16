@@ -312,7 +312,7 @@ function openReplyBox(message_id) {
 	<tr><td>
 	<%= form_for @message do |f|%>
 		<font style="font-size:1.2em; color:#575758; line-height:2em">Subject:</font>
-		<%= f.text_field :subject, :id => "subject_field", :style => "height:20px;width:200px"%></td></tr>
+		<%= f.text_field :subject, :id => "subject_field", :style => "height:20px;width:325px"%></td></tr>
 	<tr><td>
 			<%= f.text_area :body, :style => "width:410px;height:75px;overflow:scroll; margin-left:20px; margin-right:20px"%>
 			<%= f.hidden_field :sender_id, :id => "sender_id_field"%>
