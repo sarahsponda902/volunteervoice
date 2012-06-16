@@ -10,10 +10,6 @@ $(function(){
 		buildNav     : true,   // if true, navigation links will be added
 		navFormatter : function(index, panel){ return panel.find('h2 span').text(); } // function which gets nav text from span inside the panel header
 
-		// width and panelWidth options removed in v2.2.2, but still backwards compatible
-		 width        : 500,    // overall width of movingBoxes (not including navigation arrows)
-		 panelWidth   : 0.7,    // current panel width
-
 	});
 
 
