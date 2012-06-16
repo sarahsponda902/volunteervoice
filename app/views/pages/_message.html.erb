@@ -1,11 +1,11 @@
-<div style="margin-top:-50px">
+<div style="margin-top:-75px">
 <table style="margin-left:175px;" cellspacing="0" border="0" cellpadding="0" width="80%">
 	<tr>
 		<td width="18%"><b>
 			<% if User.where(:id => m.sender_id).empty? %>
 			<font style="margin-left:-5px; font-size:1.4em; font-family:chunkFiveRegular; color:#68c2d8">???</font>
 			<% else %>
-			<a style="margin-left:-5px; font-size:1.4em; font-family:chunkFiveRegular; color:#68c2d8" href= "#message-box" class="message-window"> <%=User.find(m.sender_id).username%></a>
+			<a style="margin-left:-5px; font-size:1.4em; font-family:chunkFiveRegular; color:#68c2d8" href= "#message-box<%=m.id%>" class="message-window"> <%=User.find(m.sender_id).username%></a>
 			<% end %>
 			</td>
 		<td width="12%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
@@ -19,7 +19,7 @@
 
 
 
-<table id="message-box" class="message-popup">
+<table id="message-box<%=m.id%>" class="message-popup">
 	This is the message
 </table>
 
