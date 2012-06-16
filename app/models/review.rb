@@ -35,16 +35,16 @@ mount_uploader :photo10, ImageUploader
 
 
 def validate_image_size
-  image = MiniMagick::Image.open(self.photo.path) unless !self.photo.path
-  image2 = MiniMagick::Image.open(self.photo2.path) unless !self.photo2.path
-  image3 = MiniMagick::Image.open(self.photo3.path) unless !self.photo3.path
-  image4 = MiniMagick::Image.open(self.photo4.path) unless !self.photo4.path
-  image5 = MiniMagick::Image.open(self.photo5.path) unless !self.photo5.path
-  image6 = MiniMagick::Image.open(self.photo6.path) unless !self.photo6.path
-  image7 = MiniMagick::Image.open(self.photo7.path) unless !self.photo7.path
-  image8 = MiniMagick::Image.open(self.photo8.path) unless !self.photo8.path
-  image9 = MiniMagick::Image.open(self.photo9.path) unless !self.photo9.path
-  image10 = MiniMagick::Image.open(self.photo10.path) unless !self.photo10.path
+  image = MiniMagick::Image.open(self.photo.url) unless !self.photo.url
+  image2 = MiniMagick::Image.open(self.photo2.url) unless !self.photo2.url
+  image3 = MiniMagick::Image.open(self.photo3.url) unless !self.photo3.url
+  image4 = MiniMagick::Image.open(self.photo4.url) unless !self.photo4.url
+  image5 = MiniMagick::Image.open(self.photo5.url) unless !self.photo5.url
+  image6 = MiniMagick::Image.open(self.photo6.url) unless !self.photo6.url
+  image7 = MiniMagick::Image.open(self.photo7.url) unless !self.photo7.url
+  image8 = MiniMagick::Image.open(self.photo8.url) unless !self.photo8.url
+  image9 = MiniMagick::Image.open(self.photo9.url) unless !self.photo9.url
+  image10 = MiniMagick::Image.open(self.photo10.url) unless !self.photo10.url
   if image
     unless (image[:width] < 700 && image[:height])
       errors.add :image, "must be smaller than 700x700 px" 
