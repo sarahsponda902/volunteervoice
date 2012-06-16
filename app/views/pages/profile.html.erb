@@ -279,9 +279,38 @@ function messagesRead() {
 	<% @user.save %>
 }
 
+function setMessage(recipient, sender, subject) {
+	$("#recipient_id_field").val(recipient);
+	$("#sender_id_field").val(sender);
+	$("#subject_field").val(subject);
+}
+
+function openReplyBox() {
+	
+}
+
  </script>
 
 </head>
+<% @message = Message.new%>
+<div id="message-box" class="m-popup">
+	<tr><td><font style="font-family:chunkFiveRegular; font-size:2.5em; color:#575758">Reply Message</font></td></tr> 
+	<tr><td>
+	<%= form_for @message do |f|%>
+		<font style="font-size:1.2em; color:#575758; line-height:2em; font-style:italic">Subject:</font>
+		<%= f.text_field :recipient_id, :id => "recipient_id_field", :style => "height:20px;width:200px"%></td></tr>
+	<tr><td>
+			<%= f.text_area :body, :style => "width:380px;height:75px;overflow:scroll"%>
+			<%= f.hidden_field :sender_id, :id => "sender_id_field"%>
+			<%= f.hidden_field :subject, :id => "subject_field"%>
+			<p style="text-align:right"><%= image_submit_tag "/assets/submit.png"%></p>
+	<% end %>
+	</td></tr>
+	
+	
+</div>
+
+
 
 	<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
 	        <div class="row">
