@@ -5,6 +5,7 @@
     <th>Sender</th>
 	<th>Recipient</th>
 	<th>Message #</th>
+	<th>RD | SD </th>
   </tr>
 
 <% @messages.each do |f| %>
@@ -27,6 +28,7 @@
 	
 	
 	<td><%=f.id%></td>
+	<td><%=f.recipient_deleted%> | <%=f.sender_deleted%></td>
   </tr>
 
 <% end %>
