@@ -62,12 +62,12 @@
 		
 		<table id="review-box<%=f.id%>" class="review-popup">
 			<tr style="background-color:#D9DEDA"><td colspan="5"><font style="font-size:1.2em">Program: </font><font style="font-family:architectsDaughterRegular; font-size:1.2em"><%=(Program.find(f.program_id)).name%></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:1.2em">Length of Trip: </font><font style="font-family:architectsDaughterRegular; font-size:1.2em"><%=f.time_frame%></font><p style="margin-top:-15px; text-align:right">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td></tr>
-			<tr style="background-color:#D9DEDA"><td colspan="4"><%=f.body.html_safe%></td></tr>
+			<tr style="background-color:#D9DEDA"><td colspan="5"><%=f.body.html_safe%></td></tr>
 			<tr style="background-color:#D9DEDA"><td></td>
 				<td></td><td colspan="3"><p style="text-align:right; font-family:architectsDaughterRegular; color:#6aaeba; margin-right:30px">-<%=User.find(f.user_id).username%></p></td></tr>
 			<tr style="background-color:#D9DEDA"><td></td><td></td><td></td><td></td>
 				<td><%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();", :style => "float:right"%></td></tr>
-			<tr style="background-color:#D9DEDA"><td colspan="4">	<% @photos.each do |photo| %>
+			<tr style="background-color:#D9DEDA"><td colspan="5">	<% @photos.each do |photo| %>
 			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
 			    <% end %></td></tr>
 			<tr style="border-top:1px solid #575758; background-color:#D9DEDA">
