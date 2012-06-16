@@ -35,6 +35,8 @@ class PagesController < ApplicationController
   	  @favorites = @user.favorites
   	  @messages = @user.received_messages
   	  @sent_messages = Message.where(:sender_id => current_user.id, :sender_deleted => nil)
+  	  @message = Message.new
+  	  
   	  
   	  @theCountries = Hash["AF" => "Afghanistan", 
       "AX" => "Aland Islands", 

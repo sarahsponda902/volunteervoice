@@ -28,31 +28,7 @@
 </script>
 
 
-<% @message= Message.new%>
-<div id="popup-box" class="popup-popup">
-	<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
 
-	<%= form_for(@message) do |f| %>
-
-	<%= f.hidden_field :sender_id, :value => current_user.id%>
-
-	  <div class="field">
-	    <p style="font-size:1.2em; color:#575758; margin-left:25px; line-height:2em;">Subject:</p>
-	    <%= f.text_field :subject, :style => "width:380px; height:25px; margin-left:20px; margin-right:20px;" %>
-	  </div>
-	<br />
-	  <div class="field">
-	    <p style="font-size:1.2em; color:#575758; margin-left:25px;line-height:2em;">Body:</p>
-	    <%= f.text_area :body, :style => "height:200px;width:380px; margin-left:20px; margin-right:20px; overflow:auto" %>
-	  </div>
-
-	  <div class="actions" style="margin-top:30px; text-align:center">
-	    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendTheMessage.png" %>
-	  </div>
-	<% end %>
-
-
-</div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 
 <%= stylesheet_link_tag "/assets/smartpaginator.css"%>
