@@ -10,8 +10,22 @@
 <% @messages.each do |f| %>
 
   <tr>
-	<td><%=f.sender_id%></td>
-	<td><%=f.recipient_id%></td>
+	<td><% if !(f.sender_deleted)%>
+	<%=f.sender_id%>
+	<% else %>
+	<font style="color:red"><%=f.sender_id%></font>
+	<% end %></td>
+	
+	
+	<td>
+	<% if !(f.recipient_deleted)%>
+	<%=f.recipient_id%>
+	<% else %>
+	<font style="color:red"><%=f.recipient_id%></font>
+	<% end %>
+	</td>
+	
+	
 	<td><%=f.id%></td>
   </tr>
 
