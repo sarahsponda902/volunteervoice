@@ -33,7 +33,7 @@ class PagesController < ApplicationController
   	  @user = User.find(current_user.id)
   	  @reviews = @user.reviews.order("created_at DESC")
   	  @favorites = @user.favorites
-  	  @messages = @user.received_messages
+  	  @messages = Message.where(:recipient_id => current_user.id, :recipient_deleted => nil)
   	  @sent_messages = Message.where(:sender_id => current_user.id, :sender_deleted => nil)
   	  @message = Message.new
   	  
