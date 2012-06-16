@@ -45,9 +45,63 @@ def validate_image_size
   image8 = MiniMagick::Image.open(self.photo8.path) unless !self.photo8.path
   image9 = MiniMagick::Image.open(self.photo9.path) unless !self.photo9.path
   image10 = MiniMagick::Image.open(self.photo10.path) unless !self.photo10.path
-  unless (image[:width] < 700 && image[:height] < 700 && image2[:width] < 700 && image2[:height] < 700 && image3[:width] < 700 && image3[:height] < 700 && image4[:width] < 700 && image4[:height] < 700 && image5[:width] < 700 && image5[:height] < 700 && image6[:width] < 700 && image6[:height] < 700 && image7[:width] < 700 && image7[:height] < 700 && image8[:width] < 700 && image8[:height] < 700 && image9[:width] < 700 && image9[:height] < 700 && image10[:width] < 700 && image10[:height] < 700)
-    errors.add :image, "must be smaller than 700x700 px" 
+  if image
+    unless (image[:width] < 700 && image[:height])
+      errors.add :image, "must be smaller than 700x700 px" 
+    end
   end
+  if image
+    unless (image[:width] < 700 && image[:height])
+      errors.add :image, "must be smaller than 700x700 px" 
+    end
+  end
+  if image2
+    unless (image2[:width] < 700 && image2[:height])
+      errors.add :image2, "must be smaller than 700x700 px" 
+    end
+  end
+  if image3
+    unless (image3[:width] < 700 && image3[:height])
+      errors.add :image3, "must be smaller than 700x700 px" 
+    end
+  end
+  if image4
+    unless (image4[:width] < 700 && image4[:height])
+      errors.add :image4, "must be smaller than 700x700 px" 
+    end
+  end
+  if image5
+    unless (image5[:width] < 700 && image5[:height])
+      errors.add :image5, "must be smaller than 700x700 px" 
+    end
+  end
+  if image6
+    unless (image6[:width] < 700 && image6[:height])
+      errors.add :image6, "must be smaller than 700x700 px" 
+    end
+  end
+  if image7
+    unless (image7[:width] < 700 && image7[:height])
+      errors.add :image7, "must be smaller than 700x700 px" 
+    end
+  end
+  if image8
+    unless (image8[:width] < 700 && image8[:height])
+      errors.add :image8, "must be smaller than 700x700 px" 
+    end
+  end
+  if image9
+    unless (image9[:width] < 700 && image9[:height])
+      errors.add :image9, "must be smaller than 700x700 px" 
+    end
+  end
+  if image10
+    unless (image10[:width] < 700 && image10[:height])
+      errors.add :image10, "must be smaller than 700x700 px" 
+    end
+  end
+  
+  
 end
 
 end
