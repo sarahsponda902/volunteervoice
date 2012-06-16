@@ -18,10 +18,11 @@ class FavoritesController < ApplicationController
   # DELETE /favorites/1.json
   def destroy
     @favorite = Favorite.find(params[:id])
+    @program_id = @favorite.program_id
     @favorite.destroy
     
     respond_to do |format|
-      format.html { redirect_to "/organizations/1" }
+      format.html { redirect_to "/programs/#{@program_id}" }
       format.json { head :no_content }
     end
   end
