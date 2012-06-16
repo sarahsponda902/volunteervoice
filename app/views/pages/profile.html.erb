@@ -279,10 +279,20 @@ function messagesRead() {
 	<% @user.save %>
 }
 
-function setMessage(recipient, sender, subject) {
+function setMessageRecipient(recipient) {
 	$("#recipient_id_field").val(recipient);
+}
+
+function setMessageSender(sender) {
 	$("#sender_id_field").val(sender);
-	$("#subject_field").val(subject);
+}
+
+function setMessageSubject(subject) {
+	if (subject.substring(0,3) == "Re:") {
+		$("#subject_field").val(subject);
+	} else {
+		$("#subject_field").val("Re: "+subject);
+	}
 }
 
 function openReplyBox(message_id) {
