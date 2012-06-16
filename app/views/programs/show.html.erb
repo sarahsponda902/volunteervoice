@@ -194,6 +194,10 @@
 	
 	<div class="eleven columns" style="border:1px solid #575758; margin-left:4%; padding-bottom:2%; padding-right:1%;">
 		<div class="six columns" style="margin-left:2%; border-right: 1px solid #e67b5a; margin-top:2%">
+		<font style="font-weight:600">Subjects: </font>
+		<% @program.program_subjects.each do |a|%>
+		<%= a.subject%>, 
+		<% end %><br /><br />
 		<font style="font-weight:600">Locations: </font><%= @theCountries[@program.location]%><br /><br />
 		<font style="font-weight:600">Program Started: </font> <%=@program.program_started%><br /><br />
 		<font style="font-weight:600">Lengths of Program: </font>
@@ -273,7 +277,7 @@
 			<% end %>
 			<% end %>
 		</div>
-		<div id="reviews_pager" style="position:absolute; bottom:300px; width:900px">
+		<div id="reviews_pager" style="position:absolute; top:84%; width:900px">
 		</div>
 
 		
