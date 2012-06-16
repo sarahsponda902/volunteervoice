@@ -193,7 +193,7 @@
 		<font style="font-weight:600">Program Started: </font> <%=@program.program_started%><br /><br />
 		<font style="font-weight:600">Lengths of Program: </font>
 		<% @program.program_lengths.each do |f|%>
-		<%= f.length unless f.length == ""%>, 
+		<%= f.length unless f.length == " "%>, 
 		<% end %>
 		<br /><br />
 		<font style="font-weight:600">Start Dates: </font><%= @program.start_dates%><br /><br />
@@ -201,7 +201,7 @@
 		<font style="font-weight:600">Partnered Local Organizations: </font><%= @program.partnered_local_organizations%><br /><br />
 		<font style="font-weight:600">Group Size: </font>
 		<% @program.program_sizes.each do |f|%>
-		<%= f.size unless f.size == ""%>, 
+		<%= f.size unless f.size == " "%>, 
 		<% end %>
 		
 		<br /><br />
