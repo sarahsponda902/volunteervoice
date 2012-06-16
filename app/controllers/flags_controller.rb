@@ -32,7 +32,7 @@ class FlagsController < ApplicationController
     @flag.body = RedCloth.new( ActionController::Base.helpers.sanitize( @flag.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
     if Review.find(@flag.review_id).flags.empty?
-      @review = Reivew.find(@flag.review_id)
+      @review = Review.find(@flag.review_id)
       @review.flag_show = false
       @review.save   
     end

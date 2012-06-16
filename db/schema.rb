@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616201654) do
+ActiveRecord::Schema.define(:version => 20120616203725) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -169,6 +169,15 @@ ActiveRecord::Schema.define(:version => 20120616201654) do
     t.string   "time_frame"
     t.string   "photo"
     t.text     "truncated100"
+    t.string   "photo2"
+    t.string   "photo3"
+    t.string   "photo4"
+    t.string   "photo5"
+    t.string   "photo6"
+    t.string   "photo7"
+    t.string   "photo8"
+    t.string   "photo9"
+    t.string   "photo10"
   end
 
   create_table "organizations", :force => true do |t|
