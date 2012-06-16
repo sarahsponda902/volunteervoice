@@ -1055,6 +1055,8 @@ class ProgramsController < ApplicationController
     @program.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
+    
+    
     if (@program.overall.nil?) 
       @program.overall= 0;
     end

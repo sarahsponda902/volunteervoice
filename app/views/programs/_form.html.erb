@@ -209,19 +209,19 @@ $(function() {
 	<% end %><br /><br />
 
 
-  <div class = "field">
+  <div class="ui-widget">
 	<%= f.label "Subjects"%>
 	<%= f.text_field :program_subjects, :id => "subjects" %>
   </div>
 
-  <div class = "field">
+  <div class="ui-widget">
 	<%= f.label "Group Sizes"%>
 	<%= f.text_field :program_sizes, :id => "sizes"%>
   </div>
 
-  <div id= "field">
+  <div class="ui-widget">
 	<%= f.label "Lengths of Program" %>
-	<%= f.select :program_lengths, :id => "lengths" %></div>
+	<%= f.text_field :program_lengths, :id => "lengths" %></div>
 
   <div>Add a Photo<br />
   <%= f.file_field :photo, :value => @program.photo %></div><br />
