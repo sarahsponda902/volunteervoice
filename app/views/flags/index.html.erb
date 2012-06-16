@@ -16,8 +16,19 @@
 <% @flags.each do |flag| %>
   <tr>
 	<td width="13%"><%= flag.category%></td>
-	<td width="5%"><%= User.find(flag.poster_id).username%></td>
-	<td width="12%"><%= User.find(flag.flagger_id).username%></td>
+	<td width="5%">
+	<% if !(User.where(:id => flag.poster_id).empty?)%>
+	<%= User.find(flag.poster_id).username%>
+	<% else %>
+	<%= "???"%>
+	<% end %>
+	</td>
+	<td width="12%">
+	<% if !(User.where(:id => flag.flagger_id).empty?)%>
+	<%= User.find(flag.flagger_id).username%>
+	<% else %>
+	<%= "???"%>
+	<% end %></td>
 	<td width="45%"><%= flag.body.html_safe%></td>
 	<td width="10%"><%= link_to 'Review', Review.find(flag.review_id)%></td>
     <td width="7%"><%= link_to 'Flag', flag %></td>

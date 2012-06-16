@@ -13,6 +13,7 @@ validates_length_of :body, :maximum => 10000, :message => "You have entered more
 validates_inclusion_of :organization_name, :in => @orgs
 belongs_to :program
 belongs_to :user
+has_many :flags, :dependent => :destroy
 
 
 
