@@ -32,7 +32,7 @@ class FlagsController < ApplicationController
     @flag.body = RedCloth.new( ActionController::Base.helpers.sanitize( @flag.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     respond_to do |format|
       if @flag.save
-        format.html { redirect_to "flags/thank_you"
+        format.html { redirect_to "flags/thank_you" }
         format.json { render json: @flag, status: :created, location: @flag }
       else
         redirect_to root_path
