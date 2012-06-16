@@ -123,8 +123,17 @@ class ReviewsController < ApplicationController
          @location = params[:location]
          @org = Organization.find(@review.organization_id)
          @prog = Program.find(@review.program_id)
-         @org.overall = (@org.overall * @org.reviews_count - @review.overall) / (@org.reviews_count - 1)
-         @prog.overall = (@prog.overall * @prog.reviews.count - @review.overall) / (@prog.reviews.count - 1)
+         
+         if @org.reviews_count != 1
+           @org.overall = (@org.overall * @org.reviews_count - @review.overall) / (@org.reviews_count - 1)
+         else
+           @org.overall = 0
+         end
+         if @prog.reviews.count != 1
+           @prog.overall = (@prog.overall * @prog.reviews.count - @review.overall) / (@prog.reviews.count - 1)
+         else 
+           @prog.overall = 0
+         end
          @org.save
          @prog.save
          
