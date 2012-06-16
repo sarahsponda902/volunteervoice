@@ -42,14 +42,14 @@ def square_image_crop
 
  def change_file_name 
    if self.photo 
-     @name ||= Digest::MD5.hexdigest(self.photo.filename)
-     self.photo.filename = "#{@name}.#{file.extension}"
+     @name ||= Digest::MD5.hexdigest(self.photo.original_filename)
+     self.photo.original_filename = "#{@name}.#{file.extension}"
      self.photo.save
    end
    
    if self.chart 
-     @name ||= Digest::MD5.hexdigest(self.chart.filename)
-     self.chart = "#{@name}.#{file.extension}"
+     @name ||= Digest::MD5.hexdigest(self.chart.original_filename)
+     self.chart.original_filename = "#{@name}.#{file.extension}"
      self.chart.save
    end
  end

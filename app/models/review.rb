@@ -34,53 +34,53 @@ mount_uploader :photo10, ImageUploader
 
 def change_file_names
   if self.photo 
-    @name ||= Digest::MD5.hexdigest(self.photo.filename)
-    self.photo.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo.original_filename)
+    self.photo.original_filename = "#{@name}.#{file.extension}"
     self.photo.save
   end
   if self.photo2 
-    @name ||= Digest::MD5.hexdigest(self.photo2.filename)
-    self.photo2.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo2.original_filename)
+    self.photo2.original_filename = "#{@name}.#{file.extension}"
     self.photo2.save
   end
   if self.photo3 
-    @name ||= Digest::MD5.hexdigest(self.photo3.filename)
-    self.photo3.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo3.original_filename)
+    self.photo3.original_filename = "#{@name}.#{file.extension}"
     self.photo3.save
   end
   if self.photo4 
-    @name ||= Digest::MD5.hexdigest(self.photo4.filename)
-    self.photo4.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo4.original_filename)
+    self.photo4.original_filename = "#{@name}.#{file.extension}"
     self.photo4.save
   end
   if self.photo5 
-    @name ||= Digest::MD5.hexdigest(self.photo5.filename)
-    self.photo5.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo5.original_filename)
+    self.photo5.original_filename = "#{@name}.#{file.extension}"
     self.photo5.save
   end
   if self.photo6 
-    @name ||= Digest::MD5.hexdigest(self.photo6.filename)
-    self.photo6.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo6.original_filename)
+    self.photo6.original_filename = "#{@name}.#{file.extension}"
     self.photo6.save
   end
   if self.photo7 
-    @name ||= Digest::MD5.hexdigest(self.photo7.filename)
-    self.photo7.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo7.original_filename)
+    self.photo7.original_filename = "#{@name}.#{file.extension}"
     self.photo7.save
   end
   if self.photo8 
-    @name ||= Digest::MD5.hexdigest(self.photo8.filename)
-    self.photo8.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo8.original_filename)
+    self.photo8.original_filename = "#{@name}.#{file.extension}"
     self.photo8.save
   end
   if self.photo9 
-    @name ||= Digest::MD5.hexdigest(self.photo9.filename)
-    self.photo9.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo9.original_filename)
+    self.photo9.original_filename = "#{@name}.#{file.extension}"
     self.photo9.save
   end
   if self.photo10 
-    @name ||= Digest::MD5.hexdigest(self.photo10.filename)
-    self.photo10.filename = "#{@name}.#{file.extension}"
+    @name ||= Digest::MD5.hexdigest(self.photo10.original_filename)
+    self.photo10.original_filename = "#{@name}.#{file.extension}"
     self.photo10.save
   end
 end

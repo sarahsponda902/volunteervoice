@@ -91,8 +91,8 @@ class BlogPostsController < ApplicationController
     if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.new(params[:blog_post])
 		@blog_post[:user_id] = current_user.id
-		@blog_post.truncated125 = RedCloth.new( ActionController::Base.helpers.sanitize( @blog_post.body[0,124] + "..." ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @blog_post.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( @blog_post.body[0,99] + "..." ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+		@blog_post.truncated125 = RedCloth.new( ActionController::Base.helpers.sanitize( truncate @blog_post.body, :length => 125 ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @blog_post.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( tuncate @blog_post.body, :length => 100), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 		@blog_post.body = RedCloth.new( ActionController::Base.helpers.sanitize( @blog_post.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 
 		if params[:published_at].nil?

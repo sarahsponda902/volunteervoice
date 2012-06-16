@@ -18,8 +18,8 @@ mount_uploader :photo, ImageUploader
       
       def change_file_name 
         if self.photo 
-          @name ||= Digest::MD5.hexdigest(self.photo.filename)
-          self.photo.filename = "#{@name}.#{file.extension}"
+          @name ||= Digest::MD5.hexdigest(self.photo.original_filename)
+          self.photo.original_filename = "#{@name}.#{file.extension}"
           self.photo.save
         end
       end

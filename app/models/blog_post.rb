@@ -122,8 +122,8 @@ class BlogPost < ActiveRecord::Base
   
   def change_file_name 
     if self.image
-      @name ||= Digest::MD5.hexdigest(self.image.filename)
-      self.image.filename = "#{@name}.#{file.extension}"
+      @name ||= Digest::MD5.hexdigest(self.image.original_filename)
+      self.image.original_filename = "#{@name}.#{file.extension}"
       self.image.save
     end
   end

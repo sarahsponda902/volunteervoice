@@ -42,7 +42,7 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(params[:feedback])
-    @feedback.truncated100 = @feedback.body[0..199] + "..."
+    @feedback.truncated100 = (truncate @feedback.body, :length => 100)
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to '/pages/thank_you', notice: 'Feedback was successfully created.' }
