@@ -1046,6 +1046,31 @@ class ProgramsController < ApplicationController
   # POST /programs
   # POST /programs.json
   def create
+    @lengths = []
+    params[:program][:program_lengths].split(",").each do |f|
+      @p = ProgramLength.new(:program_id => params[:program][:id], :length => f)
+      @p.save
+      @lengths << @p
+    end
+    params[:program][:program_lengths] = @lengths
+    
+    @subjects = []
+    params[:program][:program_subjects].split(",").each do |f|
+      @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f)
+      @p.save
+      @subjects << @p
+    end
+    params[:program][:program_subjects] = @subjects
+    
+    @sizes = []
+    params[:program][:program_sizes].split(",").each do |f|
+      @p = ProgramSize.new(:program_id => params[:program][:id], :sizes => f)
+      @p.save
+      @sizes << @p
+    end
+    params[:program][:program_sizes] = @sizes
+    
+    
     @program = Program.new(params[:program])
     @program.organization_id = Organization.where(:name => @program.organization_name).first.id
     @program.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description[0,99] + "..."), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
@@ -1054,30 +1079,6 @@ class ProgramsController < ApplicationController
     @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
     @program.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    
-    @lengths = []
-    @program.program_lengths.split(",").each do |f|
-      @p = ProgramLength.new(:program_id => @program.id, :length => f)
-      @p.save
-      @lengths << @p
-    end
-    @program.program_lengths = @lengths
-    
-    @subjects = []
-    @program.program_subjects.split(",").each do |f|
-      @p = ProgramSubject.new(:program_id => @program.id, :subject => f)
-      @p.save
-      @subjects << @p
-    end
-    @program.program_subjects = @subjects
-    
-    @sizes = []
-    @program.program_sizes.split(",").each do |f|
-      @p = ProgramSize.new(:program_id => @program.id, :sizes => f)
-      @p.save
-      @sizes << @p
-    end
-    @program.program_sizes = @sizes
     
     
     if (@program.overall.nil?) 
