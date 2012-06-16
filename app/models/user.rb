@@ -49,6 +49,6 @@ def square_image_crop
    end
  end
  
- end
+
   
 end
