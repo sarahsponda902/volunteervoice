@@ -9,6 +9,12 @@
 <% end %>
 
 
+<% @user_ids = []%>
+<% User.all.each do |g|%>
+<% @user_ids << g.id%>
+<% end %>
+
+
 
 <link rel="stylesheet" href="/assetslightbox.css" type="text/css" media="screen" />
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>

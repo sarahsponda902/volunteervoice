@@ -17,11 +17,6 @@
 <br />
 </table>
 
-<% @user_ids = []%>
-<% User.all.each do |g|%>
-<% @user_ids << g.id%>
-<% end %>
-
 <table id="message-box<%=m.id%>" class="m-popup">
 	<%= form_for(@message) do |f| %>
 
