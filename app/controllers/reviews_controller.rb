@@ -179,7 +179,7 @@ include ActionView::Helpers::TextHelper
       end
   end
   
-  def changeShow
+  def changeFlagShow
       if (user_signed_in? && current_user.admin?)
         @review = Review.find(params[:id])
         if @review.flag_show
