@@ -83,13 +83,13 @@ $(function() {
   </div>
 
   <div class = "field">
-	<%= f.label "Group Size - NOTE: you must reselect on edit"%>
-	<%= f.select :group_size, ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"], :multiple => true, :size => 4, :prompt =>"Select a Group Size"%>
+	<%= f.label "Group Sizes"%>
+	<%= f.select :program_sizes, ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"], {:prompt =>"Select a Group Size"}, {:multiple => true, :size => 4}%>
   </div>
 
   <div id= "field">
-	<%= f.label "Length of Program - NOTE: you must reselect on edit" %>
-	<%= f.select :length, ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"], :prompt => "Select a Program Length", :multiple => true, :size => 8 %></div>
+	<%= f.label "Lengths of Program" %>
+	<%= f.select :program_lengths, ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"], {:prompt => "Select a Program Length"}, {:multiple => true, :size => 8} %></div>
 
   <div>Add a Photo<br />
   <%= f.file_field :photo, :value => @program.photo %></div><br />
