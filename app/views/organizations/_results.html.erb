@@ -61,14 +61,12 @@
 		</table>
 		
 		<table id="review-box<%=f.id%>" class="review-popup">
-			<tr style="background-color:#D9DEDA"><td colspan="2">Program: <%=(Program.find(f.program_id)).name%></td>
-				<td style="width:25%">Length of Trip: <%=f.time_frame%></td>
-				<td style="width:25%">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></td></tr>
+			<tr style="background-color:#D9DEDA"><td colspan="4">Program: <%=(Program.find(f.program_id)).name%> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Length of Trip: <%=f.time_frame%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></td></tr>
 			<tr style="background-color:#D9DEDA"><td colspan="4"><%=f.body.html_safe%></td></tr>
 			<tr style="background-color:#D9DEDA"><td></td>
 				<td></td><td colspan="2"><p style="text-align:center">-<%=User.find(f.user_id).username%></p></td></tr>
 			<tr style="background-color:#D9DEDA"><td></td></td><td></td><td></td>
-				<td><%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();"%></td></tr>
+				<td><%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();", :style => "float:right"%></td></tr>
 			<tr style="background-color:#D9DEDA"><td colspan="4">	<% @photos.each do |photo| %>
 			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
 			    <% end %></td></tr>
@@ -76,7 +74,7 @@
 				<td><p style="text-align:center">Preparation/Orientation</p></td>
 				<td><p style="text-align:center">Support</p></td>
 				<td><p style="text-align:center">Project Impact</p></td>
-				<td><p style="text-align:center">Project Structure/Sustainability</p></td>
+				<td><p style="text-align:center">Structure/Sustainability</p></td>
 			</tr>
 			<tr style="background-color:#D9DEDA">
 				<td><p style="text-align:center"><%=render :partial => "star", :locals => {:star => f.preparation}%></p></td>
