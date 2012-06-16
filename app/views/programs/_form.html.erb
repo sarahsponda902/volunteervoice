@@ -19,6 +19,138 @@ $(function() {
 	});
 });
 	</script>
+	
+	<script>
+		$(function() {
+			var availableLengths = ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"];
+			function split( val ) {
+				return val.split( /,\s*/ );
+			}
+			function extractLast( term ) {
+				return split( term ).pop();
+			}
+
+			$( "#lengths" )
+				// don't navigate away from the field on tab when selecting an item
+				.bind( "keydown", function( event ) {
+					if ( event.keyCode === $.ui.keyCode.TAB &&
+							$( this ).data( "autocomplete" ).menu.active ) {
+						event.preventDefault();
+					}
+				})
+				.autocomplete({
+					minLength: 0,
+					source: function( request, response ) {
+						// delegate back to autocomplete, but extract the last term
+						response( $.ui.autocomplete.filter(
+							availableLengths, extractLast( request.term ) ) );
+					},
+					focus: function() {
+						// prevent value inserted on focus
+						return false;
+					},
+					select: function( event, ui ) {
+						var terms = split( this.value );
+						// remove the current input
+						terms.pop();
+						// add the selected item
+						terms.push( ui.item.value );
+						// add placeholder to get the comma-and-space at the end
+						terms.push( "" );
+						this.value = terms.join( ", " );
+						return false;
+					}
+				});
+		});
+		</script>
+		
+		<script>
+			$(function() {
+				var availableSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
+				function split( val ) {
+					return val.split( /,\s*/ );
+				}
+				function extractLast( term ) {
+					return split( term ).pop();
+				}
+
+				$( "#sizes" )
+					// don't navigate away from the field on tab when selecting an item
+					.bind( "keydown", function( event ) {
+						if ( event.keyCode === $.ui.keyCode.TAB &&
+								$( this ).data( "autocomplete" ).menu.active ) {
+							event.preventDefault();
+						}
+					})
+					.autocomplete({
+						minLength: 0,
+						source: function( request, response ) {
+							// delegate back to autocomplete, but extract the last term
+							response( $.ui.autocomplete.filter(
+								availableSizes, extractLast( request.term ) ) );
+						},
+						focus: function() {
+							// prevent value inserted on focus
+							return false;
+						},
+						select: function( event, ui ) {
+							var terms = split( this.value );
+							// remove the current input
+							terms.pop();
+							// add the selected item
+							terms.push( ui.item.value );
+							// add placeholder to get the comma-and-space at the end
+							terms.push( "" );
+							this.value = terms.join( ", " );
+							return false;
+						}
+					});
+			});
+			</script>
+			
+			<script>
+				$(function() {
+					var availableSubjects = ["Agriculture", "Organic Farming", "Sustainable Development", "Animal Care", "Animal Rights", "Wildlife Conservation", "Caregiving", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless", "Community Development", "Youth Development and Outreach", "Construction", "Culture & Community", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism", "Disaster Relief", "Economics", "Microfinance", "Education", "Teaching English", "Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy", "Engineering and Infrastructure", "Environmental", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration", "Health and Medicine", "HIV/AIDS", "Nutrition", "Family Planning", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Care-giving", "Human Rights", "Women's Initiatives", "International Work Camp", "Recreation", "Adventure Travel", "Scientific Research", "Archaeology", "Environmental Biology", "Technology", "Teaching Computer Literacy", "Media, Marketing, and Graphic Design" ];
+					function split( val ) {
+						return val.split( /,\s*/ );
+					}
+					function extractLast( term ) {
+						return split( term ).pop();
+					}
+
+					$( "#lengths" )
+						// don't navigate away from the field on tab when selecting an item
+						.bind( "keydown", function( event ) {
+							if ( event.keyCode === $.ui.keyCode.TAB &&
+									$( this ).data( "autocomplete" ).menu.active ) {
+								event.preventDefault();
+							}
+						})
+						.autocomplete({
+							minLength: 0,
+							source: function( request, response ) {
+								// delegate back to autocomplete, but extract the last term
+								response( $.ui.autocomplete.filter(
+									availableSubjects, extractLast( request.term ) ) );
+							},
+							focus: function() {
+								// prevent value inserted on focus
+								return false;
+							},
+							select: function( event, ui ) {
+								var terms = split( this.value );
+								// remove the current input
+								terms.pop();
+								// add the selected item
+								terms.push( ui.item.value );
+								// add placeholder to get the comma-and-space at the end
+								terms.push( "" );
+								this.value = terms.join( ", " );
+								return false;
+							}
+						});
+				});
+				</script>
 
 
 
@@ -79,17 +211,17 @@ $(function() {
 
   <div class = "field">
 	<%= f.label "Subjects"%>
-	<%= f.select :program_subjects, ["-Category:", "Agriculture", "-Sub-categories:", "Organic Farming", "Sustainable Development", "==========", "-Category:", "Animal Care", "-Sub-categories:", "Animal Rights", "Wildlife Conservation", "==========", "-Category:", "Caregiving", "-Sub-categories:", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless", "==========", "-Category:", "Community Development", "-Sub-categories:", "Youth Development and Outreach", "==========", "-Category:", "Construction", "==========", "-Category:", "Culture & Community", "-Sub-categories:", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism", "==========", "-Category:", "Disaster Relief", "-Sub-categories:", "Economics", "Microfinance", "==========", "-Category:", "Education", "-Sub-categories:", "Teaching English", "Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy", "==========", "-Category:", "Engineering and Infrastructure", "==========", "-Category:", "Environmental", "-Sub-categories:", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration", "==========", "-Category:", "Health and Medicine", "-Sub-categories:", "HIV/AIDS", "Nutrition", "Family Planning", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Care-giving", "==========", "-Category:", "Human Rights", "-Sub-categories:", "Women's Initiatives", "==========", "-Category:", "International Work Camp", "==========", "-Category:", "Recreation", "-Sub-categories:", "Adventure Travel", "==========", "-Category:", "Scientific Research", "-Sub-categories:", "Archaeology", "Environmental Biology", "==========", "-Category:", "Technology", "-Sub-categories:", "Teaching Computer Literacy", "Media, Marketing, and Graphic Design" ], {:prompt => "Select a Subject", :disabled => ["==========", "-Category:", "-Sub-categories:"]}, {:multiple => true, :size => 10}%>
+	<%= f.text_field :program_subjects, :id => "subjects" %>
   </div>
 
   <div class = "field">
 	<%= f.label "Group Sizes"%>
-	<%= f.select :program_sizes, ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"], {:prompt =>"Select a Group Size"}, {:multiple => true, :size => 4}%>
+	<%= f.text_field :program_sizes, :id => "sizes"%>
   </div>
 
   <div id= "field">
 	<%= f.label "Lengths of Program" %>
-	<%= f.select :program_lengths, ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"], {:prompt => "Select a Program Length"}, {:multiple => true, :size => 8} %></div>
+	<%= f.select :program_lengths, :id => "lengths" %></div>
 
   <div>Add a Photo<br />
   <%= f.file_field :photo, :value => @program.photo %></div><br />
