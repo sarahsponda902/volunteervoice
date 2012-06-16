@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616163532) do
+ActiveRecord::Schema.define(:version => 20120616201654) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -301,6 +301,7 @@ ActiveRecord::Schema.define(:version => 20120616163532) do
     t.string   "photo10"
     t.text     "truncated100"
     t.text     "truncated200"
+    t.boolean  "flag_show"
   end
 
   create_table "searches", :force => true do |t|
