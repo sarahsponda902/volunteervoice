@@ -1,8 +1,13 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
+<% if !(current_user.nil?)%>
 
 <script type="text/javascript">
 $(document).ready(function() {
-
+	$('.close-delete-pop').click(function () {
+		$('#mask').fadeOut(300);
+		$('.delete-popup').fadeOut(300);
+		$('#mask').remove();
+	});
 	
 	$('a.delete-window').click(function() {
 
@@ -40,6 +45,10 @@ $(document).ready(function() {
 });
 </script>
 
+	
+<%= render "edit_review" %>
+
+
 <style>
 #mask {
 	display: none;
@@ -74,18 +83,10 @@ fieldset {
 	border:none; 
 }
 </style>
-
-
-<% if !(current_user.nil?)%>
-
-
-<%= render "edit_review" %>
-
-
 <% end %>
 
 <% if current_user.nil?%>
 
-You must be a member to create a review.
+<% redirect_to "/registrations/mustBe"%>
 
 <% end %>
