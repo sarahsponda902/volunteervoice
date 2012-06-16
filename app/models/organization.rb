@@ -11,7 +11,7 @@ scope :random, :order=>'RAND()', :limit=>1
 validates_uniqueness_of :name
 
 before_save :square_image_crop
-
+validate :validate_image_size
 
 before_create :set_page_views_to_zero
   def set_page_views_to_zero
@@ -43,6 +43,12 @@ def square_image_crop
      self.square_image = image
    end
  end
- 
+
+ def validate_image_size
+   image = MiniMagick::Image.open(self.image.path)
+   unless image[:width] < 700 && image[:height] < 700
+     errors.add :image, "must be smaller than 700x700 px" 
+   end
+ end 
 
 end

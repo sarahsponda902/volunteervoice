@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :message => "is already in use"
   validates_presence_of :username, :dob
   validates_length_of :username, :maximum => 30
-  
+  validate :validate_image_size
   before_save :square_image_crop
 
 
@@ -48,6 +48,11 @@ def square_image_crop
      self.square_image = image
    end
  end
-
+ def validate_image_size
+   image = MiniMagick::Image.open(self.photo.path)
+   unless image[:width] < 700 && image[:height] < 700
+     errors.add :image, "must be smaller than 700x700 px" 
+   end
+ end
   
 end

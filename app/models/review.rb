@@ -11,6 +11,7 @@ validates_length_of :body, :minimum => 200, :message => "Must contain at least 3
 characters."
 validates_length_of :body, :maximum => 10000, :message => "You have entered more than 10,000 characters"
 validates_inclusion_of :organization_name, :in => @orgs
+validate :validate_image_size
 belongs_to :program
 belongs_to :user
 has_many :flags, :dependent => :destroy
@@ -32,5 +33,21 @@ mount_uploader :photo8, ImageUploader
 mount_uploader :photo9, ImageUploader
 mount_uploader :photo10, ImageUploader
 
+
+def validate_image_size
+  image = MiniMagick::Image.open(self.photo.path)
+  image2 = MiniMagick::Image.open(self.photo2.path)
+  image3 = MiniMagick::Image.open(self.photo3.path)
+  image4 = MiniMagick::Image.open(self.photo4.path)
+  image5 = MiniMagick::Image.open(self.photo5.path)
+  image6 = MiniMagick::Image.open(self.photo6.path)
+  image7 = MiniMagick::Image.open(self.photo7.path)
+  image8 = MiniMagick::Image.open(self.photo8.path)
+  image9 = MiniMagick::Image.open(self.photo9.path)
+  image10 = MiniMagick::Image.open(self.photo10.path)
+  unless (image[:width] < 700 && image[:height] < 700 && image2[:width] < 700 && image2[:height] < 700 && image3[:width] < 700 && image3[:height] < 700 && image4[:width] < 700 && image4[:height] < 700 && image5[:width] < 700 && image5[:height] < 700 && image6[:width] < 700 && image6[:height] < 700 && image7[:width] < 700 && image7[:height] < 700 && image8[:width] < 700 && image8[:height] < 700 && image9[:width] < 700 && image9[:height] < 700 && image10[:width] < 700 && image10[:height] < 700)
+    errors.add :image, "must be smaller than 700x700 px" 
+  end
+end
 
 end
