@@ -11,9 +11,11 @@ class BlogImage < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   def validate_image_size
-    image = MiniMagick::Image.open(self.image.path)
-    unless image[:width] < 700 && image[:height] < 700
-      errors.add :image, "must be smaller than 700x700 px" 
-    end
-  end
+     image = MiniMagick::Image.open(self.image.path) unless !self.image.path
+     if image
+       unless image[:width] < 700 && image[:height] < 700
+         errors.add :image, "must be smaller than 700x700 px" 
+       end
+     end
+   end
 end

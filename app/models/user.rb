@@ -49,9 +49,11 @@ def square_image_crop
    end
  end
  def validate_image_size
-   image = MiniMagick::Image.open(self.photo.path)
-   unless image[:width] < 700 && image[:height] < 700
-     errors.add :image, "must be smaller than 700x700 px" 
+   image = MiniMagick::Image.open(self.photo.path) unless !self.photo.path
+   if image
+     unless image[:width] < 700 && image[:height] < 700
+       errors.add :image, "must be smaller than 700x700 px" 
+     end
    end
  end
   
