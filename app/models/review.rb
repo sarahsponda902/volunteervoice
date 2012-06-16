@@ -34,43 +34,43 @@ mount_uploader :photo10, ImageUploader
 
 def change_file_names
   if self.photo 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo.url))
     self.photo = "#{@name}.#{file.extension}"
   end
   if self.photo2 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo2.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo2.url))
     self.photo2 = "#{@name}.#{file.extension}"
   end
   if self.photo3 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo3.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo3.url))
     self.photo3 = "#{@name}.#{file.extension}"
   end
   if self.photo4 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo4.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo4.url))
     self.photo4 = "#{@name}.#{file.extension}"
   end
   if self.photo5 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo5.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo5.url))
     self.photo5 = "#{@name}.#{file.extension}"
   end
   if self.photo6 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo6.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo6.url))
     self.photo6 = "#{@name}.#{file.extension}"
   end
   if self.photo7 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo7.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo7.url))
     self.photo7 = "#{@name}.#{file.extension}"
   end
   if self.photo8 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo8.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo8.url))
     self.photo8 = "#{@name}.#{file.extension}"
   end
   if self.photo9 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo9.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo9.url))
     self.photo9 = "#{@name}.#{file.extension}"
   end
   if self.photo10 
-    @name ||= Digest::MD5.hexdigest(File.dirname(self.photo10.url))
+    @name ||= Digest::MD5.hexdigest(File.basename(self.photo10.url))
     self.photo10 = "#{@name}.#{file.extension}"
   end
 end

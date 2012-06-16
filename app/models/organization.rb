@@ -45,15 +45,15 @@ def square_image_crop
  end
  def change_file_name 
    if self.image 
-     @name ||= Digest::MD5.hexdigest(File.dirname(self.image.url))
+     @name ||= Digest::MD5.hexdigest(File.basename(self.image.url))
      self.image = "#{@name}.#{file.extension}"
    end
    if self.price_breakdown 
-     @name ||= Digest::MD5.hexdigest(File.dirname(self.price_breakdown.url))
+     @name ||= Digest::MD5.hexdigest(File.basename(self.price_breakdown.url))
      self.price_breakdown = "#{@name}.#{file.extension}"
    end
    if self.price_ranges 
-     @name ||= Digest::MD5.hexdigest(File.dirname(self.price_ranges.url))
+     @name ||= Digest::MD5.hexdigest(File.basename(self.price_ranges.url))
      self.price_ranges = "#{@name}.#{file.extension}"
    end
  end

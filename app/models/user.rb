@@ -51,7 +51,7 @@ def square_image_crop
  
  def change_file_name 
    if self.photo 
-     @name ||= Digest::MD5.hexdigest(File.dirname(self.photo.url))
+     @name ||= Digest::MD5.hexdigest(File.basename(self.photo.url))
      self.photo = "#{@name}.#{file.extension}"
    end
  end
