@@ -16,7 +16,18 @@
 	        easing: 'easeInOutCubic'
 	      });
 	  });
+	
+	
 
+	</script>
+	
+	<script type="text/javascript">
+	function removePopup() {
+		$('#mask').fadeOut(300);
+		$('.review-popup').fadeOut(300);
+		$('#mask').remove();  
+		return false;
+	}
 	</script>
 	
 		<script type="text/javascript">
@@ -103,7 +114,7 @@
 				var popMargTop = ($(reviewBox).height() + 24) / 2; 
 				var popMargLeft = ($(reviewBox).width() + 24) / 2; 
 
-				$(priceBreakdownBox).css({ 
+				$(reviewBox).css({ 
 					'margin-top' : -popMargTop,
 					'margin-left' : -popMargLeft
 				});

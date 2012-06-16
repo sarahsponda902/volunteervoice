@@ -1,51 +1,92 @@
- <%@photos = [] %>
- <%@photos << f.photo unless f.photo.blank?%>
- <%@photos << f.photo2 unless f.photo2.blank?%>
- <%@photos << f.photo3 unless f.photo3.blank?%>
-<% @photos << f.photo4 unless f.photo4.blank?%>
-<% @photos << f.photo5 unless f.photo5.blank?%>
-<% @photos << f.photo6 unless f.photo6.blank?%>
-<% @photos << f.photo7 unless f.photo7.blank?%>
-<% @photos << f.photo8 unless f.photo8.blank?%>
-<% @photos << f.photo9 unless f.photo9.blank?%>
-<% @photos << f.photo10 unless f.photo10.blank?%>
+
+<%@photos = [] %>
+  <%@photos << f.photo unless f.photo.blank?%>
+  <%@photos << f.photo2 unless f.photo2.blank?%>
+  <%@photos << f.photo3 unless f.photo3.blank?%>
+ <% @photos << f.photo4 unless f.photo4.blank?%>
+ <% @photos << f.photo5 unless f.photo5.blank?%>
+ <% @photos << f.photo6 unless f.photo6.blank?%>
+ <% @photos << f.photo7 unless f.photo7.blank?%>
+ <% @photos << f.photo8 unless f.photo8.blank?%>
+ <% @photos << f.photo9 unless f.photo9.blank?%>
+ <% @photos << f.photo10 unless f.photo10.blank?%>
 	
 	
 
-
-
-
-<p align="right" style="color:#e67b5a; font-size:1.1em; line-height:1.5em; margin-right:40px">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
-	<table cellspacing="0" style="border:1px solid #e67b5a; float:center; background-color:#E9ECE9;margin-left:40px;margin-right:40px" cellpadding="0">
-		<tr style="background-color:#E9ECE9" height="30px">
-			<td style="width:40%"><p  style="margin-top:5px; font-size:1.1em;color:#575758" >	Program: <font style="font-family:architectsDaughterRegular"> <%=program.name%></font></p></td>
-			<td style="width:30%"><p  style="margin-top:5px; font-size:1.1em;" >Trip Was: <font style="font-family:architectsDaughterRegular"> <%=program.length%></font></p></td>
-			<td style="width:28%"><p align="right" style="width:150px"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
-		</tr>
-		<tr style="background-color:#E9ECE9">
-			<td colspan="3"><p style="color:#575758"><%= f.truncated200.html_safe%><a href="#review-box<%=f.id%>" class="review-window" style="font-style:italic">See full review</a></p></td>
-		</tr>
-		<tr style="margin:0;padding:0; background-color:#E9ECE9;">
-			<td style="width:54%"><p class="imageRow set">
+	<p align="right" style="color:#e67b5a; font-size:1.1em; line-height:1.5em; margin-right:40px">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
+		<table cellspacing="0" style="border:1px solid #e67b5a; float:center; background-color:#E9ECE9; margin-left:40px;margin-right:40px" cellpadding="0">
+			<tr style="background-color:#E9ECE9" height="30px">
+				<td style="width:40%"><p  style="margin-top:5px; font-size:1.1em;color:#575758" >	Program: <font style="font-family:architectsDaughterRegular"> <%=Program.find(f.program_id).name%></font></p></td>
+				<td style="width:30%"><p  style="margin-top:5px; font-size:1.1em;" >Trip Was: <font style="font-family:architectsDaughterRegular"> <%=Program.find(f.program_id).length%></font></p></td>
+				<td style="width:28%"><p align="right" style="width:150px"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
+			</tr>
+			<tr style="background-color:#E9ECE9">
+				<td colspan="3"><p style="color:#575758"><%= f.truncated200.html_safe%> <a href="#review-box<%=f.id%>" class="review-window" style="font-style:italic">See full review</a></p></td>
+			</tr>
+			<tr style="margin:0;padding:0; background-color:#E9ECE9;">
+				<td style="width:54%">
 				<% @photos.each do |photo| %>
 			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
-			    <% end %></td>
-			<td style="width:1%"></td>
-			<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><%=link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), "#flag-box", :class => "flag-window", :poster_id => f.user_id, :review_id => f.id%></p></td>
-		</tr>
-	</table>
+			    <% end %> 
+			  	</td>
+				<td style="width:1%"></td>
+				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><a href="#flag-box<%=f.id%>" class="flag-window" id="flag-link<%=f.id%>"><%= (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png") %></a></p></td>
+			</tr>
+		</table>
 	
-	<table id="review-box<%=f.id%>" class="review-popup">
-		<tr style="background-color:#D9DEDA"><td style="width:30%">Program: <%=(Program.find(f.program_id)).name%></td>
-			<td style="width:30%">Length of Trip: <%=f.time_frame%></td>
-			<td style="width:30%">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></td></tr>
-		<tr style="background-color:#D9DEDA"><td><%=f.body.html_safe%></td></tr>
-		<tr style="background-color:#D9DEDA"><td style="width:80%"></td>
-			<td style="width:15%">-<%=User.find(f.user_id).username%></td></tr>
-		<tr style="background-color:#D9DEDA"><td style="width:85%"></td>
-			<td style="width:10%"><%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();"%>
+		<table id="flag-box<%=f.id%>" class="flag-popup">
+			<% if user_signed_in? %>
+		  	<%= form_for @flag do |g| %>
+
+			<tr style="background-color:#D9DEDA"><td style="height:50px" colspan="2">
+			    <p style="text-align:center; font-size:1.2em; font-family:cabinRegular; padding-bottom:80px; color:#575758">Report this review for <br />inappropriate content</p></td></tr>
+
+				<tr style="background-color:#D9DEDA;"><td>
+			<%=g.text_area :body, :style => "height:115px; font-size:0.9em; font-style:italic", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe."%>
+
+			    <%=g.hidden_field :flagger_id, :value => current_user.id %>
+
+			    <%=g.hidden_field :poster_id, :value => f.user_id %>
+
+			    <%=g.hidden_field :review_id, :value => f.id %>
+				</td></tr>
+
+				<tr style="background-color:#D9DEDA;"><td>
+			    <p style="text-align:center; padding-top:15px"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px" %></p></td></tr>
+				<% end %>
+			<% else %>
+			You must be signed in to flag a review.
+			<% end %>
 		
-	</table>
-	<br />
-	<br />
-	<br />	
+		</table>
+		
+		<table id="review-box<%=f.id%>" class="review-popup">
+			<tr style="background-color:#D9DEDA"><td colspan="5"><font style="font-size:1.1em">Program: </font><font style="font-family:architectsDaughterRegular; font-size:1.1em"><%=(Program.find(f.program_id)).name%></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:1.1em">Length of Trip: </font><font style="font-family:architectsDaughterRegular; font-size:1.1em"><%=f.time_frame%></font><p style="margin-top:-19px; text-align:right">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td></tr>
+			<tr style="background-color:#D9DEDA"><td colspan="5"><%=f.body.html_safe%></td></tr>
+			<tr style="background-color:#D9DEDA"><td></td>
+				<td></td><td colspan="3"><p style="text-align:right; font-family:architectsDaughterRegular; color:#6aaeba; margin-right:30px">-<%=User.find(f.user_id).username%></p></td></tr>
+			<tr style="background-color:#D9DEDA"><td></td><td></td><td></td><td></td>
+				<td><%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();", :style => "float:right"%></td></tr>
+			<tr style="background-color:#D9DEDA"><td colspan="5">	<% @photos.each do |photo| %>
+			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
+			    <% end %></td></tr>
+			<tr style="border-top:1px solid #575758; background-color:#D9DEDA">
+				<td style="width:20%"><p style="text-align:center">Preparation/Orientation</p></td>
+				<td style="width:20%"><p style="text-align:center">Support</p></td>
+				<td style="width:20%"><p style="text-align:center">Project Impact</p></td>
+				<td style="width:20%"><p style="text-align:center">Structure/Sustainability</p></td>
+				<td style="width:20%"><p style="text-align:center">Overall</p></td>
+			</tr>
+			<tr style="background-color:#D9DEDA">
+				<td style="width:20%"><p style="width:90px; text-align:center; margin-top:-15px"><%=render :partial => "star", :locals => {:star => f.preparation}%></p></td>
+				<td style="width:20%"><p style="width:90px; text-align:center; margin-top:-15px"><%=render :partial => "star", :locals => {:star => f.support}%></p></td>
+				<td style="width:20%"><p style="width:90px; text-align:center; margin-top:-15px"><%=render :partial => "star", :locals => {:star => f.impact}%></p></td>
+				<td style="width:20%"><p style="width:90px; text-align:center; margin-top:-15px"><%=render :partial => "star", :locals => {:star => f.structure}%></p></td>
+				<td style="width:20%"><p style="width:90px; text-align:center; margin-top:-15px"><%=render :partial => "star", :locals => {:star => f.overall}%></p></td>
+			</tr>
+				
+				
+			
+		</table>
+		<br />
+		<br />
