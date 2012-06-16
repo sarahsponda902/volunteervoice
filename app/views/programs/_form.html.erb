@@ -208,20 +208,27 @@ $(function() {
 	<%= Organization.find(@program.organization_id).name%>
 	<% end %><br /><br />
 
-
+<div class="demo">
   <div class="ui-widget">
-	<%= f.label "Subjects"%>
-	<%= f.text_field :program_subjects, :id => "subjects", :style => "height:20px;width:200px" %>
+	<label for="subjects">Program Subjects</label>
+	<input id="subjects" name="program[program_subjects]" />
   </div>
+</div>
 
+<div class="demo">
   <div class="ui-widget">
-	<%= f.label "Group Sizes"%>
-	<%= f.text_field :program_sizes, :id => "sizes", :style => "height:20px;width:200px"%>
+	<label for="sizes">Program Sizes</label>
+	<input id="sizes" name="program[program_sizes]" />
   </div>
+</div>
 
+<div class="demo">
   <div class="ui-widget">
-	<%= f.label "Lengths of Program" %>
-	<%= f.text_field :program_lengths, :id => "lengths", :style => "height:20px;width:200px" %></div>
+	<label for="lengths">Program Trip Lengths</label>
+	<input id="lengths" name="program[program_lengths]" />
+  </div>
+</div>
+
 
   <div>Add a Photo<br />
   <%= f.file_field :photo, :value => @program.photo %></div><br />
