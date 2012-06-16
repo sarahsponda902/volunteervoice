@@ -179,6 +179,24 @@ include ActionView::Helpers::TextHelper
       end
   end
   
+  def changeShow
+      if (user_signed_in? && current_user.admin?)
+        @review = Review.find(params[:id])
+        if @review.flag_show
+          @review.flag_show = false
+          @review.save
+        else
+          @review.flag_show = true
+          @review.save
+        end
+          respond_to do |format|
+            format.html {redirect_to flags_path}
+          end
+      else
+        redirect_to root_path
+      end
+  end
+  
   def already_reviewed
   end
 
