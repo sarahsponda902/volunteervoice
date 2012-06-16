@@ -25,7 +25,7 @@ class FavoritesController < ApplicationController
       if params[:the_place] == "profile"
         format.html { redirect_to "/pages/profile" }
       else
-        format.html { redirect_to "/programs/#{@program_id}" }
+        format.html { redirect_to "/programs/#{params[:the_place]}" }
       end
       format.json { head :no_content }
     end
