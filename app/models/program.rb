@@ -10,7 +10,7 @@ has_many :program_sizes, :dependent => :destroy
 attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :organization_id, :subject, :group_size, :headquarters, :length, :overall, :chart, :program_started, :start_dates, :program_structure, :partnered_local_organizations, :cost_includes, :cost_doesnt_include, :program_cost_breakdown, :accommodations, :check_it_out, :organization_name, :crop_x, :crop_y, :crop_w, :crop_h, :square_image, :program_subjects, :program_lengths, :program_sizes
 
 before_save :square_image_crop
-before_save :change_file_name
+after_save :change_file_name
 # Paperclip
     mount_uploader :chart, ImageUploader
     mount_uploader :photo, ImageUploader
@@ -43,7 +43,7 @@ def square_image_crop
  def change_file_name 
    if self.photo 
      @name ||= Digest::MD5.hexdigest(File.basename(self.photo.url))
-     self.photo = "#{@name}.#{file.extension}"
+     self.photo.filename = "#{@name}.#{file.extension}"
    end
    
    if self.chart 

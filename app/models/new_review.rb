@@ -7,7 +7,7 @@ class NewReview < ActiveRecord::Base
 
   attr_accessible :body, :rating, :photo, :show, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall, :user_id, :organization, :program, :photo2, :photo3, :photo4, :photo5, :photo6, :photo7, :photo8, :photo9, :photo10
 
-  before_save :change_file_name
+  after_save :change_file_name
   # Paperclip
 mount_uploader :photo, ImageUploader
 
@@ -19,7 +19,7 @@ mount_uploader :photo, ImageUploader
       def change_file_name 
         if self.photo 
           @name ||= Digest::MD5.hexdigest(File.basename(self.photo.url))
-          self.photo = "#{@name}.#{file.extension}"
+          self.photo.filename = "#{@name}.#{file.extension}"
         end
       end
 end
