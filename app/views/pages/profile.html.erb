@@ -285,13 +285,17 @@ function setMessage(recipient, sender, subject) {
 	$("#subject_field").val(subject);
 }
 
-function openReplyBox() {
-	
+function openReplyBox(message_id) {
+	$("#message-box"+message_id).fadeOut(300);
+	$('#mask').fadeOut(300);
+	$('#mask').remove();
+	$('#message-reply').click();
 }
 
  </script>
 
 </head>
+<a href="#message-box" class="message-window" id="message-reply" style="display:none">Reply Link Here</a>
 <% @message = Message.new%>
 <div id="message-box" class="m-popup">
 	<tr><td><font style="font-family:chunkFiveRegular; font-size:2.5em; color:#575758">Reply Message</font></td></tr> 
