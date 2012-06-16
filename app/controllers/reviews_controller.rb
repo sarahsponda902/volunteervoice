@@ -96,7 +96,7 @@ class ReviewsController < ApplicationController
         @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (params[:review][:body][0..99] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
         @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (params[:review][:body][0..199] + "...") ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 
-        params[:review][:body] = "<span style='color:#6aaeba>Update #{Time.now.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')}:</span> "+RedCloth.new( ActionController::Base.helpers.sanitize( params[:review][:body] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html.html_safe + "<br />"+@review.body
+        params[:review][:body] = "<font style='color:#6aaeba>Update #{Time.now.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')}:</font> "+RedCloth.new( ActionController::Base.helpers.sanitize( params[:review][:body] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html.html_safe + "<br />"+@review.body
        
        if user_signed_in? && (current_user.admin? || current_user.id == @review.user_id)
 
