@@ -1056,7 +1056,7 @@ class ProgramsController < ApplicationController
     @program.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
     @lengths = []
-    @program.program_lengths.split(", ").each do |f|
+    @program.program_lengths.split(",").each do |f|
       @p = ProgramLength.new(:program_id => @program.id, :length => f)
       @p.save
       @lengths << @p
@@ -1064,7 +1064,7 @@ class ProgramsController < ApplicationController
     @program.program_lengths = @lengths
     
     @subjects = []
-    @program.program_subjects.split(", ").each do |f|
+    @program.program_subjects.split(",").each do |f|
       @p = ProgramSubject.new(:program_id => @program.id, :subject => f)
       @p.save
       @subjects << @p
@@ -1072,7 +1072,7 @@ class ProgramsController < ApplicationController
     @program.program_subjects = @subjects
     
     @sizes = []
-    @program.program_sizes.split(", ").each do |f|
+    @program.program_sizes.split(",").each do |f|
       @p = ProgramSize.new(:program_id => @program.id, :sizes => f)
       @p.save
       @sizes << @p
