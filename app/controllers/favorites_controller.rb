@@ -21,7 +21,7 @@ class FavoritesController < ApplicationController
     @favorite.destroy
     
     respond_to do |format|
-      format.html { redirect_to "/#{params[:field]}/#{params[:location]}" }
+      format.html { redirect_to "/organizations/1" }
       format.json { head :no_content }
     end
   end
