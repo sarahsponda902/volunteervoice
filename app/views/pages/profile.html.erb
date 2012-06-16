@@ -417,7 +417,7 @@ function messagesRead() {
         </div>
         <div id="black-contents" class="contents"  style="margin-top:50px;">
 	<div align="right" style="font-family:architectsDaughterRegular; color: #e67b5a; font-size:1em; margin-right:55px; margin-top:-15px">
-		<%=@reviews.count%> Reviews
+		<%= pluralize(@reviews.count, "Review")%>
 		</div>
             <div id="divs" style="overflow:hidden">
                 <% if @reviews.count != 0 %>
