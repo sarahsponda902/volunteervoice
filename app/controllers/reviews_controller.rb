@@ -129,6 +129,7 @@ include ActionView::Helpers::TextHelper
          else
            @org.overall = 0
          end
+           @org.reviews_count = @org.reviews_count - 1
          if @prog.reviews.count != 1
            @prog.overall = (@prog.overall * @prog.reviews.count - @review.overall) / (@prog.reviews.count - 1)
          else 
