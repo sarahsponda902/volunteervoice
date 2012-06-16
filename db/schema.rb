@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120615234152) do
+ActiveRecord::Schema.define(:version => 20120616163532) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -214,6 +214,27 @@ ActiveRecord::Schema.define(:version => 20120615234152) do
   create_table "pages", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "program_lengths", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "program_id"
+    t.string   "length"
+  end
+
+  create_table "program_sizes", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "program_id"
+    t.string   "size"
+  end
+
+  create_table "program_subjects", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "program_id"
+    t.string   "subject"
   end
 
   create_table "programs", :force => true do |t|
