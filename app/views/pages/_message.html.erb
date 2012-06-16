@@ -10,7 +10,7 @@
 			</td>
 		<td width="12%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 		<td width="50%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%=m.subject%></p></td>
-		<td width="9%"><p style="margin-right:25px;margin-top:-5px" align="center"><%= link_to "", "/messages/#{m.id}/mark_deleted", :style => "opacity:0", :id => "deleteMessage#{m.id}"%>
+		<td width="9%"><p style="margin-right:25px;margin-top:-5px" align="center"><a href="/messages/#{m.id}/mark_deleted", style = "opacity:0" id = "deleteMessage<%=m.id%>">Delete</a>
 		<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/favoritesX.png"), "#delete-box#{m.id}", :class => "delete-window"%>
 		</p></td>
 </tr>
