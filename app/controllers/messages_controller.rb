@@ -54,7 +54,7 @@ class MessagesController < ApplicationController
     @message.destroy
     
     respond_to do |format|
-      format.html { redirect_to messages_path }
+      format.html { redirect_to "/pages/profile" }
       format.json { head :no_content }
     end
 
