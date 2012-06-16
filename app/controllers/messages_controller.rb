@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
   end
   
   def index
-    @messages = Message.all
+    @messages = Message.find(:all, :order => "created_at").reverse
   end
 
 
