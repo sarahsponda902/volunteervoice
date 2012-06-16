@@ -4,7 +4,16 @@ class NewReview < ActiveRecord::Base
   characters."
   
   belongs_to :user
-  validate :validate_image_size
+  validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo2, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo3, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo4, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo5, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo6, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo7, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo8, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo9, :file_size => {:maximum => 0.5.megabytes.to_i}
+  validates :photo10, :file_size => {:maximum => 0.5.megabytes.to_i}
   attr_accessible :body, :rating, :photo, :show, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall, :user_id, :organization, :program, :photo2, :photo3, :photo4, :photo5, :photo6, :photo7, :photo8, :photo9, :photo10
 
 
@@ -25,74 +34,5 @@ class NewReview < ActiveRecord::Base
           (overall*2).round / 2.0
       end
       
-      def validate_image_size
-        image = MiniMagick::Image.open(self.photo.url) unless !self.photo.url
-        image2 = MiniMagick::Image.open(self.photo2.url) unless !self.photo2.url
-        image3 = MiniMagick::Image.open(self.photo3.url) unless !self.photo3.url
-        image4 = MiniMagick::Image.open(self.photo4.url) unless !self.photo4.url
-        image5 = MiniMagick::Image.open(self.photo5.url) unless !self.photo5.url
-        image6 = MiniMagick::Image.open(self.photo6.url) unless !self.photo6.url
-        image7 = MiniMagick::Image.open(self.photo7.url) unless !self.photo7.url
-        image8 = MiniMagick::Image.open(self.photo8.url) unless !self.photo8.url
-        image9 = MiniMagick::Image.open(self.photo9.url) unless !self.photo9.url
-        image10 = MiniMagick::Image.open(self.photo10.url) unless !self.photo10.url
-        if image
-          unless (image[:width] < 700 && image[:height])
-            errors.add :image, "must be smaller than 700x700 px" 
-          end
-        end
-        if image
-          unless (image[:width] < 700 && image[:height])
-            errors.add :image, "must be smaller than 700x700 px" 
-          end
-        end
-        if image2
-          unless (image2[:width] < 700 && image2[:height])
-            errors.add :image2, "must be smaller than 700x700 px" 
-          end
-        end
-        if image3
-          unless (image3[:width] < 700 && image3[:height])
-            errors.add :image3, "must be smaller than 700x700 px" 
-          end
-        end
-        if image4
-          unless (image4[:width] < 700 && image4[:height])
-            errors.add :image4, "must be smaller than 700x700 px" 
-          end
-        end
-        if image5
-          unless (image5[:width] < 700 && image5[:height])
-            errors.add :image5, "must be smaller than 700x700 px" 
-          end
-        end
-        if image6
-          unless (image6[:width] < 700 && image6[:height])
-            errors.add :image6, "must be smaller than 700x700 px" 
-          end
-        end
-        if image7
-          unless (image7[:width] < 700 && image7[:height])
-            errors.add :image7, "must be smaller than 700x700 px" 
-          end
-        end
-        if image8
-          unless (image8[:width] < 700 && image8[:height])
-            errors.add :image8, "must be smaller than 700x700 px" 
-          end
-        end
-        if image9
-          unless (image9[:width] < 700 && image9[:height])
-            errors.add :image9, "must be smaller than 700x700 px" 
-          end
-        end
-        if image10
-          unless (image10[:width] < 700 && image10[:height])
-            errors.add :image10, "must be smaller than 700x700 px" 
-          end
-        end
-
-
-      end
       
 end

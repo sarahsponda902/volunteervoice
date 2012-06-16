@@ -4,7 +4,7 @@ class BlogPost < ActiveRecord::Base
 	include CarrierWave::MiniMagick
 
 	unloadable
-  validate :validate_image_size
+  validates :image, :file_size => {:maximum => 0.5.megabytes.to_i}
   attr_accessible :blog_type, :image, :body, :title, :tags, :published, :g, :blog_link, :is_our_blog, :square_image, :thumbnail, :crop_x, :crop_y, :crop_h, :crop_w, :source_title, :source
   attr_accessor  :crop_x, :crop_y, :crop_h, :crop_w
 
@@ -119,14 +119,6 @@ class BlogPost < ActiveRecord::Base
       self.square_image = image
     end
   end
-  
-  def validate_image_size
-     image = MiniMagick::Image.open(self.image.url) unless !self.image.url
-     if image
-       unless image[:width] < 700 && image[:height] < 700
-         errors.add :image, "must be smaller than 700x700 px" 
-       end
-     end
-   end
+
   
 end

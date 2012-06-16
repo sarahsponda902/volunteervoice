@@ -11,7 +11,7 @@ scope :random, :order=>'RAND()', :limit=>1
 validates_uniqueness_of :name
 
 before_save :square_image_crop
-validate :validate_image_size
+validates :image, :file_size => {:maximum => 0.5.megabytes.to_i}
 
 before_create :set_page_views_to_zero
   def set_page_views_to_zero
@@ -41,15 +41,6 @@ def square_image_crop
      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
      self.square_image = image
-   end
- end
-
- def validate_image_size
-   image = MiniMagick::Image.open(self.image.url) unless !self.image.url
-   if image
-     unless image[:width] < 700 && image[:height] < 700
-       errors.add :image, "must be smaller than 700x700 px" 
-     end
    end
  end
 
