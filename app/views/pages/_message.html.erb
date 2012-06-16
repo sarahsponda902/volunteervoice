@@ -36,7 +36,11 @@
 		<%= text_area_tag :body, :style => "width:380px;height:75px;overflow:scroll"%>
 		<%= hidden_field_tag :recipient_id, :value => m.sender_id%>
 		<%= hidden_field_tag :sender_id, :value => m.recipient_id%>
-		<%= hidden_field_tag :subject, :value => "Re:"+m.subject%>
+		<% if m.subject[0..2] != "Re:"%>
+		<%= hidden_field_tag :subject, :value => "Re: "+m.subject%>
+		<% else %>
+		<%= hidden_field_tag :subject, :value => m.subject%>
+		<% end %>
 		<p style="text-align:right"><%= image_submit_tag "/assets/submit.png"%></p>
 		<% end %></td></tr>
 		<% else %>
