@@ -1,4 +1,5 @@
 class NewReview < ActiveRecord::Base
+  require 'file_size_validator'
   validates :terms, :acceptance => {:accept => true}
   validates_length_of :body, :minimum => 200, :message => "Must contain at least 30 
   characters."

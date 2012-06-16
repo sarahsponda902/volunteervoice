@@ -1,5 +1,5 @@
 class Review < ActiveRecord::Base
-
+require 'file_size_validator'
 @orgs = []
 Organization.all.each do |f|
   @orgs << f.name

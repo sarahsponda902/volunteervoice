@@ -1,6 +1,6 @@
 class BlogImage < ActiveRecord::Base
   	include CarrierWave::MiniMagick
-  	
+  	require 'file_size_validator'
 	unloadable
 
 	belongs_to :blog_post

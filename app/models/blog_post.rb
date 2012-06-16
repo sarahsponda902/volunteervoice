@@ -1,6 +1,6 @@
 class BlogPost < ActiveRecord::Base
 	include BlogKitModelHelper
-	
+	require 'file_size_validator'
 	include CarrierWave::MiniMagick
 
 	unloadable

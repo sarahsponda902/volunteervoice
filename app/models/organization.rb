@@ -1,5 +1,5 @@
 class Organization < ActiveRecord::Base
-  
+  require 'file_size_validator'
   include CarrierWave::MiniMagick
   
 has_many :comments
