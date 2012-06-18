@@ -96,7 +96,7 @@ include ActionView::Helpers::TextHelper
         @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate params[:review][:body], :length => 100) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
         @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate params[:review][:body], :length => 200) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 
-        params[:review][:body] = "<em>Update #{Time.now.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')}:</em> "+RedCloth.new( ActionController::Base.helpers.sanitize( params[:review][:body] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html + "<br />"+@review.body
+        params[:review][:body] = "<strong>Update #{Time.now.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')}:</strong> "+RedCloth.new( ActionController::Base.helpers.sanitize( params[:review][:body] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html + "<br />"+@review.body
        
        if user_signed_in? && (current_user.admin? || current_user.id == @review.user_id)
 
