@@ -288,7 +288,7 @@ class UsersController < ApplicationController
     redirect_to "/pages/profile"
     else
     @message = Message.new
-
+    @flag = Flag.new
      @theCountries = Hash["AF" => "Afghanistan", 
       "AX" => "Aland Islands", 
       "AL"=> "Albania", 
