@@ -412,7 +412,7 @@ function openReplyBox(message_id) {
 		        
 
               <% if @messages.empty?%>
-			<p style="color:#575758; margin-left:200px; margin-top:-100px">
+			<p style="color:#575758; margin-left:200px; margin-top:-80px">
               You do not have any messages in your inbox.</p>
               <% else %>
 			<p style="margin-top:-80px"> </p>
@@ -437,7 +437,7 @@ function openReplyBox(message_id) {
 			        </ul>
 
 	              <% if @sent_messages.empty?%>
-	              <p style="color:#575758; margin-left:200px; margin-top:-100px">
+	              <p style="color:#575758; margin-left:200px; margin-top:-80px">
 	              You have not yet sent any messages.</p>
 	              <% else %>
 	              <% @sent_messages.each do |m| %>
