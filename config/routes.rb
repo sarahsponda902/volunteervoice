@@ -63,6 +63,8 @@ RMTest::Application.routes.draw do
   
   ##### REVIEWS
   
+  match "reviews/:id/changeFlagShow" => "reviews#changeFlagShow"
+  
   match "reviews/:id/changeShow" => 'reviews#changeShow'
   
   match "reviews/:user_id/create" => 'reviews#new'

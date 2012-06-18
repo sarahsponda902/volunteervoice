@@ -34,9 +34,9 @@
     <td width="7%"><%= link_to 'Flag', flag %></td>
     <td width="7%"><%= link_to 'Destroy', flag, confirm: 'Are you sure?', method: :delete %></td>
 	<td width="7%"><% if Review.find(flag.review_id).flag_show %>
-	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), :controller => "reviews", :action => "changeFlagShow", :id => flag.review_id %>
+	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), "/reviews/#{flag.review_id}/changeFlagShow" %>
 	<% else %>
-	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), :controller => "reviews", :action => "changeFlagShow", :id => flag.review_id %>
+	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), "/reviews/#{flag.review_id}/changeFlagShow" %>
 	<% end %>
   </tr>
 <% end %>
