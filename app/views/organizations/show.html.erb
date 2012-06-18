@@ -195,16 +195,16 @@
 <%@organization.page_views = (@organization.page_views + 1)%>
 <% @organization.save! %>
 
-<% reviews_count = 0%>
+<% @reviews_count = 0%>
 <% @results.each do |f|%>
 <% if f.flag_show != false%>
-<% reviews_count = reviews_count + 1%>
+<% @reviews_count = @reviews_count + 1%>
 <% end %>
 <% end %>
 
 <script type="text/javascript">
 $(document).ready(function () {
-	$('#reviewws_pager').smartpaginator({ totalrecords: <%=reviews_count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	$('#reviewws_pager').smartpaginator({ totalrecords: <%=@reviews_count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 
 });
