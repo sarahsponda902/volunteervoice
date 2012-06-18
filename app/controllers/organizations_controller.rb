@@ -299,11 +299,9 @@ class OrganizationsController < ApplicationController
        @program_lengths << f.length unless @program_lengths.include?(f.length)
      end
      @results = []
-     @organization.programs.each do |a|
-   	   a.reviews.each do |f|
+     Review.where(:organization_id => @organization.id).each do |f|
    	     if !(f.overall.nil?)
            @results << f
-         end
        end
      end
      @results = @results.sort_by(&:created_at).reverse
