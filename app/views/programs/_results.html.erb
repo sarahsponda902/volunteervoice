@@ -15,6 +15,9 @@
 
 	<p align="right" style="color:#e67b5a; font-size:1.1em; line-height:1.5em; margin-right:40px">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
 		<table cellspacing="0" style="border:1px solid #e67b5a; float:center; background-color:#E9ECE9; margin-left:40px;margin-right:40px" cellpadding="0">
+			<% if @review.flag_show == false%>
+			<tr><td>This review has been flagged for removal</td></tr>
+			<% else %>
 			<tr style="background-color:#E9ECE9" height="30px">
 				<td style="width:40%"><p  style="margin-top:5px; font-size:1.1em;color:#575758" >	Program: <font style="font-family:architectsDaughterRegular"> <%=Program.find(f.program_id).name%></font></p></td>
 				<td style="width:30%"><p  style="margin-top:5px; font-size:1.1em;" >Trip Was: <font style="font-family:architectsDaughterRegular"> <%=Program.find(f.program_id).length%></font></p></td>
@@ -32,6 +35,7 @@
 				<td style="width:1%"></td>
 				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><a href="#flag-box<%=f.id%>" class="flag-window" id="flag-link<%=f.id%>"><%= (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png") %></a></p></td>
 			</tr>
+			<% end %>
 		</table>
 	
 		<table id="flag-box<%=f.id%>" class="flag-popup">

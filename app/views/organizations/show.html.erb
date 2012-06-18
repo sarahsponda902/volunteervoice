@@ -195,12 +195,7 @@
 <%@organization.page_views = (@organization.page_views + 1)%>
 <% @organization.save! %>
 
-<% reviews_count = 0%>
-<% @results.each do |f|%>
-<% if f.flag_show != false%>
-<% reviews_count = reviews_count + 1%>
-<% end %>
-<% end %>
+<% reviews_count = @results.count %>
 
 <script type="text/javascript">
 $(document).ready(function () {
@@ -269,11 +264,9 @@ $(document).ready(function () {
 
 	
 				<% @results.each do |f| %>
-				<% if f.flag_show != false%>
 				<div>
 					<%= render :partial => "results", :locals => {:f => f}%>
 				</div>
-				<% end %>
 				<% end %>
 		
 			</div>
