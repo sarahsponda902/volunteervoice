@@ -63,10 +63,11 @@
                 $('#black-contents').css('display', 'none');
 				$('#sent-contents').css('display', 'none');
                 if ($(this).attr('id') == '1') {$('#red-contents').fadeIn(300); switchTabs('1'); messagesRead();}
-                if ($(this).attr('id') == '2') {$('#green-contents').fadeIn(300); switchTabs('2');}
-                if ($(this).attr('id') == '3') {$('#black-contents').fadeIn(300); switchTabs('3');}
-				if ($(this).attr('id') == '4') {$('#red-contents').fadeIn(300); switchTabs('4'); messagesRead();}
-                if ($(this).attr('id') == '5') {$('#sent-contents').fadeIn(300); switchTabs('5');}
+                else if ($(this).attr('id') == '2') {$('#green-contents').fadeIn(300); switchTabs('2');}
+                else if ($(this).attr('id') == '3') {$('#black-contents').fadeIn(300); switchTabs('3');}
+				else if ($(this).attr('id') == '4') {$('#red-contents').fadeIn(300); switchTabs('4'); messagesRead();}
+                else if ($(this).attr('id') == '5') {$('#sent-contents').fadeIn(300); switchTabs('5');}
+				else {$('#black-contents').fadeIn(300); switchTabs('3');}
 				
 				
             });
