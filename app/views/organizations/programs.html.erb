@@ -1,39 +1,3 @@
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('a.programs-window').click(function() {
-
-			            //Getting the variable's value from a link 
-				var programsBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(programsBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(programsBox).height() + 24) / 2; 
-				var popMargLeft = ($(programsBox).width() + 24) / 2; 
-
-				$(programsBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="opacity:.5"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .programs-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-		});
-	</script>
-	
 	<div class="container">
 	    <div class="row">
 
@@ -118,4 +82,40 @@
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
 	}
 </style>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('a.programs-window').click(function() {
+
+		            //Getting the variable's value from a link 
+			var programsBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(programsBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(programsBox).height() + 24) / 2; 
+			var popMargLeft = ($(programsBox).width() + 24) / 2; 
+
+			$(programsBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="opacity:.5"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .programs-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+	});
+</script>
 
