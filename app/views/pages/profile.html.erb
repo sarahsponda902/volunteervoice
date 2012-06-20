@@ -332,7 +332,7 @@ function openReplyBox(message_id) {
 				<p style="border-top:1px solid #e67b5a; border-bottom:1px solid #F5825A; height:30px"><a href="#edit-box" class="edit-window" style="font-size:1.1em; float:right; margin-right:10px; margin-top:5px">My account</a>	<a href="#upload-box" class="upload-window" style="font-size:1.1em; float:right; padding-left:25px; margin-right:30px; margin-top:5px">Change Profile Image</a> </p>
 				</div>
 			</div>
-			<div class="row" style="margin-top:25px">
+			<div class="row" style="margin-top:40px">
 				<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden">
 					<% if !(@user.photo.url.nil?)%>
 				<%=image_tag @user.square_image.url, :style => "height:168px; width:168px"%>
