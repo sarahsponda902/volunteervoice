@@ -335,6 +335,7 @@ function openReplyBox(message_id) {
  </script>
 
 </head>
+<%= devise_error_messages!%>
 <a href="#message-box" class="message-window" id="message-reply" style="display:none">Reply Link Here</a>
 <% @message = Message.new%>
 <div id="message-box" class="m-popup">

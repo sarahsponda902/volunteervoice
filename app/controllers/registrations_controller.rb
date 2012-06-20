@@ -48,7 +48,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       respond_to do |format|
-         format.html { render :controller => "pages", :action => "profile" }
+         format.html { redirect_to "/pages/profile" }
          format.json { render :json => resource.errors, :status => :unprocessable_entity }
       end
     end
