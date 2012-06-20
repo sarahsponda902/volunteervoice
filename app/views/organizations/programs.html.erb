@@ -24,6 +24,7 @@
 <div class="twelve columns" style="margin-top:50px; margin-left:50px;margin-right:50px">
 <% @countries.keys.each do |f|%>
 <div class="three columns" style="width:23%; float:left">
+	<p style="margin:auto"><a href="#programs-box<%=f%>" class="programs-window" style="font-family:museoSlab500Regular"><%= @theCountries[f]%></a></p>
 <a href="#programs-box<%=f%>" class="programs-window"><%= render :partial => "flag", :locals => {:country => f} %></a>
 </div>
 
@@ -99,6 +100,11 @@
 	        -moz-border-radius: 3px; /* Firefox */
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
 	}
+	
+	a.programs-window:link{color:#575758}
+	a.programs-window:visited{color:#575758}
+	a.programs-window:active{color:#575758}
+	a.programs-window:hover{color:#68c2d8}
 </style>
 
 <script type="text/javascript">
