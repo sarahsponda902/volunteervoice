@@ -771,7 +771,11 @@ class ProgramsController < ApplicationController
      @results.each do |f|
        @overall = @overall + f.overall
      end
-     @overall = @overall / @results.count
+     if @results.count != 0
+       @overall = @overall / @results.count
+     else
+       @overall = 0
+     end
      @flag = Flag.new
      @theCountries = Hash["AF" => "Afghanistan", 
      "AX" => "Aland Islands", 
