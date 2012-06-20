@@ -79,6 +79,7 @@
 	</div>
 		<div class="four columns" id="ageCountryBox" style="margin-top:-5px;float:left; margin-left:15px; padding:5px; padding-right:10px; padding-left:10px; border:1px solid #e67b5a;">
 			<p style="font-size:1.2em; line-height:1.6em; padding-bottom:5px">
+<% if !(@user.profile_show)%>
 	<%if @user.dob != nil%>
 	<% @now = Time.now.utc.to_date%>
 	Age: <%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
@@ -87,12 +88,15 @@
 		<%end%>
 	<br />
 	Country: <%= @theCountries[@user.country] %>
-
+	
 	<br />
-
+	<% else%>
+	This user has hidden<br />
+	their age and country
+	<% end %>
 	</p>
 	<div id="messagesBox">
-		<% if user_signed_in? && (@user.messages_show == true || @user.messages_show.nil?)%>
+		<% if user_signed_in? && (@user.messages_show == false)%>
 	<a href="#popup-box" style = "margin-top:10px; margin-left:0px" class = "popup-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendMessage.png"></a>
 		<% end %>
 	</div>
