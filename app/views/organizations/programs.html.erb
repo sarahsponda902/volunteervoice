@@ -21,7 +21,7 @@
 		<% end %>
 
 <% @countries.keys.each do |f|%>
-<%= f %>
+<%= render :partial => "flag", :locals => {:country => f} %>
 <br />
 <% end %>
 </div>
