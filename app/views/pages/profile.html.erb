@@ -50,13 +50,25 @@
 	var profile = <%= @user.profile_show.to_s %>
 
         $(document).ready(function () {
+			<% if @path == "messages" %>
+			$('#green-contents').css('display', 'none');
+            $('#black-contents').css('display', 'none');
+			$('#sent-contents').css('display', 'none');
+			<% end %>
 			
-
-	
-
+			<% if @path == "sent" %>
+			$('#green-contents').css('display', 'none');
+            $('#black-contents').css('display', 'none');
+			$('#red-contents').css('display', 'none');
+			<% end %>
+			
+			<% if @path == "nothing" %>	
             $('#green-contents').css('display', 'none');
             $('#red-contents').css('display', 'none');
 			$('#sent-contents').css('display', 'none');
+			<% end %>
+			
+			
             $('ul li').click(function () {
 				if ($(this).attr('class') != 'navs') {
                 $('#red-contents').css('display', 'none');
