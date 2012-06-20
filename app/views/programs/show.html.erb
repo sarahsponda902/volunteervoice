@@ -248,7 +248,7 @@
 	<div style="margin-left:20px; padding-top:2%; margin-right:2%">	<%=@program.description.html_safe%></div>
 
 </div>
-	<div class="six columns" style="margin-left:4%; width:17%; margin-top:3px; padding-bottom:7px">
+	<div class="six columns" style="margin-left:4%; width:48%; margin-top:3px; padding-bottom:7px">
 		<br />
 		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkItOut.png"%> </a>
 		<%= link_to (image_tag "/assets/reviewThisProgram.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id%>
