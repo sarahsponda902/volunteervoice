@@ -58,7 +58,7 @@
             $('#red-contents').css('display', 'none');
 			$('#sent-contents').css('display', 'none');
             $('ul li').click(function () {
-				if $(this).attr('class') != 'navs') {
+				if ($(this).attr('class') != 'navs') {
                 $('#red-contents').css('display', 'none');
                 $('#green-contents').css('display', 'none');
                 $('#black-contents').css('display', 'none');
@@ -68,7 +68,7 @@
                 if ($(this).attr('id') == '3') {$('#black-contents').fadeIn(300); switchTabs('3');}
 				if ($(this).attr('id') == '4') {$('#red-contents').fadeIn(300); switchTabs('4'); messagesRead();}
                 if ($(this).attr('id') == '5') {$('#sent-contents').fadeIn(300); switchTabs('5');}
-			}
+				}
 				
             });
 			$('#favoritesTab').hide();
