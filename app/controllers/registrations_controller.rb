@@ -16,7 +16,6 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.admin_pass == "4e5d0ed9183ebf2fed541412497e15a30e72f9cb" && resource.admin_update == true
       resource.admin = true;
     end
-    resource.return_link = URI(request.referrer).path
      if resource.save_with_captcha
            if resource.confirmed?
              set_flash_message :notice, :signed_up if is_navigational_format?
@@ -44,13 +43,13 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def must_be
-    @link = URI(request.referrer).path
+    resource.return_link = URI(request.referrer).path
     resource = build_resource({})
     respond_with resource
   end
   
   def new
-    @link = URI(request.referrer).path
+    resource.return_link = URI(request.referrer).path
     resource = build_resource({})
     respond_with resource
   end
