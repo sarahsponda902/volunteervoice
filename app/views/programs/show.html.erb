@@ -158,7 +158,7 @@
 </head>
 <div style="margin-top:20px; margin-left:20px">
 <%if request.referrer %>
-<%= (URI(request.referrer).path.split('/'))%>
+<%= request.referrer%>
 	<%if (URI(request.referrer).path.split('/')[0] == 'organizations')%>
 		<a href="<%=URI(request.referrer).path%>" style="font-family:architectsDaughterRegular; color:#575758">&lt; Back to Organization Profile</a>
 	<% else %>
