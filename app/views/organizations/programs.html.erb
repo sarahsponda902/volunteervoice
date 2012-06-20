@@ -14,7 +14,9 @@
 	<div class="row" style="margin-top:100px; border:1px solid #575758; background-color:#E9ECE9; padding-bottom:50px;">
 
 		<% @countries = Hash.new %>
-		<% @organization.programs.each do |f| %>
+		<% @progs = @organization.programs%>
+		<% @progs.sort_by{|p| @theCountries2[p.country].downcase} %>
+		<% @progs.each do |f| %>
 		<% if !(@countries.has_key?(f.location))%>
 		<% @countries[f.location] = 1%>
 		<% else %>
