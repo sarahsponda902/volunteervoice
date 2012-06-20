@@ -4,7 +4,11 @@ class ApplicationController < ActionController::Base
 include SimpleCaptcha::ControllerHelpers
 
    def after_sign_in_path_for(resource_or_scope)
-     request.referrer
+     if URI(request.referrer).path != '/users/sign_in'
+       request.referrer
+     else
+       '/'
+     end
    end
    
    def after_sign_out_path_for(resource_or_scope)
