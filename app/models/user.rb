@@ -67,7 +67,7 @@ def square_image_crop
      params.delete(:password_confirmation) if params[:password_confirmation].blank?
    end
 
-   result = if (params[:password].blank? && params[:email].blank?) || valid_password?(current_password) 
+   result = if params[:password].blank? || valid_password?(current_password) 
      update_attributes(params, *options)
    else
      self.assign_attributes(params, *options)
