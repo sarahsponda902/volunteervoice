@@ -3,7 +3,7 @@
 
 <table>
   <tr>
-	<th>Flag Category</th>
+	<th>Org Name</th>
 	<th>Poster</th>
     <th>Flagger</th>
     <th>Body</th>
@@ -15,7 +15,7 @@
 
 <% @flags.each do |flag| %>
   <tr>
-	<td width="13%"><%= flag.category%></td>
+	<td width="13%"><%= link_to Organization.find(Review.find(flag.review_id).organization_id).name, Organization.find(Review.find(flag.review_id).organization_id)%></td>
 	<td width="5%">
 	<% if !(User.where(:id => flag.poster_id).empty?)%>
 	<%= User.find(flag.poster_id).username%>
