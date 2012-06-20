@@ -565,9 +565,15 @@
                 });
             }, 250);
             $("#AfricaRow").click(function(){
-                $(".AfricaContent").toggle();
-                $(".AfricaBackground").toggle();
-                $(".AfricaNoBackground").fadeToggle(300);
+				if ($(".AfricaContent").is(":visible")) {
+                $(".AfricaContent").hide();
+                $(".AfricaBackground").hide();
+                $(".AfricaNoBackground").fadeIn(300);
+			} else {
+				$(".AfricaContent").fadeIn(300);
+                $(".AfricaBackground").fadeIn(300);
+                $(".AfricaNoBackground").hide();
+			}
                 
               });
 
