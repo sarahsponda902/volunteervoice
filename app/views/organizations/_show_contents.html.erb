@@ -49,11 +49,8 @@
 			<% end %>
 			<% @types = @types.flatten%>
 			<% @types = @types.uniq{|x| x}%>
-			<% @count = 1%>
-			<% @types.each do |f|%>
-				<% @count = @count + 1%>
-				<%= f %><%= "," unless @count == @types.count + 1;%>
-			<% end %>
+
+			<%= @types.join(", ")%>
 		</div>
 	</div>
 	<div class="three columns" style="float:left;margin-left:10px; padding:10px; height:295px; background-color:#c1dfdb; height:310.5px">
