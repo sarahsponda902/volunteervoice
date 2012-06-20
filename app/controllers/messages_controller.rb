@@ -64,17 +64,14 @@ include ActionView::Helpers::TextHelper
     @message = Message.find(params[:id])
     @message.sender_deleted = true
     @message.save
-    
-    redirect_to "/pages/profile"
+    redirect_to "/pages/profile/sent_deleted"
   end
   
   def mark_deleted
     @message = Message.find(params[:id])
     @message.recipient_deleted = true
     @message.save
-    redirect_to "/pages/profile"
-
-    
+    redirect_to "/pages/profile/message_deleted" 
   end
   
 end
