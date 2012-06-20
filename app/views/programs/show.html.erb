@@ -179,7 +179,7 @@
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{@program.id}/edit"%> 
-			<%= button_to "Delete", program_path(@program.id), :method => :delete, :confirm => "Are you sure?" %>
+			<%= button_to "Delete", program_path(@program.id), :method => :delete %>
 			<% end %>
 		</div>
 	</div>
@@ -235,6 +235,7 @@
 	<div class="three columns" style="margin-left:4%; width:17%; margin-top:3px; padding-bottom:7px">
 		<br />
 		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkItOut.png"%> </a>
+		<%= link_to (image_tag "/assets/reviewThisProgram.png"), "/reviews/#{@program.organization_id}/#{@program.id}/new"%>
 		<br />
 	</div>
 	<div class="four columns" align="right" style="float:right; margin-right:5px; margin-top:10px; margin-bottom:-30px">

@@ -74,6 +74,7 @@ include ActionView::Helpers::TextHelper
        @review = Review.new
        if user_signed_in?
        @review.organization_id = params[:organization_id]
+       @review.program_id = params[:program_id]
        respond_to do |format|
          format.html # new.html.erb
          format.json { render :json => @review }

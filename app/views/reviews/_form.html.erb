@@ -40,6 +40,9 @@ $(document).ready(function() {
 		$("#review_program_id").append("<option value="+"<%=f.id%>"+">"+"<%=f.name%>"+"</option>");
 		<%end%>
 	<%end%>
+	<% if !(@review.program_id.nil?) %>
+		$("#review_program_id").val("<%=@review.program_id%>");
+	<% end %>
 	
 var	ones = 0;
 var	twos = 0;

@@ -75,11 +75,11 @@ RMTest::Application.routes.draw do
   
   match 'reviews/new.:id' => 'reviews#new'
   
-  match "programs/:program_id/create" => 'reviews#new'
+  match "programs/:organization_id/:program_id/new" => 'reviews#new'
   
   match "reviews/:id/edit" => 'reviews#edit'
   
-  match "organizations/:organizatoin_id/new" => 'reviews#new'
+  match "organizations/:organization_id/new" => 'reviews#new'
   
   match "reviews/reviewNew" => 'reviews#reviewNew'
   
