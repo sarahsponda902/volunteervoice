@@ -805,7 +805,7 @@ function openReplyBox(message_id) {
 				<div style="margin-top:25px; margin-left:215px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :style =>"height:40px" %></div>
 				
 				
-								<p style="margin-top:10px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure" %></p>
+								<p style="margin-top:10px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
 				</div>
 				<div class="six columns" style=" margin-top:-375px; width:250px; padding-left:30px">
 					
@@ -1434,5 +1434,10 @@ a.reviewOrgLink:link{color:#6aaeba}
 a.reviewOrgLink:active{color:#6aaeba}
 a.reviewOrgLink:visited{color:#6aaeba}
 a.reviewOrgLink:hover{color:#e67b5a}
+
+a.cancel-account:link{color:#575758}
+a.cancel-account:active{color:#575758}
+a.cancel-account:visited{color:#575758}
+a.cancel-account:hover{color:#e67b5a}
 
 </style>
