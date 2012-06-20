@@ -33,7 +33,7 @@
 
 </script>
 
-<%= @path = request.request_uri.split("/").last%>
+<%= @path = request.fullpath.split("/").last%>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 
