@@ -158,10 +158,8 @@
 </head>
 <div style="margin-top:20px; margin-left:20px">
 <%if request.referrer %>
-	<%if (URI(request.referrer).path.split('/')[1] != 'organizations')%>
-		<% if !((URI(request.referrer).path.split('/').last == 'home' || URI(request.referrer).path.split('/').empty?))%>
+	<%if (URI(request.referrer).path.split('/')[1] == 'searches')%>
 				<a href="<%=URI(request.referrer).path%>" style="font-family:architectsDaughterRegular; color:#575758">&lt; Back to Search Results</a>
-		<% end %>
 	<% end %>
 <% end %>
 
