@@ -459,46 +459,6 @@ function beforeCheck() {
 
 </div>
 
-<div id="flag-box" class="flag-popup">
-	<% if user_signed_in? %>
-  	<%= form_tag ('/flags') %>
-
-	  <div class="field">
-	    <p style="text-align:center; font-size:1.05em; font-family:cabinRegular; padding-bottom:80px; color:#575758">Report this review for<br />inappropriate content</p>
-		
-		
-		<div class="three columns" style="position:absolute; left:0;top:70px; height:30px; width:250px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-		<select id="category" name="category" style="position:absolute; left:-5px; width:277px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;">
-			<option"Unrelated to Volunteer Trip">Unrelated to Volunteer Trip</option>
-			<option ""><font style="font-Style:italic">Category - </font></option>
-			<option "Spamming">Spamming</option>
-			<option "Harsh Language">Harsh Language</option>
-			<option "Promotion/Advertising">Promotion/Advertising</option>
-			<option "Adult Content">Adult Content</option>
-			<option "Other">Other</option></select></div>
-			
-			
-	<p style="width:150px; height:100px"><textarea id="body" style="height:115px; font-size:0.7em; font-style:italic" onclick="if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');" name="body">Please describe.</textarea>
-	  </div>
-	  <div class="field">
-	    <%hidden_field_tag :flagger_id, :value => current_user.id %>
-	  </div>
-	  <div class="field">
-	    <%hidden_field_tag :poster_id, :value => params[:poster_id] %>
-	  </div>
-	  <div class="field">
-	    <%hidden_field_tag :review_id, :value => params[:review_id] %>
-	  </div>
-
-	  <div class="actions">
-	    <p style="text-align:center; padding-top:15px"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px" %></p>
-
-	  </div>
-	<% else %>
-	You must be signed in to flag a review.
-	<% end %>
-
-</div>
 
 <style>
 /* Mask for background, by default is not display */
