@@ -21,7 +21,7 @@
 		<% end %>
 <div class="twelve columns" style="margin-top:50px; margin-left:50px;margin-right:50px">
 <% @countries.keys[0..3].each do |f|%>
-<div class="three columns" style="width:23%">
+<div class="three columns" style="width:23%; float:left">
 <%= render :partial => "flag", :locals => {:country => f} %>
 </div>
 <% end %>
