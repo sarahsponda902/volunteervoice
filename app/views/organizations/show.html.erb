@@ -265,7 +265,7 @@ $(document).ready(function () {
 	
 				<% @results.each do |f| %>
 				<div>
-					<%= render :partial => "results", :locals => {:f => f}%>
+					<%= render :partial => "results", :locals => {:f => f, :overall => @overall}%>
 				</div>
 				<% end %>
 		

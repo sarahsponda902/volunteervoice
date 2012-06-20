@@ -172,7 +172,7 @@
 		<div class="two columns"  style="text-align:center; margin:0; padding:0; width:28%">
 
 			<p style="font-family:ArchitectsDaughterRegular; font-size:1.2em; color:#575758; line-height:2em; margin-top:20px">Program Rating: </p>
-			<%= render :partial => "bigStar", :locals => {:stars => (@program.roundup(@program.overall))}%>
+			<%= render :partial => "bigStar", :locals => {:stars => (@program.roundup(@overall))}%>
 			<br />
 
 			<p style="font-family:ArchitectsDaughterRegular; font-size:.9em; color:#e67b5a; line-height:1.3em">Based on <%= @program.reviews.count%> reviews</p> 

@@ -767,6 +767,11 @@ class ProgramsController < ApplicationController
   def show
     @program = Program.find(params[:id])
      @results = Review.where(:program_id => @program.id).sort_by(&:created_at).reverse
+     @overall = 0
+     @results.each do |f|
+       @overall = @overall + f.overall
+     end
+     @overall = @overall / @results.count
      @flag = Flag.new
      @theCountries = Hash["AF" => "Afghanistan", 
      "AX" => "Aland Islands", 

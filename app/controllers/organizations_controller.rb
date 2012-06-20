@@ -306,6 +306,12 @@ class OrganizationsController < ApplicationController
      end
      @results = @results.sort_by(&:created_at).reverse
      
+     @overall = 0
+     @results.each do |f|
+       @overall = @overall + f.overall
+     end
+     @overall = @overall / @results.count
+     
      
      @countries = []
      @organization.programs.each do |f|
