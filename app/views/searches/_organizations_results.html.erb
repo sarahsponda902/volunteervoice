@@ -1,5 +1,5 @@
-<div style="padding:0; margin:0; width:100%" onclick="$('#org<%=f.id%>').click();" style="cursor:pointer">
-	<table style="border-bottom:1px solid #575758; border-right:1px solid #575758; background-color:#E9ECE9; height:110px;"width="100%">
+<div style="padding:0; margin:0; width:100%">
+	<table style="border-bottom:1px solid #575758; border-right:1px solid #575758; background-color:#E9ECE9; height:110px; cursor:pointer"width="100%" onclick="$('#org<%=f.id%>').click();">
 		<tr style="background-color:#E9ECE9">
 			<td width="7%"><p style="margin-top:7px"><%=image_tag f.square_image.url, :style => "height:75px;width:75px" %></p></td>
 			<td><p style="margin-top:7px"><a style="font-size:2em;" class="search_link" href="/organizations/<%=f.id%>"><%= f.name%></a></p></td>
