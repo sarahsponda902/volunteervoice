@@ -232,7 +232,7 @@ $(document).ready(function () {
             </ul>
         </div>
 		
-	<%= render :partial => "show_contents", :locals => {:organization => @organization, :reviews_count => reviews_count}%>
+	<%= render :partial => "show_contents", :locals => {:organization => @organization, :reviews_count => reviews_count, :overall => @overall}%>
 	
 	<div class="row">
 			<div class="twelve columns" style="float:center; text-align:center">
@@ -265,7 +265,7 @@ $(document).ready(function () {
 	
 				<% @results.each do |f| %>
 				<div>
-					<%= render :partial => "results", :locals => {:f => f, :overall => @overall}%>
+					<%= render :partial => "results", :locals => {:f => f}%>
 				</div>
 				<% end %>
 		
