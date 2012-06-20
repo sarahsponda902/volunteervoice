@@ -217,7 +217,8 @@
 		<% @program.program_sizes.each do |f|%>
 		<% @sizs << f.size + ", "%>, 
 		<% end %>
-		<%= @sizs.gsub(", ,", "").gsub(", , , ", "")%>
+		<%@sizs = @sizs.gsub(", ,", "").gsub(", , , ", "")%>
+		<%= @sizs%>
 		
 		<br /><br />
 	<font style="font-weight:600">	Accommodations: </font><%= @program.accommodations%><br />
