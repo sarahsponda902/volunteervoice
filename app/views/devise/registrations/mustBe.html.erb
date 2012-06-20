@@ -85,7 +85,7 @@ function submitForm() {
 	<div class="six columns" style="text-align:left; margin-top:90px;">
 		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
 		<%= form_for("user", :url => user_session_path) do |f| %>
-			<%= f.hidden_field :return_link, :value => URI(request.referrer).path%>
+			<%= f.hidden_field :return_link, :value => @link%>
 		<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email or Username</label>
 				  <%= f.text_field :login, :style => "height:20px; width:200px" %></p>
 

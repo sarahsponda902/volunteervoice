@@ -99,7 +99,7 @@ function submitForm() {
 		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Register</p>
 
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :id =>"the_form") do |f| %>
-		<%= f.hidden_field :return_link, :value => URI(request.referrer).path%>
+		<%= f.hidden_field :return_link, :value => @link%>
 
 		  <div  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Username</label>
 				  <%=f.text_field :username, :style=>"height:22px; width:225px" %></div>
