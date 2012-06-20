@@ -31,8 +31,10 @@ include ActionView::Helpers::TextHelper
          else
            @review.body = @review.body.gsub(%r{</?[^>]+?>}, '')
            flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
-           format.html { render :action => "new" }
-           format.json { render :json => @review.errors, :status => :unprocessable_entity }
+           respond_to do |format|
+             format.html { render :action => "new" }
+             format.json { render :json => @review.errors, :status => :unprocessable_entity }
+           end
          end
        end
        else
