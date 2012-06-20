@@ -152,6 +152,8 @@ RMTest::Application.routes.draw do
   
   match "pages/profile/message_deleted" => "pages#profile"
   
+  match "pages/profile/favorite_deleted" => "pages#profile"
+  
   get "pages/test"
   
   get "pages/home"

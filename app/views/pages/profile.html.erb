@@ -62,6 +62,12 @@
 			$('#red-contents').css('display', 'none');
 			<% end %>
 			
+			<% if @path == "favorite_deleted" %>	
+            $('#black-contents').css('display', 'none');
+            $('#red-contents').css('display', 'none');
+			$('#sent-contents').css('display', 'none');
+			<% end %>
+			
 			<% if @path == "profile" %>	
             $('#green-contents').css('display', 'none');
             $('#red-contents').css('display', 'none');

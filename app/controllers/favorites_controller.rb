@@ -23,7 +23,7 @@ include ActionView::Helpers::TextHelper
     
     respond_to do |format|
       if params[:the_place].class.name != "Integer"
-        format.html { redirect_to "/pages/profile" }
+        format.html { redirect_to "/pages/profile/favorite_deleted" }
       else
         format.html { redirect_to "/programs/#{@program_id}}" }
       end
