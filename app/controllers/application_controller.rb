@@ -23,7 +23,11 @@ include SimpleCaptcha::ControllerHelpers
    end
    
    def after_sign_out_path_for(resource)
-     request.referrer
+     if URI(request.referrer).path == '/registrations/mustBe'
+       '/'
+     else
+       request.referrer
+     end
    end
    
    def after_update_path_for(resource)
