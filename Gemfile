@@ -15,6 +15,8 @@ gem 'madmimi'
 
 gem 'RedCloth'
 
+gem 'profanalyzer'
+
 gem "galetahub-simple_captcha", :require => "simple_captcha"
 
 group :production do

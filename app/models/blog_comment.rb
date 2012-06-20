@@ -68,4 +68,5 @@ class BlogComment < ActiveRecord::Base
 	  }
 	end
 
+
 end

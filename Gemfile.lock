@@ -97,6 +97,7 @@ GEM
     pg (0.13.2)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
+    profanalyzer (1.2.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -180,6 +181,7 @@ DEPENDENCIES
   madmimi
   mini_magick
   pg
+  profanalyzer
   rails (= 3.2.2.rc1)
   railties
   sass-rails (~> 3.2.3)
