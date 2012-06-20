@@ -43,6 +43,9 @@ $(document).ready(function() {
 	<% if !(@review.program_id.nil?) %>
 		$("#review_program_id").val("<%=@review.program_id%>");
 	<% end %>
+	<% if !(@review.time_frame.nil?) %>
+		$("#review_time_frame").val("<%=@review.time_frame%>");
+	<% end %>
 	
 var	ones = 0;
 var	twos = 0;
@@ -416,7 +419,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 </head>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your account from being created:<br />
+<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
 	<% value.each do |f|%>
 		* <%=f%><br />
 	<% end %>
