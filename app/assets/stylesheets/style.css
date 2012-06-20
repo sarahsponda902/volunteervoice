@@ -310,7 +310,7 @@ nav li a{color: white;}
 
 nav li a:hover {color:#c1dfdb;}
 
-nav li:hover ul{opacity:.9; transition:opacity 0.2s linear; z-index:5; }
+nav li:hover ul{opacity:.9; transition:opacity 0.2s linear; -moz-transition:opacity 0.2s linear; -webkit-transition:opacity 0.2s linear; -o-transition:opacity 0.2s linear; z-index:5; }
 
 nav li ul{position:absolute; top:165px; width:220px; text-align:center; opacity:0; font-size:.85em; display:block; z-index:5; padding:5px; padding-top:0px; padding-bottom:10px;
  background-color:#575758; border-bottom:3px solid #575758; border-left:3px solid #575758; border-right:3px solid #575758; }
