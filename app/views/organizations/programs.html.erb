@@ -28,7 +28,20 @@
 </div>
 
 <div id="programs-box<%=f%>" class="programs-popup">
-	Blah <%=f%>
+	<% @organization.programs.each do |p|%>
+	<% if p.location == f%>
+	<div class="nine columns" style="width:70%; float:left;font-size:1.5em; color:#e67b5a">
+		<%= p.name%>
+	</div>
+	<div class="three columns" style="width:20%; float:left">
+		<%= render :partial => "star", :locals => {:star => p.overall}%>
+	</div>
+	<div class="eleven columns" style="margin:auto; width:90%">
+		<%= p.description%>
+	</div>
+	<div class="twelve columns" style="height:1px; background-color:#575758">
+	</div>
+	<% end %>
 </div>
 <% end %>
 </div>
