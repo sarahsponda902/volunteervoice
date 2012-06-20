@@ -85,8 +85,8 @@ function submitForm() {
 	<div class="six columns" style="text-align:left; margin-top:90px;">
 		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
 		<%= form_for("user", :url => user_session_path) do |f| %>
-		<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email</label>
-				  <%= f.text_field :email, :style => "height:20px; width:200px" %></p>
+		<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email or Username</label>
+				  <%= f.text_field :login, :style => "height:20px; width:200px" %></p>
 
 				  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
 				  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>

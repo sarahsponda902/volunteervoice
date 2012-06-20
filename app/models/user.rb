@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   include CarrierWave::MiniMagick
   
   apply_simple_captcha :message => "did not match the secret code", :distortion => "high"
-  
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :photo, :username, :id, :age, :country, :dob, :notify, :square_photo, :crop_x, :crop_y, :crop_w, :crop_h, :captcha, :captcha_key, :approved, :volunteered_before, :admin_update, :admin_pass, :messages_show, :profile_show, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :confirmation_token, :crops, :square_image 
+  attr_accessor :login
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :photo, :username, :id, :age, :country, :dob, :notify, :square_photo, :crop_x, :crop_y, :crop_w, :crop_h, :captcha, :captcha_key, :approved, :volunteered_before, :admin_update, :admin_pass, :messages_show, :profile_show, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :confirmation_token, :crops, :square_image, :login 
   has_many :messages
   has_many :reviews, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
@@ -38,6 +38,15 @@ mount_uploader :square_image, ImageUploader
 searchable do
   text :username, :boost => 5
   string :email, :country
+end
+
+def self.find_first_by_auth_conditions(warden_conditions)
+      conditions = warden_conditions.dup
+      if login = conditions.delete(:login)
+        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      else
+        where(conditions).first
+      end
 end
 
 def square_image_crop

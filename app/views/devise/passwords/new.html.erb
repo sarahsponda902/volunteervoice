@@ -12,8 +12,8 @@
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 
-  <div class="three columns"><p style="font-size:1.3em; margin-bottom:10px"> Email: </p>
-  <%= f.email_field :email, :style=>"height:23px; width:190px; background-color:white;" %></div>
+  <div class="three columns"><p style="font-size:1.3em; margin-bottom:10px"> Email or Username: </p>
+  <%= f.email_field :login, :style=>"height:23px; width:190px; background-color:white;" %></div>
 
 <div class="seven columns" style=" margin-left: 14%;font-family:architectsDaughterRegular; color: #e67b5a; line-height:1.8em">Enter your registered email here.  We will send you a top secret message that will allow you to change your password.</div>
 

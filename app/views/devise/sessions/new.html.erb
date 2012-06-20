@@ -18,8 +18,8 @@ function beforeCheck5() {
 	<div class="six columns" style="float:center; text-align:left; margin-top:90px; border-left:1px solid #e67b5a; border-right:1px solid #e67b5a">
 	<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
 	<%= form_for(resource, :as => resource_name, :id => "sign_in", :url => session_path(resource_name)) do |f| %>
-	<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email</label>
-			  <%= f.text_field :email, :style => "height:20px; width:200px" %></p>
+	<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email or Username</label>
+			  <%= f.text_field :login, :style => "height:20px; width:200px" %></p>
 
 			  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
 			  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>
