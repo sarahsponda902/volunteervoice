@@ -1,10 +1,10 @@
 <% if @user.messages_show.nil?%>
-<% @user.messages_show = true%>
+<% @user.messages_show = false%>
 <% @user.save%>
 <% end %>
 
 <% if @user.profile_show.nil?%>
-<% @user.profile_show = true%>
+<% @user.profile_show = false%>
 <% @user.save%>
 <% end %>
 
@@ -38,11 +38,11 @@
 
         $(document).ready(function () {
 	
-			if (<%= (@user.profile_show).to_s %> == false)
+			if (<%= (@user.profile_show).to_s %> == true)
 			{
 				$("#ageCountryBox").hide();
 			}
-			if (<%= (@user.messages_show).to_s %> == false)
+			if (<%= (@user.messages_show).to_s %> == true)
 			{
 				$("#messagesBox").hide();
 			}
