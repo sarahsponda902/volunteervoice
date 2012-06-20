@@ -25,7 +25,7 @@
 		<% end %>
 <div class="twelve columns" style="margin-top:50px; margin-left:50px;margin-right:50px">
 <% @countries.keys.each do |f|%>
-<div class="three columns" style="width:17%; float:left">
+<div class="two columns" style="width:12%; float:left">
 	<p style="margin:auto"><a href="#programs-box<%=f%>" class="programs-window" style="font-family:museoSlab500Regular"><%= @theCountries[f]%></a></p>
 <a href="#programs-box<%=f%>" class="programs-window"><%= render :partial => "flag", :locals => {:country => f} %></a>
 </div>
