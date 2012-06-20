@@ -213,12 +213,7 @@
 		<font style="font-weight:600">Program Structure: </font><%= @program.program_structure.html_safe%><br />
 		<font style="font-weight:600">Partnered Local Organizations: </font><%= @program.partnered_local_organizations%><br /><br />
 		<font style="font-weight:600">Group Size: </font>
-		<% @sizs = ""%>
-		<% @program.program_sizes.each do |f|%>
-		<% @sizs << f.size + ", "%>, 
-		<% end %>
-		<%@sizs = @sizs.gsub(/\, \,/, ".").gsub(", , , ", "")%>
-		<%= @sizs%>
+		<%= @program.program_sizes.join(", ")%>
 		
 		<br /><br />
 	<font style="font-weight:600">	Accommodations: </font><%= @program.accommodations%><br />
