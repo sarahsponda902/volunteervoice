@@ -5,6 +5,7 @@ class NewReview < ActiveRecord::Base
   characters."
 
   belongs_to :user
+  validates_not_profane :body
   validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
   validates :photo2, :file_size => {:maximum => 0.5.megabytes.to_i}
   validates :photo3, :file_size => {:maximum => 0.5.megabytes.to_i}

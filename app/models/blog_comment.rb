@@ -5,7 +5,7 @@ class BlogComment < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :blog_article
-
+  validates_not_profane :body
 	validates_presence_of :body
 
 	before_save :check_for_spam
