@@ -335,7 +335,14 @@ function openReplyBox(message_id) {
  </script>
 
 </head>
-<%= devise_error_messages!%>
+<% flash.each do |key, value| %>
+  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your changes from being made:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
 <a href="#message-box" class="message-window" id="message-reply" style="display:none">Reply Link Here</a>
 <% @message = Message.new%>
 <div id="message-box" class="m-popup">

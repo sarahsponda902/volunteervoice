@@ -47,10 +47,8 @@ class RegistrationsController < Devise::RegistrationsController
       respond_with resource, :location => after_update_path_for(resource)
     else
       clean_up_passwords resource
-      respond_to do |format|
-         format.html { redirect_to "/pages/profile" }
-         format.json { render :json => resource.errors, :status => :unprocessable_entity }
-      end
+      flash[:notice] = flash[:notice].to_a.concat resource.errors.full_messages
+      redirect_to "/pages/profile"
     end
   end
   
