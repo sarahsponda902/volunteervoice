@@ -43,13 +43,13 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def must_be
-    resource.return_link = URI(request.referrer).path
+    resource.return_link = request.referrer
     resource = build_resource({})
     respond_with resource
   end
   
   def new
-    resource.return_link = URI(request.referrer).path
+    resource.return_link = request.referrer
     resource = build_resource({})
     respond_with resource
   end
