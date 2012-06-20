@@ -1,3 +1,39 @@
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a.programs-window').click(function() {
+
+			            //Getting the variable's value from a link 
+				var programsBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(programsBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(programsBox).height() + 24) / 2; 
+				var popMargLeft = ($(programsBox).width() + 24) / 2; 
+
+				$(programsBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('a.close, #mask').live('click', function() { 
+			  $('#mask , .programs-popup').fadeOut(300 , function() {
+				$('#mask').remove();  
+			}); 
+			return false;
+			});
+		});
+	</script>
+	
 	<div class="container">
 	    <div class="row">
 
@@ -22,7 +58,11 @@
 <div class="twelve columns" style="margin-top:50px; margin-left:50px;margin-right:50px">
 <% @countries.keys.each do |f|%>
 <div class="three columns" style="width:23%; float:left">
-<%= render :partial => "flag", :locals => {:country => f} %>
+<a href="#programs-box<%=f%>" class="programs-window"><%= render :partial => "flag", :locals => {:country => f} %>
+</div>
+
+<div id="programs-box<%=f%>" class="programs-popup">
+	Blah <%=f%>
 </div>
 <% end %>
 </div>
@@ -57,5 +97,25 @@
         color: #575758;
         cursor: pointer;
     }
+
+
+	.programs-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #e67b5a;
+		float: left;
+		color: black;
+		position: fixed;
+		width: 650px;
+		top: 50%; left: 50%;
+		z-index: 55;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
 </style>
 
