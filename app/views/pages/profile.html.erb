@@ -504,7 +504,7 @@ function openReplyBox(message_id) {
 			</div>
 			<div id="edit-box" class="edit-popup">
 				<p style="font-size:2em; font-family:chunkFiveRegular; line-height:1.5em; margin:10px" align="center">My Account</p>
-				<%= form_for user_registration_path(@user.id) do |f| %>
+				<%= form_for (@user, :url => registration_path(@user), :html => { :method => :put }) do |f| %>
 				<div class="six columns" style="width:300px">
 					
 					<p style="margin:15px; font-size:1.3em; font-family:architectsDaughterRegular">My Info</p>
