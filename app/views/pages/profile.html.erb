@@ -33,7 +33,7 @@
 
 </script>
 
-<%= @path_actual%>
+<%= @path = request.request_uri.split("/").last%>
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 
@@ -50,19 +50,19 @@
 	var profile = <%= @user.profile_show.to_s %>
 
         $(document).ready(function () {
-			<% if @path == "messages" %>
+			<% if @path == "message_deleted" %>
 			$('#green-contents').css('display', 'none');
             $('#black-contents').css('display', 'none');
 			$('#sent-contents').css('display', 'none');
 			<% end %>
 			
-			<% if @path == "sent" %>
+			<% if @path == "sent_deleted" %>
 			$('#green-contents').css('display', 'none');
             $('#black-contents').css('display', 'none');
 			$('#red-contents').css('display', 'none');
 			<% end %>
 			
-			<% if @path == "nothing" %>	
+			<% if @path == "profile" %>	
             $('#green-contents').css('display', 'none');
             $('#red-contents').css('display', 'none');
 			$('#sent-contents').css('display', 'none');

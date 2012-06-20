@@ -35,17 +35,6 @@ class PagesController < ApplicationController
   	  @favorites = @user.favorites
   	  @messages = Message.where(:recipient_id => current_user.id, :recipient_deleted => false).sort_by(&:created_at).reverse
   	  @sent_messages = Message.where(:sender_id => current_user.id, :sender_deleted => nil).sort_by(&:created_at).reverse
-      
-      @path_actual = URI(request.referrer).path
-      if (URI(request.referrer).path.split("/").last == "mark_sent_deleted")
-        @path = "sent"
-      else 
-        if (URI(request.referrer).path.split("/").last == "mark_deleted")
-          @path = "messages"
-        else
-          @path = "nothing"
-        end 
-      end
   	  
   	  
   	  @theCountries = Hash["AF" => "Afghanistan", 
