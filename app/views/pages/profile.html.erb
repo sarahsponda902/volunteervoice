@@ -54,24 +54,36 @@
 			$('#green-contents').css('display', 'none');
             $('#black-contents').css('display', 'none');
 			$('#sent-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#reviewsTab').hide();
+			$('#messagesTab').show();
 			<% end %>
 			
 			<% if @path == "sent_deleted" %>
 			$('#green-contents').css('display', 'none');
             $('#black-contents').css('display', 'none');
 			$('#red-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#reviewsTab').hide();
+			$('#messagesTab').show();
 			<% end %>
 			
 			<% if @path == "favorite_deleted" %>	
             $('#black-contents').css('display', 'none');
             $('#red-contents').css('display', 'none');
 			$('#sent-contents').css('display', 'none');
+			$('#reviewsTab').hide();
+			$('#messagesTab').hide();
+			$('#favoritesTab').show();
 			<% end %>
 			
 			<% if @path == "profile" %>	
             $('#green-contents').css('display', 'none');
             $('#red-contents').css('display', 'none');
 			$('#sent-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#messagesTab').hide();
+			$('#reviewsTab').show();
 			<% end %>
 			
 			
@@ -89,9 +101,6 @@
 				}
 				
             });
-			$('#favoritesTab').hide();
-			$('#messagesTab').hide();
-			$('#reviewsTab').show();
 
 			$('#black').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divs', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
