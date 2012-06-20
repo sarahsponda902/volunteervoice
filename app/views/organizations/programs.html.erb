@@ -37,7 +37,7 @@
 		<%= render :partial => "star", :locals => {:star => p.overall}%>
 	</div>
 	<div class="eleven columns" style="margin:auto; width:90%">
-		<%= p.description%>
+		<%= p.description.html_safe%>
 	</div>
 	<div class="twelve columns" style="height:1px; background-color:#575758">
 	</div>
@@ -85,7 +85,7 @@
 		padding: 10px; 	
 		border: 2px solid #575758;
 		float: left;
-		color: black;
+		color: #575758;
 		position: fixed;
 		width: 650px;
 		height:400px;
