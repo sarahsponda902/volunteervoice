@@ -52,12 +52,12 @@
 
 				<% if !(user_signed_in?) %>
 				<a href="#login-box" class="login-window">LOGIN</a>
-				or <a href= "/sign_up">JOIN</a>
+				or <a href= "/sign_up" class="register">JOIN</a>
 				<% else %>
 				<a href="/pages/profile"> <%=current_user.username%> 
 					<% if current_user.unread_messages > 0 %>
 					<font style="color:#e67b5a">(<%=current_user.unread_messages%>)</font><% end %></a>&nbsp;&nbsp;
-				<a href= "/signout">LOGOUT</a>
+				<a href= "/signout" class="logout">LOGOUT</a>
 				<% end %>
 				
 			</div>
@@ -222,6 +222,23 @@
 	a.forgotPassword:active{color:white}
 	a.forgotPassword:visited{color:white}
 	a.forgotPassword:hover{color:#e67b5a}
+	
+	a.login-window:link{color:white}
+	a.login-window:active{color:white}
+	a.login-window:visited{color:white}
+	a.login-window:hover{color:#9bce6c}
+	
+	a.register:link{color:white}
+	a.register:active{color:white}
+	a.register:visited{color:white}
+	a.register:hover{color:#e67b5a}
+	
+	a.logout:link{color:white}
+	a.logout:active{color:white}
+	a.logout:visited{color:white}
+	a.logout:hover{color:#e67b5a}
+	
+	
 	
 	/* Mask for background, by default is not display */
 	#mask {
