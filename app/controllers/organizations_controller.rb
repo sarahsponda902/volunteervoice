@@ -380,6 +380,14 @@ class OrganizationsController < ApplicationController
       if @organization.save
             redirect_to "/organizations/#{@organization.id}/crop"
       else
+        @organization.description = @organization.description.gsub(%r{</?[^>]+?>}, '')
+        @organization.headquarters_location = @organization.headquarters_location.gsub(%r{</?[^>]+?>}, '')
+        @organization.good_to_know = @organization.good_to_know.gsub(%r{</?[^>]+?>}, '')
+        @organization.training_resources = @organization.training_resources.gsub(%r{</?[^>]+?>}, '')
+        @organization.run_by = @organization.run_by.gsub(%r{</?[^>]+?>}, '')
+        @organization.mission = @organization.mission.gsub(%r{</?[^>]+?>}, '')
+        @organization.program_costs_includes = @organization.program_costs_includes.gsub(%r{</?[^>]+?>}, '')
+        @organization.program_costs_doesnt_include = @organization.program_costs_doesnt_include.gsub(%r{</?[^>]+?>}, '')
          render :action => "new" 
       end
    end

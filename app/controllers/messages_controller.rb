@@ -41,6 +41,7 @@ include ActionView::Helpers::TextHelper
         format.html { redirect_to "/users/#{@message.recipient_id}", :notice =>'Message was sent' }
         format.json { render :json => @message, :status => :created, :location => @message }
       else
+        @message.body = @message.body.gsub(%r{</?[^>]+?>}, '')
         format.html { render :action => "new" }
         format.json { render :json => @message.errors, :status => :unprocessable_entity }
       end

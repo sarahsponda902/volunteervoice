@@ -6,12 +6,6 @@ include ActionView::Helpers::TextHelper
       @review = Review.new(params[:review])
       @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate @review.body, :length => 100) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
        @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate @review.body, :length => 200) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-      if !(params[:body].nil?)
-        @review.body = params[:body].html_safe
-      end
-      if !(params[:time_frame].nil?)
-        @review.time_frame = params[:time_frame]
-      end
       @review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
       
@@ -34,6 +28,7 @@ include ActionView::Helpers::TextHelper
              format.html { redirect_to "/pages/thank_you_review" }
               format.json { render json: @review, status: :created, location: @review }
          else
+           @review.body = @review.body.gsub(%r{</?[^>]+?>}, '')
            flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
            format.html { render :action => "new" }
            format.json { render :json => @review.errors, :status => :unprocessable_entity }

@@ -107,6 +107,7 @@ class BlogPostsController < ApplicationController
             redirect_to "/blog_posts/#{@blog_post.id}/crop"
           end
       else
+        @blog_post.body = @blog_post.body.gsub(%r{</?[^>]+?>}, '')
          render :action => "new" 
     end
   else

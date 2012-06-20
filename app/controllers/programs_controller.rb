@@ -1102,6 +1102,11 @@ class ProgramsController < ApplicationController
       if @program.save
             redirect_to "/programs/#{@program.id}/crop"
       else
+        @program.description = @program.description.gsub(%r{</?[^>]+?>}, '')
+        @program.program_structure = @program.program_structure.gsub(%r{</?[^>]+?>}, '')
+        @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
+        @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
+        @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
          render :action => "new" 
       end
    end

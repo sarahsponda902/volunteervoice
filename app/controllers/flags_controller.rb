@@ -41,6 +41,7 @@ class FlagsController < ApplicationController
         format.html { redirect_to "/flags/thank_you" }
         format.json { render json: @flag, status: :created, location: @flag }
       else
+        @flag.body = @flag.body.gsub(%r{</?[^>]+?>}, '')
         redirect_to root_path
       end
     end

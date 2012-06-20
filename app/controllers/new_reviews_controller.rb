@@ -57,6 +57,7 @@ class NewReviewsController < ApplicationController
         format.html { redirect_to "/pages/thank_you_new_review" }
         format.json { render json: @new_review, status: :created, location: @new_review }
       else
+        @new_review.body = @new_review.body.gsub(%r{</?[^>]+?>}, '')
         format.html { render action: "new" }
         format.json { render json: @new_review.errors, status: :unprocessable_entity }
       end

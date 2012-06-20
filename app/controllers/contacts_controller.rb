@@ -33,6 +33,7 @@ include ActionView::Helpers::TextHelper
         format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
         format.json { render json: @contact, status: :created, location: @contact }
       else
+        @contact.body = @contact.body.gsub(%r{</?[^>]+?>}, '')
         format.html { render action: "new", notice: 'Error! Please make sure to include both your email and a message.' }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
