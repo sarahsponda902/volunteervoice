@@ -4,6 +4,7 @@ include ActionView::Helpers::TextHelper
    def create
      if user_signed_in?
       @review = Review.new(params[:review])
+  
       @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate @review.body, :length => 100) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
        @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate @review.body, :length => 200) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
       @review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
