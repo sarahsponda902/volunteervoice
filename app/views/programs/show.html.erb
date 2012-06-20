@@ -196,19 +196,19 @@
 		<div class="six columns" style="margin-left:2%; border-right: 1px solid #e67b5a; margin-top:2%">
 		<font style="font-weight:600">Subjects: </font>
 		<% @program_subjects = @program.program_subjects.map{|prog| prog.subject}%>
-		<% @program_subjects[0..(@program.program_subjects.count - 1)].join(", ")%><br /><br />
+		<% @program_subjects[0..(@program.program_subjects.count - 2)].join(", ")%><br /><br />
 		<font style="font-weight:600">Locations: </font><%= @theCountries[@program.location]%><br /><br />
 		<font style="font-weight:600">Program Started: </font> <%=@program.program_started%><br /><br />
 		<font style="font-weight:600">Lengths of Program: </font>
 		<% @program_lengths = @program.program_lengths.map{|prog| prog.length}%>
-		<%= @program_lengths[0..(@program.program_lengths.count - 1)].join(", ") %>
+		<%= @program_lengths[0..(@program.program_lengths.count - 2)].join(", ") %>
 		<br /><br />
 		<font style="font-weight:600">Start Dates: </font><%= @program.start_dates%><br /><br />
 		<font style="font-weight:600">Program Structure: </font><%= @program.program_structure.html_safe%><br />
 		<font style="font-weight:600">Partnered Local Organizations: </font><%= @program.partnered_local_organizations%><br /><br />
 		<font style="font-weight:600">Group Size: </font>
 		<% @program_sizes = @program.program_sizes.map{|prog| prog.size}%>
-		<%= @program_sizes[0..(@program.program_sizes.count - 1)].join(", ")%>
+		<%= @program_sizes[0..(@program.program_sizes.count - 2)].join(", ")%>
 		
 		<br /><br />
 	<font style="font-weight:600">	Accommodations: </font><%= @program.accommodations%><br />
