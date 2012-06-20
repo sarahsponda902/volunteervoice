@@ -11,8 +11,19 @@
 	        </div>
 	<div class="row" style="margin-top:100px; border:1px solid #575758; background-color:#E9ECE9; padding-bottom:50px;">
 
+		<% @countries = Hash.new %>
+		<% @organization.programs.each do |f| %>
+		<% if !(@countries.has_key?(f.location))%>
+		<% @countries[f.location] = 1%>
+		<% else %>
+		<% @countries[f.location] = @countries[f.location] + 1%>
+		<% end %>
+		<% end %>
 
-
+<% @countries.keys.each do |f|%>
+<%= f %>
+<br />
+<% end %>
 </div>
 </div>
 </div>
