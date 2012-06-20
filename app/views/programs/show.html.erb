@@ -240,7 +240,7 @@
 	<div class="six columns" style="margin-left:4%; width:48%; margin-top:3px; padding-bottom:7px">
 		<br />
 		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkItOut.png"%> </a>
-		<%= link_to (image_tag "/assets/reviewThisProgram.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id%>
+		<p style="margin-left:50px"><%= link_to (image_tag "/assets/reviewThisProgram.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id%></p>
 		<br />
 	</div>
 	<div class="four columns" align="right" style="float:right; margin-right:5px; margin-top:10px; margin-bottom:-30px">
