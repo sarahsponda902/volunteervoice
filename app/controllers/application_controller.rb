@@ -3,19 +3,26 @@ class ApplicationController < ActionController::Base
   
 include SimpleCaptcha::ControllerHelpers
 
-   def after_sign_in_path_for(resource_or_scope)
-     if request.referrer
-       if ((URI(request.referrer).path == '/users/sign_in') || (URI(request.referrer).path == '/registrations/mustBe'))
-         '/'
-       else
-         request.referrer
-       end
+   def after_sign_in_path_for(resource)
+     if !(resource.return_link.nil?)
+       @link = resource.return_link
+       resource.return_link = nil
+       resource.save
+       @link
      else
-       '/'
-     end
+       if request.referrer
+         if ((URI(request.referrer).path == '/users/sign_in') || (URI(request.referrer).path == '/registrations/mustBe'))
+           '/'
+         else
+           request.referrer
+         end
+       else
+         '/'
+       end
+    end
    end
    
-   def after_sign_out_path_for(resource_or_scope)
+   def after_sign_out_path_for(resource)
      request.referrer
    end
    
