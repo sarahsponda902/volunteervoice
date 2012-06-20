@@ -578,34 +578,52 @@
               });
 
             $("#EuropeRow").click(function(){
-                $(".EuropeContent").toggle();
-                $(".EuropeBackground").toggle();
-                $(".EuropeNoBackground").toggle();
+               		if ($(".EuropeContent").is(":visible")) {
+	                $(".EuropeContent").hide();
+	                $(".EuropeBackground").hide();
+	                $(".EuropeNoBackground").fadeIn(300);
+				} else {
+					$(".EuropeContent").fadeIn(300);
+	                $(".EuropeBackground").fadeIn(300);
+	                $(".EuropeNoBackground").hide();
+				}
               });
 
             $("#AmericasRow").click(function(){
-                $(".AmericasContent").toggle();
-                $(".AmericasBackground").toggle();
-                $(".AmericasNoBackground").toggle();
+                	if ($(".AmericasContent").is(":visible")) {
+	                $(".AmericasContent").hide();
+	                $(".AmericasBackground").hide();
+	                $(".AmericasNoBackground").fadeIn(300);
+				} else {
+					$(".AmericasContent").fadeIn(300);
+	                $(".AmericasBackground").fadeIn(300);
+	                $(".AmericasNoBackground").hide();
+				}
               });
 
             $("#AsiaRow").click(function(){
-                $(".AsiaContent").toggle();
-                $(".AsiaBackground").toggle();
-                $(".AsiaNoBackground").toggle();
+               		if ($(".AsiaContent").is(":visible")) {
+	                $(".AsiaContent").hide();
+	                $(".AsiaBackground").hide();
+	                $(".AsiaNoBackground").fadeIn(300);
+				} else {
+					$(".AsiaContent").fadeIn(300);
+	                $(".AsiaBackground").fadeIn(300);
+	                $(".AsiaNoBackground").hide();
+				}
               });
                 
 
             $("#OceaniaRow").click(function(){
-                $(".OceaniaContent").toggle();
-                $(".OceaniaBackground").toggle();
-                $(".OceaniaNoBackground").toggle();
-              });
-            
-            $("#OtherRow").click(function(){
-                $(".OtherContent").toggle();
-                $(".OtherBackground").toggle();
-                $(".OtherNoBackground").toggle();
+                	if ($(".OceaniaContent").is(":visible")) {
+	                $(".OceaniaContent").hide();
+	                $(".OceaniaBackground").hide();
+	                $(".OceaniaNoBackground").fadeIn(300);
+				} else {
+					$(".OceaniaContent").fadeIn(300);
+	                $(".OceaniaBackground").fadeIn(300);
+	                $(".OceaniaNoBackground").hide();
+				}
               });
             
         });
