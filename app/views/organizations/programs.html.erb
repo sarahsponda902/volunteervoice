@@ -15,7 +15,7 @@
 
 		<% @countries = Hash.new %>
 		<% @progs = @organization.programs%>
-		<% @progs.sort_by{|p| @theCountries2[p.location].downcase} %>
+		<% @progs = @progs.sort_by{|p| @theCountries2[p.location].downcase} %>
 		<% @progs.each do |f| %>
 		<% if !(@countries.has_key?(f.location))%>
 		<% @countries[f.location] = 1%>
