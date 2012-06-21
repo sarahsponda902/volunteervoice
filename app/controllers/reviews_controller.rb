@@ -10,13 +10,13 @@ include ActionView::Helpers::TextHelper
       @review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
       
-      @user_review_orgs = []
+      @user_review_progs = []
       if !(current_user.reviews.empty?)
         current_user.reviews.each do |f|
-          @user_review_orgs << f.organization_id
+          @user_review_progs << Program.find(f.program_id)
         end
       end
-    if !(@user_review_orgs.include?(@review.organization_id))
+    if !(@user_review_progs.include?(@review.program_id))
        respond_to do |format|
          if @review.save
            @prog = Program.find(@review.program_id)
@@ -33,7 +33,6 @@ include ActionView::Helpers::TextHelper
            flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
            respond_to do |format|
              format.html { render :action => "new" }
-             format.json { render :json => @review.errors, :status => :unprocessable_entity }
            end
          end
        end
