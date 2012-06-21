@@ -15,7 +15,7 @@ class SearchesController < ApplicationController
   def show
     @search = Search.find(params[:id])
     if @search.keywords.nil?
-      @search.keywords = ""
+      @search.keywords = "blah"
     end
     subjects = @search.subjects.split("; ") unless @search.subjects.nil?
     regions = @search.regions.split("; ") unless @search.regions.nil?
