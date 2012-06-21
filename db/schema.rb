@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620234714) do
+ActiveRecord::Schema.define(:version => 20120621001549) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -320,7 +320,8 @@ ActiveRecord::Schema.define(:version => 20120620234714) do
     t.text     "regions"
     t.text     "lengths"
     t.text     "sizes"
-    t.text     "prices"
+    t.integer  "price_min"
+    t.integer  "price_max"
   end
 
   create_table "sessions", :force => true do |t|

@@ -38,7 +38,29 @@ class SearchesController < ApplicationController
     end
   end
   
-  def program_search
+  def show
+    @search = Search.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @search }
+    end
   end
     
+    
+   def update
+     @search = Search.find(params[:id])
+     respond_to do |format|
+        if @search.update_attributes(params[:search])
+          @search.save
+          format.html { redirect_to @search, :notice => 'Search Submitted' }
+          format.json { head :no_content }
+        else
+          format.html { render :action => "edit" }
+          format.json { render :json => @search.errors, :status => :unprocessable_entity }
+        end
+    end
+  end
+  
+  
 end
