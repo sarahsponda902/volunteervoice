@@ -51,7 +51,6 @@ class SearchesController < ApplicationController
       price_min = @search.price_min
     end
     
-    if @search.showing == "Programs"
       @the_search = Program.search do
         keywords keys
         
@@ -77,20 +76,19 @@ class SearchesController < ApplicationController
         
         order_by :weekly_cost if sort_by == "pricelow"
       end
-    else
-      @the_search = Organization.search do
-        keywords keys
-
-        order_by :overall, :desc if sort_by == "ratinghigh"
-        
-        order_by :overall if sort_by == "ratinglow"
-        
-        order_by :name if sort_by == "alphabetical"
-        
-      end
-   end     
+    
     @results = @the_search.results
-  
+    if @search.showing == "Organizations"
+      @organization_results = []
+      @results.each do |p| 
+        @organization_results << Organization.find(p.organization_id) unless @organization_results.include?(Organization.find(p.organization_id))
+      end
+      @results = @organization_results
+      @results.sort_by!(&:overall) if @search.sort_by == "ratinghigh"
+      @results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinglow"
+      @results.sort_by!(&:name) if @search.sort_by == "alphabetical"
+    end
+        
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @search }
