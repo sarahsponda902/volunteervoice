@@ -1,4 +1,4 @@
-class CreateSearches < ActiveRecord::Migration
+class CreateTheSearches < ActiveRecord::Migration
   def change
     create_table :searches do |t|
       t.text :region
@@ -12,3 +12,4 @@ class CreateSearches < ActiveRecord::Migration
     end
   end
 end
+
