@@ -67,7 +67,7 @@ $(document).ready(function() {
     </div>
 <div class="row" style="line-height:1.4em">
 
-<form action="/searches/program_search" method="get">
+<%= form_for @search do |f|%>
 
         <div class="six columns"  style="background-color:#c1dfdb; color:#575758">
             <div class="six columns" style="width:45%; padding:10px">
@@ -519,7 +519,7 @@ $(document).ready(function() {
 
 <div class="seven columns" style="padding-top:60px; width:60%;" >
 <%= image_submit_tag "/assets/submit.png", :style => "margin-left:30px"%>
-</form>
+<% end %>
 </div>
 </div>
 <div class="twelve columns" style="float:left; margin-top:-65px">

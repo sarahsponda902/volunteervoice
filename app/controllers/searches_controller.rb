@@ -21,7 +21,7 @@ class SearchesController < ApplicationController
     
     if @search.showing == "Programs"
       @the_search = Program.search do
-        keywords @search.keywords if !(@search.keywords.nil?)
+        keywords @search.keywords unless @search.keywords.nil?
         
         with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
 
@@ -47,7 +47,7 @@ class SearchesController < ApplicationController
       end
     else
       @the_search = Organization.search do
-        keywords @search.keywords if !(@search.keywords.nil?)
+        keywords @search.keywords unless @search.keywords.nil?
         
         with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
 
