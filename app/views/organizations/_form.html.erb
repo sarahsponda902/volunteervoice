@@ -84,6 +84,11 @@
 	<%= f.text_area :headquarters_location, :value => @organization.headquarters_location%>
   </div>
 
+	<div class="field">
+		Program Subjects<br />
+		<%= f.text_area :program_subjects, :value => @organization.program_subjects%>
+	</div>
+
   <div class="field">
     Run By<br />
     <%= f.text_field :run_by, :value => @organization.run_by %></div>
@@ -101,6 +106,7 @@
     <%= f.file_field :price_breakdown, :value => @organization.price_breakdown %></div>
 
 </div>
+
 <div class="twelve columns" style="text-align:center">
 
   <div class="actions">

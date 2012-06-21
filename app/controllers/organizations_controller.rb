@@ -367,6 +367,8 @@ class OrganizationsController < ApplicationController
     @organization.misson = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.misson ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.program_costs_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.program_costs_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @organization.program_subjects = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_subjects ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    
     if @organization.url[0..3] != "http"
       @organization.url = "http://"+@organization.url
     end
@@ -387,6 +389,7 @@ class OrganizationsController < ApplicationController
         @organization.run_by = @organization.run_by.gsub(%r{</?[^>]+?>}, '')
         @organization.misson = @organization.mission.gsub(%r{</?[^>]+?>}, '')
         @organization.program_costs_includes = @organization.program_costs_includes.gsub(%r{</?[^>]+?>}, '')
+        @organization.program_subjects = @organization.program_subjects.gsub(%r{</?[^>]+?>}, '')
         @organization.program_costs_doesnt_include = @organization.program_costs_doesnt_include.gsub(%r{</?[^>]+?>}, '')
          render :action => "new" 
       end
