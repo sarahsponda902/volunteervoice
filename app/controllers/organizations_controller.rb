@@ -349,6 +349,16 @@ class OrganizationsController < ApplicationController
   def edit
     if user_signed_in? && current_user.admin?
     @organization = Organization.find(params[:id])
+    @organization.description = @organization.description.gsub(%r{</?[^>]+?>}, '')
+    @organization.headquarters_location = @organization.headquarters_location.gsub(%r{</?[^>]+?>}, '')
+    @organization.good_to_know = @organization.good_to_know.gsub(%r{</?[^>]+?>}, '')
+    @organization.training_resources = @organization.training_resources.gsub(%r{</?[^>]+?>}, '')
+    @organization.run_by = @organization.run_by.gsub(%r{</?[^>]+?>}, '')
+    @organization.misson = @organization.mission.gsub(%r{</?[^>]+?>}, '')
+    @organization.program_costs_includes = @organization.program_costs_includes.gsub(%r{</?[^>]+?>}, '')
+    @organization.program_subjects = @organization.program_subjects.gsub(%r{</?[^>]+?>}, '')
+    @organization.program_costs_doesnt_include = @organization.program_costs_doesnt_include.gsub(%r{</?[^>]+?>}, '')
+    
   else
     redirect_to root_path
   end
@@ -400,15 +410,7 @@ end
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    @organization.description = @organization.description.gsub(%r{</?[^>]+?>}, '')
-    @organization.headquarters_location = @organization.headquarters_location.gsub(%r{</?[^>]+?>}, '')
-    @organization.good_to_know = @organization.good_to_know.gsub(%r{</?[^>]+?>}, '')
-    @organization.training_resources = @organization.training_resources.gsub(%r{</?[^>]+?>}, '')
-    @organization.run_by = @organization.run_by.gsub(%r{</?[^>]+?>}, '')
-    @organization.misson = @organization.mission.gsub(%r{</?[^>]+?>}, '')
-    @organization.program_costs_includes = @organization.program_costs_includes.gsub(%r{</?[^>]+?>}, '')
-    @organization.program_subjects = @organization.program_subjects.gsub(%r{</?[^>]+?>}, '')
-    @organization.program_costs_doesnt_include = @organization.program_costs_doesnt_include.gsub(%r{</?[^>]+?>}, '')
+    
        if user_signed_in? && current_user.admin?
        if @organization.update_attributes(params[:organization])
              redirect_to "/organizations/#{@organization.id}"

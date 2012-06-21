@@ -1050,6 +1050,12 @@ class ProgramsController < ApplicationController
   # GET /programs/1/edit
   def edit
     @program = Program.find(params[:id])
+    @program.description = @program.description.gsub(%r{</?[^>]+?>}, '')
+    @program.program_structure = @program.program_structure.gsub(%r{</?[^>]+?>}, '')
+    @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
+    @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
+    @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
+    
   end
 
   # POST /programs
