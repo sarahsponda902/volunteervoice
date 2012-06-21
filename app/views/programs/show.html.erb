@@ -221,11 +221,11 @@
 	</div>
 	
 	<div class="six columns" style="margin-left:2%; margin-top:2%">
-		<font style="font-weight:600">Program Costs ($/week): </font>$<%= @program.weekly_cost%><br /><br />
+		<font style="font-weight:600">Program Costs (avg. per week): </font>$<%= @program.weekly_cost%><br /><br />
+		<font style="font-weight:600">	Program Cost Chart: </font><a href="#popup" class="popup-window">Click here to view</a><br /><br /> 
+		<font style="font-weight:600">Program Cost Breakdown: </font><%= @program.program_cost_breakdown.html_safe%><br /><br />
 	<font style="font-weight:600">	-Includes: </font><%= @program.cost_includes.html_safe%><br />
 	<font style="font-weight:600">	-Doesn't Include: </font><%= @program.cost_doesnt_include.html_safe%><br />
-	<font style="font-weight:600">	Program Cost Chart: </font><a href="#popup" class="popup-window">Click here to view</a><br /><br /> 
-		<font style="font-weight:600">Program Cost Breakdown: </font><%= @program.program_cost_breakdown.html_safe%><br /><br />
 	</div>
 </div>
 
