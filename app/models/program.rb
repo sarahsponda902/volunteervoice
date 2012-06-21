@@ -7,7 +7,7 @@ has_many :reviews, :dependent => :destroy
 has_many :program_subjects, :dependent => :destroy
 has_many :program_lengths, :dependent => :destroy
 has_many :program_sizes, :dependent => :destroy
-attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :organization_id, :subject, :group_size, :headquarters, :length, :overall, :chart, :program_started, :start_dates, :program_structure, :partnered_local_organizations, :cost_includes, :cost_doesnt_include, :program_cost_breakdown, :accommodations, :check_it_out, :organization_name, :crop_x, :crop_y, :crop_w, :crop_h, :square_image, :program_subjects, :program_lengths, :program_sizes
+attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :organization_id, :subject, :group_size, :headquarters, :length, :overall, :chart, :program_started, :start_dates, :program_structure, :partnered_local_organizations, :cost_includes, :cost_doesnt_include, :program_cost_breakdown, :accommodations, :check_it_out, :organization_name, :crop_x, :crop_y, :crop_w, :crop_h, :square_image, :program_subjects, :program_lengths, :program_sizes, :specific_location
 validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
 before_save :square_image_crop
 
