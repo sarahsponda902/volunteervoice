@@ -33,7 +33,6 @@ include ActionView::Helpers::TextHelper
            flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
            respond_to do |format|
              format.html { render :action => "new" }
-             format.json { render :json => @review.errors, :status => :unprocessable_entity }
              format.js
            end
          end
