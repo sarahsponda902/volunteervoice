@@ -19,54 +19,81 @@ class SearchesController < ApplicationController
     else
       keys = @search.keywords
     end
-    subjects = @search.subjects.split("; ") unless @search.subjects.nil?
-    regions = @search.regions.split("; ") unless @search.regions.nil?
-    lengths = @search.lengths.split("; ") unless @search.lengths.nil?
-    sizes = @search.sizes.split("; ") unless @search.sizes.nil?
+    if @search.subjects.nil?
+      subjects = ""
+    else
+      subjects = @search.subjects.split("; ")
+    end
+    if @search.regions.nil?
+      regions = ""
+    else
+      regions = @search.regions.split("; ")
+    end
+    if @search.lengths.nil?
+      lengths = ""
+    else
+      lengths = @search.lengths.split("; ")
+    end
+    if @search.sizes.nil?
+      sizes = ""
+    else
+      sizes = @search.sizes.split("; ")
+    end
+    sort_by = @search.sort_by
+    if @search.price_max.nil?
+      price_max = 999999
+    else
+      price_max = @search.price_max
+    end
+    if @search.price_min.nil?
+      price_min = 0
+    else
+      price_min = @search.price_min
+    end
     
     if @search.showing == "Programs"
       @the_search = Program.search do
         keywords keys
         
-        with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
+        with(:program_subjects).any_of(subjects) unless subjects.blank?
 
-        with(:location).any_of(regions) unless @search.regions.nil?
+        with(:location).any_of(regions) unless regions.blank?
 
-        with(:weekly_cost).less_than(@search.price_max) unless @search.price_max.nil?
+        with(:weekly_cost).less_than(@search.price_max) unless price_max.blank?
 
-        with(:weekly_cost).greater_than(@search.price_min) unless @search.price_min.nil?
+        with(:weekly_cost).greater_than(@search.price_min) unless price_min.blank?
 
-        with(:program_lengths).any_of(lengths) unless @search.lengths.nil?
+        with(:program_lengths).any_of(lengths) unless lengths.blank?
 
-        with(:program_sizes).any_of(sizes) unless @search.sizes.nil?
+        with(:program_sizes).any_of(sizes) unless sizes.blank?
         
-        order_by :overall, :desc if @search.sort_by == "ratinghigh"
+        order_by :overall, :desc if sort_by == "ratinghigh"
         
-        order_by :overall if @search.sort_by == "ratinglow"
+        order_by :overall if sort_by == "ratinglow"
         
-        order_by :name if @search.sort_by == "alphabetical"
+        order_by :name if sort_by == "alphabetical"
         
-        order_by :weekly_cost, :desc if @search.sort_by == "pricehigh"
+        order_by :weekly_cost, :desc if sort_by == "pricehigh"
         
-        order_by :weekly_cost if @search.sort_by == "pricelow"
+        order_by :weekly_cost if sort_by == "pricelow"
       end
     else
       @the_search = Organization.search do
         keywords keys
         
-        with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
+        with(:program_subjects).any_of(subjects) unless subjects.nil?
 
-        with(:location).any_of(regions) unless @search.regions.nil?
+        with(:location).any_of(regions) unless regions.nil?
 
-        with(:program_lengths).any_of(lengths) unless @search.lengths.nil?
+        with(:program_lengths).any_of(lengths) unless lengths.nil?
 
-        with(:program_sizes).any_of(sizes) unless @search.sizes.nil?
+        with(:program_sizes).any_of(sizes) unless sizes.nil?
         
-        order_by :overall, :desc if @search.sort_by == "ratinghigh"
+        order_by :overall, :desc if sort_by == "ratinghigh"
         
-        order_by :overall if @search.sort_by == "ratinglow"
+        order_by :overall if sort_by == "ratinglow"
         
-        order_by :name if @search.sort_by == "alphabetical"
+        order_by :name if sort_by == "alphabetical"
         
       end
    end     
