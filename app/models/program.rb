@@ -19,15 +19,15 @@ before_save :square_image_crop
 searchable do
   text :name
     string :location
-    string :program_subjects do
+    string :program_subjects, :multiple => true do
       program_subjects.map(&:subject)
     end
     string :organization_name
     string :weekly_cost
-    string :program_sizes do
+    string :program_sizes, :multiple => true do
       program_sizes.map(&:size)
     end
-    string :program_lengths do
+    string :program_lengths, :multiple => true do
       program_lengths.map(&:length)
     end
   

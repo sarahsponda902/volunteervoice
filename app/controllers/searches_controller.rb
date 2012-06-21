@@ -14,36 +14,59 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @search = Search.find(params[:id])
+    subjects = @search.subjects.split("; ")
+    regions = @search.regions.split("; ")
+    lengths = @search.lengths.split("; ")
+    sizes = @search.sizes.split("; ")
     
+    if @search.showing == "Programs"
       @the_search = Program.search do
-        keywords @search.keywords
+        keywords @search.keywords if !(@search.keywords.nil?)
         
-        with(:subject).any_of(@search.subjects.split(", "))
+        with(:program_subjects).any_of(subjects)
 
-        with(:location).any_of(@search.regions.split(", "))
+        with(:location).any_of(regions)
 
         with(:weekly_cost).less_than(@search.price_max)
 
         with(:weekly_cost).greater_than(@search.price_min)
 
-        with(:program_lengths).any_of(@search.lengths.split(", "))
+        with(:program_lengths).any_of(lengths)
 
-        with(:group_size).any_of(@search.sizes.split(", "))
-      end
-      
-      @the_search = Organization.search do
-        keywords @search.keywords
+        with(:program_sizes).any_of(sizes)
         
-        with(:subject).any_of(@search.subjects.split(", "))
-
-        with(:location).any_of(@search.regions.split(", "))
-
-        with(:length).any_of(@search.lengths.split(", "))
-
-        with(:group_size).any_of(@search.sizes.split(", "))
+        order_by :overall, :desc if @search.sort_by == "ratinghigh"
+        
+        order_by :overall if @search.sort_by == "ratinglow"
+        
+        order_by :name if @search.sort_by == "alphabetical"
+        
+        order_by :weekly_cost, :desc if @search.sort_by == "pricehigh"
+        
+        order_by :weekly_cost if @search.sort_by == "pricelow"
       end
-      
-    @results = 
+    else
+      @the_search = Organization.search do
+        keywords @search.keywords if !(@search.keywords.nil?)
+        
+        with(:program_subjects).any_of(subjects)
+
+        with(:location).any_of(regions)
+
+        with(:program_lengths).any_of(lengths)
+
+        with(:program_sizes).any_of(sizes)
+        
+        order_by :overall, :desc if @search.sort_by == "ratinghigh"
+        
+        order_by :overall if @search.sort_by == "ratinglow"
+        
+        order_by :name if @search.sort_by == "alphabetical"
+        
+      end
+   end     
+    @results = @the_search.results
+  
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @search }
@@ -669,10 +692,10 @@ class SearchesController < ApplicationController
     end
     
     
-    @search.regions = @search.regions.join(", ")
-    @search.subjects = @search.subjects.join(", ")
-    @search.lengths = @search.lengths.join(", ")
-    @search.sizes = @search.sizes.join(", ")
+    @search.regions = @search.regions.join("; ")
+    @search.subjects = @search.subjects.join("; ")
+    @search.lengths = @search.lengths.join("; ")
+    @search.sizes = @search.sizes.join("; ")
 
     respond_to do |format|
       if @search.save
@@ -1289,10 +1312,10 @@ class SearchesController < ApplicationController
     end
     
     
-    @search.regions = @search.regions.join(", ")
-    @search.subjects = @search.subjects.join(", ")
-    @search.lengths = @search.lengths.join(", ")
-    @search.sizes = @search.sizes.join(", ")
+    @search.regions = @search.regions.join("; ")
+    @search.subjects = @search.subjects.join("; ")
+    @search.lengths = @search.lengths.join("; ")
+    @search.sizes = @search.sizes.join("; ")
     
     respond_to do |format|
       if @search.update_attributes(params[:search])
