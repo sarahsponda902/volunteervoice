@@ -80,15 +80,7 @@ class SearchesController < ApplicationController
     else
       @the_search = Organization.search do
         keywords keys
-        
-        with(:program_subjects).any_of(subjects) unless subjects.nil?
 
-        with(:location).any_of(regions) unless regions.nil?
-
-        with(:program_lengths).any_of(lengths) unless lengths.nil?
-
-        with(:program_sizes).any_of(sizes) unless sizes.nil?
-        
         order_by :overall, :desc if sort_by == "ratinghigh"
         
         order_by :overall if sort_by == "ratinglow"

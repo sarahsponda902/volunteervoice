@@ -354,6 +354,7 @@ class PagesController < ApplicationController
 
     
     def search_machine
+      @search = Search.new
       @theRegions = Hash.new ["AF" => 16, 
       "AX" => 6, 
       "AL" => 9, 
