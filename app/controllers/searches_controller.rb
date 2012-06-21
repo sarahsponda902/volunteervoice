@@ -39,11 +39,10 @@ class SearchesController < ApplicationController
   end
   
   def show
-    @search = Search.find(params[:id])
+    
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @search }
     end
   end
     
