@@ -1,3 +1,13 @@
+
+<% programTypes = []%>
+<% groupSizes = []%>
+<% programLengths = []%>
+<% organization.programs.each do |f|%>
+<% programTypes << f.subject unless programTypes.include?(f.subject)%>
+<% groupSizes << f.group_size unless groupSizes.include?(f.group_size)%>
+<% programLengths << f.length unless programLengths.include?(f.length)%>
+<% end %>
+
 <div class="container" style="margin-left:-15px; border:1px solid #575758; background-color:#E9ECE9; padding:bottom:25px; color:#575758; min-width:900px; margin-top:100px">
 	<div class="row">
 		<div class="two columns" style="margin:0;padding:0; width:18%; margin-top:20px; padding-left:20px">
@@ -38,19 +48,10 @@
 
 		<div class = "two columns" style="font-size:1.5em; margin:0;padding:0; margin-top:25px; padding-left:10px; width:20%">
 
-			<u><b>Programs:</b></u>
+			<u><b>Program Subjects:</b></u>
 		</div>
 		<div class="ten columns" style="border: 1px solid #575758; height:130px; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
-			<% @types = []%>
-			<% organization.programs.each do |f|%>
-				<% f.program_subjects.each do |j| %>
-					<% @types << j.subject %>
-				<% end %>
-			<% end %>
-			<% @types = @types.flatten%>
-			<% @types = @types.uniq{|x| x}%>
-
-			<%= @types.join(", ")%>
+<% programTypes.join(", ")%>
 		</div>
 	</div>
 	<div class="three columns" style="float:left;margin-left:10px; padding:10px; height:295px; background-color:#c1dfdb; height:310.5px">
@@ -92,16 +93,8 @@
 			
 			<p style="font-weight:600">Volunteer Program Model: </p><%=organization.program_model_string%><br />
 			
-			<% programTypes = []%>
-			<% groupSizes = []%>
-			<% programLengths = []%>
-			<% organization.programs.each do |f|%>
-			<% programTypes << f.subject unless programTypes.include?(f.subject)%>
-			<% groupSizes << f.group_size unless groupSizes.include?(f.group_size)%>
-			<% programLengths << f.length unless programLengths.include?(f.length)%>
-			<% end %>
-			
-			<p style="font-weight:600">Types of Programs: </p><% programTypes.each do |p|%> <%=p%>,<% end %><br />
+			<p style="font-weight:600">Types of Programs: </p>
+			<br />
 			
 		</div>
 		<div class="six columns" style="font-size:1.1em">
