@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Region:</b>
+  <%= @search.region %>
+</p>
+
+<p>
+  <b>Subjects:</b>
+  <%= @search.subjects %>
+</p>
+
+<p>
+  <b>Lengths:</b>
+  <%= @search.lengths %>
+</p>
+
+<p>
+  <b>Sizes:</b>
+  <%= @search.sizes %>
+</p>
+
+<p>
+  <b>Price min:</b>
+  <%= @search.price_min %>
+</p>
+
+<p>
+  <b>Price max:</b>
+  <%= @search.price_max %>
+</p>
+
+
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>

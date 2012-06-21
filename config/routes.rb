@@ -1,6 +1,8 @@
 RMTest::Application.routes.draw do
   
   
+  resources :searches
+
   ##### FLAGS
   get "flags/thank_you"
 

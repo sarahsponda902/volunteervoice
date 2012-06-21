@@ -1,0 +1,33 @@
+<h1>Listing searches</h1>
+
+<table>
+  <tr>
+    <th>Region</th>
+    <th>Subjects</th>
+    <th>Lengths</th>
+    <th>Sizes</th>
+    <th>Price min</th>
+    <th>Price max</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @searches.each do |search| %>
+  <tr>
+    <td><%= search.region %></td>
+    <td><%= search.subjects %></td>
+    <td><%= search.lengths %></td>
+    <td><%= search.sizes %></td>
+    <td><%= search.price_min %></td>
+    <td><%= search.price_max %></td>
+    <td><%= link_to 'Show', search %></td>
+    <td><%= link_to 'Edit', edit_search_path(search) %></td>
+    <td><%= link_to 'Destroy', search, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Search', new_search_path %>

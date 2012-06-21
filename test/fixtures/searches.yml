@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  region: MyText
+  subjects: MyText
+  lengths: MyText
+  sizes: MyText
+  price_min: 1
+  price_max: 1
+
+two:
+  region: MyText
+  subjects: MyText
+  lengths: MyText
+  sizes: MyText
+  price_min: 1
+  price_max: 1
