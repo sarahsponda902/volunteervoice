@@ -198,7 +198,7 @@ $(document).ready(function() {
 
 
 <div class="container">
-<div style="text-align:center; width:100%; margin-top:50px" , :id =>"programs-contents1">	
+<div style="text-align:center; width:100%; margin-top:50px" id ="programs-contents1">	
 <%=image_tag "/assets/volunteerPrograms.png"%><br /><br />
 	<p align="left" style="margin-left:50px; font-family:architectsDaughterRegular; color:#62acbd; font-size:1.3em"> Your search has <%=@results.length%> matches:</p>
 
@@ -213,9 +213,9 @@ $(document).ready(function() {
 		<div class="five columns" style="margin-left:5px">
 		<p style="font-size:1.5em; color:#575758; line-height:1.1em"> 	Display:</p>
 		<div style="position:absolute; left:21%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-					<form accept-charset="UTF-8" action="program_search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden"  , :value => "&#x2713;" /></div>
+					<form accept-charset="UTF-8" action="program_search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value = "&#x2713;" /></div>
 			<select , :id =>"display" name="display" style="position:absolute; left:-5px; width:255px; height:30px; border: 1px solid #575758; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">
-				<option  , :value => "">Select a Domain</option>
+				<option value = "">Select a Domain</option>
 				<option>Programs</option>
 				<option>Organizations</option></select>
 			<input id="resulting_ids" name="resulting_ids" type="hidden"  value = "<%= @resulting_ids%>" />
@@ -229,16 +229,16 @@ $(document).ready(function() {
 	<div class="two columns" style="height:50px"></div>
 			<div class="five columns" style="margin-top:-22px">
 				<p style="font-size:1.5em; color:#575758; line-height:1.1em"> List By:</p>
-				<form accept-charset="UTF-8" action="program_search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden"  , :value => "&#x2713;" /></div>
+				<form accept-charset="UTF-8" action="program_search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value = "&#x2713;" /></div>
 		<div style="position:absolute; left:19.2%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 		<select , :id =>"sort" name="sort" style="position:relative; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">	
-			<option  , :value => "">Select an Order</option>
-			<option  , :value => "ratinghigh">Rating - High</option>
-			<option  , :value => "ratinglow">Rating - Low</option>
-			<option  , :value => "alphabetical">Alphabetical</option>
+			<option value = "">Select an Order</option>
+			<option value = "ratinghigh">Rating - High</option>
+			<option value = "ratinglow">Rating - Low</option>
+			<option value = "alphabetical">Alphabetical</option>
 			<% if @display.nil?%>
-			<option  , :value => "pricelow">Price - Low</option>
-			<option  , :value => "pricehigh">Price - High</option></select>
+			<option value = "pricelow">Price - Low</option>
+			<option value = "pricehigh">Price - High</option></select>
 			<% end %>
 										<input id ="resulting_ids" name="resulting_ids" type="hidden" value = "<%= @resulting_ids%>" />
 										<input id ="display" name="display" type="hidden" value = "<%=@display%>" />
