@@ -7,8 +7,7 @@ end
 validates_not_profane :body
 validates :terms, :acceptance => {:accept => true}
 validates :program_id, :presence => true
-validates_length_of :body, :minimum => 200, :message => "Must contain at least 30 
-characters."
+validates_length_of :body, :minimum => 200, :message => "Must contain at least 30 characters."
 validates_length_of :body, :maximum => 10000, :message => "You have entered more than 10,000 characters"
 validates_inclusion_of :organization_name, :in => @orgs
 validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}

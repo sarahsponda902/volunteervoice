@@ -105,6 +105,8 @@ include ActionView::Helpers::TextHelper
              format.html { redirect_to "/pages/profile", :notice => 'Review Submitted' }
              format.json { head :no_content }
            else
+             params[:review][:body] = @review.body
+             flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
              format.html { render :action => "edit" }
              format.json { render :json => @review.errors, :status => :unprocessable_entity }
            end

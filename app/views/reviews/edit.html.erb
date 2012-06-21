@@ -44,7 +44,14 @@ $(document).ready(function() {
 	
 });
 </script>
-
+<% flash.each do |key, value| %>
+  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your review from being updated:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
 	
 <%= render "edit_review" %>
 
