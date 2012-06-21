@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621001549) do
+ActiveRecord::Schema.define(:version => 20120621005151) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -314,14 +314,14 @@ ActiveRecord::Schema.define(:version => 20120621001549) do
   end
 
   create_table "searches", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "subjects"
     t.text     "regions"
+    t.text     "subjects"
     t.text     "lengths"
     t.text     "sizes"
     t.integer  "price_min"
     t.integer  "price_max"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "sessions", :force => true do |t|
