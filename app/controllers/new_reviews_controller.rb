@@ -58,6 +58,7 @@ class NewReviewsController < ApplicationController
         format.json { render json: @new_review, status: :created, location: @new_review }
       else
         @new_review.body = @new_review.body.gsub(%r{</?[^>]+?>}, '')
+        flash[:notice] = flash[:notice].to_a.concat @new_review.errors.full_messages
         format.html { render action: "new" }
         format.json { render json: @new_review.errors, status: :unprocessable_entity }
       end

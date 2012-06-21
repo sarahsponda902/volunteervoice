@@ -241,7 +241,14 @@ function removePeru() {
 
 
 </head>
-
+<% flash.each do |key, value| %>
+  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
 
 <body>
 <div class="container" style="color:#575758">
