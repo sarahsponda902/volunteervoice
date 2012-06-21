@@ -14,6 +14,9 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @search = Search.find(params[:id])
+    if @search.keywords.nil?
+      @search.keywords = ""
+    end
     subjects = @search.subjects.split("; ") unless @search.subjects.nil?
     regions = @search.regions.split("; ") unless @search.regions.nil?
     lengths = @search.lengths.split("; ") unless @search.lengths.nil?
@@ -21,7 +24,7 @@ class SearchesController < ApplicationController
     
     if @search.showing == "Programs"
       @the_search = Program.search do
-        keywords @search.keywords unless @search.keywords.nil?
+        keywords @search.keywords
         
         with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
 
@@ -47,7 +50,7 @@ class SearchesController < ApplicationController
       end
     else
       @the_search = Organization.search do
-        keywords @search.keywords unless @search.keywords.nil?
+        keywords @search.keywords
         
         with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
 
