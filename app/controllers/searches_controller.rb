@@ -14,26 +14,26 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     @search = Search.find(params[:id])
-    subjects = @search.subjects.split("; ")
-    regions = @search.regions.split("; ")
-    lengths = @search.lengths.split("; ")
-    sizes = @search.sizes.split("; ")
+    subjects = @search.subjects.split("; ") unless @search.subjects.nil?
+    regions = @search.regions.split("; ") unless @search.regions.nil?
+    lengths = @search.lengths.split("; ") unless @search.lengths.nil?
+    sizes = @search.sizes.split("; ") unless @search.sizes.nil?
     
     if @search.showing == "Programs"
       @the_search = Program.search do
         keywords @search.keywords if !(@search.keywords.nil?)
         
-        with(:program_subjects).any_of(subjects)
+        with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
 
-        with(:location).any_of(regions)
+        with(:location).any_of(regions) unless @search.regions.nil?
 
-        with(:weekly_cost).less_than(@search.price_max)
+        with(:weekly_cost).less_than(@search.price_max) unless @search.price_max.nil?
 
-        with(:weekly_cost).greater_than(@search.price_min)
+        with(:weekly_cost).greater_than(@search.price_min) unless @search.price_min.nil?
 
-        with(:program_lengths).any_of(lengths)
+        with(:program_lengths).any_of(lengths) unless @search.lengths.nil?
 
-        with(:program_sizes).any_of(sizes)
+        with(:program_sizes).any_of(sizes) unless @search.sizes.nil?
         
         order_by :overall, :desc if @search.sort_by == "ratinghigh"
         
@@ -49,13 +49,13 @@ class SearchesController < ApplicationController
       @the_search = Organization.search do
         keywords @search.keywords if !(@search.keywords.nil?)
         
-        with(:program_subjects).any_of(subjects)
+        with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
 
-        with(:location).any_of(regions)
+        with(:location).any_of(regions) unless @search.regions.nil?
 
-        with(:program_lengths).any_of(lengths)
+        with(:program_lengths).any_of(lengths) unless @search.lengths.nil?
 
-        with(:program_sizes).any_of(sizes)
+        with(:program_sizes).any_of(sizes) unless @search.sizes.nil?
         
         order_by :overall, :desc if @search.sort_by == "ratinghigh"
         
@@ -82,11 +82,6 @@ class SearchesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @search }
     end
-  end
-
-  # GET /searches/1/edit
-  def edit
-    @search = Search.find(params[:id])
   end
 
   # POST /searches
