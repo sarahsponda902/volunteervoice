@@ -4,7 +4,6 @@ require 'file_size_validator'
 Organization.all.each do |f|
   @orgs << f.name
 end
-validates_not_profane :body
 validates :terms, :acceptance => {:accept => true}
 validates :program_id, :presence => true
 validates_length_of :body, :minimum => 200, :message => "Must contain at least 30 characters."
