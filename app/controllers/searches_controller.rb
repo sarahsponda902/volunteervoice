@@ -39,7 +39,7 @@ class SearchesController < ApplicationController
   end
   
   def show
-    
+    @search = Search.new
 
     respond_to do |format|
       format.html # show.html.erb
