@@ -15,7 +15,9 @@ class SearchesController < ApplicationController
   def show
     @search = Search.find(params[:id])
     if @search.keywords.nil?
-      @search.keywords = "blah"
+      keys = ""
+    else
+      keys = @search.keywords
     end
     subjects = @search.subjects.split("; ") unless @search.subjects.nil?
     regions = @search.regions.split("; ") unless @search.regions.nil?
@@ -24,7 +26,7 @@ class SearchesController < ApplicationController
     
     if @search.showing == "Programs"
       @the_search = Program.search do
-        keywords @search.keywords
+        keywords keys
         
         with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
 
@@ -50,7 +52,7 @@ class SearchesController < ApplicationController
       end
     else
       @the_search = Organization.search do
-        keywords @search.keywords
+        keywords keys
         
         with(:program_subjects).any_of(subjects) unless @search.subjects.nil?
 
