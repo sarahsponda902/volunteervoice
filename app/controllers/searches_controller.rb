@@ -58,9 +58,9 @@ class SearchesController < ApplicationController
 
         with(:location).any_of(regions) unless regions.blank?
 
-        with(:weekly_cost).less_than(@search.price_max) unless price_max.nil?
+        with(:weekly_cost).less_than(price_max) unless price_max.nil?
 
-        with(:weekly_cost).greater_than(@search.price_min) unless price_min.nil?
+        with(:weekly_cost).greater_than(price_min) unless price_min.nil?
 
         with(:program_lengths).any_of(lengths) unless lengths.blank?
 
