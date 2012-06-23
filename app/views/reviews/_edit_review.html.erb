@@ -44,13 +44,16 @@
 			<div class="two columns">
 				<br />
 				<br />
-				<%=image_submit_tag "/assets/applyRevisions.png", :style => "width:105px"%>
+				<%=image_submit_tag "/assets/applyRevisions.png", :style => "width:105px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+				<style>
+				.shadowed { opacity:0.8}
+				</style>
 				<% end %>
 				<br />
 				<br />
 				<br />
 
-				<%= link_to (image_tag "/assets/deleteReview.png"), "#delete-box", :class => "delete-window"%>
+				<%= link_to (image_tag "/assets/deleteReview.png"), "#delete-box", :class => "delete-window", :onmousedown => "this.css('opacity', '0.8')", :onmouseup => "this.css('opacity', '1')"%>
 			</div>
 		</div>
 	</div>
@@ -63,7 +66,10 @@
 		<td><a class="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
 		<td>
 		<%= form_for @review, :method => :delete do%>
-		<%= image_submit_tag "/assets/RealDeleteReviewButton.png"%>
+		<%= image_submit_tag "/assets/RealDeleteReviewButton.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+			<style>
+			.shadowed { opacity:0.8}
+			</style>
 		<% end %>
 </td></tr>
 </table>
