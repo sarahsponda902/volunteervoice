@@ -8,7 +8,7 @@
 		<tr style="background-color:#E9ECE9">
 			<td></td>
 			<td colspan="2"><p style="margin-top:-87px; font-size:1.4em; color:gray">Category: <font style=" color:#575758">
-			<%f.program_subject[0..(f.program_subjects.count - 2)].join(", ")%>
+			<%=f.program_subject[0..(f.program_subjects.count - 2)].join(", ")%>
 				</font></p>
 				<p style="font-size:1.1em; margin-top:-3px"><%= f.truncated_description100.html_safe%></p>
 			</td>
