@@ -335,6 +335,7 @@ function openReplyBox(message_id) {
  </script>
 
 </head>
+<% if flash.class.name == "Array"%>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
 <%= pluralize value.length, "errors"%> prevented your changes from being made:<br />
@@ -342,6 +343,7 @@ function openReplyBox(message_id) {
 		* <%=f%><br />
 	<% end %>
   </div>
+<% end %>
 <% end %>
 <a href="#message-box" class="message-window" id="message-reply" style="display:none">Reply Link Here</a>
 <% @message = Message.new%>

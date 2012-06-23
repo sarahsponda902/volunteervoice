@@ -27,7 +27,7 @@ include ActionView::Helpers::TextHelper
              @org.reviews_count = @org.reviews_count + 1
              @org.save
              format.html { redirect_to "/pages/thank_you_review" }
-              format.json { render json: @review, status: :created, location: @review }
+             format.json 
          else
            @review.body = @review.body.gsub(%r{</?[^>]+?>}, '')
            flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
