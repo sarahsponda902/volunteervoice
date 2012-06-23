@@ -3,7 +3,7 @@ RMTest::Application.routes.draw do
   ##### SEARCHES
   match "searches/program_search" => "searches#program_search"
   
-  match "searches/:location/map_search" => "searches#map_search"
+  match "searches/:location/create" => "searches#map_search"
   
   resources :searches
 
