@@ -378,6 +378,7 @@ $(document).ready(function() {
 </div>
 
 <div id="realSearchFacets">
+		<input type='checkbox' name='search[subjects]' value="false" id="any5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Agriculture" id="Agriculture5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Organic Farming" id="OrganicFarming5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Sustainable Development" id="SustainableDevelopment5" style='display:none'>
@@ -486,7 +487,7 @@ $(document).ready(function() {
 <div id="programSubjects" style="width:600px; height:460px; overflow-y:auto; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	
 	<div class="six columns" style="width:45%">
-		            <input type="checkbox" name = "seach[subjects]" onclick = 'toggleBoxes1(this)' , value = "false" , id =>'any', checked = "checked"  ><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
+		            <input type="checkbox" name = "seach[subjects]" onclick = 'toggleBoxes1(this)' value = "false" , id =>'any' checked = "checked" onchange = "$('#any5').prop('checked', this.checked)" ><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
 
 
 					<div id="Agriculture1"><input type="checkbox" onchange ="$('#Agriculture5').prop('checked', this.checked)" name= "search[subjects][]" onclick = "toggleBoxes1(this);toggleAgriculture(this)" value ="Agriculture" id="Agriculture2"  ><font style="font-size:1.2em; color:#575758">Agriculture</font></div>
