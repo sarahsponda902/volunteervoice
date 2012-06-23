@@ -187,7 +187,16 @@ $(document).ready(function() {
 
 </script>
 
+<script type="text/javascript">
 
+$(document).ready(function() {
+	
+	$('#program').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 5, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
+
+	
+});
+
+</script>
 
 
 <div class="container">
@@ -240,7 +249,7 @@ $(document).ready(function() {
 	</div>
 </div>
 </div>
-
+Got here
 <div class="container">
 	<div class="row">	
 <div class="eleven columns" style="margin-top:-50px">
