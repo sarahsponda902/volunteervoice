@@ -541,7 +541,7 @@ $(document).ready(function() {
 		            <div id='Technology1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleTechnology(this)'  , :value => 'Technology' , :id =>'Technology2'  %><font style="font-size:1.2em; color:#575758">Technology</font></div>
 		            <div id='Teaching_Computer_Literacy1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleTechnology(this)'  , :value => 'Teaching Computer Literacy' , :id =>'TeachingComputerLiteracy2'  %>Teaching Computer Literacy</div>
 		            <div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleTechnology(this)'  , :value => 'Media Marketing and Graphic Design' , :id =>'MediaMarketingandGraphicDesign2'  %>Media, Marketing, and Graphic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design</div><br />
-		<div style="float:right"><%= f.submit, "Apply", :style=> "background:transparent"%></div>
+		<div style="float:right"><%= f.submit, :value => "Apply", :style=> "background:transparent"%></div>
 	
 </div>
 
@@ -559,7 +559,7 @@ $(document).ready(function() {
 	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '6-12 months' , :id =>'6_length'  %>6-12 months<br />
 	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '1-2 years' , :id =>'7_length'  %>1-2 years<br />
 	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '2+ years' , :id =>'8_length'  %>2+ years<br />
-			<div style="float:right"><%= f.submit, "Apply", :style=> "background:transparent"%></div>
+			<div style="float:right"><%= f.submit, :value => "Apply", :style=> "background:transparent"%></div>
 	</div>
 </div>
 
@@ -573,7 +573,7 @@ $(document).ready(function() {
 		<div class="six columns" style="width:45%">
 		<%= f.check_box :sizes, :onclick => 'toggleBoxes3(this)'  , :value => 'Medium Groups (4-10)' , :id =>'3_group'  %>Medium Groups (4-10)<br />
 		<%= f.check_box :sizes, :onclick => 'toggleBoxes3(this)'  , :value => 'Large Groups (11+)' , :id =>'4_group'  %>Large Groups (11+)<br /></div>
-				<div style="float:right"><%= f.submit, "Apply", :style=> "background:transparent"%></div>
+				<div style="float:right"><%= f.submit, :value => "Apply", :style=> "background:transparent"%></div>
 </div>
 
 
@@ -583,7 +583,7 @@ $(document).ready(function() {
 	<p>avg. per week</p>
     Min: <%= f.number_field :price_min , :value =>  0 , :id => "price_min", :style => "background:white; width:150px; margin-left:2px"%><br />
     Max: <%= f.number_field :price_max  , :value =>  999 , :id => "price_max", :style => "background:white; margin-top:5px; width:150px"%><br /><br />
-		<div style="float:right"><%= f.submit, "Apply", :style=> "background:transparent"%></div>
+		<div style="float:right"><%= f.submit, :value => "Apply", :style=> "background:transparent"%></div>
 
 </div>
 
@@ -879,7 +879,7 @@ $(document).ready(function() {
 			<div id='GS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'GS' , :id =>'GS2'  %> South Georgia<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the South <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sandwich<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
 			<div id='SS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'SS' , :id =>'SS2'  %> South Sudan</div>
 			<div id='UM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'UM' , :id =>'UM2'  %> United States<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minor Outlying <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div><br /><br /></div>
-					<div style="float:right"><%= f.submit, "Apply", :style=> "background:transparent"%></div>
+					<div style="float:right"><%= f.submit, :value => "Apply", :style=> "background:transparent"%></div>
 		</div>
 	
 </div>
