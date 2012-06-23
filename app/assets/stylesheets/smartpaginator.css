@@ -158,21 +158,17 @@
 	border: none;
 }
 
-/*sent*/#program
-{
-	background-color: transparent;
-}
-#program.normal
+.normal
 {
 	color: #62acbd;
 	border: none;
 }
-#program.active
+.active
 {
 	color: #e67b5a;
 	border: none;
 }
-.pager#program .btn
+.btn
 {
 	color: #62acbd;
 	border: none;
