@@ -355,6 +355,7 @@ function openReplyBox(message_id) {
 	
 </div>
 <div class="container">
+	<div class="row">
 	<% if flash.class.name == "Array"%>
 	<% flash.each do |key, value| %>
 	  <div class="flash <%=key%>">
@@ -365,6 +366,7 @@ function openReplyBox(message_id) {
 	  </div>
 	<% end %>
 	<% end %>
+	</div>
 </div>
 
 
