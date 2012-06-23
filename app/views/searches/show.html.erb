@@ -455,6 +455,7 @@ $(document).ready(function() {
 	
 	
 	<!-- COUNTRIES -->
+		<input type='checkbox' type='search[regions]' id='any11' value='false' style='display:none' checked="checked">
 	
 	<input type='checkbox' type='search[regions][]' id='AF5' value='AF' style='display:none'>
 	<input type='checkbox' type='search[regions][]' id='AX5' value='AX' style='display:none'>
@@ -709,6 +710,7 @@ $(document).ready(function() {
 <!-- END COUNTRIES -->
 
 <!-- LENGTHS -->
+<input id='any12' type='checkbox' style='display:none' name='search[lengths]' value='false' checked="checked">
 
 <input id='length15' type='checkbox' style='display:none' name='search[lengths][]' value='1 week or less'>
 <input id='length25' type='checkbox' style='display:none' name='search[lengths][]' value=' 2-4 weeks'>
@@ -722,10 +724,12 @@ $(document).ready(function() {
 <!-- END LENGTHS -->
 
 <!-- SIZES -->
-<input id='size15' type='checkbox' style='display:none' name='search[sizes][]' value='"Individual"'>
-<input id='size25' type='checkbox' style='display:none' name='search[sizes][]' value='"Small Groups (2-3)"'>
-<input id='size35' type='checkbox' style='display:none' name='search[sizes][]' value='"Medium Groups (4-10)"'>
-<input id='size45' type='checkbox' style='display:none' name='search[sizes][]' value='"Large Groups (11+)"'>
+<input id='any13' type='checkbox' style='display:none' name='search[sizes]' value='false'>
+
+<input id='size15' type='checkbox' style='display:none' name='search[sizes][]' value='Individual'>
+<input id='size25' type='checkbox' style='display:none' name='search[sizes][]' value='Small Groups (2-3)'>
+<input id='size35' type='checkbox' style='display:none' name='search[sizes][]' value='Medium Groups (4-10)'>
+<input id='size45' type='checkbox' style='display:none' name='search[sizes][]' value='Large Groups (11+)'>
 <!-- END SIZES -->
 	
 
@@ -735,7 +739,7 @@ $(document).ready(function() {
 
 
 <!-- PRICE MAX -->
-<input id="price_max5" type="number" style="display:none" name="search[price_max]" value="0">
+<input id="price_max5" type="number" style="display:none" name="search[price_max]" value="999">
 <!-- END PRICE MAX -->	
 
 </div>
@@ -856,17 +860,18 @@ $(document).ready(function() {
 
 <div id="lengthOfTrip" style="width:300px; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	<div class="six columns" style="width:45%">
-	<input type="checkbox" name="search[lengths]" onclick='toggleBoxes2(this)' value = "false" id ='any2' checked = "checked"  >Any <br />
-    <input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='1 week or less' id='1_length'  >1 week or less<br />
-	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='2-4 weeks' id='2_length'  >2-4 weeks<br />
-	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='5-8 weeks' id='3_length'  >5-8 weeks<br />
-	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='9-12 weeks' id='4_length'  >9-12 weeks
+	<input type="checkbox" name="search[lengths]" onclick='toggleBoxes2(this)' value = "false" id ='any2' checked = "checked" onchange="$('#any12').prop('checked', this.attr('checked')?true:false)" >Any <br />
+    <input onchange="$('#length15').prop('checked', this.attr('checked')?true:false)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="1 week or less" id="1_length"  >1 week or less<br />
+	<input onchange="$('#length25').prop('checked', this.attr('checked')?true:false)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="2-4 weeks" id="2_length"  >2-4 weeks<br />
+	<input onchange="$('#length35').prop('checked', this.attr('checked')?true:false)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="5-8 weeks" id="3_length"  >5-8 weeks<br />
+	<input onchange="$('#length45').prop('checked', this.attr('checked')?true:false)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="9-12 weeks" id="4_length"  >9-12 weeks
 	</div>
+	
 	<div class="six columns" style="width:45%">
-	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='3-6 months' id='5_length'  >3-6 months<br />
-	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='6-12 months' id='6_length'  >6-12 months<br />
-	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='1-2 years' id='7_length'  >1-2 years<br />
-	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='2+ years' id='8_length'  >2+ years<br />
+	<input onchange="$('#length55').prop('checked', this.attr('checked')?true:false)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="3-6 months" id="5_length"  >3-6 months<br />
+	<input onchange="$('#length65').prop('checked', this.attr('checked')?true:false)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="6-12 months" id="6_length"  >6-12 months<br />
+	<input onchange="$('#length75').prop('checked', this.attr('checked')?true:false)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="1-2 years" id="7_length"  >1-2 years<br />
+	<input onchange="$('#length85').prop('checked', this.attr('checked')?true:false)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="2+ years" id="8_length"  >2+ years<br />
 			<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 	</div>
 </div>
