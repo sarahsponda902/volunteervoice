@@ -711,8 +711,8 @@ class SearchesController < ApplicationController
     
     @search.regions = @search.regions.join("; ")
     @search.subjects = @search.subjects.join("; ")
-    @search.lengths = @search.lengths.join("; ")
-    @search.sizes = @search.sizes.join("; ")
+    @search.lengths = @search.lengths.join("; ") unless @search.lengths.class.name == "String"
+    @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
 
     respond_to do |format|
       if @search.save
@@ -1331,8 +1331,8 @@ class SearchesController < ApplicationController
     
     @search.regions = @search.regions.join("; ")
     @search.subjects = @search.subjects.join("; ")
-    @search.lengths = @search.lengths.join("; ")
-    @search.sizes = @search.sizes.join("; ")
+    @search.lengths = @search.lengths.join("; ") unless @search.lengths.class.name == "String"
+    @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
     
     respond_to do |format|
       if @search.update_attributes(params[:search])
