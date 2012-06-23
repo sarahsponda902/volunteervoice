@@ -121,12 +121,6 @@ class SearchesController < ApplicationController
     if @search.sizes.nil?
       @search.sizes = ["false"]
     end
-    if @search.price_max.nil?
-      @search.price_max = 10000
-    end
-    if @search.price_min.nil?
-      @search.price_min = 0
-    end
     
     if @search.subjects.include?('Agriculture')
       @search.subjects = ['Organic Farming', 'Sustainable Development'] + (@search.subjects.split("; "))
