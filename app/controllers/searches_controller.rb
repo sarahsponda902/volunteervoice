@@ -1399,7 +1399,7 @@ class SearchesController < ApplicationController
      params[:search][:regions] = params[:search][:regions].join("; ")
       params[:search][:subjects] = params[:search][:subjects].join("; ")
       params[:search][:lengths] = params[:search][:lengths].join("; ") unless params[:search][:lengths].class.name == "String"
-      params[:search][:sizes] = params[:search][:sizes].join("; ") unless params[:search][:lengths].class.name == "String"
+      params[:search][:sizes] = params[:search][:sizes].join("; ") unless params[:search][:sizes].class.name == "String"
     
     
       respond_to do |format|
