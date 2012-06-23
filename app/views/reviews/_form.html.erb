@@ -725,7 +725,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 
 
 		<div id="submitButtonHidden" style="text-align:center; margin-top:30px; color:#e67b5a"> <i>You cannot submit your review until<br /> all form fields are filled out <br />(except uploading photos, that's optional)</i></div>
-		<div style="text-align:center; margin-top:30px; display:none" id="submitButtonDiv"><%=image_submit_tag ("/assets/submitGreen.png"), :id => "submitButton", :style => "cursor:pointer", :onclick => "return false" :onmousedown => "this.src='/assets/submitBlue.png'; this.form.submit();"%></div>
+		<div style="text-align:center; margin-top:30px; display:none" id="submitButtonDiv"><%=image_tag ("/assets/submitGreen.png"), :id => "submitButton", :style => "cursor:pointer", :onmousedown => "this.src='/assets/submitBlue.png'; this.form.submit();"%></div>
 
 		<div style="margin-left:60%; margin-top:-60px">
 		<article class="formFAQ"><!-- FAQ information/link-->
