@@ -12,7 +12,7 @@ include ActionView::Helpers::TextHelper
       
       @user_review_progs = []
         current_user.reviews.each do |f|
-          @user_review_progs << Program.find(f.program_id)
+          @user_review_progs << Program.find(f.program_id).id
         end
 
     if !(@user_review_progs.include?(@review.program_id))
