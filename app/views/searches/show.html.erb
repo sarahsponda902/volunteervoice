@@ -243,7 +243,7 @@ $(document).ready(function() {
 	$("#display").val("Organizations");
 	<% end %>
 	<% if !(@search.sort_by.nil?)%>
-	$("#sort").val("<%=@search.sort_by%>");
+	$("#sort").val("<%=@search.sort_by>");
 	<% end %>
 	<% if @search.showing != "Organizations" %>
 	$("#sort").append("<option value = 'pricelow'>Price - Low</option>");
@@ -322,7 +322,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	
-	$('#program').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 5, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
+	$('#program').smartpaginator({ totalrecords: <%=@results.count>, recordsperpage: 5, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
 
 	
 });
@@ -376,7 +376,7 @@ $(document).ready(function() {
 	</div>
 
 </div>
-<%= f.check_box :regions, :value => "AZ"%>
+
 </div>
 
 <div class="container">
@@ -389,7 +389,7 @@ $(document).ready(function() {
 			<% @results.each do |f|%>	
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
 			<% end %>
-		<% else %>
+		<% else% >
 			<% @results.each do |f|%>
 	
 				<%= render :partial => "organizations_results", :locals => {:f => f}%>
@@ -428,58 +428,58 @@ $(document).ready(function() {
 <div id="programSubjects" style="width:600px; height:460px; overflow-y:auto; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	
 	<div class="six columns" style="width:45%">
-		            <%= f.check_box :subjects, :onclick => 'toggleBoxes1(this)' , :value => "false" , :id =>'any', :checked => "checked"  %><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
+		            <input type="checkbox" name = "seach[subjects]" onclick = 'toggleBoxes1(this)' , value = "false" , id =>'any', checked = "checked"  ><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
 
 
-		<div id='Agriculture1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleAgriculture(this)'  , :value => 'Agriculture' , :id =>'Agriculture2'  %><font style="font-size:1.2em; color:#575758">Agriculture</font></div>
-		            <div id='OrganicFarming1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleAgriculture(this)'  , :value => 'Organic Farming' , :id =>'OrganicFarming2'  %>Organic Farming</div>
-		            <div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleAgriculture(this)'  , :value => 'Sustainable Development' , :id =>'SustainableDevelopment2'  %>Sustainable Development</div><br />
-
-
-
-		            <div id='AnimalCare1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleAnimalCare(this)'  , :value => 'Animal Care' , :id =>'AnimalCare2'  %><font style="font-size:1.2em; color:#575758">Animal Care</font></div>
-		            <div id='AnimalRights1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleAnimalCare(this)'  , :value => 'Animal Rights' , :id =>'AnimalRights2'  %>Animal Rights</div>
-		            <div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleAnimalCare(this)'  , :value => 'Wildlife Conservation' , :id =>'WildlifeConservation2'  %>Wildlife Conservation</div><br />
+		<div id='Agriculture1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value ='Agriculture' id='Agriculture2'  ><font style="font-size:1.2em; color:#575758">Agriculture</font></div>
+		            <div id='OrganicFarming1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value ='Organic Farming' id='OrganicFarming2'  >Organic Farming</div>
+		            <div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value ='Sustainable Development' id='SustainableDevelopment2'  >Sustainable Development</div><br />
 
 
 
-		            <div id='Caregiving1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCaregiving(this)'  , :value => 'Caregiving' , :id =>'Caregiving2'  %><font style="font-size:1.2em;">Caregiving</font></div>
-		            <div id='ElderCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCaregiving(this)'  , :value => 'Elder Care' , :id =>'ElderCare2'  %>Elder Care</div>
-		            <div id='ChildOrphanCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCaregiving(this)'  , :value => 'Child/Orphan Care' , :id =>'ChildOrphanCare2'  %>Child/Orphan Care</div>
-		            <div id='DisabledCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCaregiving(this)'  , :value => 'Disabled Care' , :id =>'DisabledCare2'  %>Disabled Care</div>
-		            <div id='FeedtheHomeless1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCaregiving(this)'  , :value => 'Feed the Homeless' , :id =>'FeedtheHomeless2'  %>Feed the Homeless</div><br />
+		            <div id='AnimalCare1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleAnimalCare(this)' value ='Animal Care' id='AnimalCare2'  ><font style="font-size:1.2em; color:#575758">Animal Care</font></div>
+		            <div id='AnimalRights1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleAnimalCare(this)' value ='Animal Rights' id='AnimalRights2'  >Animal Rights</div>
+		            <div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleAnimalCare(this)' value ='Wildlife Conservation' id='WildlifeConservation2'  >Wildlife Conservation</div><br />
 
 
 
-		            <div id='CommunityDevelopment1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCommunityDevelopment(this)'  , :value => 'Community Development' , :id =>'CommunityDevelopment2'  %><font style="font-size:1.2em; color:#575758">Community Development</font></div>
-		            <div id='YouthDevelopmentandOutreach1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCommunityDevelopment(this)'  , :value => 'Youth Development and Outreach' , :id =>'YouthDevelopmentandOutreach2'  %>Youth Development and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outreach</div><br />
+		            <div id='Caregiving1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCaregiving(this)' value ='Caregiving' id='Caregiving2'  ><font style="font-size:1.2em;">Caregiving</font></div>
+		            <div id='ElderCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCaregiving(this)' value ='Elder Care' id='ElderCare2'  >Elder Care</div>
+		            <div id='ChildOrphanCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCaregiving(this)' value ='Child/Orphan Care' id='ChildOrphanCare2'  >Child/Orphan Care</div>
+		            <div id='DisabledCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCaregiving(this)' value ='Disabled Care' id='DisabledCare2'  >Disabled Care</div>
+		            <div id='FeedtheHomeless1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCaregiving(this)' value ='Feed the Homeless' id='FeedtheHomeless2'  >Feed the Homeless</div><br />
 
 
 
-		            <div id='Construction1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this)'  , :value => 'Construction' , :id =>'Construction2'  %><font style="font-size:1.2em; color:#575758">Construction</font></div><br />
+		            <div id='CommunityDevelopment1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCommunityDevelopment(this)' value ='Community Development' id='CommunityDevelopment2'  ><font style="font-size:1.2em; color:#575758">Community Development</font></div>
+		            <div id='YouthDevelopmentandOutreach1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCommunityDevelopment(this)' value ='Youth Development and Outreach' id='YouthDevelopmentandOutreach2'  >Youth Development and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outreach</div><br />
 
 
 
-		            <div id='CultureandCommunity1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCultureandCommunity(this)'  , :value => 'Culture and Community' , :id =>'CultureandCommunity2'  %><font style="font-size:1.2em; color:#575758">Culture and Community</font></div>
-		            <div id='PerformingArts1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCultureandCommunity(this)'  , :value => 'Performing Arts' , :id =>'PerformingArts2'  %>Performing Arts</div>
-		            <div id='Fashion1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCultureandCommunity(this)'  , :value => 'Fashion' , :id =>'Fashion2'  %>Fashion</div>
-		            <div id='Music1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCultureandCommunity(this)'  , :value => 'Music' , :id =>'Music2'  %>Music</div>
-		            <div id='SportsRecreation1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCultureandCommunity(this)'  , :value => 'Sports & Recreation' , :id =>'SportsRecreation2'  %>Sports & Recreation</div>
-		            <div id='Journalism1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleCultureandCommunity(this)'  , :value => 'Journalism' , :id =>'Journalism2'  %>Journalism</div><br />
+		            <div id='Construction1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this)' value ='Construction' id='Construction2'  ><font style="font-size:1.2em; color:#575758">Construction</font></div><br />
 
 
 
-		            <div id='DisasterRelief1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleDisasterRelief(this)'  , :value => 'Disaster Relief' , :id =>'DisasterRelief2'  %><font style="font-size:1.2em; color:#575758">Disaster Relief</font></div>
-		            <div id='Economics1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleDisasterRelief(this)'  , :value => 'Economics' , :id =>'Economics2'  %>Economics</div>
-		            <div id='Microfinance1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleDisasterRelief(this)'  , :value => 'Microfinance' , :id =>'Microfinance2'  %>Microfinance</div><br />
+		            <div id='CultureandCommunity1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCultureandCommunity(this)' value ='Culture and Community' id='CultureandCommunity2'  ><font style="font-size:1.2em; color:#575758">Culture and Community</font></div>
+		            <div id='PerformingArts1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCultureandCommunity(this)' value ='Performing Arts' id='PerformingArts2'  >Performing Arts</div>
+		            <div id='Fashion1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCultureandCommunity(this)' value ='Fashion' id='Fashion2'  >Fashion</div>
+		            <div id='Music1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCultureandCommunity(this)' value ='Music' id='Music2'  >Music</div>
+		            <div id='SportsRecreation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCultureandCommunity(this)' value ='Sports & Recreation' id='SportsRecreation2'  >Sports & Recreation</div>
+		            <div id='Journalism1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleCultureandCommunity(this)' value ='Journalism' id='Journalism2'  >Journalism</div><br />
 
 
 
-		            <div id='Education1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEducation(this)'  , :value => 'Education' , :id =>'Education2'  %><font style="font-size:1.2em; color:#575758">Education</font></div>
-		            <div id='TeachingEnglish1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEducation(this)'  , :value => 'Teaching English' , :id =>'TeachingEnglish2'  %>Teaching English</div>
-		            <div id='TeachingBuddhistMonks1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEducation(this)'  , :value => 'Teaching Buddhist Monks' , :id =>'TeachingBuddhistMonks2'  %>Teaching Buddhist Monks</div>
-		            <div id='TeachingChildren1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEducation(this)'  , :value => 'Teaching Children' , :id =>'TeachingChildren2'  %>Teaching Children</div>
-		            <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEducation(this)'  , :value => 'Teaching Computer Literacy' , :id =>'TeachingComputerLiteracy2'  %>Teaching Computer Literacy</div>
+		            <div id='DisasterRelief1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleDisasterRelief(this)' value ='Disaster Relief' id='DisasterRelief2'  ><font style="font-size:1.2em; color:#575758">Disaster Relief</font></div>
+		            <div id='Economics1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleDisasterRelief(this)' value ='Economics' id='Economics2'  >Economics</div>
+		            <div id='Microfinance1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleDisasterRelief(this)' value ='Microfinance' id='Microfinance2'  >Microfinance</div><br />
+
+
+
+		            <div id='Education1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEducation(this)' value ='Education' id='Education2'  ><font style="font-size:1.2em; color:#575758">Education</font></div>
+		            <div id='TeachingEnglish1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEducation(this)' value ='Teaching English' id='TeachingEnglish2'  >Teaching English</div>
+		            <div id='TeachingBuddhistMonks1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEducation(this)' value ='Teaching Buddhist Monks' id='TeachingBuddhistMonks2'  >Teaching Buddhist Monks</div>
+		            <div id='TeachingChildren1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEducation(this)' value ='Teaching Children' id='TeachingChildren2'  >Teaching Children</div>
+		            <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEducation(this)' value ='Teaching Computer Literacy' id='TeachingComputerLiteracy2'  >Teaching Computer Literacy</div>
 
 
 
@@ -489,56 +489,56 @@ $(document).ready(function() {
 
 
 
-			            <div id='EngineeringandInfrastructure1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this)'  , :value => 'Engineering and Infrastructure' , :id =>'EngineeringandInfrastructure2'  %><font style="font-size:1.2em; color:#575758">Engineering and <br />&nbsp;&nbsp;&nbsp;Infrastructure</font></div><br />
+			            <div id='EngineeringandInfrastructure1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this)' value ='Engineering and Infrastructure' id='EngineeringandInfrastructure2'  ><font style="font-size:1.2em; color:#575758">Engineering and <br />&nbsp;&nbsp;&nbsp;Infrastructure</font></div><br />
 
 
 
 
-		            <div id='Environmental1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEnvironmental(this)'  , :value => 'Environmental' , :id =>'Environmental2'  %><font style="font-size:1.2em; color:#575758">Environmental</font></div>
-		            <div id='EcologicalConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEnvironmental(this)'  , :value => 'Ecological Conservation' , :id =>'EcologicalConservation2'  %>Ecological Conservation</div>
-		            <div id='Sustainable_Development1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEnvironmental(this)'  , :value => 'Sustainable Development' , :id =>'Sustainable_Development2'  %>Sustainable Development</div>
-		            <div id='Wildlife_Conservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEnvironmental(this)'  , :value => 'Wildlife Conservation' , :id =>'Wildlife_Conservation2'  %>Wildlife Conservation</div>
-		            <div id='HabitatRestoration1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleEnvironmental(this)'  , :value => 'Habitat Restoration' , :id =>'HabitatRestoration2'  %>Habitat Restoration</div><br />
+		            <div id='Environmental1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value ='Environmental' id='Environmental2'  ><font style="font-size:1.2em; color:#575758">Environmental</font></div>
+		            <div id='EcologicalConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value ='Ecological Conservation' id='EcologicalConservation2'  >Ecological Conservation</div>
+		            <div id='Sustainable_Development1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value ='Sustainable Development' id='Sustainable_Development2'  >Sustainable Development</div>
+		            <div id='Wildlife_Conservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value ='Wildlife Conservation' id='Wildlife_Conservation2'  >Wildlife Conservation</div>
+		            <div id='HabitatRestoration1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value ='Habitat Restoration' id='HabitatRestoration2'  >Habitat Restoration</div><br />
 
 
 
-		            <div id='HealthandMedicine1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Health and Medicine' , :id =>'HealthandMedicine2'  %><font style="font-size:1.2em; color:#575758">Health and Medicine</font></div>
-		            <div id='HIVAIDS1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'HIV/AIDS' , :id =>'HIVAIDS2'  %>HIV/AIDS</div>
-		            <div id='Nutrition1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Nutrition' , :id =>'Nutrition2'  %>Nutrition</div>
-		            <div id='FamilyPlanning1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Family Planning' , :id =>'FamilyPlanning2'  %>Family Planning</div>
-		            <div id='VeterinaryMedicine1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Veterinary Medicine' , :id =>'VeterinaryMedicine2'  %>Veterinary Medicine</div>
-		            <div id='ClinicalWork1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Clinical Work' , :id =>'ClinicalWork2'  %>Clinical Work</div>
-		            <div id='DentalWork1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Dental Work' , :id =>'DentalWork2'  %>Dental Work</div>
-		            <div id='MedicalResearch1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Medical Research' , :id =>'MedicalResearch2'  %>Medical Research</div>
-		            <div id='HealthEducation1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Health Education' , :id =>'HealthEducation2'  %>Health Education</div>
-		            <div id='PublicHealth1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Public Health' , :id =>'PublicHealth2'  %>Public Health</div>
-		            <div id='HospitalCaregiving1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHealthandMedicine(this)'  , :value => 'Hospital Care-giving' , :id =>'HospitalCaregiving2'  %>Hospital Care-giving</div><br />
+		            <div id='HealthandMedicine1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Health and Medicine' id='HealthandMedicine2'  ><font style="font-size:1.2em; color:#575758">Health and Medicine</font></div>
+		            <div id='HIVAIDS1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='HIV/AIDS' id='HIVAIDS2'  >HIV/AIDS</div>
+		            <div id='Nutrition1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Nutrition' id='Nutrition2'  >Nutrition</div>
+		            <div id='FamilyPlanning1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Family Planning' id='FamilyPlanning2'  >Family Planning</div>
+		            <div id='VeterinaryMedicine1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Veterinary Medicine' id='VeterinaryMedicine2'  >Veterinary Medicine</div>
+		            <div id='ClinicalWork1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Clinical Work' id='ClinicalWork2'  >Clinical Work</div>
+		            <div id='DentalWork1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Dental Work' id='DentalWork2'  >Dental Work</div>
+		            <div id='MedicalResearch1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Medical Research' id='MedicalResearch2'  >Medical Research</div>
+		            <div id='HealthEducation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Health Education' id='HealthEducation2'  >Health Education</div>
+		            <div id='PublicHealth1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Public Health' id='PublicHealth2'  >Public Health</div>
+		            <div id='HospitalCaregiving1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value ='Hospital Care-giving' id='HospitalCaregiving2'  >Hospital Care-giving</div><br />
 
 
 
-		            <div id='HumanRights1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHumanRights(this)'  , :value => 'Human Rights' , :id =>'HumanRights2'  %><font style="font-size:1.2em; color:#575758">Human Rights</font></div>
-		            <div id='WomensInitiatives1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleHumanRights(this)'  , :value => 'Womens Initiatives' , :id =>'WomensInitiatives2'  %>Women's Initiatives</div><br />
+		            <div id='HumanRights1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHumanRights(this)' value ='Human Rights' id='HumanRights2'  ><font style="font-size:1.2em; color:#575758">Human Rights</font></div>
+		            <div id='WomensInitiatives1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleHumanRights(this)' value ='Womens Initiatives' id='WomensInitiatives2'  >Women's Initiatives</div><br />
 
 
 
-		            <div id='InternationalWorkCamp1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this)'  , :value => 'International Work Camp' , :id =>'InternationalWorkCamp2'  %><font style="font-size:1.2em; color:#575758">International Work Camp</font></div><br />
+		            <div id='InternationalWorkCamp1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this)' value ='International Work Camp' id='InternationalWorkCamp2'  ><font style="font-size:1.2em; color:#575758">International Work Camp</font></div><br />
 
 
 
-		            <div id='Recreation1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleRecreation(this)'  , :value => 'Recreation' , :id =>'Recreation2'  %><font style="font-size:1.2em; color:#575758">Recreation</font></div>
-		            <div id='AdventureTravel1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleRecreation(this)'  , :value => 'Adventure Travel' , :id =>'AdventureTravel2'  %>Adventure Travel</div><br />
+		            <div id='Recreation1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleRecreation(this)' value ='Recreation' id='Recreation2'  ><font style="font-size:1.2em; color:#575758">Recreation</font></div>
+		            <div id='AdventureTravel1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleRecreation(this)' value ='Adventure Travel' id='AdventureTravel2'  >Adventure Travel</div><br />
 
 
 
-		            <div id='ScientificResearch1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleScientificResearch(this)'  , :value => 'Scientific Research' , :id =>'ScientificResearch2'  %><font style="font-size:1.2em; color:#575758">Scientific Research</font></div>
-		            <div id='Archaeology1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleScientificResearch(this)'  , :value => 'Archaeology' , :id =>'Archaeology2'  %>Archaeology</div>
-		            <div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleScientificResearch(this)'  , :value => 'Environmental Biology' , :id =>'EnvironmentalBiology2'  %>Environmental Biology</div><br />
+		            <div id='ScientificResearch1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value ='Scientific Research' id='ScientificResearch2'  ><font style="font-size:1.2em; color:#575758">Scientific Research</font></div>
+		            <div id='Archaeology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value ='Archaeology' id='Archaeology2'  >Archaeology</div>
+		            <div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value ='Environmental Biology' id='EnvironmentalBiology2'  >Environmental Biology</div><br />
 
 
 
-		            <div id='Technology1'><%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleTechnology(this)'  , :value => 'Technology' , :id =>'Technology2'  %><font style="font-size:1.2em; color:#575758">Technology</font></div>
-		            <div id='Teaching_Computer_Literacy1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleTechnology(this)'  , :value => 'Teaching Computer Literacy' , :id =>'TeachingComputerLiteracy2'  %>Teaching Computer Literacy</div>
-		            <div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :subjects, :onclick => 'toggleBoxes1(this);toggleTechnology(this)'  , :value => 'Media Marketing and Graphic Design' , :id =>'MediaMarketingandGraphicDesign2'  %>Media, Marketing, and Graphic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design</div><br />
+		            <div id='Technology1'><input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleTechnology(this)' value ='Technology' id='Technology2'  ><font style="font-size:1.2em; color:#575758">Technology</font></div>
+		            <div id='Teaching_Computer_Literacy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleTechnology(this)' value ='Teaching Computer Literacy' id='TeachingComputerLiteracy2'  >Teaching Computer Literacy</div>
+		            <div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name = "seach[subjects][]" onclick = 'toggleBoxes1(this);toggleTechnology(this)' value ='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2'  >Media, Marketing, and Graphic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Design</div><br />
 		<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 	
 </div>
@@ -546,17 +546,17 @@ $(document).ready(function() {
 
 <div id="lengthOfTrip" style="width:300px; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	<div class="six columns" style="width:45%">
-	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)' , :value => "false" , :id =>'any2', :checked => "checked"  %>Any <br />
-    <%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '1 week or less' , :id =>'1_length'  %>1 week or less<br />
-	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '2-4 weeks' , :id =>'2_length'  %>2-4 weeks<br />
-	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '5-8 weeks' , :id =>'3_length'  %>5-8 weeks<br />
-	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '9-12 weeks' , :id =>'4_length'  %>9-12 weeks
+	<input type="checkbox" name="search[lengths]" onclick='toggleBoxes2(this)' value = "false" id ='any2' checked = "checked"  >Any <br />
+    <input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='1 week or less' id='1_length'  >1 week or less<br />
+	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='2-4 weeks' id='2_length'  >2-4 weeks<br />
+	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='5-8 weeks' id='3_length'  >5-8 weeks<br />
+	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='9-12 weeks' id='4_length'  >9-12 weeks
 	</div>
 	<div class="six columns" style="width:45%">
-	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '3-6 months' , :id =>'5_length'  %>3-6 months<br />
-	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '6-12 months' , :id =>'6_length'  %>6-12 months<br />
-	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '1-2 years' , :id =>'7_length'  %>1-2 years<br />
-	<%= f.check_box :lengths, :onclick => 'toggleBoxes2(this)'  , :value => '2+ years' , :id =>'8_length'  %>2+ years<br />
+	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='3-6 months' id='5_length'  >3-6 months<br />
+	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='6-12 months' id='6_length'  >6-12 months<br />
+	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='1-2 years' id='7_length'  >1-2 years<br />
+	<input type="checkbox" name="search[lengths][]" onclick='toggleBoxes2(this)' value ='2+ years' id='8_length'  >2+ years<br />
 			<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 	</div>
 </div>
@@ -564,13 +564,13 @@ $(document).ready(function() {
 
 <div id="groupSize" style="width:350px; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	<div class="six columns" style="width:45%">
-	 <%= f.check_box :sizes, :onclick => 'toggleBoxes3(this)' , :value => "false" , :id =>'any3', :checked => "checked" %>Any<br />
-        <%= f.check_box :sizes, :onclick => 'toggleBoxes3(this)'  , :value => 'Individual' , :id =>'1_group'  %>Individual<br />
-		<%= f.check_box :sizes, :onclick => 'toggleBoxes3(this)'  , :value => 'Small Groups (2-3)' , :id =>'2_group'  %>Small Groups (2-3)
+	 <input type="checkbox" name="search[sizes]" onclick='toggleBoxes3(this)' value = "false" id ='any3' checked = "checked" >Any<br />
+        <input type="checkbox" name="search[sizes][]" onclick='toggleBoxes3(this)' value ='Individual' id='1_group'  >Individual<br />
+		<input type="checkbox" name="search[sizes][]" onclick='toggleBoxes3(this)' value ='Small Groups (2-3)' id='2_group'  >Small Groups (2-3)
 		</div>
 		<div class="six columns" style="width:45%">
-		<%= f.check_box :sizes, :onclick => 'toggleBoxes3(this)'  , :value => 'Medium Groups (4-10)' , :id =>'3_group'  %>Medium Groups (4-10)<br />
-		<%= f.check_box :sizes, :onclick => 'toggleBoxes3(this)'  , :value => 'Large Groups (11+)' , :id =>'4_group'  %>Large Groups (11+)<br /></div>
+		<input type="checkbox" name="search[sizes][]" onclick='toggleBoxes3(this)' value ='Medium Groups (4-10)' id='3_group'  >Medium Groups (4-10)<br />
+		<input type="checkbox" name="search[sizes][]" onclick='toggleBoxes3(this)' value ='Large Groups (11+)' id='4_group'  >Large Groups (11+)<br /></div>
 				<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 </div>
 
@@ -579,8 +579,8 @@ $(document).ready(function() {
 <div id="priceRange" style="color:#575758; overflow-x:hidden; width:275px">
 <br />
 	<p>avg. per week</p>
-    Min: <%= f.number_field :price_min , :value =>  0 , :id => "price_min", :style => "background:white; width:150px; margin-left:2px"%><br />
-    Max: <%= f.number_field :price_max  , :value =>  999 , :id => "price_max", :style => "background:white; margin-top:5px; width:150px"%><br /><br />
+    Min: <input type="number" name="search[price_min]" value =  "0" id = "price_min" style = "background:white; width:150px; margin-left:2px"><br />
+    Max: <input typw="number" name="search[price_max]" value= "999" id = "price_max" style = "background:white; margin-top:5px; width:150px"><br /><br />
 		<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 
 </div>
@@ -590,71 +590,71 @@ $(document).ready(function() {
 <div id="programCountries" style="color:#575758; width:800px; height:400px; overflow-x:hidden; overflow-y:auto;">
 	<div class="two columns" style="width:16%">
 	
-		<%= f.check_box :regions, :onclick => 'toggleBoxes(this)' , :value => "false" , :id =>'any6', :checked => "checked"%><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
+		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' checked = "checked"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
 
 
 
 
 
 
-		<div id="AfricaDiv"><%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'Africa' , :id =>'anyAfrica'  %><font style="font-size:1.2em; color:#575758">Africa</font></div>
-		<div id='DZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'DZ' , :id =>'DZ2'  %> Algeria</div>
-		<div id='EG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'EG' , :id =>'EG2'  %> Egypt</div>
-		<div id='LY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'LY' , :id =>'LY2'  %> Libya</div>
-		<div id='MA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'MA' , :id =>'MA2'  %> Morocco</div>
-		<div id='SD'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'SD' , :id =>'SD2'  %> Sudan</div>
-		<div id='TN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'TN' , :id =>'TN2'  %> Tunisia</div>
-		<div id='EH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'EH' , :id =>'EH2'  %> Western <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sahara</div>
-		<div id='BJ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'BJ' , :id =>'BJ2'  %> Benin</div>
-		<div id='BF'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'BF' , :id =>'BF2'  %> Burkina Faso</div>
-		<div id='CV'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'CV' , :id =>'CV2'  %> Cape Verde</div>
-		<div id='CI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'CI' , :id =>'CI2'  %> Côte dIvoire</div>
-		<div id='GM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'GM' , :id =>'GM2'  %> Gambia</div>
-		<div id='GH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'GH' , :id =>'GH2'  %> Ghana</div>
-		<div id='GN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'GN' , :id =>'GN2'  %> Guinea</div>
-		<div id='GW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'GW' , :id =>'GW2'  %> Guinea-Bissau</div>
-		<div id='LR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'LR' , :id =>'LR2'  %> Liberia</div>
-		<div id='ML'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'ML' , :id =>'ML2'  %> Mali</div>
-		<div id='MR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'MR' , :id =>'MR2'  %> Mauritania</div>
-		<div id='NE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'NE' , :id =>'NE2'  %> Niger</div>
-		<div id='NG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'NG' , :id =>'NG2'  %> Nigeria</div>
-		<div id='SH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'SH' , :id =>'SH2'  %> Saint Helena, <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ascension and  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tristan da  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cunha</div>
-		<div id='SN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'SN' , :id =>'SN2'  %> Senegal</div>
-		<div id='SL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'SL' , :id =>'SL2'  %> Sierra Leone</div>
-		<div id='TG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'TG' , :id =>'TG2'  %> Togo</div>
-		<div id='AO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'AO' , :id =>'AO2'  %> Angola</div>
-		<div id='CM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'CM' , :id =>'CM2'  %> Cameroon</div>
-		<div id='CF'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'CF' , :id =>'CF2'  %> Central African <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
-		<div id='TD'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'TD' , :id =>'TD2'  %> Chad</div>
-		<div id='CG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'CG' , :id =>'CG2'  %> Congo</div>
-		<div id='CD'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'CD' , :id =>'CD2'  %> Democratic Republic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of the Congo</div>
-		<div id='GQ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'GQ' , :id =>'GQ2'  %> Equatorial  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guinea</div>
-		<div id='GA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'GA' , :id =>'GA2'  %> Gabon</div>
-		<div id='ST'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'ST' , :id =>'ST2'  %> Sao Tome and <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principe</div>
-		<div id='BI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'BI' , :id =>'BI2'  %> Burundi</div>
-		<div id='KM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'KM' , :id =>'KM2'  %> Comoros</div>
-		<div id='DJ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'DJ' , :id =>'DJ2'  %> Djibouti</div>
-		<div id='ER'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'ER' , :id =>'ER2'  %> Eritrea</div>
-		<div id='ET'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'ET' , :id =>'ET2'  %> Ethiopia</div>
-		<div id='KE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'KE' , :id =>'KE2'  %> Kenya</div>
-		<div id='MG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'MG' , :id =>'MG2'  %> Madagascar</div>
-		<div id='MW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'MW' , :id =>'MW2'  %> Malawi</div>
-		<div id='MU'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'MU' , :id =>'MU2'  %> Mauritius</div>
-		<div id='YT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'YT' , :id =>'YT2'  %> Mayotte</div>
-		<div id='MZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'MZ' , :id =>'MZ2'  %> Mozambique</div>
-		<div id='RE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'RE' , :id =>'RE2'  %> Réunion</div>
-		<div id='RW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'RW' , :id =>'RW2'  %> Rwanda</div>
-		<div id='SC'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'SC' , :id =>'SC2'  %> Seychelles</div>
-		<div id='SO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'SO' , :id =>'SO2'  %> Somalia</div>
-		<div id='TZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'TZ' , :id =>'TZ2'  %> Tanzania</div>
-		<div id='UG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'UG' , :id =>'UG2'  %> Uganda</div>
-		<div id='ZM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'ZM' , :id =>'ZM2'  %> Zambia</div>
-		<div id='ZW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'ZW' , :id =>'ZW2'  %> Zimbabwe</div>
-		<div id='BW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'BW' , :id =>'BW2'  %> Botswana</div>
-		<div id='LS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'LS' , :id =>'LS2'  %> Lesotho</div>
-		<div id='NA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'NA' , :id =>'NA2'  %> Namibia</div>
-		<div id='ZA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'ZA' , :id =>'ZA2'  %> South Africa</div>
-		<div id='SZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAfrica(this)'  , :value => 'SZ' , :id =>'SZ2'  %> Swaziland</div><br /><br /></div>
+		<div id="AfricaDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='Africa' id='anyAfrica'  ><font style="font-size:1.2em; color:#575758">Africa</font></div>
+		<div id='DZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='DZ' id='DZ2'  > Algeria</div>
+		<div id='EG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='EG' id='EG2'  > Egypt</div>
+		<div id='LY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='LY' id='LY2'  > Libya</div>
+		<div id='MA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MA' id='MA2'  > Morocco</div>
+		<div id='SD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SD' id='SD2'  > Sudan</div>
+		<div id='TN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='TN' id='TN2'  > Tunisia</div>
+		<div id='EH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='EH' id='EH2'  > Western <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sahara</div>
+		<div id='BJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='BJ' id='BJ2'  > Benin</div>
+		<div id='BF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='BF' id='BF2'  > Burkina Faso</div>
+		<div id='CV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CV' id='CV2'  > Cape Verde</div>
+		<div id='CI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CI' id='CI2'  > Côte dIvoire</div>
+		<div id='GM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GM' id='GM2'  > Gambia</div>
+		<div id='GH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GH' id='GH2'  > Ghana</div>
+		<div id='GN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GN' id='GN2'  > Guinea</div>
+		<div id='GW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GW' id='GW2'  > Guinea-Bissau</div>
+		<div id='LR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='LR' id='LR2'  > Liberia</div>
+		<div id='ML'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ML' id='ML2'  > Mali</div>
+		<div id='MR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MR' id='MR2'  > Mauritania</div>
+		<div id='NE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='NE' id='NE2'  > Niger</div>
+		<div id='NG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='NG' id='NG2'  > Nigeria</div>
+		<div id='SH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SH' id='SH2'  > Saint Helena, <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ascension and  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tristan da  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cunha</div>
+		<div id='SN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SN' id='SN2'  > Senegal</div>
+		<div id='SL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SL' id='SL2'  > Sierra Leone</div>
+		<div id='TG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='TG' id='TG2'  > Togo</div>
+		<div id='AO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='AO' id='AO2'  > Angola</div>
+		<div id='CM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CM' id='CM2'  > Cameroon</div>
+		<div id='CF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CF' id='CF2'  > Central African <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
+		<div id='TD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='TD' id='TD2'  > Chad</div>
+		<div id='CG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CG' id='CG2'  > Congo</div>
+		<div id='CD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CD' id='CD2'  > Democratic Republic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of the Congo</div>
+		<div id='GQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GQ' id='GQ2'  > Equatorial  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guinea</div>
+		<div id='GA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GA' id='GA2'  > Gabon</div>
+		<div id='ST'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ST' id='ST2'  > Sao Tome and <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principe</div>
+		<div id='BI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='BI' id='BI2'  > Burundi</div>
+		<div id='KM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='KM' id='KM2'  > Comoros</div>
+		<div id='DJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='DJ' id='DJ2'  > Djibouti</div>
+		<div id='ER'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ER' id='ER2'  > Eritrea</div>
+		<div id='ET'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ET' id='ET2'  > Ethiopia</div>
+		<div id='KE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='KE' id='KE2'  > Kenya</div>
+		<div id='MG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MG' id='MG2'  > Madagascar</div>
+		<div id='MW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MW' id='MW2'  > Malawi</div>
+		<div id='MU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MU' id='MU2'  > Mauritius</div>
+		<div id='YT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='YT' id='YT2'  > Mayotte</div>
+		<div id='MZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MZ' id='MZ2'  > Mozambique</div>
+		<div id='RE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='RE' id='RE2'  > Réunion</div>
+		<div id='RW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='RW' id='RW2'  > Rwanda</div>
+		<div id='SC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SC' id='SC2'  > Seychelles</div>
+		<div id='SO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SO' id='SO2'  > Somalia</div>
+		<div id='TZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='TZ' id='TZ2'  > Tanzania</div>
+		<div id='UG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='UG' id='UG2'  > Uganda</div>
+		<div id='ZM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ZM' id='ZM2'  > Zambia</div>
+		<div id='ZW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ZW' id='ZW2'  > Zimbabwe</div>
+		<div id='BW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='BW' id='BW2'  > Botswana</div>
+		<div id='LS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='LS' id='LS2'  > Lesotho</div>
+		<div id='NA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='NA' id='NA2'  > Namibia</div>
+		<div id='ZA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ZA' id='ZA2'  > South Africa</div>
+		<div id='SZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SZ' id='SZ2'  > Swaziland</div><br /><br /></div>
 
 
 
@@ -663,58 +663,58 @@ $(document).ready(function() {
 
 
 		<div class="two columns" style="width:16%">
-		<div id="EuropeDiv"><%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'Europe' , :id =>'anyEurope'  %><font style="font-size:1.2em; color:#575758">Europe</font></div>
-		<div id='AX'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'AX' , :id =>'AX2'  %> Åland Islands</div>
-		<div id='DK'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'DK' , :id =>'DK2'  %> Denmark</div>
-		<div id='EE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'EE' , :id =>'EE2'  %> Estonia</div>
-		<div id='FO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'FO' , :id =>'FO2'  %> Faroe Islands</div>
-		<div id='FI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'FI' , :id =>'FI2'  %> Finland</div>
-		<div id='GG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'GG' , :id =>'GG2'  %> Guernsey</div>
-		<div id='IS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'IS' , :id =>'IS2'  %> Iceland</div>
-		<div id='IE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'IE' , :id =>'IE2'  %> Ireland</div>
-		<div id='IM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'IM' , :id =>'IM2'  %> Isle of Man</div>
-		<div id='JE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'JE' , :id =>'JE2'  %> Jersey</div>
-		<div id='LV'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'LV' , :id =>'LV2'  %> Latvia</div>
-		<div id='LT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'LT' , :id =>'LT2'  %> Lithuania</div>
-		<div id='NO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'NO' , :id =>'NO2'  %> Norway</div>
-		<div id='SJ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'SJ' , :id =>'SJ2'  %> Svalbard and  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jan Mayen</div>
-		<div id='SE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'SE' , :id =>'SE2'  %> Sweden</div>
-		<div id='GB'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'GB' , :id =>'GB2'  %> United  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kingdom</div>
-		<div id='AT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'AT' , :id =>'AT2'  %> Austria</div>
-		<div id='BE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'BE' , :id =>'BE2'  %> Belgium</div>
-		<div id='FR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'FR' , :id =>'FR2'  %> France</div>
-		<div id='DE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'DE' , :id =>'DE2'  %> Germany</div>
-		<div id='LI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'LI' , :id =>'LI2'  %> Liechtenstein</div>
-		<div id='LU'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'LU' , :id =>'LU2'  %> Luxembourg</div>
-		<div id='MC'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'MC' , :id =>'MC2'  %> Monaco</div>
-		<div id='NL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'NL' , :id =>'NL2'  %> Netherlands</div>
-		<div id='CH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'CH' , :id =>'CH2'  %> Switzerland</div>
-		<div id='BY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'BY' , :id =>'BY2'  %> Belarus</div>
-		<div id='BG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'BG' , :id =>'BG2'  %> Bulgaria</div>
-		<div id='CZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'CZ' , :id =>'CZ2'  %> Czech Republic</div>
-		<div id='HU'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'HU' , :id =>'HU2'  %> Hungary</div>
-		<div id='MD'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'MD' , :id =>'MD2'  %> Moldova,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
-		<div id='PL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'PL' , :id =>'PL2'  %> Poland</div>
-		<div id='RO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'RO' , :id =>'RO2'  %> Romania</div>
-		<div id='RU'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'RU' , :id =>'RU2'  %> Russian  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Federation</div>
-		<div id='SK'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'SK' , :id =>'SK2'  %> Slovakia</div>
-		<div id='UA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'UA' , :id =>'UA2'  %> Ukraine</div>
-		<div id='AL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'AL' , :id =>'AL2'  %> Albania</div>
-		<div id='AD'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'AD' , :id =>'AD2'  %> Andorra</div>
-		<div id='BA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'BA' , :id =>'BA2'  %> Bosnia and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Herzegovina</div>
-		<div id='HR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'HR' , :id =>'HR2'  %> Croatia</div>
-		<div id='GI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'GI' , :id =>'GI2'  %> Gibraltar</div>
-		<div id='GR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'GR' , :id =>'GR2'  %> Greece</div>
-		<div id='VA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'VA' , :id =>'VA2'  %> Holy See  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Vatican City <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; State)</div>
-		<div id='IT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'IT' , :id =>'IT2'  %> Italy</div>
-		<div id='MK'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'MK' , :id =>'MK2'  %> Macedonia</div>
-		<div id='MT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'MT' , :id =>'MT2'  %> Malta</div>
-		<div id='ME'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'ME' , :id =>'ME2'  %> Montenegro</div>
-		<div id='PT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'PT' , :id =>'PT2'  %> Portugal</div>
-		<div id='SM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'SM' , :id =>'SM2'  %> San Marino</div>
-		<div id='RS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'RS' , :id =>'RS2'  %> Serbia</div>
-		<div id='SI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'SI' , :id =>'SI2'  %> Slovenia</div>
-		<div id='ES'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleEurope(this)'  , :value => 'ES' , :id =>'ES2'  %> Spain</div>
+		<div id="EuropeDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='Europe' id='anyEurope'  ><font style="font-size:1.2em; color:#575758">Europe</font></div>
+		<div id='AX'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='AX' id='AX2'  > Åland Islands</div>
+		<div id='DK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='DK' id='DK2'  > Denmark</div>
+		<div id='EE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='EE' id='EE2'  > Estonia</div>
+		<div id='FO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='FO' id='FO2'  > Faroe Islands</div>
+		<div id='FI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='FI' id='FI2'  > Finland</div>
+		<div id='GG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='GG' id='GG2'  > Guernsey</div>
+		<div id='IS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='IS' id='IS2'  > Iceland</div>
+		<div id='IE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='IE' id='IE2'  > Ireland</div>
+		<div id='IM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='IM' id='IM2'  > Isle of Man</div>
+		<div id='JE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='JE' id='JE2'  > Jersey</div>
+		<div id='LV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='LV' id='LV2'  > Latvia</div>
+		<div id='LT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='LT' id='LT2'  > Lithuania</div>
+		<div id='NO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='NO' id='NO2'  > Norway</div>
+		<div id='SJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SJ' id='SJ2'  > Svalbard and  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jan Mayen</div>
+		<div id='SE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SE' id='SE2'  > Sweden</div>
+		<div id='GB'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='GB' id='GB2'  > United  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kingdom</div>
+		<div id='AT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='AT' id='AT2'  > Austria</div>
+		<div id='BE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='BE' id='BE2'  > Belgium</div>
+		<div id='FR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='FR' id='FR2'  > France</div>
+		<div id='DE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='DE' id='DE2'  > Germany</div>
+		<div id='LI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='LI' id='LI2'  > Liechtenstein</div>
+		<div id='LU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='LU' id='LU2'  > Luxembourg</div>
+		<div id='MC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='MC' id='MC2'  > Monaco</div>
+		<div id='NL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='NL' id='NL2'  > Netherlands</div>
+		<div id='CH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='CH' id='CH2'  > Switzerland</div>
+		<div id='BY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='BY' id='BY2'  > Belarus</div>
+		<div id='BG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='BG' id='BG2'  > Bulgaria</div>
+		<div id='CZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='CZ' id='CZ2'  > Czech Republic</div>
+		<div id='HU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='HU' id='HU2'  > Hungary</div>
+		<div id='MD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='MD' id='MD2'  > Moldova,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
+		<div id='PL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='PL' id='PL2'  > Poland</div>
+		<div id='RO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='RO' id='RO2'  > Romania</div>
+		<div id='RU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='RU' id='RU2'  > Russian  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Federation</div>
+		<div id='SK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SK' id='SK2'  > Slovakia</div>
+		<div id='UA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='UA' id='UA2'  > Ukraine</div>
+		<div id='AL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='AL' id='AL2'  > Albania</div>
+		<div id='AD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='AD' id='AD2'  > Andorra</div>
+		<div id='BA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='BA' id='BA2'  > Bosnia and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Herzegovina</div>
+		<div id='HR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='HR' id='HR2'  > Croatia</div>
+		<div id='GI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='GI' id='GI2'  > Gibraltar</div>
+		<div id='GR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='GR' id='GR2'  > Greece</div>
+		<div id='VA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='VA' id='VA2'  > Holy See  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Vatican City <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; State)</div>
+		<div id='IT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='IT' id='IT2'  > Italy</div>
+		<div id='MK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='MK' id='MK2'  > Macedonia</div>
+		<div id='MT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='MT' id='MT2'  > Malta</div>
+		<div id='ME'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='ME' id='ME2'  > Montenegro</div>
+		<div id='PT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='PT' id='PT2'  > Portugal</div>
+		<div id='SM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SM' id='SM2'  > San Marino</div>
+		<div id='RS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='RS' id='RS2'  > Serbia</div>
+		<div id='SI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SI' id='SI2'  > Slovenia</div>
+		<div id='ES'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='ES' id='ES2'  > Spain</div>
 
 
 
@@ -729,159 +729,159 @@ $(document).ready(function() {
 
 
 
-			<div id="AmericasDiv"><%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'Americas' , :id =>'anyAmericas'  %><font style="font-size:1.2em; color:#575758">Americas</font></div>
-			<div id='BM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'BM' , :id =>'BM2'  %> Bermuda</div>
-			<div id='CA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'CA' , :id =>'CA2'  %> Canada</div>
-			<div id='GL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'GL' , :id =>'GL2'  %> Greenland</div>
-			<div id='PM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'PM' , :id =>'PM2'  %> Saint Pierre<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Miquelon</div>
-			<div id='US'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'US' , :id =>'US2'  %> United States</div>
-			<div id='AI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'AI' , :id =>'AI2'  %> Anguilla</div>
-			<div id='AG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'AG' , :id =>'AG2'  %> Antigua and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barbuda</div>
-			<div id='AW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'AW' , :id =>'AW2'  %> Aruba</div>
-			<div id='BS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'BS' , :id =>'BS2'  %> Bahamas</div>
-			<div id='BB'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'BB' , :id =>'BB2'  %> Barbados</div>
-			<div id='KY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'KY' , :id =>'KY2'  %> Cayman<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sIslands</div>
-			<div id='CU'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'CU' , :id =>'CU2'  %> Cuba</div>
-			<div id='DM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'DM' , :id =>'DM2'  %> Dominica</div>
-			<div id='DO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'DO' , :id =>'DO2'  %> Dominican<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
-			<div id='GD'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'GD' , :id =>'GD2'  %> Grenada</div>
-			<div id='GP'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'GP' , :id =>'GP2'  %> Guadeloupe</div>
-			<div id='HT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'HT' , :id =>'HT2'  %> Haiti</div>
-			<div id='JM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'JM' , :id =>'JM2'  %> Jamaica</div>
-			<div id='MQ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'MQ' , :id =>'MQ2'  %> Martinique</div>
-			<div id='MS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'MS' , :id =>'MS2'  %> Montserrat</div>
-			<div id='PR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'PR' , :id =>'PR2'  %> Puerto Rico</div>
-			<div id='BL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'BL' , :id =>'BL2'  %> Saint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barthélemy</div>
-			<div id='KN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'KN' , :id =>'KN2'  %> Saint Kitts and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nevis</div>
-			<div id='LC'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'LC' , :id =>'LC2'  %> Saint Lucia</div>
-			<div id='MF'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'MF' , :id =>'MF2'  %> Saint Martin<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(French part)</div>
-			<div id='VC'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'VC' , :id =>'VC2'  %> Saint Vincent<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grenadines</div>
-			<div id='TT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'TT' , :id =>'TT2'  %> Trinidad and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tobago</div>
-			<div id='TC'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'TC' , :id =>'TC2'  %> Turks and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caicos Islands</div>
-			<div id='VG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'VG' , :id =>'VG2'  %> Virgin Islands,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;British</div>
-			<div id='VI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'VI' , :id =>'VI2'  %> Virgin Islands,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U.S.</div>
-			<div id='BZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'BZ' , :id =>'BZ2'  %> Belize</div>
-			<div id='CR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'CR' , :id =>'CR2'  %> Costa Rica</div>
-			<div id='SV'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'SV' , :id =>'SV2'  %> El Salvador</div>
-			<div id='GT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'GT' , :id =>'GT2'  %> Guatemala</div>
-			<div id='HN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'HN' , :id =>'HN2'  %> Honduras</div>
-			<div id='MX'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'MX' , :id =>'MX2'  %> Mexico</div>
-			<div id='NI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'NI' , :id =>'NI2'  %> Nicaragua</div>
-			<div id='PA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'PA' , :id =>'PA2'  %> Panama</div>
-			<div id='AR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'AR' , :id =>'AR2'  %> Argentina</div>
-			<div id='BO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'BO' , :id =>'BO2'  %> Bolivia,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plurinational<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State of</div>
-			<div id='BR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'BR' , :id =>'BR2'  %> Brazil</div>
-			<div id='CL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'CL' , :id =>'CL2'  %> Chile</div>
-			<div id='CO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'CO' , :id =>'CO2'  %> Colombia</div>
-			<div id='EC'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'EC' , :id =>'EC2'  %> Ecuador</div>
-			<div id='FK'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'FK' , :id =>'FK2'  %> Falkland<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Malvinas)</div>
-			<div id='GF'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'GF' , :id =>'GF2'  %> French Guiana</div>
-			<div id='GY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'GY' , :id =>'GY2'  %> Guyana</div>
-			<div id='PY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'PY' , :id =>'PY2'  %> Paraguay</div>
-			<div id='PE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'PE' , :id =>'PE2'  %> Peru</div>
-			<div id='SR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'SR' , :id =>'SR2'  %> Suriname</div>
-			<div id='UY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'UY' , :id =>'UY2'  %> Uruguay</div>
-			<div id='VE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAmericas(this)'  , :value => 'VE' , :id =>'VE2'  %> Venezuela,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bolivarian <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div><br /><br /></div>
+			<div id="AmericasDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='Americas' id='anyAmericas'  ><font style="font-size:1.2em; color:#575758">Americas</font></div>
+			<div id='BM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BM' id='BM2'  > Bermuda</div>
+			<div id='CA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CA' id='CA2'  > Canada</div>
+			<div id='GL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GL' id='GL2'  > Greenland</div>
+			<div id='PM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PM' id='PM2'  > Saint Pierre<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Miquelon</div>
+			<div id='US'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='US' id='US2'  > United States</div>
+			<div id='AI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='AI' id='AI2'  > Anguilla</div>
+			<div id='AG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='AG' id='AG2'  > Antigua and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barbuda</div>
+			<div id='AW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='AW' id='AW2'  > Aruba</div>
+			<div id='BS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BS' id='BS2'  > Bahamas</div>
+			<div id='BB'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BB' id='BB2'  > Barbados</div>
+			<div id='KY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='KY' id='KY2'  > Cayman<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sIslands</div>
+			<div id='CU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CU' id='CU2'  > Cuba</div>
+			<div id='DM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='DM' id='DM2'  > Dominica</div>
+			<div id='DO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='DO' id='DO2'  > Dominican<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
+			<div id='GD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GD' id='GD2'  > Grenada</div>
+			<div id='GP'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GP' id='GP2'  > Guadeloupe</div>
+			<div id='HT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='HT' id='HT2'  > Haiti</div>
+			<div id='JM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='JM' id='JM2'  > Jamaica</div>
+			<div id='MQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='MQ' id='MQ2'  > Martinique</div>
+			<div id='MS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='MS' id='MS2'  > Montserrat</div>
+			<div id='PR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PR' id='PR2'  > Puerto Rico</div>
+			<div id='BL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BL' id='BL2'  > Saint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barthélemy</div>
+			<div id='KN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='KN' id='KN2'  > Saint Kitts and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nevis</div>
+			<div id='LC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='LC' id='LC2'  > Saint Lucia</div>
+			<div id='MF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='MF' id='MF2'  > Saint Martin<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(French part)</div>
+			<div id='VC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='VC' id='VC2'  > Saint Vincent<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grenadines</div>
+			<div id='TT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='TT' id='TT2'  > Trinidad and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tobago</div>
+			<div id='TC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='TC' id='TC2'  > Turks and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caicos Islands</div>
+			<div id='VG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='VG' id='VG2'  > Virgin Islands,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;British</div>
+			<div id='VI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='VI' id='VI2'  > Virgin Islands,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U.S.</div>
+			<div id='BZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BZ' id='BZ2'  > Belize</div>
+			<div id='CR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CR' id='CR2'  > Costa Rica</div>
+			<div id='SV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='SV' id='SV2'  > El Salvador</div>
+			<div id='GT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GT' id='GT2'  > Guatemala</div>
+			<div id='HN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='HN' id='HN2'  > Honduras</div>
+			<div id='MX'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='MX' id='MX2'  > Mexico</div>
+			<div id='NI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='NI' id='NI2'  > Nicaragua</div>
+			<div id='PA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PA' id='PA2'  > Panama</div>
+			<div id='AR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='AR' id='AR2'  > Argentina</div>
+			<div id='BO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BO' id='BO2'  > Bolivia,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plurinational<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State of</div>
+			<div id='BR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BR' id='BR2'  > Brazil</div>
+			<div id='CL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CL' id='CL2'  > Chile</div>
+			<div id='CO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CO' id='CO2'  > Colombia</div>
+			<div id='EC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='EC' id='EC2'  > Ecuador</div>
+			<div id='FK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='FK' id='FK2'  > Falkland<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Malvinas)</div>
+			<div id='GF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GF' id='GF2'  > French Guiana</div>
+			<div id='GY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GY' id='GY2'  > Guyana</div>
+			<div id='PY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PY' id='PY2'  > Paraguay</div>
+			<div id='PE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PE' id='PE2'  > Peru</div>
+			<div id='SR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='SR' id='SR2'  > Suriname</div>
+			<div id='UY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='UY' id='UY2'  > Uruguay</div>
+			<div id='VE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='VE' id='VE2'  > Venezuela,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bolivarian <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div><br /><br /></div>
 
 
 
 
 
 			<div class="two columns" style="width:16%">
-				<div id="AsiaDiv"><%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'Asia' , :id =>'anyAsia'  %><font style="font-size:1.2em; color:#575758">Asia</font></div>
-				<div id='KZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'KZ' , :id =>'KZ2'  %> Kazakhstan</div>
-				<div id='KG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'KG' , :id =>'KG2'  %> Kyrgyzstan</div>
-				<div id='TJ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'TJ' , :id =>'TJ2'  %> Tajikistan</div>
-				<div id='TM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'TM' , :id =>'TM2'  %> Turkmenistan</div>
-				<div id='UZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'UZ' , :id =>'UZ2'  %> Uzbekistan</div>
-				<div id='CN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'CN' , :id =>'CN2'  %> China</div>
-				<div id='HK'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'HK' , :id =>'HK2'  %> Hong Kong</div>
-				<div id='JP'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'JP' , :id =>'JP2'  %> Japan</div>
-				<div id='KP'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'KP' , :id =>'KP2'  %> Korea,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democratic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;People's<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
-				<div id='KR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'KR' , :id =>'KR2'  %> Korea,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
-				<div id='MO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'MO' , :id =>'MO2'  %> Macao</div>
-				<div id='MN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'MN' , :id =>'MN2'  %> Mongolia</div>
-				<div id='TW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'TW' , :id =>'TW2'  %> Taiwan,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Province of<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;China</div>
-				<div id='AF'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'AF' , :id =>'AF2'  %> Afghanistan</div>
-				<div id='BD'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'BD' , :id =>'BD2'  %> Bangladesh</div>
-				<div id='BT'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'BT' , :id =>'BT2'  %> Bhutan</div>
-				<div id='IN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'IN' , :id =>'IN2'  %> India</div>
-				<div id='IR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'IR' , :id =>'IR2'  %> Iran, Islamic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
-				<div id='MV'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'MV' , :id =>'MV2'  %> Maldives</div>
-				<div id='NP'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'NP' , :id =>'NP2'  %> Nepal</div>
-				<div id='PK'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'PK' , :id =>'PK2'  %> Pakistan</div>
-				<div id='LK'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'LK' , :id =>'LK2'  %> Sri Lanka</div>
-				<div id='BN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'BN' , :id =>'BN2'  %> Brunei<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Darussalam</div>
-				<div id='KH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'KH' , :id =>'KH2'  %> Cambodia</div>
-				<div id='ID'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'ID' , :id =>'ID2'  %> Indonesia</div>
-				<div id='LA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'LA' , :id =>'LA2'  %> Lao Peoples<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democratic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
-				<div id='MY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'MY' , :id =>'MY2'  %> Malaysia</div>
-				<div id='MM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'MM' , :id =>'MM2'  %> Myanmar</div>
-				<div id='PH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'PH' , :id =>'PH2'  %> Philippines</div>
-				<div id='SG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'SG' , :id =>'SG2'  %> Singapore</div>
-				<div id='TH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'TH' , :id =>'TH2'  %> Thailand</div>
-				<div id='TL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'TL' , :id =>'TL2'  %> Timor-Leste</div>
-				<div id='VN'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'VN' , :id =>'VN2'  %> Viet Nam</div>
-				<div id='AM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'AM' , :id =>'AM2'  %> Armenia</div>
-				<div id='AZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'AZ' , :id =>'AZ2'  %> Azerbaijan</div>
-				<div id='BH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'BH' , :id =>'BH2'  %> Bahrain</div>
-				<div id='CY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'CY' , :id =>'CY2'  %> Cyprus</div>
-				<div id='GE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'GE' , :id =>'GE2'  %> Georgia</div>
-				<div id='IQ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'IQ' , :id =>'IQ2'  %> Iraq</div>
-				<div id='IL'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'IL' , :id =>'IL2'  %> Israel</div>
-				<div id='JO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'JO' , :id =>'JO2'  %> Jordan</div>
-				<div id='KW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'KW' , :id =>'KW2'  %> Kuwait</div>
-				<div id='LB'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'LB' , :id =>'LB2'  %> Lebanon</div>
-				<div id='OM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'OM' , :id =>'OM2'  %> Oman</div>
-				<div id='PS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'PS' , :id =>'PS2'  %> Palestinian<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territory, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Occupied</div>
-				<div id='QA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'QA' , :id =>'QA2'  %> Qatar</div>
-				<div id='SA'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'SA' , :id =>'SA2'  %> Saudi Arabia</div>
-				<div id='SY'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'SY' , :id =>'SY2'  %> Syrian Arab<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
-				<div id='TR'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'TR' , :id =>'TR2'  %> Turkey</div>
-				<div id='AE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'AE' , :id =>'AE2'  %> United Arab<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emirates</div>
-				<div id='YE'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleAsia(this)'  , :value => 'YE' , :id =>'YE2'  %> Yemen</div><br /><br /></div>
+				<div id="AsiaDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='Asia' id='anyAsia'  ><font style="font-size:1.2em; color:#575758">Asia</font></div>
+				<div id='KZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KZ' id='KZ2'  > Kazakhstan</div>
+				<div id='KG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KG' id='KG2'  > Kyrgyzstan</div>
+				<div id='TJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TJ' id='TJ2'  > Tajikistan</div>
+				<div id='TM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TM' id='TM2'  > Turkmenistan</div>
+				<div id='UZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='UZ' id='UZ2'  > Uzbekistan</div>
+				<div id='CN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='CN' id='CN2'  > China</div>
+				<div id='HK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='HK' id='HK2'  > Hong Kong</div>
+				<div id='JP'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='JP' id='JP2'  > Japan</div>
+				<div id='KP'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KP' id='KP2'  > Korea,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democratic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;People's<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
+				<div id='KR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KR' id='KR2'  > Korea,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
+				<div id='MO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MO' id='MO2'  > Macao</div>
+				<div id='MN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MN' id='MN2'  > Mongolia</div>
+				<div id='TW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TW' id='TW2'  > Taiwan,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Province of<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;China</div>
+				<div id='AF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='AF' id='AF2'  > Afghanistan</div>
+				<div id='BD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='BD' id='BD2'  > Bangladesh</div>
+				<div id='BT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='BT' id='BT2'  > Bhutan</div>
+				<div id='IN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='IN' id='IN2'  > India</div>
+				<div id='IR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='IR' id='IR2'  > Iran, Islamic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
+				<div id='MV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MV' id='MV2'  > Maldives</div>
+				<div id='NP'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='NP' id='NP2'  > Nepal</div>
+				<div id='PK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='PK' id='PK2'  > Pakistan</div>
+				<div id='LK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='LK' id='LK2'  > Sri Lanka</div>
+				<div id='BN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='BN' id='BN2'  > Brunei<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Darussalam</div>
+				<div id='KH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KH' id='KH2'  > Cambodia</div>
+				<div id='ID'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='ID' id='ID2'  > Indonesia</div>
+				<div id='LA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='LA' id='LA2'  > Lao Peoples<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democratic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
+				<div id='MY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MY' id='MY2'  > Malaysia</div>
+				<div id='MM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MM' id='MM2'  > Myanmar</div>
+				<div id='PH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='PH' id='PH2'  > Philippines</div>
+				<div id='SG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='SG' id='SG2'  > Singapore</div>
+				<div id='TH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TH' id='TH2'  > Thailand</div>
+				<div id='TL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TL' id='TL2'  > Timor-Leste</div>
+				<div id='VN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='VN' id='VN2'  > Viet Nam</div>
+				<div id='AM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='AM' id='AM2'  > Armenia</div>
+				<div id='AZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='AZ' id='AZ2'  > Azerbaijan</div>
+				<div id='BH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='BH' id='BH2'  > Bahrain</div>
+				<div id='CY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='CY' id='CY2'  > Cyprus</div>
+				<div id='GE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='GE' id='GE2'  > Georgia</div>
+				<div id='IQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='IQ' id='IQ2'  > Iraq</div>
+				<div id='IL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='IL' id='IL2'  > Israel</div>
+				<div id='JO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='JO' id='JO2'  > Jordan</div>
+				<div id='KW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KW' id='KW2'  > Kuwait</div>
+				<div id='LB'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='LB' id='LB2'  > Lebanon</div>
+				<div id='OM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='OM' id='OM2'  > Oman</div>
+				<div id='PS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='PS' id='PS2'  > Palestinian<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territory, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Occupied</div>
+				<div id='QA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='QA' id='QA2'  > Qatar</div>
+				<div id='SA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='SA' id='SA2'  > Saudi Arabia</div>
+				<div id='SY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='SY' id='SY2'  > Syrian Arab<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
+				<div id='TR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TR' id='TR2'  > Turkey</div>
+				<div id='AE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='AE' id='AE2'  > United Arab<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emirates</div>
+				<div id='YE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='YE' id='YE2'  > Yemen</div><br /><br /></div>
 
 
 
 
 
 		<div class="two columns" style="width:16%">
-			<div id="OceaniaDiv"><%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'Oceania' , :id =>'anyOceania'  %><font style="font-size:1.2em; color:#575758">Oceania</font></div>
-			<div id='AU'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'AU' , :id =>'AU2'  %> Australia</div>
-			<div id='NZ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'NZ' , :id =>'NZ2'  %> New Zealand</div>
-			<div id='NF'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'NF' , :id =>'NF2'  %> Norfolk Island</div>
-			<div id='FJ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'FJ' , :id =>'FJ2'  %> Fiji</div>
-			<div id='NC'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'NC' , :id =>'NC2'  %> New Caledonia</div>
-			<div id='PG'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'PG' , :id =>'PG2'  %> Papua New<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guinea</div>
-			<div id='SB'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'SB' , :id =>'SB2'  %> Solomon<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
-			<div id='VU'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'VU' , :id =>'VU2'  %> Vanuatu</div>
-			<div id='GU'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'GU' , :id =>'GU2'  %> Guam</div>
-			<div id='KI'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'KI' , :id =>'KI2'  %> Kiribati</div>
-			<div id='MH'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this);toggleOceania(this)'  , :value => 'MH' , :id =>'MH2'  %> Marshall<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id="OceaniaDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='Oceania' id='anyOceania'  ><font style="font-size:1.2em; color:#575758">Oceania</font></div>
+			<div id='AU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='AU' id='AU2'  > Australia</div>
+			<div id='NZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='NZ' id='NZ2'  > New Zealand</div>
+			<div id='NF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='NF' id='NF2'  > Norfolk Island</div>
+			<div id='FJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='FJ' id='FJ2'  > Fiji</div>
+			<div id='NC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='NC' id='NC2'  > New Caledonia</div>
+			<div id='PG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='PG' id='PG2'  > Papua New<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guinea</div>
+			<div id='SB'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='SB' id='SB2'  > Solomon<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id='VU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='VU' id='VU2'  > Vanuatu</div>
+			<div id='GU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='GU' id='GU2'  > Guam</div>
+			<div id='KI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='KI' id='KI2'  > Kiribati</div>
+			<div id='MH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='MH' id='MH2'  > Marshall<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
 		
 		
 		
 		
 		<div id="others">
 			<div style="display:none">Other:</div>
-			<div id='AQ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'AQ' , :id =>'AQ2'  %> Antarctica</div>
-			<div id='BQ'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'BQ' , :id =>'BQ2'  %> Bonaire, Sint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eustatius<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Saba</div>
-			<div id='BV'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'BV' , :id =>'BV2'  %> Bouvet Island</div>
-			<div id='IO'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'IO' , :id =>'IO2'  %> British Indian<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ocean<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territory</div>
-			<div id='CX'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'CX' , :id =>'CX2'  %> Christmas<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Island</div>
-			<div id='CC'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'CC' , :id =>'CC2'  %> Cocos<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Keeling)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
-			<div id='CW'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'CW' , :id =>'CW2'  %> Curaçao</div>
-			<div id='TF'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'TF' , :id =>'TF2'  %> French<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southern<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territories</div>
-			<div id='HM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'HM' , :id =>'HM2'  %> Heard Island<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and McDonald <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
-			<div id='SX'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'SX' , :id =>'SX2'  %> Sint Maarten<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Dutch part)</div>
-			<div id='GS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'GS' , :id =>'GS2'  %> South Georgia<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the South <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sandwich<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
-			<div id='SS'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'SS' , :id =>'SS2'  %> South Sudan</div>
-			<div id='UM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'UM' , :id =>'UM2'  %> United States<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minor Outlying <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div><br /><br /></div>
+			<div id='AQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='AQ' id='AQ2'  > Antarctica</div>
+			<div id='BQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='BQ' id='BQ2'  > Bonaire, Sint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eustatius<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Saba</div>
+			<div id='BV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='BV' id='BV2'  > Bouvet Island</div>
+			<div id='IO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='IO' id='IO2'  > British Indian<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ocean<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territory</div>
+			<div id='CX'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='CX' id='CX2'  > Christmas<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Island</div>
+			<div id='CC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='CC' id='CC2'  > Cocos<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Keeling)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id='CW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='CW' id='CW2'  > Curaçao</div>
+			<div id='TF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='TF' id='TF2'  > French<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southern<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territories</div>
+			<div id='HM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='HM' id='HM2'  > Heard Island<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and McDonald <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id='SX'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='SX' id='SX2'  > Sint Maarten<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Dutch part)</div>
+			<div id='GS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='GS' id='GS2'  > South Georgia<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the South <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sandwich<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id='SS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='SS' id='SS2'  > South Sudan</div>
+			<div id='UM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='UM' id='UM2'  > United States<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minor Outlying <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div><br /><br /></div>
 					<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 		</div>
 	
 </div>
-<%end%>
+<%end>
 </body>
 <script type='text/javascript'>
 
