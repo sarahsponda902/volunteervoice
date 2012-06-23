@@ -93,11 +93,12 @@
 			<% end %>
 			
 			<div class="six columns" style="float:right">
-			<form action="/searches/program_search" method="get">
+				<% @search = Search.new%>
+			<%= form_for @search do |f|%>
 				<div style="margin-bottom:15px; float:right;">
-			    <input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png" style="background:transparent; margin-bottom:-57px" alt="Search Button"></div>
+			    <%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png", :style => "background:transparent; margin-bottom:-57px"), :id =>"searchbutton"%></div>
 				<div style="margin-top:40px; float:right; margin-right:5px">
-				<input type="text" name="search" id="searchfield"></div>
+				<input type="text" name="search[keywords]" id="searchfield"></div>
 			</form>
 
 		</div>
