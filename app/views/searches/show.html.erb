@@ -87,12 +87,115 @@ $('#search').pullOut({
     <% @locations << f.location unless @locations.include?(f.location) %>
     <% end %>
 	
-	<% @search_regions = @search.regions.split("; ")%>
-
+	<% if !(@search.regions.nil?) && !(@search.regions.include?(";"))%>
+		<% @search_regions = [] << @search.regions%>
+	<% else %>
+		<% @search_regions = @search.regions.split("; ")%>
+	<% end %>
+	
+	<% if !(@search.subjects.nil?) && !(@search.subjects.include?(";"))%>
+		<% @search_subjects = [] << @search.subjects %>
+	<% else %>
+		<% @search_subjects = @search.subjects.split("; ")%>
+	<% end %>
+	
+	<% if !(@search.lengths.nil?) && !(@search.lengths.include?(";"))%>
+		<% @search_lengths = [] << @search.lengths %>
+	<% else %>
+		<% @search_lengths = @search.lengths.split("; ")%>
+	<% end %>
+	
+	<% if !(@search.sizes.nil?) && !(@search.sizes.include?(";"))%>
+		<% @search_sizes = [] << @search.sizes %>
+	<% else %>
+		<% @search_sizes = @search.sizes.split("; ")%>
+	<% end %>
+	
+	<% if @search.sizes.nil?%>
+		<% @search_sizes = []%>
+	<% end %>
+	<% if @search.lengths.nil?%>
+		<% @search_lengths = []%>
+	<% end %>
+	<% if @search.subjects.nil?%>
+		<% @search_subjects = []%>
+	<% end %>
+	<% if @search.regions.nil?%>
+		<% @search_regions = []%>
+	<% end %>
+	<% if @search.price_max.nil?%>
+		<% @search.price_max = 999%>
+	<% end %>
+	<% if @search.price_min.nil?%>
+		<% @search.price_min = 0%>
+	<% end %>
 <script type="text/javascript">
 var theLocations = <%=array_or_string_for_javascript(@locations)%>;
 var search_regions = <%= array_or_string_for_javascript(@search_regions)%>;
+var search_subjects = <%= array_or_string_for_javascript(@search_subjects)%>;
+var search_lengths = <%= array_or_string_for_javascript(@search_lengths)%>;
+var search_sizes = <%= array_or_string_for_javascript(@search_sizes)%>;
 var allTheLocations = new Array("AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW");
+
+var allTheSubjects = new Array('Agriculture', 
+'Organic Farming', 
+'Sustainable Development', 
+'Animal Care', 
+'Animal Rights', 
+'Wildlife Conservation', 
+'Caregiving', 
+'Elder Care', 
+'Child/Orphan Care', 
+'Disabled Care', 
+'Feed the Homeless', 
+'Community Development', 
+'Youth Development and Outreach', 
+'Construction', 
+'Culture and Community', 
+'Performing Arts', 
+'Fashion', 
+'Music', 
+'Sports & Recreation', 
+'Journalism', 
+'Disaster Relief', 
+'Economics', 
+'Microfinance', 
+'Education', 
+'Teaching English', 
+'Teaching Buddhist Monks', 
+'Teaching Children', 
+'Teaching Computer Literacy', 
+'Engineering and Infrastructure', 
+'Environmental', 
+'Ecological Conservation', 
+'Sustainable Development', 
+'Wildlife Conservation', 
+'Habitat Restoration', 
+'Health and Medicine', 
+'HIV/AIDS', 
+'Nutrition', 
+'Family Planning', 
+'Veterinary Medicine', 
+'Clinical Work', 
+'Dental Work', 
+'Medical Research', 
+'Health Education', 
+'Public Health', 
+'Hospital Care-giving', 
+'Human Rights', 
+'Womens Initiatives', 
+'International Work Camp', 
+'Recreation', 
+'Adventure Travel', 
+'Scientific Research', 
+'Archaeology', 
+'Environmental Biology', 
+'Technology', 
+'Teaching Computer Literacy', 
+'Media Marketing and Graphic Design');
+
+var allTheLengths = ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"];
+var allTheSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
 
 $(document).ready(function() {
     var count = 0;
@@ -109,6 +212,33 @@ $(document).ready(function() {
 			$("#any6").prop("checked", false);
 		}
     }
+	var count = 0;
+	for (count = 0; count <= allTheSubjects.length; count++)
+    {
+		if (search_subjects.indexOf(allTheSubjects[count]) != -1)
+		{
+			$("#"+allTheSubjects[count]+"2").prop("checked", true);
+			$("#any").prop("checked", false);
+		}
+	}
+	var count = 0;
+	for (count = 0; count <= allTheLengths.length; count++)
+	{
+		if (search_lengths.indexOf(allTheLengths[count]) != -1)
+		{
+			$("#"+allTheLengths[count]+"2").prop("checked", true);
+			$("#any2").prop("checked", false);
+		}
+	}
+	var count = 0;
+	for (count = 0; count <= allTheSizes.length; count++)
+	{
+		if (search_sizes.indexOf(allTheSizes[count]) != -1)
+		{
+			$("#"+allTheSizes[count]+"2").prop("checked", true);
+			$("#any3").prop("checked", false);
+		}
+	}
 });
 
 
