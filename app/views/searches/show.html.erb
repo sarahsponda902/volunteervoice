@@ -350,7 +350,7 @@ $(document).ready(function() {
 			<select id ="display" name="search[showing]" style="position:absolute; left:-5px; width:255px; height:30px; border: 1px solid #575758; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">
 				<option value="Programs">Programs</option>
 				<option value="Organizations">Organizations</option></select>
-			<% end %>
+
 		</div>
 		</div>
 </div>
@@ -360,7 +360,6 @@ $(document).ready(function() {
 	<div class="two columns" style="height:50px"></div>
 			<div class="five columns" style="margin-top:-22px">
 				<p style="font-size:1.5em; color:#575758; line-height:1.1em"> List By:</p>
-				<%= form_for @search do |f|%>
 		<div style="position:absolute; left:19.2%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 		<select id ="sort" name="search[sort_by]" style="position:relative; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">	
 			<option value = "">Select an Order</option>
@@ -370,7 +369,7 @@ $(document).ready(function() {
 
 										
 				</div>
-				<% end %>
+
 
 			</div>
 		</div>
@@ -425,7 +424,6 @@ $(document).ready(function() {
 </div>
 
 <body style="oveflow-x:hidden">
-<%= form_for @search, :id => "search_form" do |f|%>
 
 <div id="programSubjects" style="width:600px; height:460px; overflow-y:auto; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	
