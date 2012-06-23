@@ -87,7 +87,7 @@ $('#search').pullOut({
     <% Program.all.each do |f| %>
     <% @locations << f.location unless @locations.include?(f.location) %>
     <% end %>
-
+<%= @search.regions%>
 <script type="text/javascript">
 var theLocations = <%=array_or_string_for_javascript(@locations)%>;
 var search_regions = <%= array_or_string_for_javascript(@search.regions)%>;
