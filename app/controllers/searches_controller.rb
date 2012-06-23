@@ -132,7 +132,7 @@ class SearchesController < ApplicationController
       @search.subjects = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + (@search.subjects.split("; "))
     end
     if @search.subjects.include?('Community Development')
-      @search.subjects = @search.subjects+['Youth Development and Outreach'] + (@search.subjects.split("; "))
+      @search.subjects = ['Youth Development and Outreach'] + (@search.subjects.split("; "))
     end
     if @search.subjects.include?('Culture and Community')
       @search.subjects = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + (@search.subjects.split("; "))
