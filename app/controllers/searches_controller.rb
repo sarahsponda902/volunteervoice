@@ -109,6 +109,24 @@ class SearchesController < ApplicationController
     if !(params[:location].nil?)
       @search.regions = [] << params[:location]
     end
+    if @search.subjects.nil?
+      @search.subjects = []
+    end
+    if @search.regions.nil?
+      @search.regions = []
+    end
+    if @search.lengths.nil?
+      @search.lengths = []
+    end
+    if @search.sizes.nil?
+      @search.sizes = []
+    end
+    if @search.price_max.nil?
+      @search.price_max = 10000
+    end
+    if @search.price_min.nil?
+      @search.price_min = 0
+    end
     
     if @search.subjects.include?('Agriculture')
       @search.subjects = ['Organic Farming', 'Sustainable Development'] + (@search.subjects.split("; "))
