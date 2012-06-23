@@ -102,8 +102,14 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
+    if !(params[:subject].nil?)
+      params[:search][:subjects] = [] << params[:subject]
+    end
+    if !(params[:location].nil?)
+      params[:search][:regions] = [] << params[:location]
+    end
     @search = Search.new(params[:search])
-    
+
     
     if @search.subjects.include?('Agriculture')
       @search.subjects = ['Organic Farming', 'Sustainable Development'] + (@search.subjects.split("; "))
@@ -1347,24 +1353,6 @@ class SearchesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to searches_url }
       format.json { head :no_content }
-    end
-  end
-  
-  def program_search
-    @search = Search.new
-    @search.subjects = [] << params[:subject]
-    params[:search] = @search
-    respond_to do |format|
-      format.html {render action: "create"}
-    end
-  end
-  
-  def map_search
-    @search = Search.new
-    @search.regions = [] << params[:location]
-    params[:search] = @search
-    respond_to do |format|
-      format.html {render action: "create"}
     end
   end
 end
