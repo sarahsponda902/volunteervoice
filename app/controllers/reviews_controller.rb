@@ -11,7 +11,7 @@ include ActionView::Helpers::TextHelper
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
       
       @user_review_progs = []
-      if !(current_user.reviews.empty?)
+      if !(current_user.reviews.first.nil?)
         current_user.reviews.each do |f|
           @user_review_progs << Program.find(f.program_id)
         end
