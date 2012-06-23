@@ -112,6 +112,10 @@ $(document).ready(function() {
 
 
 $(document).ready(function() {
+	<% if @search.showing == "Organizations" %>
+	$("#display").val("Organizations");
+	<% end %>
+	
 	$('a.window').click(function() {
 
                 //Getting the variable's value from a link 
