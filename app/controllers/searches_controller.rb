@@ -797,7 +797,7 @@ class SearchesController < ApplicationController
   # PUT /searches/1
   # PUT /searches/1.json
   def update
-    @the_search = Search.find(params[:id])
+    @search = Search.find(params[:id])
     
     
     
