@@ -23,6 +23,9 @@ class PagesController < ApplicationController
   	@programs = Program.all
   end
   
+  def enable_js 
+  end
+  
   def test
     
   end

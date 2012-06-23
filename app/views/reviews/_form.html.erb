@@ -440,7 +440,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 <% else %>
 <% programs_array = Program.where(:organization_id => @review.organization_id).map { |p| [p.name, p.id]}%>
 <% end %>
-<%= form_for @review, :onsubmit => "$('#submitButton').src = '/assets/submitBlue.png'" do |f| %>
+<%= form_for @review do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<% if !(params[:created_at].nil?)%>
 	<%= f.hidden_field :created_at, :value => params[:created_at]%>
