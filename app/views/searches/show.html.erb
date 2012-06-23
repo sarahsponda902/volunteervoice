@@ -115,6 +115,9 @@ $(document).ready(function() {
 	<% if @search.showing == "Organizations" %>
 	$("#display").val("Organizations");
 	<% end %>
+	<% if !(@search.sort_by.nil?)%>
+	$("#sort").val("<%=@search.sort_by%>");
+	<% end %>
 	
 	$('a.window').click(function() {
 
@@ -263,7 +266,9 @@ $(document).ready(function() {
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
 			<% end %>
 		<% else %>
-			<% @results.each do |f|%>	
+			<%= @results%>
+			<% @results.each do |f|%>
+			<%= f%><br />	
 				<%= render :partial => "organizations_results", :locals => {:f => f}%>
 			<% end %>
 		<% end %>
