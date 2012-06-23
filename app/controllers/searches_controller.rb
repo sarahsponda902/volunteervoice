@@ -102,9 +102,68 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
+    @subjects = Hash['Agriculture' => 'Agriculture' , 
+    'OrganicFarming' => 'Organic Farming' , 
+    'SustainableDevelopment' => 'Sustainable Development' , 
+    'AnimalCare' => 'Animal Care' , 
+    'AnimalRights' => 'Animal Rights' , 
+    'WildlifeConservation' => 'Wildlife Conservation' , 
+    'Caregiving' => 'Caregiving' , 
+    'ElderCare' =>       'Elder Care' , 
+    'Child/OrphanCare' =>       'Child/Orphan Care' , 
+    'DisabledCare' =>       'Disabled Care' , 
+    'FeedtheHomeless' =>       'Feed the Homeless' , 
+    'CommunityDevelopment' =>       'Community Development' , 
+    'YouthDevelopmentandOutreach' =>       'Youth Development and Outreach' , 
+    'Construction' =>       'Construction' , 
+    'CultureandCommunity' =>       'Culture and Community' , 
+    'PerformingArts' =>       'Performing Arts' , 
+    'Fashion' =>       'Fashion' , 
+    'Music' =>       'Music' , 
+    'Sports&Recreation' =>       'Sports & Recreation' , 
+    'Journalism' =>       'Journalism' , 
+    'DisasterRelief' =>       'Disaster Relief' , 
+    'Economics' =>       'Economics' , 
+    'Microfinance' =>       'Microfinance' , 
+    'Education' =>       'Education' , 
+    'TeachingEnglish' =>       'Teaching English' , 
+    'TeachingBuddhistMonks' =>       'Teaching Buddhist Monks' , 
+    'TeachingChildren' =>       'Teaching Children' , 
+    'TeachingComputerLiteracy' =>       'Teaching Computer Literacy' , 
+    'EngineeringandInfrastructure' =>       'Engineering and Infrastructure' , 
+    'Environmental' =>       'Environmental' , 
+    'EcologicalConservation' =>       'Ecological Conservation' , 
+    'SustainableDevelopment' =>       'Sustainable Development' , 
+    'WildlifeConservation' =>       'Wildlife Conservation' , 
+    'HabitatRestoration' =>       'Habitat Restoration' , 
+    'HealthandMedicine' =>       'Health and Medicine' , 
+    'HIV/AIDS' =>       'HIV/AIDS' , 
+    'Nutrition' =>       'Nutrition' , 
+    'FamilyPlanning' =>       'Family Planning' , 
+    'VeterinaryMedicine' =>       'Veterinary Medicine' , 
+    'ClinicalWork' =>       'Clinical Work' , 
+    'DentalWork' =>       'Dental Work' , 
+    'MedicalResearch' =>       'Medical Research' , 
+    'HealthEducation' =>       'Health Education' , 
+    'PublicHealth' =>       'Public Health' , 
+    'HospitalCare-giving' =>       'Hospital Care-giving' , 
+    'HumanRights' =>       'Human Rights' , 
+    'WomensInitiatives' =>       'Womens Initiatives' , 
+    'InternationalWorkCamp' =>       'International Work Camp' , 
+    'Recreation' =>       'Recreation' , 
+    'AdventureTravel' =>       'Adventure Travel' , 
+    'ScientificResearch' =>       'Scientific Research' , 
+    'Archaeology' =>       'Archaeology' , 
+    'EnvironmentalBiology' =>       'Environmental Biology' , 
+    'Technology' =>       'Technology' , 
+    'TeachingComputerLiteracy' =>       'Teaching Computer Literacy' , 
+    'MediaMarketingandGraphicDesign' =>       'Media Marketing and Graphic Design',]
+    
+    
+    
     @search = Search.new(params[:search])
     if !(params[:subject].nil?)
-      @search.subjects = [] << params[:subject]
+      @search.subjects = [] << @subjects[params[:subject]]
     end
     if !(params[:location].nil?)
       @search.regions = [] << params[:location]
