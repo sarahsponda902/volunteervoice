@@ -38,6 +38,9 @@ var structure = "notClicked";
 		$('#editImage').hide();
 		$('#checkBefore').hide();
 		$('#checkTerms').hide();
+		<% if !(@new_review.time_frame.nil?) %>
+		$('#new_review_time_frame').val("<%=@new_review.time_frame%>");
+		<% end %>
 
 		$('.word_count').each(function(){
 			var length = $(this).val().length;
@@ -281,7 +284,7 @@ function removePeru() {
 	<div class="six columns" style=" margin-top:5px; font-family:ArchitectsDaughterRegular; font-size:0.85em; color:#62acbd;">
 
 <article class="selectCompanyBlurb"><!-- select a comany blurb-->
-		<%= f.text_field :organization, :id => "put", :value => "  Put the organization's name here", :style => "height:25px; width:250px; margin-top:15px; font-style:italic; margin-bottom:5px;", :onclick => "$(removePut()); this.style.fontStyle = 'normal'", :onblur => "$(backToPut()); if (this.value == '  Put the organization's name here') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :onchange => "checkFields()"%><br />
+		<%= f.text_field :organization, :id => "put", :value => if @new_review.organization.nil? ("  Put the organization's name here"); else (@new_review.organization); end, :style => "height:25px; width:250px; margin-top:15px; font-style:italic; margin-bottom:5px;", :onclick => "$(removePut()); this.style.fontStyle = 'normal'", :onblur => "$(backToPut()); if (this.value == '  Put the organization's name here') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :onchange => "checkFields()"%><br />
 		<a href="/reviews/new" style="font-family:Arial; margin-left:210px; font-size:1.2em" id="cancel">Cancel</a>
     </article><!--end selectCompanyBlurb-->
 
@@ -314,14 +317,14 @@ function removePeru() {
 
 				<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Which Program?</div>
 				<div class="three columns" style="position:absolute; left:40%; top:130px; height:30px; width:228px">
-				<%= f.text_field :program, :value => " eg. Tutoring children in Peru", :style => "height:25px; font-style:italic; margin-top:5px; width:228px", :id => "programsField", :onclick => "removePeru(); this.style.fontStyle = 'normal'", :onblur => "addPeru(); if (this.value == ' eg. Tutoring children in Peru') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}"%>
+				<%= f.text_field :program, :value => if @new_review.program.nil? (" eg. Tutoring children in Peru"); else @new_review.program; end, :style => "height:25px; font-style:italic; margin-top:5px; width:228px", :id => "programsField", :onclick => "removePeru(); this.style.fontStyle = 'normal'", :onblur => "addPeru(); if (this.value == ' eg. Tutoring children in Peru') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}"%>
 				</div>
 
 
 
 	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Your Experience</div>
 
-	   <%= f.text_area :body, :value => "Minimum 200 characters.", :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"removeTwoHundred();this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :class => "word_count"%>
+	   <%= f.text_area :body, :value => if @new_review.body.nil? ("Minimum 200 characters."); else @new_review.body; end, :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"removeTwoHundred();this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :class => "word_count"%>
 	<span style="float:right" class="counter"></span><br />
 	
 	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/editPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:20px; background:none; border:none; font-size:1.3em" value="0"/> photos attached</div></div>
