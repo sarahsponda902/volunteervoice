@@ -1,5 +1,9 @@
 RMTest::Application.routes.draw do
   
+  ##### SEARCHES
+  match "searches/program_search" => "searches#program_search"
+  
+  match "searches/:location/map_search" => "searches#map_search"
   
   resources :searches
 
@@ -29,11 +33,7 @@ RMTest::Application.routes.draw do
   ##### UPDATE MESSAGES
   match "update_messages/:id/send_message" => "update_messages#send_message"
   match "update_messages/:id/send_message_preview" => "udate_messages#send_message_preview"
-  
 
-  ##### SEARCHES
-  match "searches/organization_search" => "searches#organization_search"
-  match "searches/program_search" => "searches#program_search"
   
   ##### MESSAGES
   

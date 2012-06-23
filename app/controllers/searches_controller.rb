@@ -1356,4 +1356,11 @@ class SearchesController < ApplicationController
     params[:search] = @search
     render action: "create"
   end
+  
+  def map_search
+    @search = Search.new
+    @search.regions = [] << params[:location]
+    params[:search] = @search
+    render action: "create"
+  end
 end
