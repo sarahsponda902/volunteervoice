@@ -1349,4 +1349,11 @@ class SearchesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def program_search
+    @search = Search.new
+    @search.subjects = [] << params[:subject]
+    params[:search] = @search
+    render action: "create"
+  end
 end
