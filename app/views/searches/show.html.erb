@@ -89,7 +89,7 @@ $('#search').pullOut({
     <% end %>
 	
 	<% @search_regions = @search.regions.split("; ")%>
-	<%= @search_regions%>
+
 <script type="text/javascript">
 var theLocations = <%=array_or_string_for_javascript(@locations)%>;
 var search_regions = <%= array_or_string_for_javascript(@search_regions)%>;
@@ -106,7 +106,7 @@ $(document).ready(function() {
 		 }
 		if (search_regions.indexOf(allTheLocations[count]) != -1)
 		{
-			$("#"+allTheLocations[count]).checked = true;
+			$("#"+allTheLocations[count]+"2").checked = true;
 			$("#any6").checked = false;
 		}
     }
