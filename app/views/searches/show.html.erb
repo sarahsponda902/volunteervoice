@@ -183,6 +183,63 @@ var allTheSubjects = new Array('Agriculture',
 'Teaching Computer Literacy', 
 'Media Marketing and Graphic Design');
 
+var allTheSubjectsIds = new Array('Agriculture', 
+'OrganicFarming', 
+'SustainableDevelopment', 
+'AnimalCare', 
+'AnimalRights', 
+'WildlifeConservation', 
+'Caregiving', 
+'ElderCare', 
+'ChildOrphanCare', 
+'DisabledCare', 
+'FeedtheHomeless', 
+'CommunityDevelopment', 
+'YouthDevelopmentandOutreach', 
+'Construction', 
+'CultureandCommunity', 
+'PerformingArts', 
+'Fashion', 
+'Music', 
+'SportsRecreation', 
+'Journalism', 
+'DisasterRelief', 
+'Economics', 
+'Microfinance', 
+'Education', 
+'TeachingEnglish', 
+'TeachingBuddhistMonks', 
+'TeachingChildren', 
+'TeachingComputerLiteracy', 
+'EngineeringandInfrastructure', 
+'Environmental', 
+'EcologicalConservation', 
+'SustainableDevelopment', 
+'WildlifeConservation', 
+'HabitatRestoration', 
+'HealthandMedicine', 
+'HIVAIDS', 
+'Nutrition', 
+'FamilyPlanning', 
+'VeterinaryMedicine', 
+'ClinicalWork', 
+'DentalWork', 
+'MedicalResearch', 
+'HealthEducation', 
+'PublicHealth', 
+'HospitalCaregiving', 
+'HumanRights', 
+'WomensInitiatives', 
+'InternationalWorkCamp', 
+'Recreation', 
+'AdventureTravel', 
+'ScientificResearch', 
+'Archaeology', 
+'EnvironmentalBiology', 
+'Technology', 
+'TeachingComputerLiteracy', 
+'MediaMarketingandGraphicDesign');
+
 var allTheLengths = ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"];
 var allTheSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
 
@@ -208,8 +265,8 @@ $(document).ready(function() {
     {
 		if (search_subjects.indexOf(allTheSubjects[count]) != -1)
 		{
-			$("#"+allTheSubjects[count]+"2").prop('checked', true);
-			$("#"+allTheSubjects[count]+"5").prop('checked', true);
+			$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
+			$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
 			$("#any").prop('checked', false);
 			$("#any10").prop('checked', false);
 		}
