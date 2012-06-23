@@ -22,91 +22,91 @@
 
 	<div class = "six columns" style="width:43%">
 		<font size="5px">
-			<%= link_to "Agriculture (#{@agriculture.count})", :id => "link", searches_path, :method => :post, :subject => "Agriculture"%><br />
+			<%= link_to "Agriculture (#{@agriculture.count})", :id => "link", "/searches/create", :subject => "Agriculture"%><br />
 		</font>
-			&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@organic_farming.count})", searches_path, :method => :post, :subject => "Organic Farming" %><br />
-			&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", searches_path, :method => :post, :subject => "Sustainable Development" %><br /><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@organic_farming.count})", "/searches/create", :subject => "Organic Farming" %><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", "/searches/create", :subject => "Sustainable Development" %><br /><br />
 			<font size="5px">
-			<%= link_to "Animal Care (#{@animal_care.count})", searches_path, :method => :post, :subject => "Animal Care" %><br />
+			<%= link_to "Animal Care (#{@animal_care.count})", "/searches/create", :subject => "Animal Care" %><br />
 			</font>
 
-			&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@animal_rights.count})", searches_path, :method => :post, :subject => "Animal Rights" %><br />
-			&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", searches_path, :method => :post, :subject => "Wildlife Conservation" %><br /><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@animal_rights.count})", "/searches/create", :subject => "Animal Rights" %><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", "/searches/create", :subject => "Wildlife Conservation" %><br /><br />
 
 			<font size="5px">
-			<%= link_to "Caregiving (#{@caregiving.count})", searches_path, :method => :post, :subject => "Caregiving" %><br />
+			<%= link_to "Caregiving (#{@caregiving.count})", "/searches/create", :subject => "Caregiving" %><br />
 			</font>
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Elder Care (#{@elder_care.count})", searches_path, :method => :post, :subject => "Elder Care" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Child/Orphan Care (#{@child_orphan_care.count})", searches_path, :method => :post, :subject => "Child/Orphan Care" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Disabled Care (#{@disabled_care.count})", searches_path, :method => :post, :subject => "Disabled Care" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Feed the Homeless (#{@feed_the_homeless.count})", searches_path, :method => :post, :subject => "Feed the Homeless" %><br /><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Elder Care (#{@elder_care.count})", "/searches/create", :subject => "Elder Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Child/Orphan Care (#{@child_orphan_care.count})", "/searches/create", :subject => "Child/Orphan Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Disabled Care (#{@disabled_care.count})", "/searches/create", :subject => "Disabled Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Feed the Homeless (#{@feed_the_homeless.count})", "/searches/create", :subject => "Feed the Homeless" %><br /><br />
 			<font size="5px">
-				<%= link_to "Community Development (#{@community_development.count})", searches_path, :method => :post, :subject => "Community Development" %><br />
+				<%= link_to "Community Development (#{@community_development.count})", "/searches/create", :subject => "Community Development" %><br />
 			</font>
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Youth Development and Outreach (#{@youth_development_and_outreach.count})", searches_path, :method => :post, :subject => "Youth Development and Outreach" %><br /><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Youth Development and Outreach (#{@youth_development_and_outreach.count})", "/searches/create", :subject => "Youth Development and Outreach" %><br /><br />
 			<font size="5px">
-				<%= link_to "Culture & Community (#{@culture_and_community.count})", searches_path, :method => :post, :subject => "Culture & Community" %><br />
+				<%= link_to "Culture & Community (#{@culture_and_community.count})", "/searches/create", :subject => "Culture & Community" %><br />
 			</font>
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Performing Arts (#{@performing_arts.count})", searches_path, :method => :post, :subject => "Performing Arts" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Fashion (#{@fashion.count})", searches_path, :method => :post, :subject => "Fashion" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Music (#{@music.count})", searches_path, :method => :post, :subject => "Music" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Sports & Recreation (#{@sports_and_recreation.count})", searches_path, :method => :post, :subject => "Sports & Recreation" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Journalism (#{@journalism.count})", searches_path, :method => :post, :subject => "Journalism" %><br /><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Performing Arts (#{@performing_arts.count})", "/searches/create", :subject => "Performing Arts" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Fashion (#{@fashion.count})", "/searches/create", :subject => "Fashion" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Music (#{@music.count})", "/searches/create", :subject => "Music" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Sports & Recreation (#{@sports_and_recreation.count})", "/searches/create", :subject => "Sports & Recreation" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Journalism (#{@journalism.count})", "/searches/create", :subject => "Journalism" %><br /><br />
 			<font size="5px">
-				<%= link_to "Disaster Relief (#{@disaster_relief.count})", searches_path, :method => :post, :subject => "Disaster Relief" %><br />
+				<%= link_to "Disaster Relief (#{@disaster_relief.count})", "/searches/create", :subject => "Disaster Relief" %><br />
 				</font>
-		&nbsp;&nbsp;&nbsp;		<%= link_to "Economics (#{@economics.count})", searches_path, :method => :post, :subject => "Economics" %><br />
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Microfinance (#{@microfinance.count})", searches_path, :method => :post, :subject => "Microfinance" %><br /><br />
+		&nbsp;&nbsp;&nbsp;		<%= link_to "Economics (#{@economics.count})", "/searches/create", :subject => "Economics" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Microfinance (#{@microfinance.count})", "/searches/create", :subject => "Microfinance" %><br /><br />
 				<font size="5px">
-					<%= link_to "Education (#{@education.count})", searches_path, :method => :post, :subject => "Education" %><br />
+					<%= link_to "Education (#{@education.count})", "/searches/create", :subject => "Education" %><br />
 				</font>
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching English (#{@teaching_english.count})", searches_path, :method => :post, :subject => "Teaching English" %><br />
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Buddhist Monks (#{@teaching_buddhist_monks.count})", searches_path, :method => :post, :subject => "Teaching Buddhist Monks" %><br />
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Children (#{@teaching_children.count})", searches_path, :method => :post, :subject => "Teaching Children" %><br />
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", searches_path, :method => :post, :subject => "Teaching Computer Literacy" %><br /><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching English (#{@teaching_english.count})", "/searches/create", :subject => "Teaching English" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Buddhist Monks (#{@teaching_buddhist_monks.count})", "/searches/create", :subject => "Teaching Buddhist Monks" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Children (#{@teaching_children.count})", "/searches/create", :subject => "Teaching Children" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", "/searches/create", :subject => "Teaching Computer Literacy" %><br /><br />
 				</div>
 
 			<div class= "four columns" style="width:52%">
 				<font size="5px">
-					<%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", searches_path, :method => :post, :subject => "Engineering and Infrastructure" %><br /><br />
-					<%= link_to "Environmental (#{@environmental.count})", searches_path, :method => :post, :subject => "Environmental" %><br />
+					<%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", "/searches/create", :subject => "Engineering and Infrastructure" %><br /><br />
+					<%= link_to "Environmental (#{@environmental.count})", "/searches/create", :subject => "Environmental" %><br />
 					</font>
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Ecological Conservation (#{@ecological_conservation.count})", searches_path, :method => :post, :subject => "Ecological Conservation" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Sustainable Development (#{@sustainable_development.count})", searches_path, :method => :post, :subject => "Sustainable Development" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", searches_path, :method => :post, :subject => "Wildlife Conservation" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Habitat Restoration (#{@habitat_restoration.count})", searches_path, :method => :post, :subject => "Habitat Restoration" %><br /><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Ecological Conservation (#{@ecological_conservation.count})", "/searches/create", :subject => "Ecological Conservation" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Sustainable Development (#{@sustainable_development.count})", "/searches/create", :subject => "Sustainable Development" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", "/searches/create", :subject => "Wildlife Conservation" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Habitat Restoration (#{@habitat_restoration.count})", "/searches/create", :subject => "Habitat Restoration" %><br /><br />
 					<font size="5px">
-				<%= link_to "Health and Medicine (#{@health_and_medicine.count})", searches_path, :method => :post, :subject => "Health and Medicine" %><br />
+				<%= link_to "Health and Medicine (#{@health_and_medicine.count})", "/searches/create", :subject => "Health and Medicine" %><br />
 					</font>
-				&nbsp;&nbsp;&nbsp;	<%= link_to "HIV/AIDS (#{@hiv_aids.count})", searches_path, :method => :post, :subject => "HIV/AIDS" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Nutrition (#{@nutrition.count})", searches_path, :method => :post, :subject => "Nutrition" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Family Planning (#{@family_planning.count})", searches_path, :method => :post, :subject => "Family Planning" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Veterinary Medicine (#{@veterinary_medicine.count})", searches_path, :method => :post, :subject => "Veterinary Medicine" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Clinical Work (#{@clinical_work.count})", searches_path, :method => :post, :subject => "Clinical Work" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Dental Work (#{@dental_work.count})", searches_path, :method => :post, :subject => "Dental Work" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Medical Research (#{@medical_research.count})", searches_path, :method => :post, :subject => "Medical Research" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Health Education (#{@health_education.count})", searches_path, :method => :post, :subject => "Health Education" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Public Health (#{@public_health.count})", searches_path, :method => :post, :subject => "Public Health" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Hospital Care-giving (#{@hospital_care_giving.count})", searches_path, :method => :post, :subject => "Hospital Care-giving" %><br /><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "HIV/AIDS (#{@hiv_aids.count})", "/searches/create", :subject => "HIV/AIDS" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Nutrition (#{@nutrition.count})", "/searches/create", :subject => "Nutrition" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Family Planning (#{@family_planning.count})", "/searches/create", :subject => "Family Planning" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Veterinary Medicine (#{@veterinary_medicine.count})", "/searches/create", :subject => "Veterinary Medicine" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Clinical Work (#{@clinical_work.count})", "/searches/create", :subject => "Clinical Work" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Dental Work (#{@dental_work.count})", "/searches/create", :subject => "Dental Work" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Medical Research (#{@medical_research.count})", "/searches/create", :subject => "Medical Research" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Health Education (#{@health_education.count})", "/searches/create", :subject => "Health Education" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Public Health (#{@public_health.count})", "/searches/create", :subject => "Public Health" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Hospital Care-giving (#{@hospital_care_giving.count})", "/searches/create", :subject => "Hospital Care-giving" %><br /><br />
 					<font size="5px">
-						<%= link_to "Human Rights (#{@human_rights.count})", searches_path, :method => :post, :subject => "Human Rights" %><br />
+						<%= link_to "Human Rights (#{@human_rights.count})", "/searches/create", :subject => "Human Rights" %><br />
 					</font>
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Women's Initiatives (#{@womens_initiatives.count})", searches_path, :method => :post, :subject => "Womens Initiatives" %><br /><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Women's Initiatives (#{@womens_initiatives.count})", "/searches/create", :subject => "Womens Initiatives" %><br /><br />
 					<font size="5px">
-						<%= link_to "International Work Camp (#{@international_work_camp.count})", searches_path, :method => :post, :subject => "International Work Camp" %><br /><br />
-						<%= link_to "Recreation (#{@recreation.count})", searches_path, :method => :post, :subject => "Recreation" %><br />
+						<%= link_to "International Work Camp (#{@international_work_camp.count})", "/searches/create", :subject => "International Work Camp" %><br /><br />
+						<%= link_to "Recreation (#{@recreation.count})", "/searches/create", :subject => "Recreation" %><br />
 						</font>
-				&nbsp;&nbsp;&nbsp;		<%= link_to "Adventure Travel (#{@adventure_travel.count})", searches_path, :method => :post, :subject => "Adventure Travel" %><br /><br />
+				&nbsp;&nbsp;&nbsp;		<%= link_to "Adventure Travel (#{@adventure_travel.count})", "/searches/create", :subject => "Adventure Travel" %><br /><br />
 						<font size="5px">
-							<%= link_to "Scientific Research (#{@scientific_research.count})", searches_path, :method => :post, :subject => "Scientific Research" %><br />
+							<%= link_to "Scientific Research (#{@scientific_research.count})", "/searches/create", :subject => "Scientific Research" %><br />
 							</font>
-					&nbsp;&nbsp;&nbsp;		<%= link_to "Archaeology (#{@archaeology.count})", searches_path, :method => :post, :subject => "Archaeology" %><br />
-					&nbsp;&nbsp;&nbsp;		<%= link_to "Environmental Biology (#{@environmental_biology.count})", searches_path, :method => :post, :subject => "Environmental Biology" %><br /><br />
+					&nbsp;&nbsp;&nbsp;		<%= link_to "Archaeology (#{@archaeology.count})", "/searches/create", :subject => "Archaeology" %><br />
+					&nbsp;&nbsp;&nbsp;		<%= link_to "Environmental Biology (#{@environmental_biology.count})", "/searches/create", :subject => "Environmental Biology" %><br /><br />
 							<font size="5px">
-								<%= link_to "Technology (#{@technology.count})", searches_path, :method => :post, :subject => "Technology" %><br />
+								<%= link_to "Technology (#{@technology.count})", "/searches/create", :subject => "Technology" %><br />
 							</font>
-						&nbsp;&nbsp;&nbsp;	<%= link_to "Teach Computer Literacy (#{@teaching_computer_literacy.count})", searches_path, :method => :post, :subject => "Teaching Computer Literacy" %><br />
-						&nbsp;&nbsp;&nbsp;	<%= link_to "Media, Marketing, and Graphic Design (#{@media_marketing_and_graphic_design.count})", searches_path, :method => :post, :subject => "Media Marketing and Graphic Design" %><br /><br />
+						&nbsp;&nbsp;&nbsp;	<%= link_to "Teach Computer Literacy (#{@teaching_computer_literacy.count})", "/searches/create", :subject => "Teaching Computer Literacy" %><br />
+						&nbsp;&nbsp;&nbsp;	<%= link_to "Media, Marketing, and Graphic Design (#{@media_marketing_and_graphic_design.count})", "/searches/create", :subject => "Media Marketing and Graphic Design" %><br /><br />
 				</div>
 
 		</div>
