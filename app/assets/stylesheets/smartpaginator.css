@@ -49,6 +49,7 @@
 	text-align: center;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
+	color: #62acbd;
 }
 .pager span
 {
@@ -78,7 +79,9 @@
 	text-align: center;
 	border-radius: 4px;
 	-moz-border-radius: 4px;
+	color: #e67b5a;
 }
+
 /*green*/.green
 {
 	background-color: transparent;
