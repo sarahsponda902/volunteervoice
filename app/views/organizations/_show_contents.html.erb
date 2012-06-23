@@ -80,22 +80,22 @@
 	<div class="eleven columns">
 		<div class="six columns" style="font-size:1.1em;">
 			<br />
-			<p style="font-weight:600">Operating since: </p><%=organization.operating_since%><br />
+			<p style="font-weight:600">Operating since: </p><%=organization.operating_since%><br /><br />
 			
 			<p style="font-weight:600">Run by: </p><%=organization.run_by.html_safe%><br />
 			
-			<p style="font-weight:600"># Volunteers each year: </p><%=organization.num_vols_yr%><br />
-			<p style="font-weight:600"># Volunteers to date: </p><%=organization.num_vols_date%><br />
-			<p style="font-weight:600">Application process: </p><%=organization.application_process.html_safe%><br />
-			<p style="font-weight:600">Business Model: </p><%= organization.business_model.html_safe%><br />
+			<p style="font-weight:600"># Volunteers each year: </p><%=organization.num_vols_yr%><br /><br />
+			<p style="font-weight:600"># Volunteers to date: </p><%=organization.num_vols_date%><br /><br />
+			<p style="font-weight:600">Application process: </p><%=organization.application_process.html_safe%><br /><br />
+			<p style="font-weight:600">Business Model: </p><%= organization.business_model.html_safe%><br /><br />
 			
-			<p style="font-weight:600">ID number: </p><%=organization.id_number%><br />
+			<p style="font-weight:600">ID number: </p><%=organization.id_number%><br /><br />
 			
-			<p style="font-weight:600">Volunteer Program Model: </p><%=organization.program_model_string%><br />
+			<p style="font-weight:600">Volunteer Program Model: </p><%=organization.program_model_string%><br /><br />
 			
 			<p style="font-weight:600">Types of Programs: </p>
 			<%= organization.program_subjects.html_safe%>
-			<br />
+			<br /><br />
 			
 		</div>
 		<div class="six columns" style="width:45%; border-left:1px solid #e67b5a; font-size:1.1em; padding-left:2%">
