@@ -399,7 +399,7 @@ $(document).ready(function() {
 	<!-- SUBJECTS -->
 	
 	
-		<input type='checkbox' name='search[subjects]' value="false" id="any10" style='display:none'>
+		<input type='checkbox' name='search[subjects][]' value="false" id="any10" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Agriculture" id="Agriculture5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Organic Farming" id="OrganicFarming5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Sustainable Development" id="SustainableDevelopment5" style='display:none'>
@@ -455,13 +455,13 @@ $(document).ready(function() {
 	<input type='checkbox' name='search[subjects][]' value="Environmental Biology" id="EnvironmentalBiology5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Technology" id="Technology5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Teaching Computer Literacy" id="TeachingComputerLiteracy5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Media Marketing and Graphic Design" id="MediaMarketingandGraphicDesign5">
+	<input type='checkbox' name='search[subjects][]' value="Media Marketing and Graphic Design" id="MediaMarketingandGraphicDesign5" style="display:none">
 	
 	<!-- END SUBJECTS -->
 	
 	
 	<!-- COUNTRIES -->
-		<input type='checkbox' name='search[regions]' id='any11' value='false' style='display:none' checked="checked">
+		<input type='checkbox' name='search[regions][]' id='any11' value='false' style='display:none' checked="checked">
 	
 	<input type='checkbox' name='search[regions][]' id='AF5' value='AF' style='display:none'>
 	<input type='checkbox' name='search[regions][]' id='AX5' value='AX' style='display:none'>
@@ -722,7 +722,7 @@ $(document).ready(function() {
 <!-- END COUNTRIES -->
 
 <!-- LENGTHS -->
-<input id='any12' type='checkbox' style='display:none' name='search[lengths]' value='false' checked="checked">
+<input id='any12' type='checkbox' style='display:none' name='search[lengths][]' value='false' checked="checked">
 
 <input id='length15' type='checkbox' style='display:none' name='search[lengths][]' value='1 week or less'>
 <input id='length25' type='checkbox' style='display:none' name='search[lengths][]' value=' 2-4 weeks'>
@@ -736,7 +736,7 @@ $(document).ready(function() {
 <!-- END LENGTHS -->
 
 <!-- SIZES -->
-<input type='checkbox' style='display:none' name='search[sizes]' value='false' id='any13' checked="checked">
+<input type='checkbox' style='display:none' name='search[sizes][]' value='false' id='any13' checked="checked">
 
 <input id='size15' type='checkbox' style='display:none' name='search[sizes][]' value='Individual'>
 <input id='size25' type='checkbox' style='display:none' name='search[sizes][]' value='Small Groups (2-3)'>
@@ -863,7 +863,7 @@ $(document).ready(function() {
 					<div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#EnvironmentalBiology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value='Environmental Biology' id='EnvironmentalBiology2' >Environmental Biology</div>
 					<div id='Technology1'><br /><input type='checkbox' onchange ="$('#Technology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' >Technology</div>
 					<div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#TeachingComputerLiteracy5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' >Teaching Computer Literacy</div>
-					<div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#MediaMarketingandGraphicDesign5').prop('checked', this.checked)" name= 'search[subjects][]' style="display:none" onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' >Media Marketing and Graphic Design</div><br />
+					<div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#MediaMarketingandGraphicDesign5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' >Media Marketing and Graphic Design</div><br />
 		<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 	
 </div>
