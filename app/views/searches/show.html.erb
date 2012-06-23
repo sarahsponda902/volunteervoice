@@ -197,10 +197,10 @@ $(document).ready(function() {
 		 }
 		if (search_regions.indexOf(allTheLocations[count]) != -1)
 		{
-			$("#"+allTheLocations[count]+"2").prop("checked", true);
-			$("#"+allTheLocations[count]+"5").prop("checked", true);
-			$("#any6").prop("checked", false);
-			$("#any11").prop("checked", false);
+			$("#"+allTheLocations[count]+"2").prop('checked', true);
+			$("#"+allTheLocations[count]+"5").prop('checked', true);
+			$("#any6").prop('checked', false);
+			$("#any11").prop('checked', false);
 		}
     }
 	var count = 0;
@@ -208,10 +208,10 @@ $(document).ready(function() {
     {
 		if (search_subjects.indexOf(allTheSubjects[count]) != -1)
 		{
-			$("#"+allTheSubjects[count]+"2").prop("checked", true);
-			$("#"+allTheSubjects[count]+"5").prop("checked", true);
-			$("#any").prop("checked", false);
-			$("#any10").prop("checked", false);
+			$("#"+allTheSubjects[count]+"2").prop('checked', true);
+			$("#"+allTheSubjects[count]+"5").prop('checked', true);
+			$("#any").prop('checked', false);
+			$("#any10").prop('checked', false);
 		}
 	}
 	var count = 0;
@@ -219,10 +219,10 @@ $(document).ready(function() {
 	{
 		if (search_lengths.indexOf(allTheLengths[count]) != -1)
 		{
-			$("#"+(count+1)+"_length").prop("checked", true);
-			$("#length"+(count+1)+"5").prop("checked", true);
-			$("#any2").prop("checked", false);
-			$("#any12").prop("checked", false);
+			$("#"+(count+1)+"_length").prop('checked', true);
+			$("#length"+(count+1)+"5").prop('checked', true);
+			$("#any2").prop('checked', false);
+			$("#any12").prop('checked', false);
 		}
 	}
 	var count = 0;
@@ -230,10 +230,10 @@ $(document).ready(function() {
 	{
 		if (search_sizes.indexOf(allTheSizes[count]) != -1)
 		{
-			$("#"+(count+1)+"_group").prop("checked", true);
-			$("#size"+(count+1)+"5").prop("checked", true);
-			$("#any3").prop("checked", false);
-			$("#any13").prop("checked", false);
+			$("#"+(count+1)+"_group").prop('checked', true);
+			$("#size"+(count+1)+"5").prop('checked', true);
+			$("#any3").prop('checked', false);
+			$("#any13").prop('checked', false);
 		}
 	}
 	$("#price_max").val(<%=@search.price_max%>);
@@ -712,6 +712,12 @@ $(document).ready(function() {
 	<input type='checkbox' type='search[regions][]' id='YE5' value='YE' style='display:none'>
 	<input type='checkbox' type='search[regions][]' id='ZM5' value='ZM' style='display:none'>
 	<input type='checkbox' type='search[regions][]' id='ZW5' value='ZW' style='display:none'>
+	
+	<input type='checkbox' type='search[regions][]' id='anyAfrica5' value='Africa' style='display:none'>
+	<input type='checkbox' type='search[regions][]' id='anyEurope5' value='Europe' style='display:none'>
+	<input type='checkbox' type='search[regions][]' id='anyAmericas5' value='Americas' style='display:none'>
+	<input type='checkbox' type='search[regions][]' id='anyAsia5' value='Asia' style='display:none'>
+	<input type='checkbox' type='search[regions][]' id='anyOceania5' value='Oceania' style='display:none'>
 
 <!-- END COUNTRIES -->
 
@@ -910,71 +916,71 @@ $(document).ready(function() {
 <div id="programCountries" style="color:#575758; width:800px; height:400px; overflow-x:hidden; overflow-y:auto;">
 	<div class="two columns" style="width:16%">
 	
-		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' checked = "checked"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
+		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' checked = "checked" onchange="$('#any11').prop('checked', this.checked)"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
 
 
 
 
 
 
-		<div id="AfricaDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='Africa' id='anyAfrica'  ><font style="font-size:1.2em; color:#575758">Africa</font></div>
-		<div id='DZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='DZ' id='DZ2'  > Algeria</div>
-		<div id='EG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='EG' id='EG2'  > Egypt</div>
-		<div id='LY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='LY' id='LY2'  > Libya</div>
-		<div id='MA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MA' id='MA2'  > Morocco</div>
-		<div id='SD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SD' id='SD2'  > Sudan</div>
-		<div id='TN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='TN' id='TN2'  > Tunisia</div>
-		<div id='EH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='EH' id='EH2'  > Western <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sahara</div>
-		<div id='BJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='BJ' id='BJ2'  > Benin</div>
-		<div id='BF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='BF' id='BF2'  > Burkina Faso</div>
-		<div id='CV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CV' id='CV2'  > Cape Verde</div>
-		<div id='CI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CI' id='CI2'  > Côte dIvoire</div>
-		<div id='GM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GM' id='GM2'  > Gambia</div>
-		<div id='GH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GH' id='GH2'  > Ghana</div>
-		<div id='GN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GN' id='GN2'  > Guinea</div>
-		<div id='GW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GW' id='GW2'  > Guinea-Bissau</div>
-		<div id='LR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='LR' id='LR2'  > Liberia</div>
-		<div id='ML'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ML' id='ML2'  > Mali</div>
-		<div id='MR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MR' id='MR2'  > Mauritania</div>
-		<div id='NE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='NE' id='NE2'  > Niger</div>
-		<div id='NG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='NG' id='NG2'  > Nigeria</div>
-		<div id='SH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SH' id='SH2'  > Saint Helena, <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ascension and  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tristan da  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cunha</div>
-		<div id='SN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SN' id='SN2'  > Senegal</div>
-		<div id='SL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SL' id='SL2'  > Sierra Leone</div>
-		<div id='TG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='TG' id='TG2'  > Togo</div>
-		<div id='AO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='AO' id='AO2'  > Angola</div>
-		<div id='CM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CM' id='CM2'  > Cameroon</div>
-		<div id='CF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CF' id='CF2'  > Central African <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
-		<div id='TD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='TD' id='TD2'  > Chad</div>
-		<div id='CG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CG' id='CG2'  > Congo</div>
-		<div id='CD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='CD' id='CD2'  > Democratic Republic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of the Congo</div>
-		<div id='GQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GQ' id='GQ2'  > Equatorial  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guinea</div>
-		<div id='GA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='GA' id='GA2'  > Gabon</div>
-		<div id='ST'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ST' id='ST2'  > Sao Tome and <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principe</div>
-		<div id='BI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='BI' id='BI2'  > Burundi</div>
-		<div id='KM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='KM' id='KM2'  > Comoros</div>
-		<div id='DJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='DJ' id='DJ2'  > Djibouti</div>
-		<div id='ER'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ER' id='ER2'  > Eritrea</div>
-		<div id='ET'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ET' id='ET2'  > Ethiopia</div>
-		<div id='KE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='KE' id='KE2'  > Kenya</div>
-		<div id='MG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MG' id='MG2'  > Madagascar</div>
-		<div id='MW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MW' id='MW2'  > Malawi</div>
-		<div id='MU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MU' id='MU2'  > Mauritius</div>
-		<div id='YT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='YT' id='YT2'  > Mayotte</div>
-		<div id='MZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='MZ' id='MZ2'  > Mozambique</div>
-		<div id='RE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='RE' id='RE2'  > Réunion</div>
-		<div id='RW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='RW' id='RW2'  > Rwanda</div>
-		<div id='SC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SC' id='SC2'  > Seychelles</div>
-		<div id='SO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SO' id='SO2'  > Somalia</div>
-		<div id='TZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='TZ' id='TZ2'  > Tanzania</div>
-		<div id='UG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='UG' id='UG2'  > Uganda</div>
-		<div id='ZM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ZM' id='ZM2'  > Zambia</div>
-		<div id='ZW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ZW' id='ZW2'  > Zimbabwe</div>
-		<div id='BW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='BW' id='BW2'  > Botswana</div>
-		<div id='LS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='LS' id='LS2'  > Lesotho</div>
-		<div id='NA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='NA' id='NA2'  > Namibia</div>
-		<div id='ZA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='ZA' id='ZA2'  > South Africa</div>
-		<div id='SZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='SZ' id='SZ2'  > Swaziland</div><br /><br /></div>
+		<div id="AfricaDiv"><input type="checkbox" onchange="$('#anyAfrica5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='Africa' id='anyAfrica'  ><font style="font-size:1.2em; color:#575758">Africa</font></div>
+		<div id="DZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#DZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="DZ" id="DZ2"  > Algeria</div>
+		<div id="EG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#EG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="EG" id="EG2"  > Egypt</div>
+		<div id="LY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LY5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="LY" id="LY2"  > Libya</div>
+		<div id="MA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="MA" id="MA2"  > Morocco</div>
+		<div id="SD">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SD5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="SD" id="SD2"  > Sudan</div>
+		<div id="TN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TN5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="TN" id="TN2"  > Tunisia</div>
+		<div id="EH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#EH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="EH" id="EH2"  > Western <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sahara</div>
+		<div id="BJ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BJ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="BJ" id="BJ2"  > Benin</div>
+		<div id="BF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BF5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="BF" id="BF2"  > Burkina Faso</div>
+		<div id="CV">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CV5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="CV" id="CV2"  > Cape Verde</div>
+		<div id="CI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CI5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="CI" id="CI2"  > Côte dIvoire</div>
+		<div id="GM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="GM" id="GM2"  > Gambia</div>
+		<div id="GH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="GH" id="GH2"  > Ghana</div>
+		<div id="GN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GN5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="GN" id="GN2"  > Guinea</div>
+		<div id="GW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GW5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="GW" id="GW2"  > Guinea-Bissau</div>
+		<div id="LR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LR5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="LR" id="LR2"  > Liberia</div>
+		<div id="ML">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ML5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="ML" id="ML2"  > Mali</div>
+		<div id="MR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MR5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="MR" id="MR2"  > Mauritania</div>
+		<div id="NE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="NE" id="NE2"  > Niger</div>
+		<div id="NG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="NG" id="NG2"  > Nigeria</div>
+		<div id="SH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="SH" id="SH2"  > Saint Helena, <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ascension and  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tristan da  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cunha</div>
+		<div id="SN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SN5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="SN" id="SN2"  > Senegal</div>
+		<div id="SL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SL5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="SL" id="SL2"  > Sierra Leone</div>
+		<div id="TG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="TG" id="TG2"  > Togo</div>
+		<div id="AO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AO5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="AO" id="AO2"  > Angola</div>
+		<div id="CM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="CM" id="CM2"  > Cameroon</div>
+		<div id="CF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CF5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="CF" id="CF2"  > Central African <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
+		<div id="TD">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TD5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="TD" id="TD2"  > Chad</div>
+		<div id="CG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="CG" id="CG2"  > Congo</div>
+		<div id="CD">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CD5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="CD" id="CD2"  > Democratic Republic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of the Congo</div>
+		<div id="GQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GQ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="GQ" id="GQ2"  > Equatorial  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guinea</div>
+		<div id="GA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="GA" id="GA2"  > Gabon</div>
+		<div id="ST">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ST5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="ST" id="ST2"  > Sao Tome and <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Principe</div>
+		<div id="BI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BI5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="BI" id="BI2"  > Burundi</div>
+		<div id="KM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="KM" id="KM2"  > Comoros</div>
+		<div id="DJ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#DJ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="DJ" id="DJ2"  > Djibouti</div>
+		<div id="ER">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ER5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="ER" id="ER2"  > Eritrea</div>
+		<div id="ET">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ET5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="ET" id="ET2"  > Ethiopia</div>
+		<div id="KE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="KE" id="KE2"  > Kenya</div>
+		<div id="MG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="MG" id="MG2"  > Madagascar</div>
+		<div id="MW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MW5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="MW" id="MW2"  > Malawi</div>
+		<div id="MU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="MU" id="MU2"  > Mauritius</div>
+		<div id="YT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#YT5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="YT" id="YT2"  > Mayotte</div>
+		<div id="MZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="MZ" id="MZ2"  > Mozambique</div>
+		<div id="RE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#RE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="RE" id="RE2"  > Réunion</div>
+		<div id="RW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#RW5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="RW" id="RW2"  > Rwanda</div>
+		<div id="SC">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SC5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="SC" id="SC2"  > Seychelles</div>
+		<div id="SO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SO5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="SO" id="SO2"  > Somalia</div>
+		<div id="TZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="TZ" id="TZ2"  > Tanzania</div>
+		<div id="UG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#UG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="UG" id="UG2"  > Uganda</div>
+		<div id="ZM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ZM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="ZM" id="ZM2"  > Zambia</div>
+		<div id="ZW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ZW5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="ZW" id="ZW2"  > Zimbabwe</div>
+		<div id="BW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BW5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="BW" id="BW2"  > Botswana</div>
+		<div id="LS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LS5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="LS" id="LS2"  > Lesotho</div>
+		<div id="NA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="NA" id="NA2"  > Namibia</div>
+		<div id="ZA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ZA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="ZA" id="ZA2"  > South Africa</div>
+		<div id="SZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="SZ" id="SZ2"  > Swaziland</div><br /><br /></div>
 
 
 
@@ -983,58 +989,58 @@ $(document).ready(function() {
 
 
 		<div class="two columns" style="width:16%">
-		<div id="EuropeDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='Europe' id='anyEurope'  ><font style="font-size:1.2em; color:#575758">Europe</font></div>
-		<div id='AX'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='AX' id='AX2'  > Åland Islands</div>
-		<div id='DK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='DK' id='DK2'  > Denmark</div>
-		<div id='EE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='EE' id='EE2'  > Estonia</div>
-		<div id='FO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='FO' id='FO2'  > Faroe Islands</div>
-		<div id='FI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='FI' id='FI2'  > Finland</div>
-		<div id='GG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='GG' id='GG2'  > Guernsey</div>
-		<div id='IS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='IS' id='IS2'  > Iceland</div>
-		<div id='IE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='IE' id='IE2'  > Ireland</div>
-		<div id='IM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='IM' id='IM2'  > Isle of Man</div>
-		<div id='JE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='JE' id='JE2'  > Jersey</div>
-		<div id='LV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='LV' id='LV2'  > Latvia</div>
-		<div id='LT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='LT' id='LT2'  > Lithuania</div>
-		<div id='NO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='NO' id='NO2'  > Norway</div>
-		<div id='SJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SJ' id='SJ2'  > Svalbard and  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jan Mayen</div>
-		<div id='SE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SE' id='SE2'  > Sweden</div>
-		<div id='GB'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='GB' id='GB2'  > United  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kingdom</div>
-		<div id='AT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='AT' id='AT2'  > Austria</div>
-		<div id='BE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='BE' id='BE2'  > Belgium</div>
-		<div id='FR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='FR' id='FR2'  > France</div>
-		<div id='DE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='DE' id='DE2'  > Germany</div>
-		<div id='LI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='LI' id='LI2'  > Liechtenstein</div>
-		<div id='LU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='LU' id='LU2'  > Luxembourg</div>
-		<div id='MC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='MC' id='MC2'  > Monaco</div>
-		<div id='NL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='NL' id='NL2'  > Netherlands</div>
-		<div id='CH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='CH' id='CH2'  > Switzerland</div>
-		<div id='BY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='BY' id='BY2'  > Belarus</div>
-		<div id='BG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='BG' id='BG2'  > Bulgaria</div>
-		<div id='CZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='CZ' id='CZ2'  > Czech Republic</div>
-		<div id='HU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='HU' id='HU2'  > Hungary</div>
-		<div id='MD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='MD' id='MD2'  > Moldova,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
-		<div id='PL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='PL' id='PL2'  > Poland</div>
-		<div id='RO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='RO' id='RO2'  > Romania</div>
-		<div id='RU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='RU' id='RU2'  > Russian  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Federation</div>
-		<div id='SK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SK' id='SK2'  > Slovakia</div>
-		<div id='UA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='UA' id='UA2'  > Ukraine</div>
-		<div id='AL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='AL' id='AL2'  > Albania</div>
-		<div id='AD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='AD' id='AD2'  > Andorra</div>
-		<div id='BA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='BA' id='BA2'  > Bosnia and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Herzegovina</div>
-		<div id='HR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='HR' id='HR2'  > Croatia</div>
-		<div id='GI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='GI' id='GI2'  > Gibraltar</div>
-		<div id='GR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='GR' id='GR2'  > Greece</div>
-		<div id='VA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='VA' id='VA2'  > Holy See  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Vatican City <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; State)</div>
-		<div id='IT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='IT' id='IT2'  > Italy</div>
-		<div id='MK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='MK' id='MK2'  > Macedonia</div>
-		<div id='MT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='MT' id='MT2'  > Malta</div>
-		<div id='ME'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='ME' id='ME2'  > Montenegro</div>
-		<div id='PT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='PT' id='PT2'  > Portugal</div>
-		<div id='SM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SM' id='SM2'  > San Marino</div>
-		<div id='RS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='RS' id='RS2'  > Serbia</div>
-		<div id='SI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='SI' id='SI2'  > Slovenia</div>
-		<div id='ES'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='ES' id='ES2'  > Spain</div>
+		<div id="EuropeDiv"><input type="checkbox" onchange="$('#anyEurope5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='Europe' id='anyEurope'  ><font style="font-size:1.2em; color:#575758">Europe</font></div>
+		<div id="AX">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AX5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="AX" id="AX2"  > Åland Islands</div>
+		<div id="DK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#DK5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="DK" id="DK2"  > Denmark</div>
+		<div id="EE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#EE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="EE" id="EE2"  > Estonia</div>
+		<div id="FO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#FO5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="FO" id="FO2"  > Faroe Islands</div>
+		<div id="FI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#FI5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="FI" id="FI2"  > Finland</div>
+		<div id="GG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="GG" id="GG2"  > Guernsey</div>
+		<div id="IS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IS5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="IS" id="IS2"  > Iceland</div>
+		<div id="IE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="IE" id="IE2"  > Ireland</div>
+		<div id="IM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="IM" id="IM2"  > Isle of Man</div>
+		<div id="JE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#JE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="JE" id="JE2"  > Jersey</div>
+		<div id="LV">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LV5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="LV" id="LV2"  > Latvia</div>
+		<div id="LT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LT5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="LT" id="LT2"  > Lithuania</div>
+		<div id="NO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NO5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="NO" id="NO2"  > Norway</div>
+		<div id="SJ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SJ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="SJ" id="SJ2"  > Svalbard and  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Jan Mayen</div>
+		<div id="SE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="SE" id="SE2"  > Sweden</div>
+		<div id="GB">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GB5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="GB" id="GB2"  > United  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kingdom</div>
+		<div id="AT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AT5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="AT" id="AT2"  > Austria</div>
+		<div id="BE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="BE" id="BE2"  > Belgium</div>
+		<div id="FR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#FR5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="FR" id="FR2"  > France</div>
+		<div id="DE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#DE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="DE" id="DE2"  > Germany</div>
+		<div id="LI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LI5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="LI" id="LI2"  > Liechtenstein</div>
+		<div id="LU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="LU" id="LU2"  > Luxembourg</div>
+		<div id="MC">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MC5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="MC" id="MC2"  > Monaco</div>
+		<div id="NL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NL5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="NL" id="NL2"  > Netherlands</div>
+		<div id="CH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="CH" id="CH2"  > Switzerland</div>
+		<div id="BY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BY5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="BY" id="BY2"  > Belarus</div>
+		<div id="BG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="BG" id="BG2"  > Bulgaria</div>
+		<div id="CZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="CZ" id="CZ2"  > Czech Republic</div>
+		<div id="HU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#HU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="HU" id="HU2"  > Hungary</div>
+		<div id="MD">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MD5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="MD" id="MD2"  > Moldova,  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
+		<div id="PL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#PL5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="PL" id="PL2"  > Poland</div>
+		<div id="RO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#RO5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="RO" id="RO2"  > Romania</div>
+		<div id="RU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#RU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="RU" id="RU2"  > Russian  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Federation</div>
+		<div id="SK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SK5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="SK" id="SK2"  > Slovakia</div>
+		<div id="UA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#UA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="UA" id="UA2"  > Ukraine</div>
+		<div id="AL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AL5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="AL" id="AL2"  > Albania</div>
+		<div id="AD">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AD5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="AD" id="AD2"  > Andorra</div>
+		<div id="BA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="BA" id="BA2"  > Bosnia and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Herzegovina</div>
+		<div id="HR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#HR5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="HR" id="HR2"  > Croatia</div>
+		<div id="GI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GI5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="GI" id="GI2"  > Gibraltar</div>
+		<div id="GR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GR5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="GR" id="GR2"  > Greece</div>
+		<div id="VA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#VA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="VA" id="VA2"  > Holy See  <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Vatican City <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; State)</div>
+		<div id="IT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IT5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="IT" id="IT2"  > Italy</div>
+		<div id="MK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MK5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="MK" id="MK2"  > Macedonia</div>
+		<div id="MT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MT5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="MT" id="MT2"  > Malta</div>
+		<div id="ME">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ME5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="ME" id="ME2"  > Montenegro</div>
+		<div id="PT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#PT5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="PT" id="PT2"  > Portugal</div>
+		<div id="SM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="SM" id="SM2"  > San Marino</div>
+		<div id="RS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#RS5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="RS" id="RS2"  > Serbia</div>
+		<div id="SI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SI5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="SI" id="SI2"  > Slovenia</div>
+		<div id="ES">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ES5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="ES" id="ES2"  > Spain</div>
 
 
 
@@ -1049,154 +1055,154 @@ $(document).ready(function() {
 
 
 
-			<div id="AmericasDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='Americas' id='anyAmericas'  ><font style="font-size:1.2em; color:#575758">Americas</font></div>
-			<div id='BM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BM' id='BM2'  > Bermuda</div>
-			<div id='CA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CA' id='CA2'  > Canada</div>
-			<div id='GL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GL' id='GL2'  > Greenland</div>
-			<div id='PM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PM' id='PM2'  > Saint Pierre<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Miquelon</div>
-			<div id='US'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='US' id='US2'  > United States</div>
-			<div id='AI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='AI' id='AI2'  > Anguilla</div>
-			<div id='AG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='AG' id='AG2'  > Antigua and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barbuda</div>
-			<div id='AW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='AW' id='AW2'  > Aruba</div>
-			<div id='BS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BS' id='BS2'  > Bahamas</div>
-			<div id='BB'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BB' id='BB2'  > Barbados</div>
-			<div id='KY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='KY' id='KY2'  > Cayman<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sIslands</div>
-			<div id='CU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CU' id='CU2'  > Cuba</div>
-			<div id='DM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='DM' id='DM2'  > Dominica</div>
-			<div id='DO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='DO' id='DO2'  > Dominican<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
-			<div id='GD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GD' id='GD2'  > Grenada</div>
-			<div id='GP'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GP' id='GP2'  > Guadeloupe</div>
-			<div id='HT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='HT' id='HT2'  > Haiti</div>
-			<div id='JM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='JM' id='JM2'  > Jamaica</div>
-			<div id='MQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='MQ' id='MQ2'  > Martinique</div>
-			<div id='MS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='MS' id='MS2'  > Montserrat</div>
-			<div id='PR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PR' id='PR2'  > Puerto Rico</div>
-			<div id='BL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BL' id='BL2'  > Saint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barthélemy</div>
-			<div id='KN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='KN' id='KN2'  > Saint Kitts and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nevis</div>
-			<div id='LC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='LC' id='LC2'  > Saint Lucia</div>
-			<div id='MF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='MF' id='MF2'  > Saint Martin<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(French part)</div>
-			<div id='VC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='VC' id='VC2'  > Saint Vincent<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grenadines</div>
-			<div id='TT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='TT' id='TT2'  > Trinidad and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tobago</div>
-			<div id='TC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='TC' id='TC2'  > Turks and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caicos Islands</div>
-			<div id='VG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='VG' id='VG2'  > Virgin Islands,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;British</div>
-			<div id='VI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='VI' id='VI2'  > Virgin Islands,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U.S.</div>
-			<div id='BZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BZ' id='BZ2'  > Belize</div>
-			<div id='CR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CR' id='CR2'  > Costa Rica</div>
-			<div id='SV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='SV' id='SV2'  > El Salvador</div>
-			<div id='GT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GT' id='GT2'  > Guatemala</div>
-			<div id='HN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='HN' id='HN2'  > Honduras</div>
-			<div id='MX'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='MX' id='MX2'  > Mexico</div>
-			<div id='NI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='NI' id='NI2'  > Nicaragua</div>
-			<div id='PA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PA' id='PA2'  > Panama</div>
-			<div id='AR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='AR' id='AR2'  > Argentina</div>
-			<div id='BO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BO' id='BO2'  > Bolivia,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plurinational<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State of</div>
-			<div id='BR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='BR' id='BR2'  > Brazil</div>
-			<div id='CL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CL' id='CL2'  > Chile</div>
-			<div id='CO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='CO' id='CO2'  > Colombia</div>
-			<div id='EC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='EC' id='EC2'  > Ecuador</div>
-			<div id='FK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='FK' id='FK2'  > Falkland<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Malvinas)</div>
-			<div id='GF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GF' id='GF2'  > French Guiana</div>
-			<div id='GY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='GY' id='GY2'  > Guyana</div>
-			<div id='PY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PY' id='PY2'  > Paraguay</div>
-			<div id='PE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='PE' id='PE2'  > Peru</div>
-			<div id='SR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='SR' id='SR2'  > Suriname</div>
-			<div id='UY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='UY' id='UY2'  > Uruguay</div>
-			<div id='VE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='VE' id='VE2'  > Venezuela,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bolivarian <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div><br /><br /></div>
+			<div id="AmericasDiv"><input type="checkbox" onchange="$('#anyAmericas5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='Americas' id='anyAmericas'  ><font style="font-size:1.2em; color:#575758">Americas</font></div>
+			<div id="BM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BM5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BM" id="BM2"  > Bermuda</div>
+			<div id="CA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('CA5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="CA" id="CA2"  > Canada</div>
+			<div id="GL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('GL5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="GL" id="GL2"  > Greenland</div>
+			<div id="PM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('PM5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="PM" id="PM2"  > Saint Pierre<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Miquelon</div>
+			<div id="US">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('US5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="US" id="US2"  > United States</div>
+			<div id="AI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('AI5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="AI" id="AI2"  > Anguilla</div>
+			<div id="AG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('AG5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="AG" id="AG2"  > Antigua and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barbuda</div>
+			<div id="AW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('AW5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="AW" id="AW2"  > Aruba</div>
+			<div id="BS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BS5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BS" id="BS2"  > Bahamas</div>
+			<div id="BB">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BB5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BB" id="BB2"  > Barbados</div>
+			<div id="KY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('KY5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="KY" id="KY2"  > Cayman<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sIslands</div>
+			<div id="CU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('CU5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="CU" id="CU2"  > Cuba</div>
+			<div id="DM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('DM5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="DM" id="DM2"  > Dominica</div>
+			<div id="DO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('DO5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="DO" id="DO2"  > Dominican<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
+			<div id="GD">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('GD5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="GD" id="GD2"  > Grenada</div>
+			<div id="GP">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('GP5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="GP" id="GP2"  > Guadeloupe</div>
+			<div id="HT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('HT5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="HT" id="HT2"  > Haiti</div>
+			<div id="JM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('JM5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="JM" id="JM2"  > Jamaica</div>
+			<div id="MQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('MQ5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="MQ" id="MQ2"  > Martinique</div>
+			<div id="MS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('MS5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="MS" id="MS2"  > Montserrat</div>
+			<div id="PR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('PR5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="PR" id="PR2"  > Puerto Rico</div>
+			<div id="BL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BL5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BL" id="BL2"  > Saint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Barthélemy</div>
+			<div id="KN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('KN5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="KN" id="KN2"  > Saint Kitts and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nevis</div>
+			<div id="LC">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('LC5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="LC" id="LC2"  > Saint Lucia</div>
+			<div id="MF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('MF5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="MF" id="MF2"  > Saint Martin<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(French part)</div>
+			<div id="VC">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('VC5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="VC" id="VC2"  > Saint Vincent<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Grenadines</div>
+			<div id="TT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('TT5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="TT" id="TT2"  > Trinidad and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tobago</div>
+			<div id="TC">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('TC5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="TC" id="TC2"  > Turks and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Caicos Islands</div>
+			<div id="VG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('VG5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="VG" id="VG2"  > Virgin Islands,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;British</div>
+			<div id="VI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('VI5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="VI" id="VI2"  > Virgin Islands,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;U.S.</div>
+			<div id="BZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BZ5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BZ" id="BZ2"  > Belize</div>
+			<div id="CR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('CR5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="CR" id="CR2"  > Costa Rica</div>
+			<div id="SV">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('SV5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="SV" id="SV2"  > El Salvador</div>
+			<div id="GT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('GT5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="GT" id="GT2"  > Guatemala</div>
+			<div id="HN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('HN5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="HN" id="HN2"  > Honduras</div>
+			<div id="MX">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('MX5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="MX" id="MX2"  > Mexico</div>
+			<div id="NI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('NI5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="NI" id="NI2"  > Nicaragua</div>
+			<div id="PA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('PA5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="PA" id="PA2"  > Panama</div>
+			<div id="AR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('AR5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="AR" id="AR2"  > Argentina</div>
+			<div id="BO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BO5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BO" id="BO2"  > Bolivia,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plurinational<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;State of</div>
+			<div id="BR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BR5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BR" id="BR2"  > Brazil</div>
+			<div id="CL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('CL5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="CL" id="CL2"  > Chile</div>
+			<div id="CO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('CO5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="CO" id="CO2"  > Colombia</div>
+			<div id="EC">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('EC5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="EC" id="EC2"  > Ecuador</div>
+			<div id="FK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('FK5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="FK" id="FK2"  > Falkland<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Malvinas)</div>
+			<div id="GF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('GF5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="GF" id="GF2"  > French Guiana</div>
+			<div id="GY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('GY5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="GY" id="GY2"  > Guyana</div>
+			<div id="PY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('PY5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="PY" id="PY2"  > Paraguay</div>
+			<div id="PE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('PE5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="PE" id="PE2"  > Peru</div>
+			<div id="SR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('SR5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="SR" id="SR2"  > Suriname</div>
+			<div id="UY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('UY5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="UY" id="UY2"  > Uruguay</div>
+			<div id="VE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('VE5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="VE" id="VE2"  > Venezuela,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bolivarian <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div><br /><br /></div>
 
 
 
 
 
 			<div class="two columns" style="width:16%">
-				<div id="AsiaDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='Asia' id='anyAsia'  ><font style="font-size:1.2em; color:#575758">Asia</font></div>
-				<div id='KZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KZ' id='KZ2'  > Kazakhstan</div>
-				<div id='KG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KG' id='KG2'  > Kyrgyzstan</div>
-				<div id='TJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TJ' id='TJ2'  > Tajikistan</div>
-				<div id='TM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TM' id='TM2'  > Turkmenistan</div>
-				<div id='UZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='UZ' id='UZ2'  > Uzbekistan</div>
-				<div id='CN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='CN' id='CN2'  > China</div>
-				<div id='HK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='HK' id='HK2'  > Hong Kong</div>
-				<div id='JP'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='JP' id='JP2'  > Japan</div>
-				<div id='KP'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KP' id='KP2'  > Korea,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democratic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;People's<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
-				<div id='KR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KR' id='KR2'  > Korea,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
-				<div id='MO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MO' id='MO2'  > Macao</div>
-				<div id='MN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MN' id='MN2'  > Mongolia</div>
-				<div id='TW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TW' id='TW2'  > Taiwan,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Province of<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;China</div>
-				<div id='AF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='AF' id='AF2'  > Afghanistan</div>
-				<div id='BD'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='BD' id='BD2'  > Bangladesh</div>
-				<div id='BT'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='BT' id='BT2'  > Bhutan</div>
-				<div id='IN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='IN' id='IN2'  > India</div>
-				<div id='IR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='IR' id='IR2'  > Iran, Islamic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
-				<div id='MV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MV' id='MV2'  > Maldives</div>
-				<div id='NP'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='NP' id='NP2'  > Nepal</div>
-				<div id='PK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='PK' id='PK2'  > Pakistan</div>
-				<div id='LK'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='LK' id='LK2'  > Sri Lanka</div>
-				<div id='BN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='BN' id='BN2'  > Brunei<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Darussalam</div>
-				<div id='KH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KH' id='KH2'  > Cambodia</div>
-				<div id='ID'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='ID' id='ID2'  > Indonesia</div>
-				<div id='LA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='LA' id='LA2'  > Lao Peoples<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democratic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
-				<div id='MY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MY' id='MY2'  > Malaysia</div>
-				<div id='MM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='MM' id='MM2'  > Myanmar</div>
-				<div id='PH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='PH' id='PH2'  > Philippines</div>
-				<div id='SG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='SG' id='SG2'  > Singapore</div>
-				<div id='TH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TH' id='TH2'  > Thailand</div>
-				<div id='TL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TL' id='TL2'  > Timor-Leste</div>
-				<div id='VN'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='VN' id='VN2'  > Viet Nam</div>
-				<div id='AM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='AM' id='AM2'  > Armenia</div>
-				<div id='AZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='AZ' id='AZ2'  > Azerbaijan</div>
-				<div id='BH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='BH' id='BH2'  > Bahrain</div>
-				<div id='CY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='CY' id='CY2'  > Cyprus</div>
-				<div id='GE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='GE' id='GE2'  > Georgia</div>
-				<div id='IQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='IQ' id='IQ2'  > Iraq</div>
-				<div id='IL'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='IL' id='IL2'  > Israel</div>
-				<div id='JO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='JO' id='JO2'  > Jordan</div>
-				<div id='KW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='KW' id='KW2'  > Kuwait</div>
-				<div id='LB'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='LB' id='LB2'  > Lebanon</div>
-				<div id='OM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='OM' id='OM2'  > Oman</div>
-				<div id='PS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='PS' id='PS2'  > Palestinian<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territory, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Occupied</div>
-				<div id='QA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='QA' id='QA2'  > Qatar</div>
-				<div id='SA'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='SA' id='SA2'  > Saudi Arabia</div>
-				<div id='SY'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='SY' id='SY2'  > Syrian Arab<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
-				<div id='TR'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='TR' id='TR2'  > Turkey</div>
-				<div id='AE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='AE' id='AE2'  > United Arab<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emirates</div>
-				<div id='YE'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='YE' id='YE2'  > Yemen</div><br /><br /></div>
+				<div id="AsiaDiv"><input type="checkbox" onchange="$('#anyAsia5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='Asia' id='anyAsia'  ><font style="font-size:1.2em; color:#575758">Asia</font></div>
+				<div id="KZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KZ" id="KZ2"  > Kazakhstan</div>
+				<div id="KG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KG" id="KG2"  > Kyrgyzstan</div>
+				<div id="TJ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TJ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="TJ" id="TJ2"  > Tajikistan</div>
+				<div id="TM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="TM" id="TM2"  > Turkmenistan</div>
+				<div id="UZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#UZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="UZ" id="UZ2"  > Uzbekistan</div>
+				<div id="CN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CN5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="CN" id="CN2"  > China</div>
+				<div id="HK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#HK5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="HK" id="HK2"  > Hong Kong</div>
+				<div id="JP">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#JP5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="JP" id="JP2"  > Japan</div>
+				<div id="KP">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KP5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KP" id="KP2"  > Korea,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democratic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;People"s<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
+				<div id="KR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KR5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KR" id="KR2"  > Korea,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
+				<div id="MO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MO5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="MO" id="MO2"  > Macao</div>
+				<div id="MN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MN5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="MN" id="MN2"  > Mongolia</div>
+				<div id="TW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TW5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="TW" id="TW2"  > Taiwan,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Province of<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;China</div>
+				<div id="AF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AF5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="AF" id="AF2"  > Afghanistan</div>
+				<div id="BD">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BD5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="BD" id="BD2"  > Bangladesh</div>
+				<div id="BT">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BT5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="BT" id="BT2"  > Bhutan</div>
+				<div id="IN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IN5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="IN" id="IN2"  > India</div>
+				<div id="IR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IR5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="IR" id="IR2"  > Iran, Islamic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic of</div>
+				<div id="MV">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MV5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="MV" id="MV2"  > Maldives</div>
+				<div id="NP">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NP5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="NP" id="NP2"  > Nepal</div>
+				<div id="PK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#PK5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="PK" id="PK2"  > Pakistan</div>
+				<div id="LK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LK5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="LK" id="LK2"  > Sri Lanka</div>
+				<div id="BN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BN5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="BN" id="BN2"  > Brunei<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Darussalam</div>
+				<div id="KH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KH" id="KH2"  > Cambodia</div>
+				<div id="ID">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#ID5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="ID" id="ID2"  > Indonesia</div>
+				<div id="LA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="LA" id="LA2"  > Lao Peoples<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Democratic<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
+				<div id="MY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MY5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="MY" id="MY2"  > Malaysia</div>
+				<div id="MM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="MM" id="MM2"  > Myanmar</div>
+				<div id="PH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#PH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="PH" id="PH2"  > Philippines</div>
+				<div id="SG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="SG" id="SG2"  > Singapore</div>
+				<div id="TH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="TH" id="TH2"  > Thailand</div>
+				<div id="TL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TL5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="TL" id="TL2"  > Timor-Leste</div>
+				<div id="VN">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#VN5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="VN" id="VN2"  > Viet Nam</div>
+				<div id="AM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="AM" id="AM2"  > Armenia</div>
+				<div id="AZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="AZ" id="AZ2"  > Azerbaijan</div>
+				<div id="BH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="BH" id="BH2"  > Bahrain</div>
+				<div id="CY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CY5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="CY" id="CY2"  > Cyprus</div>
+				<div id="GE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="GE" id="GE2"  > Georgia</div>
+				<div id="IQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IQ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="IQ" id="IQ2"  > Iraq</div>
+				<div id="IL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IL5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="IL" id="IL2"  > Israel</div>
+				<div id="JO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#JO5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="JO" id="JO2"  > Jordan</div>
+				<div id="KW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KW5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KW" id="KW2"  > Kuwait</div>
+				<div id="LB">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LB5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="LB" id="LB2"  > Lebanon</div>
+				<div id="OM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#OM5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="OM" id="OM2"  > Oman</div>
+				<div id="PS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#PS5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="PS" id="PS2"  > Palestinian<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territory, <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Occupied</div>
+				<div id="QA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#QA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="QA" id="QA2"  > Qatar</div>
+				<div id="SA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SA5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="SA" id="SA2"  > Saudi Arabia</div>
+				<div id="SY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SY5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="SY" id="SY2"  > Syrian Arab<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Republic</div>
+				<div id="TR">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TR5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="TR" id="TR2"  > Turkey</div>
+				<div id="AE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="AE" id="AE2"  > United Arab<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Emirates</div>
+				<div id="YE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#YE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="YE" id="YE2"  > Yemen</div><br /><br /></div>
 
 
 
 
 
 		<div class="two columns" style="width:16%">
-			<div id="OceaniaDiv"><input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='Oceania' id='anyOceania'  ><font style="font-size:1.2em; color:#575758">Oceania</font></div>
-			<div id='AU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='AU' id='AU2'  > Australia</div>
-			<div id='NZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='NZ' id='NZ2'  > New Zealand</div>
-			<div id='NF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='NF' id='NF2'  > Norfolk Island</div>
-			<div id='FJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='FJ' id='FJ2'  > Fiji</div>
-			<div id='NC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='NC' id='NC2'  > New Caledonia</div>
-			<div id='PG'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='PG' id='PG2'  > Papua New<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guinea</div>
-			<div id='SB'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='SB' id='SB2'  > Solomon<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
-			<div id='VU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='VU' id='VU2'  > Vanuatu</div>
-			<div id='GU'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='GU' id='GU2'  > Guam</div>
-			<div id='KI'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='KI' id='KI2'  > Kiribati</div>
-			<div id='MH'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='MH' id='MH2'  > Marshall<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id="OceaniaDiv"><input type="checkbox" onchange="$('#anyOceania5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='Oceania' id='anyOceania'  ><font style="font-size:1.2em; color:#575758">Oceania</font></div>
+			<div id="AU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="AU" id="AU2"  > Australia</div>
+			<div id="NZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="NZ" id="NZ2"  > New Zealand</div>
+			<div id="NF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NF5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="NF" id="NF2"  > Norfolk Island</div>
+			<div id="FJ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#FJ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="FJ" id="FJ2"  > Fiji</div>
+			<div id="NC">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NC5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="NC" id="NC2"  > New Caledonia</div>
+			<div id="PG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#PG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="PG" id="PG2"  > Papua New<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Guinea</div>
+			<div id="SB">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SB5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="SB" id="SB2"  > Solomon<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id="VU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#VU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="VU" id="VU2"  > Vanuatu</div>
+			<div id="GU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="GU" id="GU2"  > Guam</div>
+			<div id="KI">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KI5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="KI" id="KI2"  > Kiribati</div>
+			<div id="MH">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#MH5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="MH" id="MH2"  > Marshall<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
 		
 		
 		
 		
 		<div id="others">
 			<div style="display:none">Other:</div>
-			<div id='AQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='AQ' id='AQ2'  > Antarctica</div>
-			<div id='BQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='BQ' id='BQ2'  > Bonaire, Sint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eustatius<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Saba</div>
-			<div id='BV'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='BV' id='BV2'  > Bouvet Island</div>
-			<div id='IO'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='IO' id='IO2'  > British Indian<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ocean<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territory</div>
-			<div id='CX'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='CX' id='CX2'  > Christmas<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Island</div>
-			<div id='CC'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='CC' id='CC2'  > Cocos<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Keeling)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
-			<div id='CW'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='CW' id='CW2'  > Curaçao</div>
-			<div id='TF'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='TF' id='TF2'  > French<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southern<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territories</div>
-			<div id='HM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='HM' id='HM2'  > Heard Island<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and McDonald <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
-			<div id='SX'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='SX' id='SX2'  > Sint Maarten<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Dutch part)</div>
-			<div id='GS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='GS' id='GS2'  > South Georgia<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the South <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sandwich<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
-			<div id='SS'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='SS' id='SS2'  > South Sudan</div>
-			<div id='UM'>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value ='UM' id='UM2'  > United States<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minor Outlying <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div><br /><br /></div>
+			<div id="AQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AQ').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="AQ" id="AQ2"  > Antarctica</div>
+			<div id="BQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BQ').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="BQ" id="BQ2"  > Bonaire, Sint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eustatius<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Saba</div>
+			<div id="BV">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BV').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="BV" id="BV2"  > Bouvet Island</div>
+			<div id="IO">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#IO').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="IO" id="IO2"  > British Indian<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ocean<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territory</div>
+			<div id="CX">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CX').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="CX" id="CX2"  > Christmas<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Island</div>
+			<div id="CC">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CC').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="CC" id="CC2"  > Cocos<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Keeling)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id="CW">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#CW').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="CW" id="CW2"  > Curaçao</div>
+			<div id="TF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TF').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="TF" id="TF2"  > French<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southern<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Territories</div>
+			<div id="HM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#HM').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="HM" id="HM2"  > Heard Island<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and McDonald <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id="SX">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SX').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="SX" id="SX2"  > Sint Maarten<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Dutch part)</div>
+			<div id="GS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#GS').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="GS" id="GS2"  > South Georgia<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and the South <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sandwich<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div>
+			<div id="SS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SS').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="SS" id="SS2"  > South Sudan</div>
+			<div id="UM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#UM').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="UM" id="UM2"  > United States<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minor Outlying <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div><br /><br /></div>
 					<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 		</div>
 	
