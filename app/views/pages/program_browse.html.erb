@@ -22,91 +22,91 @@
 
 	<div class = "six columns" style="width:43%">
 		<font size="5px">
-			<%= link_to "Agriculture (#{@agriculture.count})", {:action => :create}, :method => :post, :subject => "Agriculture"%><br />
+			<%= link_to "Agriculture (#{@agriculture.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Agriculture"%><br />
 		</font>
-			&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@organic_farming.count})", {:action => :create}, :method => :post, :subject => "Organic Farming" %><br />
-			&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", {:action => :create}, :method => :post, :subject => "Sustainable Development" %><br /><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@organic_farming.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Organic Farming" %><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Sustainable Development" %><br /><br />
 			<font size="5px">
-			<%= link_to "Animal Care (#{@animal_care.count})", {:action => :create}, :method => :post, :subject => "Animal Care" %><br />
+			<%= link_to "Animal Care (#{@animal_care.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Animal Care" %><br />
 			</font>
 
-			&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@animal_rights.count})", {:action => :create}, :method => :post, :subject => "Animal Rights" %><br />
-			&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", {:action => :create}, :method => :post, :subject => "Wildlife Conservation" %><br /><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@animal_rights.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Animal Rights" %><br />
+			&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Wildlife Conservation" %><br /><br />
 
 			<font size="5px">
-			<%= link_to "Caregiving (#{@caregiving.count})", {:action => :create}, :method => :post, :subject => "Caregiving" %><br />
+			<%= link_to "Caregiving (#{@caregiving.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Caregiving" %><br />
 			</font>
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Elder Care (#{@elder_care.count})", {:action => :create}, :method => :post, :subject => "Elder Care" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Child/Orphan Care (#{@child_orphan_care.count})", {:action => :create}, :method => :post, :subject => "Child/Orphan Care" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Disabled Care (#{@disabled_care.count})", {:action => :create}, :method => :post, :subject => "Disabled Care" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Feed the Homeless (#{@feed_the_homeless.count})", {:action => :create}, :method => :post, :subject => "Feed the Homeless" %><br /><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Elder Care (#{@elder_care.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Elder Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Child/Orphan Care (#{@child_orphan_care.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Child/Orphan Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Disabled Care (#{@disabled_care.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Disabled Care" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Feed the Homeless (#{@feed_the_homeless.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Feed the Homeless" %><br /><br />
 			<font size="5px">
-				<%= link_to "Community Development (#{@community_development.count})", {:action => :create}, :method => :post, :subject => "Community Development" %><br />
+				<%= link_to "Community Development (#{@community_development.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Community Development" %><br />
 			</font>
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Youth Development and Outreach (#{@youth_development_and_outreach.count})", {:action => :create}, :method => :post, :subject => "Youth Development and Outreach" %><br /><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Youth Development and Outreach (#{@youth_development_and_outreach.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Youth Development and Outreach" %><br /><br />
 			<font size="5px">
-				<%= link_to "Culture & Community (#{@culture_and_community.count})", {:action => :create}, :method => :post, :subject => "Culture & Community" %><br />
+				<%= link_to "Culture & Community (#{@culture_and_community.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Culture & Community" %><br />
 			</font>
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Performing Arts (#{@performing_arts.count})", {:action => :create}, :method => :post, :subject => "Performing Arts" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Fashion (#{@fashion.count})", {:action => :create}, :method => :post, :subject => "Fashion" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Music (#{@music.count})", {:action => :create}, :method => :post, :subject => "Music" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Sports & Recreation (#{@sports_and_recreation.count})", {:action => :create}, :method => :post, :subject => "Sports & Recreation" %><br />
-		&nbsp;&nbsp;&nbsp;	<%= link_to "Journalism (#{@journalism.count})", {:action => :create}, :method => :post, :subject => "Journalism" %><br /><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Performing Arts (#{@performing_arts.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Performing Arts" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Fashion (#{@fashion.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Fashion" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Music (#{@music.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Music" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Sports & Recreation (#{@sports_and_recreation.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Sports & Recreation" %><br />
+		&nbsp;&nbsp;&nbsp;	<%= link_to "Journalism (#{@journalism.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Journalism" %><br /><br />
 			<font size="5px">
-				<%= link_to "Disaster Relief (#{@disaster_relief.count})", {:action => :create}, :method => :post, :subject => "Disaster Relief" %><br />
+				<%= link_to "Disaster Relief (#{@disaster_relief.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Disaster Relief" %><br />
 				</font>
-		&nbsp;&nbsp;&nbsp;		<%= link_to "Economics (#{@economics.count})", {:action => :create}, :method => :post, :subject => "Economics" %><br />
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Microfinance (#{@microfinance.count})", {:action => :create}, :method => :post, :subject => "Microfinance" %><br /><br />
+		&nbsp;&nbsp;&nbsp;		<%= link_to "Economics (#{@economics.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Economics" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Microfinance (#{@microfinance.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Microfinance" %><br /><br />
 				<font size="5px">
-					<%= link_to "Education (#{@education.count})", {:action => :create}, :method => :post, :subject => "Education" %><br />
+					<%= link_to "Education (#{@education.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Education" %><br />
 				</font>
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching English (#{@teaching_english.count})", {:action => :create}, :method => :post, :subject => "Teaching English" %><br />
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Buddhist Monks (#{@teaching_buddhist_monks.count})", {:action => :create}, :method => :post, :subject => "Teaching Buddhist Monks" %><br />
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Children (#{@teaching_children.count})", {:action => :create}, :method => :post, :subject => "Teaching Children" %><br />
-			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", {:action => :create}, :method => :post, :subject => "Teaching Computer Literacy" %><br /><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching English (#{@teaching_english.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Teaching English" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Buddhist Monks (#{@teaching_buddhist_monks.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Teaching Buddhist Monks" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Children (#{@teaching_children.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Teaching Children" %><br />
+			&nbsp;&nbsp;&nbsp;	<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Teaching Computer Literacy" %><br /><br />
 				</div>
 
 			<div class= "four columns" style="width:52%">
 				<font size="5px">
-					<%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", {:action => :create}, :method => :post, :subject => "Engineering and Infrastructure" %><br /><br />
-					<%= link_to "Environmental (#{@environmental.count})", {:action => :create}, :method => :post, :subject => "Environmental" %><br />
+					<%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Engineering and Infrastructure" %><br /><br />
+					<%= link_to "Environmental (#{@environmental.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Environmental" %><br />
 					</font>
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Ecological Conservation (#{@ecological_conservation.count})", {:action => :create}, :method => :post, :subject => "Ecological Conservation" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Sustainable Development (#{@sustainable_development.count})", {:action => :create}, :method => :post, :subject => "Sustainable Development" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", {:action => :create}, :method => :post, :subject => "Wildlife Conservation" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Habitat Restoration (#{@habitat_restoration.count})", {:action => :create}, :method => :post, :subject => "Habitat Restoration" %><br /><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Ecological Conservation (#{@ecological_conservation.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Ecological Conservation" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Sustainable Development (#{@sustainable_development.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Sustainable Development" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Wildlife Conservation" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Habitat Restoration (#{@habitat_restoration.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Habitat Restoration" %><br /><br />
 					<font size="5px">
-				<%= link_to "Health and Medicine (#{@health_and_medicine.count})", {:action => :create}, :method => :post, :subject => "Health and Medicine" %><br />
+				<%= link_to "Health and Medicine (#{@health_and_medicine.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Health and Medicine" %><br />
 					</font>
-				&nbsp;&nbsp;&nbsp;	<%= link_to "HIV/AIDS (#{@hiv_aids.count})", {:action => :create}, :method => :post, :subject => "HIV/AIDS" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Nutrition (#{@nutrition.count})", {:action => :create}, :method => :post, :subject => "Nutrition" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Family Planning (#{@family_planning.count})", {:action => :create}, :method => :post, :subject => "Family Planning" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Veterinary Medicine (#{@veterinary_medicine.count})", {:action => :create}, :method => :post, :subject => "Veterinary Medicine" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Clinical Work (#{@clinical_work.count})", {:action => :create}, :method => :post, :subject => "Clinical Work" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Dental Work (#{@dental_work.count})", {:action => :create}, :method => :post, :subject => "Dental Work" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Medical Research (#{@medical_research.count})", {:action => :create}, :method => :post, :subject => "Medical Research" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Health Education (#{@health_education.count})", {:action => :create}, :method => :post, :subject => "Health Education" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Public Health (#{@public_health.count})", {:action => :create}, :method => :post, :subject => "Public Health" %><br />
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Hospital Care-giving (#{@hospital_care_giving.count})", {:action => :create}, :method => :post, :subject => "Hospital Care-giving" %><br /><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "HIV/AIDS (#{@hiv_aids.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "HIV/AIDS" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Nutrition (#{@nutrition.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Nutrition" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Family Planning (#{@family_planning.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Family Planning" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Veterinary Medicine (#{@veterinary_medicine.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Veterinary Medicine" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Clinical Work (#{@clinical_work.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Clinical Work" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Dental Work (#{@dental_work.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Dental Work" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Medical Research (#{@medical_research.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Medical Research" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Health Education (#{@health_education.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Health Education" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Public Health (#{@public_health.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Public Health" %><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Hospital Care-giving (#{@hospital_care_giving.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Hospital Care-giving" %><br /><br />
 					<font size="5px">
-						<%= link_to "Human Rights (#{@human_rights.count})", {:action => :create}, :method => :post, :subject => "Human Rights" %><br />
+						<%= link_to "Human Rights (#{@human_rights.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Human Rights" %><br />
 					</font>
-				&nbsp;&nbsp;&nbsp;	<%= link_to "Women's Initiatives (#{@womens_initiatives.count})", {:action => :create}, :method => :post, :subject => "Womens Initiatives" %><br /><br />
+				&nbsp;&nbsp;&nbsp;	<%= link_to "Women's Initiatives (#{@womens_initiatives.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Womens Initiatives" %><br /><br />
 					<font size="5px">
-						<%= link_to "International Work Camp (#{@international_work_camp.count})", {:action => :create}, :method => :post, :subject => "International Work Camp" %><br /><br />
-						<%= link_to "Recreation (#{@recreation.count})", {:action => :create}, :method => :post, :subject => "Recreation" %><br />
+						<%= link_to "International Work Camp (#{@international_work_camp.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "International Work Camp" %><br /><br />
+						<%= link_to "Recreation (#{@recreation.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Recreation" %><br />
 						</font>
-				&nbsp;&nbsp;&nbsp;		<%= link_to "Adventure Travel (#{@adventure_travel.count})", {:action => :create}, :method => :post, :subject => "Adventure Travel" %><br /><br />
+				&nbsp;&nbsp;&nbsp;		<%= link_to "Adventure Travel (#{@adventure_travel.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Adventure Travel" %><br /><br />
 						<font size="5px">
-							<%= link_to "Scientific Research (#{@scientific_research.count})", {:action => :create}, :method => :post, :subject => "Scientific Research" %><br />
+							<%= link_to "Scientific Research (#{@scientific_research.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Scientific Research" %><br />
 							</font>
-					&nbsp;&nbsp;&nbsp;		<%= link_to "Archaeology (#{@archaeology.count})", {:action => :create}, :method => :post, :subject => "Archaeology" %><br />
-					&nbsp;&nbsp;&nbsp;		<%= link_to "Environmental Biology (#{@environmental_biology.count})", {:action => :create}, :method => :post, :subject => "Environmental Biology" %><br /><br />
+					&nbsp;&nbsp;&nbsp;		<%= link_to "Archaeology (#{@archaeology.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Archaeology" %><br />
+					&nbsp;&nbsp;&nbsp;		<%= link_to "Environmental Biology (#{@environmental_biology.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Environmental Biology" %><br /><br />
 							<font size="5px">
-								<%= link_to "Technology (#{@technology.count})", {:action => :create}, :method => :post, :subject => "Technology" %><br />
+								<%= link_to "Technology (#{@technology.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Technology" %><br />
 							</font>
-						&nbsp;&nbsp;&nbsp;	<%= link_to "Teach Computer Literacy (#{@teaching_computer_literacy.count})", {:action => :create}, :method => :post, :subject => "Teaching Computer Literacy" %><br />
-						&nbsp;&nbsp;&nbsp;	<%= link_to "Media, Marketing, and Graphic Design (#{@media_marketing_and_graphic_design.count})", {:action => :create}, :method => :post, :subject => "Media Marketing and Graphic Design" %><br /><br />
+						&nbsp;&nbsp;&nbsp;	<%= link_to "Teach Computer Literacy (#{@teaching_computer_literacy.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Teaching Computer Literacy" %><br />
+						&nbsp;&nbsp;&nbsp;	<%= link_to "Media, Marketing, and Graphic Design (#{@media_marketing_and_graphic_design.count})", {:action => :create, :controller => "searches"}, :method => :post, :subject => "Media Marketing and Graphic Design" %><br /><br />
 				</div>
 
 		</div>
