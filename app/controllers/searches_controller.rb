@@ -102,14 +102,13 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
+    @search = Search.new(params[:search])
     if !(params[:subject].nil?)
-      params[:search][:subjects] = [] << params[:subject]
+      @search.subjects = [] << params[:subject]
     end
     if !(params[:location].nil?)
-      params[:search][:regions] = [] << params[:location]
+      @search.regions = [] << params[:location]
     end
-    @search = Search.new(params[:search])
-
     
     if @search.subjects.include?('Agriculture')
       @search.subjects = ['Organic Farming', 'Sustainable Development'] + (@search.subjects.split("; "))
