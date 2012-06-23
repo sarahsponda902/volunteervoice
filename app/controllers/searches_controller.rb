@@ -1396,6 +1396,10 @@ class SearchesController < ApplicationController
     if params[:search][:sizes].include?("false")
       params[:search][:sizes] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
     end
+     params[:search][:regions] = params[:search][:regions].join("; ")
+      params[:search][:subjects] = params[:search][:subjects].join("; ")
+      params[:search][:lengths] = params[:search][:lengths].join("; ") unless params[:search][:lengths].class.name == "String"
+      params[:search][:sizes] = params[:search][:sizes].join("; ") unless params[:search][:lengths].class.name == "String"
     
     
       respond_to do |format|
