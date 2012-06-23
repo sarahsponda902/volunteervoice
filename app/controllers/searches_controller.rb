@@ -797,8 +797,7 @@ class SearchesController < ApplicationController
   # PUT /searches/1
   # PUT /searches/1.json
   def update
-    @search_actual = Search.find(params[:id])
-    @search = Search.new(params[:search])
+    @search = Search.find(params[:id])
 
     
     
@@ -812,7 +811,7 @@ class SearchesController < ApplicationController
       @search.subjects = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + (@search.subjects.split("; "))
     end
     if @search.subjects.include?('Community Development')
-      @search.subjects = @search.subjects+['Youth Development and Outreach'] + (@search.subjects.split("; "))
+      @search.subjects = ['Youth Development and Outreach'] + (@search.subjects.split("; "))
     end
     if @search.subjects.include?('Culture and Community')
       @search.subjects = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + (@search.subjects.split("; "))
@@ -1399,15 +1398,8 @@ class SearchesController < ApplicationController
     end
     
     
-    params[:search][:regions] = @search.regions.join("; ") unless @search.regions.class.name == "String"
-    params[:search][:subjects] = @search.subjects.join("; ") unless @search.subjects.class.name == "String"
-    params[:search][:lengths] = @search.lengths.join("; ") unless @search.lengths.class.name == "String"
-    params[:search][:sizes] = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
-    params[:search][:price_min] = @search.price_min
-    params[:search][:price_max] = @search.price_max
-    
-    respond_to do |format|
-      if @search_actual.update_attributes(params[:search])
+      respond_to do |format|
+      if @search.update_attributes(params[:search])
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
         format.json { head :no_content }
       else
