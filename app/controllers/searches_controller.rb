@@ -65,16 +65,6 @@ class SearchesController < ApplicationController
         with(:program_lengths).any_of(lengths) unless lengths.blank?
 
         with(:program_sizes).any_of(sizes) unless sizes.blank?
-        
-        order_by :overall, :desc if sort_by == "ratinghigh"
-        
-        order_by :overall if sort_by == "ratinglow"
-        
-        order_by :name if sort_by == "alphabetical"
-        
-        order_by :weekly_cost, :desc if sort_by == "pricehigh"
-        
-        order_by :weekly_cost if sort_by == "pricelow"
       end
     
     @results = @the_search.results
@@ -84,10 +74,13 @@ class SearchesController < ApplicationController
         @organization_results << Organization.find(p.organization_id) unless @organization_results.include?(Organization.find(p.organization_id))
       end
       @results = @organization_results
-      @results.sort_by!(&:overall) if @search.sort_by == "ratinghigh"
-      @results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinglow"
-      @results.sort_by!(&:name) if @search.sort_by == "alphabetical"
     end
+    
+    @results.sort_by!(&:overall) if @search.sort_by == "ratinghigh"
+    @results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinglow"
+    @results.sort_by!(&:name) if @search.sort_by == "alphabetical"
+    @results.sort_by!(&:weekly_cost) if @search.sort_by == "pricelow"
+    @results.sort_by!(&:weekly_cost).reverse! if @search.sort_by == "pricehigh"
         
     respond_to do |format|
       format.html # show.html.erb
