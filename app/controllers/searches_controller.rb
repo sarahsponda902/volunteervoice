@@ -1339,8 +1339,8 @@ class SearchesController < ApplicationController
     end
     
     
-    @search.regions = @search.regions.join("; ")
-    @search.subjects = @search.subjects.join("; ")
+    @search.regions = @search.regions.join("; ") unless @search.regions.class.name == "String"
+    @search.subjects = @search.subjects.join("; ") unless @search.subjects.class.name == "String"
     @search.lengths = @search.lengths.join("; ") unless @search.lengths.class.name == "String"
     @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
     
