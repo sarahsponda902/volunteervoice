@@ -76,8 +76,8 @@ class SearchesController < ApplicationController
       @results = @organization_results
     end
     
-    @results.sort_by!(&:overall) if @search.sort_by == "ratinghigh"
-    @results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinglow"
+    @results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinghigh"
+    @results.sort_by!(&:overall) if @search.sort_by == "ratinglow"
     @results.sort_by!(&:name) if @search.sort_by == "alphabetical"
     @results.sort_by!(&:weekly_cost) if @search.sort_by == "pricelow"
     @results.sort_by!(&:weekly_cost).reverse! if @search.sort_by == "pricehigh"
