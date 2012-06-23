@@ -110,16 +110,16 @@ class SearchesController < ApplicationController
       @search.regions = [] << params[:location]
     end
     if @search.subjects.nil?
-      @search.subjects = []
+      @search.subjects = ["false"]
     end
     if @search.regions.nil?
-      @search.regions = []
+      @search.regions = ["false"]
     end
     if @search.lengths.nil?
-      @search.lengths = []
+      @search.lengths = ["false"]
     end
     if @search.sizes.nil?
-      @search.sizes = []
+      @search.sizes = ["false"]
     end
     if @search.price_max.nil?
       @search.price_max = 10000
