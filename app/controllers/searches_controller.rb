@@ -1397,11 +1397,17 @@ class SearchesController < ApplicationController
       @search.sizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
     end
     
+    @search.regions.join!("; ") unless @search.regions.class.name == "String"
+    @search.subjects.join!("; ") unless @search.subjects.class.name == "String"
+    @search.lengths.join!("; ") unless @search.lengths.class.name == "String"
+    @search.sizes.join!("; ") unless @search.sizes.class.name == "String"
     
-    @search.regions = @search.regions.join("; ") unless @search.regions.class.name == "String"
-    @search.subjects = @search.subjects.join("; ") unless @search.subjects.class.name == "String"
-    @search.lengths = @search.lengths.join("; ") unless @search.lengths.class.name == "String"
-    @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
+    
+    params[:search][:regions] = @search.regions
+    params[:search][:subjects] = @search.subjects
+    params[:search][:lengths] = @search.lengths
+    params[:search][:sizes] = @search.sizes
+
     
     respond_to do |format|
       if @search.update_attributes(params[:search])
