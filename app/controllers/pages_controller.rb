@@ -609,60 +609,60 @@ class PagesController < ApplicationController
 
     
     def program_browse
-      @organic_farming = Program.where(:subject => "Organic Farming")
-      @sustainable_development = Program.where(:subject => "Sustainable Development")
-      @animal_rights = Program.where(:subject => "Animal Rights")
-      @wildlife_conservation = Program.where(:subject => "Wildlife Conservation")
-      @elder_care = Program.where(:subject => "Elder Care")
-      @child_orphan_care = Program.where(:subject => "Child/Orphan Care")
-      @disabled_care = Program.where(:subject => "Disabled Care")
-      @feed_the_homeless = Program.where(:subject => "Feed the Homeless")
-      @youth_development_and_outreach = Program.where(:subject => "Youth Development and Outreach")
-      @performing_arts = Program.where(:subject => "Performing Arts")
-      @fashion = Program.where(:subject => "Fashion")
-      @music = Program.where(:subject => "Music")
-      @sports_and_recreation = Program.where(:subject => "Sports & Recreation")
-      @journalism = Program.where(:subject => "Journalism")
-      @economics = Program.where(:subject => "Economics")
-      @microfinance = Program.where(:subject => "Microfinance")
-      @teaching_english = Program.where(:subject => "Teaching English")
-      @teaching_buddhist_monks = Program.where(:subject => "Teaching Buddhist Monks")
-      @teaching_children = Program.where(:subject => "Teaching Children")
-      @teaching_computer_literacy = Program.where(:subject => "Teaching Computer Literacy")
-      @ecological_conservation = Program.where(:subject => "Ecological Conservation")
-      @habitat_restoration = Program.where(:subject => "Habitat Resotration")
-      @hiv_aids = Program.where(:subject => "HIV/AIDS")
-      @nutrition = Program.where(:subject => "Nutrition")
-      @family_planning = Program.where(:subject => "Family Planning")
-      @veterinary_medicine = Program.where(:subject => "Veterinary Medicine")
-      @clinical_work = Program.where(:subject => "Clinical Work")
-      @dental_work = Program.where(:subject => "Dental Work")
-      @medical_research = Program.where(:subject => "Medical Research")
-      @health_education = Program.where(:subject => "Health Education")
-      @public_health = Program.where(:subject => "Public Health")
-      @hospital_care_giving = Program.where(:subject => "Hospital Care-giving")
-      @womens_initiatives = Program.where(:subject => "Women's Initiatives")
-      @adventure_travel = Program.where(:subject => "Adventure Travel")
-      @archaeology = Program.where(:subject => "Archaeology")
-      @environmental_biology = Program.where(:subject => "Environmental Biology")
-      @media_marketing_and_graphic_design = Program.where(:subject => "Media, Marketing, and Graphic Design")
+      @organic_farming = ProgramSubject.where(:subject => "Organic Farming")
+      @sustainable_development = ProgramSubject.where(:subject => "Sustainable Development")
+      @animal_rights = ProgramSubject.where(:subject => "Animal Rights")
+      @wildlife_conservation = ProgramSubject.where(:subject => "Wildlife Conservation")
+      @elder_care = ProgramSubject.where(:subject => "Elder Care")
+      @child_orphan_care = ProgramSubject.where(:subject => "Child/Orphan Care")
+      @disabled_care = ProgramSubject.where(:subject => "Disabled Care")
+      @feed_the_homeless = ProgramSubject.where(:subject => "Feed the Homeless")
+      @youth_development_and_outreach = ProgramSubject.where(:subject => "Youth Development and Outreach")
+      @performing_arts = ProgramSubject.where(:subject => "Performing Arts")
+      @fashion = ProgramSubject.where(:subject => "Fashion")
+      @music = ProgramSubject.where(:subject => "Music")
+      @sports_and_recreation = ProgramSubject.where(:subject => "Sports & Recreation")
+      @journalism = ProgramSubject.where(:subject => "Journalism")
+      @economics = ProgramSubject.where(:subject => "Economics")
+      @microfinance = ProgramSubject.where(:subject => "Microfinance")
+      @teaching_english = ProgramSubject.where(:subject => "Teaching English")
+      @teaching_buddhist_monks = ProgramSubject.where(:subject => "Teaching Buddhist Monks")
+      @teaching_children = ProgramSubject.where(:subject => "Teaching Children")
+      @teaching_computer_literacy = ProgramSubject.where(:subject => "Teaching Computer Literacy")
+      @ecological_conservation = ProgramSubject.where(:subject => "Ecological Conservation")
+      @habitat_restoration = ProgramSubject.where(:subject => "Habitat Resotration")
+      @hiv_aids = ProgramSubject.where(:subject => "HIV/AIDS")
+      @nutrition = ProgramSubject.where(:subject => "Nutrition")
+      @family_planning = ProgramSubject.where(:subject => "Family Planning")
+      @veterinary_medicine = ProgramSubject.where(:subject => "Veterinary Medicine")
+      @clinical_work = ProgramSubject.where(:subject => "Clinical Work")
+      @dental_work = ProgramSubject.where(:subject => "Dental Work")
+      @medical_research = ProgramSubject.where(:subject => "Medical Research")
+      @health_education = ProgramSubject.where(:subject => "Health Education")
+      @public_health = ProgramSubject.where(:subject => "Public Health")
+      @hospital_care_giving = ProgramSubject.where(:subject => "Hospital Care-giving")
+      @womens_initiatives = ProgramSubject.where(:subject => "Women's Initiatives")
+      @adventure_travel = ProgramSubject.where(:subject => "Adventure Travel")
+      @archaeology = ProgramSubject.where(:subject => "Archaeology")
+      @environmental_biology = ProgramSubject.where(:subject => "Environmental Biology")
+      @media_marketing_and_graphic_design = ProgramSubject.where(:subject => "Media, Marketing, and Graphic Design")
       
-      @agriculture = Program.where(:subject => "Agriculture") + @organic_farming + @sustainable_development
-      @animal_care = Program.where(:subject => "Animal Care") + @animal_rights + @wildlife_conservation
-      @caregiving = Program.where(:subject => "Caregiving") + @elder_care + @child_orphan_care + @disabled_care + @feed_the_homeless
-      @community_development = Program.where(:subject => "Community Development") + @youth_development_and_outreach
-      @construction = Program.where(:subject => "Construction")
-      @culture_and_community = Program.where(:subject => "Culture & Community") + @performing_arts + @fashion + @music + @sports_and_recreation + @journalism
-      @disaster_relief = Program.where(:subject => "Disaster Relief") + @economics + @microfinance
-      @education = Program.where(:subject => "Education") + @teaching_english + @teaching_buddhist_monks + @teaching_children + @teaching_computer_literacy
-      @engineering_and_infrastructure = Program.where(:subject => "Engineering and Infrastructure")
-      @environmental = Program.where(:subject => "Environmental") + @ecological_conservation + @sustainable_development + @wildlife_conservation + @habitat_restoration
-      @health_and_medicine = Program.where(:subject => "Health and Medicine") + @hiv_aids + @nutrition + @family_planning + @veterinary_medicine + @clinical_work + @dental_work + @medical_research + @health_education + @public_health + @hospital_care_giving
-      @human_rights = Program.where(:subject => "Human Rights") + @womens_initiatives
-      @international_work_camp = Program.where(:subject => "International Work Camp")
-      @recreation = Program.where(:subject => "Recreation") + @adventure_travel
-      @scientific_research = Program.where(:subject => "Scientific Research") + @archaeology + @environmental_biology
-      @technology = Program.where(:subject => "Technology") + @teaching_computer_literacy + @media_marketing_and_graphic_design
+      @agriculture = ProgramSubject.where(:subject => "Agriculture") + @organic_farming + @sustainable_development
+      @animal_care = ProgramSubject.where(:subject => "Animal Care") + @animal_rights + @wildlife_conservation
+      @caregiving = ProgramSubject.where(:subject => "Caregiving") + @elder_care + @child_orphan_care + @disabled_care + @feed_the_homeless
+      @community_development = ProgramSubject.where(:subject => "Community Development") + @youth_development_and_outreach
+      @construction = ProgramSubject.where(:subject => "Construction")
+      @culture_and_community = ProgramSubject.where(:subject => "Culture & Community") + @performing_arts + @fashion + @music + @sports_and_recreation + @journalism
+      @disaster_relief = ProgramSubject.where(:subject => "Disaster Relief") + @economics + @microfinance
+      @education = ProgramSubject.where(:subject => "Education") + @teaching_english + @teaching_buddhist_monks + @teaching_children + @teaching_computer_literacy
+      @engineering_and_infrastructure = ProgramSubject.where(:subject => "Engineering and Infrastructure")
+      @environmental = ProgramSubject.where(:subject => "Environmental") + @ecological_conservation + @sustainable_development + @wildlife_conservation + @habitat_restoration
+      @health_and_medicine = ProgramSubject.where(:subject => "Health and Medicine") + @hiv_aids + @nutrition + @family_planning + @veterinary_medicine + @clinical_work + @dental_work + @medical_research + @health_education + @public_health + @hospital_care_giving
+      @human_rights = ProgramSubject.where(:subject => "Human Rights") + @womens_initiatives
+      @international_work_camp = ProgramSubject.where(:subject => "International Work Camp")
+      @recreation = ProgramSubject.where(:subject => "Recreation") + @adventure_travel
+      @scientific_research = ProgramSubject.where(:subject => "Scientific Research") + @archaeology + @environmental_biology
+      @technology = ProgramSubject.where(:subject => "Technology") + @teaching_computer_literacy + @media_marketing_and_graphic_design
       
     end
 
