@@ -234,7 +234,7 @@ a.orange:hover {color: #62acbd; }
 
 header.row {}
 
-input[name="search"] {  
+input[name="search[keywords]"] {  
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
     border-radius: 8px;
