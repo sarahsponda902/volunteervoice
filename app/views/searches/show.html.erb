@@ -226,7 +226,7 @@ $(document).ready(function() {
 	{
 		if (search_lengths.indexOf(allTheLengths[count]) != -1)
 		{
-			$("#"+allTheLengths[count]+"2").prop("checked", true);
+			$("#"+(count+1)+"_length").prop("checked", true);
 			$("#any2").prop("checked", false);
 		}
 	}
@@ -235,7 +235,7 @@ $(document).ready(function() {
 	{
 		if (search_sizes.indexOf(allTheSizes[count]) != -1)
 		{
-			$("#"+allTheSizes[count]+"2").prop("checked", true);
+			$("#"+(count+1)+"_group").prop("checked", true);
 			$("#any3").prop("checked", false);
 		}
 	}
