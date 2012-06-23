@@ -241,14 +241,14 @@ $(document).ready(function() {
 $(document).ready(function() {
 	<% if @search.showing == "Organizations" %>
 	$("#display").val("Organizations");
-	<% end %>
-	<% if !(@search.sort_by.nil?)%>
-	$("#sort").val("<%=@search.sort_by>");
-	<% end %>
-	<% if @search.showing != "Organizations" %>
+	<% else %>
 	$("#sort").append("<option value = 'pricelow'>Price - Low</option>");
 	$("#sort").append("<option value = 'pricehigh'>Price - High</option>");
 	<% end %>
+	<% if !(@search.sort_by.nil?)%>
+	$("#sort").val("<%=@search.sort_by%>");
+	<% end %>
+
 	
 	$('a.window').click(function() {
 
