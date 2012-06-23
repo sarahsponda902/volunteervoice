@@ -3,6 +3,8 @@ RMTest::Application.routes.draw do
   ##### SEARCHES
   match "searches/create" => "searches#create"
   
+  match "searchs/subject/:subject/create" => "searches#create"
+  
   match "searches/:location/create" => "searches#create"
   
   resources :searches
