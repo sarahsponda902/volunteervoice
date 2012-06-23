@@ -879,9 +879,8 @@ $(document).ready(function() {
 			<div id='UM'>&nbsp;&nbsp;&nbsp;&nbsp;<%= f.check_box :regions, :onclick => 'toggleBoxes(this)'  , :value => 'UM' , :id =>'UM2'  %> United States<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minor Outlying <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div><br /><br /></div>
 					<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
 		</div>
-	
+<%= f.submit "Submit", :id => "submit_form"%>	
 </div>
-<%= f.submit "Submit", :id => "submit_form"%>
 <%end%>
 </body>
 <script type='text/javascript'>
