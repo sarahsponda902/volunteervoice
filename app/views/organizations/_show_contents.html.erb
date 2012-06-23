@@ -8,7 +8,7 @@
 <% programLengths << f.length unless programLengths.include?(f.length)%>
 <% end %>
 
-<div class="container" style="margin-left:-15px; border:1px solid #575758; background-color:#E9ECE9; padding:bottom:25px; color:#575758; min-width:900px; margin-top:50px">
+<div class="container" style="margin-left:-15px; border:1px solid #575758; background-color:#E9ECE9; padding:bottom:25px; color:#575758; min-width:760px; margin-top:50px">
 	<div class="row">
 		<div class="two columns" style="margin:0;padding:0; width:18%; margin-top:20px; padding-left:20px">
 			<%= image_tag organization.square_image.url, :style =>"height:130px;width:130px" %>
@@ -78,7 +78,7 @@
 		<u><b>Details:</b></u>
 	</div>
 	<div class="eleven columns">
-		<div class="six columns" style="border-right:1px solid #e67b5a; font-size:1.1em;">
+		<div class="six columns" style="font-size:1.1em;">
 			<br />
 			<p style="font-weight:600">Operating since: </p><%=organization.operating_since%><br />
 			
@@ -98,7 +98,7 @@
 			<br />
 			
 		</div>
-		<div class="six columns" style="font-size:1.1em">
+		<div class="six columns" style="border-left:1px solid #e67b5a; font-size:1.1em">
 			<br />
 			<p><font style="font-weight:600">Price Ranges:</font> <a href="#price-ranges-box" class="price-ranges-window">Click here to view</a> </p><br />
 			
