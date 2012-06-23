@@ -1354,13 +1354,17 @@ class SearchesController < ApplicationController
     @search = Search.new
     @search.subjects = [] << params[:subject]
     params[:search] = @search
-    render action: "create"
+    respond_to do |format|
+      format.html {render action: "create"}
+    end
   end
   
   def map_search
     @search = Search.new
     @search.regions = [] << params[:location]
     params[:search] = @search
-    render action: "create"
+    respond_to do |format|
+      format.html {render action: "create"}
+    end
   end
 end

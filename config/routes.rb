@@ -255,10 +255,6 @@ RMTest::Application.routes.draw do
 
   resources :messages
   
-  resources :searches, :only => [:index]
-
-  resources :search, :only => [:index]
-  
   resources :programs do
   	resources :reviews
   	post :create_review, :on => :collection
@@ -266,18 +262,11 @@ RMTest::Application.routes.draw do
 
   resources :reviews
   
-  resources :review_photos, :only => [:index, :create, :destroy]
-  
   resources :users do 
     post :send_message, :on => :collection
     collection do
       get 'checkname'
     end
-  end
-  	
-
-  resources :organizations do
-    resources :comments
   end
   
   resources :organizations
