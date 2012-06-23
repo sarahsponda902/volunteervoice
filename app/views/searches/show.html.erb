@@ -448,7 +448,7 @@ $(document).ready(function() {
 			<% @results.each do |f|%>	
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
 			<% end %>
-		<% else% >
+		<% else %>
 			<% @results.each do |f|%>
 	
 				<%= render :partial => "organizations_results", :locals => {:f => f}%>
