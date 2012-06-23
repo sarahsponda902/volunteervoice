@@ -158,17 +158,21 @@
 	border: none;
 }
 
-.normal
+/*sent*/.program
+{
+	background-color: transparent;
+}
+.program.normal
 {
 	color: #62acbd;
 	border: none;
 }
-.active
+.program.active
 {
 	color: #e67b5a;
 	border: none;
 }
-.btn
+.pager.program .btn
 {
 	color: #62acbd;
 	border: none;
