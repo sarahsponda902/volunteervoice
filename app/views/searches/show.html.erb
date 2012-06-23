@@ -105,9 +105,8 @@ $(document).ready(function() {
 		 }
 		if (search_regions.indexOf(allTheLocations[count]) != -1)
 		{
-			$("#"+allTheLocations[count]+"2").checked = true;
-			$("#any6").checked = false;
-			$("#blah").val("hello");
+			$("#"+allTheLocations[count]+"2").prop("checked", true);
+			$("#any6").prop("checked", false);
 		}
     }
 });
@@ -115,7 +114,6 @@ $(document).ready(function() {
 
 
 </script>
-<input id="blah" type="text"/>
 <script type="text/javascript">
 
 
