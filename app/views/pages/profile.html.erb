@@ -335,16 +335,7 @@ function openReplyBox(message_id) {
  </script>
 
 </head>
-<% if flash.class.name == "Array"%>
-<% flash.each do |key, value| %>
-  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your changes from being made:<br />
-	<% value.each do |f|%>
-		* <%=f%><br />
-	<% end %>
-  </div>
-<% end %>
-<% end %>
+
 <a href="#message-box" class="message-window" id="message-reply" style="display:none">Reply Link Here</a>
 <% @message = Message.new%>
 <div id="message-box" class="m-popup">
@@ -363,12 +354,24 @@ function openReplyBox(message_id) {
 	
 	
 </div>
-
+<div class="container">
+	<% if flash.class.name == "Array"%>
+	<% flash.each do |key, value| %>
+	  <div class="flash <%=key%>">
+	<%= pluralize value.length, "errors"%> prevented your changes from being made:<br />
+		<% value.each do |f|%>
+			* <%=f%><br />
+		<% end %>
+	  </div>
+	<% end %>
+	<% end %>
+</div>
 
 
 	<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
+
 	        <div class="row">
-				<div class="eleven columns" width="95%">
+				<div class="eleven columns">
 				<p style="border-top:1px solid #e67b5a; border-bottom:1px solid #F5825A; height:30px"><a href="#edit-box" class="edit-window" style="font-size:1.1em; float:right; margin-right:10px; margin-top:5px">My account</a>	<a href="#upload-box" class="upload-window" style="font-size:1.1em; float:right; padding-left:25px; margin-right:30px; margin-top:5px">Change Profile Image</a> </p>
 				</div>
 			</div>
