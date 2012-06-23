@@ -209,7 +209,7 @@ $(document).ready(function() {
 
 </div>
 </div>
-Got 1
+
 <div class = "container">
 	<div class= "row">
 		<div class="five columns" style="margin-left:5px">
@@ -223,7 +223,7 @@ Got 1
 		</div>
 		</div>
 </div>
-Got 2
+
 <div class="container" style="margin-left:-250px">
 	<div class="row">
 	<div class="two columns" style="height:50px"></div>
@@ -236,26 +236,25 @@ Got 2
 			<option value = "ratinghigh">Rating - High</option>
 			<option value = "ratinglow">Rating - Low</option>
 			<option value = "alphabetical">Alphabetical</option>
-			<% if @search.showing != "Organizations"%>
 			<option value = "pricelow">Price - Low</option>
 			<option value = "pricehigh">Price - High</option></select>
-			<% end %>
+
 										
 				</div>
 				<% end %>
-Got 3
+
 			</div>
 		</div>
 	</div>
-Got 4
+
 </div>
-Got 5
+
 </div>
 
 <div class="container">
 	<div class="row">	
 <div class="eleven columns" style="margin-top:-50px">
-<div style="margin-left:-10px; margin-top:60px;">
+<div class="contents" id="programs-contents" style="margin-left:-10px; margin-top:60px;">
 			<% if !(@results.empty?)%>	
 	<div id="divProgram" style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
 		<% if (@search.showing == "Programs" || @search.showing.nil?)%>
