@@ -243,6 +243,16 @@ input[name="search[keywords]"] {
 	width: 200px;
 	margin-bottom: 15px;
 	font-size:15px}
+	
+	input[name="search"] {  
+	    -moz-border-radius: 8px;
+	    -webkit-border-radius: 8px;
+	    border-radius: 8px;
+	 	border: 0;
+		height:30px;
+		width: 200px;
+		margin-bottom: 15px;
+		font-size:15px}
 
 a:active{color:#575758}
 a:visited{color:#575758}
