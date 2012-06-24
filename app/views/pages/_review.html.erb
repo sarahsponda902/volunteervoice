@@ -35,7 +35,7 @@
 </tr>
 </table>
 
-	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "/assets/editDelete.png"), :controller => "reviews", :action => "edit", :id => f.id %>  </p>
+	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "/assets/editDelete.png"), :controller => "reviews", :action => "edit", :id => f.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>  </p>
 
 	
 </div>

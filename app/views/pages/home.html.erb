@@ -243,7 +243,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
   </div>
 
   <div class="actions">
-    <p style="text-align:center"><%= image_submit_tag "/assets/sayIt.png"%></p>
+    <p style="text-align:center"><%= image_submit_tag "/assets/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
   </div>
 <% end %>
 	
