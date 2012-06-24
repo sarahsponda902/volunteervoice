@@ -1,5 +1,9 @@
 RMTest::Application.routes.draw do
   
+  get "errors/error_404"
+
+  get "errors/error_500"
+
   ##### SEARCHES
   match "searches/create" => "searches#create"
   
