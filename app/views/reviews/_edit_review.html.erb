@@ -67,9 +67,7 @@
 		<td>
 		<%= form_for @review, :method => :delete do%>
 		<%= image_submit_tag "/assets/RealDeleteReviewButton.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
-			<style>
-			.shadowed { opacity:0.8}
-			</style>
+
 		<% end %>
 </td></tr>
 </table>
@@ -88,6 +86,10 @@
 	div.star-rating{background:transparent!important;overflow:hidden!important;}
 	/* END jQuery.Rating Plugin CSS */
 
+	</style>
+	
+	<style>
+	.shadowed { opacity:0.8}
 	</style>
 	
 	
