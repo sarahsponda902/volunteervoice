@@ -21,8 +21,11 @@
 
 			</p>
 			<p style="text-align:center">
-				<%= image_submit_tag 'https://s3-us-west-1.amazonaws.com/volunteervoice/images/post.png' %>
+				<%= image_submit_tag 'https://s3-us-west-1.amazonaws.com/volunteervoice/images/post.png' , :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 			</p>
 		<% end %>
 	<% end %>
 </div>
+
+<style>
+.shadowed{opacity:0.8}
