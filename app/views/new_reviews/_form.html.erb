@@ -327,9 +327,9 @@ function removePeru() {
 	   <%= f.text_area :body, :value => if (@new_review.body.nil?) ("Minimum 200 characters."); else @new_review.body; end, :style => "width:86%; font-style:italic; margin-left:11%; height:150px", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"removeTwoHundred();this.style.fontStyle = 'normal' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Minimum 200 characters') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :class => "word_count"%>
 	<span style="float:right" class="counter"></span><br />
 	
-	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/editPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:20px; background:none; border:none; font-size:1.3em" value="0"/> photos attached</div></div>
+	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:20px; background:none; border:none; font-size:1.3em" value="0"/> photos attached</div></div>
 	
-	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/addPhotos.png"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:140px">No photos attached</div></div>
+	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "/assets/addPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:140px">No photos attached</div></div>
 
 	
 		<image style="position:absolute; top:82.9%; left:10%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
@@ -465,11 +465,11 @@ function removePeru() {
 
 
 		<div id="submitButtonHidden" style="text-align:center; margin-top:30px; color:#e67b5a"> <i>You cannot submit your review until<br /> all form fields are filled out <br />(except uploading photos, that's optional)</i></div>
-		<div style="text-align:center; margin-top:30px; display:none" id="submitButtonDiv"><%=image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png"), :id => "submitButton", :style => "cursor:pointer"%></div>
+		<div style="text-align:center; margin-top:30px; display:none" id="submitButtonDiv"><%=image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png"), :id => "submitButton", :style => "cursor:pointer", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 
 		<div style="margin-left:60%; margin-top:-60px">
 		<article class="formFAQ"><!-- FAQ information/link-->
-			 <a href="#qMark-box" class="qMark-window"><image src="/assets/clickLearnForm.png"></a>
+			 <a href="#qMark-box" class="qMark-window"><image src="/assets/clickLearnForm.png" onmousedown="this.className = 'shadowed'" onmouseup = "this.className = 'nothing'"></a>
 			</article><!--end formFAQ-->
 		</div>
 		</section><!--end reviewSubmit-->
@@ -491,7 +491,7 @@ function removePeru() {
 			<%= f.file_field :photo10, :id => "ten"  %><a onclick="$('#ten').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 
 			<div align = "center" style="margin-top:30px">
-			<input type="image" src="/assets/done.png" onclick="closePop(); changeCount(); return false" class="btn_close">
+			<input type="image" src="/assets/done.png" onclick="closePop(); changeCount(); return false" class="btn_close" onmousedown = "this.className = 'shadow'" onmouseup = "this.className='btn_close'">
 			</div>
 
 			</div>		

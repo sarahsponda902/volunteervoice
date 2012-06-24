@@ -96,7 +96,7 @@
 				<% @search = Search.new%>
 			<%= form_for @search do |f|%>
 				<div style="margin-bottom:15px; float:right;">
-			    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png", :style => "margin-bottom:-57px", :id =>"searchbutton"%></div>
+			    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png", :style => "margin-bottom:-57px", :id =>"searchbutton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 				<div style="margin-top:40px; float:right; margin-right:5px">
 				<input type="text" name="search[keywords]" id="searchfield"></div>
 			<% end %>
@@ -209,7 +209,7 @@
 			<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :style =>"opacity:0;"%></div><div style="margin-left:33px; margin-top:-20px; font-size:.85em"> Remember me</div><br />
 	
 
-		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px"%></div><br />
+		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
 
 		<a class="forgotPassword" style="font-size:.85em" href="/users/password/new">Forgot your password?</a>
 		<%end%>
