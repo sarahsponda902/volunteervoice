@@ -1,4 +1,8 @@
-require 'ext/action_view/template'
+class ActionDispatch::Request
+ def local?
+   false
+ end
+end
 
 RMTest::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
