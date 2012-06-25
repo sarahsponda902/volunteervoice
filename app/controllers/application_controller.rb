@@ -44,15 +44,25 @@ include SimpleCaptcha::ControllerHelpers
        rescue_from ActionController::UnknownController, with: :render_404
        rescue_from ActionController::UnknownAction, with: :render_404
        rescue_from ActiveRecord::RecordNotFound, with: :render_404
+       rescue_from ActionController::UnknownController,  with: :render_404
+       rescue_from ActionController::UnknownAction, with: :render_404
      end
 
      private
      def render_404(exception)
        @not_found_path = exception.message
-       respond_to do |format|
-         format.html { render template: 'errors/error_404', layout: 'layouts/application', status: 404 }
-         format.all { render nothing: true, status: 404 }
-       end
+       if !(@not_found_path.include?("searches")) 
+         respond_to do |format|
+           format.html { render template: 'errors/error_404', layout: 'layouts/application', status: 404 }
+           format.all { render nothing: true, status: 404 }
+         end
+      else
+         respond_to do |format|
+           format.html { render template: 'errors/error_searches', layout: 'layouts/application', status: 404 }
+           format.all { render nothing: true, status: 404 }
+         end
+      end
+        
      end
 
      def render_500(exception)
