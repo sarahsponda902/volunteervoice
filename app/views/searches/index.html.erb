@@ -13,11 +13,9 @@
     <th>Created At</th>
     <th>Updated At</th>
 	<th>Will Be Cleared?</th>
-    <th></th>
   </tr>
 <% @searches.each do |search| %>
   <tr>
-	<td><%= @count %></td>
     <td><%= search.created_at.strftime("%A %B %e %I:%M %p") %></td>
     <td><%= search.updated_at.strftime("%A %B %e %I:%M %p")%></td>
 	<td style="text-align:center">
