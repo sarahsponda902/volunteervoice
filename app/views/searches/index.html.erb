@@ -22,7 +22,7 @@
     <td><%= search.updated_at.strftime("%A %B %I:%M %p")%></td>
 	<td style="text-align:center">
 		<% if search.updated_at < 24.hours.ago %>
-		<font style="color:purple; font-weight:600">X</font>
+		<font style="color:red; font-weight:600">X</font>
 		<% end %>
 	</td>
   </tr>
