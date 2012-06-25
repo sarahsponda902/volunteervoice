@@ -52,17 +52,10 @@ include SimpleCaptcha::ControllerHelpers
      private
      def render_404(exception)
        @not_found_path = exception.message
-       if !(@not_found_path.include?("searches")) 
          respond_to do |format|
            format.html { render template: 'errors/error_404', layout: 'layouts/application', status: 404 }
            format.all { render nothing: true, status: 404 }
          end
-      else
-         respond_to do |format|
-           format.html { render template: 'errors/error_searches', layout: 'layouts/application', status: 404 }
-           format.all { render nothing: true, status: 404 }
-         end
-      end
         
      end
 
