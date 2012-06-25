@@ -33,7 +33,7 @@
 			    <% end %> 
 			  	</td>
 				<td style="width:1%"></td>
-				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#poster_id').val(<%=f.user_id%>); $('#review_id').val(<%=f.id%>)"><%= (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png") %></a></p></td>
+				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#poster_id').val(<%=f.user_id%>); $('#review_id').val(<%=f.id%>)"><%= (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png"), :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a></p></td>
 			</tr>
 			<% end %>
 		</table>

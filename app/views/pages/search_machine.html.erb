@@ -518,12 +518,12 @@ $(document).ready(function() {
 
 
 <div class="seven columns" style="padding-top:60px; width:60%;" >
-<%= image_submit_tag "/assets/submit.png", :style => "margin-left:30px"%>
+<%= image_submit_tag "/assets/submit.png", :style => "margin-left:30px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className => 'nothing'"%>
 <% end %>
 </div>
 </div>
 <div class="twelve columns" style="float:left; margin-top:-65px">
-<a href="#qMark-box" class="qMark-window"><image src="/assets/clickLearnForm.png"></a>
+<a href="#qMark-box" class="qMark-window"><image src="/assets/clickLearnForm.png" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"></a>
 </div>
 </div>
 </div>
