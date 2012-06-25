@@ -18,8 +18,8 @@
 <% @searches.each do |search| %>
   <tr>
 	<td><%= @count %></td>
-    <td><%= search.created_at.strftime("%A %B %I:%M %p") %></td>
-    <td><%= search.updated_at.strftime("%A %B %I:%M %p")%></td>
+    <td><%= search.created_at.strftime("%A %B %e %I:%M %p") %></td>
+    <td><%= search.updated_at.strftime("%A %B %e %I:%M %p")%></td>
 	<td style="text-align:center">
 		<% if search.updated_at < 24.hours.ago %>
 		<font style="color:red; font-weight:600">X</font>
