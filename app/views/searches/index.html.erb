@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="twelve columns">
 <p style="font-size:3em; text-align:center; margin-bottom:50px;margin-top:50px">Listing Searches</p>
-<p style="font-size:1.2em">Search Count: <%= @searches.count%> </p>
+<p style="font-size:1.2em">Search Count: <%= @searches.count%> </p><br /><br />
 <p style="font-size:1.5em"><%= button_to "Clear Old Searches", "/searches/erase_old"%></p>
 <br /><br /><br />
 
@@ -21,6 +21,8 @@
 	<td style="text-align:center">
 		<% if search.updated_at < 24.hours.ago %>
 		<font style="color:red; font-weight:600">X</font>
+		<% else %>
+		no
 		<% end %>
 	</td>
   </tr>
