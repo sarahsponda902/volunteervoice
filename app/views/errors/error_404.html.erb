@@ -1,11 +1,20 @@
 	<%= javascript_include_tag "/assets/jquery.js"%>
 	
 	<script type="text/javascript">
-	
+
+	function checkContactForSubmit() {
+		if ($("#email-contact").attr("value") != ""
+		 && $("#email-contact").attr("value").indexOf("@") > 0
+		 && $("#email-contact").attr("value").indexOf(".") > 0
+		 && $("#body-contact").attr("value") != "Must be at least 5 characters"
+		 && $("#body-contact").attr("value").length >= 5) {
+			$("#nosubmit-contact").hide();
+			$("#submit-contact").show();
+		}
+	}
 	
 	$(document).ready(function() {
-
-		
+		$("#submit-contact").hide();
 		
 		$('a.contact-window').click(function() {
 
