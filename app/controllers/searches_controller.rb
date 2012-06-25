@@ -38,12 +38,6 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    if !(Search.exists?(params[:id]))
-        respond_to do |format|
-          format.html {render :action => "error"}
-          format.json {head :no_content}
-        end
-    end
       @search = Search.find(params[:id])
     if @search.keywords.nil?
       keys = ""
