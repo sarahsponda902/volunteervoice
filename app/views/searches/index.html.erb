@@ -1,8 +1,10 @@
+<div class="container">
+	<div class="row">
+		<div class="twelve columns">
 <p style="font-size:3em; text-align:center; margin-bottom:50px;margin-top:50px">Listing Searches</p>
 
 <p style="font-size:1.5em"><%= button_to "Clear Old Searches", :controller => "searches", :action => "erase_old"%></p><br />
 <p style="font-size:1.2em">Search Count: <%= @searches.count%> </p> 
-<p style="margin-bottom:25px; font-size:1.2em; font-style:italic">**Note, all <font style="color:red; size:1.2em">red</font> searches will be cleared on click of "Clear Old Searches"</p>
 
 <table>
   <tr>
@@ -13,16 +15,14 @@
   </tr>
 <% @count = @searches.count%>
 <% @searches.each do |search| %>
-	<% if search.updated_at < 24.hours.ago %>
-  <tr style="color:red">
-	<% else %>
-  <tr style="color:black">
-	<% end %>
+  <tr>
 	<td><%= @count %></td>
     <td><%= search.created_at.strftime("%A %B %I:%M %p") %></td>
-    <td><%= search.updated_at.strftime("%A %B %I:%M %p")</td>
+    <td><%= search.updated_at.strftime("%A %B %I:%M %p")%></td>
   </tr>
 	<% @count = @count - 1%>
 <% end %>
 </table>
-
+</div>
+</div>
+</div>
