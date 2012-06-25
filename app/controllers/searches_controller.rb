@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
   # GET /searches.json
   def index
     if user_signed_in? && current_user.admin?
-      @searches = Search.all
+      @searches = Search.all.sort_by(&:updated_at).reverse
 
       respond_to do |format|
         format.html # index.html.erb
