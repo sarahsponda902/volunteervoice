@@ -3,10 +3,10 @@ RMTest::Application.routes.draw do
   get "errors/error_404"
 
   get "errors/error_500"
-  
-  get "errors/error_searches"
 
   ##### SEARCHES
+  
+  match "searches/error" => "searches#error"
   
   match "/searches/erase_old" => "searches#erase_old"
   

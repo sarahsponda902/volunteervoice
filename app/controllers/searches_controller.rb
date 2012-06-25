@@ -27,11 +27,23 @@ class SearchesController < ApplicationController
       redirect_to "/pages/search_machine"
     end
   end
+  
+  def error
+    @search = Search.new
+    respond_to do |format|
+      format.html
+    end
+  end
 
   # GET /searches/1
   # GET /searches/1.json
   def show
     @search = Search.find(params[:id])
+    if @search.nil
+      respond_to do |format|
+        format.html {render :action => "error"}
+        format.json {head :no_content}
+    end
     if @search.keywords.nil?
       keys = ""
     else
