@@ -43,6 +43,7 @@ class SearchesController < ApplicationController
       respond_to do |format|
         format.html {render :action => "error"}
         format.json {head :no_content}
+      end
     end
     if @search.keywords.nil?
       keys = ""
