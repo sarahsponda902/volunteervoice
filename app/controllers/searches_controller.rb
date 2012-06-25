@@ -22,6 +22,7 @@ class SearchesController < ApplicationController
           search.destroy
         end
       end
+      redirect_to "/searches"
     end
   end
 
