@@ -9,6 +9,15 @@ class SearchesController < ApplicationController
       format.json { render json: @searches }
     end
   end
+  
+  def erase_old
+    @searches = Search.all
+    @searches.each do |search|
+      if search.updated_at < 24.hours.ago
+        search.destroy
+      end
+    end
+  end
 
   # GET /searches/1
   # GET /searches/1.json
