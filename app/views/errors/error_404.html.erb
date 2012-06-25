@@ -3,11 +3,15 @@
 		<div class="twelve columns" style="text-align:center; margin-top:50px">
 <img src="/assets/Error404.png"><br /><br />
   <div style="padding-bottom:100px">
-    <p style="font-family:museoSlab500Regular; color:#575758; font-size:2em; line-height:1.3em">The page you were looking for doesn't exist.</p>
-    <p style="font-family:museoSlab500Regular; color:#575758; font-size:1.5em;line-height:1.3em">You may have mistyped the address or the page may have moved.</p>
+    <p style="font-family:museoSlab500Regular; color:#575758; font-size:1.3em; line-height:1.3em">The page you were looking for doesn't exist! Weird</p>
+    <p style="font-family:museoSlab500Regular; color:#575758; font-size:1.5em;line-height:1.3em">Please feel free to <a href="#contact-box" class="contact-window">contact us</a> if you are very confused.<br /><br />Or just try searching for something else!</p>
   </div>
- <div class="five columns" style="float:right; text-align:left; font-family:architectsDaughterRegular; font-size:1.3em; color:#e67b5a; padding-bottom:100px">Try searching for something here</div>
-<div style="position:absolute; top:-30px;left:820px"><img src="/assets/bigArrow.png"></div>
+<div style="margin-top:50px">
+	<form accept-charset="UTF-8" action="/searches/create" method="post">
+	  <input id="keywords" name="search[keywords]" type="text" />
+	  <input name="commit" type="image" src="/assets/searchButton.png"  />
+	</form>
+</div>
 	
 </div>
 </div>
