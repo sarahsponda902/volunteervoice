@@ -1,20 +1,25 @@
 <p style="font-size:3em; text-align:center; margin-bottom:50px;margin-top:50px">Listing searches</p>
 
-<p style="font-size:1.3em">Searches count: <%= @searches.count%></p><br />
-<p style="margin-bottom:25px; font-size:1.5em"><%= link_to "Clear Old Searches", :controller => "searches", :action => "erase_old"%></p>
+<p style="font-size:1.5em"><%= link_to "Clear Old Searches", :controller => "searches", :action => "erase_old"%></p><br />
+<p style="margin-bottom:25px; font-size:1.2em; font-style:italic">Search Count: <%= @searches.count%> <br /> **Note, all red searches will be cleared on click of "Clear Old Searches"</p>
 
 <table>
   <tr>
+	<th>Count</th>
     <th>Created At</th>
     <th>Updated At</th>
     <th></th>
   </tr>
-
+<% @count = 0%>
 <% @searches.each do |search| %>
-  <tr>
+	<% if search.updated_at < 24.hours.ago %>
+  <tr style="color:red">
+	<% else %>
+  <tr style="color:black">
+	<% end %>
+	<td><%= @count %></td>
     <td><%= search.created_at.to_date %> at <%= search.created_at.to_time%></td>
     <td><%= search.updated_at.to_date %> at <%= search.updated_at.to_time%></td>
-    <td><%= link_to 'Destroy', search, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
