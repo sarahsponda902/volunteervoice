@@ -2,19 +2,25 @@ class SearchesController < ApplicationController
   # GET /searches
   # GET /searches.json
   def index
-    @searches = Search.all
+    if user_signed_in? && current_user.admin?
+      @searches = Search.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @searches }
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @searches }
+      end
+    else
+      redirect_to "/pages/search_machine"
     end
   end
   
   def erase_old
-    @searches = Search.all
-    @searches.each do |search|
-      if search.updated_at < 24.hours.ago
-        search.destroy
+    if user_signed_in? && current_user.admin?
+      @searches = Search.all
+      @searches.each do |search|
+        if search.updated_at < 24.hours.ago
+          search.destroy
+        end
       end
     end
   end
