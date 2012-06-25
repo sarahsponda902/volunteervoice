@@ -3,7 +3,7 @@
 		<div class="twelve columns">
 <p style="font-size:3em; text-align:center; margin-bottom:50px;margin-top:50px">Listing Searches</p>
 
-<p style="font-size:1.5em"><%= button_to "Clear Old Searches", :controller => "searches", :action => "erase_old"%></p><br />
+<p style="font-size:1.5em"><%= button_to "Clear Old Searches", {:controller => "searches", :action => "erase_old"}%></p><br />
 <p style="font-size:1.2em">Search Count: <%= @searches.count%> </p> 
 
 <table>
