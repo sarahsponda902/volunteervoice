@@ -2,8 +2,9 @@
 	<div class="row">
 		<div class="twelve columns">
 <p style="font-size:3em; text-align:center; margin-bottom:50px;margin-top:50px">Listing Searches</p>
-<p style="font-size:1.2em">Search Count: <%= @searches.count%> </p> <br />
-<p style="font-size:1.5em; margin-bottom:25px"><%= button_to "Clear Old Searches", {:controller => "searches", :action => "erase_old"}%></p>
+<p style="font-size:1.2em">Search Count: <%= @searches.count%> </p>
+<p style="font-size:1.5em"><%= button_to "Clear Old Searches", "/searches/erase_old"%></p>
+<br /><br /><br />
 
 
 <table>
@@ -11,6 +12,7 @@
 	<th>Count</th>
     <th>Created At</th>
     <th>Updated At</th>
+	<th>Will Be Cleared?</th>
     <th></th>
   </tr>
 <% @count = @searches.count%>
@@ -19,6 +21,8 @@
 	<td><%= @count %></td>
     <td><%= search.created_at.strftime("%A %B %I:%M %p") %></td>
     <td><%= search.updated_at.strftime("%A %B %I:%M %p")%></td>
+	<td>
+		<% if search.%>
   </tr>
 	<% @count = @count - 1%>
 <% end %>

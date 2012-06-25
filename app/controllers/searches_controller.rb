@@ -23,6 +23,8 @@ class SearchesController < ApplicationController
         end
       end
       redirect_to "/searches"
+    else
+      redirect_to "/pages/search_machine"
     end
   end
 

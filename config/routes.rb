@@ -9,6 +9,9 @@ RMTest::Application.routes.draw do
   get "errors/error_500"
 
   ##### SEARCHES
+  
+  match "/searches/erase_old" => "searches#erase_old"
+  
   match "searches/create" => "searches#create"
   
   match "searches/subject/:subject/create" => "searches#create"
