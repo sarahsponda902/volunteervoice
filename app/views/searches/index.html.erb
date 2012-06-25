@@ -9,22 +9,23 @@
 
 <table>
   <tr>
-	<th>Count</th>
+
     <th>Created At</th>
     <th>Updated At</th>
 	<th>Will Be Cleared?</th>
     <th></th>
   </tr>
-<% @count = @searches.count%>
 <% @searches.each do |search| %>
   <tr>
 	<td><%= @count %></td>
     <td><%= search.created_at.strftime("%A %B %I:%M %p") %></td>
     <td><%= search.updated_at.strftime("%A %B %I:%M %p")%></td>
-	<td>
-		<% if search.%>
+	<td style="text-align:center">
+		<% if search.updated_at < 24.hours.ago %>
+		<font style="color:purple; font-weight:600">X</font>
+		<% end %>
+	</td>
   </tr>
-	<% @count = @count - 1%>
 <% end %>
 </table>
 </div>
