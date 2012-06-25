@@ -46,7 +46,6 @@ include SimpleCaptcha::ControllerHelpers
        rescue_from ActiveRecord::RecordNotFound, with: :render_404
        rescue_from ActionController::UnknownController,  with: :render_404
        rescue_from ActionController::UnknownAction, with: :render_404
-       rescue_from ActiveRecord::RecordNotFound, with: :render_404
      end
 
      private
