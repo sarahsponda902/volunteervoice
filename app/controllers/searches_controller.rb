@@ -38,6 +38,7 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
+    if Search.exists?(params[:id])
       @search = Search.find(params[:id])
     if @search.keywords.nil?
       keys = ""
@@ -111,6 +112,9 @@ class SearchesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @search }
     end
+  else
+    redirect_to "/searches/error"
+  end
   end
 
   # GET /searches/new
