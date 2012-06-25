@@ -149,7 +149,7 @@ a.contact-window:hover{color:#9bce6c}
 
 <div id="contact-box" class="contact-popup">
 	<p style=" font-family:museoSlab500Regular; font-size:3em; color:#68c2d8; line-height:2em;text-align:center">Contact Us</p>
-		<%= form_tag "/contacts/create", :method => :post do%>
+		<%= form_tag "/contacts", :method => :post do%>
 		<%= hidden_field_tag :to_whom, :value => "contact"%>
 		<% if user_signed_in?%>
 		<%= hidden_field_tag :user_id, :value => current_user.id%>
