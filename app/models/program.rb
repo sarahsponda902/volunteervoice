@@ -18,11 +18,11 @@ before_save :square_image_crop
 # Sunspot Search
 searchable do
   text :name
-    string :location
-    string :program_subjects, :multiple => true do
+    text :location
+    text :program_subjects, :multiple => true do
       program_subjects.map(&:subject)
     end
-    string :organization_name
+    text :organization_name
     string :weekly_cost
     string :program_sizes, :multiple => true do
       program_sizes.map(&:size)
