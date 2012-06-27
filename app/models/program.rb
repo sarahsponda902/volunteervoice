@@ -19,7 +19,7 @@ before_save :square_image_crop
 searchable do
   text :name
     text :location
-    text :program_subjects, :multiple => true do
+    string :program_subjects, :multiple => true do
       program_subjects.map(&:subject)
     end
     text :organization_name
