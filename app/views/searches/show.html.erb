@@ -513,7 +513,7 @@ $(document).ready(function() {
 	<input type='checkbox' name='search[subjects][]' value="Wildlife Conservation" id="WildlifeConservation5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Caregiving" id="Caregiving5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Elder Care" id="ElderCare5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Child/Orphan Care" id="Child/OrphanCare5" style='display:none'>
+	<input type='checkbox' name='search[subjects][]' value="Child/Orphan Care" id="ChildOrphanCare5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Disabled Care" id="DisabledCare5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Feed the Homeless" id="FeedtheHomeless5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Community Development" id="CommunityDevelopment5" style='display:none'>
@@ -523,7 +523,7 @@ $(document).ready(function() {
 	<input type='checkbox' name='search[subjects][]' value="Performing Arts" id="PerformingArts5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Fashion" id="Fashion5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Music" id="Music5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Sports & Recreation" id="Sports&Recreation5" style='display:none'>
+	<input type='checkbox' name='search[subjects][]' value="Sports & Recreation" id="SportsRecreation5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Journalism" id="Journalism5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Disaster Relief" id="DisasterRelief5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Economics" id="Economics5" style='display:none'>
@@ -540,7 +540,7 @@ $(document).ready(function() {
 	<input type='checkbox' name='search[subjects][]' value="Wildlife Conservation" id="WildlifeConservation5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Habitat Restoration" id="HabitatRestoration5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Health and Medicine" id="HealthandMedicine5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="HIV/AIDS" id="HIV/AIDS5" style='display:none'>
+	<input type='checkbox' name='search[subjects][]' value="HIV/AIDS" id="HIVAIDS5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Nutrition" id="Nutrition5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Family Planning" id="FamilyPlanning5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Veterinary Medicine" id="VeterinaryMedicine5" style='display:none'>
@@ -549,7 +549,7 @@ $(document).ready(function() {
 	<input type='checkbox' name='search[subjects][]' value="Medical Research" id="MedicalResearch5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Health Education" id="HealthEducation5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Public Health" id="PublicHealth5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Hospital Care-giving" id="HospitalCare-giving5" style='display:none'>
+	<input type='checkbox' name='search[subjects][]' value="Hospital Care-giving" id="HospitalCaregiving5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Human Rights" id="HumanRights5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Womens Initiatives" id="WomensInitiatives5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="International Work Camp" id="InternationalWorkCamp5" style='display:none'>
@@ -1637,8 +1637,7 @@ $(document).ready(function() {
                 for( i = 0; i < locations2.length; i++ ){
                     var cb = document.getElementById(locations2[i]+"2");
                     cb.checked = false;
-                    var cb = document.getElementById(locations2[i]+"5");
-                    cb.checked = false;
+                    document.getElementById(locations2[i]+"5").checked = false;
                 }
             } else {
                 var cb = document.getElementById(anyId2);
