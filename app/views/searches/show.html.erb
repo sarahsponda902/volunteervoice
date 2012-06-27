@@ -567,6 +567,11 @@ $(document).ready(function() {
 	
 	<!-- COUNTRIES -->
 		<input type='checkbox' name='search[regions][]' id='any11' value='false' style='display:none' checked="checked">
+		<input type='checkbox' name='search[regions][]' id='anyAfrica5' value='Africa' style='display:none' checked="checked">
+		<input type='checkbox' name='search[regions][]' id='anyAsia5' value='Asia' style='display:none' checked="checked">
+		<input type='checkbox' name='search[regions][]' id='anyAmericas5' value='Americas' style='display:none' checked="checked">
+		<input type='checkbox' name='search[regions][]' id='anyOceania5' value='Oceania' style='display:none' checked="checked">
+		<input type='checkbox' name='search[regions][]' id='anyEurope5' value='Europe' style='display:none' checked="checked">
 	
 	<input type='checkbox' name='search[regions][]' id='AF5' value='AF' style='display:none'>
 	<input type='checkbox' name='search[regions][]' id='AX5' value='AX' style='display:none'>
@@ -1319,241 +1324,241 @@ $(document).ready(function() {
 <script type='text/javascript'>
 
 
-   var locations6 = new Array('AQ2', 
-	'BQ2', 
-	'BV2', 
-	'IO2', 
-	'CX2', 
-	'CC2', 
-	'CW2', 
-	'TF2', 
-	'HM2', 
-	'SX2', 
-	'GS2', 
-	'SS2', 
-	'UM2', 
-	'DZ2', 
-	'EG2', 
-	'LY2', 
-	'MA2', 
-	'SD2', 
-	'TN2', 
-	'EH2', 
-	'BJ2', 
-	'BF2', 
-	'CV2', 
-	'CI2', 
-	'GM2', 
-	'GH2', 
-	'GN2', 
-	'GW2', 
-	'LR2', 
-	'ML2', 
-	'MR2', 
-	'NE2', 
-	'NG2', 
-	'SH2', 
-	'SN2', 
-	'SL2', 
-	'TG2', 
-	'AO2', 
-	'CM2', 
-	'CF2', 
-	'TD2', 
-	'CG2', 
-	'CD2', 
-	'GQ2', 
-	'GA2', 
-	'ST2', 
-	'BI2', 
-	'KM2', 
-	'DJ2', 
-	'ER2', 
-	'ET2', 
-	'KE2', 
-	'MG2', 
-	'MW2', 
-	'MU2', 
-	'YT2', 
-	'MZ2', 
-	'RE2', 
-	'RW2', 
-	'SC2', 
-	'SO2', 
-	'TZ2', 
-	'UG2', 
-	'ZM2', 
-	'ZW2', 
-	'BW2', 
-	'LS2', 
-	'NA2', 
-	'ZA2', 
-	'SZ2', 
-	'AX2', 
-	'DK2', 
-	'EE2', 
-	'FO2', 
-	'FI2', 
-	'GG2', 
-	'IS2', 
-	'IE2', 
-	'IM2', 
-	'JE2', 
-	'LV2', 
-	'LT2', 
-	'NO2', 
-	'SJ2', 
-	'SE2', 
-	'GB2', 
-	'AT2', 
-	'BE2', 
-	'FR2', 
-	'DE2', 
-	'LI2', 
-	'LU2', 
-	'MC2', 
-	'NL2', 
-	'CH2', 
-	'BY2', 
-	'BG2', 
-	'CZ2', 
-	'HU2', 
-	'MD2', 
-	'PL2', 
-	'RO2', 
-	'RU2', 
-	'SK2', 
-	'UA2', 
-	'AL2', 
-	'AD2', 
-	'BA2', 
-	'HR2', 
-	'GI2', 
-	'GR2', 
-	'VA2', 
-	'IT2', 
-	'MK2', 
-	'MT2', 
-	'ME2', 
-	'PT2', 
-	'SM2', 
-	'RS2', 
-	'SI2', 
-	'ES2', 
-	'BM2', 
-	'CA2', 
-	'GL2', 
-	'PM2', 
-	'US2', 
-	'AI2', 
-	'AG2', 
-	'AW2', 
-	'BS2', 
-	'BB2', 
-	'KY2', 
-	'CU2', 
-	'DM2', 
-	'DO2', 
-	'GD2', 
-	'GP2', 
-	'HT2', 
-	'JM2', 
-	'MQ2', 
-	'MS2', 
-	'PR2', 
-	'BL2', 
-	'KN2', 
-	'LC2', 
-	'MF2', 
-	'VC2', 
-	'TT2', 
-	'TC2', 
-	'VG2', 
-	'VI2', 
-	'BZ2', 
-	'CR2', 
-	'SV2', 
-	'GT2', 
-	'HN2', 
-	'MX2', 
-	'NI2', 
-	'PA2', 
-	'AR2', 
-	'BO2', 
-	'BR2', 
-	'CL2', 
-	'CO2', 
-	'EC2', 
-	'FK2', 
-	'GF2', 
-	'GY2', 
-	'PY2', 
-	'PE2', 
-	'SR2', 
-	'UY2', 
-	'VE2', 
-	'KZ2', 
-	'KG2', 
-	'TJ2', 
-	'TM2', 
-	'UZ2', 
-	'CN2', 
-	'HK2', 
-	'JP2', 
-	'KP2', 
-	'KR2', 
-	'MO2', 
-	'MN2', 
-	'TW2', 
-	'AF2', 
-	'BD2', 
-	'BT2', 
-	'IN2', 
-	'IR2', 
-	'MV2', 
-	'NP2', 
-	'PK2', 
-	'LK2', 
-	'BN2', 
-	'KH2', 
-	'ID2', 
-	'LA2', 
-	'MY2', 
-	'MM2', 
-	'PH2', 
-	'SG2', 
-	'TH2', 
-	'TL2', 
-	'VN2', 
-	'AM2', 
-	'AZ2', 
-	'BH2', 
-	'CY2', 
-	'GE2', 
-	'IQ2', 
-	'IL2', 
-	'JO2', 
-	'KW2', 
-	'LB2', 
-	'OM2', 
-	'PS2', 
-	'QA2', 
-	'SA2', 
-	'SY2', 
-	'TR2', 
-	'AE2', 
-	'YE2', 
-	'AU2', 
-	'NZ2', 
-	'NF2', 
-	'FJ2', 
-	'NC2', 
-	'PG2', 
-	'SB2', 
-	'VU2', 
-	'GU2', 
-	'KI2', 
-	'MH2', 'anyAfrica', 'anyEurope', 'anyAmericas', 'anyAsia', 'anyOceania');
+   var locations6 = new Array('AQ', 
+	'BQ', 
+	'BV', 
+	'IO', 
+	'CX', 
+	'CC', 
+	'CW', 
+	'TF', 
+	'HM', 
+	'SX', 
+	'GS', 
+	'SS', 
+	'UM', 
+	'DZ', 
+	'EG', 
+	'LY', 
+	'MA', 
+	'SD', 
+	'TN', 
+	'EH', 
+	'BJ', 
+	'BF', 
+	'CV', 
+	'CI', 
+	'GM', 
+	'GH', 
+	'GN', 
+	'GW', 
+	'LR', 
+	'ML', 
+	'MR', 
+	'NE', 
+	'NG', 
+	'SH', 
+	'SN', 
+	'SL', 
+	'TG', 
+	'AO', 
+	'CM', 
+	'CF', 
+	'TD', 
+	'CG', 
+	'CD', 
+	'GQ', 
+	'GA', 
+	'ST', 
+	'BI', 
+	'KM', 
+	'DJ', 
+	'ER', 
+	'ET', 
+	'KE', 
+	'MG', 
+	'MW', 
+	'MU', 
+	'YT', 
+	'MZ', 
+	'RE', 
+	'RW', 
+	'SC', 
+	'SO', 
+	'TZ', 
+	'UG', 
+	'ZM', 
+	'ZW', 
+	'BW', 
+	'LS', 
+	'NA', 
+	'ZA', 
+	'SZ', 
+	'AX', 
+	'DK', 
+	'EE', 
+	'FO', 
+	'FI', 
+	'GG', 
+	'IS', 
+	'IE', 
+	'IM', 
+	'JE', 
+	'LV', 
+	'LT', 
+	'NO', 
+	'SJ', 
+	'SE', 
+	'GB', 
+	'AT', 
+	'BE', 
+	'FR', 
+	'DE', 
+	'LI', 
+	'LU', 
+	'MC', 
+	'NL', 
+	'CH', 
+	'BY', 
+	'BG', 
+	'CZ', 
+	'HU', 
+	'MD', 
+	'PL', 
+	'RO', 
+	'RU', 
+	'SK', 
+	'UA', 
+	'AL', 
+	'AD', 
+	'BA', 
+	'HR', 
+	'GI', 
+	'GR', 
+	'VA', 
+	'IT', 
+	'MK', 
+	'MT', 
+	'ME', 
+	'PT', 
+	'SM', 
+	'RS', 
+	'SI', 
+	'ES', 
+	'BM', 
+	'CA', 
+	'GL', 
+	'PM', 
+	'US', 
+	'AI', 
+	'AG', 
+	'AW', 
+	'BS', 
+	'BB', 
+	'KY', 
+	'CU', 
+	'DM', 
+	'DO', 
+	'GD', 
+	'GP', 
+	'HT', 
+	'JM', 
+	'MQ', 
+	'MS', 
+	'PR', 
+	'BL', 
+	'KN', 
+	'LC', 
+	'MF', 
+	'VC', 
+	'TT', 
+	'TC', 
+	'VG', 
+	'VI', 
+	'BZ', 
+	'CR', 
+	'SV', 
+	'GT', 
+	'HN', 
+	'MX', 
+	'NI', 
+	'PA', 
+	'AR', 
+	'BO', 
+	'BR', 
+	'CL', 
+	'CO', 
+	'EC', 
+	'FK', 
+	'GF', 
+	'GY', 
+	'PY', 
+	'PE', 
+	'SR', 
+	'UY', 
+	'VE', 
+	'KZ', 
+	'KG', 
+	'TJ', 
+	'TM', 
+	'UZ', 
+	'CN', 
+	'HK', 
+	'JP', 
+	'KP', 
+	'KR', 
+	'MO', 
+	'MN', 
+	'TW', 
+	'AF', 
+	'BD', 
+	'BT', 
+	'IN', 
+	'IR', 
+	'MV', 
+	'NP', 
+	'PK', 
+	'LK', 
+	'BN', 
+	'KH', 
+	'ID', 
+	'LA', 
+	'MY', 
+	'MM', 
+	'PH', 
+	'SG', 
+	'TH', 
+	'TL', 
+	'VN', 
+	'AM', 
+	'AZ', 
+	'BH', 
+	'CY', 
+	'GE', 
+	'IQ', 
+	'IL', 
+	'JO', 
+	'KW', 
+	'LB', 
+	'OM', 
+	'PS', 
+	'QA', 
+	'SA', 
+	'SY', 
+	'TR', 
+	'AE', 
+	'YE', 
+	'AU', 
+	'NZ', 
+	'NF', 
+	'FJ', 
+	'NC', 
+	'PG', 
+	'SB', 
+	'VU', 
+	'GU', 
+	'KI', 
+	'MH', 'anyAfrica', 'anyEurope', 'anyAmericas', 'anyAsia', 'anyOceania');
 
     var anyId6 = 'any6';
     
@@ -1561,7 +1566,9 @@ $(document).ready(function() {
         var i;
         if ( el.id == anyId6 ) {
             for( i = 0; i < locations6.length; i++ ){
-                var cb = document.getElementById(locations6[i]);
+                var cb = document.getElementById(locations6[i]+"2");
+                cb.checked = false;
+             	var cb = document.getElementById(locations6[i]+"5");
                 cb.checked = false;
             }
         } else {
@@ -1571,62 +1578,62 @@ $(document).ready(function() {
         }
     }    
 
-        var locations2 = new Array('Agriculture2', 
-		'OrganicFarming2', 
-		'SustainableDevelopment2', 
-		'AnimalCare2', 
-		'AnimalRights2', 
-		'WildlifeConservation2', 
-		'Caregiving2', 
-		'ElderCare2', 
-		'ChildOrphanCare2', 
-		'DisabledCare2', 
-		'FeedtheHomeless2', 
-		'CommunityDevelopment2', 
-		'YouthDevelopmentandOutreach2', 
-		'Construction2', 
-		'CultureandCommunity2', 
-		'PerformingArts2', 
-		'Fashion2', 
-		'Music2', 
-		'SportsRecreation2', 
-		'Journalism2', 
-		'DisasterRelief2', 
-		'Economics2', 
-		'Microfinance2', 
-		'Education2', 
-		'TeachingEnglish2', 
-		'TeachingBuddhistMonks2', 
-		'TeachingChildren2', 
-		'TeachingComputerLiteracy2', 
-		'EngineeringandInfrastructure2', 
-		'Environmental2', 
-		'EcologicalConservation2', 
-		'SustainableDevelopment2', 
-		'WildlifeConservation2', 
-		'HabitatRestoration2', 
-		'HealthandMedicine2', 
-		'HIVAIDS2', 
-		'Nutrition2', 
-		'FamilyPlanning2', 
-		'VeterinaryMedicine2', 
-		'ClinicalWork2', 
-		'DentalWork2', 
-		'MedicalResearch2', 
-		'HealthEducation2', 
-		'PublicHealth2', 
-		'HospitalCaregiving2', 
-		'HumanRights2', 
-		'WomensInitiatives2', 
-		'InternationalWorkCamp2', 
-		'Recreation2', 
-		'AdventureTravel2', 
-		'ScientificResearch2', 
-		'Archaeology2', 
-		'EnvironmentalBiology2', 
-		'Technology2', 
-		'TeachingComputerLiteracy2', 
-		'MediaMarketingandGraphicDesign2');
+        var locations2 = new Array('Agriculture', 
+		'OrganicFarming', 
+		'SustainableDevelopment', 
+		'AnimalCare', 
+		'AnimalRights', 
+		'WildlifeConservation', 
+		'Caregiving', 
+		'ElderCare', 
+		'ChildOrphanCare', 
+		'DisabledCare', 
+		'FeedtheHomeless', 
+		'CommunityDevelopment', 
+		'YouthDevelopmentandOutreach', 
+		'Construction', 
+		'CultureandCommunity', 
+		'PerformingArts', 
+		'Fashion', 
+		'Music', 
+		'SportsRecreation', 
+		'Journalism', 
+		'DisasterRelief', 
+		'Economics', 
+		'Microfinance', 
+		'Education', 
+		'TeachingEnglish', 
+		'TeachingBuddhistMonks', 
+		'TeachingChildren', 
+		'TeachingComputerLiteracy', 
+		'EngineeringandInfrastructure', 
+		'Environmental', 
+		'EcologicalConservation', 
+		'SustainableDevelopment', 
+		'WildlifeConservation', 
+		'HabitatRestoration', 
+		'HealthandMedicine', 
+		'HIVAIDS', 
+		'Nutrition', 
+		'FamilyPlanning', 
+		'VeterinaryMedicine', 
+		'ClinicalWork', 
+		'DentalWork', 
+		'MedicalResearch', 
+		'HealthEducation', 
+		'PublicHealth', 
+		'HospitalCaregiving', 
+		'HumanRights', 
+		'WomensInitiatives', 
+		'InternationalWorkCamp', 
+		'Recreation', 
+		'AdventureTravel', 
+		'ScientificResearch', 
+		'Archaeology', 
+		'EnvironmentalBiology', 
+		'Technology', 
+		'TeachingComputerLiteracy', 
+		'MediaMarketingandGraphicDesign');
 
         var anyId2 = 'any';
 
@@ -1634,7 +1641,9 @@ $(document).ready(function() {
             var i;
             if ( el.id == anyId2 ) {
                 for( i = 0; i < locations2.length; i++ ){
-                    var cb = document.getElementById(locations2[i]);
+                    var cb = document.getElementById(locations2[i]+"2");
+                    cb.checked = false;
+                    var cb = document.getElementById(locations2[i]+"5");
                     cb.checked = false;
                 }
             } else {
@@ -1686,7 +1695,7 @@ $(document).ready(function() {
             }
         }    
 
-var locationsAgriculture = new Array('OrganicFarming2', 'SustainableDevelopment2');
+var locationsAgriculture = new Array('OrganicFarming', 'SustainableDevelopment');
 
 var anyAgriculture = 'Agriculture2';
 
@@ -1694,16 +1703,18 @@ function toggleAgriculture( el ) {
     var i;
     if ( el.id == anyAgriculture ) {
         for( i = 0; i < locationsAgriculture.length; i++ ){
-            var cb = document.getElementById(locationsAgriculture[i]);
+            var cb = document.getElementById(locationsAgriculture[i]+"2");
             cb.checked = false;
+			document.getElementById(locationsAgriculture[i]+"5").checked = false;
         }
     } else {
         var cb = document.getElementById(anyAgriculture);
         cb.checked = false; 
+		document.getElementById("Agriculture5").checked = false;
     }
 }
 
-var locationsAnimalCare = new Array('AnimalRights2', 'WildlifeConservation2');
+var locationsAnimalCare = new Array('AnimalRights', 'WildlifeConservation');
 
 var anyAnimalCare = 'AnimalCare2';
 
@@ -1711,17 +1722,19 @@ function toggleAnimalCare( el ) {
     var i;
     if ( el.id == anyAnimalCare ) {
         for( i = 0; i < locationsAnimalCare.length; i++ ){
-            var cb = document.getElementById(locationsAnimalCare[i]);
+            var cb = document.getElementById(locationsAnimalCare[i]+"2");
             cb.checked = false;
+			document.getElementById(locationsAnimalCare[i]+"5").checked = false;
         }
     } else {
         var cb = document.getElementById(anyAnimalCare);
-        cb.checked = false; 
+        cb.checked = false;
+ 		document.getElementById("AnimalCare5").checked = false;
     }
 }
 
 
-var locationsCaregiving = new Array('ElderCare2', 'ChildOrphanCare2', 'DisabledCare2', 'FeedtheHomeless2');
+var locationsCaregiving = new Array('ElderCare', 'ChildOrphanCare', 'DisabledCare', 'FeedtheHomeless');
 
 var anyCaregiving = 'Caregiving2';
 
@@ -1729,18 +1742,20 @@ function toggleCaregiving( el ) {
     var i;
     if ( el.id == anyCaregiving ) {
         for( i = 0; i < locationsCaregiving.length; i++ ){
-            var cb = document.getElementById(locationsCaregiving[i]);
+            var cb = document.getElementById(locationsCaregiving[i]+"2");
             cb.checked = false;
+			document.getElementById(locationsCaregiving[i]+"5").checked = false;
         }
     } else {
         var cb = document.getElementById(anyCaregiving);
         cb.checked = false; 
+		document.getElementById("Caregiving5").checked = false;
     }
 }
 
 
 
-var locationsCommunityDevelopment = new Array('YouthDevelopmentandOutreach2');
+var locationsCommunityDevelopment = new Array('YouthDevelopmentandOutreach');
 
 var anyCommunityDevelopment = 'CommunityDevelopment2';
 
@@ -1748,18 +1763,20 @@ function toggleCommunityDevelopment( el ) {
     var i;
     if ( el.id == anyCommunityDevelopment ) {
         for( i = 0; i < locationsCommunityDevelopment.length; i++ ){
-            var cb = document.getElementById(locationsCommunityDevelopment[i]);
+            var cb = document.getElementById(locationsCommunityDevelopment[i]+"2");
             cb.checked = false;
+			document.getElementById(locationsCommunityDevelopment[i]+"5").checked = false;
         }
     } else {
         var cb = document.getElementById(anyCommunityDevelopment);
         cb.checked = false; 
+		document.getElementById("CommunityDevelopment5").checked = false;
     }
 }
 
 
 
-var locationsCultureandCommunity = new Array('PerformingArts2', 'Fashion2', 'Music2', 'SportsRecreation2', 'Journalism2');
+var locationsCultureandCommunity = new Array('PerformingArts', 'Fashion', 'Music', 'SportsRecreation', 'Journalism');
 
 var anyCultureandCommunity = 'CultureandCommunity2';
 
@@ -1767,17 +1784,19 @@ function toggleCultureandCommunity( el ) {
     var i;
     if ( el.id == anyCultureandCommunity ) {
         for( i = 0; i < locationsCultureandCommunity.length; i++ ){
-            var cb = document.getElementById(locationsCultureandCommunity[i]);
+            var cb = document.getElementById(locationsCultureandCommunity[i]+"2");
             cb.checked = false;
+			document.getElementById(locationsCultureandCommunity[i]+"5").checked = false;
         }
     } else {
         var cb = document.getElementById(anyCultureandCommunity);
         cb.checked = false; 
+		document.getElementById("CultureandCommunity5").checked = false;
     }
 }
 
 
-var locationsDisasterRelief = new Array('Economics2', 'Microfinance2');
+var locationsDisasterRelief = new Array('Economics', 'Microfinance');
 
 var anyDisasterRelief = 'DisasterRelief2';
 
@@ -1785,18 +1804,20 @@ function toggleDisasterRelief( el ) {
     var i;
     if ( el.id == anyDisasterRelief ) {
         for( i = 0; i < locationsDisasterRelief.length; i++ ){
-            var cb = document.getElementById(locationsDisasterRelief[i]);
+            var cb = document.getElementById(locationsDisasterRelief[i]+"2");
             cb.checked = false;
+			document.getElementById(locationsDisasterRelief[i]+"5").checked = false;
         }
     } else {
         var cb = document.getElementById(anyDisasterRelief);
         cb.checked = false; 
+		document.getElementById("DisasterRelief5");
     }
 }
 
 
 
-var locationsEducation = new Array('TeachingEnglish2', 'TeachingBuddhistMonks2', 'TeachingChildren2', 'TeachingComputerLiteracy2');
+var locationsEducation = new Array('TeachingEnglish', 'TeachingBuddhistMonks', 'TeachingChildren', 'TeachingComputerLiteracy');
 
 var anyEducation = 'Education2';
 
@@ -1804,12 +1825,15 @@ function toggleEducation( el ) {
     var i;
     if ( el.id == anyEducation ) {
         for( i = 0; i < locationsEducation.length; i++ ){
-            var cb = document.getElementById(locationsEducation[i]);
+            var cb = document.getElementById(locationsEducation[i]+"2");
             cb.checked = false;
+			var cb = document.getElementById(locationsEducation[i]+"5");
+			cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyEducation);
         cb.checked = false; 
+		var cb = document.getElementById("Education5");
     }
 }
 
@@ -1817,7 +1841,7 @@ function toggleEducation( el ) {
 
 
 
-var locationsEnvironmental = new Array('EcologicalConservation2', 'Sustainable_Development2', 'Wildlife_Conservation2', 'HabitatRestoration2');
+var locationsEnvironmental = new Array('EcologicalConservation', 'Sustainable_Development', 'Wildlife_Conservation', 'HabitatRestoration');
 
 var anyEnvironmental = 'Environmental2';
 
@@ -1825,12 +1849,16 @@ function toggleEnvironmental( el ) {
     var i;
     if ( el.id == anyEnvironmental ) {
         for( i = 0; i < locationsEnvironmental.length; i++ ){
-            var cb = document.getElementById(locationsEnvironmental[i]);
+            var cb = document.getElementById(locationsEnvironmental[i]+"2");
+            cb.checked = false;
+			var cb = document.getElementById(locationsEnvironmental[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyEnvironmental);
-        cb.checked = false; 
+        cb.checked = false;
+ 		var cb = document.getElementById("Environmental5");
+        cb.checked = false;
     }
 }
 
@@ -1838,7 +1866,7 @@ function toggleEnvironmental( el ) {
 
 
 
-var locationsHealthandMedicine = new Array('HIVAIDS2', 'Nutrition2', 'FamilyPlanning2', 'VeterinaryMedicine2', 'ClinicalWork2', 'DentalWork2', 'MedicalResearch2', 'HealthEducation2', 'PublicHealth2', 'HospitalCaregiving2');
+var locationsHealthandMedicine = new Array('HIVAIDS', 'Nutrition', 'FamilyPlanning', 'VeterinaryMedicine', 'ClinicalWork', 'DentalWork', 'MedicalResearch', 'HealthEducation', 'PublicHealth', 'HospitalCaregiving');
 
 var anyHealthandMedicine = 'HealthandMedicine2';
 
@@ -1846,12 +1874,16 @@ function toggleHealthandMedicine( el ) {
     var i;
     if ( el.id == anyHealthandMedicine ) {
         for( i = 0; i < locationsHealthandMedicine.length; i++ ){
-            var cb = document.getElementById(locationsHealthandMedicine[i]);
+            var cb = document.getElementById(locationsHealthandMedicine[i]+"2");
+            cb.checked = false;
+            var cb = document.getElementById(locationsHealthandMedicine[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyHealthandMedicine);
         cb.checked = false; 
+		var cb = document.getElementById("HealthandMedicine5");
+        cb.checked = false;
     }
 }
 
@@ -1859,7 +1891,7 @@ function toggleHealthandMedicine( el ) {
 
 
 
-var locationsHumanRights = new Array('WomensInitiatives2');
+var locationsHumanRights = new Array('WomensInitiatives');
 
 var anyHumanRights = 'HumanRights2';
 
@@ -1867,19 +1899,23 @@ function toggleHumanRights( el ) {
     var i;
     if ( el.id == anyHumanRights ) {
         for( i = 0; i < locationsHumanRights.length; i++ ){
-            var cb = document.getElementById(locationsHumanRights[i]);
+            var cb = document.getElementById(locationsHumanRights[i]+"2");
+            cb.checked = false;
+            var cb = document.getElementById(locationsHumanRights[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyHumanRights);
         cb.checked = false; 
+        var cb = document.getElementById("HumanRights5");
+        cb.checked = false;
     }
 }
 
 
 
 
-var locationsRecreation = new Array('AdventureTravel2');
+var locationsRecreation = new Array('AdventureTravel');
 
 var anyRecreation = 'Recreation2';
 
@@ -1887,19 +1923,23 @@ function toggleRecreation( el ) {
     var i;
     if ( el.id == anyRecreation ) {
         for( i = 0; i < locationsRecreation.length; i++ ){
-            var cb = document.getElementById(locationsRecreation[i]);
+            var cb = document.getElementById(locationsRecreation[i]+"2");
+            cb.checked = false;
+            var cb = document.getElementById(locationsRecreation[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyRecreation);
         cb.checked = false; 
+        var cb = document.getElementById("Recreation5");
+        cb.checked = false;
     }
 }
 
 
 
 
-var locationsScientificResearch = new Array('Archaeology2', 'EnvironmentalBiology2');
+var locationsScientificResearch = new Array('Archaeology', 'EnvironmentalBiology');
 
 var anyScientificResearch = 'ScientificResearch2';
 
@@ -1907,19 +1947,23 @@ function toggleScientificResearch( el ) {
     var i;
     if ( el.id == anyScientificResearch ) {
         for( i = 0; i < locationsScientificResearch.length; i++ ){
-            var cb = document.getElementById(locationsScientificResearch[i]);
+            var cb = document.getElementById(locationsScientificResearch[i]+"2");
+            cb.checked = false;
+            var cb = document.getElementById(locationsScientificResearch[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyScientificResearch);
         cb.checked = false; 
+		var cb = document.getElementById("ScientificResearch5");
+        cb.checked = false;
     }
 }
 	
 
 
 
-var locationsTechnology = new Array('Teaching_Computer_Literacy2', 'MediaMarketingandGraphicDesign2');
+var locationsTechnology = new Array('Teaching_Computer_Literacy', 'MediaMarketingandGraphicDesign');
 
 var anyTechnology = 'Technology2';
 
@@ -1927,12 +1971,16 @@ function toggleTechnology( el ) {
     var i;
     if ( el.id == anyTechnology ) {
         for( i = 0; i < locationsTechnology.length; i++ ){
-            var cb = document.getElementById(locationsTechnology[i]);
+            var cb = document.getElementById(locationsTechnology[i]+"2");
+            cb.checked = false;
+            var cb = document.getElementById(locationsTechnology[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyTechnology);
         cb.checked = false; 
+		var cb = document.getElementById("Technology5");
+        cb.checked = false;
     }
 }
 	
@@ -1947,63 +1995,63 @@ function toggleTechnology( el ) {
 	
 <script type="text/javascript">
 
-var locationsAfrica = new Array('DZ2', 
-'EG2', 
-'LY2', 
-'MA2', 
-'SD2', 
-'TN2', 
-'EH2', 
-'BJ2', 
-'BF2', 
-'CV2', 
-'CI2', 
-'GM2', 
-'GH2', 
-'GN2', 
-'GW2', 
-'LR2', 
-'ML2', 
-'MR2', 
-'NE2', 
-'NG2', 
-'SH2', 
-'SN2', 
-'SL2', 
-'TG2', 
-'AO2', 
-'CM2', 
-'CF2', 
-'TD2', 
-'CG2', 
-'CD2', 
-'GQ2', 
-'GA2', 
-'ST2', 
-'BI2', 
-'KM2', 
-'DJ2', 
-'ER2', 
-'ET2', 
-'KE2', 
-'MG2', 
-'MW2', 
-'MU2', 
-'YT2', 
-'MZ2', 
-'RE2', 
-'RW2', 
-'SC2', 
-'SO2', 
-'TZ2', 
-'UG2', 
-'ZM2', 
-'ZW2', 
-'BW2', 
-'LS2', 
-'NA2', 
-'ZA2', 
-'SZ2');
+var locationsAfrica = new Array('DZ', 
+'EG', 
+'LY', 
+'MA', 
+'SD', 
+'TN', 
+'EH', 
+'BJ', 
+'BF', 
+'CV', 
+'CI', 
+'GM', 
+'GH', 
+'GN', 
+'GW', 
+'LR', 
+'ML', 
+'MR', 
+'NE', 
+'NG', 
+'SH', 
+'SN', 
+'SL', 
+'TG', 
+'AO', 
+'CM', 
+'CF', 
+'TD', 
+'CG', 
+'CD', 
+'GQ', 
+'GA', 
+'ST', 
+'BI', 
+'KM', 
+'DJ', 
+'ER', 
+'ET', 
+'KE', 
+'MG', 
+'MW', 
+'MU', 
+'YT', 
+'MZ', 
+'RE', 
+'RW', 
+'SC', 
+'SO', 
+'TZ', 
+'UG', 
+'ZM', 
+'ZW', 
+'BW', 
+'LS', 
+'NA', 
+'ZA', 
+'SZ');
 
 var anyAfrica = 'anyAfrica';
 
@@ -2011,68 +2059,72 @@ function toggleAfrica( el ) {
 	var i;
     if ( el.id == anyAfrica ) {
         for( i = 0; i < locationsAfrica.length; i++ ){
-            var cb = document.getElementById(locationsAfrica[i]);
+            var cb = document.getElementById(locationsAfrica[i]+"2");
+            cb.checked = false;
+			var cb = document.getElementById(locationsAfrica[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyAfrica);
         cb.checked = false; 
+		var cb = document.getElementById("anyAfrica5");
+        cb.checked = false;
     }
 }
 </script>
 
 <script type="text/javascript">
-var locationsEurope = new Array('AX2', 
-'DK2', 
-'EE2', 
-'FO2', 
-'FI2', 
-'GG2', 
-'IS2', 
-'IE2', 
-'IM2', 
-'JE2', 
-'LV2', 
-'LT2', 
-'NO2', 
-'SJ2', 
-'SE2', 
-'GB2', 
-'AT2', 
-'BE2', 
-'FR2', 
-'DE2', 
-'LI2', 
-'LU2', 
-'MC2', 
-'NL2', 
-'CH2', 
-'BY2', 
-'BG2', 
-'CZ2', 
-'HU2', 
-'MD2', 
-'PL2', 
-'RO2', 
-'RU2', 
-'SK2', 
-'UA2', 
-'AL2', 
-'AD2', 
-'BA2', 
-'HR2', 
-'GI2', 
-'GR2', 
-'VA2', 
-'IT2', 
-'MK2', 
-'MT2', 
-'ME2', 
-'PT2', 
-'SM2', 
-'RS2', 
-'SI2', 
-'ES2');
+var locationsEurope = new Array('AX', 
+'DK', 
+'EE', 
+'FO', 
+'FI', 
+'GG', 
+'IS', 
+'IE', 
+'IM', 
+'JE', 
+'LV', 
+'LT', 
+'NO', 
+'SJ', 
+'SE', 
+'GB', 
+'AT', 
+'BE', 
+'FR', 
+'DE', 
+'LI', 
+'LU', 
+'MC', 
+'NL', 
+'CH', 
+'BY', 
+'BG', 
+'CZ', 
+'HU', 
+'MD', 
+'PL', 
+'RO', 
+'RU', 
+'SK', 
+'UA', 
+'AL', 
+'AD', 
+'BA', 
+'HR', 
+'GI', 
+'GR', 
+'VA', 
+'IT', 
+'MK', 
+'MT', 
+'ME', 
+'PT', 
+'SM', 
+'RS', 
+'SI', 
+'ES');
 
 var anyEurope = 'anyEurope';
 
@@ -2080,12 +2132,16 @@ function toggleEurope( el ) {
 	var i;
     if ( el.id == anyEurope ) {
         for( i = 0; i < locationsEurope.length; i++ ){
-            var cb = document.getElementById(locationsEurope[i]);
+            var cb = document.getElementById(locationsEurope[i]+"2");
+            cb.checked = false;
+			var cb = document.getElementById(locationsEurope[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyEurope);
         cb.checked = false; 
+        var cb = document.getElementById("anyEurope5");
+        cb.checked = false;
     }
 }
 
@@ -2093,58 +2149,58 @@ function toggleEurope( el ) {
 
 <script type="text/javascript">
 
-var locationsAmericas = new Array('BM2', 
-'CA2', 
-'GL2', 
-'PM2', 
-'US2', 
-'AI2', 
-'AG2', 
-'AW2', 
-'BS2', 
-'BB2', 
-'KY2', 
-'CU2', 
-'DM2', 
-'DO2', 
-'GD2', 
-'GP2', 
-'HT2', 
-'JM2', 
-'MQ2', 
-'MS2', 
-'PR2', 
-'BL2', 
-'KN2', 
-'LC2', 
-'MF2', 
-'VC2', 
-'TT2', 
-'TC2', 
-'VG2', 
-'VI2', 
-'BZ2', 
-'CR2', 
-'SV2', 
-'GT2', 
-'HN2', 
-'MX2', 
-'NI2', 
-'PA2', 
-'AR2', 
-'BO2', 
-'BR2', 
-'CL2', 
-'CO2', 
-'EC2', 
-'FK2', 
-'GF2', 
-'GY2', 
-'PY2', 
-'PE2', 
-'SR2', 
-'UY2', 
-'VE2');
+var locationsAmericas = new Array('BM', 
+'CA', 
+'GL', 
+'PM', 
+'US', 
+'AI', 
+'AG', 
+'AW', 
+'BS', 
+'BB', 
+'KY', 
+'CU', 
+'DM', 
+'DO', 
+'GD', 
+'GP', 
+'HT', 
+'JM', 
+'MQ', 
+'MS', 
+'PR', 
+'BL', 
+'KN', 
+'LC', 
+'MF', 
+'VC', 
+'TT', 
+'TC', 
+'VG', 
+'VI', 
+'BZ', 
+'CR', 
+'SV', 
+'GT', 
+'HN', 
+'MX', 
+'NI', 
+'PA', 
+'AR', 
+'BO', 
+'BR', 
+'CL', 
+'CO', 
+'EC', 
+'FK', 
+'GF', 
+'GY', 
+'PY', 
+'PE', 
+'SR', 
+'UY', 
+'VE');
 
 var anyAmericas = 'anyAmericas';
 
@@ -2152,12 +2208,16 @@ function toggleAmericas( el ) {
 	var i;
     if ( el.id == anyAmericas ) {
         for( i = 0; i < locationsAmericas.length; i++ ){
-            var cb = document.getElementById(locationsAmericas[i]);
+            var cb = document.getElementById(locationsAmericas[i]+"2");
+            cb.checked = false;
+            var cb = document.getElementById(locationsAmericas[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyAmericas);
         cb.checked = false; 
+        var cb = document.getElementById("anyAmericas5");
+        cb.checked = false;
     }
 }
 
@@ -2165,57 +2225,57 @@ function toggleAmericas( el ) {
 
 <script type="text/javascript">
 
-var locationsAsia = new Array('KZ2', 
-'KG2', 
-'TJ2', 
-'TM2', 
-'UZ2', 
-'CN2', 
-'HK2', 
-'JP2', 
-'KP2', 
-'KR2', 
-'MO2', 
-'MN2', 
-'TW2', 
-'AF2', 
-'BD2', 
-'BT2', 
-'IN2', 
-'IR2', 
-'MV2', 
-'NP2', 
-'PK2', 
-'LK2', 
-'BN2', 
-'KH2', 
-'ID2', 
-'LA2', 
-'MY2', 
-'MM2', 
-'PH2', 
-'SG2', 
-'TH2', 
-'TL2', 
-'VN2', 
-'AM2', 
-'AZ2', 
-'BH2', 
-'CY2', 
-'GE2', 
-'IQ2', 
-'IL2', 
-'JO2', 
-'KW2', 
-'LB2', 
-'OM2', 
-'PS2', 
-'QA2', 
-'SA2', 
-'SY2', 
-'TR2', 
-'AE2', 
-'YE2');
+var locationsAsia = new Array('KZ', 
+'KG', 
+'TJ', 
+'TM', 
+'UZ', 
+'CN', 
+'HK', 
+'JP', 
+'KP', 
+'KR', 
+'MO', 
+'MN', 
+'TW', 
+'AF', 
+'BD', 
+'BT', 
+'IN', 
+'IR', 
+'MV', 
+'NP', 
+'PK', 
+'LK', 
+'BN', 
+'KH', 
+'ID', 
+'LA', 
+'MY', 
+'MM', 
+'PH', 
+'SG', 
+'TH', 
+'TL', 
+'VN', 
+'AM', 
+'AZ', 
+'BH', 
+'CY', 
+'GE', 
+'IQ', 
+'IL', 
+'JO', 
+'KW', 
+'LB', 
+'OM', 
+'PS', 
+'QA', 
+'SA', 
+'SY', 
+'TR', 
+'AE', 
+'YE');
 
 var anyAsia = 'anyAsia';
 
@@ -2223,11 +2283,15 @@ function toggleAsia( el ) {
 	var i;
     if ( el.id == anyAsia ) {
         for( i = 0; i < locationsAsia.length; i++ ){
-            var cb = document.getElementById(locationsAsia[i]);
+            var cb = document.getElementById(locationsAsia[i]+"2");
+            cb.checked = false;
+            var cb = document.getElementById(locationsAsia[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyAsia);
+        cb.checked = false;
+        var cb = document.getElementById("anyAsia5");
         cb.checked = false; 
     }
 }
@@ -2236,31 +2300,31 @@ function toggleAsia( el ) {
 
 <script type="text/javascript">
 
-var locationsOceania = new Array('AU2', 
-'NZ2', 
-'NF2', 
-'FJ2', 
-'NC2', 
-'PG2', 
-'SB2', 
-'VU2', 
-'GU2', 
-'KI2', 
-'MH2', 
-'FM2', 
-'NR2', 
-'MP2', 
-'PW2', 
-'AS2', 
-'CK2', 
-'PF2', 
-'NU2', 
-'PN2', 
-'WS2', 
-'TK2', 
-'TO2', 
-'TV2', 
-'WF2');
+var locationsOceania = new Array('AU', 
+'NZ', 
+'NF', 
+'FJ', 
+'NC', 
+'PG', 
+'SB', 
+'VU', 
+'GU', 
+'KI', 
+'MH', 
+'FM', 
+'NR', 
+'MP', 
+'PW', 
+'AS', 
+'CK', 
+'PF', 
+'NU', 
+'PN', 
+'WS', 
+'TK', 
+'TO', 
+'TV', 
+'WF');
 
 var anyOceania = 'anyOceania';
 
@@ -2268,19 +2332,18 @@ function toggleOceania( el ) {
 	var i;
     if ( el.id == anyOceania ) {
         for( i = 0; i < locationsOceania.length; i++ ){
-            var cb = document.getElementById(locationsOceania[i]);
+            var cb = document.getElementById(locationsOceania[i]+"2");
+            cb.checked = false;
+            var cb = document.getElementById(locationsOceania[i]+"5");
             cb.checked = false;
         }
     } else {
         var cb = document.getElementById(anyOceania);
         cb.checked = false; 
+        var cb = document.getElementById("anyOceania5");
+        cb.checked = false;
     }
 }
-
-$(document).ready(function() {
-
-	
-});
 
 </script>		
 		
