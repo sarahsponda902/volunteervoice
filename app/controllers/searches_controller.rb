@@ -828,6 +828,46 @@ class SearchesController < ApplicationController
   def update
     @search = Search.find(params[:id])
     
+    if params[:search][:subjects].include?('Agriculture')
+      params[:search][:subjects] = ['Organic Farming', 'Sustainable Development'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Animal Care')
+      params[:search][:subjects] = ['Animal Rights', 'Wildlife Conservation'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Caregiving')
+      params[:search][:subjects] = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Community Development')
+      params[:search][:subjects] = ['Youth Development and Outreach'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Culture and Community')
+      params[:search][:subjects] = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Disaster Relief')
+      params[:search][:subjects] = ['Economics', 'Microfinance'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Education')
+      params[:search][:subjects] = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Environmental')
+      params[:search][:subjects] = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Health and Medicine')
+      params[:search][:subjects] = ['HIV/AIDS', 'Family Planning', 'Nutrition', 'Veterinary Medicine', 'Clinical Work', 'Dental Work', 'Medical Research', 'Health Education', 'Public Health', 'Hospital Caregiving'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Human Rights')
+      params[:search][:subjects] = ['Womens Initiatives'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Recreation')
+      params[:search][:subjects] = ['Adventure Travel'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Scientific Research')
+      params[:search][:subjects] = ['Archaeology', 'Environmental Biology'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Technology')
+      params[:search][:subjects] = ['Teaching Computer Literacy', 'Media Marketing and Graphic Design'] + (params[:search][:subjects].split("; "))
+    end
+    
     if params[:search][:subjects].include?("false")
       params[:search][:subjects] = ['Agriculture', 
         'Organic Farming', 
@@ -885,46 +925,6 @@ class SearchesController < ApplicationController
         'Technology', 
         'Teaching Computer Literacy', 
         'Media Marketing and Graphic Design']
-    end
-    
-    if params[:search][:subjects].include?('Agriculture')
-      params[:search][:subjects] = ['Organic Farming', 'Sustainable Development'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Animal Care')
-      params[:search][:subjects] = ['Animal Rights', 'Wildlife Conservation'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Caregiving')
-      params[:search][:subjects] = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Community Development')
-      params[:search][:subjects] = ['Youth Development and Outreach'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Culture and Community')
-      params[:search][:subjects] = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Disaster Relief')
-      params[:search][:subjects] = ['Economics', 'Microfinance'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Education')
-      params[:search][:subjects] = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Environmental')
-      params[:search][:subjects] = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Health and Medicine')
-      params[:search][:subjects] = ['HIV/AIDS', 'Family Planning', 'Nutrition', 'Veterinary Medicine', 'Clinical Work', 'Dental Work', 'Medical Research', 'Health Education', 'Public Health', 'Hospital Caregiving'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Human Rights')
-      params[:search][:subjects] = ['Womens Initiatives'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Recreation')
-      params[:search][:subjects] = ['Adventure Travel'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Scientific Research')
-      params[:search][:subjects] = ['Archaeology', 'Environmental Biology'] + (params[:search][:subjects].split("; "))
-    end
-    if params[:search][:subjects].include?('Technology')
-      params[:search][:subjects] = ['Teaching Computer Literacy', 'Media Marketing and Graphic Design'] + (params[:search][:subjects].split("; "))
     end
     
     
