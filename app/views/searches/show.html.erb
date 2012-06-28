@@ -88,12 +88,6 @@ $('#priceRange').pullOut({
 		<% @search_subjects = @search.subjects.split("; ")%>
 	<% end %>
 	
-	<% if !(@search.lengths.nil?) && !(@search.lengths.include?(";"))%>
-		<% @search_lengths = [] << @search.lengths %>
-	<% else %>
-		<% @search_lengths = @search.lengths.split("; ")%>
-	<% end %>
-	
 	<% if !(@search.sizes.nil?) && !(@search.sizes.include?(";"))%>
 		<% @search_sizes = [] << @search.sizes %>
 	<% else %>
@@ -122,7 +116,6 @@ $('#priceRange').pullOut({
 var theLocations = <%=array_or_string_for_javascript(@locations)%>;
 var search_regions = <%= array_or_string_for_javascript(@search_regions)%>;
 var search_subjects = <%= array_or_string_for_javascript(@search_subjects)%>;
-var search_lengths = <%= array_or_string_for_javascript(@search_lengths)%>;
 var search_sizes = <%= array_or_string_for_javascript(@search_sizes)%>;
 var allTheLocations = new Array("AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW");
 
@@ -240,9 +233,7 @@ var allTheSubjectsIds = new Array('Agriculture',
 'TeachingComputerLiteracy', 
 'MediaMarketingandGraphicDesign');
 
-var allTheLengths = ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"];
 var allTheSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
-var isAllLengths = true;
 var isAllSizes = true;
 var isAllLocations = true;
 var isAllSubjects = true;
@@ -341,6 +332,7 @@ $(document).ready(function() {
 			$("#any13").prop('checked', false);
 		}
 	}
+	
 	$("#price_max").val(<%=@search.price_max%>);
 	$("#price_max5").val(<%=@search.price_max%>);
 	$("#price_min").val(<%=@search.price_min%>);
@@ -828,16 +820,20 @@ $(document).ready(function() {
 <!-- END COUNTRIES -->
 
 <!-- LENGTHS -->
-<input id='any12' type='checkbox' style='display:none' name='search[lengths][]' value='false' checked="checked">
-
-<input id='length15' type='checkbox' style='display:none' name='search[lengths][]' value='1 week or less'>
-<input id='length25' type='checkbox' style='display:none' name='search[lengths][]' value='2-4 weeks'>
-<input id='length35' type='checkbox' style='display:none' name='search[lengths][]' value='5-8 weeks'>
-<input id='length45' type='checkbox' style='display:none' name='search[lengths][]' value='9-12 weeks'>
-<input id='length55' type='checkbox' style='display:none' name='search[lengths][]' value='3-6 months'>
-<input id='length65' type='checkbox' style='display:none' name='search[lengths][]' value='6-12 months'>
-<input id='length75' type='checkbox' style='display:none' name='search[lengths][]' value='1-2 years'>
-<input id='length85' type='checkbox' style='display:none' name='search[lengths][]' value='2+ years'>
+<input type="number" value= 0 id= "length_min_number5" name="search[length_min_number]" style="display:none"/>
+<select id= "length_min_param5" name="search[length_min_param]" style="display:none">
+	<option val="days" selected="selected">Days</option>
+	<option val="weeks">Weeks</option>
+	<option val="months">Months</option>
+	<option val="years">Years</option>
+</select>
+<input type="number" value= 2 id = "length_max_number5" name="search[length_max_number]" style="display:none"/>
+<select id= "length_max_param5" name="search[length_max_number]" style="display:none">
+	<option val="days">Days</option>
+	<option val="weeks">Weeks</option>
+	<option val="months">Months</option>
+	<option val="years" selected="selected">Years</option>
+</select>
 
 <!-- END LENGTHS -->
 
@@ -978,21 +974,22 @@ $(document).ready(function() {
 
 
 <div id="lengthOfTrip" style="width:300px; padding-bottom:20px; color:#575758; overflow-x:hidden">
-	<div class="six columns" style="width:45%">
-	<input type="checkbox" name="search[lengths]" onclick='toggleBoxes2(this)' value = "false" id ='any2' checked = "checked" onchange="$('#any12').prop('checked', this.checked)" >Any <br />
-    <input onchange="$('#length15').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="1 week or less" id="1_length"  >1 week or less<br />
-	<input onchange="$('#length25').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="2-4 weeks" id="2_length"  >2-4 weeks<br />
-	<input onchange="$('#length35').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="5-8 weeks" id="3_length"  >5-8 weeks<br />
-	<input onchange="$('#length45').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="9-12 weeks" id="4_length"  >9-12 weeks
-	</div>
-	
-	<div class="six columns" style="width:45%">
-	<input onchange="$('#length55').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="3-6 months" id="5_length"  >3-6 months<br />
-	<input onchange="$('#length65').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="6-12 months" id="6_length"  >6-12 months<br />
-	<input onchange="$('#length75').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="1-2 years" id="7_length"  >1-2 years<br />
-	<input onchange="$('#length85').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="2+ years" id="8_length"  >2+ years<br />
-					<div style="float:left; margin-left:-50px; margin-top:50px"><button onclick="$('#submit_form').click()" style="width:100px; height:25px">Apply</button></div>
-	</div>
+    Min: <input type="number" value= 0 id= "length_min_number" name="search[length_min_number]" onchange="$('#length_min_number5').val(this.attr('value'))"/>
+	<select id= "length_min_param" name="search[length_min_param]" onchange="$('#length_min_param5').val(this.attr('value'))">
+		<option val="days" selected="selected">Days</option>
+		<option val="weeks">Weeks</option>
+		<option val="months">Months</option>
+		<option val="years">Years</option>
+	</select><br />
+    Max: <input type="number" value= 2 id = "length_max_number" name="search[length_max_number]" onchange="$('#length_max_number5').val(this.attr('value'))"/>
+	<select id= "length_max_param" name="search[length_max_number]" onchange="$('#length_max_param5').val(this.attr('value'))">
+		<option val="days">Days</option>
+		<option val="weeks">Weeks</option>
+		<option val="months">Months</option>
+		<option val="years" selected="selected">Years</option>
+	</select>
+					<div style="float:left; margin-left:25px"><button onclick="$('#submit_form').click()" style="width:100px; height:25px">Apply</button></div>
+
 </div>
 
 
