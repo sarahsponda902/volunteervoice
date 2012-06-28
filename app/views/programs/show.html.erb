@@ -310,7 +310,7 @@
 
   	<div id="popup" class="popup-box">
 	<% if @program.chart.url.blank?%>
-		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758">Information not available</p>
+		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758; margin-top:-15px">Information not available</p>
 		<p style="font-family:architectsDaughterRegular; font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 	<% else %>
 	  <%= image_tag @program.chart.url, :height => "200px"%>

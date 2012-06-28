@@ -2,11 +2,7 @@
 <% programTypes = []%>
 <% groupSizes = []%>
 <% programLengths = []%>
-<% organization.programs.each do |f|%>
-<% programTypes << f.subject unless programTypes.include?(f.subject)%>
-<% groupSizes << f.group_size unless groupSizes.include?(f.group_size)%>
-<% programLengths << f.length unless programLengths.include?(f.length)%>
-<% end %>
+
 
 <div class="container" style="margin-left:-15px; border:1px solid #575758; background-color:#E9ECE9; padding:bottom:25px; color:#575758; min-width:760px; margin-top:50px">
 	<div class="row">
