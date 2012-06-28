@@ -27,7 +27,6 @@
 	<p style="margin:auto"><a href="#programs-box<%=f%>" class="programs-window" style="font-family:museoSlab500Regular"><%= @theCountries[f]%></a></p>
 <a href="#programs-box<%=f%>" class="programs-window"><%= render :partial => "flag", :locals => {:country => f}, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
 </div>
-
 <div id="programs-box<%=f%>" class="programs-popup">
 	<% @organization.programs.each do |p|%>
 	<% if p.location == f%>
@@ -37,10 +36,10 @@
 	<div class="three columns" style="width:20%; float:left">
 		<%= render :partial => "star", :locals => {:star => p.overall}%>
 	</div>
-	<div class="eleven columns" style="margin:auto; width:90%; padding-bottom:5px;">
+	<div class="twelve columns" style="margin:auto; width:96%; padding-bottom:5px;">
 		<%= p.description.html_safe%>
 	</div>
-	<div class="twelve columns" style="height:1px; background-color:#575758; width:100%; margin-bottom:5px">
+	<div class="twelve columns" style="height:1px; background-color:#575758; width:100%; margin:0; margin-bottom:5px;">
 	</div>
 	<% end %>
 	<% end %>
