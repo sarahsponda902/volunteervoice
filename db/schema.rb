@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120628222641) do
+ActiveRecord::Schema.define(:version => 20120628223401) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -229,23 +229,26 @@ ActiveRecord::Schema.define(:version => 20120628222641) do
   create_table "program_cost_length_maps", :force => true do |t|
     t.integer  "program_id"
     t.integer  "length"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "cost"
+    t.integer  "organization_id"
   end
 
   create_table "program_sizes", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "program_id"
     t.string   "size"
+    t.integer  "organization_id"
   end
 
   create_table "program_subjects", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.integer  "program_id"
     t.string   "subject"
+    t.integer  "organization_id"
   end
 
   create_table "programs", :force => true do |t|
