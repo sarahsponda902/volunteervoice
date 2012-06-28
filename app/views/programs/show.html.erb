@@ -161,6 +161,9 @@
 	<%if (URI(request.referrer).path.split('/')[1] == 'searches')%>
 				<a href="<%=URI(request.referrer).path%>" style="font-family:architectsDaughterRegular; color:#575758">&lt; Back to Search Results</a>
 	<% end %>
+	<%if (URI(request.referrer).path.split('/')[1] == 'organizations')%>
+				<a href="<%=URI(request.referrer).path%>" style="font-family:architectsDaughterRegular; color:#575758">&lt; Back to Organization Profile</a>
+	<% end %>
 <% end %>
 
 <div class="container" style="margin-top:50px; margin-left:40px; margin-right:40px; border:1px solid #575758; background-color:#E9ECE9; color:#575758">
