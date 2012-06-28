@@ -1061,17 +1061,11 @@ class ProgramsController < ApplicationController
   # POST /programs
   # POST /programs.json
   def create
-    @lengths = []
-    params[:program][:program_lengths].split(",").each do |f|
-      @p = ProgramLength.new(:program_id => params[:program][:id], :length => f)
-      @p.save
-      @lengths << @p
-    end
-    params[:program][:program_lengths] = @lengths
+
     
     @subjects = []
     params[:program][:program_subjects].split(",").each do |f|
-      @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f)
+      @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
       @p.save
       @subjects << @p
     end
@@ -1079,7 +1073,7 @@ class ProgramsController < ApplicationController
     
     @sizes = []
     params[:program][:program_sizes].split(",").each do |f|
-      @p = ProgramSize.new(:program_id => params[:program][:id], :size => f)
+      @p = ProgramSize.new(:program_id => params[:program][:id], :size => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
       @p.save
       @sizes << @p
     end

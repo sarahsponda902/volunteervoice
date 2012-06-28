@@ -5,7 +5,7 @@ gem 'rails', '3.2.2.rc1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sunspot_rails'
+gem "sunspot_rails", "~> 2.0.0.pre.111215"
 
 gem 'devise'
 
