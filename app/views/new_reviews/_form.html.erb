@@ -284,7 +284,7 @@ function removePeru() {
 	<div class="six columns" style=" margin-top:5px; font-family:ArchitectsDaughterRegular; font-size:0.85em; color:#62acbd;">
 
 <article class="selectCompanyBlurb"><!-- select a comany blurb-->
-		<%= f.text_field :organization, :id => "put", :value => if (@new_review.organization.nil?) ("  Put the organization's name here"); else (@new_review.organization); end, :style => "height:25px; width:250px; margin-top:15px; font-style:italic; margin-bottom:5px;", :onclick => "$(removePut()); this.style.fontStyle = 'normal'", :onblur => "$(backToPut()); if (this.value == '  Put the organization's name here') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :onchange => "checkFields()"%><br />
+		<%= f.text_field :organization, :id => "put", :value => if @new_review.organization.nil? "  Put the organization's name here"; else @new_review.organization; end, :style => "height:25px; width:250px; margin-top:15px; font-style:italic; margin-bottom:5px;", :onclick => "$(removePut()); this.style.fontStyle = 'normal'", :onblur => "$(backToPut()); if (this.value == '  Put the organization's name here') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :onchange => "checkFields()"%><br />
 		<a href="/reviews/new" style="font-family:Arial; margin-left:210px; font-size:1.2em" id="cancel">Cancel</a>
     </article><!--end selectCompanyBlurb-->
 
