@@ -30,10 +30,10 @@
 <div id="programs-box<%=f%>" class="programs-popup">
 	<% @organization.programs.each do |p|%>
 	<% if p.location == f%>
-	<div class="nine columns" style="width:70%; float:left;font-size:1.5em; color:#e67b5a">
+	<div class="nine columns" style="width:74%; font-size:1.5em; color:#e67b5a">
 		<a href="/programs/<%=p.id%>" style="color:#e67b5a"><%=p.name%></a>
 	</div>
-	<div class="three columns" style="width:20%; float:left">
+	<div class="three columns" style="width:24%; float:left">
 		<%= render :partial => "star", :locals => {:star => p.overall}%>
 	</div>
 	<div class="twelve columns" style="margin:auto; width:96%; padding-bottom:5px;">
