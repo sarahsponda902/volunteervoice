@@ -317,7 +317,7 @@ function removePeru() {
 
 				<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Which Program?</div>
 				<div class="three columns" style="position:absolute; left:40%; top:130px; height:30px; width:228px">
-				<%= f.text_field :program, :value => if (@new_review.program.nil?) (" eg. Tutoring children in Peru"); else @new_review.program; end, :style => "height:25px; font-style:italic; margin-top:5px; width:228px", :id => "programsField", :onclick => "removePeru(); this.style.fontStyle = 'normal'", :onblur => "addPeru(); if (this.value == ' eg. Tutoring children in Peru') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}"%>
+				<%= f.text_field :program, :value => if (@new_review.program.nil?); (" eg. Tutoring children in Peru"); else @new_review.program; end, :style => "height:25px; font-style:italic; margin-top:5px; width:228px", :id => "programsField", :onclick => "removePeru(); this.style.fontStyle = 'normal'", :onblur => "addPeru(); if (this.value == ' eg. Tutoring children in Peru') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}"%>
 				</div>
 
 
