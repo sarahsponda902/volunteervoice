@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  program_id: 1
+  cost: 9.99
+  length: 1
+
+two:
+  program_id: 1
+  cost: 9.99
+  length: 1

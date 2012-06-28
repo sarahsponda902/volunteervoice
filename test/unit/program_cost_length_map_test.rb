@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProgramLengthTest < ActiveSupport::TestCase
+class ProgramCostLengthMapTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
