@@ -88,7 +88,7 @@ class SearchesController < ApplicationController
 
         with(:weekly_cost).greater_than(price_min) unless price_min.nil?
 
-        with(:program_lengths).any_of(lengths) unless lengths.blank?
+        with(:program_length_cost_maps).in_bounding_box([min_length, min_cost], [max_length, max_cost])
 
         with(:program_sizes).any_of(sizes) unless sizes.blank?
       end

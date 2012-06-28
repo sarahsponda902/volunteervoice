@@ -209,23 +209,32 @@ $(document).ready(function() {
 </div>
 <div style="margin:0;padding:10px;" class="twelve columns">
 
-        <p style="padding:20px;padding-bottom:5px;font-size:1.3em; margin-left:-10px; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px; background-color:#E3E6D5; padding-top:35px">Group size:</p>
-        <input onClick='toggleBoxes3(this)'value="false" id='any3' name='search[sizes]' type='checkbox' checked>Any<br />
-		<div class="six columns" style="width:45%">
-        <input onclick='toggleBoxes3(this)' value='Individual' id='1_group' name='search[sizes][]' type='checkbox'>Individual<br />
-		<input onclick='toggleBoxes3(this)' value='Small Groups (2-3)' id='2_group' name='search[sizes][]' type='checkbox'>Small Groups (2-3)<br />
+        <p style="padding:20px;padding-bottom:5px;font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px;background-color:#E3E6D5; padding-top:35px; width:120%">Length of Time:</p>
+		<div class="ten columns" style="margin-top:10px">
+        Min: <input type="number" value= 0 id= "length_min_number" name="search[length_min_number]" />
+		<select id= "length_min_param" name="search[length_min_param]">
+			<option val="days">Days</option>
+			<option val="weeks">Weeks</option>
+			<option val="months">Months</option>
+			<option val="years">Years</option>
+		</select><br />
+        Max: <input type="number" value= 2 id = "length_max_number" name="search[length_max_number]" />
+		<select id= "length_max_param" name="search[length_max_number]">
+			<option val="days">Days</option>
+			<option val="weeks">Weeks</option>
+			<option val="months">Months</option>
+			<option val="years">Years</option>
+		</select>
 		</div>
-		<div class="six columns" style="width:45%">
-		<input onclick='toggleBoxes3(this)' value='Medium Groups (4-10)' id='3_group' name='search[sizes][]' type='checkbox'>Medium Groups (4-10)<br />
-		<input onclick='toggleBoxes3(this)' value='Large Gropus (11+)' id='4_group' name='search[sizes][]' type='checkbox'>Large Gropus (11+)<br /></div>
 </div>
+
 
 <div style="margin:0;padding:10px;" class="twelve columns">
 
-        <p style="padding:20px;padding-bottom:5px;font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px;background-color:#E3E6D5; padding-top:35px; width:120%">Price Range (avg. per week):</p>
+        <p style="padding:20px;padding-bottom:5px;font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px;background-color:#E3E6D5; padding-top:35px; width:120%">Total Price (in dollars):</p>
 		<div class="ten columns" style="margin-top:10px">
-        Min: <input type="number" value= 0 name="price_min" id= "price_min" name="search[price_min]" />
-        Max: <input type="number" value= 999 name="price_max" id = "price_max" name="search[price_max]" />
+        Min: <input type="number" value= 0 id= "price_min" name="search[price_min]" />
+        Max: <input type="number" value= 999 id = "price_max" name="search[price_max]" />
 		</div>
 </div>
 

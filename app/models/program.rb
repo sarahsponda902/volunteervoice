@@ -18,18 +18,18 @@ before_save :square_image_crop
 # Sunspot Search
 searchable do
   text :name
-    string :location
-    string :program_subjects, :multiple => true do
-      program_subjects.map(&:subject)
-    end
-    text :organization_name
-    string :weekly_cost
-    string :program_sizes, :multiple => true do
-      program_sizes.map(&:size)
-    end
-    string :program_lengths, :multiple => true do
-      program_lengths.map(&:length)
-    end
+  text :organization_name
+  text :location_name
+  string :program_subjects, :multiple => true do
+    program_subjects.map(&:subject)
+  end
+  string :weekly_cost
+  string :program_sizes, :multiple => true do
+    program_sizes.map(&:size)
+  end
+  latlon :program_cost_length_maps, :multiple => true do
+    program_cost_length_maps.map{|p| Sunspot::Util::Coordinates.new(p.length, p.cost) }
+  end
   
 end
 
