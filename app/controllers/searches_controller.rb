@@ -928,7 +928,7 @@ class SearchesController < ApplicationController
     end
     
     
-    
+
     if (params[:search][:regions].include?('Americas'))
       params[:search][:regions] = ['DZ', 
       'EG', 
