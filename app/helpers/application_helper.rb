@@ -18,16 +18,18 @@ def Org_Namer(arg)
 	#take in a Organization ID and return a name
 end
 
-def link_to_add_fields(name, f, association)
-  new_object = f.object.class.reflect_on_association(association).klass.new
-  fields = f.fields_for(association, new_object, :child_index => "new_#{association}") do |builder|
-    render(association.to_s.singularize + "_fields", :f => builder)
-  end
-  link_to_function(name, h("add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")"))
-end
+def time_in_words(distance_in_seconds)
+  %w(year month week day).each do |interval|
+      # For each interval type, if the amount of time remaining is greater than
+      # one unit, calculate how many units fit into the remaining time.
+      if distance_in_seconds >= 1.send(interval)
+        delta = (distance_in_seconds / 1.send(interval)).floor
+        distance_in_seconds -= delta.send(interval)
+        components << pluralize(delta, interval)
+      end
+    end
 
-def link_to_remove_fields(name, f)
-  f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)")
+    components.join(" and ")
 end
 
 
