@@ -59,7 +59,7 @@
 			<u><font style="line-height:1.2em">Program Subjects:</font></u>
 		</div>
 		<div class="ten columns" style="border: 1px solid #575758; height:130px; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
-<% programSubjects[0..(programSubjects.count - 2)].join(", ")%>
+<%= programSubjects[0..(programSubjects.count - 2)].join(", ")%>
 		</div>
 	</div>
 	<div class="three columns" style="float:left;margin-left:10px; padding:10px; height:295px; background-color:#c1dfdb; height:310.5px">
@@ -114,7 +114,7 @@
 			<p style="font-weight:600">Price Includes: </p><%= organization.program_costs_includes.html_safe%><br />
 			<p style="font-weight:600">Price Doesn't Includes: </p><%= organization.program_costs_doesnt_include.html_safe%><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><a href="#price-breakdown-box" class="price-breakdown-window">Click here to view</a></p><br />
-			<p style="font-weight:600">Group Sizes: </p><%= groupSizes[0..groupSizes.count - 2].join(", ")%><br /><br />
+			<p style="font-weight:600">Group Sizes: </p><%= groupSizes[0..(groupSizes.count - 2)].join(", ")%><br /><br />
 			
 			
 			
