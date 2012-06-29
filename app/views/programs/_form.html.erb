@@ -36,9 +36,9 @@ function createInput(){
 	label.innerHTML="Total Cost ($): ";
 	li.appendChild(label);
     li.appendChild(input);
+	li.appendChild("<br /><br />");
 	li.appendChild(label2);
 	li.appendChild(input2);
-	li.appendChild(div);
     field_area.appendChild(li);
     //create the removal link
     var removalLink = document.createElement('a');
@@ -51,7 +51,9 @@ function createInput(){
     var removalText = document.createTextNode('Remove Field');
     removalLink.appendChild(removalText);
     li.appendChild(removalLink);
+	li.appendChild(div);
     countFields = countFields + 1;
+	return false;
 };
 
 
