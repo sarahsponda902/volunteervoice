@@ -820,20 +820,12 @@ $(document).ready(function() {
 <!-- END COUNTRIES -->
 
 <!-- LENGTHS -->
-<input type="number" value= 0 id= "length_min_number5" name="search[length_min_number]" style="display:none"/>
-<select id= "length_min_param5" name="search[length_min_param]" style="display:none">
-	<option val="days" selected="selected">Days</option>
-	<option val="weeks">Weeks</option>
-	<option val="months">Months</option>
-	<option val="years">Years</option>
-</select>
-<input type="number" value= 2 id = "length_max_number5" name="search[length_max_number]" style="display:none"/>
-<select id= "length_max_param5" name="search[length_max_number]" style="display:none">
-	<option val="days">Days</option>
-	<option val="weeks">Weeks</option>
-	<option val="months">Months</option>
-	<option val="years" selected="selected">Years</option>
-</select>
+<input type="text" value= "0" id= "length_min_number5" name="search[length_min_number]" style="display:none"/>
+<input type="text" id= "length_min_param5" name="search[length_min_param]" style="display:none" value="weeks" />
+
+<input type="text" value= "2" id = "length_max_number5" name="search[length_max_number]" style="display:none"/>
+<input type="text" id= "length_max_param5" name="search[length_max_number]" style="display:none" value="years" />
+
 
 <!-- END LENGTHS -->
 
