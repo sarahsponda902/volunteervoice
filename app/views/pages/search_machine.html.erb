@@ -190,40 +190,24 @@ $(document).ready(function() {
 </div>
 
 
+
 <div style="margin:0;padding:10px;" class="twelve columns">
 
-        <p style="padding:20px;font-size:1.3em; font-weight:580; margin-left:-10px; line-height:1.1em; color:#575758; margin-bottom:3px; background-color:#E3E6D5;padding-bottom:5px; padding-top:35px">Length of Trip:</p>
-        <input onClick='toggleBoxes2(this)'value="false" id='any2' name='search[lengths]' type='checkbox' checked>Any <br />
-<div class="six columns" style="width:45%">
-        <input onclick='toggleBoxes2(this)' value='1 week or less' id='1_length' name='search[lengths][]' type='checkbox'>1 week or less<br />
-		<input onclick='toggleBoxes2(this)' value='2-4 weeks' id='2_length' name='search[lengths][]' type='checkbox'>2-4 weeks<br />
-		<input onclick='toggleBoxes2(this)' value='5-8 weeks' id='3_length' name='search[lengths][]' type='checkbox'>5-8 weeks<br />
-		<input onclick='toggleBoxes2(this)' value='9-12 weeks' id='4_length' name='search[lengths][]' type='checkbox'>9-12 weeks<br />
-		</div>
-		<div class="six columns" style="width:45%">
-		<input onclick='toggleBoxes2(this)' value='3-6 months' id='5_length' name='search[lengths][]' type='checkbox'>3-6 months<br />
-		<input onclick='toggleBoxes2(this)' value='6-12 months' id='6_length' name='search[lengths][]' type='checkbox'>6-12 months<br />
-		<input onclick='toggleBoxes2(this)' value='1-2 years' id='7_length' name='search[lengths][]' type='checkbox'>1-2 years<br />
-		<input onclick='toggleBoxes2(this)' value='2+ years' id='8_length' name='search[lengths][]' type='checkbox'>2+ years<br />
-		</div>
-</div>
-<div style="margin:0;padding:10px;" class="twelve columns">
-
-        <p style="padding:20px;padding-bottom:5px;font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px;background-color:#E3E6D5; padding-top:35px; width:120%">Length of Time:</p>
+        <p style="padding:20px;padding-bottom:5px;font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px;background-color:#E3E6D5; padding-top:35px; width:120%; margin-left:-10px">Length of Trip:</p>
 		<div class="ten columns" style="margin-top:10px">
-        Min: <input type="number" value= 0 id= "length_min_number" name="search[length_min_number]" />
+        Min: <input type="number" value= 0 id= "length_min_number" name="search[length_min_number]">
 		<select id= "length_min_param" name="search[length_min_param]">
-			<option val="days">Days</option>
+			<option val="days" selected="selected">Days</option>
 			<option val="weeks">Weeks</option>
 			<option val="months">Months</option>
 			<option val="years">Years</option>
 		</select><br />
-        Max: <input type="number" value= 2 id = "length_max_number" name="search[length_max_number]" />
+        Max: <input type="number" value= 2 id = "length_max_number" name="search[length_max_number]">
 		<select id= "length_max_param" name="search[length_max_number]">
 			<option val="days">Days</option>
 			<option val="weeks">Weeks</option>
 			<option val="months">Months</option>
-			<option val="years">Years</option>
+			<option val="years" selected="selected">Years</option>
 		</select>
 		</div>
 </div>
@@ -1655,6 +1639,10 @@ input::-webkit-inner-spin-button {
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type="number"]{
+	width:50px;
 }
 </style>
 
