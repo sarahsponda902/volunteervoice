@@ -8,6 +8,17 @@
 
 
 <script type="text/javascript">
+$(document).ready(function(){
+	$(".createInput").click(function(event) {
+		event.preventDefault();
+		createInput();
+	});
+	$(".removeInput").click(function(event) {
+		event.preventDefault();
+		this.parentNode.parentNode.removeChild(this.parentNode);
+	});
+});
+
 
 var countFields = 0;
 function createInput(){
@@ -43,15 +54,13 @@ function createInput(){
 	removalLink.style.cursor =  "pointer";
 	removalLink.style.color = "red";
 	removalLink.style.fontSize = "0.8em";
-    removalLink.onclick = function(){
-        this.parentNode.parentNode.removeChild(this.parentNode);
-    }
+	removalLink.className = "removeInput";
     var removalText = document.createTextNode('Remove Field');
     removalLink.appendChild(removalText);
+	li.appendChild(br);
     li.appendChild(removalLink);
 	li.appendChild(div);
     countFields = countFields + 1;
-	return false;
 };
 
 
@@ -248,7 +257,7 @@ $(function() {
 </ul>
 </div>
 
-<p><a style="color:blue;margin-left:25px" href='#' onclick="createInput()">+ Add a Length &amp; Cost</a></p><br /><br />
+<p><a style="color:blue;margin-left:25px" href='#' class="createInput">+ Add a Length &amp; Cost</a></p><br /><br />
 
 
   <div>Add a Photo<br />
