@@ -23,7 +23,7 @@ var countFields = 0;
 function createInput(){
     field_area = document.getElementById('fields');
 	var li = document.createElement("li");
-    var input = $(document.createElement("select"));
+    var input = document.createElement("select");
 	var label = document.createTextNode("Length of Trip: ");
 	var input2 = document.createElement("input");
 	var label2 = document.createTextNode("Total Cost ($): ");
@@ -37,13 +37,16 @@ function createInput(){
     input.id = 'length'+countFields;
     input.name = "program[program_cost_length_maps][length][]";
  	for (count = 0; count < allTags.length; count++) {
-		input.append("<option value="+allTags[count]+">"+allTags[count]+"</option>");
+		var opt = document.createElement("option");
+		opt.value = allTags[count].toString();
+		opt.text = allTags[count].toString();
+		input.options.add(opt);
 	};
 	input2.id = 'cost'+countFields;
     input2.name = "program[program_cost_length_maps][cost][]";
     input2.type = "number";
 	li.appendChild(label);
-    li.append(input);
+    li.appendChild(input);
 	li.appendChild(br);
 	li.appendChild(br);
 	li.appendChild(label2);
@@ -201,10 +204,6 @@ $(function() {
   <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description, :value => @program.description %>
-  </div>
-  <div class="field">
-    Weekly Cost ($/week)<br />
-    <%= f.number_field :weekly_cost, :value => @program.weekly_cost %>
   </div>
 <div class="field">
 	<%= f.label "Country "%>
