@@ -23,34 +23,12 @@ $(function() {
 	<script type="text/javascript">
 	$(function() {
 		var allTags = ["1 week", "2 weeks", "3 weeks", "4 weeks", "5 weeks", "6 weeks", "7 weeks", "8 weeks", "9 weeks", "10 weeks", "11 weeks", "12 weeks", "4 months", "5 months", "6 months", "7 months", "8 months", "9 months", "10 months", "11 months", "12 months", "13 months", "14 months", "15 months", "16 months", "17 months", "18 months", "19 months", "20 months", "21 months", "22 months", "23 months", "2 years", "25 months", "26 months", "27 months", "28 months", "29 months", "30 months", "31 months", "32 months", "33 months", "34 months", "35 months", "3 years"];
-		$( "#length_of_trip" ).autocomplete({
+		$( ".length_of_trip" ).autocomplete({
 			source: allTags
 		});
 	});
 		</script>
 	
-<script type="text/javascript">
-count = 0;
-createinput =function (){
-    field_area = document.getElementById('fields')
-var li = document.createElement("li");
-    var input = document.createElement("input");
-    input.id = 'field'+count;
-    input.name = 'field'+count;
-    input.type = "text"; //Type of field - can be any valid input type like text,file,checkbox etc.
-    li.appendChild(input);
-    field_area.appendChild(li);
-    //create the removal link
-    var removalLink = document.createElement('a');
-    removalLink.onclick = function(){
-        this.parentNode.parentNode.removeChild(this.parentNode)
-    }
-    var removalText = document.createTextNode('Remove Field');
-    removalLink.appendChild(removalText);
-    li.appendChild(removalLink);
-    count++
-}​
-</script>	
 
 		<script type="text/javascript">
 			$(function() {
@@ -216,7 +194,7 @@ var li = document.createElement("li");
 </div>
 
 <ul class="fields">
-<li><input id="length_of_trip"></li>
+<li><input class="length_of_trip"></li>
 </ul>
 
 <p><a href='#' onclick="createInput()">Add a Length/Cost</a></p><br /><br />
