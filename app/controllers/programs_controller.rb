@@ -1339,6 +1339,8 @@ class ProgramsController < ApplicationController
       @p = @cost_lengths[count]
       @length = f.split(" ")
       @p.length = @length[0].to_i.send(@length[1])
+      @p.length_name = @length[1]
+      @p.length_number = @length[0]
       @p.save
       @cost_lengths[count] = @p
       count = count + 1
