@@ -1328,14 +1328,14 @@ class ProgramsController < ApplicationController
     params[:program][:program_sizes] = @sizes
     
     @cost_lengths = []
-    params[:program][:program_cost_length_maps][:costs].each do |f|
+    params[:costs].each do |f|
       @p = ProgramCostLengthMap.new(:program_id => params[:program][:id], :cost => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
       @p.save
       @cost_lengths << @p
     end
     
     count = 0
-    params[:program][:program_cost_length_maps][:lengths].each do |f|
+    params[:lengths].each do |f|
       @p = @cost_lengths[count]
       @p.length = f
       @p.save
