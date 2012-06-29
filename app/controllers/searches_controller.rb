@@ -206,9 +206,6 @@ class SearchesController < ApplicationController
     if @search.regions.nil?
       @search.regions = ["false"]
     end
-    if @search.lengths.nil?
-      @search.lengths = ["false"]
-    end
     if @search.sizes.nil?
       @search.sizes = ["false"]
     end
@@ -801,9 +798,6 @@ class SearchesController < ApplicationController
       'TO', 
       'TV', 
       'WF']
-    end
-    if @search.lengths.include?("false")
-       @search.lengths = ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"]
     end
     if @search.sizes.include?("false")
       @search.sizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
