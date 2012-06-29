@@ -14,9 +14,9 @@ function createInput(){
     field_area = document.getElementById('fields');
 	var li = document.createElement("li");
     var input = document.createElement("input");
-	var label = document.createElement("label");
+	var label = document.createTextNode("Length of Trip: ");
 	var input2 = document.createElement("input");
-	var label2 = document.createElement("label");
+	var label2 = document.createTextNode("Total Cost ($): ");
 	var div = document.createElement("div");
 	var br = document.createElement("br");
 	div.style.backgroundColor = "black";
@@ -31,10 +31,6 @@ function createInput(){
 	input2.id = 'cost'+countFields;
     input2.name = "program[program_cost_length_maps][cost][]";
     input2.type = "number";
-	label.for = "length" + countFields;
-	label.innerHTML="Length of Trip: ";
-	label2.for = "cost" + countFields;
-	label.innerHTML="Total Cost ($): ";
 	li.appendChild(label);
     li.appendChild(input);
 	li.appendChild(br);
