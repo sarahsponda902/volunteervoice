@@ -52,18 +52,8 @@ function createInput(){
 	li.appendChild(label2);
 	li.appendChild(br);
 	li.appendChild(input2);
-    field_area.appendChild(li);
-    //create the removal link
-    var removalLink = document.createElement('a');
-	removalLink.style.cursor =  "pointer";
-	removalLink.style.color = "red";
-	removalLink.style.fontSize = "0.8em";
-	removalLink.className = "removeInput";
-    var removalText = document.createTextNode('Remove Field');
-    removalLink.appendChild(removalText);
-	li.appendChild(br);
-    li.appendChild(removalLink);
 	li.appendChild(div);
+    field_area.appendChild(li);
     countFields = countFields + 1;
 };
 
