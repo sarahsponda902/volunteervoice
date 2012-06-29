@@ -91,7 +91,7 @@ class SearchesController < ApplicationController
 
         with(:location).any_of(regions) unless regions.blank?
 
-        with(:program_cost_length_maps).in_bounding_box([length_max, price_max], [length_min, price_min])
+        with(:program_cost_length_maps).in_bounding_box([0, 0], [2.years.to_i, 99999])
 
         with(:program_sizes).any_of(sizes) unless sizes.blank?
       end
