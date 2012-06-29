@@ -55,11 +55,6 @@ class SearchesController < ApplicationController
     else
       regions = @search.regions.split("; ")
     end
-    if @search.lengths.nil?
-      lengths = ""
-    else
-      lengths = @search.lengths.split("; ")
-    end
     if @search.sizes.nil?
       sizes = ""
     else
@@ -76,6 +71,18 @@ class SearchesController < ApplicationController
     else
       price_min = @search.price_min
     end
+    if (@search.length_min_number.nil? || @search.length_min_param.nil?)
+      length_min = 0.weeks
+    else
+      length_min = @search.length_min_number.send(@search.length_min_param)
+    end
+    if (@search.length_max_number.nil? || @search.length_max_param.nil?)
+      length_max = 2.years
+    else
+      length_max = @search.length_max_number.send(@search.length_max_param)
+    end
+    
+      
     
       @the_search = Program.search do
         keywords keys
@@ -84,11 +91,7 @@ class SearchesController < ApplicationController
 
         with(:location).any_of(regions) unless regions.blank?
 
-        with(:weekly_cost).less_than(price_max) unless price_max.nil?
-
-        with(:weekly_cost).greater_than(price_min) unless price_min.nil?
-
-        with(:program_length_cost_maps).in_bounding_box([min_length, min_cost], [max_length, max_cost])
+        with(:program_length_cost_maps).in_bounding_box([length_min, price_min], [length_max, price_max])
 
         with(:program_sizes).any_of(sizes) unless sizes.blank?
       end
