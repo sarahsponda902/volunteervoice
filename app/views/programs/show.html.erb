@@ -209,8 +209,8 @@
 		<font style="font-weight:600">Location: </font><%= @program.specific_location%><br /><br />
 		<font style="font-weight:600">Program Started: </font> <%=@program.program_started%><br /><br />
 		<font style="font-weight:600">Lengths of Program: </font>
-		<% @program_lengths = @program.program_lengths.map{|prog| prog.length}%>
-		<%= @program_lengths[0..(@program.program_lengths.count - 2)].join(", ") %>
+		<% @program_lengths = @program.program_cost_length_maps.map{|p| p.length}%>
+		<%= @program_lengths.join(", ")%>
 		<br /><br />
 		<font style="font-weight:600">Start Dates: </font><%= @program.start_dates%><br /><br />
 		<font style="font-weight:600">Program Structure: </font><%= @program.program_structure.html_safe%><br />
@@ -225,7 +225,6 @@
 	</div>
 	
 	<div class="six columns" style="width:45%; margin-left:2%; margin-top:2%; padding-left:2%; border-left: 1px solid #e67b5a;">
-		<font style="font-weight:600">Program Costs (avg. per week): </font>$<%= @program.weekly_cost%><br /><br />
 		<font style="font-weight:600">	Program Cost Chart: </font><a href="#popup" class="popup-window">Click here to view</a><br /><br /> 
 		<font style="font-weight:600">Program Cost Breakdown: </font><%= @program.program_cost_breakdown.html_safe%><br />
 	<font style="font-weight:600">	-Includes: </font><%= @program.cost_includes.html_safe%><br />
