@@ -806,7 +806,6 @@ class SearchesController < ApplicationController
     
     @search.regions = @search.regions.join("; ")
     @search.subjects = @search.subjects.join("; ")
-    @search.lengths = @search.lengths.join("; ") unless @search.lengths.class.name == "String"
     @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
 
     respond_to do |format|
@@ -1416,15 +1415,11 @@ class SearchesController < ApplicationController
       'TV', 
       'WF']
     end
-    if params[:search][:lengths].include?("false")
-       params[:search][:lengths] = ["1 week or less", "2-4 weeks", "5-8 weeks", "9-12 weeks", "3-6 months", "6-12 months", "1-2 years", "2+ years"]
-    end
     if params[:search][:sizes].include?("false")
       params[:search][:sizes] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
     end
      params[:search][:regions] = params[:search][:regions].join("; ")
       params[:search][:subjects] = params[:search][:subjects].join("; ")
-      params[:search][:lengths] = params[:search][:lengths].join("; ") unless params[:search][:lengths].class.name == "String"
       params[:search][:sizes] = params[:search][:sizes].join("; ") unless params[:search][:sizes].class.name == "String"
     
     
