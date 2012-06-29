@@ -29,7 +29,7 @@ searchable do
   end
   string :location
   location :program_cost_length_maps, :multiple => true do
-    program_cost_length_maps.map{|p| Sunspot::Util::Coordinates.new(p.length, p.cost) }
+    program_cost_length_maps.map{|p| Sunspot::Util::Coordinates.new((p.length_number.send(p.length_name)), p.cost) }
   end
   
 end
