@@ -50,16 +50,6 @@ function createInput(){
 	li.appendChild(input2);
     field_area.appendChild(li);
     //create the removal link
-    var removalLink = document.createElement('a');
-	removalLink.css("cursor", "pointer");
-	removalLink.css("color", "blue");
-	removalLink.css("font-size", "0.8em");
-    removalLink.onclick = function(){
-        this.parentNode.parentNode.removeChild(this.parentNode);
-    }
-    var removalText = document.createTextNode('Remove Field');
-    removalLink.appendChild(removalText);
-    li.appendChild(removalLink);
     countFields = countFields + 1;
 }​
 </script>	
@@ -158,6 +148,7 @@ function createInput(){
 <% if current_user.admin?%>
 <div class="container">
 	<div class="row">
+		<div class="twelve columns">
 		HELPERS:<br />
 
 		* -> bullet point<br />
@@ -169,7 +160,7 @@ function createInput(){
 		!image url! -> embedded image at url<br />
 		p{color:#color-code} paragraph -> paragraph in #color-code color. To exit color, hit 'enter' twice<br /><br />
 
-		For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
+		For more formatting go to: http://redcloth.org/textile/<br /><br /><br /></div>
 		<div class="six columns">
 <%= form_for @program, :html => {:multipart => true} do |f| %>
 
