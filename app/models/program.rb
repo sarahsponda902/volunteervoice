@@ -27,7 +27,7 @@ searchable do
   string :program_sizes, :multiple => true do
     program_sizes.map(&:size)
   end
-  latlon :program_cost_length_maps, :multiple => true do
+  location :program_cost_length_maps, :multiple => true do
     program_cost_length_maps.map{|p| Sunspot::Util::Coordinates.new(p.length, p.cost) }
   end
   
