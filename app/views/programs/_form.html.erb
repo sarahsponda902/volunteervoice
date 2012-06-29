@@ -21,16 +21,29 @@ $(function() {
 	</script>
 	
 <script type="text/javascript">
-function remove_fields(link) {
-        $(link).prev("input[type=hidden]").val("1");
-        $(link).closest(".fields").hide();
-}
-
-function add_fields(link, association, content) {
-        var new_id = new Date().getTime();
-        var regexp = new RegExp("new_" + association, "g");
-        $(link).parent().before(content.replace(regexp, new_id));
-}
+countFields = 0;
+createinput =function (){
+    field_area = document.getElementById('fields')
+var li = document.createElement("li");
+    var input = document.createElement("input");
+    input.id = 'field'+countFields;
+    input.name = 'field'+countFields;
+    input.type = "text"; //Type of field - can be any valid input type like text,file,checkbox etc.
+    li.appendChild(input);
+    field_area.appendChild(li);
+    //create the removal link
+    var removalLink = document.createElement('a');
+	removalLink.css("cursor", "pointer");
+	removalLink.css("color", "blue");
+	removalLink.css("font-size", "0.8em");
+    removalLink.onclick = function(){
+        this.parentNode.parentNode.removeChild(this.parentNode)
+    }
+    var removalText = document.createTextNode('Remove Field');
+    removalLink.appendChild(removalText);
+    li.appendChild(removalLink);
+    countFields++
+}​
 </script>	
 
 		<script type="text/javascript">
@@ -195,10 +208,11 @@ function add_fields(link, association, content) {
   </div>
 </div>
 
-<div class="fields">
-	<%= render "program_cost_length_map_fields", :f => f%>
-	<p><%= link_to_add_fields "Add a Program Length-Cost", f, :program_cost_length_maps %></p><br /><br />
-</div>
+<ul class="fields">
+
+</ul>
+
+<p><a href='#' onclick="createinput()">Add a Length/Cost</a></p><br /><br />
 
 
   <div>Add a Photo<br />
