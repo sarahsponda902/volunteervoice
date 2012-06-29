@@ -28,14 +28,14 @@
 			<a style="font-size:1.2em;" class="organization_url" href="<%=organization.url%>" target="_blank"><u> <%=organization.url%></u></a>
 
 		</div>
-		<div class="three columns"  style="text-align:center; margin-top:-25px; padding:0; width:23%">
+		<div class="three columns"  style="text-align:center; margin-top:-75px; padding:0; width:23%">
 
 			<br />
 			<br />
 			<p style="margin-top:-25px"><%= render :partial => "bigStar", :locals => {:star => organization.roundup(overall)}%></p>
 			<br />
 
-			<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em">Based on <%= reviews_count%> reviews</p> 
+			<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em">Based on <%= pluralize reviews_count, "reviews"%></p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{organization.id}/edit"%>
