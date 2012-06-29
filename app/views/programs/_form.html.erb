@@ -35,7 +35,7 @@ function createInput(){
 	div.style.marginBottom = "10px";
 	div.style.marginTop = "5px";
     input.id = 'length'+countFields;
-    input.name = "program[program_cost_length_maps][length][]";
+    input.name = "program[program_cost_length_maps][lengths][]";
  	for (count = 0; count < allTags.length; count++) {
 		var opt = document.createElement("option");
 		opt.value = allTags[count].toString();
@@ -43,7 +43,7 @@ function createInput(){
 		input.options.add(opt);
 	};
 	input2.id = 'cost'+countFields;
-    input2.name = "program[program_cost_length_maps][cost][]";
+    input2.name = "program[program_cost_length_maps][costs][]";
     input2.type = "number";
 	li.appendChild(label);
     li.appendChild(input);
