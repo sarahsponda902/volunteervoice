@@ -43,7 +43,7 @@ function createInput(){
     //create the removal link
     var removalLink = document.createElement('a');
 	removalLink.style.cursor =  "pointer";
-	removalLink.style.color = "blue";
+	removalLink.style.color = "red";
 	removalLink.style.fontSize = "0.8em";
     removalLink.onclick = function(){
         this.parentNode.parentNode.removeChild(this.parentNode);
@@ -244,6 +244,7 @@ $(function() {
 </div>
 
 <div class="cost_lengths" style="margin-top:20px">
+	<div style="width:150px; height:1px; background-color:black"></div>
 <ul id="fields">
 
 </ul>
