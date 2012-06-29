@@ -91,6 +91,8 @@ class SearchesController < ApplicationController
 
         with(:location).any_of(regions) unless regions.blank?
 
+        with(:program_cost_length_maps).near(length_min, price_min, :precision => 3)
+
         with(:program_sizes).any_of(sizes) unless sizes.blank?
       end
     
