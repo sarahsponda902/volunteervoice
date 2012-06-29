@@ -97,9 +97,6 @@ $('#priceRange').pullOut({
 	<% if @search.sizes.nil?%>
 		<% @search_sizes = []%>
 	<% end %>
-	<% if @search.lengths.nil?%>
-		<% @search_lengths = []%>
-	<% end %>
 	<% if @search.subjects.nil?%>
 		<% @search_subjects = []%>
 	<% end %>
@@ -288,30 +285,6 @@ $(document).ready(function() {
 			$("#any10").prop('checked', false);
 		}
 	}
-	
-	
-	
-	var count = 0;
-	for (count = 0; count < allTheLengths.length; count++)
-	{
-		if (search_lengths.indexOf(allTheLengths[count]) == -1)
-		{
-			isAllLengths = false;
-		}
-	}
-	var count = 0;
-	for (count = 0; count < allTheLengths.length; count++)
-	{
-		if (search_lengths.indexOf(allTheLengths[count]) != -1)
-		{
-			$("#"+(count+1)+"_length").prop('checked', true);
-			$("#length"+(count+1)+"5").prop('checked', true);
-			$("#any2").prop('checked', false);
-			$("#any12").prop('checked', false);
-		}
-	}
-	
-	
 	
 	var count = 0;
 	for (count = 0; count < allTheSizes.length; count++)
