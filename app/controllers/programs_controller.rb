@@ -1095,6 +1095,8 @@ class ProgramsController < ApplicationController
       count = count + 1
     end
     
+    params[:program][:program_cost_length_maps] = @cost_lengths
+    
     @program = Program.new(params[:program])
     @program.organization_id = Organization.where(:name => @program.organization_name).first.id
     @program.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize(truncate @program.description, :length => 100), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
