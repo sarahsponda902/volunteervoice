@@ -89,6 +89,7 @@ GEM
     mini_magick (3.4)
       subexec (~> 0.2.1)
     multi_json (1.3.5)
+    nested_form (0.2.1)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.3.0)
@@ -180,6 +181,7 @@ DEPENDENCIES
   jquery-rails
   madmimi
   mini_magick
+  nested_form
   pg
   profanalyzer
   rails (= 3.2.2.rc1)
