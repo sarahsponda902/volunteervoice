@@ -3,7 +3,7 @@
 <% groupSizes = []%>
 <% programLengths = []%>
 
-<% ProgramSubject.where(:organization_id => organization.id).each do |f|%>
+<% organization.program_subjects.each do |f|%>
 <% programSubjects << f.subject %>
 <% end %>
 
@@ -28,7 +28,7 @@
 			<a style="font-size:1.2em;" class="organization_url" href="<%=organization.url%>" target="_blank"><u> <%=organization.url%></u></a>
 
 		</div>
-		<div class="three columns"  style="text-align:center; margin-top:-75px; padding:0; width:23%">
+		<div class="three columns"  style="text-align:center; margin-top:-95px; padding:0; width:23%">
 
 			<br />
 			<br />
@@ -59,7 +59,7 @@
 			<u><font style="line-height:1.2em">Program Subjects:</font></u>
 		</div>
 		<div class="ten columns" style="border: 1px solid #575758; height:130px; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
-<% programSubjects.join(", ")%>
+<% programSubjects[0..(programSubjects.count - 2)].join(", ")%>
 		</div>
 	</div>
 	<div class="three columns" style="float:left;margin-left:10px; padding:10px; height:295px; background-color:#c1dfdb; height:310.5px">
