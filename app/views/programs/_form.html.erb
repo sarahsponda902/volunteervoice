@@ -18,6 +18,7 @@ function createInput(){
 	var input2 = document.createElement("input");
 	var label2 = document.createElement("label");
 	var div = document.createElement("div");
+	var br = document.createElement("br");
 	div.style.backgroundColor = "black";
 	div.style.height = "1px";
 	div.style.width = "150px";
@@ -36,7 +37,8 @@ function createInput(){
 	label.innerHTML="Total Cost ($): ";
 	li.appendChild(label);
     li.appendChild(input);
-	li.appendChild("<br /><br />");
+	li.appendChild(br);
+	li.appendChild(br);
 	li.appendChild(label2);
 	li.appendChild(input2);
     field_area.appendChild(li);
@@ -53,7 +55,6 @@ function createInput(){
     li.appendChild(removalLink);
 	li.appendChild(div);
     countFields = countFields + 1;
-	return false;
 };
 
 
