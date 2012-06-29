@@ -37,17 +37,7 @@ function createInput(){
 	li.css("border", "1px solid black");
     var input = document.createElement("input");
 	var input2 = document.createElement("input");
-    input.id = 'length'+countFields;
-	input.className = "length_of_trip";
-    input.name = "program_length";
-    input.type = "text"; 
-	input.label = "Length ";
-	input2.id = 'cost'+countFields;
-    input2.name = "program_cost";
-    input2.type = "number";
-	input2.label = "Total Cost in Dollars ";
-    li.appendChild(input);
-	li.appendChild(input2);
+   
     field_area.appendChild(li);
     //create the removal link
     var removalLink = document.createElement('a');
