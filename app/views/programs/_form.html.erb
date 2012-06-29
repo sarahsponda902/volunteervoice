@@ -32,22 +32,7 @@ $(function() {
 <script type="text/javascript">
 countFields = 0;
 function createInput(){
-    field_area = document.getElementById('fields');
-	var li = document.createElement("li");
 
-    field_area.appendChild(li);
-    //create the removal link
-    var removalLink = document.createElement('a');
-	removalLink.css("cursor", "pointer");
-	removalLink.css("color", "blue");
-	removalLink.css("font-size", "0.8em");
-    removalLink.onclick = function(){
-        this.parentNode.parentNode.removeChild(this.parentNode);
-    }
-    var removalText = document.createTextNode('Remove Field');
-    removalLink.appendChild(removalText);
-    li.appendChild(removalLink);
-    countFields = countFields + 1;
 }​
 </script>	
 
@@ -218,7 +203,7 @@ function createInput(){
 
 </ul>
 
-<p><a href='#' onclick="createInput()">Add a Length/Cost</a></p><br /><br />
+<p><br /><br /><a href='#' onclick="createInput()">Add a Length/Cost</a></p><br /><br />
 
 
   <div>Add a Photo<br />
