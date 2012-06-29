@@ -13,10 +13,6 @@ $(document).ready(function(){
 		event.preventDefault();
 		createInput();
 	});
-	$(".removeInput").click(function(event) {
-		event.preventDefault();
-		this.parentNode.parentNode.removeChild(this.parentNode);
-	});
 });
 
 
@@ -41,7 +37,9 @@ function createInput(){
     input.id = 'length'+countFields;
     input.name = "program[program_cost_length_maps][length][]";
  	for (count = 0; count < allTags.length; count++) {
-		input.append("<option value="+allTags[count]+">"+allTags[count]+"</option>");
+		input.append($("<option></option>")
+		.attr("value",allTags[count].toString())
+		.text(allTags[count].toString()));
 	};
 	input2.id = 'cost'+countFields;
     input2.name = "program[program_cost_length_maps][cost][]";
