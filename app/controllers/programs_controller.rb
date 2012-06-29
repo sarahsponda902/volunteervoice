@@ -1337,7 +1337,8 @@ class ProgramsController < ApplicationController
     count = 0
     params[:lengths].each do |f|
       @p = @cost_lengths[count]
-      @p.length = f
+      @length = f.split(" ")
+      @p.length = @length[0].to_i.send(@length[1])
       @p.save
       @cost_lengths[count] = @p
       count = count + 1
