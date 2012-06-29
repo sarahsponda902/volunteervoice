@@ -35,9 +35,9 @@ function createInput(){
     field_area.appendChild(li);
     //create the removal link
     var removalLink = document.createElement('a');
-	removalLink.css("cursor", "pointer");
-	removalLink.css("color", "blue");
-	removalLink.css("font-size", "0.8em");
+	removalLink.style.cursor =  "pointer";
+	removalLink.style.color = "blue";
+	removalLink.style.fontSize = "0.8em";
     removalLink.onclick = function(){
         this.parentNode.parentNode.removeChild(this.parentNode);
     }
