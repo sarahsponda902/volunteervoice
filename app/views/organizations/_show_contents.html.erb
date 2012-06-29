@@ -1,7 +1,19 @@
 
-<% programTypes = []%>
+<% programSubjects = []%>
 <% groupSizes = []%>
 <% programLengths = []%>
+
+<% organization.program_subjects.each do |f|%>
+<% programSubjects << f.subject %>
+<% end %>
+
+<% organization.program_sizes.each do |f|%>
+<% programSizes << f.size %>
+<% end %>
+
+<% organization.program_cost_length_maps.each do |f|%>
+<% programLengths << [f.length_number, f.length_name].join(" ") %>
+<% end %>
 
 
 <div class="container" style="margin-left:-15px; border:1px solid #575758; background-color:#E9ECE9; padding:bottom:25px; color:#575758; min-width:760px; margin-top:50px">
@@ -47,7 +59,7 @@
 			<u><font style="line-height:1.2em">Program Subjects:</font></u>
 		</div>
 		<div class="ten columns" style="border: 1px solid #575758; height:130px; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
-<% programTypes.join(", ")%>
+<% programSubjects.join(", ")%>
 		</div>
 	</div>
 	<div class="three columns" style="float:left;margin-left:10px; padding:10px; height:295px; background-color:#c1dfdb; height:310.5px">
@@ -90,7 +102,7 @@
 			<p style="font-weight:600">Volunteer Program Model: </p><%=organization.program_model_string%><br /><br />
 			
 			<p style="font-weight:600">Types of Programs: </p>
-			<%= organization.program_subjects.html_safe%>
+			<%= organization.types_of_programs%>
 			<br /><br />
 			
 		</div>
@@ -102,11 +114,11 @@
 			<p style="font-weight:600">Price Includes: </p><%= organization.program_costs_includes.html_safe%><br />
 			<p style="font-weight:600">Price Doesn't Includes: </p><%= organization.program_costs_doesnt_include.html_safe%><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><a href="#price-breakdown-box" class="price-breakdown-window">Click here to view</a></p><br />
-			<p style="font-weight:600">Group Sizes: </p><% groupSizes.each do |f|%><%= f%>,<% end %><br />
+			<p style="font-weight:600">Group Sizes: </p><%= groupSizes.join(", ")%><br />
 			
 			
 			
-			<p style="font-weight:600">Program Lengths: </p><% programLengths.each do |f|%><%=f%>,<%end%><br />
+			<p style="font-weight:600">Program Lengths: </p><%= programLengths.join(", ")%> <br />
 			<p style="font-weight:600">Training Resources: </p><%=organization.training_resources.html_safe%><br />
 			<p style="font-weight:600">Good to know: </p><%=organization.good_to_know.html_safe%><br />
 		</div>
