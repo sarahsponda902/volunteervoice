@@ -3,7 +3,7 @@
 <% groupSizes = []%>
 <% programLengths = []%>
 
-<% organization.program_subjects.each do |f|%>
+<% ProgramSubject.where(:organization_id => organization.id).each do |f|%>
 <% programSubjects << f.subject %>
 <% end %>
 
@@ -114,11 +114,11 @@
 			<p style="font-weight:600">Price Includes: </p><%= organization.program_costs_includes.html_safe%><br />
 			<p style="font-weight:600">Price Doesn't Includes: </p><%= organization.program_costs_doesnt_include.html_safe%><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><a href="#price-breakdown-box" class="price-breakdown-window">Click here to view</a></p><br />
-			<p style="font-weight:600">Group Sizes: </p><%= groupSizes.join(", ")%><br />
+			<p style="font-weight:600">Group Sizes: </p><%= groupSizes[0..groupSizes.count - 2].join(", ")%><br /><br />
 			
 			
 			
-			<p style="font-weight:600">Program Lengths: </p><%= programLengths.join(", ")%> <br />
+			<p style="font-weight:600">Program Lengths: </p><%= programLengths.join(", ")%> <br /><br />
 			<p style="font-weight:600">Training Resources: </p><%=organization.training_resources.html_safe%><br />
 			<p style="font-weight:600">Good to know: </p><%=organization.good_to_know.html_safe%><br />
 		</div>
