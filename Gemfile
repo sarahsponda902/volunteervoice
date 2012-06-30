@@ -11,7 +11,7 @@ gem 'devise'
 
 gem 'jquery-rails'
 
-gem 'nested_form'
+gem 'geocoder'
 
 gem 'madmimi'
 

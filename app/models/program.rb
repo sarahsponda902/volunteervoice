@@ -2,6 +2,7 @@ class Program < ActiveRecord::Base
   require 'file_size_validator'
   include CarrierWave::MiniMagick
   
+  
 belongs_to :organization
 has_many :reviews, :dependent => :destroy
 has_many :program_subjects, :dependent => :destroy
