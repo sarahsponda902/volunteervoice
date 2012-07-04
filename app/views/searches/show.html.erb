@@ -104,7 +104,7 @@ $('#priceRange').pullOut({
 		<% @search_regions = []%>
 	<% end %>
 	<% if @search.price_max.nil?%>
-		<% @search.price_max = 999%>
+		<% @search.price_max = 99999%>
 	<% end %>
 	<% if @search.price_min.nil?%>
 		<% @search.price_min = 0%>
@@ -1051,7 +1051,7 @@ $(document).ready(function() {
 <br />
 	<p>avg. per week</p>
     Min: <input type="number" name="search[price_min]" value =  "0" id = "price_min" style = "background:white; width:150px; margin-left:2px" onchange="$('#price_min5').val(this.attr('value'))"><br />
-    Max: <input typw="number" name="search[price_max]" value= "999" id = "price_max" style = "background:white; margin-top:5px; width:150px" onchange="$('#price_max5').val(this.attr('value'))"><br /><br />
+    Max: <input typw="number" name="search[price_max]" value= "99999" id = "price_max" style = "background:white; margin-top:5px; width:150px" onchange="$('#price_max5').val(this.attr('value'))"><br /><br />
 				<div style="float:left; margin-left:25px"><button onclick="$('#submit_form').click()" style="width:100px; height:25px">Apply</button></div>
 
 </div>
