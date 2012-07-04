@@ -1329,7 +1329,7 @@ class ProgramsController < ApplicationController
     
     @cost_lengths = []
     params[:costs].each do |f|
-      @p = ProgramCostLengthMap.new(:program_id => params[:program][:id], :cost => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+      @p = ProgramCostLengthMap.new(:program_id => params[:program][:id], :cost => f.to_f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
       @p.save
       @cost_lengths << @p
     end
@@ -1338,9 +1338,10 @@ class ProgramsController < ApplicationController
     params[:lengths].each do |f|
       @p = @cost_lengths[count]
       @length = f.split(" ")
-      @p.length = @length[0].to_i.send(@length[1])
+      @p.length = @length[0].to_i.send(@length[1]).to_f / 1209600 #stored in two-weeks incraments
       @p.length_name = @length[1]
       @p.length_number = @length[0]
+      @p.cost = @p.cost / 1000 #stored in $1000 incraments 
       @p.save
       @cost_lengths[count] = @p
       count = count + 1

@@ -1,5 +1,11 @@
 class ProgramCostLengthMap < ActiveRecord::Base
   unloadable
   belongs_to :program
-  geocoded_by :cost_length_map, :latitude => :length, :longitude => :cost
+  searchable do 
+    location :coordinates
+  end
+  
+  def coordinates
+      Sunspot::Util::Coordinates.new(self.length, self.cost)
+  end
 end

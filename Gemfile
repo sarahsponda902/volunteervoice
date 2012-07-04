@@ -11,8 +11,6 @@ gem 'devise'
 
 gem 'jquery-rails'
 
-gem 'geocoder'
-
 gem 'madmimi'
 
 gem 'RedCloth'
