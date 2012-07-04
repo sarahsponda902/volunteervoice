@@ -1343,6 +1343,7 @@ class ProgramsController < ApplicationController
       @p.length_number = @length[0]
       @p.cost = @p.cost / 1000 #stored in $1000 incraments 
       @p.save
+      @p.index!
       @cost_lengths[count] = @p
       count = count + 1
     end

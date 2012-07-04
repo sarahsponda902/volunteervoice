@@ -99,16 +99,19 @@ class SearchesController < ApplicationController
       
       if (price_max != 99999 / 1000 || price_min != 0/1000 || length_min != 0.weeks.to_f / 1209600 || length_max != 2.years.to_f / 1209600)
       
-        @cost_length_search = Program.search do
-          with(:coordinates).in_bounding_box([length_min, price_min], [length_max, price_max])
-        
+        @cost_length_search = ProgramCostLengthMap.search do
+          with(:coordinates).in_bounding_box([length_min, price_min], [length_max, price_max])      
         end
         
         @cost_length_results = @cost_length_search.results
+        @program_cost_length_results = []
+        @cost_length_results.each do |f|
+          @program_cost_length_results << Program.find(f.program_id) unless @program_cost_length_results.include?(Program.find(f.program_id))
+        end
         @real_results = @results
         @results = []
-        @cost_length_results.each do |f|
-          if @results.include?(f)
+        @program_cost_length_results.each do |f|
+          if @real_results.include?(f)
             @results << f
           end
         end
