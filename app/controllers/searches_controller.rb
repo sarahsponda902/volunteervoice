@@ -844,124 +844,50 @@ class SearchesController < ApplicationController
   # PUT /searches/1
   # PUT /searches/1.json
   def update
-    @subjects = Hash['Agriculture' => 'Agriculture' , 
-    'OrganicFarming' => 'Organic Farming' , 
-    'SustainableDevelopment' => 'Sustainable Development' , 
-    'AnimalCare' => 'Animal Care' , 
-    'AnimalRights' => 'Animal Rights' , 
-    'WildlifeConservation' => 'Wildlife Conservation' , 
-    'Caregiving' => 'Caregiving' , 
-    'ElderCare' =>       'Elder Care' , 
-    'Child/OrphanCare' =>       'Child/Orphan Care' , 
-    'DisabledCare' =>       'Disabled Care' , 
-    'FeedtheHomeless' =>       'Feed the Homeless' , 
-    'CommunityDevelopment' =>       'Community Development' , 
-    'YouthDevelopmentandOutreach' =>       'Youth Development and Outreach' , 
-    'Construction' =>       'Construction' , 
-    'CultureandCommunity' =>       'Culture and Community' , 
-    'PerformingArts' =>       'Performing Arts' , 
-    'Fashion' =>       'Fashion' , 
-    'Music' =>       'Music' , 
-    'Sports&Recreation' =>       'Sports & Recreation' , 
-    'Journalism' =>       'Journalism' , 
-    'DisasterRelief' =>       'Disaster Relief' , 
-    'Economics' =>       'Economics' , 
-    'Microfinance' =>       'Microfinance' , 
-    'Education' =>       'Education' , 
-    'TeachingEnglish' =>       'Teaching English' , 
-    'TeachingBuddhistMonks' =>       'Teaching Buddhist Monks' , 
-    'TeachingChildren' =>       'Teaching Children' , 
-    'TeachingComputerLiteracy' =>       'Teaching Computer Literacy' , 
-    'EngineeringandInfrastructure' =>       'Engineering and Infrastructure' , 
-    'Environmental' =>       'Environmental' , 
-    'EcologicalConservation' =>       'Ecological Conservation' , 
-    'SustainableDevelopment' =>       'Sustainable Development' , 
-    'WildlifeConservation' =>       'Wildlife Conservation' , 
-    'HabitatRestoration' =>       'Habitat Restoration' , 
-    'HealthandMedicine' =>       'Health and Medicine' , 
-    'HIV/AIDS' =>       'HIV/AIDS' , 
-    'Nutrition' =>       'Nutrition' , 
-    'FamilyPlanning' =>       'Family Planning' , 
-    'VeterinaryMedicine' =>       'Veterinary Medicine' , 
-    'ClinicalWork' =>       'Clinical Work' , 
-    'DentalWork' =>       'Dental Work' , 
-    'MedicalResearch' =>       'Medical Research' , 
-    'HealthEducation' =>       'Health Education' , 
-    'PublicHealth' =>       'Public Health' , 
-    'HospitalCare-giving' =>       'Hospital Care-giving' , 
-    'HumanRights' =>       'Human Rights' , 
-    'WomensInitiatives' =>       'Womens Initiatives' , 
-    'InternationalWorkCamp' =>       'International Work Camp' , 
-    'Recreation' =>       'Recreation' , 
-    'AdventureTravel' =>       'Adventure Travel' , 
-    'ScientificResearch' =>       'Scientific Research' , 
-    'Archaeology' =>       'Archaeology' , 
-    'EnvironmentalBiology' =>       'Environmental Biology' , 
-    'Technology' =>       'Technology' , 
-    'TeachingComputerLiteracy' =>       'Teaching Computer Literacy' , 
-    'MediaMarketingandGraphicDesign' =>       'Media Marketing and Graphic Design',]
-    
-    
-    
     @search = Search.find(params[:id])
-    if !(params[:subject].nil?)
-      @search.subjects = [] << @subjects[params[:subject]]
+    
+    if params[:search][:subjects].include?('Agriculture')
+      params[:search][:subjects] = ['Organic Farming', 'Sustainable Development'] + (params[:search][:subjects].split("; "))
     end
-    if !(params[:location].nil?)
-      @search.regions = [] << params[:location]
+    if params[:search][:subjects].include?('Animal Care')
+      params[:search][:subjects] = ['Animal Rights', 'Wildlife Conservation'] + (params[:search][:subjects].split("; "))
     end
-    if @search.subjects.nil?
-      @search.subjects = ["false"]
+    if params[:search][:subjects].include?('Caregiving')
+      params[:search][:subjects] = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + (params[:search][:subjects].split("; "))
     end
-    if @search.regions.nil?
-      @search.regions = ["false"]
+    if params[:search][:subjects].include?('Community Development')
+      params[:search][:subjects] = ['Youth Development and Outreach'] + (params[:search][:subjects].split("; "))
     end
-    if @search.sizes.nil?
-      @search.sizes = ["false"]
+    if params[:search][:subjects].include?('Culture and Community')
+      params[:search][:subjects] = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Disaster Relief')
+      params[:search][:subjects] = ['Economics', 'Microfinance'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Education')
+      params[:search][:subjects] = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Environmental')
+      params[:search][:subjects] = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Health and Medicine')
+      params[:search][:subjects] = ['HIV/AIDS', 'Family Planning', 'Nutrition', 'Veterinary Medicine', 'Clinical Work', 'Dental Work', 'Medical Research', 'Health Education', 'Public Health', 'Hospital Caregiving'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Human Rights')
+      params[:search][:subjects] = ['Womens Initiatives'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Recreation')
+      params[:search][:subjects] = ['Adventure Travel'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Scientific Research')
+      params[:search][:subjects] = ['Archaeology', 'Environmental Biology'] + (params[:search][:subjects].split("; "))
+    end
+    if params[:search][:subjects].include?('Technology')
+      params[:search][:subjects] = ['Teaching Computer Literacy', 'Media Marketing and Graphic Design'] + (params[:search][:subjects].split("; "))
     end
     
-    if @search.subjects.include?('Agriculture')
-      @search.subjects = ['Organic Farming', 'Sustainable Development'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Animal Care')
-      @search.subjects = ['Animal Rights', 'Wildlife Conservation'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Caregiving')
-      @search.subjects = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Community Development')
-      @search.subjects = ['Youth Development and Outreach'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Culture and Community')
-      @search.subjects = ['Performing Arts', 'Fashion', 'Music', 'Sports & Recreation', 'Journalism'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Disaster Relief')
-      @search.subjects = ['Economics', 'Microfinance'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Education')
-      @search.subjects = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Environmental')
-      @search.subjects = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Health and Medicine')
-      @search.subjects = ['HIV/AIDS', 'Family Planning', 'Nutrition', 'Veterinary Medicine', 'Clinical Work', 'Dental Work', 'Medical Research', 'Health Education', 'Public Health', 'Hospital Caregiving'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Human Rights')
-      @search.subjects = ['Womens Initiatives'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Recreation')
-      @search.subjects = ['Adventure Travel'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Scientific Research')
-      @search.subjects = ['Archaeology', 'Environmental Biology'] + (@search.subjects.split("; "))
-    end
-    if @search.subjects.include?('Technology')
-      @search.subjects = ['Teaching Computer Literacy', 'Media Marketing and Graphic Design'] + (@search.subjects.split("; "))
-    end
-    
-    if @search.subjects.include?("false")
-      @search.subjects = ['Agriculture', 
+    if params[:search][:subjects].include?("false")
+      params[:search][:subjects] = ['Agriculture', 
         'Organic Farming', 
         'Sustainable Development', 
         'Animal Care', 
@@ -1019,8 +945,10 @@ class SearchesController < ApplicationController
         'Media Marketing and Graphic Design']
     end
     
-    if (@search.regions.include?('Americas'))
-      @search.regions = ['DZ', 
+    
+
+    if (params[:search][:regions].include?('Americas'))
+      params[:search][:regions] = ['DZ', 
       'EG', 
       'LY', 
       'MA', 
@@ -1076,11 +1004,11 @@ class SearchesController < ApplicationController
       'LS', 
       'NA', 
       'ZA', 
-      'SZ'] + @search.regions.split("; ")
+      'SZ'] + params[:search][:regions].split("; ")
     end
 
-    if (@search.regions.include?('Europe'))
-      @search.regions = ['AX', 
+    if (params[:search][:regions].include?('Europe'))
+      params[:search][:regions] = ['AX', 
       'DK', 
       'EE', 
       'FO', 
@@ -1130,11 +1058,11 @@ class SearchesController < ApplicationController
       'SM', 
       'RS', 
       'SI', 
-      'ES'] + @search.regions.split("; ")
+      'ES'] + params[:search][:regions].split("; ")
     end
 
-    if (@search.regions.include?('Africa'))
-      @search.regions = ['BM', 
+    if (params[:search][:regions].include?('Africa'))
+      params[:search][:regions] = ['BM', 
       'CA', 
       'GL', 
       'PM', 
@@ -1185,11 +1113,11 @@ class SearchesController < ApplicationController
       'PE', 
       'SR', 
       'UY', 
-      'VE'] + @search.regions.split("; ")
+      'VE'] + params[:search][:regions].split("; ")
     end
 
-    if (@search.regions.include?('Asia'))
-      @search.regions = ['KZ', 
+    if (params[:search][:regions].include?('Asia'))
+      params[:search][:regions] = ['KZ', 
       'KG', 
       'TJ', 
       'TM', 
@@ -1239,11 +1167,11 @@ class SearchesController < ApplicationController
       'SY', 
       'TR', 
       'AE', 
-      'YE'] + @search.regions.split("; ")
+      'YE'] + params[:search][:regions].split("; ")
     end
 
-    if (@search.regions.include?('Oceania'))
-      @search.regions = ['AU', 
+    if (params[:search][:regions].include?('Oceania'))
+      params[:search][:regions] = ['AU', 
       'NZ', 
       'NF', 
       'FJ', 
@@ -1267,12 +1195,12 @@ class SearchesController < ApplicationController
       'TK', 
       'TO', 
       'TV', 
-      'WF'] + @search.regions.split("; ")
+      'WF'] + params[:search][:regions].split("; ")
     end
     
     
-    if @search.regions.include?("false")
-      @search.regions = ['DZ', 
+    if params[:search][:regions].include?("false")
+      params[:search][:regions] = ['DZ', 
       'EG', 
       'LY', 
       'MA', 
@@ -1509,21 +1437,20 @@ class SearchesController < ApplicationController
       'TV', 
       'WF']
     end
-    if @search.sizes.include?("false")
-      @search.sizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
+    if params[:search][:sizes].include?("false")
+      params[:search][:sizes] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
     end
+     params[:search][:regions] = params[:search][:regions].join("; ")
+      params[:search][:subjects] = params[:search][:subjects].join("; ")
+      params[:search][:sizes] = params[:search][:sizes].join("; ") unless params[:search][:sizes].class.name == "String"
     
     
-    @search.regions = @search.regions.join("; ")
-    @search.subjects = @search.subjects.join("; ")
-    @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
-
-    respond_to do |format|
-      if @search.save
-        format.html { redirect_to @search, notice: 'Search was successfully created.' }
-        format.json { render json: @search, status: :created, location: @search }
+      respond_to do |format|
+      if @search.update_attributes(params[:search])
+        format.html { redirect_to @search, notice: 'Search was successfully updated.' }
+        format.json { head :no_content }
       else
-        format.html { render action: "new" }
+        format.html { render action: "edit" }
         format.json { render json: @search.errors, status: :unprocessable_entity }
       end
     end
