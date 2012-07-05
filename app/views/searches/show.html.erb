@@ -804,7 +804,7 @@ $(document).ready(function() {
 <input type="text" id= "length_min_param5" name="search[length_min_param]" style="display:none" value="weeks" />
 
 <input type="text" value= "2" id = "length_max_number5" name="search[length_max_number]" style="display:none"/>
-<input type="text" id= "length_max_param5" name="search[length_max_number]" style="display:none" value="years" />
+<input type="text" id= "length_max_param5" name="search[length_max_param]" style="display:none" value="years" />
 
 
 <!-- END LENGTHS -->
@@ -949,7 +949,7 @@ $(document).ready(function() {
 
 					<div class="three columns" style="position:absolute; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
-						<select id= "length_min_number" name="search[length_min_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;">
+						<select id= "length_min_number" name="search[length_min_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;"  onchange="$(length_min_number5).val(this.attr('value'))">
 							<option val="0" selected="selected">0</option>
 							<option val="1">1</option>
 							<option val="2">2</option>
@@ -980,7 +980,7 @@ $(document).ready(function() {
 
 				<div class="three columns" style="position:absolute; left:15%; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
-					<select id= "length_min_param" name="search[length_min_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;">
+					<select id= "length_min_param" name="search[length_min_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="$(length_min_param5).val(this.attr('value'))">
 						<option val="weeks" selected="selected">Weeks</option>
 						<option val="months">Months</option>
 						<option val="years">Years</option>	
@@ -990,7 +990,7 @@ $(document).ready(function() {
 
 					<div class="three columns" style="position:absolute; left:56%; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
-						<select id= "length_max_number" name="search[length_max_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;">
+						<select id= "length_max_number" name="search[length_max_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;"  onchange="$(length_max_number5).val(this.attr('value'))">
 							<option val="0">0</option>
 							<option val="1">1</option>
 							<option val="2" selected="selected">2</option>
@@ -1021,7 +1021,7 @@ $(document).ready(function() {
 
 				<div class="three columns" style="position:absolute; left:75%; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
-					<select id= "length_max_param" name="search[length_max_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;">
+					<select id= "length_max_param" name="search[length_max_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="$(length_max_param5).val(this.attr('value'))">
 						<option val="weeks">Weeks</option>
 						<option val="months">Months</option>
 						<option val="years" selected="selected">Years</option>	
