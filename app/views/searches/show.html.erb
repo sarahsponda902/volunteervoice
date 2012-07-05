@@ -255,7 +255,7 @@ $(document).ready(function() {
          {
 			$("#"+allTheLocations[count]).show();
 		 }
-		if (isAllLocations)
+		if (!isAllLocations)
 		{
 			if (search_regions.indexOf(allTheLocations[count]) != -1)
 			{
@@ -279,12 +279,14 @@ $(document).ready(function() {
 	var count = 0;
 	for (count = 0; count < allTheSubjects.length; count++)
     {
-		if (search_subjects.indexOf(allTheSubjects[count]) != -1)
-		{
-			$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
-			$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
-			$("#any").prop('checked', false);
-			$("#any10").prop('checked', false);
+		if (!isAllSubjects) {
+			if (search_subjects.indexOf(allTheSubjects[count]) != -1)
+			{
+				$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
+				$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
+				$("#any").prop('checked', false);
+				$("#any10").prop('checked', false);
+			}
 		}
 	}
 	
@@ -299,12 +301,14 @@ $(document).ready(function() {
 	var count = 0;
 	for (count = 0; count < allTheSizes.length; count++)
 	{
-		if (search_sizes.indexOf(allTheSizes[count]) != -1)
-		{
-			$("#"+(count+1)+"_group").prop('checked', true);
-			$("#size"+(count+1)+"5").prop('checked', true);
-			$("#any3").prop('checked', false);
-			$("#any13").prop('checked', false);
+		if (!isAllSizes) {
+			if (search_sizes.indexOf(allTheSizes[count]) != -1)
+			{
+				$("#"+(count+1)+"_group").prop('checked', true);
+				$("#size"+(count+1)+"5").prop('checked', true);
+				$("#any3").prop('checked', false);
+				$("#any13").prop('checked', false);
+			}
 		}
 	}
 	$("#length_min_number").val("<%=@search.length_min_number%>");
