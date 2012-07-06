@@ -1699,8 +1699,8 @@ $(document).ready(function() {
             if ( el.id == anyId2 ) {
                 for( i = 0; i < locations2.length; i++ ){
                     var cb = document.getElementById(locations2[i]+"2");
-                    cb.checked = true;
-                    document.getElementById(locations2[i]+"5").checked = true;
+		            cb.checked = document.getElementById(anyId2).checked;
+					document.getElementById(locations2[i]+"5").checked = document.getElementById(anyId2).checked;
                 }
             } else {
                 	var allChecked = true
