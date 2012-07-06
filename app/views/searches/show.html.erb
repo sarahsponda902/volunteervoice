@@ -322,16 +322,22 @@ $(document).ready(function() {
 			isAllSizes = false;
 		}
 	}
+	
+	if (isAllSizes) {
+		$("#any3").prop("checked", true);
+		$("#any13").prop("checked", true);
+	}
+	
 	var count = 0;
 	for (count = 0; count < allTheSizes.length; count++)
 	{
-		if (!isAllSizes) {
+
 			if (search_sizes.indexOf(allTheSizes[count]) != -1)
 			{
 				$("#"+(count+1)+"_group").prop('checked', true);
 				$("#size"+(count+1)+"5").prop('checked', true);
 			}
-		}
+
 	}
 	$("#length_min_number").val("<%=@search.length_min_number%>");
 	$("#length_max_number").val("<%=@search.length_max_number%>");
