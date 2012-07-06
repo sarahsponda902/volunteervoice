@@ -1722,13 +1722,13 @@ function toggleAgriculture( el ) {
     if ( el.id == anyAgriculture ) {
         for( i = 0; i < locationsAgriculture.length; i++ ){
             var cb = document.getElementById(locationsAgriculture[i]+"2");
-            cb.checked = false;
-			document.getElementById(locationsAgriculture[i]+"5").checked = false;
+            cb.checked = true;
+			document.getElementById(locationsAgriculture[i]+"5").checked = true;
         }
     } else {
         var cb = document.getElementById(anyAgriculture);
-        cb.checked = false; 
-		document.getElementById("Agriculture5").checked = false;
+        cb.checked = true; 
+		document.getElementById("Agriculture5").checked = true;
     }
 }
 
