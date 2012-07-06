@@ -243,7 +243,7 @@ $(document).ready(function() {
 	var count = 0;
 	for (count = 0; count < allTheLocationsPlus.length; count++)
 	{
-		if ($("#"+allTheLocations)[count]).is(":visible") {
+		if ($("#"+allTheLocations[count]).is(":visible")) {
 			if (search_regions.indexOf(allTheLocations[count]) == -1)
 			{
 				isAllLocations = false;
