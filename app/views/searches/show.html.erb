@@ -1722,8 +1722,8 @@ function toggleAgriculture( el ) {
     if ( el.id == anyAgriculture ) {
         for( i = 0; i < locationsAgriculture.length; i++ ){
             var cb = document.getElementById(locationsAgriculture[i]+"2");
-            cb.checked = true;
-			document.getElementById(locationsAgriculture[i]+"5").checked = true;
+            cb.checked = document.getElementById(anyAgriculture).checked;
+			document.getElementById(locationsAgriculture[i]+"5").checked = document.getElementById(anyAgriculture).checked;
         }
     } 
 }
