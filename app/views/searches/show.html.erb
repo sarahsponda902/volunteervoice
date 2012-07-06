@@ -1699,13 +1699,22 @@ $(document).ready(function() {
             if ( el.id == anyId2 ) {
                 for( i = 0; i < locations2.length; i++ ){
                     var cb = document.getElementById(locations2[i]+"2");
-                    cb.checked = false;
-                    document.getElementById(locations2[i]+"5").checked = false;
+                    cb.checked = true;
+                    document.getElementById(locations2[i]+"5").checked = true;
                 }
             } else {
-                var cb = document.getElementById(anyId2);
-                cb.checked = false; 
-				document.getElementById("any10").checked = false;
+                	var allChecked = true
+					for( i = 0; i < locations2.length; i++ ){
+						var cb = document.getElementById(locations2[i]+"2");
+						if (!cb.checked) {
+							allChecked = false;
+						}
+					}
+					if (allChecked) {
+						var cb = document.getElementById(anyId2);
+						cb.checked = true; 
+						document.getElementById("any10").checked = true;
+					}
             }
         }    
         </script>
