@@ -1081,7 +1081,7 @@ $(document).ready(function() {
 <div id="programCountries" style="color:#575758; width:800px; height:300px; overflow-x:hidden; overflow-y:auto;">
 	<div class="two columns" style="width:16%">
 	
-		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6'  onchange="$('#any11').prop('checked', this.checked)"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
+		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' onchange="$('#any11').prop('checked', this.checked)"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
 
 
 
@@ -1623,7 +1623,7 @@ $(document).ready(function() {
 	            cb.checked = document.getElementById(anyId6).checked;
 				document.getElementById(locations6[i]+"5").checked = document.getElementById(anyId6).checked;
             }
-        } else {
+        }
             	var allChecked = true
 				for( i = 0; i < locations6.length; i++ ){
 					var cb = document.getElementById(locations6[i]+"2");
@@ -1636,7 +1636,7 @@ $(document).ready(function() {
 					cb.checked = true; 
 					document.getElementById("any11").checked = true;
 				}
-        }
+
     }    
 
         var locations2 = new Array('Agriculture', 
