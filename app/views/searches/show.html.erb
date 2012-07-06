@@ -1725,7 +1725,20 @@ function toggleAgriculture( el ) {
             cb.checked = document.getElementById(anyAgriculture).checked;
 			document.getElementById(locationsAgriculture[i]+"5").checked = document.getElementById(anyAgriculture).checked;
         }
-    } 
+    } else {
+		var allChecked = true
+		for( i = 0; i < locationsAgriculture.length; i++ ){
+			var cb = document.getElementById(locationsAgriculture[i]+"2");
+			if (!cb.checked) {
+				allChecked = false;
+			}
+		}
+		if (allChecked) {
+			var cb = document.getElementById(anyAgriculture);
+			cb.checked = true; 
+			document.getElementById("Agriculture5").checked = true;
+		}
+    }
 }
 
 var locationsAnimalCare = new Array('AnimalRights', 'WildlifeConservation');
