@@ -1635,6 +1635,10 @@ $(document).ready(function() {
 					var cb = document.getElementById(anyId6);
 					cb.checked = true; 
 					document.getElementById("any11").checked = true;
+				} else {
+					var cb = document.getElementById(anyId6);
+					cb.checked = false; 
+					document.getElementById("any11").checked = false;
 				}
 
     }    
@@ -1718,6 +1722,10 @@ $(document).ready(function() {
 						var cb = document.getElementById(anyId2);
 						cb.checked = true; 
 						document.getElementById("any10").checked = true;
+					} else {
+						var cb = document.getElementById(anyId2);
+						cb.checked = false; 
+						document.getElementById("any10").checked = false;
 					}
 
         }    
@@ -1750,6 +1758,10 @@ $(document).ready(function() {
 						var cb = document.getElementById(anyId4);
 						cb.checked = true; 
 						document.getElementById("any13").checked = true;
+					} else {
+						var cb = document.getElementById(anyId4);
+						cb.checked = false; 
+						document.getElementById("any13").checked = false;
 					}
         }    
 
@@ -1777,11 +1789,7 @@ function toggleAgriculture( el ) {
 			var cb = document.getElementById(anyAgriculture);
 			cb.checked = true; 
 			document.getElementById("Agriculture5").checked = true;
-		} else {
-			var cb = document.getElementById(anyAgriculture);
-			cb.checked = false; 
-			document.getElementById("Agriculture5").checked = false;
-		}
+		} 
 
 }
 
