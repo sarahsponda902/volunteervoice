@@ -1706,7 +1706,7 @@ $(document).ready(function() {
 		            cb.checked = document.getElementById(anyId2).checked;
 					document.getElementById(locations2[i]+"5").checked = document.getElementById(anyId2).checked;
                 }
-            } else {
+            }
                 	var allChecked = true
 					for( i = 0; i < locations2.length; i++ ){
 						var cb = document.getElementById(locations2[i]+"2");
@@ -1719,7 +1719,7 @@ $(document).ready(function() {
 						cb.checked = true; 
 						document.getElementById("any10").checked = true;
 					}
-            }
+
         }    
         </script>
 
@@ -1734,14 +1734,23 @@ $(document).ready(function() {
             var i;
             if ( el.id == anyId4 ) {
                 for( i = 0; i < locations4.length; i++ ){
-                    var cb = document.getElementById(locations4[i]);
-                    cb.checked = false;
+                    var cb = document.getElementById(locations4[i]+"2");
+		            cb.checked = document.getElementById(anyId4).checked;
+					document.getElementById(locations4[i]+"5").checked = document.getElementById(anyId4).checked;
                 }
-            } else {
-                var cb = document.getElementById(anyId4);
-                cb.checked = false; 
-				document.getElementById("any13").checked = false;
             }
+                	var allChecked = true
+					for( i = 0; i < locations4.length; i++ ){
+						var cb = document.getElementById(locations4[i]+"2");
+						if (!cb.checked) {
+							allChecked = false;
+						}
+					}
+					if (allChecked) {
+						var cb = document.getElementById(anyId4);
+						cb.checked = true; 
+						document.getElementById("any13").checked = true;
+					}
         }    
 
 var locationsAgriculture = new Array('OrganicFarming', 'SustainableDevelopment');
@@ -1756,7 +1765,7 @@ function toggleAgriculture( el ) {
             cb.checked = document.getElementById(anyAgriculture).checked;
 			document.getElementById(locationsAgriculture[i]+"5").checked = document.getElementById(anyAgriculture).checked;
         }
-    } else {
+    }
 		var allChecked = true
 		for( i = 0; i < locationsAgriculture.length; i++ ){
 			var cb = document.getElementById(locationsAgriculture[i]+"2");
@@ -1769,7 +1778,7 @@ function toggleAgriculture( el ) {
 			cb.checked = true; 
 			document.getElementById("Agriculture5").checked = true;
 		}
-    }
+
 }
 
 var locationsAnimalCare = new Array('AnimalRights', 'WildlifeConservation');
