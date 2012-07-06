@@ -240,16 +240,6 @@ var isAllLocations = true;
 var isAllSubjects = true;
 
 $(document).ready(function() {
-	var count = 0;
-	for (count = 0; count < allTheLocationsPlus.length; count++)
-	{
-		if ($("#"+allTheLocations[count]).is(":visible")) {
-			if (search_regions.indexOf(allTheLocations[count]) == -1)
-			{
-				isAllLocations = false;
-			}
-		}
-	}
 	
     var count = 0;
     for (count = 0; count < allTheLocations.length; count++)
@@ -259,14 +249,13 @@ $(document).ready(function() {
          {
 			$("#"+allTheLocations[count]).show();
 		 }
-		if (!isAllLocations)
-		{
+
 			if (search_regions.indexOf(allTheLocations[count]) != -1)
 			{
 				$("#"+allTheLocations[count]+"2").prop('checked', true);
 				$("#"+allTheLocations[count]+"5").prop('checked', true);
 			}
-		}
+	
     }
     for (count = 0; count < allBigLocations.length; count++)
     {
@@ -275,55 +264,38 @@ $(document).ready(function() {
          {
 			$("#any"+allBigLocations[count]+"Div").show();
 		 }
-		if (!isAllLocations)
-		{
+
 			if (search_regions.indexOf(allTheLocations[count]) != -1)
 			{
 				$("#any"+allBigLocations[count]+"2").prop('checked', true);
 				$("#any"+allBigLocations[count]+"5").prop('checked', true);
 			}
-		}
+
     }
 
 
 	var count = 0;
 	for (count = 0; count < allTheSubjects.length; count++)
-	{
-		if (search_subjects.indexOf(allTheSubjects[count]) == -1)
-		{
-			isAllSubjects = false;
-		}
-	}
-	var count = 0;
-	for (count = 0; count < allTheSubjects.length; count++)
     {
-		if (!isAllSubjects) {
+
 			if (search_subjects.indexOf(allTheSubjects[count]) != -1)
 			{
 				$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
 				$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
 			}
-		}
-	}
 	
-	var count = 0;
-	for (count = 0; count < allTheSizes.length; count++)
-	{
-		if (search_sizes.indexOf(allTheSizes[count]) == -1)
-		{
-			isAllSizes = false;
-		}
 	}
+
 	var count = 0;
 	for (count = 0; count < allTheSizes.length; count++)
 	{
-		if (!isAllSizes) {
+
 			if (search_sizes.indexOf(allTheSizes[count]) != -1)
 			{
 				$("#"+(count+1)+"_group").prop('checked', true);
 				$("#size"+(count+1)+"5").prop('checked', true);
 			}
-		}
+
 	}
 	$("#length_min_number").val("<%=@search.length_min_number%>");
 	$("#length_max_number").val("<%=@search.length_max_number%>");
