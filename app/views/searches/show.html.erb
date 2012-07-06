@@ -281,8 +281,10 @@ $(document).ready(function() {
 		{
 			if (search_regions.indexOf(allTheLocations[count]) != -1)
 			{
-				$("#"+allBigLocations[count]+"2").prop('checked', true);
+				$("#any"+allBigLocations[count]+"2").prop('checked', true);
+				$("#any"+allBigLocations[count]+"5").prop('checked', true);
 				$("#any6").prop('checked', false);
+				$("#any11").prop('checked', false);
 			}
 		}
     }
@@ -2215,19 +2217,26 @@ var locationsAfrica = new Array('DZ',
 var anyAfrica = 'anyAfrica';
 
 function toggleAfrica( el ) {
-	var i;
+   	var i;
     if ( el.id == anyAfrica ) {
         for( i = 0; i < locationsAfrica.length; i++ ){
             var cb = document.getElementById(locationsAfrica[i]+"2");
-            cb.checked = false;
-			var cb = document.getElementById(locationsAfrica[i]+"5");
-            cb.checked = false;
+            cb.checked = document.getElementById(anyAfrica).checked;
+			document.getElementById(locationsAfrica[i]+"5").checked = document.getElementById(anyAfrica).checked;
         }
     } else {
-        var cb = document.getElementById(anyAfrica);
-        cb.checked = false; 
-		var cb = document.getElementById("anyAfrica5");
-        cb.checked = false;
+		var allChecked = true
+		for( i = 0; i < locationsAfrica.length; i++ ){
+			var cb = document.getElementById(locationsAfrica[i]+"2");
+			if (!cb.checked) {
+				allChecked = false;
+			}
+		}
+		if (allChecked) {
+			var cb = document.getElementById(anyAfrica);
+			cb.checked = true; 
+			document.getElementById("anyAfrica5").checked = true;
+		}
     }
 }
 </script>
@@ -2288,19 +2297,26 @@ var locationsEurope = new Array('AX',
 var anyEurope = 'anyEurope';
 
 function toggleEurope( el ) {
-	var i;
+   	var i;
     if ( el.id == anyEurope ) {
         for( i = 0; i < locationsEurope.length; i++ ){
             var cb = document.getElementById(locationsEurope[i]+"2");
-            cb.checked = false;
-			var cb = document.getElementById(locationsEurope[i]+"5");
-            cb.checked = false;
+            cb.checked = document.getElementById(anyEurope).checked;
+			document.getElementById(locationsEurope[i]+"5").checked = document.getElementById(anyEurope).checked;
         }
     } else {
-        var cb = document.getElementById(anyEurope);
-        cb.checked = false; 
-        var cb = document.getElementById("anyEurope5");
-        cb.checked = false;
+		var allChecked = true
+		for( i = 0; i < locationsEurope.length; i++ ){
+			var cb = document.getElementById(locationsEurope[i]+"2");
+			if (!cb.checked) {
+				allChecked = false;
+			}
+		}
+		if (allChecked) {
+			var cb = document.getElementById(anyEurope);
+			cb.checked = true; 
+			document.getElementById("anyEurope5").checked = true;
+		}
     }
 }
 
@@ -2364,19 +2380,26 @@ var locationsAmericas = new Array('BM',
 var anyAmericas = 'anyAmericas';
 
 function toggleAmericas( el ) {
-	var i;
+   	var i;
     if ( el.id == anyAmericas ) {
         for( i = 0; i < locationsAmericas.length; i++ ){
             var cb = document.getElementById(locationsAmericas[i]+"2");
-            cb.checked = false;
-            var cb = document.getElementById(locationsAmericas[i]+"5");
-            cb.checked = false;
+            cb.checked = document.getElementById(anyAmericas).checked;
+			document.getElementById(locationsAmericas[i]+"5").checked = document.getElementById(anyAmericas).checked;
         }
     } else {
-        var cb = document.getElementById(anyAmericas);
-        cb.checked = false; 
-        var cb = document.getElementById("anyAmericas5");
-        cb.checked = false;
+		var allChecked = true
+		for( i = 0; i < locationsAmericas.length; i++ ){
+			var cb = document.getElementById(locationsAmericas[i]+"2");
+			if (!cb.checked) {
+				allChecked = false;
+			}
+		}
+		if (allChecked) {
+			var cb = document.getElementById(anyAmericas);
+			cb.checked = true; 
+			document.getElementById("anyAmericas5").checked = true;
+		}
     }
 }
 
@@ -2439,19 +2462,26 @@ var locationsAsia = new Array('KZ',
 var anyAsia = 'anyAsia';
 
 function toggleAsia( el ) {
-	var i;
+   	var i;
     if ( el.id == anyAsia ) {
         for( i = 0; i < locationsAsia.length; i++ ){
             var cb = document.getElementById(locationsAsia[i]+"2");
-            cb.checked = false;
-            var cb = document.getElementById(locationsAsia[i]+"5");
-            cb.checked = false;
+            cb.checked = document.getElementById(anyAsia).checked;
+			document.getElementById(locationsAsia[i]+"5").checked = document.getElementById(anyAsia).checked;
         }
     } else {
-        var cb = document.getElementById(anyAsia);
-        cb.checked = false;
-        var cb = document.getElementById("anyAsia5");
-        cb.checked = false; 
+		var allChecked = true
+		for( i = 0; i < locationsAsia.length; i++ ){
+			var cb = document.getElementById(locationsAsia[i]+"2");
+			if (!cb.checked) {
+				allChecked = false;
+			}
+		}
+		if (allChecked) {
+			var cb = document.getElementById(anyAsia);
+			cb.checked = true; 
+			document.getElementById("anyAsia5").checked = true;
+		}
     }
 }
 
@@ -2488,19 +2518,26 @@ var locationsOceania = new Array('AU',
 var anyOceania = 'anyOceania';
 
 function toggleOceania( el ) {
-	var i;
+   	var i;
     if ( el.id == anyOceania ) {
         for( i = 0; i < locationsOceania.length; i++ ){
             var cb = document.getElementById(locationsOceania[i]+"2");
-            cb.checked = false;
-            var cb = document.getElementById(locationsOceania[i]+"5");
-            cb.checked = false;
+            cb.checked = document.getElementById(anyOceania).checked;
+			document.getElementById(locationsOceania[i]+"5").checked = document.getElementById(anyOceania).checked;
         }
     } else {
-        var cb = document.getElementById(anyOceania);
-        cb.checked = false; 
-        var cb = document.getElementById("anyOceania5");
-        cb.checked = false;
+		var allChecked = true
+		for( i = 0; i < locationsOceania.length; i++ ){
+			var cb = document.getElementById(locationsOceania[i]+"2");
+			if (!cb.checked) {
+				allChecked = false;
+			}
+		}
+		if (allChecked) {
+			var cb = document.getElementById(anyOceania);
+			cb.checked = true; 
+			document.getElementById("anyOceania5").checked = true;
+		}
     }
 }
 
