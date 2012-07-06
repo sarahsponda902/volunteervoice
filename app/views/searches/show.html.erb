@@ -1620,18 +1620,26 @@ $(document).ready(function() {
     var anyId6 = 'any6';
     
     function toggleBoxes( el ) {
-        var i;
+       	var i;
         if ( el.id == anyId6 ) {
             for( i = 0; i < locations6.length; i++ ){
                 var cb = document.getElementById(locations6[i]+"2");
-                cb.checked = false;
-             	var cb = document.getElementById(locations6[i]+"5");
-                cb.checked = false;
+	            cb.checked = document.getElementById(anyId6).checked;
+				document.getElementById(locations6[i]+"5").checked = document.getElementById(anyId6).checked;
             }
         } else {
-            var cb = document.getElementById(anyId6);
-            cb.checked = false;
- 			document.getElementById("any11").checked = false;
+            	var allChecked = true
+				for( i = 0; i < locations6.length; i++ ){
+					var cb = document.getElementById(locations6[i]+"2");
+					if (!cb.checked) {
+						allChecked = false;
+					}
+				}
+				if (allChecked) {
+					var cb = document.getElementById(anyId6);
+					cb.checked = true; 
+					document.getElementById("any11").checked = true;
+				}
         }
     }    
 
