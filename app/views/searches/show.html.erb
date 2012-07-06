@@ -496,7 +496,7 @@ $(document).ready(function() {
 	<!-- SUBJECTS -->
 	
 	
-		<input type='checkbox' name='search[subjects][]' value="false" id="any10" style="display:none" checked="checked">
+		<input type='checkbox' name='search[subjects][]' value="false" id="any10" style="display:none">
 	<input type='checkbox' name='search[subjects][]' value="Agriculture" id="Agriculture5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Organic Farming" id="OrganicFarming5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Sustainable Development" id="SustainableDevelopment5" style='display:none'>
@@ -558,7 +558,7 @@ $(document).ready(function() {
 	
 	
 	<!-- COUNTRIES -->
-	<input type='checkbox' name='search[regions][]' id='any11' value='false' style='display:none' checked="checked">
+	<input type='checkbox' name='search[regions][]' id='any11' value='false' style='display:none'>
 	
 	
 	<input type='checkbox' name='search[regions][]' id='AF5' value='AF' style='display:none'>
@@ -830,7 +830,7 @@ $(document).ready(function() {
 <!-- END LENGTHS -->
 
 <!-- SIZES -->
-<input type='checkbox' style='display:none' name='search[sizes][]' value='false' id='any13' checked="checked">
+<input type='checkbox' style='display:none' name='search[sizes][]' value='false' id='any13'>
 
 <input id='size15' type='checkbox' style='display:none' name='search[sizes][]' value='Individual'>
 <input id='size25' type='checkbox' style='display:none' name='search[sizes][]' value='Small Groups (2-3)'>
@@ -899,7 +899,7 @@ $(document).ready(function() {
 <div id="programSubjects" style="width:600px; height:460px; overflow-y:auto; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	
 	<div class="six columns" style="width:45%">
-		            <input type="checkbox" name="seach[subjects]" onclick = 'toggleBoxes1(this)' value ="false" id ='any' checked = "checked" onchange = "$('#any10').prop('checked', this.checked)" ><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
+		            <input type="checkbox" name="seach[subjects]" onclick = 'toggleBoxes1(this)' value ="false" id ='any' onchange = "$('#any10').prop('checked', this.checked)" ><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
 
 
 					<div id='Agriculture1'><input type='checkbox' onchange ="$('#Agriculture5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value ='Agriculture' id='Agriculture2'  >Agriculture</div>
@@ -1055,7 +1055,7 @@ $(document).ready(function() {
 
 <div id="groupSize" style="width:350px; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	<div class="six columns" style="width:45%">
-	 <input type="checkbox" name="search[sizes]" onclick='toggleBoxes3(this)' onchange="$('#any13').prop('checked', this.checked)" value = "false" id ='any3' checked = "checked" >Any<br />
+	 <input type="checkbox" name="search[sizes]" onclick='toggleBoxes3(this)' onchange="$('#any13').prop('checked', this.checked)" value = "false" id ='any3' >Any<br />
         	<input onchange="$('#size15').prop('checked', this.checked)" type="checkbox" name="search[sizes][]" onclick="toggleBoxes3(this)" value ="Individual" id="1_group"  >Individual<br />
 			<input onchange="$('#size25').prop('checked', this.checked)" type="checkbox" name="search[sizes][]" onclick="toggleBoxes3(this)" value ="Small Groups (2-3)" id="2_group"  >Small Groups (2-3)
 			</div>
@@ -1081,7 +1081,7 @@ $(document).ready(function() {
 <div id="programCountries" style="color:#575758; width:800px; height:300px; overflow-x:hidden; overflow-y:auto;">
 	<div class="two columns" style="width:16%">
 	
-		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' checked = "checked" onchange="$('#any11').prop('checked', this.checked)"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
+		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6'  onchange="$('#any11').prop('checked', this.checked)"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
 
 
 
