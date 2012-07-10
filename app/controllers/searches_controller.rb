@@ -819,7 +819,12 @@ class SearchesController < ApplicationController
       'TK', 
       'TO', 
       'TV', 
-      'WF']
+      'WF', 
+      'Africa',
+      'Asia',
+      'Oceania',
+      'Americas',
+      'Europe']
     end
     if @search.sizes.include?("false")
       @search.sizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
@@ -1435,7 +1440,12 @@ class SearchesController < ApplicationController
       'TK', 
       'TO', 
       'TV', 
-      'WF']
+      'WF',
+      'Africa',
+      'Asia',
+      'Oceania',
+      'Americas',
+      'Europe']
     end
     if params[:search][:sizes].include?("false")
       params[:search][:sizes] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
