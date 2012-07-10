@@ -335,14 +335,14 @@ $(document).ready(function() {
 			}
 
 	}
-	$("#length_min_number").val("<%=@search.length_min_number%>");
-	$("#length_max_number").val("<%=@search.length_max_number%>");
-	$("#length_min_param").val("<%=@search.length_min_param%>");
-	$("#length_max_param").val("<%=@search.length_max_param%>");
-	$("#length_min_number5").val("<%=@search.length_min_number%>");
-	$("#length_max_number5").val("<%=@search.length_max_number%>");
-	$("#length_min_param5").val("<%=@search.length_min_param%>");
-	$("#length_max_param5").val("<%=@search.length_max_param%>");
+	$("#length_min_number").val(<%=@search.length_min_number%>);
+	$("#length_max_number").val(<%=@search.length_max_number%>);
+	$("#length_min_param").val(<%=@search.length_min_param%>);
+	$("#length_max_param").val(<%=@search.length_max_param%>);
+	$("#length_min_number5").val(<%=@search.length_min_number%>);
+	$("#length_max_number5").val(<%=@search.length_max_number%>);
+	$("#length_min_param5").val(<%=@search.length_min_param%>);
+	$("#length_max_param5").val(<%=@search.length_max_param%>);
 	$("#price_max").val(<%=@search.price_max%>);
 	$("#price_max5").val(<%=@search.price_max%>);
 	$("#price_min").val(<%=@search.price_min%>);
@@ -1079,7 +1079,7 @@ $(document).ready(function() {
 
 <div id="priceRange" style="color:#575758; overflow-x:hidden; width:275px">
 <br />
-	<p>avg. per week</p>
+	<p>total cost</p>
     Min: <input type="number" name="search[price_min]" id = "price_min" style = "background:white; width:150px; margin-left:2px" onchange="$('#price_min5').val(this.attr('value'))"><br />
     Max: <input typw="number" name="search[price_max]" id = "price_max" style = "background:white; margin-top:5px; width:150px" onchange="$('#price_max5').val(this.attr('value'))"><br /><br />
 				<div style="float:left; margin-left:25px"><button onclick="$('#submit_form').click()" style="width:100px; height:25px">Apply</button></div>
