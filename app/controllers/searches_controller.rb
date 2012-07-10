@@ -62,24 +62,24 @@ class SearchesController < ApplicationController
     end
     sort_by = @search.sort_by
     if @search.price_max.nil?
-      price_max = 99999 / 1000
+      price_max = 99999
     else
-      price_max = @search.price_max / 1000
+      price_max = @search.price_max
     end
     if @search.price_min.nil?
-      price_min = 0 / 1000
+      price_min = 0
     else
-      price_min = @search.price_min / 1000
+      price_min = @search.price_min
     end
     if (@search.length_min_number.nil? || @search.length_min_param.nil?)
-      length_min = 0.weeks.to_f / 1209600 #stored in 2 week incraments
+      length_min = 0.weeks.to_f
     else
-      length_min = @search.length_min_number.to_i.send(@search.length_min_param).to_f / 1209600 #stored in 2 week incraments
+      length_min = @search.length_min_number.to_i.send(@search.length_min_param).to_f 
     end
     if (@search.length_max_number.nil? || @search.length_max_param.nil?)
-      length_max = 2.years.to_f / 1209600 #stored in 2 week incraments
+      length_max = 2.years.to_f
     else
-      length_max = @search.length_max_number.to_i.send(@search.length_max_param).to_f / 1209600 #stored in 2 week incraments
+      length_max = @search.length_max_number.to_i.send(@search.length_max_param).to_f
     end
     
       
@@ -97,10 +97,15 @@ class SearchesController < ApplicationController
       
       @results = @the_search.results
       
-      if (price_max != 99999 / 1000 || price_min != 0/1000 || length_min != 0.weeks.to_f / 1209600 || length_max != 2.years.to_f / 1209600)
+      if (price_max != 99999 || price_min != 0 || length_min != 0.weeks.to_f || length_max != 2.years.to_f )
       
         @cost_length_search = ProgramCostLengthMap.search do
-          with(:coordinates).in_bounding_box([length_min, price_min], [length_max, price_max])      
+          all_of do
+            with(:length).greater_than(length_min)
+            with(:length).less_than(length_max)
+            with(:cost).greater_than(price_min)
+            with(:cost).less_than(price_max)
+          end      
         end
         
         @cost_length_results = @cost_length_search.results

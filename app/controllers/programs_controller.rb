@@ -1338,10 +1338,9 @@ class ProgramsController < ApplicationController
     params[:lengths].each do |f|
       @p = @cost_lengths[count]
       @length = f.split(" ")
-      @p.length = @length[0].to_i.send(@length[1]).to_f / 1209600 #stored in two-weeks incraments
+      @p.length = @length[0].to_i.send(@length[1]).to_f
       @p.length_name = @length[1]
       @p.length_number = @length[0]
-      @p.cost = @p.cost / 1000 #stored in $1000 incraments 
       @p.save
       @p.index!
       @cost_lengths[count] = @p
