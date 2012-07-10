@@ -74,14 +74,14 @@ class SearchesController < ApplicationController
       price_min = @search.price_min
     end
     if (@search.length_min_number.nil? || @search.length_min_param.nil?)
-      @search.length_min_number = 0.weeks.to_f
+      @search.length_min_number = 0
       @search.length_min_param = "weeks"
       length_min = 0.weeks.to_f
     else
       length_min = @search.length_min_number.to_i.send(@search.length_min_param).to_f 
     end
     if (@search.length_max_number.nil? || @search.length_max_param.nil?)
-      @search.length_max_number = 2.years.to_f
+      @search.length_max_number = 2
       @search.length_max_param = "years"
       length_max = 2.years.to_f
     else
