@@ -297,7 +297,7 @@ $(document).ready(function() {
 		}
 	}
 	
-	if (isAllSubjects) {
+	if (isAllSubjects || search_subjects.count == 0) {
 		$("#any10").prop('checked', true);
 		$("#any5").prop('checked', true);
 	}
@@ -305,13 +305,11 @@ $(document).ready(function() {
 	var count = 0;
 	for (count = 0; count < allTheSubjects.length; count++)
     {
-		if (!isAllSubjects) {
 			if (search_subjects.indexOf(allTheSubjects[count]) != -1)
 			{
 				$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
 				$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
 			}
-		}
 	}
 	
 	var count = 0;
