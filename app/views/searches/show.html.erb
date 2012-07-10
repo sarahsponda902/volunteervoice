@@ -850,12 +850,12 @@ $(document).ready(function() {
 	
 
 <!-- PRICE MIN -->
-<input id="price_min5" type="number" style="display:none" name="search[price_min]" value="0">
+<input id="price_min5" type="number" style="display:none" name="search[price_min]" >
 <!-- END PRICE MIN -->
 
 
 <!-- PRICE MAX -->
-<input id="price_max5" type="number" style="display:none" name="search[price_max]" value="99999">
+<input id="price_max5" type="number" style="display:none" name="search[price_max]">
 <!-- END PRICE MAX -->	
 
 </div>
@@ -980,7 +980,7 @@ $(document).ready(function() {
 					<div class="three columns" style="position:absolute; left:40px; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
 						<select id= "length_min_number" name="search[length_min_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;"  onchange="$(length_min_number5).val(this.attr('value'))">
-							<option value="0" selected="selected">0</option>
+							<option value="0">0</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
 							<option value="3">3</option>
@@ -1011,7 +1011,7 @@ $(document).ready(function() {
 				<div class="three columns" style="position:absolute; left:90px; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
 					<select id= "length_min_param" name="search[length_min_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="$(length_min_param5).val(this.attr('value'))">
-						<option value="weeks" selected="selected">Weeks</option>
+						<option value="weeks">Weeks</option>
 						<option value="months">Months</option>
 						<option value="years">Years</option>	
 					</select>
@@ -1023,7 +1023,7 @@ $(document).ready(function() {
 						<select id= "length_max_number" name="search[length_max_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;"  onchange="$(length_max_number5).val(this.attr('value'))">
 							<option value="0">0</option>
 							<option value="1">1</option>
-							<option value="2" selected="selected">2</option>
+							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="4">4</option>
 							<option value="5">5</option>
@@ -1054,7 +1054,7 @@ $(document).ready(function() {
 					<select id= "length_max_param" name="search[length_max_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(/assets/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="$(length_max_param5).val(this.attr('value'))">
 						<option value="weeks">Weeks</option>
 						<option value="months">Months</option>
-						<option value="years" selected="selected">Years</option>	
+						<option value="years">Years</option>	
 					</select>
 			</div>
 <br />
@@ -1080,8 +1080,8 @@ $(document).ready(function() {
 <div id="priceRange" style="color:#575758; overflow-x:hidden; width:275px">
 <br />
 	<p>avg. per week</p>
-    Min: <input type="number" name="search[price_min]" value =  "0" id = "price_min" style = "background:white; width:150px; margin-left:2px" onchange="$('#price_min5').val(this.attr('value'))"><br />
-    Max: <input typw="number" name="search[price_max]" value= "99999" id = "price_max" style = "background:white; margin-top:5px; width:150px" onchange="$('#price_max5').val(this.attr('value'))"><br /><br />
+    Min: <input type="number" name="search[price_min]" id = "price_min" style = "background:white; width:150px; margin-left:2px" onchange="$('#price_min5').val(this.attr('value'))"><br />
+    Max: <input typw="number" name="search[price_max]" id = "price_max" style = "background:white; margin-top:5px; width:150px" onchange="$('#price_max5').val(this.attr('value'))"><br /><br />
 				<div style="float:left; margin-left:25px"><button onclick="$('#submit_form').click()" style="width:100px; height:25px">Apply</button></div>
 
 </div>
@@ -1744,7 +1744,7 @@ $(document).ready(function() {
 
 
     <script type='text/javascript'>
-        var locations4 = new Array('1_group', '2_group', '3_group', '4_group');
+        var locations4 = new Array('1', '2', '3', '4');
 
         var anyId4 = 'any3';
 
@@ -1752,14 +1752,14 @@ $(document).ready(function() {
             var i;
             if ( el.id == anyId4 ) {
                 for( i = 0; i < locations4.length; i++ ){
-                    var cb = document.getElementById(locations4[i]+"2");
+                    var cb = document.getElementById(locations4[i]+"_group");
 		            cb.checked = document.getElementById(anyId4).checked;
-					document.getElementById(locations4[i]+"5").checked = document.getElementById(anyId4).checked;
+					document.getElementById("size"+locations4[i]+"5").checked = document.getElementById(anyId4).checked;
                 }
             }
                 	var allChecked = true
 					for( i = 0; i < locations4.length; i++ ){
-						var cb = document.getElementById(locations4[i]+"2");
+						var cb = document.getElementById(locations4[i]+"_group");
 						if (!cb.checked) {
 							allChecked = false;
 						}
