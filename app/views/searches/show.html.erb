@@ -445,7 +445,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	
-	$('#program').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
+	$('#program').smartpaginator({ totalrecords: <%=@the_results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
 
 	
 });
@@ -456,7 +456,7 @@ $(document).ready(function() {
 <div class="container">
 <div style="text-align:center; width:100%; margin-top:50px" id ="programs-contents1">	
 <%=image_tag "/assets/volunteerPrograms.png"%><br /><br />
-	<p align="left" style="margin-left:50px; font-family:architectsDaughterRegular; color:#62acbd; font-size:1.3em"> Your search has <%= pluralize @results.count, "match"%>:</p>
+	<p align="left" style="margin-left:50px; font-family:architectsDaughterRegular; color:#62acbd; font-size:1.3em"> Your search has <%= pluralize @the_results.count, "match"%>:</p>
 
 	<br />
 	<br />
@@ -864,14 +864,14 @@ $(document).ready(function() {
 	<div class="row">	
 <div class="eleven columns" style="margin-top:-50px">
 <div class="contents" id="programs-contents" style="margin-left:-10px; margin-top:60px;">
-			<% if !(@results.empty?)%>	
+			<% if !(@the_results.empty?)%>	
 	<div id="divProgram" style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
 		<% if (@search.showing == "Programs" || @search.showing.nil?)%>
-			<% @results.each do |f|%>	
+			<% @the_results.each do |f|%>	
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
 			<% end %>
 		<% else %>
-			<% @results.each do |f|%>
+			<% @the_results.each do |f|%>
 	
 				<%= render :partial => "organizations_results", :locals => {:f => f}%>
 			<% end %>

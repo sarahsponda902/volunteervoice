@@ -113,30 +113,31 @@ class SearchesController < ApplicationController
         @cost_length_results.each do |f|
           @program_cost_length_results << Program.find(f.program_id) unless @program_cost_length_results.include?(Program.find(f.program_id))
         end
-        @real_results = @results
-        @results = []
+        @the_results = []
         @program_cost_length_results.each do |f|
-          if @real_results.include?(f)
-            @results << f
+          if @results.include?(f)
+            @the_results << f
           end
         end
+      else
+        @the_results = @results
       end
       
     
     
     if @search.showing == "Organizations"
       @organization_results = []
-      @results.each do |p| 
+      @the_results.each do |p| 
         @organization_results << Organization.find(p.organization_id) unless @organization_results.include?(Organization.find(p.organization_id))
       end
-      @results = @organization_results
+      @the_results = @organization_results
     end
     
-    @results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinghigh"
-    @results.sort_by!(&:overall) if @search.sort_by == "ratinglow"
-    @results.sort_by!(&:name) if @search.sort_by == "alphabetical"
-    @results.sort_by!(&:weekly_cost) if @search.sort_by == "pricelow"
-    @results.sort_by!(&:weekly_cost).reverse! if @search.sort_by == "pricehigh"
+    @the_results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinghigh"
+    @the_results.sort_by!(&:overall) if @search.sort_by == "ratinglow"
+    @the_results.sort_by!(&:name) if @search.sort_by == "alphabetical"
+    @the_results.sort_by!(&:weekly_cost) if @search.sort_by == "pricelow"
+    @the_results.sort_by!(&:weekly_cost).reverse! if @search.sort_by == "pricehigh"
         
     respond_to do |format|
       format.html # show.html.erb
