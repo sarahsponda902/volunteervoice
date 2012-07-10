@@ -62,27 +62,21 @@ class SearchesController < ApplicationController
     end
     sort_by = @search.sort_by
     if @search.price_max.nil?
-      @search.price_max = 99999
       price_max = 99999
     else
       price_max = @search.price_max
     end
     if @search.price_min.nil?
-      @search.price_min = 0
       price_min = 0
     else
       price_min = @search.price_min
     end
     if (@search.length_min_number.nil? || @search.length_min_param.nil?)
-      @search.length_min_number = 0
-      @search.length_min_param = "weeks"
       length_min = 0.weeks.to_f
     else
       length_min = @search.length_min_number.to_i.send(@search.length_min_param).to_f 
     end
     if (@search.length_max_number.nil? || @search.length_max_param.nil?)
-      @search.length_max_number = 2
-      @search.length_max_param = "years"
       length_max = 2.years.to_f
     else
       length_max = @search.length_max_number.to_i.send(@search.length_max_param).to_f
@@ -847,6 +841,25 @@ class SearchesController < ApplicationController
     @search.subjects = @search.subjects.join("; ")
     @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
 
+    if @search.length_min_param.nil?
+      @search.length_min_param = "weeks"
+    end
+    if @search.length_max_param.nil?
+      @search.length_max_param = "years"
+    end
+    if @search.length_min_number.nil?
+      @search.length_min_number = 0
+    end
+    if @search.length_max_number.nil?
+      @search.length_max_number = 2
+    end
+    if @search.price_min.nil?
+      @search.price_min = 0
+    end
+    if @search.price_max.nil?
+      @search.price_max = 99999
+    end
+    
     respond_to do |format|
       if @search.save
         format.html { redirect_to @search, notice: 'Search was successfully created.' }
