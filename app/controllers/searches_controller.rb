@@ -1472,7 +1472,7 @@ class SearchesController < ApplicationController
       'Americas',
       'Europe']
     end
-    if params[:search][:sizes].nil
+    if params[:search][:sizes].nil?
       params[:search][:sizes] = ["false"]
     end
     if params[:search][:sizes].include?("false")
