@@ -1472,6 +1472,9 @@ class SearchesController < ApplicationController
       'Americas',
       'Europe']
     end
+    if params[:search][:sizes].nil
+      params[:search][:sizes] = ["false"]
+    end
     if params[:search][:sizes].include?("false")
       params[:search][:sizes] = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"]
     end
