@@ -149,8 +149,6 @@ var allTheSubjects = new Array('Agriculture',
 'Engineering and Infrastructure', 
 'Environmental', 
 'Ecological Conservation', 
-'Sustainable Development', 
-'Wildlife Conservation', 
 'Habitat Restoration', 
 'Health and Medicine', 
 'HIV/AIDS', 
@@ -172,7 +170,6 @@ var allTheSubjects = new Array('Agriculture',
 'Archaeology', 
 'Environmental Biology', 
 'Technology', 
-'Teaching Computer Literacy', 
 'Media Marketing and Graphic Design');
 
 var allTheSubjectsIds = new Array('Agriculture', 
@@ -206,8 +203,6 @@ var allTheSubjectsIds = new Array('Agriculture',
 'EngineeringandInfrastructure', 
 'Environmental', 
 'EcologicalConservation', 
-'SustainableDevelopment1', 
-'WildlifeConservation1', 
 'HabitatRestoration', 
 'HealthandMedicine', 
 'HIVAIDS', 
@@ -229,7 +224,6 @@ var allTheSubjectsIds = new Array('Agriculture',
 'Archaeology', 
 'EnvironmentalBiology', 
 'Technology', 
-'TeachingComputerLiteracy1', 
 'MediaMarketingandGraphicDesign');
 
 var allTheSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
@@ -538,8 +532,6 @@ $(document).ready(function() {
 	<input type='checkbox' name='search[subjects][]' value="Engineering and Infrastructure" id="EngineeringandInfrastructure5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Environmental" id="Environmental5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Ecological Conservation" id="EcologicalConservation5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Sustainable Development" id="SustainableDevelopment15" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Wildlife Conservation" id="WildlifeConservation15" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Habitat Restoration" id="HabitatRestoration5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Health and Medicine" id="HealthandMedicine5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="HIV/AIDS" id="HIVAIDS5" style='display:none'>
@@ -561,7 +553,6 @@ $(document).ready(function() {
 	<input type='checkbox' name='search[subjects][]' value="Archaeology" id="Archaeology5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Environmental Biology" id="EnvironmentalBiology5" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Technology" id="Technology5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Teaching Computer Literacy" id="TeachingComputerLiteracy15" style='display:none'>
 	<input type='checkbox' name='search[subjects][]' value="Media Marketing and Graphic Design" id="MediaMarketingandGraphicDesign5" style="display:none">
 	
 	<!-- END SUBJECTS -->
@@ -914,10 +905,8 @@ $(document).ready(function() {
 
 					<div id='Agriculture1'><input type='checkbox' onchange ="$('#Agriculture5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value ='Agriculture' id='Agriculture2'  >Agriculture</div>
 					<div id='OrganicFarming1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#OrganicFarming5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value='Organic Farming' id='OrganicFarming2' >Organic Farming</div>
-					<div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#SustainableDevelopment5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value='Sustainable Development' id='SustainableDevelopment2' >Sustainable Development</div>
 					<div id='AnimalCare1'><br /><input type='checkbox' onchange ="$('#AnimalCare5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAnimalCare(this)' value='Animal Care' id='AnimalCare2' >Animal Care</div>
 					<div id='AnimalRights1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#AnimalRights5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAnmialCare(this)' value='Animal Rights' id='AnimalRights2' >Animal Rights</div>
-					<div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#WildlifeConservation5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAnmialCare(this)' value='Wildlife Conservation' id='WildlifeConservation2' >Wildlife Conservation</div>
 					<div id='Caregiving1'><br /><input type='checkbox' onchange ="$('#Caregiving5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleCaregiving(this)' value='Caregiving' id='Caregiving2' >Caregiving</div>
 					<div id='ElderCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#ElderCare5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleCaregiving(this)' value='Elder Care' id='ElderCare2' >Elder Care</div>
 					<div id='ChildOrphanCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#ChildOrphanCare5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleCaregiving(this)' value='Child/Orphan Care' id='ChildOrphanCare2' >Child/Orphan Care</div>
@@ -945,8 +934,8 @@ $(document).ready(function() {
 					<div id='EngineeringandInfrastructure1'><input type='checkbox' onchange ="$('#EngineeringandInfrastructure5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this)' value='Engineering and Infrastructure' id='EngineeringandInfrastructure2' >Engineering and Infrastructure</div>
 					<div id='Environmental1'><br /><input type='checkbox' onchange ="$('#Environmental5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Environmental' id='Environmental2' >Environmental</div>
 					<div id='EcologicalConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#EcologicalConservation5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Ecological Conservation' id='EcologicalConservation2' >Ecological Conservation</div>
-					<div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#SustainableDevelopment15').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Sustainable Development' id='SustainableDevelopment12' >Sustainable Development</div>
-					<div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#WildlifeConservation5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Wildlife Conservation' id='WildlifeConservation12' >Wildlife Conservation</div>
+					<div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#SustainableDevelopment5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Sustainable Development' id='SustainableDevelopment2' >Sustainable Development</div>
+					<div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#WildlifeConservation5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Wildlife Conservation' id='WildlifeConservation2' >Wildlife Conservation</div>
 					<div id='HabitatRestoration1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#HabitatRestoration5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Habitat Restoration' id='HabitatRestoration2' >Habitat Restoration</div>
 					<div id='HealthandMedicine1'><br /><input type='checkbox' onchange ="$('#HealthandMedicine5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value='Health and Medicine' id='HealthandMedicine2' >Health and Medicine</div>
 					<div id='HIVAIDS1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#HIVAIDS5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleHealthandMedicine(this)' value='HIV/AIDS' id='HIVAIDS2' >HIV/AIDS</div>
@@ -968,7 +957,6 @@ $(document).ready(function() {
 					<div id='Archaeology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#Archaeology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value='Archaeology' id='Archaeology2' >Archaeology</div>
 					<div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#EnvironmentalBiology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value='Environmental Biology' id='EnvironmentalBiology2' >Environmental Biology</div>
 					<div id='Technology1'><br /><input type='checkbox' onchange ="$('#Technology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' >Technology</div>
-					<div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#TeachingComputerLiteracy5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy12' >Teaching Computer Literacy</div>
 					<div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#MediaMarketingandGraphicDesign5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' >Media Marketing and Graphic Design</div><br />
 		<div style="float:left; margin-left:-50px"><button onclick="$('#submit_form').click()" style="width:100px; height:25px">Apply</button></div>
 	
@@ -1079,7 +1067,7 @@ $(document).ready(function() {
 
 <div id="priceRange" style="color:#575758; overflow-x:hidden; width:275px">
 <br />
-	<p>total cost</p>
+	<p>Total Cost</p>
     Min: <input type="number" name="search[price_min]" id = "price_min" style = "background:white; width:150px; margin-left:2px" onchange="$('#price_min5').val(this.value)"><br />
     Max: <input typw="number" name="search[price_max]" id = "price_max" style = "background:white; margin-top:5px; width:150px" onchange="$('#price_max5').val(this.value)"><br /><br />
 				<div style="float:left; margin-left:25px"><button onclick="$('#submit_form').click()" style="width:100px; height:25px">Apply</button></div>
@@ -1683,9 +1671,7 @@ $(document).ready(function() {
 		'TeachingComputerLiteracy', 
 		'EngineeringandInfrastructure', 
 		'Environmental', 
-		'EcologicalConservation', 
-		'SustainableDevelopment1', 
-		'WildlifeConservation1', 
+		'EcologicalConservation',  
 		'HabitatRestoration', 
 		'HealthandMedicine', 
 		'HIVAIDS', 
@@ -1707,7 +1693,6 @@ $(document).ready(function() {
 		'Archaeology', 
 		'EnvironmentalBiology', 
 		'Technology', 
-		'TeachingComputerLiteracy1', 
 		'MediaMarketingandGraphicDesign');
 
         var anyId2 = 'any';
@@ -1775,7 +1760,7 @@ $(document).ready(function() {
 					}
         }    
 
-var locationsAgriculture = new Array('OrganicFarming', 'SustainableDevelopment');
+var locationsAgriculture = new Array('OrganicFarming');
 
 var anyAgriculture = 'Agriculture2';
 
@@ -1803,7 +1788,7 @@ function toggleAgriculture( el ) {
 
 }
 
-var locationsAnimalCare = new Array('AnimalRights', 'WildlifeConservation');
+var locationsAnimalCare = new Array('AnimalRights');
 
 var anyAnimalCare = 'AnimalCare2';
 
@@ -1983,7 +1968,7 @@ function toggleEducation( el ) {
 
 
 
-var locationsEnvironmental = new Array('EcologicalConservation', 'SustainableDevelopment1', 'WildlifeConservation1', 'HabitatRestoration');
+var locationsEnvironmental = new Array('EcologicalConservation', 'SustainableDevelopment', 'WildlifeConservation', 'HabitatRestoration');
 
 var anyEnvironmental = 'Environmental2';
 
@@ -2140,7 +2125,7 @@ function toggleScientificResearch( el ) {
 
 
 
-var locationsTechnology = new Array('TeachingComputerLiteracy1', 'MediaMarketingandGraphicDesign');
+var locationsTechnology = new Array('MediaMarketingandGraphicDesign');
 
 var anyTechnology = 'Technology2';
 

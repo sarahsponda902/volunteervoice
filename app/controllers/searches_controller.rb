@@ -239,10 +239,10 @@ class SearchesController < ApplicationController
     end
     
     if @search.subjects.include?('Agriculture')
-      @search.subjects = ['Organic Farming', 'Sustainable Development'] + (@search.subjects.split("; "))
+      @search.subjects = ['Organic Farming'] + (@search.subjects.split("; "))
     end
     if @search.subjects.include?('Animal Care')
-      @search.subjects = ['Animal Rights', 'Wildlife Conservation'] + (@search.subjects.split("; "))
+      @search.subjects = ['Animal Rights'] + (@search.subjects.split("; "))
     end
     if @search.subjects.include?('Caregiving')
       @search.subjects = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + (@search.subjects.split("; "))
@@ -257,7 +257,7 @@ class SearchesController < ApplicationController
       @search.subjects = ['Economics', 'Microfinance'] + (@search.subjects.split("; "))
     end
     if @search.subjects.include?('Education')
-      @search.subjects = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + (@search.subjects.split("; "))
+      @search.subjects = ['Teaching Buddhist Monks', 'Teaching Children'] + (@search.subjects.split("; "))
     end
     if @search.subjects.include?('Environmental')
       @search.subjects = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + (@search.subjects.split("; "))
@@ -877,10 +877,10 @@ class SearchesController < ApplicationController
     @search = Search.find(params[:id])
     
     if params[:search][:subjects].include?('Agriculture')
-      params[:search][:subjects] = ['Organic Farming', 'Sustainable Development'] + (params[:search][:subjects].split("; "))
+      params[:search][:subjects] = ['Organic Farming'] + (params[:search][:subjects].split("; "))
     end
     if params[:search][:subjects].include?('Animal Care')
-      params[:search][:subjects] = ['Animal Rights', 'Wildlife Conservation'] + (params[:search][:subjects].split("; "))
+      params[:search][:subjects] = ['Animal Rights'] + (params[:search][:subjects].split("; "))
     end
     if params[:search][:subjects].include?('Caregiving')
       params[:search][:subjects] = ['Elder Care', 'Child/Orphan Care', 'Disabled Care', 'Feed the Homeless'] + (params[:search][:subjects].split("; "))
@@ -895,7 +895,7 @@ class SearchesController < ApplicationController
       params[:search][:subjects] = ['Economics', 'Microfinance'] + (params[:search][:subjects].split("; "))
     end
     if params[:search][:subjects].include?('Education')
-      params[:search][:subjects] = ['Teaching Buddhist Monks', 'Teaching Children', 'Teaching Computer Literacy'] + (params[:search][:subjects].split("; "))
+      params[:search][:subjects] = ['Teaching Buddhist Monks', 'Teaching Children'] + (params[:search][:subjects].split("; "))
     end
     if params[:search][:subjects].include?('Environmental')
       params[:search][:subjects] = ['Ecological Conservation', 'Sustainable Development', 'Wildlife Conservation', 'Habitat Restoration'] + (params[:search][:subjects].split("; "))
