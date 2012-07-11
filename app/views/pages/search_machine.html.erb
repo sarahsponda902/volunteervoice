@@ -333,7 +333,7 @@ $(document).ready(function() {
 
 
 
-<div id="AfricaDiv"><input onclick='toggleBoxes(this);toggleAfrica(this)' value='Africa' id='anyAfrica' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Africa</font></div>
+<div id="AfricaDiv"><input onclick='toggleBoxes(this);toggleAfrica(this)' value='Africa' id='anyAfrica2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Africa</font></div>
 <div id='DZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAfrica(this)' value='DZ' id='DZ2' name='search[regions][]' type='checkbox'> Algeria</div>
 <div id='EG'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAfrica(this)' value='EG' id='EG2' name='search[regions][]' type='checkbox'> Egypt</div>
 <div id='LY'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAfrica(this)' value='LY' id='LY2' name='search[regions][]' type='checkbox'> Libya</div>
@@ -399,7 +399,7 @@ $(document).ready(function() {
 
 
 
-<div id="EuropeDiv"><input onclick='toggleBoxes(this);toggleEurope(this)' value='Europe' id='anyEurope' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Europe</font></div>
+<div id="EuropeDiv"><input onclick='toggleBoxes(this);toggleEurope(this)' value='Europe' id='anyEurope2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Europe</font></div>
 <div id='AX'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleEurope(this)' value='AX' id='AX2' name='search[regions][]' type='checkbox'> Åland Islands</div>
 <div id='DK'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleEurope(this)' value='DK' id='DK2' name='search[regions][]' type='checkbox'> Denmark</div>
 <div id='EE'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleEurope(this)' value='EE' id='EE2' name='search[regions][]' type='checkbox'> Estonia</div>
@@ -459,7 +459,7 @@ $(document).ready(function() {
 
 
 
-	<div id="AmericasDiv"><input onclick='toggleBoxes(this);toggleAmericas(this)' value='Americas' id='anyAmericas' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Americas</font></div>
+	<div id="AmericasDiv"><input onclick='toggleBoxes(this);toggleAmericas(this)' value='Americas' id='anyAmericas2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Americas</font></div>
 	<div id='BM'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAmericas(this)' value='BM' id='BM2' name='search[regions][]' type='checkbox'> Bermuda</div>
 	<div id='CA'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAmericas(this)' value='CA' id='CA2' name='search[regions][]' type='checkbox'> Canada</div>
 	<div id='GL'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAmericas(this)' value='GL' id='GL2' name='search[regions][]' type='checkbox'> Greenland</div>
@@ -518,7 +518,7 @@ $(document).ready(function() {
 	
 	
 	
-<div id="AsiaDiv"><input onclick='toggleBoxes(this);toggleAsia(this)' value='Asia' id='anyAsia' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Asia</font></div>
+<div id="AsiaDiv"><input onclick='toggleBoxes(this);toggleAsia(this)' value='Asia' id='anyAsia2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Asia</font></div>
 <div id='KZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAsia(this)' value='KZ' id='KZ2' name='search[regions][]' type='checkbox'> Kazakhstan</div>
 <div id='KG'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAsia(this)' value='KG' id='KG2' name='search[regions][]' type='checkbox'> Kyrgyzstan</div>
 <div id='TJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAsia(this)' value='TJ' id='TJ2' name='search[regions][]' type='checkbox'> Tajikistan</div>
@@ -576,7 +576,7 @@ $(document).ready(function() {
 
 
 
-<div id="OceaniaDiv"><input onclick='toggleBoxes(this);toggleOceania(this)' value='Oceania' id='anyOceania' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Oceania</font></div>
+<div id="OceaniaDiv"><input onclick='toggleBoxes(this);toggleOceania(this)' value='Oceania' id='anyOceania2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Oceania</font></div>
 <div id='AU'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='AU' id='AU2' name='search[regions][]' type='checkbox'> Australia</div>
 <div id='NZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='NZ' id='NZ2' name='search[regions][]' type='checkbox'> New Zealand</div>
 <div id='NF'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='NF' id='NF2' name='search[regions][]' type='checkbox'> Norfolk Island</div>
@@ -991,7 +991,6 @@ $(document).ready(function() {
             for( i = 0; i < locations6.length; i++ ){
                 var cb = document.getElementById(locations6[i]+"2");
 	            cb.checked = document.getElementById(anyId6).checked;
-				document.getElementById(locations6[i]+"5").checked = document.getElementById(anyId6).checked;
             }
         }
             	var allChecked = true
@@ -1004,11 +1003,9 @@ $(document).ready(function() {
 				if (allChecked) {
 					var cb = document.getElementById(anyId6);
 					cb.checked = true; 
-					document.getElementById("any11").checked = true;
 				} else {
 					var cb = document.getElementById(anyId6);
 					cb.checked = false; 
-					document.getElementById("any11").checked = false;
 				}
 
     }    
@@ -1075,7 +1072,6 @@ $(document).ready(function() {
                 for( i = 0; i < locations2.length; i++ ){
                     var cb = document.getElementById(locations2[i]+"2");
 		            cb.checked = document.getElementById(anyId2).checked;
-					document.getElementById(locations2[i]+"5").checked = document.getElementById(anyId2).checked;
                 }
             }
                 	var allChecked = true
@@ -1088,11 +1084,9 @@ $(document).ready(function() {
 					if (allChecked) {
 						var cb = document.getElementById(anyId2);
 						cb.checked = true; 
-						document.getElementById("any10").checked = true;
 					} else {
 						var cb = document.getElementById(anyId2);
 						cb.checked = false; 
-						document.getElementById("any10").checked = false;
 					}
 
         }    
@@ -1111,7 +1105,6 @@ $(document).ready(function() {
                 for( i = 0; i < locations4.length; i++ ){
                     var cb = document.getElementById(locations4[i]+"_group");
 		            cb.checked = document.getElementById(anyId4).checked;
-					document.getElementById("size"+locations4[i]+"5").checked = document.getElementById(anyId4).checked;
                 }
             }
                 	var allChecked = true
@@ -1124,11 +1117,11 @@ $(document).ready(function() {
 					if (allChecked) {
 						var cb = document.getElementById(anyId4);
 						cb.checked = true; 
-						document.getElementById("any13").checked = true;
+	
 					} else {
 						var cb = document.getElementById(anyId4);
 						cb.checked = false; 
-						document.getElementById("any13").checked = false;
+
 					}
         }    
 
@@ -1142,7 +1135,7 @@ function toggleAgriculture( el ) {
         for( i = 0; i < locationsAgriculture.length; i++ ){
             var cb = document.getElementById(locationsAgriculture[i]+"2");
             cb.checked = document.getElementById(anyAgriculture).checked;
-			document.getElementById(locationsAgriculture[i]+"5").checked = document.getElementById(anyAgriculture).checked;
+
         }
     }
 		var allChecked = true
@@ -1155,7 +1148,7 @@ function toggleAgriculture( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyAgriculture);
 			cb.checked = true; 
-			document.getElementById("Agriculture5").checked = true;
+
 		} 
 
 }
@@ -1170,7 +1163,6 @@ function toggleAnimalCare( el ) {
         for( i = 0; i < locationsAnimalCare.length; i++ ){
             var cb = document.getElementById(locationsAnimalCare[i]+"2");
             cb.checked = document.getElementById(anyAnimalCare).checked;
-			document.getElementById(locationsAnimalCare[i]+"5").checked = document.getElementById(anyAnimalCare).checked;
         }
     } else {
 		var allChecked = true
@@ -1183,7 +1175,6 @@ function toggleAnimalCare( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyAnimalCare);
 			cb.checked = true; 
-			document.getElementById("AnimalCare5").checked = true;
 		}
     }
 }
@@ -1199,7 +1190,6 @@ function toggleCaregiving( el ) {
         for( i = 0; i < locationsCaregiving.length; i++ ){
             var cb = document.getElementById(locationsCaregiving[i]+"2");
             cb.checked = document.getElementById(anyCaregiving).checked;
-			document.getElementById(locationsCaregiving[i]+"5").checked = document.getElementById(anyCaregiving).checked;
         }
     } else {
 		var allChecked = true
@@ -1212,7 +1202,7 @@ function toggleCaregiving( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyCaregiving);
 			cb.checked = true; 
-			document.getElementById("Caregiving5").checked = true;
+
 		}
     }
 }
@@ -1229,7 +1219,7 @@ function toggleCommunityDevelopment( el ) {
         for( i = 0; i < locationsCommunityDevelopment.length; i++ ){
             var cb = document.getElementById(locationsCommunityDevelopment[i]+"2");
             cb.checked = document.getElementById(anyCommunityDevelopment).checked;
-			document.getElementById(locationsCommunityDevelopment[i]+"5").checked = document.getElementById(anyCommunityDevelopment).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1242,7 +1232,6 @@ function toggleCommunityDevelopment( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyCommunityDevelopment);
 			cb.checked = true; 
-			document.getElementById("CommunityDevelopment5").checked = true;
 		}
     }
 }
@@ -1259,7 +1248,6 @@ function toggleCultureandCommunity( el ) {
         for( i = 0; i < locationsCultureandCommunity.length; i++ ){
             var cb = document.getElementById(locationsCultureandCommunity[i]+"2");
             cb.checked = document.getElementById(anyCultureandCommunity).checked;
-			document.getElementById(locationsCultureandCommunity[i]+"5").checked = document.getElementById(anyCultureandCommunity).checked;
         }
     } else {
 		var allChecked = true
@@ -1272,7 +1260,7 @@ function toggleCultureandCommunity( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyCultureandCommunity);
 			cb.checked = true; 
-			document.getElementById("CultureandCommunity5").checked = true;
+
 		}
     }
 }
@@ -1288,7 +1276,6 @@ function toggleDisasterRelief( el ) {
         for( i = 0; i < locationsDisasterRelief.length; i++ ){
             var cb = document.getElementById(locationsDisasterRelief[i]+"2");
             cb.checked = document.getElementById(anyDisasterRelief).checked;
-			document.getElementById(locationsDisasterRelief[i]+"5").checked = document.getElementById(anyDisasterRelief).checked;
         }
     } else {
 		var allChecked = true
@@ -1301,7 +1288,6 @@ function toggleDisasterRelief( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyDisasterRelief);
 			cb.checked = true; 
-			document.getElementById("DisasterRelief5").checked = true;
 		}
     }
 }
@@ -1318,7 +1304,6 @@ function toggleEducation( el ) {
         for( i = 0; i < locationsEducation.length; i++ ){
             var cb = document.getElementById(locationsEducation[i]+"2");
             cb.checked = document.getElementById(anyEducation).checked;
-			document.getElementById(locationsEducation[i]+"5").checked = document.getElementById(anyEducation).checked;
         }
     } else {
 		var allChecked = true
@@ -1331,7 +1316,7 @@ function toggleEducation( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyEducation);
 			cb.checked = true; 
-			document.getElementById("Education5").checked = true;
+	
 		}
     }
 }
@@ -1350,7 +1335,7 @@ function toggleEnvironmental( el ) {
         for( i = 0; i < locationsEnvironmental.length; i++ ){
             var cb = document.getElementById(locationsEnvironmental[i]+"2");
             cb.checked = document.getElementById(anyEnvironmental).checked;
-			document.getElementById(locationsEnvironmental[i]+"5").checked = document.getElementById(anyEnvironmental).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1363,7 +1348,7 @@ function toggleEnvironmental( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyEnvironmental);
 			cb.checked = true; 
-			document.getElementById("Environmental5").checked = true;
+	
 		}
     }
 }
@@ -1382,7 +1367,6 @@ function toggleHealthandMedicine( el ) {
         for( i = 0; i < locationsHealthandMedicine.length; i++ ){
             var cb = document.getElementById(locationsHealthandMedicine[i]+"2");
             cb.checked = document.getElementById(anyHealthandMedicine).checked;
-			document.getElementById(locationsHealthandMedicine[i]+"5").checked = document.getElementById(anyHealthandMedicine).checked;
         }
     } else {
 		var allChecked = true
@@ -1395,7 +1379,7 @@ function toggleHealthandMedicine( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyHealthandMedicine);
 			cb.checked = true; 
-			document.getElementById("HealthandMedicine5").checked = true;
+		
 		}
     }
 }
@@ -1414,7 +1398,7 @@ function toggleHumanRights( el ) {
         for( i = 0; i < locationsHumanRights.length; i++ ){
             var cb = document.getElementById(locationsHumanRights[i]+"2");
             cb.checked = document.getElementById(anyHumanRights).checked;
-			document.getElementById(locationsHumanRights[i]+"5").checked = document.getElementById(anyHumanRights).checked;
+		
         }
     } else {
 		var allChecked = true
@@ -1427,7 +1411,7 @@ function toggleHumanRights( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyHumanRights);
 			cb.checked = true; 
-			document.getElementById("HumanRights5").checked = true;
+
 		}
     }
 }
@@ -1445,7 +1429,7 @@ function toggleRecreation( el ) {
         for( i = 0; i < locationsRecreation.length; i++ ){
             var cb = document.getElementById(locationsRecreation[i]+"2");
             cb.checked = document.getElementById(anyRecreation).checked;
-			document.getElementById(locationsRecreation[i]+"5").checked = document.getElementById(anyRecreation).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1458,7 +1442,7 @@ function toggleRecreation( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyRecreation);
 			cb.checked = true; 
-			document.getElementById("Recreation5").checked = true;
+
 		}
     }
 }
@@ -1476,7 +1460,7 @@ function toggleScientificResearch( el ) {
         for( i = 0; i < locationsScientificResearch.length; i++ ){
             var cb = document.getElementById(locationsScientificResearch[i]+"2");
             cb.checked = document.getElementById(anyScientificResearch).checked;
-			document.getElementById(locationsScientificResearch[i]+"5").checked = document.getElementById(anyScientificResearch).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1489,7 +1473,7 @@ function toggleScientificResearch( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyScientificResearch);
 			cb.checked = true; 
-			document.getElementById("ScientificResearch5").checked = true;
+
 		}
     }
 }
@@ -1507,7 +1491,7 @@ function toggleTechnology( el ) {
         for( i = 0; i < locationsTechnology.length; i++ ){
             var cb = document.getElementById(locationsTechnology[i]+"2");
             cb.checked = document.getElementById(anyTechnology).checked;
-			document.getElementById(locationsTechnology[i]+"5").checked = document.getElementById(anyTechnology).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1520,7 +1504,7 @@ function toggleTechnology( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyTechnology);
 			cb.checked = true; 
-			document.getElementById("Technology5").checked = true;
+	
 		}
     }
 }
@@ -1602,7 +1586,7 @@ function toggleAfrica( el ) {
         for( i = 0; i < locationsAfrica.length; i++ ){
             var cb = document.getElementById(locationsAfrica[i]+"2");
             cb.checked = document.getElementById(anyAfrica).checked;
-			document.getElementById(locationsAfrica[i]+"5").checked = document.getElementById(anyAfrica).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1615,7 +1599,6 @@ function toggleAfrica( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyAfrica);
 			cb.checked = true; 
-			document.getElementById("anyAfrica5").checked = true;
 		}
     }
 }
@@ -1682,7 +1665,7 @@ function toggleEurope( el ) {
         for( i = 0; i < locationsEurope.length; i++ ){
             var cb = document.getElementById(locationsEurope[i]+"2");
             cb.checked = document.getElementById(anyEurope).checked;
-			document.getElementById(locationsEurope[i]+"5").checked = document.getElementById(anyEurope).checked;
+	
         }
     } else {
 		var allChecked = true
@@ -1695,7 +1678,7 @@ function toggleEurope( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyEurope);
 			cb.checked = true; 
-			document.getElementById("anyEurope5").checked = true;
+
 		}
     }
 }
@@ -1765,7 +1748,7 @@ function toggleAmericas( el ) {
         for( i = 0; i < locationsAmericas.length; i++ ){
             var cb = document.getElementById(locationsAmericas[i]+"2");
             cb.checked = document.getElementById(anyAmericas).checked;
-			document.getElementById(locationsAmericas[i]+"5").checked = document.getElementById(anyAmericas).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1778,7 +1761,7 @@ function toggleAmericas( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyAmericas);
 			cb.checked = true; 
-			document.getElementById("anyAmericas5").checked = true;
+	
 		}
     }
 }
@@ -1847,7 +1830,7 @@ function toggleAsia( el ) {
         for( i = 0; i < locationsAsia.length; i++ ){
             var cb = document.getElementById(locationsAsia[i]+"2");
             cb.checked = document.getElementById(anyAsia).checked;
-			document.getElementById(locationsAsia[i]+"5").checked = document.getElementById(anyAsia).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1860,7 +1843,7 @@ function toggleAsia( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyAsia);
 			cb.checked = true; 
-			document.getElementById("anyAsia5").checked = true;
+
 		}
     }
 }
@@ -1903,7 +1886,7 @@ function toggleOceania( el ) {
         for( i = 0; i < locationsOceania.length; i++ ){
             var cb = document.getElementById(locationsOceania[i]+"2");
             cb.checked = document.getElementById(anyOceania).checked;
-			document.getElementById(locationsOceania[i]+"5").checked = document.getElementById(anyOceania).checked;
+
         }
     } else {
 		var allChecked = true
@@ -1916,7 +1899,7 @@ function toggleOceania( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyOceania);
 			cb.checked = true; 
-			document.getElementById("anyOceania5").checked = true;
+
 		}
     }
 }
