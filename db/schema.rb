@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630014324) do
+ActiveRecord::Schema.define(:version => 20120716051605) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -411,6 +411,9 @@ ActiveRecord::Schema.define(:version => 20120630014324) do
     t.boolean  "crops"
     t.integer  "unread_messages"
     t.string   "return_link"
+    t.boolean  "org"
+    t.string   "org_pass"
+    t.boolean  "org_update"
   end
 
   add_index "users", ["approved"], :name => "index_users_on_approved"
