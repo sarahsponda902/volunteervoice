@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716083050) do
+ActiveRecord::Schema.define(:version => 20120716151350) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -209,6 +209,7 @@ ActiveRecord::Schema.define(:version => 20120716083050) do
     t.string   "invited_by_type"
     t.integer  "organization_id"
     t.string   "organization_name"
+    t.string   "admin_pass"
   end
 
   add_index "organization_accounts", ["email"], :name => "index_organization_accounts_on_email", :unique => true
