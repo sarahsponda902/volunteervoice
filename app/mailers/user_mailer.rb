@@ -31,4 +31,11 @@ class UserMailer < ActionMailer::Base
      mail(:from => "no-reply@volunteervoice.org", :to => "sarahsponda902@gmail.com", :body => @errors)
   end
   
+  def invitation_instructions(resource)
+     @options = {"promotion_name" => "InvitationInstructions", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "Create Your VolunteerVoice Account"}
+     @yaml_body = {'instrux' => "volunteervoice.herokuapp.com/invitations/#{resource.invitation_token}", 'frstname' => resource.first_name, 'lstname' => resource.last_name}
+     @errors = MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
+     mail(:from => "no-reply@volunteervoice.org", :to => "sarahsponda902@gmail.com", :body => @errors)
+  end
+  
 end

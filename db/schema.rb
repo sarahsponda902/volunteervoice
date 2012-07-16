@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716074116) do
+ActiveRecord::Schema.define(:version => 20120716081817) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -254,6 +254,8 @@ ActiveRecord::Schema.define(:version => 20120716074116) do
     t.text     "program_costs_doesnt_include"
     t.text     "headquarters_location"
     t.string   "types_of_programs"
+    t.string   "invite_email"
+    t.boolean  "will_invite"
   end
 
   create_table "pages", :force => true do |t|
