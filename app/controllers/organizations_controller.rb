@@ -389,6 +389,9 @@ class OrganizationsController < ApplicationController
     
     if user_signed_in? && current_user.admin?
       if @organization.save
+            if @organization.will_invite && @organization.invite_email.present?
+              OrganizationAccount.invite!(:email => @organization.invite_email)
+            end
             redirect_to "/organizations/#{@organization.id}/crop"
       else
         @organization.description = @organization.description.gsub(%r{</?[^>]+?>}, '')
