@@ -390,7 +390,7 @@ class OrganizationsController < ApplicationController
     if user_signed_in? && current_user.admin?
       if @organization.save
             if @organization.will_invite && @organization.invite_email.present?
-              OrganizationAccount.invite!(:email => @organization.invite_email, :organization_id => @organization.id)
+              OrganizationAccount.invite!(:email => @organization.invite_email, :organization_id => @organization.id, :admin_pass => @organization.admin_pass)
             end
             redirect_to "/organizations/#{@organization.id}/crop"
       else
