@@ -11,7 +11,7 @@ class OrganizationAccount < ActiveRecord::Base
   
   def validates_admin_pass
     if :admin_pass != encrypted_pass
-      errors.add_to_base("You must be an administrator to send an organization account invitation.")
+      errors[:base] << "You must be an administrator to send an organization account invitation."
     end
   end
   
