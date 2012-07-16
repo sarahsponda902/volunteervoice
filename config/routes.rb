@@ -1,5 +1,9 @@
 RMTest::Application.routes.draw do
   
+  devise_for :organization_accounts
+
+  resources :organization_accounts
+
   get "errors/error_404"
 
   get "errors/error_500"
