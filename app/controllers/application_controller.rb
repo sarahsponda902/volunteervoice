@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
 include SimpleCaptcha::ControllerHelpers
 
    def after_sign_in_path_for(resource)
+     if resource.is_a?(OrganizationAccount)
+       root_path
+     else
      if !(resource.return_link.nil?)
        @link = resource.return_link
        resource.return_link = nil
@@ -20,9 +23,13 @@ include SimpleCaptcha::ControllerHelpers
          '/'
        end
     end
+  end
    end
    
    def after_sign_out_path_for(resource)
+     if resource.is_a?(OrganizationAccount)
+       root_path
+     else
      if URI(request.referrer).path == '/registrations/mustBe'
        '/'
      else
@@ -32,10 +39,15 @@ include SimpleCaptcha::ControllerHelpers
          request.referrer
        end
      end
+    end
    end
    
    def after_update_path_for(resource)
+     if resource.is_a?(OrganizationAccount)
+       root_path
+     else
      "/pages/profile"
+    end
    end
    
    unless Rails.application.config.consider_all_requests_local
