@@ -1,6 +1,6 @@
 class OrganizationAccount < ActiveRecord::Base
   validates_exclusion_of :organization_id, :in => OrganizationAccount.all.map(&:organization_id)
-  
+  validate :validates_admin_pass
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
