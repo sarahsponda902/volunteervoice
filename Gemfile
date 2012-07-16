@@ -9,6 +9,8 @@ gem "sunspot_rails", "~> 2.0.0.pre.111215"
 
 gem 'devise'
 
+gem 'devise_invitable'
+
 gem 'jquery-rails'
 
 gem 'madmimi'
