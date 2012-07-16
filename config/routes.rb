@@ -1,8 +1,11 @@
 RMTest::Application.routes.draw do
   
   devise_for :organization_accounts
-  match "organization_accounts/sign_up" => 'organization_accounts/registrations#new'
-
+  
+  devise_scope :organization_accounts do
+    match "organization_accounts/sign_up" => 'organization_accounts/registrations#new'
+  end
+  
   resources :organization_accounts
 
   get "errors/error_404"
