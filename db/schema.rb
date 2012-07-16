@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716073231) do
+ActiveRecord::Schema.define(:version => 20120716074116) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -189,22 +189,30 @@ ActiveRecord::Schema.define(:version => 20120716073231) do
     t.string   "username"
     t.boolean  "notify"
     t.string   "country"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",                   :default => ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                        :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "organization_token"
+    t.string   "invitation_token",       :limit => 60
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
   end
 
   add_index "organization_accounts", ["email"], :name => "index_organization_accounts_on_email", :unique => true
+  add_index "organization_accounts", ["invitation_token"], :name => "index_organization_accounts_on_invitation_token"
+  add_index "organization_accounts", ["invited_by_id"], :name => "index_organization_accounts_on_invited_by_id"
   add_index "organization_accounts", ["reset_password_token"], :name => "index_organization_accounts_on_reset_password_token", :unique => true
 
   create_table "organizations", :force => true do |t|
