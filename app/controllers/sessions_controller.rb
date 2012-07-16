@@ -1,9 +1,13 @@
 class SessionsController < Devise::SessionsController 
-  before_filter :store_location
   
-  private
-
-    def store_location
-      session[:user_return_to] = URI(request.referrer).path
+  def create
+    if user_signed_in?
+      sign_out(current_user)
     end
+    if organization_account_signed_in?
+      sign_out(current_organization_account)
+    end
+    super
+  end
+
 end
