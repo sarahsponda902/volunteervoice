@@ -65,4 +65,34 @@ class OrganizationAccountsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def change_subscription
+    @organization_account = OrganizationAccount.find(params[:id])
+    @organization_account.notify = !@organization_account.notify unless @organization_account.notify.nil?
+    @organization_account.save
+    respond_to do |format|
+      format.html {render :action => "successful_unsubscribe", :organization_account_id => @organization_account.id}
+      format.json {head :no_content}
+    end
+  end
+  
+  
+  def successful_unsubscribe
+    @organization_account = OrganizationAccount.find(params[:organization_account_id])
+    if @organization_account.notify = nil
+      @notify = false
+    else
+      @notify = @organization_account.notify
+    end
+    if @notify
+      @subscription_status = "subscribed"
+    else
+      @subscription_status = "unsubscribed"
+    end
+    respond_to do |format|
+      format.html
+      format.json {head :no_content}
+    end
+  end
+  
 end
