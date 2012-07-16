@@ -548,13 +548,13 @@ function submitForm() {
 					<option value="ZW"> Zimbabwe</option></select>
 							</div>
 		<br />
-				<image style="position:absolute; left:14.6%; top:73.5%; z-index:9; height:25px;" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
-		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:74.5%; left:15%; width:100%">
+				<image style="position:absolute; left:14.6%; top:67.5%; z-index:9; height:25px;" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
+		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:68.5%; left:15%; width:100%">
 		<input id="user_volunteered_before" name="user[volunteered_before]" type="checkbox" onclick="$(volunteeredCheckNoToggle())" style="opacity:0; height:15px; width:15px" value="0"/>
 		<label style="margin-left:6.5%; margin-top:-20px">Click here if you’ve volunteered abroad before.<br /> We’re just curious.</label></div>
 		
-				<image style="position:absolute; height:25px; left:14.5%; top:80.5%; z-index:9" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck())">
-		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:81.5%; left:15%;">
+				<image style="position:absolute; height:25px; left:14.5%; top:74.5%; z-index:9" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck())">
+		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:75.5%; left:15%;">
 		<input id="user_notify" name="user[notify]" type="checkbox" onclick="$(beforeCheckNoToggle())" style="opacity:0; height:15px; width:15px" value="1"/>
 		<label style="margin-left:8%; margin-top:-25px; margin-right:8%" for="user_Yes ofcourse! Notify me of VolunteerVoice's awesome updates and changes">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
 
@@ -564,10 +564,10 @@ function submitForm() {
 		</div>
 		<br />
 		
-		<div id ="admin_change" style="margin-top:15px">
-		Admin Password: <%=f.password_field :admin_pass%><br /><br />
+		<div id ="admin_change" style="margin-top:15px; margin-left:15%">
+		<label style="font-size:1.3em;">Admin Password:</label> <%=f.password_field :admin_pass%><br /><br />
 
-		Make an Account for this Admin? <%=f.check_box :admin_update%>
+		<label style="font-size:1.3em;">Make an Account for this Admin?</label> <%=f.check_box :admin_update%>
 		</div>
 		</div>
 
