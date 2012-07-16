@@ -1,4 +1,6 @@
 class OrganizationAccountsController < ApplicationController
+  
+  
   # GET /organization_accounts
   # GET /organization_accounts.json
   def index
