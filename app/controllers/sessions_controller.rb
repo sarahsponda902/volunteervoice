@@ -1,6 +1,10 @@
 class SessionsController < Devise::SessionsController 
   before_filter :store_location
   
+  def destroy
+    super
+  end
+  
   private
 
     def store_location
