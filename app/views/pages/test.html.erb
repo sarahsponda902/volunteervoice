@@ -1,0 +1,84 @@
+	<script type="text/javascript">
+
+
+	$(document).ready(function() {
+
+
+		$('a.test-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var termsBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(termsBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(termsBox).height() + 24) / 2; 
+			var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+			$(termsBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="opacity:.5"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('#mask').live('click', function() { 
+		  $('#mask').fadeOut(300);
+		  $('#test-box').fadeOut(300);
+		  $('#mask').remove();  
+		  return false;
+		});
+	});
+</script>
+
+<style>
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+}
+
+/* You can customize to your needs  */
+.test-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 3px solid #575758;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	z-index:9999;
+	position: fixed;
+	top: 50%; left: 50%;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+</style>
+
+<div id="test-box" class="test-popup">
+	<iframe width='500' height='300' frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE&output=html&widget=true'></iframe>
+
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="six columns" align="center">
+			<a href="#test-box" class="test-window">Click here</a>
+		</div>
+	</div>
+</div>
