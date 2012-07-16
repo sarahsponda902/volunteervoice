@@ -1,6 +1,7 @@
 RMTest::Application.routes.draw do
   
   devise_for :organization_accounts
+  match "organization_accounts/sign_up" => 'organization_accounts/registrations#new'
 
   resources :organization_accounts
 
