@@ -108,6 +108,13 @@
 </div>
 
 <div class="twelve columns" style="text-align:center">
+	
+	<div class="field">
+    <%= f.check_box :will_invite, :value => @organization.will_invite %> Invite organization to create an account?</div>
+
+	<div class="field">
+    Email at which to send the invitation:<br />
+    <%= f.text_field :invite_email, :value => @organization.invite_email %></div>
 
   <div class="actions">
     <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png" %>     
