@@ -1368,6 +1368,12 @@ class ProgramsController < ApplicationController
       @program.check_it_out = "http://"+@program.check_it_out
     end
 
+    
+    @chart = @program.chart.split("#")
+    if @chart.class.name == "Array"
+      @program.chart = @chart[0]
+    end
+
     if user_signed_in? && current_user.admin?
       if @program.save
             redirect_to "/programs/#{@program.id}/crop"
