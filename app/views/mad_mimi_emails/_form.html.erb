@@ -3,10 +3,10 @@
 		<div class="ten columns">
 
 <%= form_for @mad_mimi_email do |f| %>
-Promotion Name: <%= f.select :promotion_name, MadMimi.new('sarahsponda902@gmail.com', "df65cf0a215c2b3028fa7eaf89a6f2ba").promotions.promotions%><br />
+Promotion Name: <%= f.select :promotion_name, MadMimi.new('sarahsponda902@gmail.com', "df65cf0a215c2b3028fa7eaf89a6f2ba").promotions.values%><br />
 Email Subject:<%= f.text_field :subject%><br />
 From (must be of this format): <%= f.text_field :from, :value => "Leasie <leasie@volunteervoice.org>"%><br />
-<%= f.hidden_field :list_names, :value => "Sarah <sarahsponda902@gmail.com>"%><br />
+Recipients: <%= f.select :list_names, [["Users", "users"], ["Admins", "admins"], ["Organizations", "organizations"]]%><br />
 <%= f.hidden_field :username, :value => "sarahsponda902@gmail.com"%><br />
 <%= f.hidden_field :api_key, :value => "df65cf0a215c2b3028fa7eaf89a6f2ba"%><br />
 BCC: <%= f.text_field :bcc%><br />
