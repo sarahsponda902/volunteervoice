@@ -347,7 +347,7 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
-    if user_signed_in? && (current_user.admin? || (current_user.org && @organization.id == current_user.organization_id)))
+    if user_signed_in? && (current_user.admin? || (current_user.org && @organization.id == current_user.organization_id))
     @organization = Organization.find(params[:id])
     @organization.description = @organization.description.gsub(%r{</?[^>]+?>}, '')
     @organization.headquarters_location = @organization.headquarters_location.gsub(%r{</?[^>]+?>}, '')
