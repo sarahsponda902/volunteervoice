@@ -17,8 +17,9 @@ class RegistrationsController < Devise::RegistrationsController
       resource.admin = true;
     end
     resource.org_pass = Digest::SHA1.hexdigest("#{salt}:#{resource.admin_pass}") 
-    if resource.org_pass == "4e5d0ed9183ebf2fed541412497e15a30e72f9cb" && resource.org_update == true
+    if resource.org_pass == "4e5d0ed9183ebf2fed541412497e15a30e72f9cb" && resource.org_update == true && params[:organization_name].present?
       resource.org = true;
+      resource.organization_id = Organization.where(:name => params[:organization_name]).first.id
     end
      if resource.save_with_captcha
            if resource.confirmed?
@@ -63,6 +64,16 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def are_you_sure
+  end
+  
+  def create_org_account
+    resource = build_resource({})
+    respond_with resource
+  end
+  
+  def create_admin
+    resource = build_resource({})
+    respond_with resource
   end
   
   def must_be
