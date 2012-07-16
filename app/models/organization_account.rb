@@ -10,17 +10,12 @@ class OrganizationAccount < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, :username, :notify, :country, :organization_id, :organization_name, :admin_pass
   
   def validates_admin_pass
-    @admin_pass = Digest::SHA1.hexdigest("#{salt}:#{:admin_pass}") 
-    if @admin_pass != encrypted_pass
+    if :admin_pass != encrypted_pass
       errors.add_to_base("You must be an administrator to send an organization account invitation.")
     end
   end
   
   private
-  
-    def salt
-      return "meeQue8Zucijoo7"
-    end
     
     def encrypted_pass
       return "4e5d0ed9183ebf2fed541412497e15a30e72f9cb"
