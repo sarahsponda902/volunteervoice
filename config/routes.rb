@@ -1,6 +1,6 @@
 RMTest::Application.routes.draw do
   
-  devise_for :organization_accounts, :controllers => {:invitations => :invitations}
+  devise_for :organization_accounts
   
   resources :organization_accounts
 
