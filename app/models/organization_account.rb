@@ -11,7 +11,7 @@ class OrganizationAccount < ActiveRecord::Base
   
   def validates_admin_pass
     if admin_pass != encrypted_pass
-      errors[:base] << encrypted_pass << self.admin_pass
+      errors[:base] << "You must be an administrator to create an account for an organization"
     end
   end
   

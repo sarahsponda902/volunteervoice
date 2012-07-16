@@ -46,7 +46,7 @@ def square_image_crop
    end
  end
  
- private
+ protected
  
  def admin_pass
    return "4e5d0ed9183ebf2fed541412497e15a30e72f9cb"
