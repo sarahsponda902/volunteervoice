@@ -244,8 +244,13 @@ $(function() {
   <div>Add a Photo<br />
   <%= f.file_field :photo, :value => @program.photo %></div><br />
 
+<br /><br />
+For the following field, copy the key from the url of the google doc, ie. the alphanumeric sequence after "key=" not including anything after a # symbol<br />
+Example: given this url -  https://docs.google.com/spreadsheet/ccc?key=0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE#gid=0<br />
+I would copy "0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE" and paste it into the text box.<br />
+
   <div>Add a Cost Chart Image<br />
-  <%= f.file_field :chart, :value => @program.chart %></div>
+  <%= f.text_field :chart, :value => @program.chart %></div>
 	</div>
 	
 	

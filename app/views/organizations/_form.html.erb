@@ -98,12 +98,16 @@
   <div class="field">
     <%= f.label :url%>
     <%= f.text_field :url, :value => @organization.url %></div>
+<br /><br />
+For the following two fields, copy the key, ie. the alphanumeric sequence after "key=" not including anything after a # symbol<br />
+Example: given this url -  https://docs.google.com/spreadsheet/ccc?key=0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE#gid=0<br />
+I would copy "0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE" and paste it into the text box.<br />
   <div class="field">
     Price Ranges<br />
-    <%= f.file_field :price_ranges, :value => @organization.price_ranges %></div>
+    <%= f.text_field :price_ranges, :value => @organization.price_ranges %></div>
   <div class="field">
     Program Costs Breakdown<br />
-    <%= f.file_field :price_breakdown, :value => @organization.price_breakdown %></div>
+    <%= f.text_field :price_breakdown, :value => @organization.price_breakdown %></div>
 
 </div>
 

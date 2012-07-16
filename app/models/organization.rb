@@ -23,8 +23,7 @@ before_create :set_page_views_to_zero
 # Paperclip
     mount_uploader :image, ImageUploader
     mount_uploader :square_image, ImageUploader
-    mount_uploader :price_breakdown, ImageUploader
-    mount_uploader :price_ranges, ImageUploader
+
 # Sunspot Search
 searchable do
   text :name
