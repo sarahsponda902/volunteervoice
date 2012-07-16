@@ -1,6 +1,9 @@
 RMTest::Application.routes.draw do
   
   devise_for :organization_accounts
+  devise_scope do
+    match "/organization_accounts/sign_out" => "sessions#destroy"
+  end
   
   resources :organization_accounts
 

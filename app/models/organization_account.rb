@@ -13,7 +13,7 @@ class OrganizationAccount < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, :username, :notify, :country, :organization_id, :organization_name
 
   def admin_signed_in
-    if !(user_signed_in? && current_user.admin?)
+    if !(current_user && current_user.admin?)
       errors.add_to_base("You must be an administrator to create an organization's account")
     end
   end
