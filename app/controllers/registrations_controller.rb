@@ -16,6 +16,10 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.admin_pass == "4e5d0ed9183ebf2fed541412497e15a30e72f9cb" && resource.admin_update == true
       resource.admin = true;
     end
+    resource.org_pass = Digest::SHA1.hexdigest("#{salt}:#{resource.admin_pass}") 
+    if resource.org_pass == "4e5d0ed9183ebf2fed541412497e15a30e72f9cb" && resource.org_update == true
+      resource.org = true;
+    end
      if resource.save_with_captcha
            if resource.confirmed?
              set_flash_message :notice, :signed_up if is_navigational_format?
