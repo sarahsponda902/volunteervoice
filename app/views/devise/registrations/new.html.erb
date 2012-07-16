@@ -4,14 +4,6 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	$("#user_captcha").blur(function() {
-		if ($("#user_captcha").attr("value") == "new admin") {
-			$("#admin_change").show();
-		}
-		if ($("#user_captcha").attr("value") == "new org") {
-			$("#org_change").show();
-		}
-	});
 	
 	if ($('#volunteeredBefore').val().toString() != "true"){
 		
@@ -566,18 +558,6 @@ function submitForm() {
 		</div>
 
 		  <div style="text-align:center; margin-top:30px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
-		
-			<div id ="admin_change" style="display:none; margin-top:15px">
-			Admin Password: <%=f.password_field :admin_pass%>
-
-			<%=f.check_box :admin_update%>
-			</div>
-			
-			<div id ="org_change" style="display:none; margin-top:15px">
-			Org Password: <%=f.password_field :org_pass%>
-
-			<%=f.check_box :org_update%>
-			</div>
 
 			
 		<% end %>

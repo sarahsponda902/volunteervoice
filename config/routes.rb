@@ -122,6 +122,10 @@ RMTest::Application.routes.draw do
     
     match "registrations/mustBe" => 'registrations#mustBe'
     
+    match "registrations/create_org_account" => 'registrations#create_org_account'
+    
+    match "registrations/create_admin" => 'registrations#create_admin'
+    
     match "registrations/email_confirm" => 'registrations#email_confirm'
     
     match "registrations/are_you_sure" => 'registrations#are_you_sure'

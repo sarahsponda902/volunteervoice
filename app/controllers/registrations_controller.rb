@@ -67,13 +67,22 @@ class RegistrationsController < Devise::RegistrationsController
   end
   
   def create_org_account
-    resource = build_resource({})
-    respond_with resource
+    if user_signed_in? && current_user.admin?
+      resource = build_resource({})
+      respond_with resource
+    else
+      redirect_to root_path
+    end
+    
   end
   
   def create_admin
-    resource = build_resource({})
-    respond_with resource
+    if user_signed_in? && current_user.admin?
+      resource = build_resource({})
+      respond_with resource
+    else
+      redirect_to root_path
+    end
   end
   
   def must_be
