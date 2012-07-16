@@ -11,13 +11,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource 
-    if resource.class.name == "OrganizationAccount"
-      if resource.invited?
-        super
-      else
-        redirect_to root_path
-      end
-    else
     resource.unread_messages = 0
     resource.admin_pass = Digest::SHA1.hexdigest("#{salt}:#{resource.admin_pass}") 
     if resource.admin_pass == "4e5d0ed9183ebf2fed541412497e15a30e72f9cb" && resource.admin_update == true
@@ -38,7 +31,6 @@ class RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       respond_with resource
     end
-   end
   end
   
   def update
