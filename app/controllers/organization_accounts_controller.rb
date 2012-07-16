@@ -3,10 +3,14 @@ class OrganizationAccountsController < ApplicationController
   # GET /organization_accounts.json
   def index
     @organization_accounts = OrganizationAccount.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @organization_accounts }
+    
+    if user_signed_in? && current_user.admin?
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @organization_accounts }
+      end
+    else
+      redirect_to root_path
     end
   end
 
@@ -29,27 +33,6 @@ class OrganizationAccountsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @organization_account }
-    end
-  end
-
-  # GET /organization_accounts/1/edit
-  def edit
-    @organization_account = OrganizationAccount.find(params[:id])
-  end
-
-  # POST /organization_accounts
-  # POST /organization_accounts.json
-  def create
-    @organization_account = OrganizationAccount.new(params[:organization_account])
-
-    respond_to do |format|
-      if @organization_account.save
-        format.html { redirect_to @organization_account, notice: 'Organization account was successfully created.' }
-        format.json { render json: @organization_account, status: :created, location: @organization_account }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @organization_account.errors, status: :unprocessable_entity }
-      end
     end
   end
 
