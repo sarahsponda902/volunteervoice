@@ -33,7 +33,7 @@ class UserMailer < ActionMailer::Base
   
   def invitation_instructions(resource)
      @options = {"promotion_name" => "InvitationInstructions", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "Create Your VolunteerVoice Account"}
-     @yaml_body = {'instrux' => "girlpowerproject.herokuapp.com/organization_accounts/invitation/accept?invitation_token=#{resource.invitation_token}", 'frstname' => resource.first_name, 'lstname' => resource.last_name}
+     @yaml_body = {'instrux' => "girlpowerproject.herokuapp.com/organization_accounts/invitation/accept?invitation_token=#{resource.invitation_token}", 'orgnme' => Organization.find(resource.organization_id).name}
      @errors = MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
      mail(:from => "no-reply@volunteervoice.org", :to => "sarahsponda902@gmail.com", :body => @errors)
   end
