@@ -10,8 +10,8 @@ class OrganizationAccount < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, :username, :notify, :country, :organization_id, :organization_name, :admin_pass
   
   def validates_admin_pass
-    if :admin_pass != encrypted_pass
-      errors[:base] << "You must be an administrator to send an organization account invitation."
+    if admin_pass != encrypted_pass
+      errors[:base] << encrypted_pass << self.admin_pass
     end
   end
   
