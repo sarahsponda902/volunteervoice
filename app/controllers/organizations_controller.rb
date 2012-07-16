@@ -381,16 +381,7 @@ class OrganizationsController < ApplicationController
     if @organization.url[0..3] != "http"
       @organization.url = "http://"+@organization.url
     end
-    
-    @price_ranges = @organization.price_ranges.split("#")
-    if @price_ranges.class.name == "Array"
-      @organization.price_ranges = @price_ranges[0]
-    end
-    
-    @price_breakdown = @organization.price_breakdown.split("#")
-    if @price_breakdown.class.name == "Array"
-      @organization.price_breakdown = @price_breakdown[0]
-    end
+
     
     
     @organization.reviews_count = 0

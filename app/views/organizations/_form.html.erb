@@ -110,7 +110,7 @@ I would copy "0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE" and paste it into th
     <%= f.text_field :price_breakdown, :value => @organization.price_breakdown %></div>
 
 	<div class="field">
-    <%= f.check_box :published_docs, :value => @organization.published_docs %> <font style="font-size:1.2em">Did you publish BOTH price_ranges and price_breakdown Google docs???</font></div>
+    <%= f.check_box :published_docs, :checked => @organization.published_docs %> <font style="font-size:1.2em">Did you publish BOTH price_ranges and price_breakdown Google docs???</font></div>
 </div>
 
 <div class="twelve columns" style="text-align:center">
