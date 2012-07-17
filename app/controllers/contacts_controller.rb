@@ -41,7 +41,7 @@ include ActionView::Helpers::TextHelper
           format.json { render json: @contact, status: :created, location: @contact }
         end
       else
-        @contact.body = @contact.body.gsub(%r{</?[^>]+?>}, '')
+        @contact.body = @contact.body.gsub(%r{</?[^>]+?>}, '') unless @contact.body.nil?
         flash[:notice] = flash[:notice].to_a.concat @contact.errors.full_messages
         format.html { render action: "new", notice: 'Error! Please make sure to include both your email and a message.' }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
