@@ -1,7 +1,7 @@
 class SessionsController < Devise::SessionsController 
   
   def create
-    Devise.sign_out_all_scopes
+    sign_out(current_user)
     super
   end
 
