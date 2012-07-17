@@ -17,12 +17,20 @@ include ActionView::Helpers::TextHelper
   def create
     @contact = Contact.new(params[:contact])
     @contact.body = RedCloth.new( ActionController::Base.helpers.sanitize( @contact.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html unless @contact.body.nil?
-    
+  
+  respond_to do |format|  
     if @contact.to_whom == "request"
       @contact.is_request = true
-    end
-    
-    respond_to do |format|
+      if @contact.save(false)
+        ContactMailer.to_request(@contact).deliver
+        format.html { redirect_to "/pages/thank_you_request", notice: 'Contact was successfully sent.' }
+        format.json { render json: @contact, status: :created, location: @contact }
+      else
+        flash[:notice] = flash[:notice].to_a.concat @contact.errors.full_messages
+        format.html { render action: "new_request", notice: 'Error! Please make sure to include both your email and a message.' }
+        format.json { render json: @contact.errors, status: :unprocessable_entity }
+      end
+    else
       if @contact.save
         if @contact.to_whom == "contact"
           ContactMailer.to_contact(@contact).deliver
@@ -33,30 +41,19 @@ include ActionView::Helpers::TextHelper
         if @contact.to_whom == "questions"
           ContactMailer.to_questions(@contact).deliver
         end
-        if @contact.to_whom == "request"
-          ContactMailer.to_request(@contact).deliver
-        end
         
-        if @contact.to_whom != "request"
           format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
           format.json { render json: @contact, status: :created, location: @contact }
-        else
-          format.html { redirect_to "/pages/thank_you_request", notice: 'Contact was successfully sent.' }
-          format.json { render json: @contact, status: :created, location: @contact }
-        end
       else
         @contact.body = @contact.body.gsub(%r{</?[^>]+?>}, '') unless @contact.body.nil?
         flash[:notice] = flash[:notice].to_a.concat @contact.errors.full_messages
-        if @contact.to_whom != "request"
+
           format.html { render action: "new", notice: 'Error! Please make sure to include both your email and a message.' }
           format.json { render json: @contact.errors, status: :unprocessable_entity }
-        else
-          format.html { render action: "new_request", notice: 'Error! Please make sure to include both your email and a message.' }
-          format.json { render json: @contact.errors, status: :unprocessable_entity }
-        end
       end
     end
   end
+end
 
   def new_request
     @contact = Contact.new
