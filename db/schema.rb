@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120716190251) do
+ActiveRecord::Schema.define(:version => 20120717042528) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -102,6 +102,13 @@ ActiveRecord::Schema.define(:version => 20120716190251) do
     t.string   "subject"
     t.integer  "user_id"
     t.integer  "organization_account_id"
+    t.string   "organization_name"
+    t.string   "country"
+    t.string   "organization_url"
+    t.string   "has_profile"
+    t.string   "main_contact"
+    t.string   "position_of_contact"
+    t.string   "contact_email"
   end
 
   create_table "favorites", :force => true do |t|
