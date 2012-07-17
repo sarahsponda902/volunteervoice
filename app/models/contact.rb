@@ -30,4 +30,6 @@ class Contact < ActiveRecord::Base
       end
     end
   end
+  
+  
 end

@@ -17,7 +17,11 @@ include ActionView::Helpers::TextHelper
   def create
     @contact = Contact.new(params[:contact])
     @contact.body = RedCloth.new( ActionController::Base.helpers.sanitize( @contact.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html unless @contact.body.nil?
-
+    
+    if @contact.to_whom == "request"
+      @contact.is_request = true
+    end
+    
     respond_to do |format|
       if @contact.save
         if @contact.to_whom == "contact"
