@@ -13,7 +13,7 @@ gem 'devise_invitable'
 
 gem 'jquery-rails'
 
-gem 'jeditable-rails'
+gem 'best_in_place'
 
 gem 'madmimi'
 
