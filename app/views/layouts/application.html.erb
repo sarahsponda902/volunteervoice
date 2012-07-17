@@ -56,11 +56,12 @@
 				<a href="#login-box" class="login-window">LOGIN</a>
 				or <a href= "/sign_up" class="register">JOIN</a>
 				<% else %>
-				<a href="/pages/profile"> <%=current_user.username%> 
-					<% if current_user.unread_messages > 0 %>
-					<font style="color:#e67b5a">(<%=current_user.unread_messages%>)</font><% end %></a>&nbsp;&nbsp;
-				<a href= "/signout" class="logout">LOGOUT</a>
-				<% end %>
+					<% if user_signed_in?%>
+						<a href="/pages/profile"> <%=current_user.username%> 
+							<% if current_user.unread_messages > 0 %>
+								<font style="color:#e67b5a">(<%=current_user.unread_messages%>)</font><% end %></a>&nbsp;&nbsp;
+						<a href= "/signout" class="logout">LOGOUT</a>
+					<% end %>
 				
 			</div>
 			</div>
