@@ -52,7 +52,7 @@
 			<div class="four columns" style="float:right">
 			<div class="row login" style="width:auto">
 
-				<% if !(user_signed_in?) %>
+				<% if !(user_signed_in?) && !(organization_account_signed_in?) %>
 				<a href="#login-box" class="login-window">LOGIN</a>
 				or <a href= "/sign_up" class="register">JOIN</a>
 				<% else %>
