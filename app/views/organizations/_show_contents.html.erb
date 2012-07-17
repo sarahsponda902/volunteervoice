@@ -95,7 +95,7 @@ $(document).ready(function() {
 	<div class="eleven columns">
 		<div class="six columns" style="font-size:1.1em;">
 			<br />
-			<p style="font-weight:600">Operating since: </p><%=organization.operating_since%><br /><br />
+			<p style="font-weight:600">Operating since: </p><%=best_in_place organization, :operating_since, :type => :input, :nil => "Click to edit"%><br /><br />
 			
 			<p style="font-weight:600">Run by: </p><%=organization.run_by.html_safe%><br />
 			
