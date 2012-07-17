@@ -29,9 +29,17 @@ include ActionView::Helpers::TextHelper
         if @contact.to_whom == "questions"
           ContactMailer.to_questions(@contact).deliver
         end
+        if @contact.to_whom == "request"
+          ContactMailer.to_request(@contact).deliver
+        end
         
-        format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
-        format.json { render json: @contact, status: :created, location: @contact }
+        if @contact.to_whom != "request"
+          format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
+          format.json { render json: @contact, status: :created, location: @contact }
+        else
+          format.html { redirect_to "/pages/thank_you_request", notice: 'Contact was successfully sent.' }
+          format.json { render json: @contact, status: :created, location: @contact }
+        end
       else
         @contact.body = @contact.body.gsub(%r{</?[^>]+?>}, '')
         flash[:notice] = flash[:notice].to_a.concat @contact.errors.full_messages

@@ -102,7 +102,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
   	<div id="contact-box" class="contact-popup">
 		<p style=" font-family:museoSlab500Regular; font-size:3em; color:#68c2d8; line-height:2em;text-align:center">Contact Us</p>
 			<%= form_for(@contact) do |f| %>
-			<%= f.hidden_field :to_whom, :value => "contact"%>
+			<%= f.hidden_field :to_whom, :value => "request"%>
 			<% if user_signed_in?%>
 			<%= f.hidden_field :user_id, :value => current_user.id%>
 			<% end %>
