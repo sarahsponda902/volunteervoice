@@ -15138,3 +15138,4 @@ Migrating to AddIsRequestToContact (20120717053011)
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_confirmation_token')
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_approved')[0m
+  [1m[36mOrganizationAccount Load (0.3ms)[0m  [1mSELECT "organization_accounts".* FROM "organization_accounts" [0m

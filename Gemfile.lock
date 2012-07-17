@@ -35,9 +35,8 @@ GEM
       mime-types
       xml-simple
     bcrypt-ruby (3.0.1)
-    best_in_place (1.1.2)
-      jquery-rails
-      rails (~> 3.1)
+    best_in_place (0.2.3)
+      rails (>= 3.0.0)
     builder (3.0.0)
     carrierwave (0.6.2)
       activemodel (>= 3.2.0)
@@ -176,7 +175,7 @@ DEPENDENCIES
   RedCloth
   aws-s3
   bcrypt-ruby
-  best_in_place
+  best_in_place (~> 0.2.0)
   carrierwave
   coffee-rails (~> 3.2.1)
   devise

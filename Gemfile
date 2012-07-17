@@ -13,7 +13,7 @@ gem 'devise_invitable'
 
 gem 'jquery-rails'
 
-gem 'best_in_place'
+gem 'best_in_place', "~> 0.2.0"
 
 gem 'madmimi'
 
