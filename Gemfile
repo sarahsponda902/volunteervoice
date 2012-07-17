@@ -13,6 +13,8 @@ gem 'devise_invitable'
 
 gem 'jquery-rails'
 
+gem 'jeditable-rails'
+
 gem 'madmimi'
 
 gem 'RedCloth'
