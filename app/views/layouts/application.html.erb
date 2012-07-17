@@ -266,7 +266,7 @@
 	</div>
 	
 		<div id="request-box" class="request-popup">
-			<% @contact = Contact.new%>
+			<% @contact = Contact.new(:is_request => true)%>
 			<p style="font-size:2em; font-family:museoSlab500Regular; line-height:1.5em; margin:10px" align="center">Account Request</p>
 			<%= form_for @contact do |f| %>
 			<div class="six columns" style="width:300px">

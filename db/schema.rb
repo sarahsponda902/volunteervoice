@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717042528) do
+ActiveRecord::Schema.define(:version => 20120717053011) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20120717042528) do
     t.string   "main_contact"
     t.string   "position_of_contact"
     t.string   "contact_email"
+    t.boolean  "is_request"
   end
 
   create_table "favorites", :force => true do |t|
