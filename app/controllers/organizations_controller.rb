@@ -425,6 +425,7 @@ end
              format.html { render :action => "edit" }
              format.json { respond_with_bip(@organization) } 
            end
+        end
        end
   end
 
