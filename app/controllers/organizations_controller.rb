@@ -31,9 +31,10 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1
   # GET /organizations/1.json
-  
+
    
-  def show
+  def show 
+    
     @flag = Flag.new
      @theCountries = Hash["AF" => "Afghanistan", 
      "AX" => "Aland Islands", 
@@ -331,9 +332,11 @@ class OrganizationsController < ApplicationController
    @countries.each do |f|
      @progs[f] = Program.where(:location => f)
    end
+ end
 
-  end
-
+  
+  
+  
   # GET /organizations/new
   # GET /organizations/new.json
   def new
