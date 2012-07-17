@@ -21,7 +21,7 @@ include ActionView::Helpers::TextHelper
   respond_to do |format|  
     if @contact.to_whom == "request"
       @contact.is_request = true
-      if @contact.save(false)
+      if @contact.save(:validate => false)
         ContactMailer.to_request(@contact).deliver
         format.html { redirect_to "/pages/thank_you_request", notice: 'Contact was successfully sent.' }
         format.json { render json: @contact, status: :created, location: @contact }
