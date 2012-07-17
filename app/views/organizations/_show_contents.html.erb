@@ -1,3 +1,10 @@
+<script type="text/javascript">
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});
+</script>
+
 
 <% programSubjects = []%>
 <% groupSizes = []%>
@@ -51,7 +58,7 @@
 			<u><b>Mission:</b></u>
 		</div>
 		<div class="ten columns" style="border:1px solid #575758; height:130px; width:75%; margin:0;padding:10px">
-			<%= best_in_place organization, :misson, :type => :textarea, :ok_button => 'Save', :cancel_button => "Cancel", :nil => "Click to add your mission"%> 
+			<%= best_in_place organization, :misson, :type => :textarea, :ok_button => 'Save', :cancel_button => "Cancel", :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to add your mission"%> 
 		</div>
 
 		<div class = "two columns" style="font-size:1.5em; margin:0;padding:0; margin-top:25px; padding-left:10px; width:20%">
