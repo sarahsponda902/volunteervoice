@@ -48,7 +48,7 @@ def square_image_crop
  end
  
  def published_docs_true
-   if !(published_docs) && !(price_ranges.nil?) && !(program_costs_breakdown.nil?)
+   if !(published_docs) && !(price_ranges.nil?) && !(price_breakdown.nil?)
      errors.add(:published_docs, "must be published")
    end
  end
