@@ -28,6 +28,9 @@ class PagesController < ApplicationController
   
   def enable_js 
   end
+  
+  def thank_you_request
+  end
   	
   	def profile
   	  ##Profile_Reviews

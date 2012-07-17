@@ -182,6 +182,8 @@ RMTest::Application.routes.draw do
   
   match "pages/profile/favorite_deleted" => "pages#profile"
   
+  get "pages/thank_you_request"
+  
   get "pages/enable_js"
   
   get "pages/test"
