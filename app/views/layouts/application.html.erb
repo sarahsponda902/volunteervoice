@@ -113,7 +113,7 @@
 							<div>
 								<ul>
 									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
-									<li><a href="/pages/test">Make a Profile</a></li>
+									<li><a href="#request-box" class="request-window">Make a Profile</a></li>
 								</ul>
 							</div>
 						</li>
@@ -612,6 +612,25 @@
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
 	}
 	
+	.request-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 3px solid #575758;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		z-index:9999;
+		position: fixed;
+		top: 50%; left: 50%;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+	
 	.org-login-popup{
 		display:none;
 		background: #c1dfdb;
@@ -699,6 +718,38 @@
 			$('#mask').live('click', function() { 
 			  $('#mask').fadeOut(300);
 			  $('#login-box').fadeOut(300);
+			  $('#mask').remove();  
+			  return false;
+			});
+			
+			$('a.request-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var termsBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(termsBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(termsBox).height() + 24) / 2; 
+				var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+				$(termsBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('#mask').live('click', function() { 
+			  $('#mask').fadeOut(300);
+			  $('#request-box').fadeOut(300);
 			  $('#mask').remove();  
 			  return false;
 			});
