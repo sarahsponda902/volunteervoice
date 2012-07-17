@@ -16,7 +16,7 @@ include ActionView::Helpers::TextHelper
   # POST /contacts.json
   def create
     @contact = Contact.new(params[:contact])
-    @contact.body = RedCloth.new( ActionController::Base.helpers.sanitize( @contact.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @contact.body = RedCloth.new( ActionController::Base.helpers.sanitize( @contact.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html unless @contact.body.nil?
 
     respond_to do |format|
       if @contact.save
