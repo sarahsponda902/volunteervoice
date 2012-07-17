@@ -27,6 +27,10 @@ RMTest::Application.routes.draw do
 
   ##### FLAGS
   get "flags/thank_you"
+  
+  ##### CONTACTS
+  
+  match "contacts/new_request" => 'contacts#new_request'
 
   resources :mad_mimi_emails
 
