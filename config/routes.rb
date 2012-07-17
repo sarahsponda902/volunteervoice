@@ -1,6 +1,6 @@
 RMTest::Application.routes.draw do
   
-  devise_for :organization_accounts, :controllers => {:invitations => :invitations, :sessions => :sessions}
+  devise_for :organization_accounts, :controllers => {:invitations => :invitations}
   devise_scope :organization_account do
     match "/organization_accounts/sign_out" => "devise/sessions#destroy"
   end
@@ -42,7 +42,7 @@ RMTest::Application.routes.draw do
 
   devise_for :admins
   
-  devise_for :users, :controllers => {:registrations => :registrations, :sessions => :sessions}
+  devise_for :users, :controllers => {:registrations => :registrations}
 
   resources :favorites
   
