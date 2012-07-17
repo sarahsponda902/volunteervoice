@@ -417,12 +417,15 @@ end
     @organization = Organization.find(params[:id])
     
        if user_signed_in? && (current_user.admin? || (current_user.org && @organization.id == current_user.organization_id))
-       if @organization.update_attributes(params[:organization])
-             redirect_to "/organizations/#{@organization.id}"
-       else
-          render :action => "edit" 
+         respond_to do |format|
+           if @organization.update_attributes(params[:organization])
+             format.html { redirect_to "/organizations/#{@organization.id}" }
+             format.json { respond_with_bip(@organization) }
+           else
+             format.html { render :action => "edit" }
+             format.json { respond_with_bip(@organization) } 
+           end
        end
-    end
   end
 
   # DELETE /organizations/1
