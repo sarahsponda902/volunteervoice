@@ -22,7 +22,7 @@ validate :published_docs_true
 # Sunspot Search
 
 def update_cost_chart
-  session = GoogleDrive.login("costcharts@volunteervoice.org", "girlpower1988")
+  session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
   template = session.spreadsheet_by_title("Testing")
   template_ws = template.worksheets[0]
   ss = session.spreadsheet_by_title("#{name}")
