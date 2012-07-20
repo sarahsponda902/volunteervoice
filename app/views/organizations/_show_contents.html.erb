@@ -55,7 +55,7 @@ $(document).ready(function() {
 <div class="row" style="margin-top:50px">
 	<div class="nine columns">
 		<div class="two columns" style="font-size:1.5em; width:20%; padding-left:10px">
-				 <u><b>Mission:</b></u>&nbsp;&nbsp;&#9998;
+				 &#9998;&nbsp;&nbsp;<u><b>Mission:</b></u>
 		</div>
 		<div class="ten columns" style="border:1px solid #575758; height:130px; width:75%; margin:0;padding:10px">
 			<%= best_in_place organization, :misson, :type => :textarea, :ok_button => 'Save', :cancel_button => "Cancel", :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to add your mission"%> 
@@ -101,7 +101,7 @@ $(document).ready(function() {
 			
 			<p style="font-weight:600"> &#9998;# Volunteers each year: </p><%=best_in_place organization, :num_vols_yr, :type => :input, :nil => "Click to edit"%><br /><br />
 			<p style="font-weight:600"> &#9998;# Volunteers to date: </p><%=best_in_place organization, :num_vols_date, :type => :input, :nil => "Click to edit"%><br /><br />
-			<p style="font-weight:600"> # Active Programs: </p><%= organization.programs.count%>
+			<p style="font-weight:600"> # Active Programs: </p><%= organization.programs.count%><br /><br />
 			<p style="font-weight:600">Application process: </p><%=organization.application_process.html_safe%><br /><br />
 			<p style="font-weight:600">Business Model: </p><%= organization.business_model.html_safe%><br /><br />
 			
