@@ -148,8 +148,8 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 								<div style="margin-left:15px;"><%= f.truncated_description100.html_safe%></div>
 						</td>
 						<td style="width:15%">
-							<p style="margin-top:5px;"><a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a></p>
-							<p style="margin-top:15px;"><%= link_to "Delete", "#delete-box", :class => "delete-window", :style => "color:#e67b5a", :onclick => "$('#delete_button').attr('action', '/programs/#{f.id}')" %></p>
+							<p style="margin-top:5px; text-align:center"><a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a></p>
+							<p style="margin-top:15px; text-align:center"><%= link_to "Delete", "#delete-box", :class => "delete-window", :style => "color:#e67b5a", :onclick => "$('#delete_button').attr('action', '/programs/#{f.id}')" %></p>
 						</td>
 					</tr>
 				<% end %>
