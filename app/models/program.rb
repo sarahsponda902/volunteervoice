@@ -30,9 +30,9 @@ def update_cost_chart
     ss = template.duplicate( title = "#{name}")
   end
   ws = ss.worksheets[0]
-  ws.list["A1"] = "HELLO"
-  ws.list["B1"] = "GOODBYE"
-  ws.list["C1"] = "SOLONG"
+  ws["A2"] = "HELLO"
+  ws["B2"] = "GOODBYE"
+  ws["C2"] = "SOLONG"
   ws.save()
 end
 
