@@ -8,7 +8,7 @@
 		<div class="row" style="margin-top:40px">
 			<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden">
 				<% if !(@organization.image.url.nil?)%>
-			<%=image_tag @organization.square_image.url, :style => "height:168px; width:168px"%>
+			<%=image_tag @organization.square_image.url, :style => "height:100px; width:100px"%>
 				<% else %>
 				
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
@@ -16,7 +16,7 @@
 				
 			</div>
 	<div class= "eight columns" style="margin-left:15px; margin-top:-32px">
-<p style="font-size:3em; line-height:1.7em"><%= @organization.name %> <%= link_to "-- edit profile", @organization%></p>
+<p style="font-size:3em; line-height:1.7em"><%= @organization.name %><font style="font-size:0.5em"> <%= link_to "-- edit profile", @organization%></font></p>
 </div>
 	<div class="four columns" style="margin-top:10px;float:left; margin-left:15px; padding:5px; padding-right:10px; padding-left:10px; border:1px solid #e67b5a;">
 		<p style="font-size:1.7em; line-height:1.6em; padding-bottom:10px">
@@ -26,19 +26,25 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 </p>
 </div>
 <div class="five columns">
-<p style="margin-top:-25px"><%= render :partial => "bigStar", :locals => {:star => @organization.roundup(@overall)}%></p>
+<p style="margin-top:-50px; float:right"><%= render :partial => "bigStar", :locals => {:star => @organization.roundup(@overall)}%></p>
 <br />
 
-<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em">Based on <%= pluralize @reviews.count, "reviews"%></p>
+<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em; float:right">Based on <%= pluralize @reviews.count, "reviews"%></p>
 </p>
 </div>
 </div>
 </div>
 </div>
 
-<div class="container" style="margin-top:25px; margin-bottom:25px">
+<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
 	<div class="row">
 		<div class="twelve columns">
 			<p style="font-family:architectsDaughterRegular; font-size:1.2em; color:#e67b5a;"> You have <%= pluralize @organization.programs.count, "Active Program"%></p>
+		</div>
+		<div class="three columns">
+			<%= link_to "New Program", "/programs/new"%>
+		</div>
+	</div>
+</div>
 
 
