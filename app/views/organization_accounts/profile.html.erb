@@ -66,7 +66,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 			<div class="four columns">
 				<%= button_to "New Program", "/programs/new"%>
 			</div>
-			<div class="four columns">
+			<div class="five columns">
 				<input type="text" id="tags" value="Type to search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="if (this.value == 'Type to search...') {this.value = ''}; this.style.fontStyle = 'normal'">
 			</div>
 			<div class="one columns" style="float:left">
@@ -76,10 +76,10 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 				<%= button_to "Delete", "/"%>
 			</div>
 		</div>
-		<div class="eleven columns" style="margin-top:30px">
-			<div id="divProgram" style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
+		<div class="eleven columns" style="margin-top:30px; float:left">
+			<div style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
 				<% @organization.programs.each do |f| %>
-					<div style="width:100%; border-bottom:1px solid #575758">
+					<div style="width:100%;">
 						<div class="ten columns" style="padding:10px; border-right:1px solid #575758">
 							<strong> Program Name: </strong> <%= f.name%><br />
 							<strong> Country: </strong> <%= f.location%><br />
@@ -91,6 +91,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 							<a style="color: #e67b5a" href="/">Delete</a><br />
 						</div>
 					</div>
+					<div style="background-color:">
 				<% end %>
 			</div>
 			
