@@ -1,3 +1,24 @@
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css" type="text/css" />
+
+<link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn-history/r3882/trunk/themes/base/jquery.ui.autocomplete.css" type="text/css" />
+
+<script type="text/javascript" src="/assets/jquery.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	var availableTags = [
+		<% Organization.all.each do |f| %>
+		"<%=f.name%>",
+		<% end %>
+		];
+	$( "#tags" ).autocomplete({
+		source: availableTags
+	});
+});
+	</script>
+
 <div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
 
         <div class="row">
@@ -45,13 +66,13 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 			<div class="five columns">
 				<%= button_to "New Program", "/programs/new"%>
 			</div>
-			<div class="two columns">
-				<input type="text" id="tags" value="Type to search..." >
+			<div class="five columns">
+				<input type="text" id="tags" value="Type to search..." style="width:250px;height:20px">
 			</div>
-			<div class="two columns">
+			<div class="one columns">
 				<%= button_to "View/Edit", "/"%>
 			</div>
-			<div class="two columns">
+			<div class="one columns">
 				<%= button_to "Delete", "/"%>
 			</div>
 		</div>
