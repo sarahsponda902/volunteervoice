@@ -22,14 +22,14 @@ validate :published_docs_true
 # Sunspot Search
 
 def update_cost_chart
-  session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
+  session = GoogleDrive.login("costcharts@volunteervoice.org", "girlpower1988")
   ss = session.spreadsheet_by_title("#{name}")
   if ss.nil?
     ss = session.create_spreadsheet( title = "#{name}")
   end
   ws = ss.worksheets[0]
-  ws["A1"] = "yum"
-  ws["A2"] = "yuck"
+  ws["A1"] = "__yum__"
+  ws["A2"] = "**yuck**"
   ws.save()
 end
 
