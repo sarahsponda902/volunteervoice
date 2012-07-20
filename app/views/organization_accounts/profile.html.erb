@@ -83,7 +83,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 						<div class="ten columns" style="padding:10px; border-right:1px solid #575758">
 							<strong> Program Name: </strong> <%= f.name%><br />
 							<strong> Country: </strong> <%= f.location%><br />
-							<strong> Description: </strong> <%= f.truncated_description100%>
+							<strong> Description: </strong> <%= f.truncated_description100.html_safe%>
 						</div>
 						<div class="two columns" style="padding:10px">
 							<br />
@@ -91,7 +91,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 							<a style="color: #e67b5a" href="/">Delete</a><br />
 						</div>
 					</div>
-					<div style="background-color:">
+					<div style="background-color:#575758; height:1px; width:100%;"></div>
 				<% end %>
 			</div>
 			
