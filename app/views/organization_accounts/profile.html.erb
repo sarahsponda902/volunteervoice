@@ -81,9 +81,9 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 				<% @organization.programs.each do |f| %>
 					<div style="width:100%;">
 						<div class="nine columns" style="padding:10px; border-left:1px solid #575758; border-right:1px solid #575758">
-							<strong> Program Name: </strong> <%= f.name%><br />
-							<strong> Country: </strong> <%= f.location%><br />
-							<strong> Description: </strong> <%= f.truncated_description100.html_safe%>
+							<font style="font-weight:600"> Program Name: </font> <%= f.name%><br />
+							<font style="font-weight:600"> Country: </font> <%= f.location%><br />
+							<font style="font-weight:600"> Description: </font> <%= f.truncated_description100.html_safe%>
 						</div>
 						<div class="two columns" style="padding:10px; border-right:1px solid #575758">
 							<br />
