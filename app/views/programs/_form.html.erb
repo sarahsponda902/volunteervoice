@@ -160,7 +160,14 @@ $(function() {
 				});
 				</script>
 
-
+				<% flash.each do |key, value| %>
+				  <div class="flash <%=key%>">
+				<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
+					<% value.each do |f|%>
+						* <%=f%><br />
+					<% end %>
+				  </div>
+				<% end %>
 
 
 <% if current_user.admin?%>
@@ -180,7 +187,7 @@ $(function() {
 
 		For more formatting go to: http://redcloth.org/textile/<br /><br /><br /></div>
 		<div class="six columns">
-<%= form_for @program, :html => {:multipart => true} do |f| %>
+<%= form_for @program do |f| %>
 
 <% if @program.overall.nil?%>
   <div class="field">
