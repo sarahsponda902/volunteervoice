@@ -77,23 +77,24 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 			</div>
 		</div>
 		<div class="ten columns" style="margin-top:30px; float:left">
-			<div style="width:100%; border-top:1px solid #575758;">
+			<table style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
 				<% @organization.programs.each do |f| %>
-					<div style="width:100%;">
-						<div class="nine columns" style="padding:10px; border-left:1px solid #575758; border-right:1px solid #575758">
-							<font style="font-weight:600"> Program Name: </font> <%= f.name%><br />
-							<font style="font-weight:600"> Country: </font> <%= f.location%><br />
-							<font style="font-weight:600"> Description: </font> <%= f.truncated_description100.html_safe%>
-						</div>
-						<div class="two columns" style="padding:10px; border-right:1px solid #575758">
-							<br />
-							<a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a><br />
-							<a style="color: #e67b5a" href="/">Delete</a><br />
-						</div>
-					</div>
-					<div style="background-color:#575758; height:1px; width:100%;"></div>
+					<tr>
+						<td>
+							<font style="font-weight:600">Program Name: </font>
+								<%= f.name%><br />
+							<font style="font-weight:600">Country: </font> 
+								<%= @theCountries[f.location]%><br />
+							<font style="font-weight:600">Description: </font>
+								<p style="margin-left:15px;"><%= f.truncated_description100.html_safe%></p>
+						</td>
+						<td>
+							<p style="margin-top:5px;"><a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a></p>
+							<p style="margin-top:15px;"><a style="color:e67b5a" href="/">Delete</a></p>
+						</td>
+					</tr>
 				<% end %>
-			</div>
+			</table>
 			
 		</div>
 	</div>
