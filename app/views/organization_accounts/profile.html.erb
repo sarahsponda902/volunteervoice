@@ -66,13 +66,13 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 			<div class="four columns">
 				<%= button_to "New Program", "/programs/new"%>
 			</div>
-			<div class="five columns">
-				<input type="text" id="tags" value="Type to search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'">
+			<div class="four columns">
+				<input type="text" id="tags" value="Type to search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="if (this.value == 'Type to search...') {this.value = ''}; this.style.fontStyle = 'normal'">
 			</div>
-			<div class="one columns">
+			<div class="one columns" style="float:left">
 				<%= button_to "View/Edit", "/"%>
 			</div>
-			<div class="one columns">
+			<div class="one columns" style="float:left">
 				<%= button_to "Delete", "/"%>
 			</div>
 		</div>
