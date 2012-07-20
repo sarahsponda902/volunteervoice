@@ -124,7 +124,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 				<%= link_to (image_tag "/assets/newProgram.png"), "/programs/new", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 			</div>
 			<div class="five columns">
-				<input type="text" id="tags" value="Type to Search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="this.value = ''; this.style.fontStyle = 'normal'">
+				<input type="text" id="tags" value="Type to Search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="this.value = ''; this.style.fontStyle = 'normal'; $('#buttons').hide();">
 			</div>
 			<div id="buttons" style="display:none;">
 				<div style="float:left; margin-top:-3px">
