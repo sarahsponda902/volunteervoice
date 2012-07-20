@@ -14,7 +14,6 @@ var programs_array = new Object();
 	<% Program.where(:organization_id => @organization.id).each do |f|%>
 	programs_array["<%= f.name %>"] = "<%= f.id %>";
 	<% end %>
-	]);
 $(function() {
 	var availableTags = [
 		<% Program.where(:organization_id => @organization.id).each do |f| %>
