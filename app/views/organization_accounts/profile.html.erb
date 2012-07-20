@@ -15,11 +15,9 @@ $(function() {
 		];
 	$( "#tags" ).autocomplete({
 		source: availableTags
-	});
-});
-$(document).ready(function(){
-	$("#tags").autocomplete("result", function(event, data, formatted) {
-		$("#buttons").show();
+		select: function(event, ui) {
+			$("#buttons").show();
+		}
 	});
 });
 
