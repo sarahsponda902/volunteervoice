@@ -288,6 +288,12 @@ class OrganizationsController < ApplicationController
     
     @organization = Organization.find(params[:id])
     
+    if organization_account_signed_in? && current_organization_account.organization_id == @organization.id
+      @can_edit = true
+    else
+      @can_edit = false
+    end
+    
     @types_of_programs = []
     @price_ranges = []
     @group_sizes = []
