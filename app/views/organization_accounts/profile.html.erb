@@ -17,10 +17,11 @@ $(function() {
 		source: availableTags
 	});
 });
-
+$(document).ready(function(){
 	$("#tags").autocomplete("result", function(event, data, formatted) {
 		$("#buttons").show();
 	});
+});
 
 	</script>
 
