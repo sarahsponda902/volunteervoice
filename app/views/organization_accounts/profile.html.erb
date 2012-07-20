@@ -79,10 +79,17 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 		<div class="eleven columns" style="margin-top:30px">
 			<div id="divProgram" style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
 				<% @organization.programs.each do |f| %>
-					<div style="padding:10px; width:100%; border-bottom:1px solid #575758">
-						<strong> Program Name: </strong> <%= f.name%><br />
-						<strong> Country: </strong> <%= f.location%><br />
-						<strong> Description: </strong> <%= f.truncated_description100%>
+					<div style="width:100%; border-bottom:1px solid #575758">
+						<div class="ten columns" style="padding:10px; border-right:1px solid #575758">
+							<strong> Program Name: </strong> <%= f.name%><br />
+							<strong> Country: </strong> <%= f.location%><br />
+							<strong> Description: </strong> <%= f.truncated_description100%>
+						</div>
+						<div class="two columns" style="padding:10px">
+							<br />
+							<a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a><br />
+							<a style="color: #e67b5a" href="/">Delete</a><br />
+						</div>
 					</div>
 			</div>
 			
