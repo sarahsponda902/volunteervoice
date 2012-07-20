@@ -6,3 +6,17 @@
 <%= render 'form' %>
 
 
+<table id="cost_chart">
+	<tr>
+		<th># Weeks</th>
+		<th>Total Program Cost</th>
+		<th>Avg. Cost per Week</th>
+	</tr>
+	<%= [2..@ws.num_rows].each do |f| %>
+	<tr>
+		<td><%= @ws["A#{f}"]%></td>
+		<td><%= @ws["B#{f}"]%></td>
+		<td><%= @ws["C#{f}"]%></td>
+	</tr>
+	<% end %>
+</table>

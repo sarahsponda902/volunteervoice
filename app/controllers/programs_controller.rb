@@ -1056,6 +1056,10 @@ class ProgramsController < ApplicationController
     @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
     @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
     
+    @session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
+    @ss = @session.spreadsheet_by_title("#{@program.name}")
+    @ws = @ss.worksheets[0]
+    
   end
 
   # POST /programs

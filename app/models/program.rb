@@ -13,7 +13,7 @@ has_many :program_sizes, :dependent => :destroy
 attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :organization_id, :subject, :group_size, :headquarters, :length, :overall, :chart, :program_started, :start_dates, :program_structure, :partnered_local_organizations, :cost_includes, :cost_doesnt_include, :program_cost_breakdown, :accommodations, :check_it_out, :organization_name, :crop_x, :crop_y, :crop_w, :crop_h, :square_image, :program_subjects, :program_sizes, :specific_location, :location_name, :program_cost_length_maps, :published_docs
 validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
 before_save :square_image_crop
-before_save :update_cost_chart
+after_save :update_cost_chart
 validate :published_docs_true
 
 # Paperclip
@@ -30,9 +30,13 @@ def update_cost_chart
     ss = template.duplicate( title = "#{name}")
   end
   ws = ss.worksheets[0]
-  ws["A2"] = "HELLO"
-  ws["B2"] = "GOODBYE"
-  ws["C2"] = "SOLONG"
+  count = 2
+  program_cost_length_maps.each do |f|
+    ws["A#{count}"] = f.length.to_weeks
+    ws["B#{count}"] = f.cost
+    ws["C#{count}"] = f.cost / f.length.to_weeks
+    count = count + 1
+  end
   ws.save()
 end
 
