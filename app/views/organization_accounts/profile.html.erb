@@ -139,7 +139,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 			<table style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
 				<% @organization.programs.each do |f| %>
 					<tr style="border-bottom:1px solid #575758">
-						<td style="width:85%; border-right:1px solid #575758">
+						<td style="width:88%; border-right:1px solid #575758">
 							<font style="font-weight:600">Program Name: </font>
 								<%= f.name%><br />
 							<font style="font-weight:600">Country: </font> 
@@ -147,7 +147,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 							<font style="font-weight:600">Description: </font>
 								<div style="margin-left:15px;"><%= f.truncated_description100.html_safe%></div>
 						</td>
-						<td style="width:15%">
+						<td style="width:12%">
 							<p style="margin-top:5px; text-align:center"><a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a></p>
 							<p style="margin-top:15px; text-align:center"><%= link_to "Delete", "#delete-box", :class => "delete-window", :style => "color:#e67b5a", :onclick => "$('#delete_button').attr('action', '/programs/#{f.id}')" %></p>
 						</td>
