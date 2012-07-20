@@ -23,13 +23,16 @@ validate :published_docs_true
 
 def update_cost_chart
   session = GoogleDrive.login("costcharts@volunteervoice.org", "girlpower1988")
+  template = session.spreadsheet_by_title("Testing")
+  template_ws = template.worksheets[0]
   ss = session.spreadsheet_by_title("#{name}")
   if ss.nil?
     ss = session.create_spreadsheet( title = "#{name}")
   end
   ws = ss.worksheets[0]
-  ws["A1"] = "__yum__"
-  ws["A2"] = "**yuck**"
+  ws["A1"] = template_ws["A1"]
+  ws["B1"] = template_ws["B1"]
+  ws["C1"] = template_ws["C1"]
   ws.save()
 end
 
