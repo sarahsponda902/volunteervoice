@@ -36,17 +36,25 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 </div>
 </div>
 
-<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
+<div class="container" style="margin-left:5%; margin-top:20px; margin-right:5%">
 	<div class="row">
 		<div class="twelve columns">
 			<p style="font-family:architectsDaughterRegular; font-size:1.2em; color:#e67b5a;"> You have <%= pluralize @organization.programs.count, "Active Program"%></p>
 		</div>
-		<div class="five columns">
-			<%= button_to "New Program", "/programs/new"%>
+		<div class="twelve columns" style="margin-top:20px">
+			<div class="five columns">
+				<%= button_to "New Program", "/programs/new"%>
+			</div>
+			<div class="two columns">
+				<input type="text" id="tags" value="Type to search..." >
+			</div>
+			<div class="two columns">
+				<%= button_to "View/Edit", "/"%>
+			</div>
+			<div class="two columns">
+				<%= button_to "Delete", "/"%>
+			</div>
 		</div>
-		<div class="seven columns">
-			<input type="text" id="tags" value="Type to search..." />
-			<%= button_to "View/Edit"%>
 	</div>
 </div>
 
