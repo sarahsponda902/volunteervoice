@@ -25,11 +25,11 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 <br />
 </p>
 </div>
-<div class="five columns">
-<p style="margin-top:-50px; float:right"><%= render :partial => "bigStar", :locals => {:star => @organization.roundup(@overall)}%></p>
+<div class="four columns" style="float:right">
+<p style="margin-top:-50px;"><%= render :partial => "bigStar", :locals => {:star => @organization.roundup(@overall)}%></p>
 <br />
 
-<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em; float:right">Based on <%= pluralize @reviews.count, "reviews"%></p>
+<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em;">Based on <%= pluralize @reviews.count, "reviews"%></p>
 </p>
 </div>
 </div>
@@ -41,10 +41,43 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 		<div class="twelve columns">
 			<p style="font-family:architectsDaughterRegular; font-size:1.2em; color:#e67b5a;"> You have <%= pluralize @organization.programs.count, "Active Program"%></p>
 		</div>
-		<div class="three columns">
-			<%= link_to "New Program", "/programs/new"%>
+		<div class="five columns">
+			<%= button_to "New Program", "/programs/new"%>
 		</div>
+		<div class="seven columns">
+			<input type="text" id="tags" value="Type to search..." />
+			<%= button_to "View/Edit"%>
 	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
