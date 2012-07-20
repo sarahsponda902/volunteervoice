@@ -105,7 +105,7 @@
 			<% end %>
 			
 			
-			<% if !organization_account_signed_in?%>
+			<% if !(user_signed_in?) && !(organization_account_signed_in?)%>
 			<div class="four columns" style="float:right" id="orgLogin">
 			<div class="row" style="background-color:#e67b5a; color:white; font-size:1.3em; text-align:center; padding-top:7px;padding-bottom:7px;">
 					<ul>
