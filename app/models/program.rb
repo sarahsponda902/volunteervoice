@@ -28,7 +28,8 @@ def update_cost_chart
     ss = session.create_spreadsheet( title = "#{name}")
   end
   ws = ss.worksheets[0]
-  ws.rows = [["foo", "face", "you"], ["same", "love", "winnie"]]
+  ws["A1"] = "yum"
+  ws["A2"] = "yuck"
   ws.save()
 end
 
