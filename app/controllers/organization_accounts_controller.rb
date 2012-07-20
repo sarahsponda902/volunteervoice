@@ -18,12 +18,17 @@ class OrganizationAccountsController < ApplicationController
 
   # GET /organization_accounts/1
   # GET /organization_accounts/1.json
-  def show
-    @organization_account = OrganizationAccount.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @organization_account }
+  def profile
+    if organization_account_signed_in?
+      @organization_account = current_organization_account
+      @organization = Organization.find(@organization_account.organization_id)
+    
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @organization_account }
+      end
+    else
+      redirect_to root_path
     end
   end
 
