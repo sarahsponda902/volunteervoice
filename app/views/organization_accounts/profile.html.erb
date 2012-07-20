@@ -5,12 +5,20 @@
 <script type="text/javascript" src="/assets/jquery.js"></script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
+<% @programs_array = []%>
+<% Program.where(:organization_id => @organization.id).each do |f|%>
+<% @programs_array << [f.name, f.id]%>
+<% end %>
 <script type="text/javascript">
+var programs_array = new Array([
+	<% Program.where(:organization_id => @organization.id).each do |f|%>
+	["<%= f.name %>", <%= f.id %>],
+	<% end %>
+	]);
 $(function() {
 	var availableTags = [
 		<% Program.where(:organization_id => @organization.id).each do |f| %>
-		["<%=f.name%>", "<%=f.id%>"], 
+		"<%=f.name%>", 
 		<% end %>
 		];
 	$( "#tags" ).autocomplete({
@@ -18,7 +26,7 @@ $(function() {
 		select: function(event, ui) {
 			$("#buttons").show();
 			$("#tags").blur();			
-			$("#view_edit").href = "/programs/"+$("#tags").value;
+			$("#view_edit").href = "/programs/"+programs_array[$("#tags").value];
 		}
 	});
 });
