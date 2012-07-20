@@ -10,13 +10,15 @@
 $(function() {
 	var availableTags = [
 		<% Program.where(:organization_id => @organization.id).each do |f| %>
-		"<%=f.name%>",
+		["<%=f.name%>", "<%=f.id%>"], 
 		<% end %>
 		];
 	$( "#tags" ).autocomplete({
 		source: availableTags,
 		select: function(event, ui) {
 			$("#buttons").show();
+			$("#tags").blur();			
+			$("#view_edit").href = "/programs/"+$("#tags").value;
 		}
 	});
 });
@@ -75,10 +77,10 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 			</div>
 			<div id="buttons" style="display:none">
 				<div class="one columns" style="float:left">
-					<%= button_to "View/Edit", "/"%>
+					<a href="#" id="view_edit">View/Edit</a>
 				</div>
 				<div class="one columns" style="float:left">
-					<%= button_to "Delete", "/"%>
+					<a href="#" id="delete">Delete</a>
 				</div>
 			</div>
 		</div>
