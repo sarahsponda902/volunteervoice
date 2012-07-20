@@ -27,8 +27,7 @@ def update_cost_chart
   if ws.nil?
     ws = session.create_spreadsheet( title = "#{name}")
   end
-  ws["A1"] = "foo"
-  ws["A2"] = "bar"
+  ws.rows = [["foo", "face", "you"], ["same", "love", "winnie"]]
   ws.save()
 end
 
