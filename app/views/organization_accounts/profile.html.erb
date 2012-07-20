@@ -25,7 +25,7 @@ $(function() {
 		select: function(event, ui) {
 			$("#buttons").show();
 			$("#tags").blur();			
-			$("#view_edit").attr("href", "/programs/"+programs_array[ui.item]);
+			$("#view_edit").attr("href", "/programs/"+ui.item);
 		}
 	});
 });
