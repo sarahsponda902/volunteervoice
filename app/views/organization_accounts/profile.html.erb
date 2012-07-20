@@ -63,11 +63,11 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 			<p style="font-family:architectsDaughterRegular; font-size:1.2em; color:#e67b5a;"> You have <%= pluralize @organization.programs.count, "Active Program"%></p>
 		</div>
 		<div class="twelve columns" style="margin-top:20px">
-			<div class="five columns">
+			<div class="three columns">
 				<%= button_to "New Program", "/programs/new"%>
 			</div>
 			<div class="five columns">
-				<input type="text" id="tags" value="Type to search..." style="width:300px;height:20px; font-size:1.2em">
+				<input type="text" id="tags" value="Type to search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'">
 			</div>
 			<div class="one columns">
 				<%= button_to "View/Edit", "/"%>
