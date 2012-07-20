@@ -32,9 +32,9 @@ def update_cost_chart
   ws = ss.worksheets[0]
   count = 2
   program_cost_length_maps.each do |f|
-    ws["A#{count}"] = f.length.to_weeks
+    ws["A#{count}"] = (f.length / 604800).round
     ws["B#{count}"] = f.cost
-    ws["C#{count}"] = f.cost / f.length.to_weeks
+    ws["C#{count}"] = f.cost / ((f.length / 604800).round)
     count = count + 1
   end
   ws.save()
