@@ -18,9 +18,10 @@ $(function() {
 	});
 });
 
-$("#tags").result(function(event, data, formatted) {
-	$("#buttons").show();
-});
+	$("#tags").autocomplete("result", function(event, data, formatted) {
+		$("#buttons").show();
+	});
+
 	</script>
 
 <div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
