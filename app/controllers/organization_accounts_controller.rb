@@ -272,7 +272,15 @@ class OrganizationAccountsController < ApplicationController
     if organization_account_signed_in?
       @organization_account = current_organization_account
       @organization = Organization.find(@organization_account.organization_id)
-    
+      @overall = 0
+      @reviews = Review.where(:organization_id => @organization.id)
+      if !@reviews.nil?
+        @reviews.each do |f|
+          @overall = @overall + f.overall
+        end
+        @overall = @overall / @reviews.count
+      end
+      
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @organization_account }

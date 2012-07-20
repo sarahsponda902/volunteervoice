@@ -26,10 +26,10 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 </p>
 </div>
 <div class="five columns">
-<p style="margin-top:-25px"><%= render :partial => "bigStar", :locals => {:star => @organization.roundup(overall)}%></p>
+<p style="margin-top:-25px"><%= render :partial => "bigStar", :locals => {:star => @organization.roundup(@overall)}%></p>
 <br />
 
-<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em">Based on <%= pluralize Review.where(:organization_id => @organization.id).count, "reviews"%></p>
+<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em">Based on <%= pluralize @reviews.count, "reviews"%></p>
 </p>
 </div>
 </div>
