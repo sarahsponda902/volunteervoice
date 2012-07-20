@@ -1374,7 +1374,7 @@ class ProgramsController < ApplicationController
       @program.chart = @chart[0]
     end
 
-    if user_signed_in? && current_user.admin?
+    if (user_signed_in? && current_user.admin?) || (organization_account_signed_in? && current_organization_account.organization_id == @program.organization_id)
       if @program.save
             redirect_to "/programs/#{@program.id}/crop"
       else
