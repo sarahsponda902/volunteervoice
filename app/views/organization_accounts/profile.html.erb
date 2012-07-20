@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		<div class="row" style="margin-top:40px">
-			<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden">
+			<div class="three columns" style="float:left; height:115px; width:115px; overflow:hidden">
 				<% if !(@organization.image.url.nil?)%>
 			<%=image_tag @organization.square_image.url, :style => "height:100px; width:100px"%>
 				<% else %>
@@ -16,10 +16,10 @@
 				
 			</div>
 	<div class= "eight columns" style="margin-left:15px; margin-top:-32px">
-<p style="font-size:3em; line-height:1.7em"><%= @organization.name %><font style="font-size:0.5em"> <%= link_to "-- edit profile", @organization%></font></p>
+<p style="font-size:2em; line-height:1.7em"><%= @organization.name %><font style="font-size:0.5em"> <%= link_to "-- edit profile", @organization%></font></p>
 </div>
 	<div class="four columns" style="margin-top:10px;float:left; margin-left:15px; padding:5px; padding-right:10px; padding-left:10px; border:1px solid #e67b5a;">
-		<p style="font-size:1.7em; line-height:1.6em; padding-bottom:10px">
+		<p style="font-size:1.4em; line-height:1.6em; padding-bottom:10px">
 Country: <%= @theCountries[@organization_account.country] %><br />
 Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.last_name%>
 <br />
@@ -29,7 +29,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 <p style="margin-top:-50px;"><%= render :partial => "bigStar", :locals => {:star => @organization.roundup(@overall)}%></p>
 <br />
 
-<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em;">Based on <%= pluralize @reviews.count, "reviews"%></p>
+<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em; margin-left:15px">Based on <%= pluralize @reviews.count, "reviews"%></p>
 </p>
 </div>
 </div>
