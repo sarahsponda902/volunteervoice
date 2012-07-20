@@ -5,10 +5,53 @@
 <script type="text/javascript" src="/assets/jquery.js"></script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<% @programs_array = []%>
-<% Program.where(:organization_id => @organization.id).each do |f|%>
-<% @programs_array << [f.name, f.id]%>
-<% end %>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.close-delete-pop').click(function () {
+		$('#mask').fadeOut(300);
+		$('.delete-popup').fadeOut(300);
+		$('#mask').remove();
+	});
+	
+	$('a.delete-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var deleteBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(deleteBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(deleteBox).height() + 24) / 2; 
+		var popMargLeft = ($(deleteBox).width() + 24) / 2; 
+
+		$(deleteBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .delete-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	
+});
+</script>
+
+
 <script type="text/javascript">
 var programs_array = new Object();
 	<% Program.where(:organization_id => @organization.id).each do |f|%>
@@ -26,6 +69,7 @@ $(function() {
 			$("#buttons").show();
 			$("#tags").blur();			
 			$("#view_edit").attr("href", "/programs/"+programs_array[ui.item.value]);
+			$("#delete_button").attr("action", "/programs/"+programs_array[ui.item.value]);
 		}
 	});
 });
@@ -87,7 +131,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 					<a href="#" id="view_edit">View/Edit</a>
 				</div>
 				<div class="one columns" style="float:left">
-					<a href="#" id="delete">Delete</a>
+					<a href="#delete-box" id="delete" class="delete-window">Delete</a>
 				</div>
 			</div>
 		</div>
@@ -119,9 +163,52 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 
 
 
+<table id="delete-box" class="delete-popup">
+	<tr><td colspan="2"><p style="font-size:2em; color:#575758; text-align:center">Are you sure?</p></td></tr>
+	<tr style="background-color:#E9ECE9">
+		<td><a class="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
+		<td>
+		<form action="#" id="delete_button" class="edit_program" method="post">
+			<input name="_method" type="hidden" value="delete">
+			<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+		<%= image_submit_tag "/assets/RealDeleteReviewButton.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+
+		</form>
+</td></tr>
+</table>
 
 
+<style>
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
 
+.delete-popup{
+	display:none;
+	background: #E9ECE9;
+	padding: 10px; 	
+	border: 2px solid #6aaeba;
+	float: left;
+	color:#575758;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+</style>
 
 
 
