@@ -9,7 +9,7 @@
 <script type="text/javascript">
 $(function() {
 	var availableTags = [
-		<% Organization.all.each do |f| %>
+		<% Program.where(:organization_id => @organization.id).each do |f| %>
 		"<%=f.name%>",
 		<% end %>
 		];
