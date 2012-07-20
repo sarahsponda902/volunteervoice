@@ -86,11 +86,11 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 							<font style="font-weight:600">Country: </font> 
 								<%= @theCountries[f.location]%><br />
 							<font style="font-weight:600">Description: </font>
-								<p style="margin-left:15px;"><%= f.truncated_description100.html_safe%></p>
+								<div style="margin-left:15px;"><%= f.truncated_description100.html_safe%></div>
 						</td>
 						<td>
 							<p style="margin-top:5px;"><a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a></p>
-							<p style="margin-top:15px;"><a style="color:e67b5a" href="/">Delete</a></p>
+							<p style="margin-top:15px;"><a style="color:#e67b5a" href="/">Delete</a></p>
 						</td>
 					</tr>
 				<% end %>
