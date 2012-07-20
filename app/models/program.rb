@@ -27,7 +27,7 @@ def update_cost_chart
   template_ws = template.worksheets[0]
   ss = session.spreadsheet_by_title("#{name}")
   if ss.nil?
-    ss = session.create_spreadsheet( title = "#{name}")
+    ss = template.duplicate( title = "#{name}")
   end
   ws = ss.worksheets[0]
   ws.list["A1"] = "HELLO"
