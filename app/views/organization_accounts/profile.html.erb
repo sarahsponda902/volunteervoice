@@ -121,17 +121,17 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 		</div>
 		<div class="eleven columns" style="margin-top:20px;">
 			<div class="four columns">
-				<%= button_to "New Program", "/programs/new"%>
+				<%= link_to (image_tag "/assets/newProgram.png"), "/programs/new"%>
 			</div>
 			<div class="five columns">
 				<input type="text" id="tags" value="Type to search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="if (this.value == 'Type to search...') {this.value = ''}; this.style.fontStyle = 'normal'">
 			</div>
 			<div id="buttons" style="display:none">
 				<div class="one columns" style="float:left">
-					<a href="#" id="view_edit">View/Edit</a>
+					<a href="#" id="view_edit"><%= image_tag "/assets/viewEdit.png"%></a>
 				</div>
 				<div class="one columns" style="float:left">
-					<a href="#delete-box" id="delete" class="delete-window">Delete</a>
+					<a href="#delete-box" id="delete" class="delete-window"><%= image_tag "/assets/deleteProgram.png"%></a>
 				</div>
 			</div>
 		</div>
