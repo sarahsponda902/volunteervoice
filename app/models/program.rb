@@ -10,7 +10,7 @@ has_many :program_sizes, :dependent => :destroy
 attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :organization_id, :subject, :group_size, :headquarters, :length, :overall, :chart, :program_started, :start_dates, :program_structure, :partnered_local_organizations, :cost_includes, :cost_doesnt_include, :program_cost_breakdown, :accommodations, :check_it_out, :organization_name, :crop_x, :crop_y, :crop_w, :crop_h, :square_image, :program_subjects, :program_sizes, :specific_location, :location_name, :program_cost_length_maps, :published_docs
 validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
 before_save :square_image_crop
-validates_acceptance_of :published_docs
+validate :published_docs_true
 
 # Paperclip
     mount_uploader :photo, ImageUploader
@@ -47,5 +47,9 @@ def square_image_crop
    end
  end
 
- 
+ def published_docs_true
+   if !(published_docs)
+     errors.add(:published_docs, "must be published")
+   end
+ end
 end
