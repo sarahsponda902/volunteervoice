@@ -274,7 +274,7 @@ class OrganizationAccountsController < ApplicationController
       @organization = Organization.find(@organization_account.organization_id)
       @overall = 0
       @reviews = Review.where(:organization_id => @organization.id)
-      if !@reviews.nil?
+      if !(@reviews.count == 0)
         @reviews.each do |f|
           @overall = @overall + f.overall
         end
