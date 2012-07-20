@@ -12,7 +12,7 @@
 <script type="text/javascript">
 var programs_array = new Array([
 	<% Program.where(:organization_id => @organization.id).each do |f|%>
-	["<%= f.name %>", <%= f.id %>],
+	["<%= f.name %>", "<%= f.id %>"],
 	<% end %>
 	]);
 $(function() {
@@ -26,7 +26,7 @@ $(function() {
 		select: function(event, ui) {
 			$("#buttons").show();
 			$("#tags").blur();			
-			$("#view_edit").href = "/programs/"+programs_array[$("#tags").value];
+			$("#view_edit").attr("href", "/programs/"+programs_array[$("#tags").value]);
 		}
 	});
 });
