@@ -30,9 +30,9 @@ def update_cost_chart
     ss = session.create_spreadsheet( title = "#{name}")
   end
   ws = ss.worksheets[0]
-  ws["A1"] = template_ws["A1"]
-  ws["B1"] = template_ws["B1"]
-  ws["C1"] = template_ws["C1"]
+  ws.list["A1"] = "HELLO"
+  ws.list["B1"] = "GOODBYE"
+  ws.list["C1"] = "SOLONG"
   ws.save()
 end
 
