@@ -15,6 +15,10 @@ gem 'jquery-rails'
 
 gem 'best_in_place'
 
+gem 'omniauth-google'
+
+gem 'google_drive'
+
 gem 'madmimi'
 
 gem 'RedCloth'
