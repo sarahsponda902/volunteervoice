@@ -24,17 +24,18 @@ validate :published_docs_true
 def update_cost_chart
   session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
   template = session.spreadsheet_by_title("Testing")
-  template_ws = template.worksheets[0]
   ss = session.spreadsheet_by_title("#{name}")
-  if ss.nil?
-    ss = template.duplicate( title = "#{name}")
+  if !ss.nil?
+    ss.delete(permanent = true)
   end
+  ss = template.duplicate( title = "#{name}")
   ws = ss.worksheets[0]
   count = 2
-  program_cost_length_maps.each do |f|
+  @ps = program_cost_length_maps.sort_by(&:length)
+  @ps.each do |f|
     ws["A#{count}"] = (f.length / 604800).round
     ws["B#{count}"] = f.cost
-    ws["C#{count}"] = f.cost / ((f.length / 604800).round)
+    ws["C#{count}"] = (f.cost / ((f.length / 604800).round)).round
     count = count + 1
   end
   ws.save()
