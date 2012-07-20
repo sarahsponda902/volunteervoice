@@ -149,7 +149,7 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 						</td>
 						<td style="width:10%">
 							<p style="margin-top:5px;"><a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a></p>
-							<p style="margin-top:15px;"><a style="color:#e67b5a" href="/">Delete</a></p>
+							<p style="margin-top:15px;"><%= button_to "Delete", program_path(f.id), :method => :delete, :style => "background:transparent; color:#e67b5a; border:none" %></p>
 						</td>
 					</tr>
 				<% end %>
