@@ -1,0 +1,41 @@
+<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
+
+        <div class="row">
+			<div class="eleven columns">
+			<p style="border-top:1px solid #e67b5a; border-bottom:1px solid #e67b5a; height:30px"></p>
+			</div>
+		</div>
+		<div class="row" style="margin-top:40px">
+			<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden">
+				<% if !(@organization.image.url.nil?)%>
+			<%=image_tag @organization.square_image.url, :style => "height:168px; width:168px"%>
+				<% else %>
+				
+				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
+				<% end %>
+				
+			</div>
+	<div class= "eight columns" style="margin-left:15px; margin-top:-32px">
+<p style="font-size:3em; line-height:1.7em"><%= @organization.username %> </p>
+</div>
+	<div class="four columns" style="margin-top:10px;float:left; margin-left:15px; padding:5px; padding-right:10px; padding-left:10px; border:1px solid #e67b5a;">
+		<p style="font-size:1.7em; line-height:1.6em; padding-bottom:10px">
+<%if @organization.dob != nil%>
+<% @now = Time.now.utc.to_date%>
+Age: <%= @now.year - @organization.dob.year - ((@now.month > @organization.dob.month || (@now.month == @organization.dob.month && @now.day >= @organization.dob.day)) ? 0 : 1) %>
+<%else%>
+	Age: <%= @organization.age %>
+	<%end%>
+<br />
+Country: <%= @theCountries[@organization.country] %><br />
+
+<br />
+<p align="right">
+</p>
+</p>
+</div>
+</div>
+</div>
+
+
+
