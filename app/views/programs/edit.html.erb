@@ -1,42 +1,10 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"%>
-<%= javascript_include_tag "/asstes/jquery.dataTables.min.js"%>
+
+
 <p style="font-size:3em; line-height:2em; margin-top:20px; margin-bottom:20px; text-align:center">Editing program</p>
 
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#cost_chart').dataTable();
-} );
-</script>
+
 
 
 <%= render 'form' %>
-
-
-<table id="cost_chart">
-	<thead>
-		<tr>
-			<th># Weeks</th>
-			<th>Total Program Cost</th>
-			<th>Avg. Cost per Week</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% if @ws.num_rows > 2 %>
-			<% (2..@ws.num_rows).each do |f| %>
-			<tr>
-				<td><%= @ws["A#{f}"]%></td>
-				<td><%= @ws["B#{f}"]%></td>
-				<td><%= @ws["C#{f}"]%></td>
-			</tr>
-			<% end %>
-			<% else %>
-			<tr>
-				<td><%= @ws["A2"]%></td>
-				<td><%= @ws["B2"]%></td>
-				<td><%= @ws["C2"]%></td>
-			</tr>
-		<% end %>
-	</tbody>	
-</table>
