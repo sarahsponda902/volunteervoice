@@ -14,6 +14,7 @@ attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :orga
 validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
 before_save :square_image_crop
 after_save :update_cost_chart
+after_save :update_org_chart
 validate :published_docs_true
 
 # Paperclip
@@ -37,6 +38,38 @@ def update_cost_chart
     ws["B#{count}"] = f.cost
     ws["C#{count}"] = (f.cost / ((f.length / 604800).round)).round
     count = count + 1
+  end
+  ws.save()
+end
+
+def update_org_chart
+  session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
+  template = session.spreadsheet_by_title("Testing")
+  ss = session.spreadsheet_by_title("Organization: #{Organization.find(organization_id).name}")
+  if !ss.nil?
+    ss.delete(permanent = true)
+  end
+  ss = template.duplicate( title = "Organization: #{Organization.find(organization_id).name}")
+  ws = ss.worksheets[0]
+  count = 2  
+  @sorted = ProgramCostLengthMap.where(:organization_id => organization_id).sort_by(&:length)
+  @lengths = []
+  @sorted.each do |f|
+    @lengths << f.length unless @lengths.include?(f.length)
+  end
+  @grouped = []
+  @lengths.each do |f|
+    @grouped << ProgramCostLengthMap.where(:organization_id => organization_id, :length => f)
+  end
+  @entries = []
+  @grouped.each do |a|
+    @sorted_group = a.sort_by(&:cost)
+    @entries << [a.first.length, a.first.cost, a.last.cost]
+  end
+  @entries.each do |f|
+    ws["A#{count}"] = (f[0] / 604800).round
+    ws["B#{count}"] = f[1]
+    ws["C#{count}"] = f[2]
   end
   ws.save()
 end
