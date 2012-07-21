@@ -252,18 +252,7 @@ $(function() {
   <%= f.file_field :photo, :value => @program.photo %></div><br />
 
 <br /><br />
-For the following field, copy the key from the url of the google doc, ie. the alphanumeric sequence after "key=" not including anything after a # symbol<br />
-Example: given this url -  https://docs.google.com/spreadsheet/ccc?key=0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE#gid=0<br />
-I would copy "0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE" and paste it into the text box.<br />
 
-  <div>Add a Cost Chart<br />
-  <%= f.text_field :chart, :value => @program.chart %></div>
-	</div>
-	
-	<div class="field">
-    <%= f.check_box :published_docs, :value => @program.published_docs %> <font style="font-size:1.2em">Did you publish the cost_chart Google doc???</font></div>
-	
-	
 	<div class="six columns" style="width:40%">
   <div id= "field">
   Program Started (year)<br />

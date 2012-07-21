@@ -15,7 +15,6 @@ validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
 before_save :square_image_crop
 after_save :update_cost_chart
 after_save :update_org_chart
-validate :published_docs_true
 
 # Paperclip
     mount_uploader :photo, ImageUploader
@@ -40,6 +39,8 @@ def update_cost_chart
     count = count + 1
   end
   ws.save()
+  self.chart = ss.human_url.split("key=")[1]
+  self.save!
 end
 
 def update_org_chart
@@ -72,6 +73,9 @@ def update_org_chart
     ws["C#{count}"] = f[2]
   end
   ws.save()
+  @org = Organization.find(organization_id)
+  @org.program_cost_breakdown = ss.human_url.split("key=")[1]
+  @org.save!
 end
 
 searchable do
@@ -105,9 +109,5 @@ def square_image_crop
    end
  end
 
- def published_docs_true
-   if !(published_docs)
-     errors.add(:published_docs, "must be published")
-   end
- end
+
 end
