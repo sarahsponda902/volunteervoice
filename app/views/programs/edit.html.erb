@@ -13,7 +13,7 @@
 		<th>Avg. Cost per Week</th>
 	</tr>
 	<% if @ws.num_rows > 2 %>
-		<%= [2..@ws.num_rows].each do |f| %>
+		<%= (2..@ws.num_rows).each do |f| %>
 		<tr>
 			<td><%= @ws["A#{f}"]%></td>
 			<td><%= @ws["B#{f}"]%></td>
