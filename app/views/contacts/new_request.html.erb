@@ -1,0 +1,9 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+<% flash.each do |key, value| %>
+  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>

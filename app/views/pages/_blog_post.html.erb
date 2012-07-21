@@ -1,0 +1,17 @@
+<div style="padding: 10px">
+<a href="/blog_posts/<%=f.id%>" style="font-size:1.6em; color:#62acbd"><%=f.title%></a>
+<% if f.is_our_blog %>
+<font size = "3.5em" color="gray"> - VolunteerVoice Blog Post </font>
+<% else %>
+<font size = "3.5em" color="gray"> - Article Post </font>
+<% end %>
+<font size="2.5em" line-height="2.5em">
+(<%f.blog_tags[0..2].each do |a|%>
+<%= a.tag%>,
+<% end %>)
+
+<br />
+<%= f.truncated100.html_safe %>
+</font>
+
+</div>

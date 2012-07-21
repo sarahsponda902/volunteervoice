@@ -1,0 +1,50 @@
+LOG:  database system was shut down at 2012-04-28 16:08:23 PDT
+LOG:  autovacuum launcher started
+LOG:  database system is ready to accept connections
+ERROR:  database "rm-real_development" already exists
+STATEMENT:  CREATE DATABASE "rm-real_development" OWNER "rm-real" ENCODING 'utf8';
+	
+FATAL:  lock file "postmaster.pid" already exists
+HINT:  Is another postmaster (PID 10352) running in data directory "/usr/local/var/postgres"?
+FATAL:  database "rm-real_production" does not exist
+ERROR:  relation "feedbacks" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"feedbacks"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "sessions" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"sessions"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  relation "sessions" does not exist at character 245
+STATEMENT:              SELECT a.attname, format_type(a.atttypid, a.atttypmod), d.adsrc, a.attnotnull
+	              FROM pg_attribute a LEFT JOIN pg_attrdef d
+	                ON a.attrelid = d.adrelid AND a.attnum = d.adnum
+	             WHERE a.attrelid = '"sessions"'::regclass
+	               AND a.attnum > 0 AND NOT a.attisdropped
+	             ORDER BY a.attnum
+	
+ERROR:  syntax error at or near "-" at character 19
+STATEMENT:  create database rm-real_development shawsome rm-real
+	create database rm-real_test shawsome rm-real
+	create database rm-real_productin shawsome rm-real;
+ERROR:  syntax error at or near "shawsome" at character 36
+STATEMENT:  create database rmreal_development shawsome rm-real;
+ERROR:  syntax error at or near "-" at character 44
+STATEMENT:  create database rmreal_development owner rm-real;
+ERROR:  role "rmreal" does not exist
+STATEMENT:  create database rmreal_development owner rmreal;
+ERROR:  syntax error at or near "rake" at character 1
+STATEMENT:  rake db:migrate
+	;
+LOG:  received smart shutdown request
+LOG:  autovacuum launcher shutting down
+LOG:  shutting down
+LOG:  database system is shut down

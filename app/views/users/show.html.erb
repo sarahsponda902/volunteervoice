@@ -1,0 +1,688 @@
+<% if @user.messages_show.nil?%>
+<% @user.messages_show = false%>
+<% @user.save%>
+<% end %>
+
+<% if @user.profile_show.nil?%>
+<% @user.profile_show = false%>
+<% @user.save%>
+<% end %>
+
+
+
+
+<link rel="stylesheet" href="/assetslightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+<script src="/assets/jquery.smooth-scroll.min.js"></script>
+<script src="/assets/lightbox.js"></script>
+
+<script>
+  jQuery(document).ready(function($) {
+      $('a').smoothScroll({
+        speed: 1000,
+        easing: 'easeInOutCubic'
+      });
+  });
+
+</script>
+
+<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
+
+<%= javascript_include_tag "/assets/smartpaginator.js"%>
+
+<head>
+   
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+	
+			if (<%= (@user.profile_show).to_s %> == true)
+			{
+				$("#ageCountryBox").hide();
+			}
+			if (<%= (@user.messages_show).to_s %> == true)
+			{
+				$("#messagesBox").hide();
+			}
+			
+
+			$('#black').smartpaginator({ totalrecords: <%=@user.reviews.count%>, recordsperpage: 1, datacontainer: 'divs', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+			
+			
+		});
+
+ </script>
+
+
+</head>
+
+
+
+	<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
+	        <div class="row">
+				<div class="twelve columns">
+				<p style="border-top:1px solid #e67b5a; border-bottom:1px solid #F5825A ; height:30px">  </p>
+				</div>
+			</div>
+			<div class="row" style="margin-top:25px">
+				<div class="three columns" style="float:left; height:200px; width:200px; overflow:hidden;">
+					<% if !(@user.square_image.url.nil?)%>
+				<%= image_tag @user.square_image.url, :style => "height:168px; width:168px" %>
+					<% else %>
+					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
+					<% end %>
+				</div>
+		<div class= "eight columns" style="margin-left:15px; margin-top:-10px">
+	<p style="font-size:3em; line-height:1.7em"><%= @user.username %> </p>
+	</div>
+		<div class="four columns" id="ageCountryBox" style="margin-top:-5px;float:left; margin-left:15px; padding:5px; padding-right:10px; padding-left:10px; border:1px solid #e67b5a;">
+			<p style="font-size:1.2em; line-height:1.6em; padding-bottom:5px">
+<% if !(@user.profile_show)%>
+	<%if @user.dob != nil%>
+	<% @now = Time.now.utc.to_date%>
+	Age: <%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
+	<%else%>
+		Age: <%= @user.age %>
+		<%end%>
+	<br />
+	Country: <%= @theCountries[@user.country] %>
+	
+	<br />
+	<% else%>
+	This user has hidden<br />
+	their age and country
+	<% end %>
+	</p>
+	<div id="messagesBox">
+		<% if user_signed_in? && (@user.messages_show == false)%>
+	<a href="#popup-box" style = "margin-top:10px; margin-left:0px" class = "popup-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendMessage.png"></a>
+		<% end %>
+	</div>
+	
+	</div>
+	</div>
+	</div>
+
+
+
+	<div class= "container" style="margin-top:20px;">
+		<div class="row">
+			<div class="eleven columns" style="background-color:white;  padding-top:50px; margin-left:2%; height:360px; border:1px solid #e67b5a">
+
+
+
+
+
+<% @reviews = @user.reviews%>
+    <div id="wrapper" style="width:100%;">
+		<p style="font-family:architectsDaughterRegular; color:#575758; margin-left:20px; font-size:2em">Reviews by <%=@user.username%></p>
+
+		<div style="border-top:1px solid #e67b5a; width:100%; margin-top:10px;">
+
+        <div id="black-contents" class="contents"  style="margin-top:25px;">
+	<div align="right" style="font-family:architectsDaughterRegular; color: #e67b5a; font-size:1em; margin-right:55px; margin-top:-15px">
+		<%=@reviews.count%> Reviews
+		</div>
+            <div id="divs" style="overflow:hidden">
+                <% if @reviews.count != 0 %>
+                <% @reviews.each do |f|%>
+
+                  <%= render :partial => "review", :locals => { :f => f } %>
+
+                  <%end%>
+				<% else %>
+					<p style="margin-left:35px; margin-top:25px; color:#575758"><%=@user.username%> has not yet added reviewed any programs.</p>
+					<% end %>
+                
+            </div>
+            <div id="black" style="margin-top:-133px; margin-left:5px"></div>
+            </div>
+			</div>
+
+			</div>
+			</div>
+			</div>
+			</div>
+			
+
+	<style type="text/css">
+
+        #wrapper
+        {
+
+            width: 800px;
+
+        }
+		
+        .contents
+        {
+			height: 290px;
+            width: 98%; /*height: 150px;*/
+            margin: 0;
+
+        }
+        .contents > p
+        {
+            padding: 8px;
+        }
+
+		.table
+        {
+            width: 100%;
+            border-right: solid 1px #5f9000;
+        }
+        .table th, .table td
+        {
+            width: 16%;
+            height: 20px;
+            padding: 4px;
+            text-align: left;
+        }
+        .table th
+        {
+            border-left: solid 1px #5f9000;
+        }
+        .table td
+        {
+            border-left: solid 1px #5f9000;
+            border-bottom: solid 1px #5f9000;
+        }
+
+        .header
+        {
+            background-color: #4f7305;
+            color: White;
+        }
+        #divs
+        {
+            margin: 10;
+            height: 100%;
+            font: verdana;
+            font-size: 14px;
+            background-color: White;
+        }
+        #divs > div
+        {
+            width: 98%;
+
+        }
+        #divs > div p
+        {
+            width: 95%;
+
+        }
+
+		#divvys
+        {
+            margin: 10;
+            height: 100%;
+            font: verdana;
+            font-size: 14px;
+            background-color: White;
+        }
+        #divvys > div
+        {
+            width: 98%;
+
+        }
+        #divvys > div p
+        {
+            width: 95%;
+
+        }
+
+		#divyeas
+        {
+            margin: 10;
+            height: 100%;
+            font: verdana;
+            font-size: 14px;
+            background-color: White;
+			position:relative;
+        }
+        #divyeas > div
+        {
+            width: 98%;
+
+        }
+        #divyeas > div p
+        {
+            width: 95%;
+
+        }
+
+		#divsents
+        {
+            margin: 10;
+            height: 100%;
+            font: verdana;
+            font-size: 14px;
+            background-color: White;
+			position:relative;
+        }
+        #divysents > div
+        {
+            width: 98%;
+
+        }
+        #divsents > div p
+        {
+            width: 95%;
+
+        }
+
+        ul.tab
+        {
+            list-style: none;
+            margin-bottom: 20px;
+            padding-bottom: 0;
+        }
+        ul.tab li
+        {
+            display: inline;
+			padding-left:15px;
+			padding-right:25px;
+			padding-bottom:50px;
+			padding-top:5px;
+			margin-left:6px;
+			margin-right:6px;
+            color: Black;
+            cursor: pointer;
+			width:200px;
+			background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/inactiveTab.png) no-repeat;
+        }
+
+	
+	
+	</style>
+
+
+
+<!-- UPLOAD PHOTO POPUP -->
+
+
+
+
+			<style>
+			/* Mask for background, by default is not display */
+			#mask {
+				display: none;
+				background: #000; 
+				position: fixed; left: 0; top: 0; 
+				width: 100%; height: 100%;
+				opacity: 0.8;
+				z-index: 999;
+			}
+
+			/* You can customize to your needs  */
+			.upload-popup{
+				display:none;
+				background: #D9DEDA;
+				padding: 10px; 	
+				border: 3px solid #68c2d8;
+				float: left;
+				font-size: 1.2em;
+				position: fixed;
+				top: 50%; left: 50%;
+				z-index: 99999;
+				box-shadow: 0px 0px 20px #999; /* CSS3 */
+			        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+			        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+				border-radius:3px 3px 3px 3px;
+			        -moz-border-radius: 3px; /* Firefox */
+			        -webkit-border-radius: 3px; /* Safari, Chrome */
+			}
+			.edit-popup{
+				display:none;
+				background: #E3E6D5;
+				padding: 10px; 
+				color:#575758;	
+				border: 3px solid #68c2d8;
+				float: left;
+				font-size: 1.2em;
+				position: fixed;
+				top: 50%; left: 50%;
+				z-index: 99999;
+				box-shadow: 0px 0px 20px #999; /* CSS3 */
+			        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+			        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+				border-radius:3px 3px 3px 3px;
+			        -moz-border-radius: 3px; /* Firefox */
+			        -webkit-border-radius: 3px; /* Safari, Chrome */
+			}
+
+			img.btn_close { Position the close button
+				float: right; 
+				margin: -28px -28px 0 0;
+			}
+
+			fieldset { 
+				border:none; 
+			}
+
+			form.sign_in .textbox label { 
+				display:block; 
+				padding-bottom:7px; 
+			}
+
+			form.sign_in .textbox span { 
+				display:block;
+			}
+
+			form.sign_in p, form.sign_in span { 
+				color:#999; 
+				font-size:11px; 
+				line-height:18px;
+			} 
+
+			form.sign_in .textbox input { 
+				background:#666666; 
+				border-bottom:1px solid #333;
+				border-left:1px solid #000;
+				border-right:1px solid #333;
+				border-top:1px solid #000;
+				color:#fff; 
+			        border-radius: 3px 3px 3px 3px;
+				-moz-border-radius: 3px;
+			        -webkit-border-radius: 3px;
+				font:13px Arial, Helvetica, sans-serif;
+				padding:6px 6px 4px;
+				width:200px;
+			}
+
+			form.sign_in input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
+			form.sign_in input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
+
+			.button { 
+				background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+				background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+				background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+			        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+				border-color:#000; 
+				border-width:1px;
+			        border-radius:4px 4px 4px 4px;
+				-moz-border-radius: 4px;
+			        -webkit-border-radius: 4px;
+				color:#333;
+				cursor:pointer;
+				display:inline-block;
+				padding:6px 6px 4px;
+				margin-top:10px;
+				font:12px; 
+				width:214px;
+			}
+			.button:hover { background:#ddd; }
+
+			</style>
+
+
+<script style="text/javascript">
+$("#btnPrev").click(function() { currentPage = parseInt(list.find('li a.active').text()) - 1; navigate(--currentPage); }).addClass('btn');
+
+$("#btnNext").click(function() { currentPage = parseInt(list.find('li a.active').text()); navigate(currentPage); }).addClass('btn');
+</script>
+
+<script type="text/javascript">
+function beforeCheck() {
+	$('#checkBefore').toggle();
+}
+</script>
+
+
+
+<div id="popup-box" class="popup-popup">
+	<% if @user.messages_show %>
+	<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
+
+	<%= form_for(@message) do |f| %>
+	<% if user_signed_in?%>
+	<%= f.hidden_field :sender_id, :value => current_user.id %>
+	<% end %>
+	<%= f.hidden_field :recipient_id, :value => @user.id %>
+	  <div class="field">
+	    <p style="font-size:1.2em; color:#575758; margin-left:25px; line-height:2em;">Subject:</p>
+	    <%= f.text_field :subject, :style => "width:380px; height:25px; margin-left:20px; margin-right:20px;" %>
+	  </div>
+	<br />
+	  <div class="field">
+	    <p style="font-size:1.2em; color:#575758; margin-left:25px;line-height:2em;">Body:</p>
+	    <%= f.text_area :body, :style => "height:200px;width:380px; margin-left:20px; margin-right:20px; overflow:auto" %>
+	  </div>
+
+	  <div class="actions" style="margin-top:30px; text-align:center">
+	    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
+	  </div>
+	<% end %>
+
+<% else %>
+	<%@user.username%>'s messaging system is disabled
+<% end %>
+
+
+</div>
+
+<div id="flag-box" class="flag-popup">
+	<% if user_signed_in? %>
+  	<%= form_for @flag do |g| %>
+
+	<tr style="background-color:#D9DEDA"><td colspan="2">
+	    <p style="text-align:center; font-size:1.2em; font-family:cabinRegular; margin-bottom:20px; color:#575758">Report this review for <br />inappropriate content</p></td></tr>
+
+		<tr style="background-color:#D9DEDA;"><td colspan="2">
+	<%=g.text_area :body, :style => "height:115px; font-size:0.9em; font-style:italic; margin:auto", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe."%>
+
+	    <%=g.hidden_field :flagger_id, :value => current_user.id %>
+
+	    <%=g.hidden_field :poster_id, :id => "poster_id" %>
+
+	    <%=g.hidden_field :review_id, :id => "review_id" %>
+		</td></tr>
+
+		<tr style="background-color:#D9DEDA;"><td colspan="2">
+	    <p style="text-align:center; padding-top:15px"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
+		<% end %>
+	<% else %>
+	<tr><td>You must be signed in to flag a review.</td></tr>
+	<% end %>
+
+</div>
+
+<style>
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+/* You can customize to your needs  */
+.popup-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 3px solid #6aaeba;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+/* You can customize to your needs  */
+.flag-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 2px solid #575758;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+img.btn_close { Position the close button
+	float: right; 
+	margin: -28px -28px 0 0;
+}
+
+fieldset { 
+	border:none; 
+}
+
+form.show_chart .textbox label { 
+	display:block; 
+	padding-bottom:7px; 
+}
+
+form.show_chart .textbox span { 
+	display:block;
+}
+
+form.show_chart p, form.show_chart span { 
+	color:#999; 
+	font-size:11px; 
+	line-height:18px;
+} 
+
+form.show_chart .textbox input { 
+	background:#666666; 
+	border-bottom:1px solid #333;
+	border-left:1px solid #000;
+	border-right:1px solid #333;
+	border-top:1px solid #000;
+	color:#fff; 
+        border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+	font:13px Arial, Helvetica, sans-serif;
+	padding:6px 6px 4px;
+	width:200px;
+}
+
+form.show_chart input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
+form.show_chart input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
+
+.button { 
+	background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+	background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+	background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+	border-color:#000; 
+	border-width:1px;
+        border-radius:4px 4px 4px 4px;
+	-moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+	color:#333;
+	cursor:pointer;
+	display:inline-block;
+	padding:6px 6px 4px;
+	margin-top:10px;
+	font:12px; 
+	width:214px;
+}
+.button:hover { background:#ddd; }
+
+</style>
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	
+	
+	$('a.popup-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var popupBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(popupBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(popupBox).height() + 24) / 2; 
+		var popMargLeft = ($(popupBox).width() + 24) / 2; 
+
+		$(popupBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:0.5"></div>');
+		$('#mask').fadeIn(300)
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .popup-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	$('a.flag-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var flagBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(flagBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(flagBox).height() + 24) / 2; 
+		var popMargLeft = ($(flagBox).width() + 24) / 2; 
+
+		$(flagBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .flag-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+
+});
+
+
+</script>
+
+<style>
+a.reviewOrgLink:link{color:#6aaeba}
+a.reviewOrgLink:active{color:#6aaeba}
+a.reviewOrgLink:visited{color:#6aaeba}
+a.reviewOrgLink:hover{color:#e67b5a}
+</style>

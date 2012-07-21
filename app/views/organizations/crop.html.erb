@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link href="http://odyniec.net/projects/imgareaselect/css/imgareaselect-default.css" rel="stylesheet" type="text/css" />
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+	
+	<script src="http://odyniec.net/projects/imgareaselect/jquery.imgareaselect.pack.js"></script>
+
+	
+	<script type="text/javascript">
+	$(function(){
+   
+
+
+	    function updateVars (img, selection) {
+	        $("#organization_crop_w").val(selection.width);
+	        $("#organization_crop_h").val(selection.height);    
+	        $("#organization_crop_x").val(selection.x1);
+			$("#organization_crop_y").val(selection.y1);
+
+	    }         
+
+	    function init() {
+
+	        $('#crop_me').imgAreaSelect({
+	            hide:true,
+	            movable : true,
+	            autoHide : false,
+				aspectRatio: '1:1',
+				minHeight:250,
+	            onSelectEnd: updateVars
+	  			
+	        });
+
+
+	    }
+
+	    init();
+
+	});
+
+	
+
+	</script>
+
+</head>
+<body>
+	<div class="container" style="margin-top:30px">
+		<div class="row">
+			<div class="ten columns">
+
+	    <%= image_tag @organization.image.url, :id => "crop_me"%>
+
+		</div>
+	</div>
+</div>
+
+<div style="position:absolute; right:5%; top:300px; width: 150px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed size for a organization image. It will not get any smaller</div>
+
+<div style="position:absolute; right:5%; top:200px; width:150px">
+	<%= form_for @organization do |f|%>
+	x: <%= f.number_field :crop_x %><br />
+	y: <%= f.number_field :crop_y %><br />
+	w: <%= f.number_field :crop_w %><br />
+	h: <%= f.number_field :crop_h %><br />
+	<%= f.submit "Crop"%>
+	<% end %>
+</div>	
+</html>

@@ -1,0 +1,185 @@
+.pager
+{
+	width: 98%;
+	height: 30px;
+	padding: 0;
+	margin: 0;
+	padding-top: 10px;
+	padding-left: 10px;
+	position: absolute;
+	top: 505px;
+	/*border-radius: 8px;
+	-moz-border-radius: 8px;*/
+}
+.pager div.short
+{
+	float: right;
+	margin: 0;
+	padding: 0;
+	margin-right: 10px;
+	width: 84px;
+}
+.pager div.short input
+{
+	width: 28px;
+	height: 18px;
+	border: none;
+	margin-left: 8px;
+	float: left;
+}
+.pager ul
+{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	float: right;
+	margin-right: 10px;
+}
+.pager ul li
+{
+	display: inline;
+	margin-left: 1px;
+}
+.pager ul li a.normal
+{
+	text-decoration: none;
+	display: inline-table;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	color: #62acbd;
+}
+.pager span
+{
+	margin-left: 4px;
+	color: #62acbd;
+	float: left;
+}
+.pager .btn
+{
+	display: block;
+	width: 40px;
+	text-align: center;
+	float: left;
+	padding: 0;
+	color: #62acbd;
+	margin: 0;
+	margin-left: 4px;
+	cursor: pointer;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+.pager ul li a.active
+{
+	text-decoration: none;
+	display: inline-table;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	color: #e67b5a;
+}
+
+/*green*/.green
+{
+	background-color: transparent;
+}
+.green.normal
+{
+	color: #62acbd;
+	border: none;
+}
+.green.active
+{
+	color: #e67b5a;
+	border: none;
+}
+.pager.green .btn
+{
+	color: #62acbd;
+}
+/*#62acbd*/.#62acbd
+{
+	background-color: transparent;
+}
+.black.normal
+{
+	color: #62acbd;
+	border: none;
+}
+.black.active
+{
+
+	color: #e67b5a;
+	border: none;
+}
+.pager.black .btn
+{
+
+	color: #62acbd;
+	border: none;
+}
+/*red*/.red
+{
+	background-color: transparent;
+}
+.red.normal
+{
+	color: #62acbd;
+	border: none;
+}
+.red.active
+{
+	color: #e67b5a;
+	border: none;
+}
+.pager.red .btn
+{
+	color: #62acbd;
+	border: none;
+}
+
+/*sent*/.sent
+{
+	background-color: transparent;
+}
+.sent.normal
+{
+	color: #62acbd;
+	border: none;
+}
+.sent.active
+{
+	color: #e67b5a;
+	border: none;
+}
+.pager.sent .btn
+{
+	color: #62acbd;
+	border: none;
+}
+
+/*sent*/.program
+{
+	background-color: transparent;
+}
+.program.normal
+{
+	color: #62acbd;
+	border: none;
+}
+.program.active
+{
+	color: #e67b5a;
+	border: none;
+}
+.pager.program .btn
+{
+	color: #62acbd;
+	border: none;
+}
+
+

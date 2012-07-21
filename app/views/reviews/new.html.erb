@@ -1,0 +1,10 @@
+<% if !(current_user.nil?)%>
+
+<%= render 'form' %>
+
+<% else %>
+
+You must be a member to create a review.
+
+<% end %>
+

@@ -1,0 +1,15 @@
+<% if @notify %>
+	You have successfully subscribed! Congrats, we love you.
+<% else %>
+	You have successfully unsubscribed. But hey, we still love you. If you have a minute, please leave us some feedback as to why you chose to unsubscribe and how we can improve our newsletters. Thanks a million!
+	<% @contact = Contact.new(:subject => "Subscription Termination Feedback (org)", :to_whom => "contact", :organization_account_id => @organization_account.id)%>
+	<%= form_for(@contact) do |f| %>
+	    <div class="field">
+	      <%= f.label :body %>
+	      <%= f.text_area :body, :style => "height:200px; width:500px" %>
+	    </div>
+
+	    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitShortLong.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+
+	<% end %>
+<% end %>

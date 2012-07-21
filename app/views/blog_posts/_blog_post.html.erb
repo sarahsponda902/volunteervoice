@@ -1,0 +1,55 @@
+<div class="blogPost" style="color:#575758; float:right; width:100%">
+
+		<% if !(blog_post.image.url == "")%>
+		<%= image_tag blog_post.square_image.url, :style => "float:right; margin-top:20px; padding-left:10px; height:100px" %>
+		<% end %>
+	
+	<p class="blogPostTitle" style="font-size:2.2em; line-height:1.2em">
+		<%= link_to(h(blog_post.title), blog_post) %>
+		<% if !blog_post.published? %>
+			[Draft]
+		<% end %>	
+	</p>
+
+	<p class="blogPostPostedAt">
+		Posted
+		<% if blog_post.show_user? %>
+			By <span class="blogPoster"><a  style="color:#e67b5a" href="/users/<%=User.find(blog_post.user_id).id%>"><%= User.find(blog_post.user_id).username %></a></span>
+		<% end %>
+		on 
+		<span class="blogPostDate" style="color:#68c2d8"><%= blog_post.updated_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></span>
+	</p>
+
+	<div class="blogPostBody" style="font-size:1.1em; margin-top:10px">
+		<%= blog_post.body.html_safe %> 
+	</div>
+	<br />
+
+	<p class="blogFooter">
+		<ul class="blogList">
+			<li class="blogListFirst"><%=pluralize(blog_post.blog_comments.count, 'comment') %></li>
+
+
+			<% if user_signed_in? && current_user.admin? %>
+				<li><%= link_to('Edit Post', edit_blog_post_path(blog_post))%></li>
+				<% @location = request.path%>
+				<% @location = @location.split("/")%>
+				<% @location = @location[2]%>
+				<li><%= link_to 'Delete', :controller => "blog_posts", :action => "destroy", :id => blog_post.id, :location => @location %></li>
+			<% end %>
+		</ul>
+	</p>
+	
+	<% if !(defined?(show_comments))%>
+	<div style="width:100%; height:1px; background-color:#575758; margin-top:10px"></div><br />
+	<% end %>
+
+	<% if defined?(show_comments) %>
+		<%= render :partial => 'blog_posts/comments' %>
+		<%= render :partial => 'blog_comments/new_blog_comment', :locals => {:blog_comment => @blog_comment} %>
+	<% end %>
+
+
+	<br style="clear: both;" />
+</div>
+

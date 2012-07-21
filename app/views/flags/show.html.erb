@@ -1,0 +1,30 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<p>
+  <b>Body:</b>
+  <%= @flag.body.html_safe %>
+</p>
+
+<p>
+  <b>Flagger:</b>
+  <%= link_to User.find(@flag.flagger_id).username, User.find(@flag.flagger_id) %>
+</p>
+
+<p>
+  <b>Poster:</b>
+  <%= link_to User.find(@flag.poster_id).username, User.find(@flag.poster_id) %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @flag.category %>
+</p>
+
+<p>
+  <b>Review:</b>
+  <%= link_to @flag.review_id, Review.find(@flag.review_id) %>
+</p>
+
+
+<%= link_to 'Edit', edit_flag_path(@flag) %> |
+<%= link_to 'Back', flags_path %>

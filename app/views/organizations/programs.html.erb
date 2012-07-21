@@ -1,0 +1,145 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+	<div class="container" style="padding-bottom:250px;">
+	    <div class="row">
+
+			<div style="padding-bottom:50px;float:right; margin-right:125px; margin-top:25px" class="three columns">
+	            <ul class="tab">
+					<li><a href="/organizations/<%= @organization.id%>"><img src="/assets/tabProfileNo.png" style="width:125px; margin-top"></a></li>
+					<li><a href="/organizations/<%= @organization.id%>/programs"><img src="/assets/tabProgramsYes.png" style="width:125px; margin-top:-75px; margin-left:140px"></a></li>
+	            </ul>
+	        </div>
+	<div class="row" style="margin-top:100px; border:1px solid #575758; background-color:#E9ECE9;padding-bottom:50px">
+
+		<% @countries = Hash.new %>
+		<% @progs = @organization.programs%>
+		<% @progs = @progs.sort_by{|p| @theCountries2[p.location].downcase} %>
+		<% @progs.each do |f| %>
+		<% if !(@countries.has_key?(f.location))%>
+		<% @countries[f.location] = 1%>
+		<% else %>
+		<% @countries[f.location] = @countries[f.location] + 1%>
+		<% end %>
+		<% end %>
+<div class="twelve columns" style="margin-left:50px;margin-right:50px">
+<% @countries.keys.each do |f|%>
+<div class="two columns" style="width:12%; float:left">
+	<p style="margin:auto"><a href="#programs-box<%=f%>" class="programs-window" style="font-family:museoSlab500Regular"><%= @theCountries[f]%></a></p>
+<a href="#programs-box<%=f%>" class="programs-window"><%= render :partial => "flag", :locals => {:country => f}, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
+</div>
+<div id="programs-box<%=f%>" class="programs-popup">
+	<% @organization.programs.each do |p|%>
+	<% if p.location == f%>
+	<div class="nine columns" style="width:74%; font-size:1.5em; color:#e67b5a">
+		<a href="/programs/<%=p.id%>" style="color:#e67b5a"><%=p.name%></a>
+	</div>
+	<div class="three columns" style="width:24%; float:left">
+		<%= render :partial => "star", :locals => {:star => p.overall}%>
+	</div>
+	<div class="twelve columns" style="margin:auto; width:96%; padding-bottom:5px;">
+		<%= p.description.html_safe%>
+	</div>
+	<div class="twelve columns" style="height:1px; background-color:#575758; width:100%; margin:0; margin-bottom:5px;">
+	</div>
+	<% end %>
+	<% end %>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+<style type="text/css">
+
+
+
+    .header
+    {
+        background-color: #4f7305;
+        color: White;
+    }
+   
+    ul.tab
+    {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+		float: right;
+    }
+    ul.tab li
+    {
+        display: inline;
+        padding: 10px;
+        color: #575758;
+        cursor: pointer;
+    }
+
+
+	.programs-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #575758;
+		float: left;
+		color: #575758;
+		position: fixed;
+		width: 650px;
+		min-height:100px;
+		max-height:400px;
+		overflow:auto;
+		top: 50%; left: 50%;
+		z-index: 55;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+	
+	a.programs-window:link{color:#575758}
+	a.programs-window:visited{color:#575758}
+	a.programs-window:active{color:#575758}
+	a.programs-window:hover{color:#68c2d8}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('a.programs-window').click(function() {
+
+		            //Getting the variable's value from a link 
+			var programsBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(programsBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(programsBox).height() + 24) / 2; 
+			var popMargLeft = ($(programsBox).width() + 24) / 2; 
+
+			$(programsBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="opacity:.5"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .programs-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+	});
+</script>
+

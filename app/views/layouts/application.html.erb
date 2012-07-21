@@ -1,0 +1,804 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+	<noscript>
+		<meta http-equiv="refresh" content="0; url=https://s3-us-west-1.amazonaws.com/volunteervoice/error/enable_js.html">
+	</noscript>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<meta charset="utf-8">
+
+<title>Volunteer Voice International</title>
+
+<script><!--for HTML5 syntax in IE-->
+	document.createElement('header');
+	document.createElement('footer');
+	document.createElement('nav');
+	document.createElement('article');
+	document.createElement('aside');
+	document.createElement('section');
+</script>
+		
+		
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Volunteer Voice</title>
+	<%= csrf_meta_tag %>
+	<%= stylesheet_link_tag "application", :media => :all%>
+	<%= javascript_include_tag "application"%>
+
+
+	</head>
+
+	<body>
+		<!-- Header-->
+		<div class="container" id="header" style="min-width:970px; background:url(/assets/headerFooter.png)">
+		<header class="row">
+			
+			<div class="four columns" style="margin-top:15px">
+			<a href="/" style="cursor:pointer"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" style="height:95px"></a>
+			</div>
+			
+			
+			<div class="four columns" style="float:right">
+			<div class="row login" style="width:auto">
+
+				<% if !(user_signed_in?) && !(organization_account_signed_in?) %>
+				<a href="#login-box" class="login-window">LOGIN</a>
+				or <a href= "/sign_up" class="register">JOIN</a>
+				<% else %>
+					<% if user_signed_in?%>
+						<a href="/pages/profile"> <%=current_user.username%> 
+							<% if current_user.unread_messages > 0 %>
+								<font style="color:#e67b5a">(<%=current_user.unread_messages%>)</font><% end %></a>&nbsp;&nbsp;
+						<a href= "/signout" class="logout">LOGOUT</a>
+					<% end %>
+					<% if organization_account_signed_in?%>
+						<a href="/organization_accounts/profile"> <%= Organization.find(current_organization_account.organization_id).name%></a>&nbsp;&nbsp;
+						<a href="/signout" class="logout">LOGOUT</a>
+					<% end %>
+				<% end %>
+				
+			</div>
+			</div>
+			
+			
+			
+			<% if user_signed_in? && current_user.admin?%>
+			
+			<div class="four columns" style="float:right" id="adminNav">
+			<div class="row" style="background-color:#575758; color:white; font-size:1.3em; text-align:center; padding-top:7px;padding-bottom:7px;">
+				<ul>
+					<li><p style="color:red">Admin Links</p>
+						<div>
+						<ul>
+							<li><a href="/blog_posts/new">New Blog Post</a></li>
+							<li><a href="/organizations/new">New Organization</a></li>
+							<li><a href="/programs/new">New Program</a></li>
+							<li><a href="/organizations">All Organizations</a></li>
+							<li><a href="/feedbacks">All Feedbacks</a></li>
+							<li><a href="/flags">All Flags</a></li>
+							<li><a href="/reviews">All Reviews</a></li>
+							<li><a href="/new_reviews">All New Reviews</a></li>
+							<li><a href="/users">All Users</a></li>
+							<li><a href="/searches">All Searches</a></li>
+							<li><a href="/organization_accounts">All Org Accounts</a></li>
+						</ul>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+			</div>
+			
+			
+			
+			<% end %>
+			
+			
+			<% if !(user_signed_in?) && !(organization_account_signed_in?)%>
+			<div class="four columns" style="float:right" id="orgLogin">
+			<div class="row" style="background-color:#e67b5a; color:white; font-size:1.3em; text-align:center; padding-top:7px;padding-bottom:7px;">
+					<ul>
+						<li><p style="color:white">For Organizations</p>
+							<div>
+								<ul>
+									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
+									<li><a href="#request-box" class="request-window">Make a Profile</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+			</div>
+			</div>
+			<% end %>
+			
+			<div class="six columns" style="float:right">
+				<% @search = Search.new%>
+			<%= form_for @search do |f|%>
+				<div style="margin-bottom:15px; float:right;">
+			    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png", :style => "margin-bottom:-57px", :id =>"searchbutton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+				<div style="margin-top:40px; float:right; margin-right:5px">
+				<input type="text" name="search[keywords]" id="searchfield"></div>
+			<% end %>
+
+		</div>
+		</div>
+		</header>
+		</div>	
+			
+		<!-- end header-->
+
+		<!-- Global Navigation-->
+		
+		<div class="container" id="globalNav">
+		<div class="row">
+		<nav class="nav">
+
+		<ul>
+		<li class="navs"><a href="/">home</a></li>
+		<li class="navs" style="height:50px"><a id="shower">find a program</a>
+			<div align="center">
+			<ul>
+				<li class="navs"><a href="/pages/program_browse">browse things to do</a></li>
+				<li class="navs"><a href="/programs">browse places to go</a></li>
+				<li class="navs"><a href="/pages/search_machine">use search machine</a></li>	
+			</ul>
+			</div>
+		</li>
+		<li class="navs"><a href="/reviews/new">write a review</a></li>
+		<li class="navs"><a href= "/pages/blogs">resources</a></li>
+		</ul>
+		
+		<div class="dropdown_background"></div>
+
+		</nav></div>
+		</div><!--end navigation-->	
+
+<%= yield%>
+</div>
+
+
+<!-- Footer-->
+<div class="container" id="footer" style="margin-top:75px; min-width:970px; color:#575758; background:url(/assets/headerFooter.png)">
+<div class="row">
+<footer class="footer">
+<div class="three columns">
+<article class="footerNav"style="margin-top:20px; line-height:1.5em; margin-left:20px;">
+<h4 style="margin-bottom:12px">More on us...</h4>
+<ul style="font-size:16px; line-height:2em;">
+<li><%= link_to "About Us", "/pages/about"%></li>
+<li><%= link_to "Contact Us", "/contacts/new"%></li>
+<li><%= link_to "Terms of Use", "/pages/terms"%></li>
+<li><%= link_to "Privacy Policy", "/pages/privacy"%></li>
+<li><a href="/pages/faq">FAQ</a></li>
+</ul>
+</article></div><!--end footerNav-->
+<div class="six columns" align="center">
+<article class="spreadWord" style="margin-top:30px;">
+<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/spreadTheWord.png" alt="Help Spread The Word" width="300px">
+<ul>
+<li style="margin-left:-5px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/facebook.png" height="35px" width="35px" alt="VolunteerVoice Facebook"></li>
+<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/twitter.png" height="35px" width="35px" alt="VolunteerVoice Twitter"></li>
+<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/google.png" height="35px" width="35px" alt="VolunteerVoice Google+"></li>
+<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/rss.png" height="35px" width="35px" alt="VolunteerVoice RSS"></li>
+</ul>
+
+</article></div><!--end spreadWord-->
+<div class="three columns">
+<article class="ourCommunity" style="margin-top:10px; width:190px; overflow:hidden; " align="right">
+
+    <div style="background-color:none; margin-top:5px" class="fb-like-box" data-href="https://www.facebook.com/pages/VolunteerVoice-International/309769649039582" data-width="190" data-height="195" data-show-faces="true" data-border-color="#c1dfdb" data-stream="false" data-header="false"></div>
+
+
+</article></div><!--end ourCommunity-->
+<div class="row">
+<div class="twelve columns">
+<article class="copyright" style="text-align:center; margin-top:30px; font-size:9px">
+
+<p><small>Copyright 2012 by VolunteerVoice International. All rights reserved. Site design by Anna Smith from <a href="www.secretsnacking.com">Secret Snacking Media</a>.</small></p>
+
+</article></div></div><!--end copyright-->
+</footer></div><!-- end footer -->
+
+
+
+
+</div><!-- end pageWrap-->
+
+</body>
+
+</html>
+
+
+<!--- POPUP PLUGIN -->
+
+
+  	<div id="login-box" class="login-popup">
+	  	<%= form_for("user", :url => user_session_path) do |f| %>
+		  <div style="line-height:1.5em">Email or Username:<br />
+		  <%= f.text_field :login, :style => "height:15px"%></div><br />
+
+		  <div style="line-height:1.5em">Password:<br />
+		  <%= f.password_field :password, :style => "height:15px"%></div>
+
+		    <image style="position:absolute; height:25px; top:113px; left:13px; display:none" id="checkBefore2" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" >
+			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:10px; padding-bottom:5px;" >
+			<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :style =>"opacity:0;"%></div><div style="margin-left:33px; margin-top:-20px; font-size:.85em"> Remember me</div><br />
+	
+
+		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
+
+		<a class="forgotPassword" style="font-size:.85em" href="/users/password/new">Forgot your password?</a>
+		<%end%>
+	
+	
+	</div>
+	
+	<div id="org-login-box" class="org-login-popup">
+	  	<%= form_for("organization_account", :url => organization_account_session_path) do |f| %>
+		  <div style="line-height:1.5em">Email or Username:<br />
+		  <%= f.text_field :login, :style => "height:15px"%></div><br />
+
+		  <div style="line-height:1.5em">Password:<br />
+		  <%= f.password_field :password, :style => "height:15px"%></div>
+
+		    <image style="position:absolute; height:25px; top:113px; left:13px; display:none" id="checkBefore3" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" >
+			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:10px; padding-bottom:5px;" >
+			<%= f.check_box :remember_me, :onclick => "$(beforeCheck3())", :style =>"opacity:0;"%></div><div style="margin-left:33px; margin-top:-20px; font-size:.85em"> Remember me</div><br />
+	
+
+		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
+
+		<a class="forgotPassword" style="font-size:.85em" href="/organization_accounts/password/new">Forgot your password?</a>
+		<%end%>
+	
+	
+	</div>
+	
+		<div id="request-box" class="request-popup">
+			<% @contact = Contact.new %>
+			<p style="font-size:2em; font-family:museoSlab500Regular; line-height:1.5em; margin:10px" align="center">Account Request</p>
+			<%= form_for @contact do |f| %>
+			<div class="six columns" style="width:300px">
+
+			  <div><%= f.label "Organization Name" %>
+			  <%= f.text_field :organization_name, :style => "height:20px; width:198px" %></div><br />
+			<div>
+<%= f.label :country %>
+			  <div style="position:absolute;top:93px; height:30px; width:198px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				 <select style="position:absolute; border:1px solid #575758; left:-5px; width:225px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" id="contact_country" name="contact[country]">
+				<option value="AF"> Afghanistan</option>
+				<option value="AX"> Åland Islands</option>
+				<option value="AL"> Albania</option>
+				<option value="DZ"> Algeria</option>
+				<option value="AS"> American Samoa</option>
+				<option value="AD"> Andorra</option>
+				<option value="AO"> Angola</option>
+				<option value="AI"> Anguilla</option>
+				<option value="AQ"> Antarctica</option>
+				<option value="AG"> Antigua and Barbuda</option>
+				<option value="AR"> Argentina</option>
+				<option value="AM"> Armenia</option>
+				<option value="AW"> Aruba</option>
+				<option value="AU"> Australia</option>
+				<option value="AT"> Austria</option>
+				<option value="AZ"> Azerbaijan</option>
+				<option value="BS"> Bahamas</option>
+				<option value="BH"> Bahrain</option>
+				<option value="BD"> Bangladesh</option>
+				<option value="BB"> Barbados</option>
+				<option value="BY"> Belarus</option>
+				<option value="BE"> Belgium</option>
+				<option value="BZ"> Belize</option>
+				<option value="BJ"> Benin</option>
+				<option value="BM"> Bermuda</option>
+				<option value="BT"> Bhutan</option>
+				<option value="BO"> Bolivia, Plurinational State of</option>
+				<option value="BQ"> Bonaire, Sint Eustatius and Saba</option>
+				<option value="BA"> Bosnia and Herzegovina</option>
+				<option value="BW"> Botswana</option>
+				<option value="BV"> Bouvet Island</option>
+				<option value="BR"> Brazil</option>
+				<option value="IO"> British Indian Ocean Territory</option>
+				<option value="BN"> Brunei Darussalam</option>
+				<option value="BG"> Bulgaria</option>
+				<option value="BF"> Burkina Faso</option>
+				<option value="BI"> Burundi</option>
+				<option value="KH"> Cambodia</option>
+				<option value="CM"> Cameroon</option>
+				<option value="CA"> Canada</option>
+				<option value="CV"> Cape Verde</option>
+				<option value="KY"> Cayman Islands</option>
+				<option value="CF"> Central African Republic</option>
+				<option value="TD"> Chad</option>
+				<option value="CL"> Chile</option>
+				<option value="CN"> China</option>
+				<option value="CX"> Christmas Island</option>
+				<option value="CC"> Cocos (Keeling) Islands</option>
+				<option value="CO"> Colombia</option>
+				<option value="KM"> Comoros</option>
+				<option value="CG"> Congo</option>
+				<option value="CD"> Congo, the Democratic Republic of the</option>
+				<option value="CK"> Cook Islands</option>
+				<option value="CR"> Costa Rica</option>
+				<option value="CI"> Côte d'Ivoire</option>
+				<option value="HR"> Croatia</option>
+				<option value="CU"> Cuba</option>
+				<option value="CW"> Curaçao</option>
+				<option value="CY"> Cyprus</option>
+				<option value="CZ"> Czech Republic</option>
+				<option value="DK"> Denmark</option>
+				<option value="DJ"> Djibouti</option>
+				<option value="DM"> Dominica</option>
+				<option value="DO"> Dominican Republic</option>
+				<option value="EC"> Ecuador</option>
+				<option value="EG"> Egypt</option>
+				<option value="SV"> El Salvador</option>
+				<option value="GQ"> Equatorial Guinea</option>
+				<option value="ER"> Eritrea</option>
+				<option value="EE"> Estonia</option>
+				<option value="ET"> Ethiopia</option>
+				<option value="FK"> Falkland Islands (Malvinas)</option>
+				<option value="FO"> Faroe Islands</option>
+				<option value="FJ"> Fiji</option>
+				<option value="FI"> Finland</option>
+				<option value="FR"> France</option>
+				<option value="GF"> French Guiana</option>
+				<option value="PF"> French Polynesia</option>
+				<option value="TF"> French Southern Territories</option>
+				<option value="GA"> Gabon</option>
+				<option value="GM"> Gambia</option>
+				<option value="GE"> Georgia</option>
+				<option value="DE"> Germany</option>
+				<option value="GH"> Ghana</option>
+				<option value="GI"> Gibraltar</option>
+				<option value="GR"> Greece</option>
+				<option value="GL"> Greenland</option>
+				<option value="GD"> Grenada</option>
+				<option value="GP"> Guadeloupe</option>
+				<option value="GU"> Guam</option>
+				<option value="GT"> Guatemala</option>
+				<option value="GG"> Guernsey</option>
+				<option value="GN"> Guinea</option>
+				<option value="GW"> Guinea-Bissau</option>
+				<option value="GY"> Guyana</option>
+				<option value="HT"> Haiti</option>
+				<option value="HM"> Heard Island and McDonald Islands</option>
+				<option value="VA"> Holy See (Vatican City State)</option>
+				<option value="HN"> Honduras</option>
+				<option value="HK"> Hong Kong</option>
+				<option value="HU"> Hungary</option>
+				<option value="IS"> Iceland</option>
+				<option value="IN"> India</option>
+				<option value="ID"> Indonesia</option>
+				<option value="IR"> Iran, Islamic Republic of</option>
+				<option value="IQ"> Iraq</option>
+				<option value="IE"> Ireland</option>
+				<option value="IM"> Isle of Man</option>
+				<option value="IL"> Israel</option>
+				<option value="IT"> Italy</option>
+				<option value="JM"> Jamaica</option>
+				<option value="JP"> Japan</option>
+				<option value="JE"> Jersey</option>
+				<option value="JO"> Jordan</option>
+				<option value="KZ"> Kazakhstan</option>
+				<option value="KE"> Kenya</option>
+				<option value="KI"> Kiribati</option>
+				<option value="KP"> Korea, Democratic People's Republic of</option>
+				<option value="KR"> Korea, Republic of</option>
+				<option value="KW"> Kuwait</option>
+				<option value="KG"> Kyrgyzstan</option>
+				<option value="LA"> Lao People's Democratic Republic</option>
+				<option value="LV"> Latvia</option>
+				<option value="LB"> Lebanon</option>
+				<option value="LS"> Lesotho</option>
+				<option value="LR"> Liberia</option>
+				<option value="LY"> Libya</option>
+				<option value="LI"> Liechtenstein</option>
+				<option value="LT"> Lithuania</option>
+				<option value="LU"> Luxembourg</option>
+				<option value="MO"> Macao</option>
+				<option value="MK"> Macedonia, the former Yugoslav Republic of</option>
+				<option value="MG"> Madagascar</option>
+				<option value="MW"> Malawi</option>
+				<option value="MY"> Malaysia</option>
+				<option value="MV"> Maldives</option>
+				<option value="ML"> Mali</option>
+				<option value="MT"> Malta</option>
+				<option value="MH"> Marshall Islands</option>
+				<option value="MQ"> Martinique</option>
+				<option value="MR"> Mauritania</option>
+				<option value="MU"> Mauritius</option>
+				<option value="YT"> Mayotte</option>
+				<option value="MX"> Mexico</option>
+				<option value="FM"> Micronesia, Federated States of</option>
+				<option value="MD"> Moldova, Republic of</option>
+				<option value="MC"> Monaco</option>
+				<option value="MN"> Mongolia</option>
+				<option value="ME"> Montenegro</option>
+				<option value="MS"> Montserrat</option>
+				<option value="MA"> Morocco</option>
+				<option value="MZ"> Mozambique</option>
+				<option value="MM"> Myanmar</option>
+				<option value="NA"> Namibia</option>
+				<option value="NR"> Nauru</option>
+				<option value="NP"> Nepal</option>
+				<option value="NL"> Netherlands</option>
+				<option value="NC"> New Caledonia</option>
+				<option value="NZ"> New Zealand</option>
+				<option value="NI"> Nicaragua</option>
+				<option value="NE"> Niger</option>
+				<option value="NG"> Nigeria</option>
+				<option value="NU"> Niue</option>
+				<option value="NF"> Norfolk Island</option>
+				<option value="MP"> Northern Mariana Islands</option>
+				<option value="NO"> Norway</option>
+				<option value="OM"> Oman</option>
+				<option value="PK"> Pakistan</option>
+				<option value="PW"> Palau</option>
+				<option value="PS"> Palestinian Territory, Occupied</option>
+				<option value="PA"> Panama</option>
+				<option value="PG"> Papua New Guinea</option>
+				<option value="PY"> Paraguay</option>
+				<option value="PE"> Peru</option>
+				<option value="PH"> Philippines</option>
+				<option value="PN"> Pitcairn</option>
+				<option value="PL"> Poland</option>
+				<option value="PT"> Portugal</option>
+				<option value="PR"> Puerto Rico</option>
+				<option value="QA"> Qatar</option>
+				<option value="RE"> Réunion</option>
+				<option value="RO"> Romania</option>
+				<option value="RU"> Russian Federation</option>
+				<option value="RW"> Rwanda</option>
+				<option value="BL"> Saint Barthélemy</option>
+				<option value="SH"> Saint Helena, Ascension and Tristan da Cunha</option>
+				<option value="KN"> Saint Kitts and Nevis</option>
+				<option value="LC"> Saint Lucia</option>
+				<option value="MF"> Saint Martin (French part)</option>
+				<option value="PM"> Saint Pierre and Miquelon</option>
+				<option value="VC"> Saint Vincent and the Grenadines</option>
+				<option value="WS"> Samoa</option>
+				<option value="SM"> San Marino</option>
+				<option value="ST"> Sao Tome and Principe</option>
+				<option value="SA"> Saudi Arabia</option>
+				<option value="SN"> Senegal</option>
+				<option value="RS"> Serbia</option>
+				<option value="SC"> Seychelles</option>
+				<option value="SL"> Sierra Leone</option>
+				<option value="SG"> Singapore</option>
+				<option value="SX"> Sint Maarten (Dutch part)</option>
+				<option value="SK"> Slovakia</option>
+				<option value="SI"> Slovenia</option>
+				<option value="SB"> Solomon Islands</option>
+				<option value="SO"> Somalia</option>
+				<option value="ZA"> South Africa</option>
+				<option value="GS"> South Georgia and the South Sandwich Islands</option>
+				<option value="SS"> South Sudan</option>
+				<option value="ES"> Spain</option>
+				<option value="LK"> Sri Lanka</option>
+				<option value="SD"> Sudan</option>
+				<option value="SR"> Suriname</option>
+				<option value="SJ"> Svalbard and Jan Mayen</option>
+				<option value="SZ"> Swaziland</option>
+				<option value="SE"> Sweden</option>
+				<option value="CH"> Switzerland</option>
+				<option value="SY"> Syrian Arab Republic</option>
+				<option value="TW"> Taiwan, Province of China</option>
+				<option value="TJ"> Tajikistan</option>
+				<option value="TZ"> Tanzania, United Republic of</option>
+				<option value="TH"> Thailand</option>
+				<option value="TL"> Timor-Leste</option>
+				<option value="TG"> Togo</option>
+				<option value="TK"> Tokelau</option>
+				<option value="TO"> Tonga</option>
+				<option value="TT"> Trinidad and Tobago</option>
+				<option value="TN"> Tunisia</option>
+				<option value="TR"> Turkey</option>
+				<option value="TM"> Turkmenistan</option>
+				<option value="TC"> Turks and Caicos Islands</option>
+				<option value="TV"> Tuvalu</option>
+				<option value="UG"> Uganda</option>
+				<option value="UA"> Ukraine</option>
+				<option value="AE"> United Arab Emirates</option>
+				<option value="GB"> United Kingdom</option>
+				<option value="US"> United States</option>
+				<option value="UM"> United States Minor Outlying Islands</option>
+				<option value="UY"> Uruguay</option>
+				<option value="UZ"> Uzbekistan</option>
+				<option value="VU"> Vanuatu</option>
+				<option value="VE"> Venezuela, Bolivarian Republic of</option>
+				<option value="VN"> Viet Nam</option>
+				<option value="VG"> Virgin Islands, British</option>
+				<option value="VI"> Virgin Islands, U.S.</option>
+				<option value="WF"> Wallis and Futuna</option>
+				<option value="EH"> Western Sahara</option>
+				<option value="YE"> Yemen</option>
+				<option value="ZM"> Zambia</option>
+				<option value="ZW"> Zimbabwe</option></select>
+			</div>
+			<div style="margin-top:50px"><%= f.label "Website URL" %>
+			  <%= f.text_field :organization_url, :style => "height:20px; width:198px" %></div><br />
+			<div>
+			 <%= f.radio_button :has_profile, :value => "Has profile needs access."%> I have a profile already, but need access. <br />
+			<%= f.radio_button :has_profile, :value => "Needs profile and access."%> I don't have a profile, please make me one! <br /></div>
+			
+			
+			</div>
+			
+			<div style="margin-top:25px; margin-left:215px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+
+			</div>
+			<div class="six columns" style=" margin-top:-312px; width:250px; padding-left:30px">
+
+			  <div><%= f.label "Main Contact (First and Last Name)" %>
+			  <%= f.text_field :main_contact, :style =>"height:20px; width:198px"%></div><br />
+
+			  <div><%= f.label "Contact's Position at Company" %>
+			  <%= f.text_field :position_of_contact, :style =>"height:20px; width:198px"%></div><br />
+
+			  <div><%= f.label "Contact Email"%>
+			  <%= f.text_field :contact_email, :style =>"height:20px; width:198px" %></div>
+			
+			
+			<div style="float:right; margin-right:50px; margin-top:25px; font-family:museoSlab500Regular">&lt;&lt;&nbsp;&nbsp; Select one of these</div>
+			
+									<div style="height:180px; width:1px; top:15px; background-color: #575758; position:absolute; left:-20px"></div>
+									
+			<%= f.hidden_field :to_whom, :value => "request"%>
+			<% end %>
+		</div>
+	</div>
+
+	
+	
+	<style>
+	
+	a.forgotPassword:link{color:white}
+	a.forgotPassword:active{color:white}
+	a.forgotPassword:visited{color:white}
+	a.forgotPassword:hover{color:#e67b5a}
+	
+	a.login-window:link{color:white}
+	a.login-window:active{color:white}
+	a.login-window:visited{color:white}
+	a.login-window:hover{color:#9bce6c}
+	
+	a.register:link{color:white}
+	a.register:active{color:white}
+	a.register:visited{color:white}
+	a.register:hover{color:#e67b5a}
+	
+	a.logout:link{color:white}
+	a.logout:active{color:white}
+	a.logout:visited{color:white}
+	a.logout:hover{color:#e67b5a}
+	
+	
+	
+	/* Mask for background, by default is not display */
+	#mask {
+		display: none;
+		background: #000; 
+		position: fixed; left: 0; top: 0; 
+		z-index: 10;
+		width: 100%; height: 100%;
+		opacity: 0.8;
+	}
+
+	/* You can customize to your needs  */
+	.login-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 3px solid #575758;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		z-index:9999;
+		position: fixed;
+		top: 50%; left: 50%;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+	
+	.request-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 3px solid #575758;
+		float: left;
+		color:#575758;
+		font-size: 1.1em;
+		z-index:9999;
+		position: fixed;
+		top: 50%; left: 50%;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+	
+	.org-login-popup{
+		display:none;
+		background: #c1dfdb;
+		padding: 10px; 	
+		border: 3px solid #6aaeba;
+		float: left;
+		color:#575758;
+		font-size: 1.1em;
+		z-index:9999;
+		position: fixed;
+		top: 50%; left: 50%;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+	
+
+	img.btn_close { Position the close button
+		float: right; 
+		margin: -28px -28px 0 0;
+	}
+
+	fieldset { 
+		border:none; 
+	}
+
+
+
+	.button { 
+		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+		border-color:#000; 
+		border-width:1px;
+	        border-radius:4px 4px 4px 4px;
+		-moz-border-radius: 4px;
+	        -webkit-border-radius: 4px;
+		color:#68c2d8;
+		cursor:pointer;
+		display:inline-block;
+		padding:6px 6px 4px;
+		margin-top:10px;
+		font:12px; 
+		width:214px;
+	}
+	.button:hover { background:#ddd; }
+	
+	</style>
+	
+		<script type="text/javascript">
+
+
+		$(document).ready(function() {
+
+
+			$('a.login-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var termsBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(termsBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(termsBox).height() + 24) / 2; 
+				var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+				$(termsBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('#mask').live('click', function() { 
+			  $('#mask').fadeOut(300);
+			  $('#login-box').fadeOut(300);
+			  $('#mask').remove();  
+			  return false;
+			});
+			
+			$('a.request-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var termsBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(termsBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(termsBox).height() + 24) / 2; 
+				var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+				$(termsBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('#mask').live('click', function() { 
+			  $('#mask').fadeOut(300);
+			  $('#request-box').fadeOut(300);
+			  $('#mask').remove();  
+			  return false;
+			});
+			
+			$('a.org-login-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var termsBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(termsBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(termsBox).height() + 24) / 2; 
+				var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+				$(termsBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('#mask').live('click', function() { 
+			  $('#mask').fadeOut(300);
+			  $('#org-login-box').fadeOut(300);
+			  $('#mask').remove();  
+			  return false;
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+	function beforeCheck2() {
+		$('#checkBefore2').toggle();
+	}
+	
+	function beforeCheck3() {
+		$('#checkBefore3').toggle();
+	}
+	</script>
+

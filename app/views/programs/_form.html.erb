@@ -1,0 +1,324 @@
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css" type="text/css" />
+
+<link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn-history/r3882/trunk/themes/base/jquery.ui.autocomplete.css" type="text/css" />
+
+<script type="text/javascript" src="/assets/jquery.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".createInput").click(function(event) {
+		event.preventDefault();
+		createInput();
+	});
+});
+
+
+var allTags = ["1 week", "2 weeks", "3 weeks", "4 weeks", "5 weeks", "6 weeks", "7 weeks", "8 weeks", "9 weeks", "10 weeks", "11 weeks", "12 weeks", "4 months", "5 months", "6 months", "7 months", "8 months", "9 months", "10 months", "11 months", "12 months", "13 months", "14 months", "15 months", "16 months", "17 months", "18 months", "19 months", "20 months", "21 months", "22 months", "23 months", "2 years", "25 months", "26 months", "27 months", "28 months", "29 months", "30 months", "31 months", "32 months", "33 months", "34 months", "35 months", "3 years"];
+
+var count = 0;
+var countFields = 0;
+function createInput(){
+    field_area = document.getElementById('fields');
+	var li = document.createElement("li");
+    var input = document.createElement("select");
+	var label = document.createTextNode("Length of Trip: ");
+	var input2 = document.createElement("input");
+	var label2 = document.createTextNode("Total Cost ($): ");
+	var div = document.createElement("div");
+	var br = document.createElement("br");
+	div.style.backgroundColor = "black";
+	div.style.height = "1px";
+	div.style.width = "150px";
+	div.style.marginBottom = "10px";
+	div.style.marginTop = "5px";
+    input.id = 'length'+countFields;
+    input.name = "lengths[]";
+ 	for (count = 0; count < allTags.length; count++) {
+		var opt = document.createElement("option");
+		opt.value = allTags[count].toString();
+		opt.text = allTags[count].toString();
+		input.options.add(opt);
+	};
+	input2.id = 'cost'+countFields;
+    input2.name = "costs[]";
+    input2.type = "number";
+	li.appendChild(label);
+    li.appendChild(input);
+	li.appendChild(br);
+	li.appendChild(br);
+	li.appendChild(label2);
+	li.appendChild(br);
+	li.appendChild(input2);
+	li.appendChild(div);
+    field_area.appendChild(li);
+    countFields = countFields + 1;
+};
+
+
+
+$(function() {
+	var availableTags = [
+		<% Organization.all.each do |f| %>
+		"<%=f.name%>",
+		<% end %>
+		];
+	$( "#tags" ).autocomplete({
+		source: availableTags
+	});
+});
+	</script>
+	
+
+		<script type="text/javascript">
+			$(function() {
+				var availableSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
+				function split( val ) {
+					return val.split( /,\s*/ );
+				}
+				function extractLast( term ) {
+					return split( term ).pop();
+				}
+
+				$( "#sizes" )
+					// don't navigate away from the field on tab when selecting an item
+					.bind( "keydown", function( event ) {
+						if ( event.keyCode === $.ui.keyCode.TAB &&
+								$( this ).data( "autocomplete" ).menu.active ) {
+							event.preventDefault();
+						}
+					})
+					.autocomplete({
+						minLength: 0,
+						source: function( request, response ) {
+							// delegate back to autocomplete, but extract the last term
+							response( $.ui.autocomplete.filter(
+								availableSizes, extractLast( request.term ) ) );
+						},
+						focus: function() {
+							// prevent value inserted on focus
+							return false;
+						},
+						select: function( event, ui ) {
+							var terms = split( this.value );
+							// remove the current input
+							terms.pop();
+							// add the selected item
+							terms.push( ui.item.value );
+							// add placeholder to get the comma-and-space at the end
+							terms.push( "" );
+							this.value = terms.join( ", " );
+							return false;
+						}
+					});
+			});
+			</script>
+			
+			<script type="text/javascript">
+				$(function() {
+					var availableSubjects = ["Agriculture", "Organic Farming", "Sustainable Development", "Animal Care", "Animal Rights", "Wildlife Conservation", "Caregiving", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless", "Community Development", "Youth Development and Outreach", "Construction", "Culture & Community", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism", "Disaster Relief", "Economics", "Microfinance", "Education", "Teaching English", "Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy", "Engineering and Infrastructure", "Environmental", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration", "Health and Medicine", "HIV/AIDS", "Nutrition", "Family Planning", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Care-giving", "Human Rights", "Women's Initiatives", "International Work Camp", "Recreation", "Adventure Travel", "Scientific Research", "Archaeology", "Environmental Biology", "Technology", "Teaching Computer Literacy", "Media, Marketing, and Graphic Design" ];
+					function split( val ) {
+						return val.split( /,\s*/ );
+					}
+					function extractLast( term ) {
+						return split( term ).pop();
+					}
+
+					$( "#subjects" )
+						// don't navigate away from the field on tab when selecting an item
+						.bind( "keydown", function( event ) {
+							if ( event.keyCode === $.ui.keyCode.TAB &&
+									$( this ).data( "autocomplete" ).menu.active ) {
+								event.preventDefault();
+							}
+						})
+						.autocomplete({
+							minLength: 0,
+							source: function( request, response ) {
+								// delegate back to autocomplete, but extract the last term
+								response( $.ui.autocomplete.filter(
+									availableSubjects, extractLast( request.term ) ) );
+							},
+							focus: function() {
+								// prevent value inserted on focus
+								return false;
+							},
+							select: function( event, ui ) {
+								var terms = split( this.value );
+								// remove the current input
+								terms.pop();
+								// add the selected item
+								terms.push( ui.item.value );
+								// add placeholder to get the comma-and-space at the end
+								terms.push( "" );
+								this.value = terms.join( ", " );
+								return false;
+							}
+						});
+				});
+				</script>
+
+				<% flash.each do |key, value| %>
+				  <div class="flash <%=key%>">
+				<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
+					<% value.each do |f|%>
+						* <%=f%><br />
+					<% end %>
+				  </div>
+				<% end %>
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="twelve columns">
+		HELPERS:<br />
+
+		* -> bullet point<br />
+		# -> numbered bullet point<br />
+		_word_ -> italic word<br />
+		*word* -> bolded word<br />
+		+word+ -> underlined word<br />
+		"link text":url -> link to url<br />
+		!image url! -> embedded image at url<br />
+		p{color:#color-code} paragraph -> paragraph in #color-code color. To exit color, hit 'enter' twice<br /><br />
+
+		For more formatting go to: http://redcloth.org/textile/<br /><br /><br /></div>
+		<div class="six columns">
+<%= form_for @program do |f| %>
+
+<% if @program.overall.nil?%>
+  <div class="field">
+	<%= f.hidden_field :overall, :value => 0%>
+	</div>
+<% end %>
+
+  <div class="field">
+    Name <br />
+    <%= f.text_field :name, :value => @program.name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, :value => @program.description %>
+  </div>
+<div class="field">
+	<%= f.label "Country "%>
+<%= f.select :location, [[' Afghanistan', 'AF'], [' Åland Islands', 'AX'], [' Albania', 'AL'], [' Algeria', 'DZ'], [' American Samoa', 'AS'], [' Andorra', 'AD'], [' Angola', 'AO'], [' Anguilla', 'AI'], [' Antarctica', 'AQ'], [' Antigua and Barbuda', 'AG'], [' Argentina', 'AR'], [' Armenia', 'AM'], [' Aruba', 'AW'], [' Australia', 'AU'], [' Austria', 'AT'], [' Azerbaijan', 'AZ'], [' Bahamas', 'BS'], [' Bahrain', 'BH'], [' Bangladesh', 'BD'], [' Barbados', 'BB'], [' Belarus', 'BY'], [' Belgium', 'BE'], [' Belize', 'BZ'], [' Benin', 'BJ'], [' Bermuda', 'BM'], [' Bhutan', 'BT'], [' Bolivia, Plurinational State of', 'BO'], [' Bonaire, Sint Eustatius and Saba', 'BQ'], [' Bosnia and Herzegovina', 'BA'], [' Botswana', 'BW'], [' Bouvet Island', 'BV'], [' Brazil', 'BR'], [' British Indian Ocean Territory', 'IO'], [' Brunei Darussalam', 'BN'], [' Bulgaria', 'BG'], [' Burkina Faso', 'BF'], [' Burundi', 'BI'], [' Cambodia', 'KH'], [' Cameroon', 'CM'], [' Canada', 'CA'], [' Cape Verde', 'CV'], [' Cayman Islands', 'KY'], [' Central African Republic', 'CF'], [' Chad', 'TD'], [' Chile', 'CL'], [' China', 'CN'], [' Christmas Island', 'CX'], [' Cocos (Keeling) Islands', 'CC'], [' Colombia', 'CO'], [' Comoros', 'KM'], [' Congo', 'CG'], [' Congo, the Democratic Republic of the', 'CD'], [' Cook Islands', 'CK'], [' Costa Rica', 'CR'], [" Côte d'Ivoire", 'CI'], [' Croatia', 'HR'], [' Cuba', 'CU'], [' Curaçao', 'CW'], [' Cyprus', 'CY'], [' Czech Republic', 'CZ'], [' Denmark', 'DK'], [' Djibouti', 'DJ'], [' Dominica', 'DM'], [' Dominican Republic', 'DO'], [' Ecuador', 'EC'], [' Egypt', 'EG'], [' El Salvador', 'SV'], [' Equatorial Guinea', 'GQ'], [' Eritrea', 'ER'], [' Estonia', 'EE'], [' Ethiopia', 'ET'], [' Falkland Islands (Malvinas)', 'FK'], [' Faroe Islands', 'FO'], [' Fiji', 'FJ'], [' Finland', 'FI'], [' France', 'FR'], [' French Guiana', 'GF'], [' French Polynesia', 'PF'], [' French Southern Territories', 'TF'], [' Gabon', 'GA'], [' Gambia', 'GM'], [' Georgia', 'GE'], [' Germany', 'DE'], [' Ghana', 'GH'], [' Gibraltar', 'GI'], [' Greece', 'GR'], [' Greenland', 'GL'], [' Grenada', 'GD'], [' Guadeloupe', 'GP'], [' Guam', 'GU'], [' Guatemala', 'GT'], [' Guernsey', 'GG'], [' Guinea', 'GN'], [' Guinea-Bissau', 'GW'], [' Guyana', 'GY'], [' Haiti', 'HT'], [' Heard Island and McDonald Islands', 'HM'], [' Holy See (Vatican City State)', 'VA'], [' Honduras', 'HN'], [' Hong Kong', 'HK'], [' Hungary', 'HU'], [' Iceland', 'IS'], [' India', 'IN'], [' Indonesia', 'ID'], [' Iran, Islamic Republic of', 'IR'], [' Iraq', 'IQ'], [' Ireland', 'IE'], [' Isle of Man', 'IM'], [' Israel', 'IL'], [' Italy', 'IT'], [' Jamaica', 'JM'], [' Japan', 'JP'], [' Jersey', 'JE'], [' Jordan', 'JO'], [' Kazakhstan', 'KZ'], [' Kenya', 'KE'], [' Kiribati', 'KI'], [" Korea, Democratic People's Republic of", 'KP'], [' Korea, Republic of', 'KR'], [' Kuwait', 'KW'], [' Kyrgyzstan', 'KG'], [" Lao People's Democratic Republic", 'LA'], [' Latvia', 'LV'], [' Lebanon', 'LB'], [' Lesotho', 'LS'], [' Liberia', 'LR'], [' Libya', 'LY'], [' Liechtenstein', 'LI'], [' Lithuania', 'LT'], [' Luxembourg', 'LU'], [' Macao', 'MO'], [' Macedonia, the former Yugoslav Republic of', 'MK'], [' Madagascar', 'MG'], [' Malawi', 'MW'], [' Malaysia', 'MY'], [' Maldives', 'MV'], [' Mali', 'ML'], [' Malta', 'MT'], [' Marshall Islands', 'MH'], [' Martinique', 'MQ'], [' Mauritania', 'MR'], [' Mauritius', 'MU'], [' Mayotte', 'YT'], [' Mexico', 'MX'], [' Micronesia, Federated States of', 'FM'], [' Moldova, Republic of', 'MD'], [' Monaco', 'MC'], [' Mongolia', 'MN'], [' Montenegro', 'ME'], [' Montserrat', 'MS'], [' Morocco', 'MA'], [' Mozambique', 'MZ'], [' Myanmar', 'MM'], [' Namibia', 'NA'], [' Nauru', 'NR'], [' Nepal', 'NP'], [' Netherlands', 'NL'], [' New Caledonia', 'NC'], [' New Zealand', 'NZ'], [' Nicaragua', 'NI'], [' Niger', 'NE'], [' Nigeria', 'NG'], [' Niue', 'NU'], [' Norfolk Island', 'NF'], [' Northern Mariana Islands', 'MP'], [' Norway', 'NO'], [' Oman', 'OM'], [' Pakistan', 'PK'], [' Palau', 'PW'], [' Palestinian Territory, Occupied', 'PS'], [' Panama', 'PA'], [' Papua New Guinea', 'PG'], [' Paraguay', 'PY'], [' Peru', 'PE'], [' Philippines', 'PH'], [' Pitcairn', 'PN'], [' Poland', 'PL'], [' Portugal', 'PT'], [' Puerto Rico', 'PR'], [' Qatar', 'QA'], [' Réunion', 'RE'], [' Romania', 'RO'], [' Russian Federation', 'RU'], [' Rwanda', 'RW'], [' Saint Barthélemy', 'BL'], [' Saint Helena, Ascension and Tristan da Cunha', 'SH'], [' Saint Kitts and Nevis', 'KN'], [' Saint Lucia', 'LC'], [' Saint Martin (French part)', 'MF'], [' Saint Pierre and Miquelon', 'PM'], [' Saint Vincent and the Grenadines', 'VC'], [' Samoa', 'WS'], [' San Marino', 'SM'], [' Sao Tome and Principe', 'ST'], [' Saudi Arabia', 'SA'], [' Senegal', 'SN'], [' Serbia', 'RS'], [' Seychelles', 'SC'], [' Sierra Leone', 'SL'], [' Singapore', 'SG'], [' Sint Maarten (Dutch part)', 'SX'], [' Slovakia', 'SK'], [' Slovenia', 'SI'], [' Solomon Islands', 'SB'], [' Somalia', 'SO'], [' South Africa', 'ZA'], [' South Georgia and the South Sandwich Islands', 'GS'], [' South Sudan', 'SS'], [' Spain', 'ES'], [' Sri Lanka', 'LK'], [' Sudan', 'SD'], [' Suriname', 'SR'], [' Svalbard and Jan Mayen', 'SJ'], [' Swaziland', 'SZ'], [' Sweden', 'SE'], [' Switzerland', 'CH'], [' Syrian Arab Republic', 'SY'], [' Taiwan, Province of China', 'TW'], [' Tajikistan', 'TJ'], [' Tanzania, United Republic of', 'TZ'], [' Thailand', 'TH'], [' Timor-Leste', 'TL'], [' Togo', 'TG'], [' Tokelau', 'TK'], [' Tonga', 'TO'], [' Trinidad and Tobago', 'TT'], [' Tunisia', 'TN'], [' Turkey', 'TR'], [' Turkmenistan', 'TM'], [' Turks and Caicos Islands', 'TC'], [' Tuvalu', 'TV'], [' Uganda', 'UG'], [' Ukraine', 'UA'], [' United Arab Emirates', 'AE'], [' United Kingdom', 'GB'], [' United States', 'US'], [' United States Minor Outlying Islands', 'UM'], [' Uruguay', 'UY'], [' Uzbekistan', 'UZ'], [' Vanuatu', 'VU'], [' Venezuela, Bolivarian Republic of', 'VE'], [' Viet Nam', 'VN'], [' Virgin Islands, British', 'VG'], [' Virgin Islands, U.S.', 'VI'], [' Wallis and Futuna', 'WF'], [' Western Sahara', 'EH'], [' Yemen', 'YE'], [' Zambia', 'ZM'], [' Zimbabwe', 'ZW'] ], :value => @program.location, :prompt => "Select Location" %>
+  </div>
+
+<div id= "field">
+  Specific Location<br />
+  <%= f.text_field :specific_location, :value => @program.specific_location %></div><br />
+
+	<% if @program.organization_id.nil?%>
+	<div class="demo">
+
+	<div class="ui-widget" width="200px">
+		<label for="tags">Organization: </label>
+		<input id="tags" name="program[organization_name]" />
+	</div>
+	</div>
+	<% else %>
+	<%= Organization.find(@program.organization_id).name%>
+	<% end %><br /><br />
+
+<div class="demo">
+  <div class="ui-widget">
+	<label for="subjects">Program Subjects</label>
+	<input id="subjects" name="program[program_subjects]" style="font-size:.8em" /><br />
+  </div>
+</div>
+
+<div class="demo">
+  <div class="ui-widget">
+	<label for="sizes">Program Sizes</label>
+	<input id="sizes" name="program[program_sizes]" style="font-size:.8em"/><br />
+  </div>
+</div>
+
+<div class="cost_lengths" style="margin-top:20px">
+	<div style="width:150px; height:1px; background-color:black; margin-bottom:10px"></div>
+<ul id="fields">
+
+</ul>
+</div>
+
+<p><a style="color:blue;margin-left:25px" href='#' class="createInput">+ Add a Length &amp; Cost</a></p><br /><br />
+
+
+  <div>Add a Photo<br />
+  <%= f.file_field :photo, :value => @program.photo %></div><br />
+
+<br /><br />
+For the following field, copy the key from the url of the google doc, ie. the alphanumeric sequence after "key=" not including anything after a # symbol<br />
+Example: given this url -  https://docs.google.com/spreadsheet/ccc?key=0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE#gid=0<br />
+I would copy "0AmCJD1Gx5PwxdHc5ZGRGNkd2b192aHlaSTdTWEEwLVE" and paste it into the text box.<br />
+
+  <div>Add a Cost Chart<br />
+  <%= f.text_field :chart, :value => @program.chart %></div>
+	</div>
+	
+	<div class="field">
+    <%= f.check_box :published_docs, :value => @program.published_docs %> <font style="font-size:1.2em">Did you publish the cost_chart Google doc???</font></div>
+	
+	
+	<div class="six columns" style="width:40%">
+  <div id= "field">
+  Program Started (year)<br />
+  <%= f.text_field :program_started, :value => @program.program_started %></div><br />
+
+<div id= "field">
+Start Dates (mm/dd/yyyy)<br />
+<%= f.text_field :start_dates, :value => @program.start_dates %></div><br />
+	
+<div id= "field">
+Program Structure <br />
+<%= f.text_area :program_structure, :value => @program.program_structure %></div><br />
+
+<div id= "field">
+	<%= f.label :partnered_local_organizations %>
+	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations %><br />
+</div>
+<div id= "field">
+	Cost Includes<br />
+	<%= f.text_area :cost_includes, :value => @program.cost_includes %>
+</div><br />
+<div id= "field">
+	Cost Doesn't Include <br />
+	<%= f.text_area :cost_doesnt_include, :value => @program.cost_doesnt_include %>
+</div><br />
+<div id= "field">
+	Program Cost Breakdown<br />
+	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
+</div>
+<div id= "field">
+	Accommodations<br />
+	<%= f.text_field :accommodations, :value => @program.accommodations %>
+</div><br />
+<div id= "field">
+	Link to Site (http://www. ...)<br />
+	<%= f.text_field :check_it_out, :value => @program.check_it_out %>
+</div>
+</div>
+<div class="twelve columns" align="center">
+
+  <div class="actions" style="margin-top:60px">
+    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+
+
+<style>
+textarea {
+	width:350px;
+	height:200px;
+}
+</style>
+
+
+

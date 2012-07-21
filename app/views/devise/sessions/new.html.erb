@@ -1,0 +1,38 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#rememberMe').hide();
+});
+
+function beforeCheck5() {
+	$("#checkBefore5").toggle();
+}
+
+</script>
+
+<div class="container" align="center" style="color:#575758">
+	<% flash.each do |key, value| %>
+	  <%= content_tag(:div, value, :class => "flash #{key}") %>
+	<% end %>
+	<div class="row">
+	<div class="six columns" style="float:center; text-align:left; margin-top:90px; border-left:1px solid #e67b5a; border-right:1px solid #e67b5a">
+	<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
+	<%= form_for(resource, :as => resource_name, :id => "sign_in", :url => session_path(resource_name)) do |f| %>
+	<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email or Username</label>
+			  <%= f.text_field :login, :style => "height:20px; width:200px" %></p>
+
+			  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
+			  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>
+
+			<image style="position:absolute; top:192px; height:25px; left:67px;display:none" id="checkBefore5" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
+			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:56px; margin-top:20px; padding-bottom:5px; margin-left:15%" >
+			<%= f.check_box :remember_me, :style =>"opacity:0;height:20px; width:20px", :onclick => "$(beforeCheck5())"%></div><div style="margin-left:22%; margin-top:-26px; font-size:1.1em"> Remember me</div><br />
+			
+	<p style="margin-left:15%"><%= link_to "Forgot your password?", new_password_path(resource) %></p>
+	  <div style="margin-top:30px; text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+	<br />
+	<% end %>
+</div>
+</div>
+</div>
+

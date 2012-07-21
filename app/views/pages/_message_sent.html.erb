@@ -1,0 +1,47 @@
+<div>
+<table style="margin-left:175px; margin-top:-10px" cellspacing="0" border="0" cellpadding="0" width="80%">
+	<tr>
+		<td width="25%"><b>
+			<% if User.where(:id => m.recipient_id).empty? %>
+			<a style="margin-left:-5px; font-size:1.4em; font-family:chunkFiveRegular; color:#68c2d8" href= "#sent-box<%=m.id%>" class="message-window">???</a>
+			<% else %>
+			<a style="margin-left:-5px; font-size:1.4em; font-family:chunkFiveRegular; color:#68c2d8" href= "#sent-box<%=m.id%>" class="message-window"> <%=User.find(m.recipient_id).username%></a>
+			<% end %>
+			</td>
+		<td width="12%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
+		<td width="43%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%=m.subject%></p></td>
+		<td width="9%"><p style="margin-right:25px;margin-top:5px" align="center">
+		<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/favoritesX.png"), "#delete-box-sent#{m.id}", :class => "delete-window", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'delete-window'"%>
+		</p></td>
+</tr>
+<br />
+</table>
+
+<table id="sent-box<%=m.id%>" class="sent-popup">
+	<tr style="background-color:#E9ECE9"><td>
+		<font style="font-size:1.4em; color:#575758; line-height:2em;">From: 
+		<% if @user_ids.include?(m.sender_id)%>	
+		<%= User.find(m.sender_id).username%>
+		<% else %>
+		<%= "???" %>
+		<% end %>
+		</font></td></tr>
+	  
+	    <tr style="background-color:#E9ECE9"><td><font style="font-size:1.4em; color:#575758; line-height:2em;">Subject: <%= m.subject%></font></td></tr>
+	
+		<tr style="background-color:#E9ECE9"><td><font style="color:#575758; line-height:1.1em;font-size:1.1em"><%= m.body.html_safe%></font></td></tr>
+
+</table>
+
+<table id="delete-box-sent<%=m.id%>" class="delete-popup">
+		<tr><td colspan="2"><p style="font-size:2em; color:#575758; text-align:center">Are you sure?</p></td></tr>
+		<tr style="background-color:#E9ECE9">
+			<td><a class="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
+			<td>
+
+			<%= link_to (image_tag "/assets/RealDeleteReviewButton.png"), "/messages/#{m.id}/mark_deleted", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+
+	</td></tr>
+</table>
+
+</div>

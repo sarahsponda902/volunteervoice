@@ -1,0 +1,1461 @@
+<% if @user.messages_show.nil?%>
+<% @user.messages_show = false%>
+<% @user.save%>
+<% end %>
+
+<% if @user.profile_show.nil?%>
+<% @user.profile_show = false%>
+<% @user.save%>
+<% end %>
+
+
+<% @user_ids = []%>
+<% User.all.each do |g|%>
+<% @user_ids << g.id%>
+<% end %>
+
+
+
+<link rel="stylesheet" href="/assetslightbox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+<script src="/assets/jquery.smooth-scroll.min.js"></script>
+<script src="/assets/lightbox.js"></script>
+
+<script>
+  jQuery(document).ready(function($) {
+      $('a').smoothScroll({
+        speed: 1000,
+        easing: 'easeInOutCubic'
+      });
+  });
+
+</script>
+
+<% @path = request.fullpath.split("/").last%>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+
+<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
+
+<%= javascript_include_tag "/assets/smartpaginator.js"%>
+
+
+<head>
+   
+    <script type="text/javascript">
+
+	var message = <%= @user.messages_show.to_s %>
+	var profile = <%= @user.profile_show.to_s %>
+
+        $(document).ready(function () {
+			<% if @path == "message_deleted" %>
+			$('#green-contents').css('display', 'none');
+            $('#black-contents').css('display', 'none');
+			$('#sent-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#reviewsTab').hide();
+			$('#messagesTab').show();
+			<% end %>
+			
+			<% if @path == "sent_deleted" %>
+			$('#green-contents').css('display', 'none');
+            $('#black-contents').css('display', 'none');
+			$('#red-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#reviewsTab').hide();
+			$('#messagesTab').show();
+			<% end %>
+			
+			<% if @path == "favorite_deleted" %>	
+            $('#black-contents').css('display', 'none');
+            $('#red-contents').css('display', 'none');
+			$('#sent-contents').css('display', 'none');
+			$('#reviewsTab').hide();
+			$('#messagesTab').hide();
+			$('#favoritesTab').show();
+			<% end %>
+			
+			<% if @path == "profile" %>	
+            $('#green-contents').css('display', 'none');
+            $('#red-contents').css('display', 'none');
+			$('#sent-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#messagesTab').hide();
+			$('#reviewsTab').show();
+			<% end %>
+			
+			
+            $('ul li').click(function () {
+				if ($(this).attr('class') != 'navs') {
+                $('#red-contents').css('display', 'none');
+                $('#green-contents').css('display', 'none');
+                $('#black-contents').css('display', 'none');
+				$('#sent-contents').css('display', 'none');
+                if ($(this).attr('id') == '1') {$('#red-contents').fadeIn(300); switchTabs('1'); messagesRead();}
+                if ($(this).attr('id') == '2') {$('#green-contents').fadeIn(300); switchTabs('2');}
+                if ($(this).attr('id') == '3') {$('#black-contents').fadeIn(300); switchTabs('3');}
+				if ($(this).attr('id') == '4') {$('#red-contents').fadeIn(300); switchTabs('4'); messagesRead();}
+                if ($(this).attr('id') == '5') {$('#sent-contents').fadeIn(300); switchTabs('5');}
+				}
+				
+            });
+
+			$('#black').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divs', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+            $('#green').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 1, datacontainer: 'divvys', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'green' });
+
+            $('#red').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divyeas', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'red' });
+
+			$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'red' });
+			
+			$('#user_country').val("<%=current_user.country%>");
+			
+			
+			
+			
+			
+			$('a.upload-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var uploadBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(uploadBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(uploadBox).height() + 24) / 2; 
+				var popMargLeft = ($(uploadBox).width() + 24) / 2; 
+
+				$(uploadBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask"  style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('a.close, #mask').live('click', function() { 
+			  $('#mask , .upload-popup').fadeOut(300 , function() {
+				$('#mask').remove();  
+			}); 
+			return false;
+			});
+			
+			
+			
+				$('a.edit-window').click(function() {
+
+			                //Getting the variable's value from a link 
+					var editBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(editBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(editBox).height() + 24) / 2; 
+					var popMargLeft = ($(editBox).width() + 24) / 2; 
+
+					$(editBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="opacity:.5"></div>');
+					$('#mask').fadeIn(300);
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('a.close, #mask').live('click', function() { 
+				  $('#mask , .edit-popup').fadeOut(300 , function() {
+					$('#mask').remove();  
+				}); 
+				return false;
+				});
+				
+				$('.close-delete-pop').click(function () {
+					$('#mask').fadeOut(300);
+					$('.delete-popup').fadeOut(300);
+					$('#mask').remove();
+				});
+
+				$('a.delete-window').click(function() {
+
+			                //Getting the variable's value from a link 
+					var deleteBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(deleteBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(deleteBox).height() + 24) / 2; 
+					var popMargLeft = ($(deleteBox).width() + 24) / 2; 
+
+					$(deleteBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="opacity:.5"></div>');
+					$('#mask').fadeIn(300);
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('a.close, #mask').live('click', function() { 
+				  $('#mask , .delete-popup').fadeOut(300 , function() {
+					$('#mask').remove();  
+				}); 
+				return false;
+				});
+				
+				
+
+
+				$('a.message-window').click(function() {
+
+			                //Getting the variable's value from a link 
+					var messageBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(messageBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(messageBox).height() + 24) / 2; 
+					var popMargLeft = ($(messageBox).width() + 24) / 2; 
+
+					$(messageBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="opacity:.5"></div>');
+					$('#mask').fadeIn(300);
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('#mask').live('click', function() { 
+				  $('#mask , .m-popup').fadeOut(300 , function() {
+					$('#mask').remove();  
+				}); 
+				return false;
+				});
+				
+				
+			
+				if (message) 
+				{
+					$("#checkMessages").show();
+				} else {
+					$("#checkMessages").hide();
+				}
+
+				if (profile) 
+				{
+					$("#checkBefore").show();
+				} else {
+					$("#checkBefore").hide();
+				}
+
+        });
+
+function switchTabs(id){
+	$('#favoritesTab').hide();
+	$('#messagesTab').hide();
+	$('#reviewsTab').hide();
+	if (id == '1' || id == '4' || id == '5') {
+		$('#messagesTab').show();
+	};
+	if (id == '2') {
+		$('#favoritesTab').show();
+	};
+	if (id == '3') {
+		$('#reviewsTab').show();
+	};
+}
+
+
+function nameFile() {
+	var str="";
+	str= $("#user_photo").val();
+	document.getElementById('filename').value = str.substring(12, str.length);
+}
+
+function clickReviewPhoto() {
+	$("#user_photo").click();
+}
+
+
+function setReviewNum(num) {
+	$("#deleteReviewForm").action = "/reviews/"+num.toString();
+}
+
+function messagesRead() {
+	<% @user.unread_messages = 0 %>
+	<% @user.save %>
+}
+
+function setMessageRecipient(recipient) {
+	$("#recipient_id_field").val(recipient);
+}
+
+function setMessageSender(sender) {
+	$("#sender_id_field").val(sender);
+}
+
+function setMessageSubject(subject) {
+	if (subject.substring(0,3) == "Re:") {
+		$("#subject_field").val(subject);
+	} else {
+		$("#subject_field").val("Re: "+subject);
+	}
+}
+
+function openReplyBox(message_id) {
+	$("#message-box"+message_id).fadeOut(300);
+	$('#mask').fadeOut(300);
+	$('#mask').remove();
+	$('#message-reply').click();
+}
+
+ </script>
+
+</head>
+
+<a href="#message-box" class="message-window" id="message-reply" style="display:none">Reply Link Here</a>
+<% @message = Message.new%>
+<div id="message-box" class="m-popup">
+	<tr><td><p style="font-family:chunkFiveRegular; font-size:2.5em; color:#575758; text-align:center; margin-top:20px; margin-bottom:20px">Reply Message</p></td></tr> 
+	<tr><td>
+	<%= form_for @message do |f|%>
+		<font style="font-size:1.2em; color:#575758; line-height:2em">Subject:</font>
+		<%= f.text_field :subject, :id => "subject_field", :style => "height:20px;width:325px; margin-left:20px"%></td></tr>
+	<tr><td>
+			<%= f.text_area :body, :style => "width:410px;height:75px;overflow:auto; margin-left:20px; margin-right:20px"%>
+			<%= f.hidden_field :sender_id, :id => "sender_id_field"%>
+			<%= f.hidden_field :recipient_id, :id => "recipient_id_field"%>
+			<p style="text-align:center"><%= image_submit_tag "/assets/sendButton.png", :onmousedown =>"this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+	<% end %>
+	</td></tr>
+	
+	
+</div>
+<div class="container">
+	<div class="row">
+	<% if flash.class.name == "Array"%>
+	<% flash.each do |key, value| %>
+	  <div class="flash <%=key%>">
+	<%= pluralize value.length, "errors"%> prevented your changes from being made:<br />
+		<% value.each do |f|%>
+			* <%=f%><br />
+		<% end %>
+	  </div>
+	<% end %>
+	<% end %>
+	</div>
+</div>
+
+
+	<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
+
+	        <div class="row">
+				<div class="eleven columns">
+				<p style="border-top:1px solid #e67b5a; border-bottom:1px solid #F5825A; height:30px"><a href="#edit-box" class="edit-window" style="font-size:1.1em; float:right; margin-right:10px; margin-top:5px">My account</a>	<a href="#upload-box" class="upload-window" style="font-size:1.1em; float:right; padding-left:25px; margin-right:30px; margin-top:5px">Change Profile Image</a> </p>
+				</div>
+			</div>
+			<div class="row" style="margin-top:40px">
+				<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden">
+					<% if !(@user.photo.url.nil?)%>
+				<%=image_tag @user.square_image.url, :style => "height:168px; width:168px"%>
+					<% else %>
+					
+					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
+					<% end %>
+					
+				</div>
+		<div class= "eight columns" style="margin-left:15px; margin-top:-32px">
+	<p style="font-size:3em; line-height:1.7em"><%= @user.username %> </p>
+	</div>
+		<div class="four columns" style="margin-top:10px;float:left; margin-left:15px; padding:5px; padding-right:10px; padding-left:10px; border:1px solid #e67b5a;">
+			<p style="font-size:1.7em; line-height:1.6em; padding-bottom:10px">
+	<%if @user.dob != nil%>
+	<% @now = Time.now.utc.to_date%>
+	Age: <%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
+	<%else%>
+		Age: <%= @user.age %>
+		<%end%>
+	<br />
+	Country: <%= @theCountries[@user.country] %><br />
+
+	<br />
+	<p align="right">
+	</p>
+	</p>
+	</div>
+	</div>
+	</div>
+
+
+
+	<div class= "container" style="margin-top:20px;">
+		<div class="row">
+			<div class="eleven columns" style="background-color:white;  padding-top:50px; margin-left:2%; height:360px; border:1px solid #e67b5a">
+
+
+
+
+
+
+    <div id="wrapper" style="width:100%;">
+        <div style="height: 31.4px;">
+            <ul class="tab" style="margin-left:15px; margin-top:-20px; margin-bottom:0;">
+				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="3">My Reviews</li>
+				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="2">My Favorites</li>
+				<% if current_user.unread_messages == 0 %>
+                <li style="font-family:architectsDaughterRegular; font-size:1.4em; margin-left:-9px" id="1">My Messages</li>
+				<% else %>
+				<li style="font-family:architectsDaughterRegular; font-size:1.4em; margin-left:-9px; color:#e67b5a" id="1">My Messages</li>
+				<% end %>
+            </ul>
+        </div>
+
+		<div style="border-top:1px solid #e67b5a; width:100%; margin-top:10px;">
+			<div id="messagesTab" style="margin-left:378px; margin-top:-55px">
+				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
+				<p style="margin-top:-66px; margin-left:15px; font-family:architectsDaughterRegular; font-size:1.4em;">My Messages</p>
+			</div>
+			<div id="favoritesTab" style="margin-left:197px; margin-top:-55px">
+				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
+					<p style="margin-top:-66px; margin-left:18px; font-family:architectsDaughterRegular; font-size:1.4em;">My Favorites</p>
+			</div>
+			<div id="reviewsTab" style="margin-left:15px; margin-top:-55px">
+				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
+					<p style="margin-top:-66px; margin-left:20px; font-family:architectsDaughterRegular; font-size:1.4em;">My Reviews</p>
+			</div>
+			
+        <div id="red-contents" class="contents" style="margin-top:50px;">
+            <div id="divyeas" style="overflow:hidden">
+		        <ul style="margin-left:25px; margin-top:15px">
+		            <li class="inbox" style="cursor:pointer; font-family:chunkFiveRegular; font-size:2em; color:#e67b5a; line-height:1.5em" id="4">Inbox &nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
+		            <li class="Sent" style="cursor:pointer; font-family:chunkFiveRegular; font-size:2em; color:#e67b5a; line-height:1.5em" id="5">Sent</li>
+		        </ul>
+		       
+		        
+
+              <% if @messages.empty?%>
+			<p style="color:#575758; margin-left:200px; margin-top:-80px">
+              You do not have any messages in your inbox.</p>
+              <% else %>
+			<p style="margin-top:-80px"> </p>
+              <% @messages.each do |m| %>
+
+              <%= render :partial => "message", :locals => {:m => m} %>
+              <%end%>
+
+              <%end%>
+			
+            </div>
+            <div id="red" style="margin-top:-132px; margin-left:5px">
+            </div>
+        </div>
+
+		 <div id="sent-contents" class="contents"  style="margin-top:50px">
+	            <div id="divsents" style="overflow:hidden">
+		
+					<ul style="margin-left:25px; margin-top:15px">
+			            <li class="inbox" style="cursor:pointer; font-family:chunkFiveRegular; font-size:2em; color:#e67b5a; line-height:1.5em" id="4">Inbox</li>
+			            <li class="Sent" style="cursor:pointer; font-family:chunkFiveRegular; font-size:2em; color:#e67b5a; line-height:1.5em" id="5">Sent &nbsp;&nbsp;&nbsp;&nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
+			        </ul>
+
+	              <% if @sent_messages.empty?%>
+	              <p style="color:#575758; margin-left:200px; margin-top:-80px">
+	              You have not yet sent any messages.</p>
+	              <% else %>
+	              <% @sent_messages.each do |m| %>
+
+	              <%= render :partial => "message_sent", :locals => {:m => m} %>
+	              <%end%>
+	              <%end%>
+
+	            </div>
+	            <div id="sent" style="margin-top:-132px; margin-left:5px">
+	            </div>
+	        </div>
+        <div id="green-contents" class="contents"  style="margin-top:40px; width:100%;">
+		<div align="right" style="font-family:architectsDaughterRegular; color: #e67b5a; font-size:1em; margin-right:65px">
+			<%= @favorites.count%> Favorites
+			</div>
+            <div id="divvys" style="overflow:hidden">
+              <% if !((@favorites).empty?) %>
+            <% (@favorites).each do |f|%>
+                <%= render :partial => "favorite", :locals => { :f => f }%>
+              <% end %>
+              <% else %>
+				<p style="margin-left:35px; margin-top:25px; color:#575758">You have not yet added any favorites.</p>
+				<% end %>
+            </div>
+            <div id="green" style="margin-top:-130px; margin-left:5px">
+            </div>
+        </div>
+        <div id="black-contents" class="contents"  style="margin-top:50px;">
+	<div align="right" style="font-family:architectsDaughterRegular; color: #e67b5a; font-size:1em; margin-right:55px; margin-top:-15px">
+		<%= pluralize(@reviews.count, "Review")%>
+		</div>
+            <div id="divs" style="overflow:hidden">
+                <% if @reviews.count != 0 %>
+                <% @reviews.each do |f|%>
+
+                  <%= render :partial => "review", :locals => { :f => f } %>
+
+                  <% end %>
+                  <% else %>
+				<p style="margin-left:35px; margin-top:25px; color:#575758">You have not yet written any reviews.</p>
+				<% end %>
+                
+            </div>
+            <div id="black" style="margin-top:-133px; margin-left:5px"></div>
+            </div>
+			</div>
+
+			</div>
+			</div>
+			</div>
+			</div>
+			
+			
+			
+			<div id="upload-box" class="upload-popup">
+			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
+				  <div style=" display:block;"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/uploadPhoto.png" style="height:40px;margin-top:15px; margin-left:20px; cursor:pointer" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" style="height:25px; width:280px; position:relative; top:-15px; left:25px; background:none; border:none" disabled="true" value="no file selected">
+					  <%= f.hidden_field :crops, :value => true%>
+					  <%= f.file_field :photo, :id => "user_photo", :style => "visibility:hidden", :onchange => "$(nameFile())"%></div>
+				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :height => "40px", :style => "border-radius:10px; float:right; margin-right:20px; margin-top:-50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+				<% end %>
+
+			</div>
+			<div id="edit-box" class="edit-popup">
+				<p style="font-size:2em; font-family:chunkFiveRegular; line-height:1.5em; margin:10px" align="center">My Account</p>
+				<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
+				<div class="six columns" style="width:300px">
+					
+					<p style="margin:15px; font-size:1.3em; font-family:architectsDaughterRegular">My Info</p>
+
+				  <div><%= f.label "Registered Email Address" %>
+				  <%= f.email_field :email, :style => "height:20px; width:198px" %></div><br />
+				<div>
+<%= f.label :country %>
+				  <div style="position:absolute;top:135px; height:30px; width:198px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+					 <select style="position:absolute; border:1px solid #575758; left:-5px; width:225px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" id="user_country" name="user[country]">
+					<option value="AF"> Afghanistan</option>
+					<option value="AX"> Åland Islands</option>
+					<option value="AL"> Albania</option>
+					<option value="DZ"> Algeria</option>
+					<option value="AS"> American Samoa</option>
+					<option value="AD"> Andorra</option>
+					<option value="AO"> Angola</option>
+					<option value="AI"> Anguilla</option>
+					<option value="AQ"> Antarctica</option>
+					<option value="AG"> Antigua and Barbuda</option>
+					<option value="AR"> Argentina</option>
+					<option value="AM"> Armenia</option>
+					<option value="AW"> Aruba</option>
+					<option value="AU"> Australia</option>
+					<option value="AT"> Austria</option>
+					<option value="AZ"> Azerbaijan</option>
+					<option value="BS"> Bahamas</option>
+					<option value="BH"> Bahrain</option>
+					<option value="BD"> Bangladesh</option>
+					<option value="BB"> Barbados</option>
+					<option value="BY"> Belarus</option>
+					<option value="BE"> Belgium</option>
+					<option value="BZ"> Belize</option>
+					<option value="BJ"> Benin</option>
+					<option value="BM"> Bermuda</option>
+					<option value="BT"> Bhutan</option>
+					<option value="BO"> Bolivia, Plurinational State of</option>
+					<option value="BQ"> Bonaire, Sint Eustatius and Saba</option>
+					<option value="BA"> Bosnia and Herzegovina</option>
+					<option value="BW"> Botswana</option>
+					<option value="BV"> Bouvet Island</option>
+					<option value="BR"> Brazil</option>
+					<option value="IO"> British Indian Ocean Territory</option>
+					<option value="BN"> Brunei Darussalam</option>
+					<option value="BG"> Bulgaria</option>
+					<option value="BF"> Burkina Faso</option>
+					<option value="BI"> Burundi</option>
+					<option value="KH"> Cambodia</option>
+					<option value="CM"> Cameroon</option>
+					<option value="CA"> Canada</option>
+					<option value="CV"> Cape Verde</option>
+					<option value="KY"> Cayman Islands</option>
+					<option value="CF"> Central African Republic</option>
+					<option value="TD"> Chad</option>
+					<option value="CL"> Chile</option>
+					<option value="CN"> China</option>
+					<option value="CX"> Christmas Island</option>
+					<option value="CC"> Cocos (Keeling) Islands</option>
+					<option value="CO"> Colombia</option>
+					<option value="KM"> Comoros</option>
+					<option value="CG"> Congo</option>
+					<option value="CD"> Congo, the Democratic Republic of the</option>
+					<option value="CK"> Cook Islands</option>
+					<option value="CR"> Costa Rica</option>
+					<option value="CI"> Côte d'Ivoire</option>
+					<option value="HR"> Croatia</option>
+					<option value="CU"> Cuba</option>
+					<option value="CW"> Curaçao</option>
+					<option value="CY"> Cyprus</option>
+					<option value="CZ"> Czech Republic</option>
+					<option value="DK"> Denmark</option>
+					<option value="DJ"> Djibouti</option>
+					<option value="DM"> Dominica</option>
+					<option value="DO"> Dominican Republic</option>
+					<option value="EC"> Ecuador</option>
+					<option value="EG"> Egypt</option>
+					<option value="SV"> El Salvador</option>
+					<option value="GQ"> Equatorial Guinea</option>
+					<option value="ER"> Eritrea</option>
+					<option value="EE"> Estonia</option>
+					<option value="ET"> Ethiopia</option>
+					<option value="FK"> Falkland Islands (Malvinas)</option>
+					<option value="FO"> Faroe Islands</option>
+					<option value="FJ"> Fiji</option>
+					<option value="FI"> Finland</option>
+					<option value="FR"> France</option>
+					<option value="GF"> French Guiana</option>
+					<option value="PF"> French Polynesia</option>
+					<option value="TF"> French Southern Territories</option>
+					<option value="GA"> Gabon</option>
+					<option value="GM"> Gambia</option>
+					<option value="GE"> Georgia</option>
+					<option value="DE"> Germany</option>
+					<option value="GH"> Ghana</option>
+					<option value="GI"> Gibraltar</option>
+					<option value="GR"> Greece</option>
+					<option value="GL"> Greenland</option>
+					<option value="GD"> Grenada</option>
+					<option value="GP"> Guadeloupe</option>
+					<option value="GU"> Guam</option>
+					<option value="GT"> Guatemala</option>
+					<option value="GG"> Guernsey</option>
+					<option value="GN"> Guinea</option>
+					<option value="GW"> Guinea-Bissau</option>
+					<option value="GY"> Guyana</option>
+					<option value="HT"> Haiti</option>
+					<option value="HM"> Heard Island and McDonald Islands</option>
+					<option value="VA"> Holy See (Vatican City State)</option>
+					<option value="HN"> Honduras</option>
+					<option value="HK"> Hong Kong</option>
+					<option value="HU"> Hungary</option>
+					<option value="IS"> Iceland</option>
+					<option value="IN"> India</option>
+					<option value="ID"> Indonesia</option>
+					<option value="IR"> Iran, Islamic Republic of</option>
+					<option value="IQ"> Iraq</option>
+					<option value="IE"> Ireland</option>
+					<option value="IM"> Isle of Man</option>
+					<option value="IL"> Israel</option>
+					<option value="IT"> Italy</option>
+					<option value="JM"> Jamaica</option>
+					<option value="JP"> Japan</option>
+					<option value="JE"> Jersey</option>
+					<option value="JO"> Jordan</option>
+					<option value="KZ"> Kazakhstan</option>
+					<option value="KE"> Kenya</option>
+					<option value="KI"> Kiribati</option>
+					<option value="KP"> Korea, Democratic People's Republic of</option>
+					<option value="KR"> Korea, Republic of</option>
+					<option value="KW"> Kuwait</option>
+					<option value="KG"> Kyrgyzstan</option>
+					<option value="LA"> Lao People's Democratic Republic</option>
+					<option value="LV"> Latvia</option>
+					<option value="LB"> Lebanon</option>
+					<option value="LS"> Lesotho</option>
+					<option value="LR"> Liberia</option>
+					<option value="LY"> Libya</option>
+					<option value="LI"> Liechtenstein</option>
+					<option value="LT"> Lithuania</option>
+					<option value="LU"> Luxembourg</option>
+					<option value="MO"> Macao</option>
+					<option value="MK"> Macedonia, the former Yugoslav Republic of</option>
+					<option value="MG"> Madagascar</option>
+					<option value="MW"> Malawi</option>
+					<option value="MY"> Malaysia</option>
+					<option value="MV"> Maldives</option>
+					<option value="ML"> Mali</option>
+					<option value="MT"> Malta</option>
+					<option value="MH"> Marshall Islands</option>
+					<option value="MQ"> Martinique</option>
+					<option value="MR"> Mauritania</option>
+					<option value="MU"> Mauritius</option>
+					<option value="YT"> Mayotte</option>
+					<option value="MX"> Mexico</option>
+					<option value="FM"> Micronesia, Federated States of</option>
+					<option value="MD"> Moldova, Republic of</option>
+					<option value="MC"> Monaco</option>
+					<option value="MN"> Mongolia</option>
+					<option value="ME"> Montenegro</option>
+					<option value="MS"> Montserrat</option>
+					<option value="MA"> Morocco</option>
+					<option value="MZ"> Mozambique</option>
+					<option value="MM"> Myanmar</option>
+					<option value="NA"> Namibia</option>
+					<option value="NR"> Nauru</option>
+					<option value="NP"> Nepal</option>
+					<option value="NL"> Netherlands</option>
+					<option value="NC"> New Caledonia</option>
+					<option value="NZ"> New Zealand</option>
+					<option value="NI"> Nicaragua</option>
+					<option value="NE"> Niger</option>
+					<option value="NG"> Nigeria</option>
+					<option value="NU"> Niue</option>
+					<option value="NF"> Norfolk Island</option>
+					<option value="MP"> Northern Mariana Islands</option>
+					<option value="NO"> Norway</option>
+					<option value="OM"> Oman</option>
+					<option value="PK"> Pakistan</option>
+					<option value="PW"> Palau</option>
+					<option value="PS"> Palestinian Territory, Occupied</option>
+					<option value="PA"> Panama</option>
+					<option value="PG"> Papua New Guinea</option>
+					<option value="PY"> Paraguay</option>
+					<option value="PE"> Peru</option>
+					<option value="PH"> Philippines</option>
+					<option value="PN"> Pitcairn</option>
+					<option value="PL"> Poland</option>
+					<option value="PT"> Portugal</option>
+					<option value="PR"> Puerto Rico</option>
+					<option value="QA"> Qatar</option>
+					<option value="RE"> Réunion</option>
+					<option value="RO"> Romania</option>
+					<option value="RU"> Russian Federation</option>
+					<option value="RW"> Rwanda</option>
+					<option value="BL"> Saint Barthélemy</option>
+					<option value="SH"> Saint Helena, Ascension and Tristan da Cunha</option>
+					<option value="KN"> Saint Kitts and Nevis</option>
+					<option value="LC"> Saint Lucia</option>
+					<option value="MF"> Saint Martin (French part)</option>
+					<option value="PM"> Saint Pierre and Miquelon</option>
+					<option value="VC"> Saint Vincent and the Grenadines</option>
+					<option value="WS"> Samoa</option>
+					<option value="SM"> San Marino</option>
+					<option value="ST"> Sao Tome and Principe</option>
+					<option value="SA"> Saudi Arabia</option>
+					<option value="SN"> Senegal</option>
+					<option value="RS"> Serbia</option>
+					<option value="SC"> Seychelles</option>
+					<option value="SL"> Sierra Leone</option>
+					<option value="SG"> Singapore</option>
+					<option value="SX"> Sint Maarten (Dutch part)</option>
+					<option value="SK"> Slovakia</option>
+					<option value="SI"> Slovenia</option>
+					<option value="SB"> Solomon Islands</option>
+					<option value="SO"> Somalia</option>
+					<option value="ZA"> South Africa</option>
+					<option value="GS"> South Georgia and the South Sandwich Islands</option>
+					<option value="SS"> South Sudan</option>
+					<option value="ES"> Spain</option>
+					<option value="LK"> Sri Lanka</option>
+					<option value="SD"> Sudan</option>
+					<option value="SR"> Suriname</option>
+					<option value="SJ"> Svalbard and Jan Mayen</option>
+					<option value="SZ"> Swaziland</option>
+					<option value="SE"> Sweden</option>
+					<option value="CH"> Switzerland</option>
+					<option value="SY"> Syrian Arab Republic</option>
+					<option value="TW"> Taiwan, Province of China</option>
+					<option value="TJ"> Tajikistan</option>
+					<option value="TZ"> Tanzania, United Republic of</option>
+					<option value="TH"> Thailand</option>
+					<option value="TL"> Timor-Leste</option>
+					<option value="TG"> Togo</option>
+					<option value="TK"> Tokelau</option>
+					<option value="TO"> Tonga</option>
+					<option value="TT"> Trinidad and Tobago</option>
+					<option value="TN"> Tunisia</option>
+					<option value="TR"> Turkey</option>
+					<option value="TM"> Turkmenistan</option>
+					<option value="TC"> Turks and Caicos Islands</option>
+					<option value="TV"> Tuvalu</option>
+					<option value="UG"> Uganda</option>
+					<option value="UA"> Ukraine</option>
+					<option value="AE"> United Arab Emirates</option>
+					<option value="GB"> United Kingdom</option>
+					<option value="US"> United States</option>
+					<option value="UM"> United States Minor Outlying Islands</option>
+					<option value="UY"> Uruguay</option>
+					<option value="UZ"> Uzbekistan</option>
+					<option value="VU"> Vanuatu</option>
+					<option value="VE"> Venezuela, Bolivarian Republic of</option>
+					<option value="VN"> Viet Nam</option>
+					<option value="VG"> Virgin Islands, British</option>
+					<option value="VI"> Virgin Islands, U.S.</option>
+					<option value="WF"> Wallis and Futuna</option>
+					<option value="EH"> Western Sahara</option>
+					<option value="YE"> Yemen</option>
+					<option value="ZM"> Zambia</option>
+					<option value="ZW"> Zimbabwe</option></select>
+				</div>
+				 <image style="position:absolute; height:25px; top:196px; left:2px;" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" >
+					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:70px; padding-bottom:5px;" >
+					<input id="user_profile_show" name="user[profile_show]" onclick="$(beforeCheck())" type="checkbox" style="opacity:0;margin-left:0px; height:15px; width:15px"/></div><div style="margin-left:33px; margin-top:-26px; font-size:.85em"> Hide my age/country on my profile</div><br />
+					
+					<image style="position:absolute; height:25px; top:225px; left:2px;" id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" >
+					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:0px; padding-bottom:5px;" >
+					<input id="user_messages_show" name="user[messages_show]" onclick="$(messagesCheck())" type="checkbox" style="opacity:0;margin-left:0px; height:15px; width:15px"/></div><div style="margin-left:33px; margin-top:-34px; font-size:.85em"> Do not allow others to send me<br />messages</div><br />
+				
+				</div>
+				
+				<div style="margin-top:25px; margin-left:215px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+				
+				
+								<p style="margin-top:10px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
+				</div>
+				<div class="six columns" style=" margin-top:-375px; width:250px; padding-left:30px">
+					
+					<p style="margin:15px; font-family:architectsDaughterRegular; font-size:1.3em">My Password</p>
+
+				  <div><%= f.label :password %>
+				  <%= f.password_field :password, :autocomplete => "off", :style =>"height:20px; width:198px"%></div><br />
+
+				  <div><%= f.label :password_confirmation %>
+				  <%= f.password_field :password_confirmation, :style =>"height:20px; width:198px"%></div><br />
+
+				  <div><%= f.label "Current Password (needed for change)"%>
+				  <%= f.password_field :current_password, :style =>"height:20px; width:198px" %></div>
+				
+				<% end %>
+				
+										<div style="height:240px; width:1px; top:15px; background-color: #575758; position:absolute; left:-20px"></div>
+
+			</div>
+			
+
+	<style type="text/css">
+
+        #wrapper
+        {
+
+            width: 800px;
+
+        }
+		
+        .contents
+        {
+			height: 290px;
+            width: 98%; /*height: 150px;*/
+            margin: 0;
+
+        }
+        .contents > p
+        {
+            padding: 8px;
+        }
+
+		.table
+        {
+            width: 100%;
+            border-right: solid 1px #5f9000;
+        }
+        .table th, .table td
+        {
+            width: 16%;
+            height: 20px;
+            padding: 4px;
+            text-align: left;
+        }
+        .table th
+        {
+            border-left: solid 1px #5f9000;
+        }
+        .table td
+        {
+            border-left: solid 1px #5f9000;
+            border-bottom: solid 1px #5f9000;
+        }
+
+        .header
+        {
+            background-color: #4f7305;
+            color: White;
+        }
+        #divs
+        {
+            margin: 10;
+            height: 100%;
+            font: verdana;
+            font-size: 14px;
+            background-color: White;
+        }
+        #divs > div
+        {
+            width: 98%;
+
+        }
+        #divs > div p
+        {
+            width: 95%;
+
+        }
+
+		#divvys
+        {
+            margin: 10;
+            height: 100%;
+            font: verdana;
+            font-size: 14px;
+            background-color: White;
+        }
+        #divvys > div
+        {
+            width: 98%;
+
+        }
+        #divvys > div p
+        {
+            width: 95%;
+
+        }
+
+		#divyeas
+        {
+            margin: 10;
+            height: 100%;
+            font: verdana;
+            font-size: 14px;
+            background-color: White;
+			position:relative;
+        }
+        #divyeas > div
+        {
+            width: 98%;
+
+        }
+        #divyeas > div p
+        {
+            width: 95%;
+
+        }
+
+		#divsents
+        {
+            margin: 10;
+            height: 100%;
+            font: verdana;
+            font-size: 14px;
+            background-color: White;
+			position:relative;
+        }
+        #divysents > div
+        {
+            width: 98%;
+
+        }
+        #divsents > div p
+        {
+            width: 95%;
+
+        }
+
+        ul.tab
+        {
+            list-style: none;
+            margin-bottom: 20px;
+            padding-bottom: 0;
+        }
+        ul.tab li
+        {
+            display: inline;
+			padding-left:15px;
+			padding-right:25px;
+			padding-bottom:50px;
+			padding-top:5px;
+			margin-left:6px;
+			margin-right:6px;
+            color: Black;
+            cursor: pointer;
+			width:200px;
+			background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/inactiveTab.png) no-repeat;
+        }
+
+	
+	
+	</style>
+
+
+
+<!-- UPLOAD PHOTO POPUP -->
+
+
+
+
+			<style>
+			/* Mask for background, by default is not display */
+			#mask {
+				display: none;
+				background: #000; 
+				position: fixed; left: 0; top: 0; 
+				width: 100%; height: 100%;
+				opacity: 0.8;
+				z-index: 999;
+			}
+
+			/* You can customize to your needs  */
+			.upload-popup{
+				display:none;
+				background: #D9DEDA;
+				padding: 10px; 	
+				border: 3px solid #68c2d8;
+				float: left;
+				font-size: 1.2em;
+				position: fixed;
+				top: 50%; left: 50%;
+				z-index: 99999;
+				box-shadow: 0px 0px 20px #999; /* CSS3 */
+			        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+			        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+				border-radius:3px 3px 3px 3px;
+			        -moz-border-radius: 3px; /* Firefox */
+			        -webkit-border-radius: 3px; /* Safari, Chrome */
+			}
+			
+			.delete-popup{
+				display:none;
+				background: #E9ECE9;
+				padding: 10px; 	
+				border: 2px solid #6aaeba;
+				float: left;
+				color:#575758;
+				font-size: 1.1em;
+				position: fixed;
+				top: 50%; left: 50%;
+				z-index: 99999;
+				box-shadow: 0px 0px 20px #999; /* CSS3 */
+			        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+			        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+				border-radius:3px 3px 3px 3px;
+			        -moz-border-radius: 3px; /* Firefox */
+			        -webkit-border-radius: 3px; /* Safari, Chrome */
+			}
+			
+			.sent-popup{
+				display:none;
+				background: #D9DEDA;
+				padding: 10px; 	
+				border: 3px solid #68c2d8;
+				float: left;
+				font-size: 1.2em;
+				position: fixed;
+				top: 50%; left: 50%;
+				z-index: 99999;
+				box-shadow: 0px 0px 20px #999; /* CSS3 */
+			        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+			        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+				border-radius:3px 3px 3px 3px;
+			        -moz-border-radius: 3px; /* Firefox */
+			        -webkit-border-radius: 3px; /* Safari, Chrome */
+			}
+			.edit-popup{
+				display:none;
+				background: #E3E6D5;
+				padding: 10px; 
+				color:#575758;	
+				border: 3px solid #68c2d8;
+				float: left;
+				font-size: 1.2em;
+				position: fixed;
+				top: 50%; left: 50%;
+				z-index: 99999;
+				box-shadow: 0px 0px 20px #999; /* CSS3 */
+			        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+			        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+				border-radius:3px 3px 3px 3px;
+			        -moz-border-radius: 3px; /* Firefox */
+			        -webkit-border-radius: 3px; /* Safari, Chrome */
+			}
+
+			fieldset { 
+				border:none; 
+			}
+
+			form.sign_in .textbox label { 
+				display:block; 
+				padding-bottom:7px; 
+			}
+
+			form.sign_in .textbox span { 
+				display:block;
+			}
+
+			form.sign_in p, form.sign_in span { 
+				color:#999; 
+				font-size:11px; 
+				line-height:18px;
+			} 
+
+			form.sign_in .textbox input { 
+				background:#666666; 
+				border-bottom:1px solid #333;
+				border-left:1px solid #000;
+				border-right:1px solid #333;
+				border-top:1px solid #000;
+				color:#fff; 
+			        border-radius: 3px 3px 3px 3px;
+				-moz-border-radius: 3px;
+			        -webkit-border-radius: 3px;
+				font:13px Arial, Helvetica, sans-serif;
+				padding:6px 6px 4px;
+				width:200px;
+			}
+
+			form.sign_in input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
+			form.sign_in input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
+
+			.button { 
+				background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+				background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+				background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+			        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+				border-color:#000; 
+				border-width:1px;
+			        border-radius:4px 4px 4px 4px;
+				-moz-border-radius: 4px;
+			        -webkit-border-radius: 4px;
+				color:#333;
+				cursor:pointer;
+				display:inline-block;
+				padding:6px 6px 4px;
+				margin-top:10px;
+				font:12px; 
+				width:214px;
+			}
+			.button:hover { background:#ddd; }
+
+			</style>
+
+
+<script style="text/javascript">
+$("#btnPrev").click(function() { currentPage = parseInt(list.find('li a.active').text()) - 1; navigate(--currentPage); }).addClass('btn');
+
+$("#btnNext").click(function() { currentPage = parseInt(list.find('li a.active').text()); navigate(currentPage); }).addClass('btn');
+</script>
+
+<script type="text/javascript">
+function beforeCheck() {
+	$('#checkBefore').toggle();
+}
+
+function messagesCheck() {
+	$('#checkMessages').toggle();
+}
+</script>
+
+
+
+<div id="flag-box" class="flag-popup">
+	<% if user_signed_in? %>
+  	<%= form_tag ('/flags') %>
+
+	  <div class="field">
+	    <p style="text-align:center; font-size:1.05em; font-family:cabinRegular; padding-bottom:80px; color:#575758">Report this review for<br />inappropriate content</p>
+		
+		
+		<div class="three columns" style="position:absolute; left:0;top:70px; height:30px; width:250px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+		<select id="category" name="category" style="position:absolute; left:-5px; width:277px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;">
+			<option"Unrelated to Volunteer Trip">Unrelated to Volunteer Trip</option>
+			<option ""><font style="font-Style:italic">Category - </font></option>
+			<option "Spamming">Spamming</option>
+			<option "Harsh Language">Harsh Language</option>
+			<option "Promotion/Advertising">Promotion/Advertising</option>
+			<option "Adult Content">Adult Content</option>
+			<option "Other">Other</option></select></div>
+			
+			
+	<p style="width:150px; height:100px"><textarea id="body" style="height:115px; font-size:0.7em; font-style:italic" onclick="if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');" name="body">Please describe.</textarea>
+	  </div>
+	  <div class="field">
+	    <%hidden_field_tag :flagger_id, :value => current_user.id %>
+	  </div>
+	  <div class="field">
+	    <%hidden_field_tag :poster_id, :value => params[:poster_id] %>
+	  </div>
+	  <div class="field">
+	    <%hidden_field_tag :review_id, :value => params[:review_id] %>
+	  </div>
+
+	  <div class="actions">
+	    <p style="text-align:center; padding-top:15px"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px", :onmouseup => "this.className = 'nothing'", :onmousedown => "this.className = 'shadowed'" %></p>
+	  </div>
+	<% else %>
+	You must be signed in to flag a review.
+	<% end %>
+
+</div>
+
+
+
+
+<style>
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+/* You can customize to your needs  */
+.popup-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 3px solid #6aaeba;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+/* You can customize to your needs  */
+.flag-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 2px solid #575758;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+.delete-popup{
+	display:none;
+	background: #E9ECE9;
+	padding: 10px; 	
+	border: 2px solid #6aaeba;
+	float: left;
+	color:#575758;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+
+fieldset { 
+	border:none; 
+}
+
+form.show_chart .textbox label { 
+	display:block; 
+	padding-bottom:7px; 
+}
+
+form.show_chart .textbox span { 
+	display:block;
+}
+
+form.show_chart p, form.show_chart span { 
+	color:#999; 
+	font-size:11px; 
+	line-height:18px;
+} 
+
+form.show_chart .textbox input { 
+	background:#666666; 
+	border-bottom:1px solid #333;
+	border-left:1px solid #000;
+	border-right:1px solid #333;
+	border-top:1px solid #000;
+	color:#fff; 
+        border-radius: 3px 3px 3px 3px;
+	-moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+	font:13px Arial, Helvetica, sans-serif;
+	padding:6px 6px 4px;
+	width:200px;
+}
+
+form.show_chart input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
+form.show_chart input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
+
+.button { 
+	background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+	background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+	background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+	border-color:#000; 
+	border-width:1px;
+        border-radius:4px 4px 4px 4px;
+	-moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+	color:#333;
+	cursor:pointer;
+	display:inline-block;
+	padding:6px 6px 4px;
+	margin-top:10px;
+	font:12px; 
+	width:214px;
+}
+.button:hover { background:#ddd; }
+
+a.edit-window { color: #68c2d8 }
+a.upload-window { color: #68c2d8 }
+
+a.edit-window:hover { color: #e67b5a }
+a.upload-window:hover { color: #e67b5a }
+
+
+
+</style>
+
+<style>
+
+.m-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 3px solid #68c2d8;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	width:450px;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+</style>
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	
+	
+	$('a.popup-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var popupBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(popupBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(popupBox).height() + 24) / 2; 
+		var popMargLeft = ($(popupBox).width() + 24) / 2; 
+
+		$(popupBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:0.5"></div>');
+		$('#mask').fadeIn(300)
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .popup-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	
+	$('a.sent-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var sentBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(sentBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(sentBox).height() + 24) / 2; 
+		var popMargLeft = ($(sentBox).width() + 24) / 2; 
+
+		$(sentBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .sent-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+
+});
+
+
+</script>
+
+<style>
+a.reviewOrgLink:link{color:#6aaeba}
+a.reviewOrgLink:active{color:#6aaeba}
+a.reviewOrgLink:visited{color:#6aaeba}
+a.reviewOrgLink:hover{color:#e67b5a}
+
+a.cancel-account:link{color:#575758}
+a.cancel-account:active{color:#575758}
+a.cancel-account:visited{color:#575758}
+a.cancel-account:hover{color:#e67b5a}
+
+</style>

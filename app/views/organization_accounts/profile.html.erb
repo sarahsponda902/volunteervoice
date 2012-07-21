@@ -1,0 +1,235 @@
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css" type="text/css" />
+
+<link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn-history/r3882/trunk/themes/base/jquery.ui.autocomplete.css" type="text/css" />
+
+<script type="text/javascript" src="/assets/jquery.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.close-delete-pop').click(function () {
+		$('#mask').fadeOut(300);
+		$('.delete-popup').fadeOut(300);
+		$('#mask').remove();
+	});
+	
+	$('a.delete-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var deleteBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(deleteBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(deleteBox).height() + 24) / 2; 
+		var popMargLeft = ($(deleteBox).width() + 24) / 2; 
+
+		$(deleteBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .delete-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	
+});
+</script>
+
+
+<script type="text/javascript">
+var programs_array = new Object();
+	<% Program.where(:organization_id => @organization.id).each do |f|%>
+	programs_array["<%= f.name %>"] = "<%= f.id %>";
+	<% end %>
+$(function() {
+	var availableTags = [
+		<% Program.where(:organization_id => @organization.id).each do |f| %>
+		"<%=f.name%>", 
+		<% end %>
+		];
+	$( "#tags" ).autocomplete({
+		source: availableTags,
+		select: function(event, ui) {
+			$("#buttons").show();
+			$("#tags").blur();			
+			$("#view_edit").attr("href", "/programs/"+programs_array[ui.item.value]);
+			$("#delete_button").attr("action", "/programs/"+programs_array[ui.item.value]);
+		}
+	});
+});
+
+	</script>
+
+<div class="container" style="margin-left:5%; margin-top:30px; margin-right:5%">
+
+        <div class="row">
+			<div class="eleven columns">
+			<p style="border-top:1px solid #e67b5a; border-bottom:1px solid #e67b5a; height:30px"></p>
+			</div>
+		</div>
+		<div class="row" style="margin-top:40px">
+			<div class="three columns" style="float:left; height:115px; width:115px; overflow:hidden">
+				<% if !(@organization.image.url.nil?)%>
+			<%=image_tag @organization.square_image.url, :style => "height:100px; width:100px"%>
+				<% else %>
+				
+				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
+				<% end %>
+				
+			</div>
+	<div class= "eight columns" style="margin-left:15px; margin-top:-32px">
+<p style="font-size:2em; line-height:1.7em"><%= @organization.name %><font style="font-size:0.5em"> <%= link_to "-- edit profile", @organization, :style => "color: #62acbd"%></font></p>
+</div>
+	<div class="four columns" style="margin-top:10px;float:left; margin-left:15px; padding:5px; padding-right:10px; padding-left:10px; border:1px solid #e67b5a;">
+		<p style="font-size:1.4em; line-height:1.6em; padding-bottom:10px">
+Country: <%= @theCountries[@organization_account.country] %><br />
+Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.last_name%>
+<br />
+</p>
+</div>
+<div class="four columns" style="float:right">
+<p style="margin-top:-40px;"><%= render :partial => "bigStar", :locals => {:star => @organization.roundup(@overall)}%></p>
+<br />
+
+<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em; margin-left:7px; margin-top:-10px">Based on <%= pluralize @reviews.count, "reviews"%></p>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container" style="margin-top:20px;">
+	<div class="row">
+		<div class="ten columns" style="float:left; margin-left:5%">
+			<p style="font-family:architectsDaughterRegular; font-size:1.2em; color:#e67b5a;"> You have <%= pluralize @organization.programs.count, "Active Program"%></p>
+		</div>
+		<div class="eleven columns" style="margin-top:20px;">
+			<div class="four columns" style="margin-top:-3px">
+				<%= link_to (image_tag "/assets/newProgram.png"), "/programs/new", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+			</div>
+			<div class="five columns">
+				<input type="text" id="tags" value="Type to Search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="this.value = ''; this.style.fontStyle = 'normal'; $('#buttons').hide();">
+			</div>
+			<div id="buttons" style="display:none;">
+				<div style="float:left; margin-top:-3px">
+					<a href="#" id="view_edit"><%= image_tag "/assets/viewEdit.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
+				</div>
+				<div style="float:left; margin-left:15px; margin-top:-3px">
+					<a href="#delete-box" id="delete" class="delete-window"><%= image_tag "/assets/deleteProgram.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
+				</div>
+			</div>
+		</div>
+		<div class="eleven columns" style="margin-top:30px; float:left">
+			<table style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
+				<% @organization.programs.each do |f| %>
+					<tr style="border-bottom:1px solid #575758">
+						<td style="width:88%; border-right:1px solid #575758">
+							<font style="font-weight:600">Program Name: </font>
+								<%= f.name%><br />
+							<font style="font-weight:600">Country: </font> 
+								<%= @theCountries[f.location]%><br />
+							<font style="font-weight:600">Description: </font>
+								<div style="margin-left:15px;"><%= f.truncated_description100.html_safe%></div>
+						</td>
+						<td style="width:12%">
+							<p style="margin-top:5px; text-align:center"><a style="color:#68c2d8" href="/programs/<%=f.id%>">View/Edit</a></p>
+							<p style="margin-top:15px; text-align:center"><%= link_to "Delete", "#delete-box", :class => "delete-window", :style => "color:#e67b5a", :onclick => "$('#delete_button').attr('action', '/programs/#{f.id}')" %></p>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<table id="delete-box" class="delete-popup">
+	<tr><td colspan="2"><p style="font-size:2em; color:#575758; text-align:center">Are you sure?</p></td></tr>
+	<tr style="background-color:#E9ECE9">
+		<td><a class="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
+		<td>
+		<form action="#" id="delete_button" class="edit_program" method="post">
+			<input name="_method" type="hidden" value="delete">
+			<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+		<%= image_submit_tag "/assets/RealDeleteReviewButton.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+
+		</form>
+</td></tr>
+</table>
+
+
+<style>
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+.delete-popup{
+	display:none;
+	background: #E9ECE9;
+	padding: 10px; 	
+	border: 2px solid #6aaeba;
+	float: left;
+	color:#575758;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<p>
+  <b>Body:</b>
+  <%= @feedback.body.html_safe %>
+</p>
+
+<p>
+  <b>User id:</b>
+  <%= @feedback.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+<%= link_to 'Back', feedbacks_path %>
+<%= link_to 'Delete', :controller => "feedbacks", :action => "destroy", :id => @feedback.id %>
