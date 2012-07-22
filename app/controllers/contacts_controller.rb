@@ -70,10 +70,13 @@ end
   def destroy
     @contact = Contact.find(params[:id])
     @contact.destroy
-
+    if user_signed_in? && current_user.admin?
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to "/organization_accounts" }
       format.json { head :no_content }
+    end
+    else
+      redirect_to root_path
     end
   end
 end
