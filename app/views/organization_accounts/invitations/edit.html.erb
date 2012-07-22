@@ -5,6 +5,8 @@
   <%= f.hidden_field :invitation_token %>
 
   This profile will allow you to edit the information we have stored for <%= Organization.find(resource.organization_id).name%> and all its programs.
+  <p><%= f.label :username %>
+  <%= f.text_field :username %></p>
 
   <p><%= f.label :first_name %>
   <%= f.text_field :first_name %></p>
