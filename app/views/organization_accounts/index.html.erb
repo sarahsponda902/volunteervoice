@@ -24,18 +24,17 @@ $(function() {
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-<p align="center" style="font-size:3em; margin-top:50px">Listing Organization Accounts</p><br />
+<p align="center" style="font-size:3em; margin-top:50px">Organization Accounts</p><br />
 
-<div align="center" style="margin-top:20px">
+<div align="center" style="margin-top:20px; width:auto; background-color:lightblue">
 <p align="center" style="font-size:1.4em">Invite an Existing Organization </p>
 <%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
 	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
 	Contact's Email<br /><input name="email" type="email" /><br /><br />
 <%= submit_tag "Send New Invitation"%>
 <% end %>
-<br /><br />
 </div>
-
+<br /><br />
 <p style="font-size:1.6em">Uninvited Organizations</p><br />
 <table>
 	<tr>
@@ -49,7 +48,7 @@ $(function() {
 </table>
 
 <br /><br /><br />
-<p style="font-size:1.6em">Unapproved Organization Account Requests</p><br />
+<p style="font-size:1.6em">Unapproved Organization Accounts</p><br />
 <table>
 	<tr>
 		<th>Has a Profile?</th>
