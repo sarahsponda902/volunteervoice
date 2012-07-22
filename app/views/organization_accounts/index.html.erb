@@ -1,5 +1,7 @@
 <h1>Listing organization_accounts</h1>
 
+<%= link_to 'New Organization account', new_organization_account_path %>
+
 <table>
   <tr>
     <th>Company Name</th>
@@ -60,16 +62,13 @@
 	</td>
 	<td>
 		<% if oa.invitation_accepted_at.nil? %>
-		<%= link_to image_tag "/assets/resend.png", "/organization_accounts/#{oa.id}/resend_invitation"%>
+		<%= link_to (image_tag "/assets/resend.png"), "/organization_accounts/#{oa.id}/resend_invitation"%>
 		<% end %>
 	</td>
     <td><%= link_to 'Show', oa %></td>
     <td><%= link_to 'Edit', edit_organization_account_path(oa) %></td>
-    <td><%= link_to 'Destroy', oa, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= button_to 'Delete', oa, method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Organization account', new_organization_account_path %>
