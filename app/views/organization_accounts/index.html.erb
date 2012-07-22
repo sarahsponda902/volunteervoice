@@ -24,14 +24,17 @@ $(function() {
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-<p align="center" style="font-size:3em">Listing organization_accounts</p><br />
+<p align="center" style="font-size:3em; margin-top:50px">Listing Organization Accounts</p><br />
 
+<div align="center" style="margin-top:20px">
+<p align="center" style="font-size:1.8em">Send a New Invitation to an Organization</p>
 <%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
 	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
 	Contact's Email<br /><input name="email" type="email" /><br /><br />
 <%= submit_tag "Send New Invitation"%>
 <% end %>
 <br /><br />
+</div>
 
 <table>
   <tr>
