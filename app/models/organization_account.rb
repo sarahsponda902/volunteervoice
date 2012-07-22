@@ -1,4 +1,5 @@
 class OrganizationAccount < ActiveRecord::Base
+  validates_presence_of :first_name, :last_name, :position, :email, :type_of_company, :nonprofit, :username, :notify, :country
   validates_uniqueness_of :email
   validates_exclusion_of :organization_id, :in => OrganizationAccount.all.map(&:organization_id)
   validate :validates_admin_pass
