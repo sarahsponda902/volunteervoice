@@ -96,7 +96,7 @@ $(function() {
 	<tr>
 	    <th>Company Name</th>
 	</tr>
-	<% Organziation.where(:will_invite => nil).each do |o|%>
+	<% Organization.where(:will_invite => nil).each do |o|%>
 	<tr>
 		<td><%= link_to o.name, o%></td>
 	</tr>
