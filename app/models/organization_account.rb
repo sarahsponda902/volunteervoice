@@ -21,25 +21,32 @@ class OrganizationAccount < ActiveRecord::Base
   end
   
   def validate_presence_of_all_fields
+    @return = true
     if first_name.nil?
       errors.add(:first_name, "must not be blank")
+      @return = false
     end
     if last_name.nil?
       errors.add(:last_name, "must not be blank")
+      @return = false
     end
     if position.nil?
       errors.add(:position, "must not be blank")
+      @return = false
     end
     if type_of_company.nil?
       errors.add(:type_of_company, "must not be blank")
+      @return = false
     end
     if username.nil?
       errors.add(:username, "must not be blank")
+      @return = false
     end
     if country.nil?
       errors.add(:country, "must not be blank")
+      @return = false
     end
-
+    return @return
   end
   
   def update_with_password(params, *options)

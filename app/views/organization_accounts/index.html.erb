@@ -50,7 +50,6 @@ $(function() {
     <th>Invitation</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @organization_accounts.each do |oa| %>
@@ -85,12 +84,26 @@ $(function() {
 		<%= "Accepted" %>
 		<% end %>
 	</td>
-    <td><%= link_to 'Show', oa %></td>
     <td><%= link_to 'Edit', edit_organization_account_path(oa) %></td>
     <td><%= button_to 'Delete', oa, method: :delete %></td>
   </tr>
 <% end %>
 </table>
+
+<br /><br /><br />
+<p style="font-size:1.6em">Uninvited Organizations</p><br />
+<table>
+	<tr>
+	    <th>Company Name</th>
+	</tr>
+	<% Organziation.where(:will_invite => nil).each do |o|%>
+	<tr>
+		<td><%= link_to o.name, o%></td>
+	</tr>
+</table>
+			
+	
+	
 </div>
 </div>
 </div>
