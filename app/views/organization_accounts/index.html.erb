@@ -2,13 +2,63 @@
 
 <table>
   <tr>
+    <th>Company Name</th>
+    <th>Contact's Name</th>
+    <th>Contact's Email</th>
+    <th>Country</th>
+    <th>Type of Company</th>
+    <th>Date Created</th>
+    <th>Last Updated</th>
+    <th>Last Logged In</th>
+    <th>Times Logged In</th>
+    <th>Sent Invite?</th>
+    <th>Invite Accepted?</th>
+    <th>Resend Invitation</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @organization_accounts.each do |organization_account| %>
+<% @organization_accounts.each do |oa| %>
   <tr>
+	<td><%= link_to Organization.find(oa.organization_id).name, Organization.find(oa.organization_id)%></td>
+	<td><%= oa.first_name oa.last_name%></td>
+	<td><%= mail_to oa.email %></td>
+	<td><%= oa.country %></td>
+	<td><%= oa.type_of_company %></td>
+	<td><%= oa.created_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></td>
+	<td>
+		<% @last_updated_program = Program.where(:organization_id => oa.organization_id).first%>
+		<% Program.where(:organization_id => oa.organization_id).each do |f|%>
+		<% @last_updated_program = f unless @last_updated_program.updated_at > f.updated_at%>
+		<% end %>
+		<% if Organization.find(oa.organization_id).updated_at > @last_updated_program.updated_at%>
+		<%= Organization.find(oa.organization_id).updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+		<% else %>
+		<%= @last_updated_program.updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+		<% end %>
+	</td>
+	<td><%= oa.last_signed_in_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></td>
+	<td><%= oa.sign_in_count %></td>
+	<td>
+		<% if oa.invitation_sent_at.nil? %>
+		<%= "Never Sent" %>
+		<% else %>
+		<%= "Sent" %>
+		<% end %>		
+	</td>
+	<td>
+		<% if oa.invitation_accepted_at.nil? %>
+		<%= "Not Accepted"%>
+		<% else %>
+		<%= "Accepted" %>
+		<% end %>
+	</td>
+	<td>
+		<% if oa.invitation_accepted_at.nil? %>
+		<%= link_to image_tag "/assets/resend.png", "/organization_accounts/#{oa.id}/resend_invitation"%>
+		<% end %>
+	</td>
     <td><%= link_to 'Show', organization_account %></td>
     <td><%= link_to 'Edit', edit_organization_account_path(organization_account) %></td>
     <td><%= link_to 'Destroy', organization_account, confirm: 'Are you sure?', method: :delete %></td>
