@@ -1,8 +1,6 @@
 class OrganizationAccount < ActiveRecord::Base
-  validates_presence_of :first_name, :last_name, :position, :email, :type_of_company, :nonprofit, :username, :notify, :country, :on => :update
   validates_uniqueness_of :email
   validates_exclusion_of :organization_id, :in => OrganizationAccount.all.map(&:organization_id)
-  validate :validates_admin_pass
   belongs_to :organization
   attr_accessor :login
   # Include default devise modules. Others available are:
@@ -12,12 +10,6 @@ class OrganizationAccount < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, :username, :notify, :country, :organization_id, :organization_name, :admin_pass, :login
-  
-  def validates_admin_pass
-    if admin_pass != encrypted_pass
-      errors[:base] << "You must be an administrator to create an account for an organization"
-    end
-  end
   
   
   def self.find_first_by_auth_conditions(warden_conditions)

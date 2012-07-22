@@ -28,11 +28,9 @@ $(function() {
 
 <div align="center" style="margin-top:20px">
 <p align="center" style="font-size:1.4em">Invite an Existing Organization </p>
-<% @organization_account = OrganizationAccount.new%>
-<%= form_for @organization_account, :url => invitation_path(:organization_account), :html => {:method => :post} do |f| %>
-
-	Organization Name <br /><input id="tags" name="organization_account[organization_name]" /><br /><br />
-	Contact's Email<br /><input name="organization_account[email]" type="email" /><br /><br />
+<%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
+	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
+	Contact's Email<br /><input name="email" type="email" /><br /><br />
 <%= submit_tag "Send New Invitation"%>
 <% end %>
 <br /><br />
