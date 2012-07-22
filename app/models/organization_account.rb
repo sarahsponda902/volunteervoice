@@ -10,7 +10,7 @@ class OrganizationAccount < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, :username, :notify, :country, :organization_id, :organization_name, :admin_pass, :login
-  
+  before_update :validate_presence_of_all_fields
   
   def self.find_first_by_auth_conditions(warden_conditions)
         conditions = warden_conditions.dup
@@ -21,6 +21,27 @@ class OrganizationAccount < ActiveRecord::Base
         end
   end
   
+  def validate_presence_of_all_fields
+    if first_name.nil?
+      errors.add(:first_name, "must not be blank")
+    end
+    if last_name.nil?
+      errors.add(:last_name, "must not be blank")
+    end
+    if position.nil?
+      errors.add(:position, "must not be blank")
+    end
+    if type_of_company.nil?
+      errors.add(:type_of_company, "must not be blank")
+    end
+    if username.nil?
+      errors.add(:username, "must not be blank")
+    end
+    if country.nil?
+      errors.add(:country, "must not be blank")
+    end
+
+  end
   
   def update_with_password(params, *options)
     current_password = params.delete(:current_password)
