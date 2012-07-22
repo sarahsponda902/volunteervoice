@@ -12,7 +12,7 @@ class OrganizationAccountsController < ApplicationController
   
   def send_new_invitation
     if user_signed_in? && current_user.admin?
-      @organization_id = Organization.where(:name => params[:organization_id]).first.id
+      @organization_id = Organization.where(:name => params[:organization_name]).first.id
       @email = params[:email]
       OrganizationAccount.invite!(:email => @email, :organization_id => @organization_id)
       redirect_to "/organization_accounts"
