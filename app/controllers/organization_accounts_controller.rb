@@ -1,5 +1,25 @@
 class OrganizationAccountsController < ApplicationController
   
+  def resend_invitation
+    if user_signed_in? && current_user.admin?
+      @user = params[:user_id]
+      @user.invite!
+      redirect_to "/organization_accounts"
+    else
+      redirect_to root_path
+    end
+  end
+  
+  def send_new_invitation
+    if user_signed_in? && current_user.admin?
+      @organization_id = Organization.where(:name => params[:organization_id]).first.id
+      @email = params[:email]
+      OrganizationAccount.invite!(:email => @email, :organization_id => @organization_id)
+      redirect_to "/organization_accounts"
+    else
+      redirect_to root_path
+    end
+  end
   
   # GET /organization_accounts
   # GET /organization_accounts.json

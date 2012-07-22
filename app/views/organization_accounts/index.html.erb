@@ -1,6 +1,37 @@
-<h1>Listing organization_accounts</h1>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/base/jquery-ui.css" type="text/css" />
 
-<%= link_to 'New Organization account', new_organization_account_path %>
+<link rel="stylesheet" href="http://jquery-ui.googlecode.com/svn-history/r3882/trunk/themes/base/jquery.ui.autocomplete.css" type="text/css" />
+
+<script type="text/javascript" src="/assets/jquery.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript">
+$(function() {
+	var availableTags = [
+		<% Organization.all.each do |f| %>
+		"<%=f.name%>",
+		<% end %>
+		];
+	$( "#tags" ).autocomplete({
+		source: availableTags
+	});
+});
+
+</script>
+
+<div class="container">
+	<div class="row">
+		<div class="twelve columns">
+<p align="center" style="font-size:3em">Listing organization_accounts</p><br />
+
+<%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
+	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
+	Contact's Email<br /><input name="email" type="email" /><br /><br />
+<%= submit_tag "Send New Invitation"%>
+
+<br /><br />
 
 <table>
   <tr>
@@ -27,7 +58,7 @@
 	<td><%= "#{oa.first_name} #{oa.last_name}"%></td>
 	<td><%= mail_to oa.email %></td>
 	<td><%= oa.country %></td>
-	<td><%= oa.type_of_company %></td>
+	<td><%= oa.type_of_company.value %></td>
 	<td><%= oa.created_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></td>
 	<td>
 		<% @last_updated_program = Program.where(:organization_id => oa.organization_id).first%>
@@ -71,4 +102,7 @@
   </tr>
 <% end %>
 </table>
+</div>
+</div>
+</div>
 

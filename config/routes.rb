@@ -5,9 +5,14 @@ RMTest::Application.routes.draw do
     match "/organization_accounts/sign_out" => "devise/sessions#destroy"
     match "/organization_accounts/profile" => "organization_accounts#profile"
     match "/organization_accounts/:user_id/resend_invitation" => "organization_accounts#resend_invitation"
+    
   end
   
-  resources :organization_accounts
+  resources :organization_accounts do
+    collection do
+      get :send_new_invitation, :as => :send_new_invitation
+    end
+  end
 
   get "errors/error_404"
 
