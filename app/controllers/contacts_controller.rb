@@ -20,16 +20,16 @@ include ActionView::Helpers::TextHelper
   
   respond_to do |format|  
     if @contact.to_whom == "request"
-      @contact.is_request = true
-      if @contact.save(:validate => false)
-        ContactMailer.to_request(@contact).deliver
-        format.html { redirect_to "/pages/thank_you_request", notice: 'Contact was successfully sent.' }
-        format.json { render json: @contact, status: :created, location: @contact }
-      else
-        flash[:notice] = flash[:notice].to_a.concat @contact.errors.full_messages
-        format.html { render action: "new_request", notice: 'Error! Please make sure to include both your email and a message.' }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
-      end
+      @contact.is_request = true  
+        if @contact.save(:validate => false)
+          ContactMailer.to_request(@contact).deliver
+          format.html { redirect_to "/pages/thank_you_request", notice: 'Contact was successfully sent.' }
+          format.json { render json: @contact, status: :created, location: @contact }
+        else
+          flash[:notice] = flash[:notice].to_a.concat @contact.errors.full_messages
+          format.html { render action: "new_request", notice: 'Error! Please make sure to include both your email and a message.' }
+          format.json { render json: @contact.errors, status: :unprocessable_entity }
+        end
     else
       if @contact.save
         if @contact.to_whom == "contact"

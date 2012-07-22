@@ -32,10 +32,14 @@
 		<% Program.where(:organization_id => oa.organization_id).each do |f|%>
 		<% @last_updated_program = f unless @last_updated_program.updated_at > f.updated_at%>
 		<% end %>
-		<% if Organization.find(oa.organization_id).updated_at > @last_updated_program.updated_at%>
-		<%= Organization.find(oa.organization_id).updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+		<% if !(@last_updated_program.nil?)%>
+			<% if Organization.find(oa.organization_id).updated_at > @last_updated_program.updated_at%>
+			<%= Organization.find(oa.organization_id).updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+			<% else %>
+			<%= @last_updated_program.updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+			<% end %>
 		<% else %>
-		<%= @last_updated_program.updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+			<%= Organization.find(oa.organization_id).updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
 		<% end %>
 	</td>
 	<td><%= oa.last_sign_in_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></td>
