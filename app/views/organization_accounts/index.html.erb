@@ -38,7 +38,7 @@
 		<%= @last_updated_program.updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
 		<% end %>
 	</td>
-	<td><%= oa.last_signed_in_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></td>
+	<td><%= oa.last_sign_in_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></td>
 	<td><%= oa.sign_in_count %></td>
 	<td>
 		<% if oa.invitation_sent_at.nil? %>
