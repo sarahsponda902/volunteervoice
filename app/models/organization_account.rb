@@ -1,6 +1,5 @@
 class OrganizationAccount < ActiveRecord::Base
   validates_uniqueness_of :email
-  validates_exclusion_of :organization_id, :in => OrganizationAccount.all.map(&:organization_id)
   belongs_to :organization
   attr_accessor :login
   # Include default devise modules. Others available are:
