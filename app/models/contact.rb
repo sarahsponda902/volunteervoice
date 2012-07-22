@@ -27,6 +27,10 @@ class Contact < ActiveRecord::Base
           errors.add(:contact_email, "must not be blank")
           @return = false
       end
+      if has_profile.nil?
+          errors.add_to_base("You must select your organization's profile status")
+          @return = false
+      end
       return @return
     end
   end
