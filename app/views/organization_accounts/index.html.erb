@@ -9,8 +9,8 @@
     <th>Type of Company</th>
     <th>Date Created</th>
     <th>Last Updated</th>
-    <th>Last Logged In</th>
-    <th>Times Logged In</th>
+    <th>Last Login</th>
+    <th>Login Count</th>
     <th>Sent Invite?</th>
     <th>Invite Accepted?</th>
     <th>Resend Invitation</th>
@@ -59,9 +59,9 @@
 		<%= link_to image_tag "/assets/resend.png", "/organization_accounts/#{oa.id}/resend_invitation"%>
 		<% end %>
 	</td>
-    <td><%= link_to 'Show', organization_account %></td>
-    <td><%= link_to 'Edit', edit_organization_account_path(organization_account) %></td>
-    <td><%= link_to 'Destroy', organization_account, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', oa %></td>
+    <td><%= link_to 'Edit', edit_organization_account_path(oa) %></td>
+    <td><%= link_to 'Destroy', oa, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
