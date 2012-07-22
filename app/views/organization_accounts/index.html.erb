@@ -20,14 +20,21 @@ $(function() {
 });
 
 </script>
-
+<% flash.each do |key, value| %>
+  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
 <p align="center" style="font-size:3em; margin-top:50px">Listing Organization Accounts</p><br />
 
 <div align="center" style="margin-top:20px">
-<p align="center" style="font-size:1.8em">Send a New Invitation to an Organization</p>
+<p align="center" style="font-size:1.4em">Invite an Existing Organization </p>
 <%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
 	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
 	Contact's Email<br /><input name="email" type="email" /><br /><br />
