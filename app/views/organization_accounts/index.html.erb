@@ -104,7 +104,7 @@ $(function() {
 </table>
 
 <br /><br /><br />
-<p style="font-size:1.6em">Requested Organization Accounts</p><br />
+<p style="font-size:1.6em">Unapproved Organization Account Requests</p><br />
 <table>
 	<tr>
 		<th>Has a Profile?</th>
@@ -121,9 +121,9 @@ $(function() {
 	<tr>
 		<td>
 			<% if contact.has_profile %>
-			<%= "Yes" %>
+			<font style="color:green; font-weight:600"><%= "Yes" %></font>
 			<% else %>
-			<%= "No" %>
+			<font style="color:red; font-weight:600"><%= "No" %></font>
 			<% end %>
 		</td>
 		<td><%= contact.organization_name %></td>
