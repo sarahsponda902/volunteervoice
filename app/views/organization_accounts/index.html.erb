@@ -36,6 +36,54 @@ $(function() {
 <br /><br />
 </div>
 
+<p style="font-size:1.6em">Uninvited Organizations</p><br />
+<table>
+	<tr>
+	    <th>Company Name</th>
+	</tr>
+	<% Organization.where(:will_invite => nil).each do |o|%>
+	<tr>
+		<td><%= link_to o.name, o%></td>
+	</tr>
+	<% end %>
+</table>
+
+<br /><br /><br />
+<p style="font-size:1.6em">Unapproved Organization Account Requests</p><br />
+<table>
+	<tr>
+		<th>Has a Profile?</th>
+		<th>Company Name</th>
+		<th>Country</th>
+		<th>Website URL</th>
+		<th>Main Contact</th>
+		<th>Contact's Position</th>
+		<th>Contact's Email</th>
+		<th>Remove from List?</th>
+	</tr>
+	<% Contact.where(:to_whom => "request").each do |contact|%>
+	<% if OrganizationAccount.where(:email => contact.contact_email).empty? %>
+	<tr>
+		<td>
+			<% if contact.has_profile %>
+			<font style="color:green; font-weight:600"><%= "Yes" %></font>
+			<% else %>
+			<font style="color:red; font-weight:600"><%= "No" %></font>
+			<% end %>
+		</td>
+		<td><%= contact.organization_name %></td>
+		<td><%= contact.country %></td>
+		<td><%= contact.organization_url unless contact.organization_url.nil? %></td>
+		<td><%= contact.main_contact %></td>
+		<td><%= contact.position_of_contact %></td>
+		<td><%= contact.contact_email %></td>
+		<td><%= button_to "Ignore", contact, :method => :delete %></td>
+	</tr>
+	<% end %>
+	<% end %>
+</table>
+<br /><br /><br />
+
 <table>
   <tr>
     <th>Company Name</th>
@@ -88,54 +136,6 @@ $(function() {
     <td><%= button_to 'Delete', oa, method: :delete %></td>
   </tr>
 <% end %>
-</table>
-
-<br /><br /><br />
-<p style="font-size:1.6em">Uninvited Organizations</p><br />
-<table>
-	<tr>
-	    <th>Company Name</th>
-	</tr>
-	<% Organization.where(:will_invite => nil).each do |o|%>
-	<tr>
-		<td><%= link_to o.name, o%></td>
-	</tr>
-	<% end %>
-</table>
-
-<br /><br /><br />
-<p style="font-size:1.6em">Unapproved Organization Account Requests</p><br />
-<table>
-	<tr>
-		<th>Has a Profile?</th>
-		<th>Company Name</th>
-		<th>Country</th>
-		<th>Website URL</th>
-		<th>Main Contact</th>
-		<th>Contact's Position</th>
-		<th>Contact's Email</th>
-		<th>Remove from List?</th>
-	</tr>
-	<% Contact.where(:to_whom => "request").each do |contact|%>
-	<% if OrganizationAccount.where(:email => contact.contact_email).empty? %>
-	<tr>
-		<td>
-			<% if contact.has_profile %>
-			<font style="color:green; font-weight:600"><%= "Yes" %></font>
-			<% else %>
-			<font style="color:red; font-weight:600"><%= "No" %></font>
-			<% end %>
-		</td>
-		<td><%= contact.organization_name %></td>
-		<td><%= contact.country %></td>
-		<td><%= contact.organization_url unless contact.organization_url.nil? %></td>
-		<td><%= contact.main_contact %></td>
-		<td><%= contact.position_of_contact %></td>
-		<td><%= contact.contact_email %></td>
-		<td><%= button_to "Ignore", contact, :method => :delete %></td>
-	</tr>
-	<% end %>
-	<% end %>
 </table>
 			
 	
