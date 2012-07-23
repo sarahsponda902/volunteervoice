@@ -15,11 +15,20 @@ validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
 before_save :square_image_crop
 after_save :update_cost_chart
 after_save :update_org_chart
-
+before_destroy :delete_cost_chart
 # Paperclip
     mount_uploader :photo, ImageUploader
     mount_uploader :square_image, ImageUploader
 # Sunspot Search
+
+def delete_cost_chart
+  session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
+  template = session.spreadsheet_by_title("Testing")
+  ss = session.spreadsheet_by_title("#{name}")
+  if !ss.nil?
+    ss.delete(permanent = true)
+  end
+end
 
 def update_cost_chart
   session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
