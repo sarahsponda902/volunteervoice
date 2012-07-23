@@ -27,7 +27,7 @@ $(function() {
 <p align="center" style="font-size:3em; margin-top:50px">Organization Accounts</p><br />
 
 <div align="center" class="three columns" style="margin-top:50px; float:left; padding:10px; margin-right:50px; background-color:lightblue">
-<p align="center" style="font-size:1.4em">Invite an Existing Organization </p>
+<p align="center" style="font-size:1.4em">Invite an Existing Organization </p><br />
 <%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
 	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
 	Contact's Email<br /><input name="email" type="email" /><br /><br />
