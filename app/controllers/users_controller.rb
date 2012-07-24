@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   helper_method :age
   
   def crop
-    if user_signed_in? && current_user.id == params[:id]
-      @user = User.find(params[:id])
+    if user_signed_in?
+      @user = current_user
     else
       redirect_to "/pages/blogs"
     end
