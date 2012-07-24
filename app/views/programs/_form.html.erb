@@ -153,7 +153,7 @@ $(function() {
   </div>
 </div>
 
-<div class="six columns" style="width:38%; margin-top:40px">
+<div class="six columns" style="width:35%; margin-top:40px">
 	<label for="subjects">Subject Tags</label><a href="#" class="" style="color:blue"><u></u></a><br />
 	
 		<input id="subjects" name="program[program_subjects]" style="font-size:.8em; border:1px solid #e67b5a" /><p style="font-size:0.8em;  color:darkblue"> &gt; Click to select applicable subjects for this program.</p><br />
@@ -206,21 +206,6 @@ $(function() {
 
 <div class="six columns" style="width:50%; border-left:1px solid #575758; padding-left:5%">
 
-<div class="cost_lengths" style="margin-top:20px">
-	<div style="width:150px; height:1px; background-color:black; margin-bottom:10px"></div>
-<ul id="fields">
-
-</ul>
-</div>
-
-<p><a style="color:blue;margin-left:25px" href='#' class="createInput">+ Add a Length &amp; Cost</a></p><br /><br />
-
-
-  <div>Add a Photo<br />
-  <%= f.file_field :photo, :value => @program.photo %></div><br />
-
-<br /><br />
-
 
 <div id= "field">
 Start Dates (mm/dd/yyyy)<br />
@@ -249,6 +234,15 @@ Program Structure <br />
 <div id= "field">
 	Link to Site (http://www. ...)<br />
 	<%= f.text_field :check_it_out, :value => @program.check_it_out %>
+</div>
+
+<div class="cost_lengths" style="margin-top:20px">
+	<div style="width:150px; height:1px; background-color:black; margin-bottom:10px"></div>
+<ul id="fields">
+	
+	<p><a style="color:blue;margin-left:25px" href='#' class="createInput">+ Add a Length &amp; Cost</a></p><br /><br />
+
+</ul>
 </div>
 </div>
 <div class="twelve columns" align="center">
