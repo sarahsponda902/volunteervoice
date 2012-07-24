@@ -1,8 +1,7 @@
 class User < ActiveRecord::Base
   require 'file_size_validator'
   include CarrierWave::MiniMagick
-  
-  validates_not_profane :username
+
   apply_simple_captcha :message => "did not match the secret code", :distortion => "high"
 
   attr_accessor :login
