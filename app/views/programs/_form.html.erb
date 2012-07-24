@@ -192,14 +192,19 @@ $(function() {
 	</div><br />
 	
 	<div id="field">
-		<label for="program_">
+		<label for="program_start_dates">Start Dates: </label><br />
+	<%= f.text_field :start_dates, :value => @program.start_dates %>
+	</div><br />
+	
+	<div id="field">
+		<label for="program_partnered_local_organizations">Partnered Local Organizations</label><br />
 	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations %></div><br />
 
-<div class="demo">
-  <div class="ui-widget">
-	<label for="sizes">Program Sizes</label>
-	<input id="sizes" name="program[program_sizes]" style="font-size:.8em"/><br />
-  </div>
+<div id="field">
+	<label>Group Sizes</label><p style="font-size:0.6em; color:darkblue; margin-left:20px;"> &gt; What size groups do volunteers work in? You can select more than one.</p>
+	<%= f.check_box :program_sizes, "Individual"%> Individual &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<%= f.check_box :program_sizes, "Medium Groups (4-10)"%> Medium Groups (4-10)<br />
+	<%= f.check_box :program_sizes, "Small Groups (2-3)"%> Small Groups (2-3) &nbsp;&nbsp; <%= f.check_box :program_sizes, "Large Groups (11+)"%> Large Groups (11+)<br />
+  </div><br />
 </div>
 
 <div class="cost_lengths" style="margin-top:20px">
