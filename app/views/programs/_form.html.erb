@@ -153,7 +153,7 @@ $(function() {
   </div>
 </div>
 
-<div class="six columns" style="width:35%; margin-top:40px">
+<div class="six columns" style="width:45%; margin-top:40px">
 	<label for="subjects">Subject Tags</label><a href="#" class="" style="color:blue"><u></u></a><br />
 	
 		<input id="subjects" name="program[program_subjects]" style="font-size:.8em; border:1px solid #e67b5a" /><p style="font-size:0.8em;  color:darkblue"> &gt; Click to select applicable subjects for this program.</p><br />
@@ -204,12 +204,13 @@ $(function() {
   </div><br />
 </div>
 
-<div class="six columns" style="width:45%; border-left:1px solid #575758; padding-left:5%">
-
-
-<div id= "field">
-Start Dates (mm/dd/yyyy)<br />
-<%= f.text_field :start_dates, :value => @program.start_dates %></div><br />
+<div class="six columns" style="width:40%; border-left:1px solid #575758; padding-left:5%">
+	<div id= "field">
+		<label for="program_accommodations">Accommodations</label>
+		<p style="font-size:0.8em; color:darkblue; "> &gt; Homestay, Hostel, Hotel or Camping. You should also mention plumbing, electricity, and other amenities.</p>
+		<%= f.text_field :accommodations, :value => @program.accommodations %>
+	</div><br />
+	
 	
 <div id= "field">
 Program Structure <br />
@@ -227,10 +228,7 @@ Program Structure <br />
 	Program Cost Breakdown<br />
 	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
 </div>
-<div id= "field">
-	Accommodations<br />
-	<%= f.text_field :accommodations, :value => @program.accommodations %>
-</div><br />
+
 <div id= "field">
 	Link to Site (http://www. ...)<br />
 	<%= f.text_field :check_it_out, :value => @program.check_it_out %>
