@@ -66,7 +66,7 @@
 	<%= f.hidden_field :crop_w %><br />
 	<%= f.hidden_field :crop_h %><br />
 	<%= f.hidden_field :crops, :value => false%>
-	<%= f.image_submit_tag "/assets/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+	<%= image_submit_tag "/assets/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	<% end %>
 </div>	
 </html>
