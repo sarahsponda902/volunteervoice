@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717053011) do
+ActiveRecord::Schema.define(:version => 20120724201424) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -268,6 +268,8 @@ ActiveRecord::Schema.define(:version => 20120717053011) do
     t.string   "invite_email"
     t.boolean  "will_invite"
     t.boolean  "published_docs"
+    t.string   "additional_fees"
+    t.integer  "full_time_staff"
   end
 
   create_table "pages", :force => true do |t|
@@ -338,6 +340,9 @@ ActiveRecord::Schema.define(:version => 20120717053011) do
     t.string   "specific_location"
     t.string   "location_name"
     t.boolean  "published_docs"
+    t.string   "lengths_of_program"
+    t.string   "food_situation"
+    t.string   "program_requirements"
   end
 
   create_table "reviews", :force => true do |t|
