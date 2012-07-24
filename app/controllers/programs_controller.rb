@@ -1324,7 +1324,7 @@ class ProgramsController < ApplicationController
     params[:program][:program_subjects] = @subjects
     
     @sizes = []
-    params[:program][:program_sizes].split(",").each do |f|
+    params[:program][:program_sizes].each do |f|
       @p = ProgramSize.new(:program_id => params[:program][:id], :size => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
       @p.save
       @sizes << @p
