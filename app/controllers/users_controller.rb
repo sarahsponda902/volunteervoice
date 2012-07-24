@@ -2,9 +2,7 @@ class UsersController < ApplicationController
   
   include ActionView::Helpers::TextHelper
 	require 'aws/s3'
-  
-  helper :all
-  helper_method :age
+
   
   def crop
     @user = User.find(params[:id])
