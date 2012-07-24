@@ -43,11 +43,7 @@ include SimpleCaptcha::ControllerHelpers
    end
    
    def after_update_path_for(resource)
-     if resource.class.name != "User"
-       root_path
-     else
      "/pages/profile"
-    end
    end
    
    unless Rails.application.config.consider_all_requests_local
