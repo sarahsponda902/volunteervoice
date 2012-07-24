@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :dob
   validates_length_of :username, :maximum => 30
   validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
-  after_update :square_image_crop
+  after_save :square_image_crop
 
 
   # Include default devise modules. Others available are:
@@ -52,7 +52,7 @@ def square_image_crop
      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
      self.square_image = image
-     self.save!
+     self.save_without_callbacks
    end
  end
  
