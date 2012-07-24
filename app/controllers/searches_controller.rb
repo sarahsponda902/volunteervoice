@@ -219,20 +219,6 @@ class SearchesController < ApplicationController
     'TeachingComputerLiteracy' =>       'Teaching Computer Literacy' , 
     'MediaMarketingandGraphicDesign' =>       'Media Marketing and Graphic Design']
     
-    
-    
-    @search = Search.new(params[:search])
-    if !(params[:subject].nil?)
-      @search.subjects = [] << @subjects[params[:subject]]
-    end
-    if !(params[:location].nil?)
-      @search.regions = [] << params[:location]
-    end
-     
-    
-    @search.regions = @search.regions.join("; ") unless @search.regions.class.name == "String"
-    @search.subjects = @search.subjects.join("; ") unless @search.subjects.class.name == "String"
-    @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
 
     if @search.length_min_param.nil?
       @search.length_min_param = "weeks"
