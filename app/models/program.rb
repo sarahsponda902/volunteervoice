@@ -13,6 +13,7 @@ has_many :program_sizes, :dependent => :destroy
 attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :organization_id, :subject, :group_size, :headquarters, :length, :overall, :chart, :program_started, :start_dates, :program_structure, :partnered_local_organizations, :cost_includes, :cost_doesnt_include, :program_cost_breakdown, :accommodations, :check_it_out, :organization_name, :crop_x, :crop_y, :crop_w, :crop_h, :square_image, :program_subjects, :program_sizes, :specific_location, :location_name, :program_cost_length_maps, :published_docs
 validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
 before_save :square_image_crop
+before_save :validate_subjects_inclusion
 after_save :update_cost_chart
 after_save :update_org_chart
 before_destroy :delete_cost_chart
@@ -119,4 +120,71 @@ def square_image_crop
  end
 
 
+ def validate_subjects_inclusions
+  @return = true
+   @all_subjects = ['Agriculture', 
+   'Organic Farming', 
+   'Sustainable Development', 
+   'Animal Care', 
+   'Animal Rights', 
+   'Wildlife Conservation', 
+   'Caregiving', 
+   'Elder Care', 
+   'Child/Orphan Care', 
+   'Disabled Care', 
+   'Feed the Homeless', 
+   'Community Development', 
+   'Youth Development and Outreach', 
+   'Construction', 
+   'Culture and Community', 
+   'Performing Arts', 
+   'Fashion', 
+   'Music', 
+   'Sports &amp; Recreation', 
+   'Journalism', 
+   'Disaster Relief', 
+   'Economics', 
+   'Microfinance', 
+   'Education', 
+   'Teaching English', 
+   'Teaching Buddhist Monks', 
+   'Teaching Children', 
+   'Teaching Computer Literacy', 
+   'Engineering and Infrastructure', 
+   'Environmental', 
+   'Ecological Conservation', 
+   'Habitat Restoration', 
+   'Health and Medicine', 
+   'HIV/AIDS', 
+   'Nutrition', 
+   'Family Planning', 
+   'Veterinary Medicine', 
+   'Clinical Work', 
+   'Dental Work', 
+   'Medical Research', 
+   'Health Education', 
+   'Public Health', 
+   'Hospital Care-giving', 
+   'Human Rights', 
+   'Womens Initiatives', 
+   'International Work Camp', 
+   'Recreation', 
+   'Adventure Travel', 
+   'Scientific Research', 
+   'Archaeology', 
+   'Environmental Biology', 
+   'Technology', 
+   'Media Marketing and Graphic Design']
+   if !program_subjects.nil?
+     @subjects = program_subjects.map(&:subject)
+     @subjects.each do |f|
+       if !(@all_subjects.include?(f))
+         errors.add_to_base("#{f} is not a valid subject tag")
+         @return = false
+       end
+     end
+   end
+   return @return
+ end
+ 
 end
