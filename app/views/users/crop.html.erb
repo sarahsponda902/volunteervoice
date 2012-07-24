@@ -57,16 +57,16 @@
 	</div>
 </div>
 
-<div style="position:absolute; right:5%; top:300px; width: 150px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed size for a user image. It will not get any smaller</div>
+<div style="position:absolute; right:5%; top:300px; width: 150px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop".</div>
 
 <div style="position:absolute; right:5%; top:200px; width:150px">
 	<%= form_for @user do |f|%>
+	<%= image_submit_tag "/assets/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	<%= f.hidden_field :crop_x %><br />
 	<%= f.hidden_field :crop_y %><br />
 	<%= f.hidden_field :crop_w %><br />
 	<%= f.hidden_field :crop_h %><br />
 	<%= f.hidden_field :crops, :value => false%>
-	<%= image_submit_tag "/assets/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	<% end %>
 </div>	
 </html>

@@ -380,7 +380,7 @@ function openReplyBox(message_id) {
 			<div class="row" style="margin-top:40px">
 				<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden">
 					<% if !(@user.photo.url.nil?)%>
-				<%=image_tag @user.photo.url, :style => "height:168px; width:168px"%>
+				<%=image_tag @user.square_image.url, :style => "height:168px; width:168px"%>
 					<% else %>
 					
 					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
