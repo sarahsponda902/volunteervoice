@@ -1,7 +1,7 @@
 RMTest::Application.routes.draw do
   
     
-    match 'users/:id/crop' => 'users#crop'
+  match 'users/:id/crop' => 'users#crop'
   
   devise_for :organization_accounts, :controllers => {:invitations => :invitations, :sessions => "organization_account/sessions"}
   devise_scope :organization_account do
