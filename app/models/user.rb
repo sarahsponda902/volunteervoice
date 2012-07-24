@@ -51,8 +51,7 @@ def square_image_crop
      image = MiniMagick::Image.open(self.photo.url)
      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
-     self.square_image = image
-     self.save_without_callbacks
+     self.update_attributes!(:square_image => image)
    end
  end
  
