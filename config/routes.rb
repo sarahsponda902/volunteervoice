@@ -1,5 +1,8 @@
 RMTest::Application.routes.draw do
   
+    
+    match 'users/:id/crop' => 'users#crop'
+  
   devise_for :organization_accounts, :controllers => {:invitations => :invitations, :sessions => "organization_account/sessions"}
   devise_scope :organization_account do
     match "/organization_accounts/sign_out" => "devise/sessions#destroy"
@@ -123,8 +126,6 @@ RMTest::Application.routes.draw do
   ##### USERS
   
   devise_scope :user do
-    
-    match 'users/:id/crop' => 'users#crop'
   
     match 'sign_up' => 'devise/registrations#new'
     
