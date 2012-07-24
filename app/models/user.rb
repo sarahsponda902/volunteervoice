@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :dob
   validates_length_of :username, :maximum => 30
   validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
-  after_save :square_image_crop
+  after_update :square_image_crop
 
 
   # Include default devise modules. Others available are:
