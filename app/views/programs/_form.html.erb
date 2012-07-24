@@ -139,7 +139,8 @@ $(function() {
 <% end %>
 
 <div class="three columns" style="font-size:1.3em; float:left">
-	Program Title: <br /><br /><br />
+	Program Title: <br /><br />
+    Link to Program on your Website (http://www. ...)<br /><br /><br />
 	Description:<br /><br />
 	<font style="font-size:0.7em">
 	(This description should be basic and tell volunteers WHAT they will be doing, not WHY)<br /></font>
@@ -149,7 +150,10 @@ $(function() {
     <%= f.text_field :name, :value => @program.name %><br /><br />
   </div>
   <div class="field">
-    <%= f.text_area :description, :value => @program.description, :style => "width:500px; height:200px" %>
+		<%= f.text_field :check_it_out, :value => @program.check_it_out %><br /><br />
+  </div>
+  <div class="field">
+    <%= f.text_area :description, :value => @program.description, :style => "width:500px; height:125px" %>
   </div>
 </div>
 
@@ -204,34 +208,30 @@ $(function() {
   </div><br />
 </div>
 
-<div class="six columns" style="width:40%; border-left:1px solid #575758; padding-left:5%">
+<div class="six columns" style="width:40%; border-left:1px solid #575758; padding-left:5%; margin-top:40px">
 	<div id= "field">
 		<label for="program_accommodations">Accommodations</label>
 		<p style="font-size:0.8em; color:darkblue; "> &gt; Homestay, Hostel, Hotel or Camping. You should also mention plumbing, electricity, and other amenities.</p>
 		<%= f.text_field :accommodations, :value => @program.accommodations %>
 	</div><br />
 	
-	
-<div id= "field">
-Program Structure <br />
-<%= f.text_area :program_structure, :value => @program.program_structure %></div><br />
+	<div id= "field">
+		<label for="program_food_situation">Food Situation</label>
+		<p style="font-size:0.8em; color:darkblue; "> &gt; You can describe how many meals, who cooks them (volunteers or someone else), type of food, etc.</p>
+		<%= f.text_field :food_situation, :value => @program.food_situation %>
+	</div><br />
 
 <div id= "field">
-	Cost Includes<br />
+	<label for="program_cost_includes" >Cost Includes</label>
 	<%= f.text_area :cost_includes, :value => @program.cost_includes %>
 </div><br />
 <div id= "field">
-	Cost Doesn't Include <br />
+	<label for="program_cost_doesnt_include">Cost Doesn't Include </label>
 	<%= f.text_area :cost_doesnt_include, :value => @program.cost_doesnt_include %>
 </div><br />
 <div id= "field">
-	Program Cost Breakdown<br />
+	<label "program_program_cost_breakdown" >Program Cost Breakdown</label>
 	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
-</div>
-
-<div id= "field">
-	Link to Site (http://www. ...)<br />
-	<%= f.text_field :check_it_out, :value => @program.check_it_out %>
 </div>
 
 <div class="cost_lengths" style="margin-top:20px">
@@ -257,7 +257,7 @@ Program Structure <br />
 <style>
 textarea {
 	width:350px;
-	height:200px;
+	height:125px;
 }
 </style>
 
