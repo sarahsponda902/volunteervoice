@@ -396,7 +396,7 @@ nav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
 
 
 /* Footer */
-footer {}
+footer {position:relative; clear:both;}
 
 footerNav h4, .ourCommunity h4 { font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif;}
 .spreadWord li { list-style:none; display:inline;}
