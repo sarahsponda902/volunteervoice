@@ -5,5 +5,5 @@ CarrierWave.configure do |config|
     :aws_secret_access_key  => ENV['AMAZON_SECRET_ACCESS_KEY'],      
     :region => 'us-east-1'
   }
-  config.fog_directory  = 'volunteervoice_uploads'                     
+  config.fog_directory  = 'volunteervoiceuploads'                     
 end
