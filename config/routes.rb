@@ -122,11 +122,9 @@ RMTest::Application.routes.draw do
   
   ##### USERS
   
-  match 'users/:id/crop' => 'users#crop'
-  
-  match 'users.:id' => 'users#show'
-  
   devise_scope :user do
+    
+    match 'users/:id/crop' => 'users#crop'
   
     match 'sign_up' => 'devise/registrations#new'
     
