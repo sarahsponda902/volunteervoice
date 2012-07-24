@@ -810,13 +810,13 @@ function openReplyBox(message_id) {
 					<option value="ZM"> Zambia</option>
 					<option value="ZW"> Zimbabwe</option></select>
 				</div>
-				 <image style="position:absolute; height:25px; top:196px; left:2px;" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_profile_show').checked = false">
+				 <image style="position:absolute; height:25px; top:196px; left:2px;" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_messages_show').attr('checked', false)">
 					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:70px; padding-bottom:5px;" >
-					<input id="user_profile_show" name="user[profile_show]" onchange="$(beforeCheck())" type="checkbox" style="opacity:0;margin-left:0px; height:15px; width:15px" checked="<%=current_user.profile_show%>"/></div><div style="margin-left:33px; margin-top:-26px; font-size:.85em"> Hide my age/country on my profile</div><br />
+					<input id="user_profile_show" name="user[profile_show]" onchange="$(beforeCheck())" type="checkbox" style="opacity:0;margin-left:0px; height:15px; width:15px"/></div><div style="margin-left:33px; margin-top:-26px; font-size:.85em"> Hide my age/country on my profile</div><br />
 					
 					<image style="position:absolute; height:25px; top:225px; left:2px;" id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_messages_show').attr('checked', false)">
 					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:0px; padding-bottom:5px;" >
-					<input id="user_messages_show" name="user[messages_show]" onchange="$(messagesCheck())" type="checkbox" style="opacity:0;margin-left:0px; height:15px; width:15px" checked="<%=current_user.messages_show%>"/></div><div style="margin-left:33px; margin-top:-34px; font-size:.85em"> Do not allow others to send me<br />messages</div><br />
+					<input id="user_messages_show" name="user[messages_show]" onchange="$(messagesCheck())" type="checkbox" style="opacity:0;margin-left:0px; height:15px; width:15px"/></div><div style="margin-left:33px; margin-top:-34px; font-size:.85em"> Do not allow others to send me<br />messages</div><br />
 				
 				</div>
 				
@@ -1157,16 +1157,10 @@ $("#btnNext").click(function() { currentPage = parseInt(list.find('li a.active')
 <script type="text/javascript">
 function beforeCheck() {
 	$('#checkBefore').toggle();
-	if ($('#user_profile_show').prop('checked')) {
-		$('#user_profile_show').prop('checked', false);
-	}
 }
 
 function messagesCheck() {
 	$('#checkMessages').toggle();
-	if ($('#user_messages_show').prop('checked')) {
-		$('#user_messages_show').prop('checked', false);
-	}
 }
 </script>
 
