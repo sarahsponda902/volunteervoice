@@ -83,7 +83,7 @@ def update_org_chart
   end
   ws.save()
   @org = Organization.find(organization_id)
-  @org.program_cost_breakdown = ss.human_url.split("key=")[1]
+  @org.price_ranges = ss.human_url.split("key=")[1]
   @org.save!
 end
 
