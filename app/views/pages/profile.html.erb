@@ -1,14 +1,3 @@
-<% if @user.messages_show.nil?%>
-<% @user.messages_show = false%>
-<% @user.save%>
-<% end %>
-
-<% if @user.profile_show.nil?%>
-<% @user.profile_show = false%>
-<% @user.save%>
-<% end %>
-
-
 <% @user_ids = []%>
 <% User.all.each do |g|%>
 <% @user_ids << g.id%>
