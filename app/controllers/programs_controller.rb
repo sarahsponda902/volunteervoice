@@ -1355,7 +1355,11 @@ class ProgramsController < ApplicationController
     
     @program = Program.new(params[:program])
     @program.location_name = @theCountries[@program.location]
-    @program.organization_id = Organization.where(:name => @program.organization_name).first.id
+    if organization_account_signed_in?
+      @program.organization_id = current_organization_account.organization_id
+    else
+      @program.organization_id = Organization.where(:name => @program.organization_name).first.id
+    end
     @program.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize(truncate @program.description, :length => 100), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.description = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
@@ -1371,7 +1375,7 @@ class ProgramsController < ApplicationController
       @program.check_it_out = "http://"+@program.check_it_out
     end
 
-    if (user_signed_in? && current_user.admin?) || (organization_account_signed_in? && current_organization_account.organization_id == @program.organization_id)
+    if (user_signed_in? && current_user.admin?) || organization_account_signed_in?
       if @program.save
             redirect_to @program
       else
@@ -1382,6 +1386,8 @@ class ProgramsController < ApplicationController
         flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          render :action => "new" 
       end
+   else
+     redirect_to root_path
    end
 end
 
