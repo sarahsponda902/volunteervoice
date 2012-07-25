@@ -15,8 +15,8 @@ validates_presence_of :name, :description, :location, :organization_id, :program
 before_save :copy_organization_images_and_program_model
 before_save :square_image_crop
 before_save :validate_subjects_inclusions
-after_save :update_cost_chart
-after_save :update_org_chart
+before_save :update_cost_chart
+before_save :update_org_chart
 before_destroy :delete_cost_chart
 # Paperclip
     mount_uploader :photo, ImageUploader
@@ -57,7 +57,6 @@ def update_cost_chart
   end
   ws.save()
   self.chart = ss.human_url.split("key=")[1]
-  self.save!
 end
 
 def update_org_chart
@@ -92,7 +91,6 @@ def update_org_chart
   ws.save()
   @org = Organization.find(organization_id)
   @org.price_ranges = ss.human_url.split("key=")[1]
-  @org.save!
 end
 
 searchable do
