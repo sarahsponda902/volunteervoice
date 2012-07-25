@@ -1120,7 +1120,8 @@ class ProgramsController < ApplicationController
     'EnvironmentalBiology', 
     'Technology', 
     'TeachingComputerLiteracy', 
-    'MediaMarketingandGraphicDesign']
+    'MediaMarketingandGraphicDesign', 
+    ' ']
     
     @theCountries = Hash["AF" => "Afghanistan", 
     "AX" => "Aland Islands", 
