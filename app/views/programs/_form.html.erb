@@ -34,7 +34,7 @@ function createInput(){
 	div.style.width = "150px";
 	div.style.marginBottom = "10px";
 	div.style.marginTop = "10px";
-	div.style.marginLeft = "-25px";
+	div.style.marginLeft = "-22px";
     input.id = 'length'+countFields;
     input.name = "lengths[]";
  	for (count = 0; count < allTags.length; count++) {
@@ -220,27 +220,27 @@ $(function() {
 
 <div class="six columns" style="width:40%; border-left:1px solid #575758; padding-left:5%; margin-top:40px">
 	<div id= "field">
-		<label for="program_accommodations">Accommodations</label>
+		<label for="program_accommodations">Accommodations: </label>
 		<%= f.text_field :accommodations, :value => @program.accommodations %>
 		<p style="font-size:0.8em; color:darkblue; "> &gt; Homestay, Hostel, Hotel or Camping. You should also mention plumbing, electricity, and other amenities.</p>
 	</div><br />
 	
 	<div id= "field">
-		<label for="program_food_situation">Food Situation</label>
+		<label for="program_food_situation">Food Situation: </label>
 		<%= f.text_field :food_situation, :value => @program.food_situation %>
 		<p style="font-size:0.8em; color:darkblue; "> &gt; You can describe how many meals, who cooks them (volunteers or someone else), type of food, etc.</p>
 	</div><br />
 
 <div id= "field">
-	<label for="program_cost_includes" >Price Includes</label>
+	<label for="program_cost_includes" >Price Includes: </label>
 	<%= f.text_area :cost_includes, :value => @program.cost_includes %>
 </div><br />
 <div id= "field">
-	<label for="program_cost_doesnt_include">Price Doesn't Include </label>
+	<label for="program_cost_doesnt_include">Price Doesn't Include: </label>
 	<%= f.text_area :cost_doesnt_include, :value => @program.cost_doesnt_include %>
 </div><br />
 <div id= "field">
-	<label "program_program_cost_breakdown" >Program Cost Breakdown</label>
+	<label "program_program_cost_breakdown" >Program Cost Breakdown: </label>
 	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
 </div><br />
 
