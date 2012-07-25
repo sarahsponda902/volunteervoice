@@ -63,6 +63,29 @@
   <div class="field">
     <%= f.label "Program Model" %>
     <%= f.text_field :program_model_string, :value => @organization.program_model_string%></div>
+	<div class="field">
+		Types of Programs<br />
+		<%= f.text_field :types_of_programs, :value => @organization.types_of_programs%>
+	</div>
+
+  <div class="field">
+    Run By<br />
+    <%= f.text_field :run_by, :value => @organization.run_by %></div>
+
+	  <div class="field">
+	    # Full Time Staff<br />
+	    <%= f.number_field :full_time_staff, :value => @organization.full_time_staff %></div>
+	  <div class="field">
+    <%= f.label :id_number %>
+    <%= f.text_field :id_number, :value => @organization.id_number %></div>
+  <div class="field">
+    <%= f.label :url%>
+    <%= f.text_field :url, :value => @organization.url %></div>
+
+
+  <div class="field">
+    Program Costs Breakdown<br />
+    <%= f.text_field :price_breakdown, :value => @organization.price_breakdown %></div>
 </div>
 
 <div class="six columns" style="width:45%">
@@ -87,31 +110,7 @@
 	<%= f.text_area :headquarters_location, :value => @organization.headquarters_location%>
   </div>
 
-	<div class="field">
-		Types of Programs<br />
-		<%= f.text_field :types_of_programs, :value => @organization.types_of_programs%>
-	</div>
 
-  <div class="field">
-    Run By<br />
-    <%= f.text_field :run_by, :value => @organization.run_by %></div>
-
-	  <div class="field">
-	    # Full Time Staff<br />
-	    <%= f.number_field :full_time_staff, :value => @organization.full_time_staff %></div>
-	  <div class="field">
-    <%= f.label :id_number %>
-    <%= f.text_field :id_number, :value => @organization.id_number %></div>
-  <div class="field">
-    <%= f.label :url%>
-    <%= f.text_field :url, :value => @organization.url %></div>
-<br /><br />
-
-  <div class="field">
-    Program Costs Breakdown<br />
-    <%= f.text_field :price_breakdown, :value => @organization.price_breakdown %></div>
-
-	
 </div>
 
 <div class="twelve columns" style="text-align:center">
