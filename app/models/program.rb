@@ -14,7 +14,6 @@ attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :orga
 validates_presence_of :name, :description, :location, :organization_id, :program_started, :start_dates, :partnered_local_organizations, :cost_includes, :cost_doesnt_include, :program_cost_breakdown, :accommodations, :program_subjects, :program_sizes, :specific_location, :program_cost_length_maps, :food_situation, :lengths_of_program, :program_requirements
 before_save :copy_organization_images_and_program_model
 before_save :square_image_crop
-before_save :validate_subjects_inclusions
 after_save :update_cost_chart
 after_save :update_org_chart
 before_destroy :delete_cost_chart
@@ -125,76 +124,6 @@ def square_image_crop
      self.square_image = image
    end
  end
- 
- def all_subjects
-   ['Agriculture', 
-    'Organic Farming', 
-    'Sustainable Development', 
-    'Animal Care', 
-    'Animal Rights', 
-    'Wildlife Conservation', 
-    'Caregiving', 
-    'Elder Care', 
-    'Child/Orphan Care', 
-    'Disabled Care', 
-    'Feed the Homeless', 
-    'Community Development', 
-    'Youth Development and Outreach', 
-    'Construction', 
-    'Culture and Community', 
-    'Performing Arts', 
-    'Fashion', 
-    'Music', 
-    'Sports & Recreation', 
-    'Journalism', 
-    'Disaster Relief', 
-    'Economics', 
-    'Microfinance', 
-    'Education', 
-    'Teaching English', 
-    'Teaching Buddhist Monks', 
-    'Teaching Children', 
-    'Teaching Computer Literacy', 
-    'Engineering and Infrastructure', 
-    'Environmental', 
-    'Ecological Conservation', 
-    'Habitat Restoration', 
-    'Health and Medicine', 
-    'HIV/AIDS', 
-    'Nutrition', 
-    'Family Planning', 
-    'Veterinary Medicine', 
-    'Clinical Work', 
-    'Dental Work', 
-    'Medical Research', 
-    'Health Education', 
-    'Public Health', 
-    'Hospital Care-giving', 
-    'Human Rights', 
-    'Womens Initiatives', 
-    'International Work Camp', 
-    'Recreation', 
-    'Adventure Travel', 
-    'Scientific Research', 
-    'Archaeology', 
-    'Environmental Biology', 
-    'Technology', 
-    'Media Marketing and Graphic Design', ' ']
- end
 
-
- def validate_subjects_inclusions
-  @return = true
-   if !program_subjects.nil?
-     @subjects = program_subjects.map(&:subject)
-     @subjects.each do |f|
-       if !(all_subjects.include?(f))
-         errors.add(:program_subjects, "=> #{f} is not a valid tag")
-         @return = false
-       end
-     end
-   end
-   return @return
- end
  
 end
