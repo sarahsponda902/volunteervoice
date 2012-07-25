@@ -186,7 +186,7 @@ def square_image_crop
      @subjects = program_subjects.map(&:subject)
      @subjects.each do |f|
        if !(@all_subjects.include?(f))
-         errors.add_to_base("#{f} is not a valid subject tag")
+         errors.add(:program_subjects, "=> #{f} is not a valid tag")
          @return = false
        end
      end
