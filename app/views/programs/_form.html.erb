@@ -30,6 +30,7 @@ function createInput(){
 	var label2 = document.createTextNode("Total Cost ($): ");
 	var div = document.createElement("div");
 	var br = document.createElement("br");
+	var count = document.createTextNode(countFields.toString() + ". ")
 	div.style.backgroundColor = "#575758";
 	div.style.height = "1px";
 	div.style.width = "150px";
@@ -44,9 +45,12 @@ function createInput(){
 		opt.text = allTags[count].toString();
 		input.options.add(opt);
 	};
+	label2.style.marginLeft = "10px";
+	input2.style.marginLeft = "10px";
 	input2.id = 'cost'+countFields;
     input2.name = "costs[]";
     input2.type = "number";
+	li.appendChild(count);
 	li.appendChild(label);
     li.appendChild(input);
 	li.appendChild(br);
