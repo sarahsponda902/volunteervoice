@@ -64,12 +64,13 @@
     <%= f.label "Program Model" %>
     <%= f.text_field :program_model_string, :value => @organization.program_model_string%></div>
 </div>
+
 <div class="six columns" style="width:45%">
   <div class="field">
     Good To Know<br />
     <%= f.text_area :good_to_know, :value => @organization.good_to_know %></div>
   <div class="field">
-    Training Resources<br />
+    Preparation/Orientation<br />
     <%= f.text_area :training_resources, :value => @organization.training_resources %></div>
   <div class="field">
     <%= f.label "program costs includes" %><br />
@@ -77,7 +78,10 @@
   <div class="field">
     <%= f.label "program costs doesn't include" %><br />
     <%= f.text_area :program_costs_doesnt_include, :value => @organization.program_costs_doesnt_include %></div>
-
+	  <div class="field">
+	    <%= f.label "Additional Fees" %>
+	    <%= f.text_field :additional_fees, :value => @organization.additional_fees%></div>
+	</div>
 
   <div class = "field">
 	<%= f.label "Headquarters address" %><br />
@@ -93,6 +97,10 @@
     Run By<br />
     <%= f.text_field :run_by, :value => @organization.run_by %></div>
   <div class="field">
+	  <div class="field">
+	    # Full Time Staff<br />
+	    <%= f.number_field :full_time_staff, :value => @organization.full_time_staff %></div>
+	  <div class="field">
     <%= f.label :id_number %>
     <%= f.text_field :id_number, :value => @organization.id_number %></div>
   <div class="field">

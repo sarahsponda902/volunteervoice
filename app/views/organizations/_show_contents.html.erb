@@ -18,7 +18,7 @@ $(document).ready(function() {
 <% groupSizes << f.size %>
 <% end %>
 
-<% organization.program_cost_length_maps.each do |f|%>
+<% organization.program_cost_length_maps.sort_by(&:length).each do |f|%>
 <% programLengths << [f.length_number, f.length_name].join(" ") %>
 <% end %>
 
@@ -120,7 +120,7 @@ $(document).ready(function() {
 				Operating since:</p><%=best_in_place_if @can_edit, organization, :operating_since, :type => :input, :nil => "Click to edit"%><br /><br />
 			
 			<p style="font-weight:600">Run by: </p><%=organization.run_by.html_safe%><br />
-			
+			<p style="font-weight:600">Full Time Staff: </p><%=best_in_place_if @can_edit, organization, :full_time_staff, :type => :input, :nil => "Click to edit"%><br />
 			<p style="font-weight:600"> 
 				<% if @can_edit%>
 				&#9998; 
@@ -151,13 +151,14 @@ $(document).ready(function() {
 			
 			<p style="font-weight:600">Price Includes: </p><%= organization.program_costs_includes.html_safe%><br />
 			<p style="font-weight:600">Price Doesn't Includes: </p><%= organization.program_costs_doesnt_include.html_safe%><br />
+			<p><font style="font-weight:600">Price Doesn't Includes: </font><%= organization.additional_fees%></p><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
 			<p style="font-weight:600">Group Sizes: </p><%= groupSizes[0..(groupSizes.count - 2)].join(", ")%><br /><br />
 			
 			
 			
-			<p style="font-weight:600">Program Lengths: </p><%= programLengths.join(", ")%> <br /><br />
-			<p style="font-weight:600">Training Resources: </p><%=organization.training_resources.html_safe%><br />
+			<p style="font-weight:600">Program Lengths: </p><%= programLengths.first%> - <%= programLengths.last %> <br /><br />
+			<p style="font-weight:600">Preparation/Orientation: </p><%=organization.training_resources.html_safe%><br />
 			<p style="font-weight:600">Good to know: </p><%=organization.good_to_know.html_safe%><br />
 		</div>
 	</div>
