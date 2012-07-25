@@ -14,7 +14,7 @@ attr_accessible :id, :photo, :name, :description, :weekly_cost, :location, :orga
 validates_presence_of :name, :description, :location, :organization_id, :program_started, :start_dates, :partnered_local_organizations, :cost_includes, :cost_doesnt_include, :program_cost_breakdown, :accommodations, :program_subjects, :program_sizes, :specific_location, :program_cost_length_maps, :food_situation, :lengths_of_program, :program_requirements
 before_save :copy_organization_images_and_program_model
 before_save :square_image_crop
-before_save :validate_subjects_inclusion
+before_save :validate_subjects_inclusions
 after_save :update_cost_chart
 after_save :update_org_chart
 before_destroy :delete_cost_chart
