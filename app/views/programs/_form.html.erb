@@ -256,7 +256,7 @@ $(function() {
 <p style="font-size:0.85em; color:darkblue; "> &gt; Name only (no description) of the exact town(s) or city(ies)</p>
 </div><br />
 
-	<% if @program.organization_id.nil?%>
+	<% if !(organization_account_signed_in?)%>
 		<label for="tags">Organization: </label>
 		<input id="tags" name="program[organization_name]" type="text"/>
 
