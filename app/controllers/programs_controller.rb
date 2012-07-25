@@ -1379,6 +1379,7 @@ class ProgramsController < ApplicationController
         @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
         @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
         @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
+        flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          render :action => "new" 
       end
    end
