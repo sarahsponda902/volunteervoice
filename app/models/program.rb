@@ -26,7 +26,7 @@ before_destroy :delete_cost_chart
 def copy_organization_images_and_program_model
   self.photo = Organization.find(organization_id).image.file
   self.square_image = Organization.find(organization_id).square_image.file
-  self.program_structure = Organization.find(organization_id).volunteer_program_model
+  self.program_structure = Organization.find(organization_id).program_model_string
 end
 
 def delete_cost_chart
