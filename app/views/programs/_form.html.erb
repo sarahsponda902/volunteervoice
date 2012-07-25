@@ -177,6 +177,24 @@ $(function() {
 								// add placeholder to get the comma-and-space at the end
 								terms.push( "" );
 								this.value = terms.join( ", " );
+								
+								return false;
+							}
+							change: function(event, ui) {
+								var i = 0;
+								var terms = this.value.split( ", " );
+								var new_terms = [];
+								var string_terms = ""
+								for (i = 0; i < terms.length; i++) {
+									if (availableSubjects.indexOf(terms[i]) != -1) {
+										new_terms.push(terms[i]);
+									}
+								}
+								if (new_terms.length > 0) {
+									string_terms = new_terms.join(", ");
+								}
+								this.value = string_terms;
+								
 								return false;
 							}
 						});
