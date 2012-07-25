@@ -1065,6 +1065,63 @@ class ProgramsController < ApplicationController
   # POST /programs
   # POST /programs.json
   def create
+    @subjects = ['Agriculture', 
+    'OrganicFarming', 
+    'SustainableDevelopment', 
+    'AnimalCare', 
+    'AnimalRights', 
+    'WildlifeConservation', 
+    'Caregiving', 
+    'ElderCare', 
+    'ChildOrphanCare', 
+    'DisabledCare', 
+    'FeedtheHomeless', 
+    'CommunityDevelopment', 
+    'YouthDevelopmentandOutreach', 
+    'Construction', 
+    'CultureandCommunity', 
+    'PerformingArts', 
+    'Fashion', 
+    'Music', 
+    'SportsRecreation', 
+    'Journalism', 
+    'DisasterRelief', 
+    'Economics', 
+    'Microfinance', 
+    'Education', 
+    'TeachingEnglish', 
+    'TeachingBuddhistMonks', 
+    'TeachingChildren', 
+    'TeachingComputerLiteracy', 
+    'EngineeringandInfrastructure', 
+    'Environmental', 
+    'EcologicalConservation', 
+    'SustainableDevelopment', 
+    'WildlifeConservation', 
+    'HabitatRestoration', 
+    'HealthandMedicine', 
+    'HIVAIDS', 
+    'Nutrition', 
+    'FamilyPlanning', 
+    'VeterinaryMedicine', 
+    'ClinicalWork', 
+    'DentalWork', 
+    'MedicalResearch', 
+    'HealthEducation', 
+    'PublicHealth', 
+    'HospitalCaregiving', 
+    'HumanRights', 
+    'WomensInitiatives', 
+    'InternationalWorkCamp', 
+    'Recreation', 
+    'AdventureTravel', 
+    'ScientificResearch', 
+    'Archaeology', 
+    'EnvironmentalBiology', 
+    'Technology', 
+    'TeachingComputerLiteracy', 
+    'MediaMarketingandGraphicDesign', 
+    ' ']
     
     @theCountries = Hash["AF" => "Afghanistan", 
     "AX" => "Aland Islands", 
@@ -1317,10 +1374,12 @@ class ProgramsController < ApplicationController
     "ZW"=> "Zimbabwe"]
     
     @subjects = []
-    params[:program][:program_subjects].split(",").each do |f|
+    params[:program][:program_subjects].split(", ").each do |f|
+      if @subjects.include?(f) 
         @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
         @p.save
         @subjects << @p
+      end
     end
     params[:program][:program_subjects] = @subjects
     
