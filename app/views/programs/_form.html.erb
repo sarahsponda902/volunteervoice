@@ -14,6 +14,71 @@ $(document).ready(function(){
 		createInput();
 	});
 	createInput();
+	
+	
+	$('a.rules-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var rulesBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(rulesBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(rulesBox).height() + 24) / 2; 
+		var popMargLeft = ($(rulesBox).width() + 24) / 2; 
+
+		$(rulesBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .rules-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	$('a.subjects-window').click(function() {
+
+	            //Getting the variable's value from a link 
+		var subjectsBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(subjectsBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(subjectsBox).height() + 24) / 2; 
+		var popMargLeft = ($(subjectsBox).width() + 24) / 2; 
+
+		$(subjectsBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .subjects-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
 });
 
 
@@ -124,7 +189,7 @@ $(function() {
 
 				<% flash.each do |key, value| %>
 				  <div class="flash <%=key%>">
-				<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
+				<%= pluralize value.length, "errors"%> prevented your program from being created:<br />
 					<% value.each do |f|%>
 						* <%=f%><br />
 					<% end %>
@@ -165,7 +230,7 @@ $(function() {
 </div>
 
 <div class="six columns" style="width:45%; margin-top:40px">
-	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#" class="" style="color:blue"><u>View all subject tags</u></a></label>
+	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#subjects-box" class="subjects-window" style="color:blue"><u>View all subject tags</u></a></label>
 	
 		<input id="subjects" name="program[program_subjects]" style="font-size:.8em; border:1px solid #e67b5a" type="text"/><p style="font-size:0.8em;  color:darkblue"> &gt; Click to select applicable subjects for this program.</p><br />
 <div class="field">
@@ -218,7 +283,7 @@ $(function() {
 	<div class="six columns" style="width:50%">
 	<%= check_box_tag "program[program_sizes][]", "Individual"%> Individual <br />
 	<%= check_box_tag "program[program_sizes][]", "Small Groups (2-3)"%> Small Groups (2-3)</div>
-	<div class="six columns" style="width:43%; margin-top:-35px">
+	<div class="six columns" style="width:43%; margin-top:-38px">
 	<%= check_box_tag "program[program_sizes][]", "Medium Groups (4-10)"%> Medium Groups (4-10)<br/>
 	<%= check_box_tag "program[program_sizes][]", "Large Groups (11+)"%> Large Groups (11+)</div>
   </div><br />
@@ -250,7 +315,7 @@ $(function() {
 	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
 </div><br /><br />
 
-<font style="font-size:1.3em;">Weekly Costs:&nbsp;&nbsp;&nbsp;</font><a href="#" class="" style="color:red"><u>Click here for important pricing rules</u></a><br />
+<font style="font-size:1.3em;">Weekly Costs:&nbsp;&nbsp;&nbsp;</font><a href="#rules-box" class="rules-window" style="color:red"><u>Click here for important pricing rules</u></a><br />
 <div class="cost_lengths" style="margin-top:20px; background:lightblue; padding:10px; width:327px">
 	<div style="width:150px; height:1px; background-color:#575758; margin-bottom:10px"></div>
 <ul id="fields" style="margin-left:20px">
@@ -262,7 +327,7 @@ $(function() {
 </div>
 <div class="twelve columns" align="center">
 
-  <div class="actions" style="margin-top:60px; margin-left:50px">
+  <div class="actions" style="margin-top:60px; margin-left:55px">
     <%= image_submit_tag "/assets/publishNewProgram.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
   </div>
 <% end %>
@@ -280,7 +345,52 @@ input[type="text"] {
 	width:347px;
 	height:20px;
 }
+
+.rules-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 2px solid #575758;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+
+.subjects-popup{
+	display:none;
+	background: #E9ECE9;
+	padding: 10px; 	
+	border: 2px solid #ddd;
+	float: left;
+	color: black;
+	position: fixed;
+	width: 650px;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
 </style>
 
+<div id="rules-box" class="rules-popup">
+	
+</div>
 
+<div id="subjects-box" class="subjects-popup">
+
+</div>
 
