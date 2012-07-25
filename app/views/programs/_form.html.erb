@@ -173,9 +173,13 @@ $(function() {
 								// remove the current input
 								terms.pop();
 								// add the selected item
-								terms.push( ui.item.value );
-								// add placeholder to get the comma-and-space at the end
-								terms.push( "" );
+								if (terms.length < 4) {
+									terms.push( ui.item.value );
+									// add placeholder to get the comma-and-space at the end
+									terms.push( "" );
+								} else {
+									alert("You can only select four subject tags.")
+								}
 								this.value = terms.join( ", " );
 								
 								return false;
