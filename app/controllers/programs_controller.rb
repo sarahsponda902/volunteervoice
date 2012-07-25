@@ -1375,11 +1375,9 @@ class ProgramsController < ApplicationController
     
     @subjects = []
     params[:program][:program_subjects].split(", ").each do |f|
-      if @subjects.include?(f) 
         @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
         @p.save
         @subjects << @p
-      end
     end
     params[:program][:program_subjects] = @subjects
     
