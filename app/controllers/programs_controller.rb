@@ -1373,7 +1373,7 @@ class ProgramsController < ApplicationController
 
     if (user_signed_in? && current_user.admin?) || (organization_account_signed_in? && current_organization_account.organization_id == @program.organization_id)
       if @program.save
-            redirect_to "/programs/#{@program.id}/crop"
+            redirect_to @program
       else
         @program.description = @program.description.gsub(%r{</?[^>]+?>}, '')
         @program.program_structure = @program.program_structure.gsub(%r{</?[^>]+?>}, '')
