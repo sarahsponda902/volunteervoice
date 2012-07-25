@@ -3,6 +3,7 @@
 <% if user_signed_in? && current_user.admin?%>
 <div class="container">
 	<div class="row">
+		<div class="twelve columns" align="left">
 		HELPERS:<br />
 
 		* -> bullet point<br />
@@ -16,7 +17,7 @@
 
 		For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 		
-		
+		</div>
 		<div class="six columns" style="width:45%">
 <%= form_for @organization, :html => {:multipart => true} do |f| %>
 
