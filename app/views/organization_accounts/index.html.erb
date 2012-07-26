@@ -31,6 +31,7 @@ $(function() {
 <%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
 	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
 	Contact's Email<br /><input name="email" type="email" /><br /><br />
+	<input type="checkbox" name="nonprofit" /> Nonprofit?<br /><br />
 <%= submit_tag "Send New Invitation"%>
 <% end %>
 </div>
