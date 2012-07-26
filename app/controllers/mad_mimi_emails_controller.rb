@@ -43,13 +43,13 @@ class MadMimiEmailsController < ApplicationController
   def create
     @mad_mimi_email = MadMimiEmail.new(params[:mad_mimi_email])
     if @mad_mimi_email.list_names == "users"
-      @mad_mimi_email.list_names = User.where(:notify => true).map{|user| [user.email, {'username' => user.username, 'email' => user.email}]}
+      @mad_mimi_email.list_names = User.where(:notify => true).map{|user| [user.email, {'username' => user.username, 'email' => user.email, 'unsubscribe_link' => "girlpowerproject.herokuapp.com/users/#{user.id}/change_subscription"}]}
     end
     if @mad_mimi_email.list_names == "admins"
       @mad_mimi_email.list_names = User.where(:admin => true).map{|admin| [admin.email, {'username' => admin.username, 'email' => admin.email}]}
     end
     if @mad_mimi_email.list_names == "organizations"
-      @mad_mimi_email.list_names = OrganizationAccount.where(:notify => true).map{|org| [org.email, {'firstname' => org.first_name, 'lastname' => org.last_name, 'position' => org.position, 'email' => org.email, 'username' => org.username, 'country' => org.country, 'organization_name' => Organization.find(org.organization_id).name}]}
+      @mad_mimi_email.list_names = OrganizationAccount.where(:notify => true).map{|org| [org.email, {'firstname' => org.first_name, 'lastname' => org.last_name, 'position' => org.position, 'email' => org.email, 'username' => org.username, 'country' => org.country, 'organization_name' => Organization.find(org.organization_id).name, 'unsubscribe_link' => "girlpowerproject.herokuapp.com/organization_accounts/#{user.id}/change_subscription"}]}
     end
     
     @mad_mimi_email.list_names.each do |f|
