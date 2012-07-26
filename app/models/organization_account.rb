@@ -4,7 +4,7 @@ class OrganizationAccount < ActiveRecord::Base
   attr_accessor :login
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :invitable, :invite_for => 0, :authentication_keys => [:login]
 
   # Setup accessible (or protected) attributes for your model
