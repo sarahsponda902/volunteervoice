@@ -5,14 +5,14 @@
 
 $(document).ready(function() {
 	
-	if ($('#organization_account_notify').value){
+	if (<%= resourece.notify %>){
 		
 		$('#volunteeredBefore').show();
 	} else {
 		$('#volunteeredBefore').hide();
 	}
 	
-	$("#organization_account_country").val("<%=resource.country%>");
+	$("#user_country").val("<%=resource.country%>");
 	
 	
 	$('a.question-window').click(function() {
