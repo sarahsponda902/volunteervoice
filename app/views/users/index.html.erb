@@ -20,19 +20,17 @@
 		<th width="15%">Country</th>
 		<th width="10%">Photo</th>
 		<th width="4%">Confirmed</th>
-		<th width="4%">Edit</th>
-		<th width="4%">Delete</th>
-		<th width="4%">Admin</th>
+		<th width="5%">Edit</th>
+		<th width="7%">Delete</th>
 	</tr>
-	<% @users.sort_by(&:created_at)%>
-	<% @users = @users.reverse %>
+	<% @users = @users.sort_by(&:created_at).reverse%>
 
 <% @users.each do |user|%>
 	<tr>
 		<td><% if user.admin? %>
 			<font style="font-size:1.2em; color:purple; font-weight:600">X</font>
 			<% else %>
-			<%= " "%>
+			<%= link_to "Make Admin", :controller => "users", :action => "make_admin", :user_id => user.id %>
 			<% end %></td>
 		<td><p style="color:blue"><%= user.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 		<td><%= link_to user.username, user %></td>
@@ -49,11 +47,6 @@
 		</td>
 		<td><%= link_to "Edit", user_registration_path(user.id), :controller => "registrations", :action => "edit"%></td>
 		<td><%= button_to "Delete", "/users/#{user.id}", method: :delete%></td>
-		<td>
-		<% if !user.admin?%>
-		<%= link_to "Make Admin", :controller => "users", :action => "make_admin", :user_id => user.id %>
-		<% end %>
-		</td>
 	</tr>
 <% end %>
 </table>
