@@ -29,6 +29,10 @@ $(document).ready(function(){
 	<% end %>
 	createInput();
 
+	$("#small").attr("checked", <%= @small %>);
+	$("#individual").attr("checked", <%= @individual %>);
+	$("#medium").attr("checked", <%= @medium %>);
+	$("#large").attr("checked", <%= @large %>);
 	
 	$('a.rules-window').click(function() {
 
