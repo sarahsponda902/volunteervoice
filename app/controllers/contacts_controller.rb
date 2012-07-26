@@ -41,6 +41,9 @@ include ActionView::Helpers::TextHelper
         if @contact.to_whom == "questions"
           ContactMailer.to_questions(@contact).deliver
         end
+        if @contact.to_whom == "feedback"
+          ContactMailer.to_feedback(@contact).deliver
+        end
         
           format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
           format.json { render json: @contact, status: :created, location: @contact }

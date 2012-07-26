@@ -3,6 +3,10 @@ RMTest::Application.routes.draw do
     
   match 'users/:id/crop' => 'users#crop'
   
+  match 'users/:id/change_subscription' => 'users#change_subscription'
+  
+  get 'users/successful_unsubscribe'
+  
   devise_for :organization_accounts, :controllers => {:invitations => :invitations, :sessions => "organization_account/sessions", :unlocks => :unlocks, :passwords => :passwords}
   devise_scope :organization_account do
     match "/organization_accounts/sign_out" => "devise/sessions#destroy"

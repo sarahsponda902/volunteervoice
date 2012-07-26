@@ -631,16 +631,6 @@ class UsersController < ApplicationController
   
   def successful_unsubscribe
     @user = User.find(params[:user_id])
-    if @user.notify = nil
-      @notify = false
-    else
-      @notify = @user.notify
-    end
-    if @notify
-      @subscription_status = "subscribed"
-    else
-      @subscription_status = "unsubscribed"
-    end
     respond_to do |format|
       format.html
       format.json {head :no_content}
