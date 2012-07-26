@@ -28,9 +28,9 @@
 <% @users.each do |user|%>
 	<tr>
 		<td><% if user.admin? %>
-			<font style="font-size:1.2em; color:purple; font-weight:600">X</font>
+			<font style="font-size:1.2em; color:purple; font-weight:600">ADMIN</font>
 			<% else %>
-			<%= link_to "Make Admin", "/users/#{user.id}/make_admin" %>
+			<%= button_to "Make Admin", "/users/#{user.id}/make_admin" %>
 			<% end %></td>
 		<td><p style="color:blue"><%= user.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 		<td><%= link_to user.username, user %></td>

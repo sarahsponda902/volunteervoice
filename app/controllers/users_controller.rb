@@ -648,7 +648,7 @@ class UsersController < ApplicationController
   end
 
   def make_admin
-    if !(user_signed_in && current_user.admin?)
+    if !(user_signed_in? && current_user.admin?)
       redirect_to root_path
     else
       @user = User.find(params[:user_id])
