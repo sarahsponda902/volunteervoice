@@ -60,7 +60,9 @@
     <%= f.text_field :application_process, :value => @organization.application_process %></div>
   <div class="field">
     <%= f.label :business_model %>
-    <%= f.text_field :business_model, :value => @organization.business_model %></div>
+    <%= f.radio_button :business_model, "Certified Nonprofit" %> Certified Nonprofit<br />
+	<%= f.radio_button :business_model, "For Profit Company"%> For Profit Company<br />
+  </div>
   <div class="field">
     <%= f.label "Program Model" %>
     <%= f.text_field :program_model_string, :value => @organization.program_model_string%></div>
