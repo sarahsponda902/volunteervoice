@@ -652,7 +652,11 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       @user = User.find(params[:user_id])
-      @user.admin = true
+      if !@user.admin?
+        @user.admin = true
+      else
+        @user.admin = false
+      end
       @user.save
       redirect_to "/users"
     end

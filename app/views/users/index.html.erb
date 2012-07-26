@@ -28,7 +28,8 @@
 <% @users.each do |user|%>
 	<tr>
 		<td><% if user.admin? %>
-			<font style="font-size:1.2em; color:purple; font-weight:600">ADMIN</font>
+			<font style="font-size:1.2em; color:purple; font-weight:600">ADMIN</font><br />
+			<%= button_to "Remove Admin", "/users/#{user.id}/make_admin" %>
 			<% else %>
 			<%= button_to "Make Admin", "/users/#{user.id}/make_admin" %>
 			<% end %></td>
