@@ -117,7 +117,6 @@ function createInput(){
 	var label2 = document.createTextNode("Total Cost ($): ");
 	var div = document.createElement("div");
 	var br = document.createElement("br");
-	var nbsp = document.createElement("&nbsp;");
 	var count = document.createTextNode(countFields.toString() + ". ")
 	div.style.backgroundColor = "#575758";
 	div.style.height = "1px";
@@ -138,11 +137,8 @@ function createInput(){
     input2.type = "number";
 	input2.style.marginTop = "-20px";
 	input2.style.marginLeft = "75px";
+	label2.style.marginLeft = "25px";
 	li.appendChild(label);
-	li.appendChild(nbsp);
-	li.appendChild(nbsp);
-	li.appendChild(nbsp);
-	li.appendChild(nbsp);
 	li.appendChild(label2);
 	li.appendChild(br);
 	li.appendChild(input);
