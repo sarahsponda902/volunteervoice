@@ -10,9 +10,6 @@
 <% end %>
 
 
-<%= @sizes %><br />
-<%= @sizes.include?("Medium Groups (4-10)")%><br />
-<%= @sizes.include?("Hello")%>
 <script type="text/javascript">
 $(document).ready(function(){
 	$(".createInput").click(function(event) {
@@ -33,13 +30,13 @@ $(document).ready(function(){
 	createInput();
 	
 
-		$("#individual").attr("checked", <%= @individual %>);
+		$("#individual").checked = <%= @individual %>;
 	
-		$("#small").attr("checked", <%= @small %>);
+		$("#small").checked = <%= @small %>;
 	
-		$("#medium").attr("checked", <%= @medium %>);
+		$("#medium").checked = <%= @medium %>;
 	
-		$("#large").attr("checked", <%= @large %>);
+		$("#large").checked = <%= @large %>;
 	
 	$('a.rules-window').click(function() {
 
