@@ -115,7 +115,7 @@ function createInput(){
 	var label = document.createTextNode("Length of Trip: ");
 	var input2 = document.createElement("input");
 	var label2 = document.createTextNode("Total Cost ($): ");
-	var space = document.createTextNode("&nbsp;&nbsp;&nbsp;&nbsp;");
+	var space = document.createTextNode("\u00A0");
 	var div = document.createElement("div");
 	var br = document.createElement("br");
 	var count = document.createTextNode(countFields.toString() + ". ")
@@ -136,9 +136,12 @@ function createInput(){
 	input2.id = 'cost'+countFields;
     input2.name = "costs[]";
     input2.type = "number";
-	input2.style.marginTop = "-20px";
-	input2.style.marginLeft = "75px";
+	input2.style.marginTop = "-50px";
+	input2.style.marginLeft = "175px";
 	li.appendChild(label);
+	li.appendChild(space);
+	li.appendChild(space);
+	li.appendChild(space);
 	li.appendChild(space);
 	li.appendChild(label2);
 	li.appendChild(br);
