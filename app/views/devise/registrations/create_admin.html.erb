@@ -551,15 +551,15 @@ function submitForm() {
 		<%= f.hidden_field :notify, :value => true%>
 
 		<br />
-		<p  style="margin-top:120px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Verify</label></p>
+		<p  style="margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Verify</label></p>
 		<div style="margin-top:15px; margin-left:15%" id="captchaId"><%= f.simple_captcha :label => ""%>
 		</div>
 		<br />
 		
 		<div id ="admin_change" style="margin-top:15px; margin-left:15%">
-		<label style="font-size:1.3em;">Admin Password:</label> <%=f.password_field :admin_pass, :style=>"height:22px; width:225px" %><br /><br />
+		<label style="font-size:1.3em;">Admin Password</label> <%=f.password_field :admin_pass, :style=>"height:22px; width:225px" %><br /><br />
 
-	<%=f.check_box :admin_update%>  <font style="font-size:1.3em;">Make an Account for this Admin?</font>
+	<%=f.hidden_field :admin_update, :value => true%>  <font style="font-size:1.3em;">Make an Account for this Admin?</font>
 		</div>
 		</div>
 
