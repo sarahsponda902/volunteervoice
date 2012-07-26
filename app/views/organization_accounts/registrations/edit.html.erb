@@ -5,9 +5,14 @@
 
 $(document).ready(function() {
 	
-	if ($('#volunteeredBefore').val().toString() != "true"){
+	if ($('#organization_account_notify').value){
 		
-	$('#volunteeredBefore').hide();}
+		$('#volunteeredBefore').show();
+	} else {
+		$('#volunteeredBefore').hide();
+	}
+	
+	$("#organization_account_country").val("<%=resource.country%>");
 	
 	
 	$('a.question-window').click(function() {
@@ -111,12 +116,6 @@ function submitForm() {
 
 				  <div  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Position in Organization</label>
 				  <%= f.text_field :position, :style=>"height:22px; width:225px"%></div>
-
-				  <div style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
-				  <%=f.password_field :password, :style=>"height:22px; width:225px" %></div>
-
-				  <div  style="margin-top:25px; margin-left:15%;margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Retype Password</label>
-				  <%=f.password_field :password_confirmation, :style=>"height:22px; width:225px" %></div>
 
 				
 							 <p style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px" for="user_country">Country</label>
@@ -383,6 +382,15 @@ function submitForm() {
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:95.5%; left:15%; width:100%">
 		<%= f.check_box :notify, :checked => "checked", :onclick => "$(volunteeredCheckNoToggle())", :style => "opacity:0; height:15px; width:15px" %>
 		<label style="margin-left:6.5%; margin-top:-20px">Notify me of important updates and changes</label></div>
+		
+		  <div style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
+		  <%=f.password_field :password, :style=>"height:22px; width:225px" %></div>
+
+		  <div  style="margin-top:25px; margin-left:15%;margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Retype Password</label>
+		  <%=f.password_field :password_confirmation, :style=>"height:22px; width:225px" %></div>
+		
+		  <div style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Current Password <font style="color:#e67b5a">(needed for change)</font></label>
+		  <%=f.password_field :current_password, :style=>"height:22px; width:225px; border:1px solid #e67b5a" %></div>
 
 		<br /><br /><br /><br />
 		</div>
