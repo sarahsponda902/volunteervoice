@@ -7,8 +7,7 @@ RMTest::Application.routes.draw do
   devise_scope :organization_account do
     match "/organization_accounts/sign_out" => "devise/sessions#destroy"
     match "/organization_accounts/profile" => "organization_accounts#profile"
-    match "/organization_accounts/:user_id/resend_invitation" => "organization_accounts#resend_invitation"
-    match "/organization_accounts/unlocks/:unlock_token" => 'unlocks#new'  
+    match "/organization_accounts/:user_id/resend_invitation" => "organization_accounts#resend_invitation" 
     match "/organization_accounts/passwords/:reset_password_token" => 'devise/passwords#edit'
   end
   
@@ -151,8 +150,6 @@ RMTest::Application.routes.draw do
     match "confirmations/new" => 'devise/confirmations#new'
     
     match "confirmations/:confirmation_token" => 'devise/confirmations#show'
-    
-    match "unlocks/:unlock_token" => 'devise/unlocks#unlock_account'
     
     match "passwords/:reset_password_token" => 'devise/passwords#edit'
   
