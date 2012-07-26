@@ -3,7 +3,33 @@
 
 <%= link_to 'Create New Organization', new_organization_path %>
 
+<br /><br />
+<p style="font-size:2em">Out-of-date Organizations</p>
+<table align="center">
+  <tr>
+     <th>Name</th>
+	<th>Organization Account</th>
+     <th>Last Updated</th>
+  </tr>
 
+<% @organizations.each do |organization| %>
+<% if organization.updated_at < 1.month.ago %>
+  <tr>
+  	<td><%= link_to organization.name, organization %></td>
+	<td><% if OrganizationAccount.where(:organization_id => organization.id).empty? %>
+		<font style="color:red">No Account</font>
+		<% else %>
+		<%= link_to "Click to View", OrganizationAccount.where(:organization_id => organization.id).first, :style => "color:green"%>
+		<% end %>
+		</td>
+    <td><%= organization.updated_at %></td>
+  </tr>
+<% end %>
+<% end %>
+
+</table>
+<br /><br />
+<p style="font-size:2em">All Organizations</p>
 <table align="center">
   <tr>
      <th>Name</th>
