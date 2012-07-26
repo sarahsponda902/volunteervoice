@@ -10,7 +10,6 @@
 	<% @contact = Contact.new(:subject => "Subscription Termination Feedback (org)", :to_whom => "contact", :user_id => @user.id)%>
 	<%= form_for(@contact) do |f| %>
 	    <div class="field">
-	      <%= f.label :body %>
 	      <%= f.text_area :body, :style => "height:200px; width:500px" %>
 	    </div>
 
