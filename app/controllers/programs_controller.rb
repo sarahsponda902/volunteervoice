@@ -1056,6 +1056,9 @@ class ProgramsController < ApplicationController
     @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
     @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
     
+    @subjects = @program.program_subjects.map(&:subject).join(", ")
+    @sizes = @program.program_sizes.map(&:size)
+    
     @session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
     @ss = @session.spreadsheet_by_title("#{@program.name}")
     @ws = @ss.worksheets[0]
