@@ -1405,7 +1405,7 @@ class ProgramsController < ApplicationController
     "ZM"=> "Zambia", 
     "ZW"=> "Zimbabwe"]
     
-    if (!current_organization_account.nil?)
+    if !(current_organization_account.nil?)
       @org_id = current_organization_account.organization_id
     else
       @org_id = Organization.where(:name => params[:program][:organization_name]).first.id
@@ -1421,7 +1421,7 @@ class ProgramsController < ApplicationController
     
     @sizes = []
     params[:program][:program_sizes].each do |f|
-      @p = ProgramSize.new(:program_id => params[:program][:id], :size => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+      @p = ProgramSize.new(:program_id => params[:program][:id], :size => f, :organization_id => @org_id)
       @p.save
       @sizes << @p
     end
@@ -1429,7 +1429,7 @@ class ProgramsController < ApplicationController
     
     @cost_lengths = []
     params[:costs].each do |f|
-      @p = ProgramCostLengthMap.new(:program_id => params[:program][:id], :cost => f.to_f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+      @p = ProgramCostLengthMap.new(:program_id => params[:program][:id], :cost => f.to_f, :organization_id => @org_id)
       @p.save
       @cost_lengths << @p
     end
@@ -1451,11 +1451,7 @@ class ProgramsController < ApplicationController
     
     @program = Program.new(params[:program])
     @program.location_name = @theCountries[@program.location]
-    if organization_account_signed_in?
-      @program.organization_id = current_organization_account.organization_id
-    else
-      @program.organization_id = Organization.where(:name => @program.organization_name).first.id
-    end
+    @program.organization_id = @org_id
     @program.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize(truncate @program.description, :length => 100), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.description = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
