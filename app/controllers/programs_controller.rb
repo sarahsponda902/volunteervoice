@@ -1058,6 +1058,8 @@ class ProgramsController < ApplicationController
     
     @subjects = @program.program_subjects.map(&:subject).join(", ")
     @sizes = @program.program_sizes.map(&:size)
+    @costs = @program.program_cost_length_maps.map(&:cost)
+    @lengths = @program.program_cost_length_maps.map{|p| "#{p.length_number} #{p.length_name}"}
     
     @session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
     @ss = @session.spreadsheet_by_title("#{@program.name}")
@@ -1463,6 +1465,9 @@ end
         @program.program_sizes.each do |f|
           f.destroy!
         end
+        @program.program_cost_length_maps.each do |f|
+          f.destroy!
+        end
         
          @subjects = []
           params[:program][:program_subjects].split(", ").each do |f|
@@ -1479,7 +1484,29 @@ end
             @sizes << @p
           end
           params[:program][:program_sizes] = @sizes
-        
+          
+          @cost_lengths = []
+          params[:costs].each do |f|
+            @p = ProgramCostLengthMap.new(:program_id => params[:id], :cost => f.to_f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+            @p.save
+            @cost_lengths << @p
+          end
+
+          count = 0
+          params[:lengths].each do |f|
+            @p = @cost_lengths[count]
+            @length = f.split(" ")
+            @p.length = @length[0].to_i.send(@length[1]).to_f
+            @p.length_name = @length[1]
+            @p.length_number = @length[0]
+            @p.save
+            @p.index!
+            @cost_lengths[count] = @p
+            count = count + 1
+          end
+
+          params[:program][:program_cost_length_maps] = @cost_lengths
+          
         
       if @program.update_attributes(params[:program])
             redirect_to "/programs/#{@program.id}"

@@ -13,23 +13,27 @@ $(document).ready(function(){
 		event.preventDefault();
 		createInput();
 	});
+	<% @costs.each do |f| %>
+		createInput();
+	<% end %>
+	count = 0;
+	<% @count = 0 %>
+	<% @costs.each do |f| %>
+		$("#cost"+count.toString()).val("<%=f%>");
+		$("#length"+count.toString()).val("<%=@lengths[@count]%>");
+		count = count + 1;
+		<% count = count + 1 %>
+	<% end %>
 	createInput();
 	
-	<% if @sizes.include?("Individual") %>
-		$("#individual").attr("checked", true);
-	<% end %>
+
+		$("#individual").attr("checked", <%= @individual %>);
 	
-	<% if @sizes.include?("Small Groups (2-3)") %>
-		$("#small").attr("checked", true);
-	<% end %>
+		$("#small").attr("checked", <%= @small %>);
 	
-	<% if @sizes.include?("Medium Groups (4-10)") %>
-		$("#medium").attr("checked", true);
-	<% end %>
+		$("#medium").attr("checked", <%= @medium %>);
 	
-	<% if @sizes.include?("Large Groups (11+)") %>
-		$("#large").attr("checked", true);
-	<% end %>
+		$("#large").attr("checked", <%= @large %>);
 	
 	$('a.rules-window').click(function() {
 
