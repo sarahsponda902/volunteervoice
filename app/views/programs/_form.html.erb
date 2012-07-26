@@ -311,11 +311,11 @@ $(function() {
 <div id="field">
 	<label>Group Sizes: <p style="font-size:0.85em; color:darkblue; "> &gt; What size groups do volunteers work in? You can select more than one.</p></label>
 	<div class="six columns" style="width:50%">
-	<%= check_box_tag "program[program_sizes][]", "Individual", :id => "individual"%> Individual <br />
-	<%= check_box_tag "program[program_sizes][]", "Small Groups (2-3)", :id => "small"%> Small Groups (2-3)</div>
+	<input type="checkbox" name="program[program_sizes][]" value= "Individual" id = "individual"> Individual <br />
+	<input type="checkbox" name="program[program_sizes][]" value="Small Groups (2-3)" id = "small"> Small Groups (2-3)</div>
 	<div class="six columns" style="width:43%; margin-top:-37px">
-	<%= check_box_tag "program[program_sizes][]", "Medium Groups (4-10)", :id => "medium"%> Medium Groups (4-10)<br/>
-	<%= check_box_tag "program[program_sizes][]", "Large Groups (11+)", :id => "large"%> Large Groups (11+)</div>
+	<input type="checkbox" name="program[program_sizes][]" value="Medium Groups (4-10)" id = "medium"> Medium Groups (4-10)<br/>
+	<input type="checkbox" name="program[program_sizes][]" value="Large Groups (11+)" id = "large"> Large Groups (11+)</div>
   </div><br />
 </div>
 
