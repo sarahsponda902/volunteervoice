@@ -1058,6 +1058,33 @@ class ProgramsController < ApplicationController
     
     @subjects = @program.program_subjects.map(&:subject).join(", ")
     @sizes = @program.program_sizes.map(&:size)
+    
+    
+    if @sizes.include?("Individual")
+      @individual = true
+    else
+      @individual = false
+    end
+    
+    if @sizes.include?("Small Groups (2-3)")
+      @small = true
+    else
+      @small = false
+    end
+    
+    if @sizes.include?("Medium Groups (4-10)")
+      @medium = true
+    else
+      @medium = false
+    end
+    
+    if @sizes.include?("Large Groups (11+)")
+      @large = true
+    else
+      @large = false
+    end
+    
+    
     @costs = @program.program_cost_length_maps.map(&:cost)
     @lengths = @program.program_cost_length_maps.map{|p| "#{p.length_number} #{p.length_name}"}
     

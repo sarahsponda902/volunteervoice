@@ -5,7 +5,9 @@
 <script type="text/javascript" src="/assets/jquery.js"></script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
+<% if @costs.nil?%>
+<% @costs = []%>
+<% end %>
 
 <script type="text/javascript">
 $(document).ready(function(){
