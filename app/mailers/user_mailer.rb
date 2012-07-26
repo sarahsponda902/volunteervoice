@@ -12,14 +12,22 @@ class UserMailer < ActionMailer::Base
   
   def unlock_instructions(resource)
     @options = {"promotion_name" => "UnlockAccount", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "Unlock VolunteerVoice Account"}
-    @yaml_body = {'instrux' => "girlpowerproject.herokuapp.com/unlocks/#{resource.unlock_token}", 'usrname' => resource.username}
+    if resource.is_a?(OrganizationAccount)
+       @yaml_body = {'instrux' => "girlpowerproject.herokuapp.com/organization_accounts/unlocks/#{resource.unlock_token}", 'usrname' => resource.username}
+    else
+      @yaml_body = {'instrux' => "girlpowerproject.herokuapp.com/unlocks/#{resource.unlock_token}", 'usrname' => resource.username}
+    end
     @errors = MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
    mail(:from => "no-reply@volunteervoice.org", :to => "sarahsponda902@gmail.com", :body => @errors)
   end
   
   def reset_password_instructions(resource)
     @options = {"promotion_name" => "ResetPassword", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "Reset Password on VolunteerVoice Account"}
-    @yaml_body = {'instrux' => "girlpowerproject.herokuapp.com/passwords/#{resource.reset_password_token}", 'usrname' => resource.username}
+    if resource.is_a?(OrganizationAccount)
+       @yaml_body = {'instrux' => "girlpowerproject.herokuapp.com/organization_accounts/passwords/#{resource.reset_password_token}", 'usrname' => "#{resource.first_name} #{resource.last_name}"}
+    else
+       @yaml_body = {'instrux' => "girlpowerproject.herokuapp.com/passwords/#{resource.reset_password_token}", 'usrname' => resource.username}
+    end
     @errors = MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
     mail(:from => "no-reply@volunteervoice.org", :to => "sarahsponda902@gmail.com", :body => @errors)
   end
