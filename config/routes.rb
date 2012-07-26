@@ -8,8 +8,8 @@ RMTest::Application.routes.draw do
     match "/organization_accounts/sign_out" => "devise/sessions#destroy"
     match "/organization_accounts/profile" => "organization_accounts#profile"
     match "/organization_accounts/:user_id/resend_invitation" => "organization_accounts#resend_invitation"
-    match "/organization_accounts/unlocks/:unlock_token" => 'organization_accounts/unlocks#unlock_account'  
-    match "/organization_accounts/passwords/:reset_password_token" => 'organization_accounts/passwords#edit'
+    match "/organization_accounts/unlocks/:unlock_token" => 'organization_account/unlocks#unlock_account'  
+    match "/organization_accounts/passwords/:reset_password_token" => 'organization_account/passwords#edit'
   end
   
   resources :organization_accounts do
