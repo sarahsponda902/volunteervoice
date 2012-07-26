@@ -91,9 +91,9 @@ function submitForm() {
 	<div class="row">
 	<div class="six columns" style="float:center; text-align:left; margin-top:90px; border-left:1px solid #e67b5a; border-right:1px solid #e67b5a">
 
-		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Register</p>
+		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd; line-height:1.3em">Register Your Organization's Account</p>
 
-		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :id =>"the_form") do |f| %>
+		<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put }, :id => "the_form" do |f| %>
 		<%= f.hidden_field :invitation_token %>
 
 		  <div  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Username</label>
