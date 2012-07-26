@@ -3,12 +3,12 @@ RMTest::Application.routes.draw do
     
   match 'users/:id/crop' => 'users#crop'
   
-  devise_for :organization_accounts, :controllers => {:invitations => :invitations, :sessions => "organization_account/sessions"}
+  devise_for :organization_accounts, :controllers => {:invitations => :invitations, :sessions => "organization_account/sessions", :unlocks => :unlocks, :passwords => :passwords}
   devise_scope :organization_account do
     match "/organization_accounts/sign_out" => "devise/sessions#destroy"
     match "/organization_accounts/profile" => "organization_accounts#profile"
     match "/organization_accounts/:user_id/resend_invitation" => "organization_accounts#resend_invitation"
-    match "/organization_accounts/unlocks/:unlock_token" => 'devise/unlocks#unlock_account'  
+    match "/organization_accounts/unlocks/:unlock_token" => 'unlocks#new'  
     match "/organization_accounts/passwords/:reset_password_token" => 'devise/passwords#edit'
   end
   
