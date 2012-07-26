@@ -379,8 +379,8 @@ function submitForm() {
 	<div style="margin-left:20px">
 	  <%= f.radio_button :type_of_company, "Community Based Organization", :style => "height:20px;width:20px; background-color:#c1dfdb" %> Community Based Organization<br />
 	  <%= f.radio_button :type_of_company, "Volunteer Placement Organization", :style => "height:20px;width:20px; background-color:#c1dfdb" %>Volunteer Placement Organization</div></div>
-				<image style="position:absolute; left:14.6%; top:86.5%; z-index:9; height:25px;" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
-		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:87.5%; left:15%; width:100%">
+				<image style="position:absolute; left:14.6%; top:92.5%; z-index:9; height:25px;" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
+		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:93.5%; left:15%; width:100%">
 		<%= f.check_box :notify, :checked => "checked", :onclick => "$(volunteeredCheckNoToggle())", :style => "opacity:0; height:15px; width:15px" %>
 		<label style="margin-left:6.5%; margin-top:-20px">Notify me of important updates and changes</label></div>
 
