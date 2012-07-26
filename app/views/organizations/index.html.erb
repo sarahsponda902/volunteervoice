@@ -9,6 +9,7 @@
   <tr>
      <th>Name</th>
 	<th>Organization Account</th>
+	<th>Account Email</th>
      <th>Last Updated</th>
   </tr>
 
@@ -22,6 +23,7 @@
 		<%= link_to "Click to View", OrganizationAccount.where(:organization_id => organization.id).first, :style => "color:green"%>
 		<% end %>
 		</td>
+	<td><%= mail_to OrganizationAccount.where(:organization_id => organization.id).first.email %></td>
     <td><%= organization.updated_at %></td>
   </tr>
 <% end %>
