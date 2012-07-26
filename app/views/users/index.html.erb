@@ -20,8 +20,9 @@
 		<th width="15%">Country</th>
 		<th width="10%">Photo</th>
 		<th width="4%">Confirmed</th>
-		<th width="5%">Edit</th>
-		<th width="7%">Delete</th>
+		<th width="4%">Edit</th>
+		<th width="4%">Delete</th>
+		<th width="4%">Make Admin</th>
 	</tr>
 	<% @users.sort_by(&:created_at)%>
 	<% @users = @users.reverse %>
@@ -48,6 +49,11 @@
 		</td>
 		<td><%= link_to "Edit", user_registration_path(user.id), :controller => "registrations", :action => "edit"%></td>
 		<td><%= button_to "Delete", "/users/#{user.id}", method: :delete%></td>
+		<td>
+		<% if !user.admin?%>
+		<%= button_to "Make Admin", :controller => "users", :action => "make_admin", :user_id => user.id %>
+		<% end %>
+		</td>
 	</tr>
 <% end %>
 </table>

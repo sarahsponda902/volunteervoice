@@ -647,4 +647,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def make_admin
+    if !(user_signed_in && current_user.admin?)
+      redirect_to root_path
+    else
+      @user = User.find(params[:user_id])
+      @user.admin = true
+      @user.save
+      redirect_to "/users"
+    end
+  end
+
 end
