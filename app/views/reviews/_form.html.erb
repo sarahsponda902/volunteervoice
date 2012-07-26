@@ -533,7 +533,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 		</div>
 
 
-	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:60px">Your Experience<font style="font-size:0.6em;">(Minimum 200 characters.)</font></div>
+	<div class="ten columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:60px">Your Experience <font style="font-size:0.6em;">(Minimum 200 characters.)</font></div>
 
 	   <%= f.text_area :body, :style => "width:400px; font-style:italic; margin-left:11%; height:150px; resize:none; color:gray; border: 1px solid #575758", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @review.body; end), :class => "word_count"%>
 	<span style="float:right" class="counter"></span><br />
