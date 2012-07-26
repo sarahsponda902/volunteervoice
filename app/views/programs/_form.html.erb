@@ -113,6 +113,7 @@ function createInput(){
 	var label2 = document.createTextNode("Total Cost ($): ");
 	var div = document.createElement("div");
 	var br = document.createElement("br");
+	var nbsp = document.createElement("&nbsp;");
 	var count = document.createTextNode(countFields.toString() + ". ")
 	div.style.backgroundColor = "#575758";
 	div.style.height = "1px";
@@ -132,6 +133,10 @@ function createInput(){
     input2.name = "costs[]";
     input2.type = "number";
 	li.appendChild(label);
+	li.appendChild(nbsp);
+	li.appendChild(nbsp);
+	li.appendChild(nbsp);
+	li.appendChild(nbsp);
 	li.appendChild(label2);
 	li.appendChild(br);
 	li.appendChild(input);
@@ -276,7 +281,7 @@ $(function() {
 <p style="font-size:0.85em; color:darkblue; "> &gt; Name only (no description) of the exact town(s) or city(ies)</p>
 </div><br />
 
-	<% if !(organization_account_signed_in?)%>
+	<% if !(current_organization_account.nil?)%>
 		<label for="tags">Organization: </label>
 		<input id="tags" name="program[organization_name]" type="text"/>
 
