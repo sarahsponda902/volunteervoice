@@ -1,28 +1,472 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
+<script type="text/javascript">
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+$(document).ready(function() {
+	
+	if ($('#volunteeredBefore').val().toString() != "true"){
+		
+	$('#volunteeredBefore').hide();}
+	
+	
+	$('a.question-window').click(function() {
 
-  <div><%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %></div>
+                //Getting the variable's value from a link 
+		var questionBox = $(this).attr('href');
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
-  <%= f.password_field :current_password %></div>
+		//Fade in the Popup
+		$(questionBox).fadeIn(300);
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(questionBox).height() + 24) / 2; 
+		var popMargLeft = ($(questionBox).width() + 24) / 2; 
 
-<h3>Cancel my account</h3>
+		$(questionBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
+		// Add the mask to body
+		$('body').append('<div id="mask"  style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
 
-<%= link_to "Back", :back %>
+		return false;
+	});
 
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .question-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	$('img.btn_close, #mask').live('click', function() { 
+	  $('#mask , .question-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	
+	
+	
+});
+
+function beforeCheck() {
+	$('#checkBefore').toggle();
+	$('#userNotify').toggle();
+}
+
+function beforeCheckNoToggle() {
+	$('#checkBefore').toggle();
+}
+
+
+function volunteeredCheck() {
+	$('#volunteeredBefore').toggle();
+	$('#userVolunteered').toggle();
+}
+
+
+function volunteeredCheckNoToggle() {
+	$('#volunteeredBefore').toggle();
+}
+
+function submitForm() {
+	$('#the_form').submit();
+}
+</script>
+
+<div class="container" align="center" style="color:#575758">
+	<% flash.each do |key, value| %>
+	  <div class="flash <%=key%>">
+	<%= pluralize value.length, "errors"%> prevented your account from being created:<br />
+		<% value.each do |f|%>
+			* <%=f%><br />
+		<% end %>
+	  </div>
+	<% end %>
+	<%= devise_error_messages! %>
+	<div class="row">
+	<div class="six columns" style="float:center; text-align:left; margin-top:90px; border-left:1px solid #e67b5a; border-right:1px solid #e67b5a">
+
+		<p style="font-family:ArchitectsDaughterRegular; font-size:2.3em; text-align:center; color:#62acbd; line-height:1.3em">Edit Your Organization's Account</p>
+
+		<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put }, :id => "the_form" do |f| %>
+
+		<%= f.hidden_field :invitation_token %>
+
+		  <div  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Username</label>
+				  <%=f.text_field :username, :style=>"height:22px; width:225px" %></div>
+				
+				<div  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email</label>
+				  <%=f.text_field :email, :style=>"height:22px; width:225px" %></div>
+
+
+				<div  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">First Name</label>
+				  <%= f.text_field :first_name, :style=>"height:22px; width:225px"%></div>
+
+				  <div  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Last Name</label>
+				  <%= f.text_field :last_name, :style=>"height:22px; width:225px"%></div>
+
+				  <div  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Position in Organization</label>
+				  <%= f.text_field :position, :style=>"height:22px; width:225px"%></div>
+
+				  <div style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
+				  <%=f.password_field :password, :style=>"height:22px; width:225px" %></div>
+
+				  <div  style="margin-top:25px; margin-left:15%;margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Retype Password</label>
+				  <%=f.password_field :password_confirmation, :style=>"height:22px; width:225px" %></div>
+
+				
+							 <p style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px" for="user_country">Country</label>
+								<div style="position:absolute; left:15%; height:30px; width:307px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
+							 <select id="user_country" name="organization_account[country]" style="position:absolute; left:-5px; width:334px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
+					<option value=""> Select a Country</option>
+					<option value="AF"> Afghanistan</option>
+					<option value="AX"> Åland Islands</option>
+					<option value="AL"> Albania</option>
+					<option value="DZ"> Algeria</option>
+					<option value="AS"> American Samoa</option>
+					<option value="AD"> Andorra</option>
+					<option value="AO"> Angola</option>
+					<option value="AI"> Anguilla</option>
+					<option value="AQ"> Antarctica</option>
+					<option value="AG"> Antigua and Barbuda</option>
+					<option value="AR"> Argentina</option>
+					<option value="AM"> Armenia</option>
+					<option value="AW"> Aruba</option>
+					<option value="AU"> Australia</option>
+					<option value="AT"> Austria</option>
+					<option value="AZ"> Azerbaijan</option>
+					<option value="BS"> Bahamas</option>
+					<option value="BH"> Bahrain</option>
+					<option value="BD"> Bangladesh</option>
+					<option value="BB"> Barbados</option>
+					<option value="BY"> Belarus</option>
+					<option value="BE"> Belgium</option>
+					<option value="BZ"> Belize</option>
+					<option value="BJ"> Benin</option>
+					<option value="BM"> Bermuda</option>
+					<option value="BT"> Bhutan</option>
+					<option value="BO"> Bolivia, Plurinational State of</option>
+					<option value="BQ"> Bonaire, Sint Eustatius and Saba</option>
+					<option value="BA"> Bosnia and Herzegovina</option>
+					<option value="BW"> Botswana</option>
+					<option value="BV"> Bouvet Island</option>
+					<option value="BR"> Brazil</option>
+					<option value="IO"> British Indian Ocean Territory</option>
+					<option value="BN"> Brunei Darussalam</option>
+					<option value="BG"> Bulgaria</option>
+					<option value="BF"> Burkina Faso</option>
+					<option value="BI"> Burundi</option>
+					<option value="KH"> Cambodia</option>
+					<option value="CM"> Cameroon</option>
+					<option value="CA"> Canada</option>
+					<option value="CV"> Cape Verde</option>
+					<option value="KY"> Cayman Islands</option>
+					<option value="CF"> Central African Republic</option>
+					<option value="TD"> Chad</option>
+					<option value="CL"> Chile</option>
+					<option value="CN"> China</option>
+					<option value="CX"> Christmas Island</option>
+					<option value="CC"> Cocos (Keeling) Islands</option>
+					<option value="CO"> Colombia</option>
+					<option value="KM"> Comoros</option>
+					<option value="CG"> Congo</option>
+					<option value="CD"> Congo, the Democratic Republic of the</option>
+					<option value="CK"> Cook Islands</option>
+					<option value="CR"> Costa Rica</option>
+					<option value="CI"> Côte d'Ivoire</option>
+					<option value="HR"> Croatia</option>
+					<option value="CU"> Cuba</option>
+					<option value="CW"> Curaçao</option>
+					<option value="CY"> Cyprus</option>
+					<option value="CZ"> Czech Republic</option>
+					<option value="DK"> Denmark</option>
+					<option value="DJ"> Djibouti</option>
+					<option value="DM"> Dominica</option>
+					<option value="DO"> Dominican Republic</option>
+					<option value="EC"> Ecuador</option>
+					<option value="EG"> Egypt</option>
+					<option value="SV"> El Salvador</option>
+					<option value="GQ"> Equatorial Guinea</option>
+					<option value="ER"> Eritrea</option>
+					<option value="EE"> Estonia</option>
+					<option value="ET"> Ethiopia</option>
+					<option value="FK"> Falkland Islands (Malvinas)</option>
+					<option value="FO"> Faroe Islands</option>
+					<option value="FJ"> Fiji</option>
+					<option value="FI"> Finland</option>
+					<option value="FR"> France</option>
+					<option value="GF"> French Guiana</option>
+					<option value="PF"> French Polynesia</option>
+					<option value="TF"> French Southern Territories</option>
+					<option value="GA"> Gabon</option>
+					<option value="GM"> Gambia</option>
+					<option value="GE"> Georgia</option>
+					<option value="DE"> Germany</option>
+					<option value="GH"> Ghana</option>
+					<option value="GI"> Gibraltar</option>
+					<option value="GR"> Greece</option>
+					<option value="GL"> Greenland</option>
+					<option value="GD"> Grenada</option>
+					<option value="GP"> Guadeloupe</option>
+					<option value="GU"> Guam</option>
+					<option value="GT"> Guatemala</option>
+					<option value="GG"> Guernsey</option>
+					<option value="GN"> Guinea</option>
+					<option value="GW"> Guinea-Bissau</option>
+					<option value="GY"> Guyana</option>
+					<option value="HT"> Haiti</option>
+					<option value="HM"> Heard Island and McDonald Islands</option>
+					<option value="VA"> Holy See (Vatican City State)</option>
+					<option value="HN"> Honduras</option>
+					<option value="HK"> Hong Kong</option>
+					<option value="HU"> Hungary</option>
+					<option value="IS"> Iceland</option>
+					<option value="IN"> India</option>
+					<option value="ID"> Indonesia</option>
+					<option value="IR"> Iran, Islamic Republic of</option>
+					<option value="IQ"> Iraq</option>
+					<option value="IE"> Ireland</option>
+					<option value="IM"> Isle of Man</option>
+					<option value="IL"> Israel</option>
+					<option value="IT"> Italy</option>
+					<option value="JM"> Jamaica</option>
+					<option value="JP"> Japan</option>
+					<option value="JE"> Jersey</option>
+					<option value="JO"> Jordan</option>
+					<option value="KZ"> Kazakhstan</option>
+					<option value="KE"> Kenya</option>
+					<option value="KI"> Kiribati</option>
+					<option value="KP"> Korea, Democratic People's Republic of</option>
+					<option value="KR"> Korea, Republic of</option>
+					<option value="KW"> Kuwait</option>
+					<option value="KG"> Kyrgyzstan</option>
+					<option value="LA"> Lao People's Democratic Republic</option>
+					<option value="LV"> Latvia</option>
+					<option value="LB"> Lebanon</option>
+					<option value="LS"> Lesotho</option>
+					<option value="LR"> Liberia</option>
+					<option value="LY"> Libya</option>
+					<option value="LI"> Liechtenstein</option>
+					<option value="LT"> Lithuania</option>
+					<option value="LU"> Luxembourg</option>
+					<option value="MO"> Macao</option>
+					<option value="MK"> Macedonia, the former Yugoslav Republic of</option>
+					<option value="MG"> Madagascar</option>
+					<option value="MW"> Malawi</option>
+					<option value="MY"> Malaysia</option>
+					<option value="MV"> Maldives</option>
+					<option value="ML"> Mali</option>
+					<option value="MT"> Malta</option>
+					<option value="MH"> Marshall Islands</option>
+					<option value="MQ"> Martinique</option>
+					<option value="MR"> Mauritania</option>
+					<option value="MU"> Mauritius</option>
+					<option value="YT"> Mayotte</option>
+					<option value="MX"> Mexico</option>
+					<option value="FM"> Micronesia, Federated States of</option>
+					<option value="MD"> Moldova, Republic of</option>
+					<option value="MC"> Monaco</option>
+					<option value="MN"> Mongolia</option>
+					<option value="ME"> Montenegro</option>
+					<option value="MS"> Montserrat</option>
+					<option value="MA"> Morocco</option>
+					<option value="MZ"> Mozambique</option>
+					<option value="MM"> Myanmar</option>
+					<option value="NA"> Namibia</option>
+					<option value="NR"> Nauru</option>
+					<option value="NP"> Nepal</option>
+					<option value="NL"> Netherlands</option>
+					<option value="NC"> New Caledonia</option>
+					<option value="NZ"> New Zealand</option>
+					<option value="NI"> Nicaragua</option>
+					<option value="NE"> Niger</option>
+					<option value="NG"> Nigeria</option>
+					<option value="NU"> Niue</option>
+					<option value="NF"> Norfolk Island</option>
+					<option value="MP"> Northern Mariana Islands</option>
+					<option value="NO"> Norway</option>
+					<option value="OM"> Oman</option>
+					<option value="PK"> Pakistan</option>
+					<option value="PW"> Palau</option>
+					<option value="PS"> Palestinian Territory, Occupied</option>
+					<option value="PA"> Panama</option>
+					<option value="PG"> Papua New Guinea</option>
+					<option value="PY"> Paraguay</option>
+					<option value="PE"> Peru</option>
+					<option value="PH"> Philippines</option>
+					<option value="PN"> Pitcairn</option>
+					<option value="PL"> Poland</option>
+					<option value="PT"> Portugal</option>
+					<option value="PR"> Puerto Rico</option>
+					<option value="QA"> Qatar</option>
+					<option value="RE"> Réunion</option>
+					<option value="RO"> Romania</option>
+					<option value="RU"> Russian Federation</option>
+					<option value="RW"> Rwanda</option>
+					<option value="BL"> Saint Barthélemy</option>
+					<option value="SH"> Saint Helena, Ascension and Tristan da Cunha</option>
+					<option value="KN"> Saint Kitts and Nevis</option>
+					<option value="LC"> Saint Lucia</option>
+					<option value="MF"> Saint Martin (French part)</option>
+					<option value="PM"> Saint Pierre and Miquelon</option>
+					<option value="VC"> Saint Vincent and the Grenadines</option>
+					<option value="WS"> Samoa</option>
+					<option value="SM"> San Marino</option>
+					<option value="ST"> Sao Tome and Principe</option>
+					<option value="SA"> Saudi Arabia</option>
+					<option value="SN"> Senegal</option>
+					<option value="RS"> Serbia</option>
+					<option value="SC"> Seychelles</option>
+					<option value="SL"> Sierra Leone</option>
+					<option value="SG"> Singapore</option>
+					<option value="SX"> Sint Maarten (Dutch part)</option>
+					<option value="SK"> Slovakia</option>
+					<option value="SI"> Slovenia</option>
+					<option value="SB"> Solomon Islands</option>
+					<option value="SO"> Somalia</option>
+					<option value="ZA"> South Africa</option>
+					<option value="GS"> South Georgia and the South Sandwich Islands</option>
+					<option value="SS"> South Sudan</option>
+					<option value="ES"> Spain</option>
+					<option value="LK"> Sri Lanka</option>
+					<option value="SD"> Sudan</option>
+					<option value="SR"> Suriname</option>
+					<option value="SJ"> Svalbard and Jan Mayen</option>
+					<option value="SZ"> Swaziland</option>
+					<option value="SE"> Sweden</option>
+					<option value="CH"> Switzerland</option>
+					<option value="SY"> Syrian Arab Republic</option>
+					<option value="TW"> Taiwan, Province of China</option>
+					<option value="TJ"> Tajikistan</option>
+					<option value="TZ"> Tanzania, United Republic of</option>
+					<option value="TH"> Thailand</option>
+					<option value="TL"> Timor-Leste</option>
+					<option value="TG"> Togo</option>
+					<option value="TK"> Tokelau</option>
+					<option value="TO"> Tonga</option>
+					<option value="TT"> Trinidad and Tobago</option>
+					<option value="TN"> Tunisia</option>
+					<option value="TR"> Turkey</option>
+					<option value="TM"> Turkmenistan</option>
+					<option value="TC"> Turks and Caicos Islands</option>
+					<option value="TV"> Tuvalu</option>
+					<option value="UG"> Uganda</option>
+					<option value="UA"> Ukraine</option>
+					<option value="AE"> United Arab Emirates</option>
+					<option value="GB"> United Kingdom</option>
+					<option value="US"> United States</option>
+					<option value="UM"> United States Minor Outlying Islands</option>
+					<option value="UY"> Uruguay</option>
+					<option value="UZ"> Uzbekistan</option>
+					<option value="VU"> Vanuatu</option>
+					<option value="VE"> Venezuela, Bolivarian Republic of</option>
+					<option value="VN"> Viet Nam</option>
+					<option value="VG"> Virgin Islands, British</option>
+					<option value="VI"> Virgin Islands, U.S.</option>
+					<option value="WF"> Wallis and Futuna</option>
+					<option value="EH"> Western Sahara</option>
+					<option value="YE"> Yemen</option>
+					<option value="ZM"> Zambia</option>
+					<option value="ZW"> Zimbabwe</option></select>
+							</div>
+		<br /><br />
+		
+ 			<div  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Type of Organization&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#question-box" class="question-window" style="color:#6aaeba; font-size:0.8em">Which one am I?</a></label>
+	<div style="margin-left:20px">
+	  <%= f.radio_button :type_of_company, "Community Based Organization", :style => "height:20px;width:20px; background-color:#c1dfdb" %> Community Based Organization<br />
+	  <%= f.radio_button :type_of_company, "Volunteer Placement Organization", :style => "height:20px;width:20px; background-color:#c1dfdb" %>Volunteer Placement Organization</div></div>
+				<image style="position:absolute; left:14.6%; top:94.5%; z-index:9; height:25px;" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
+		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:95.5%; left:15%; width:100%">
+		<%= f.check_box :notify, :checked => "checked", :onclick => "$(volunteeredCheckNoToggle())", :style => "opacity:0; height:15px; width:15px" %>
+		<label style="margin-left:6.5%; margin-top:-20px">Notify me of important updates and changes</label></div>
+
+		<br /><br /><br /><br />
+		</div>
+
+		  <div style="text-align:center; margin-top:30px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+
+			
+		<% end %>
+
+<br />
+<br />
+
+
+	</div>
+	</div>
+	
+
+	<div id="question-box" class="question-popup" style="color:#575758; width:900px; line-height:1.5em">
+		<p style="font-family:architectsDaughterRegular; font-size:1.6em; font-color:#575758; line-height:2em; text-align:center;">Why do I have to give my birthday and personal info?</p><br />
+	  	VolunteerVoice requires Users to include birthday information because we need to learn more about who is using our site, and how to make it better for those groups. That’s the reason behind asking for your affiliated country and whether you’ve volunteered yet, as well.  We’re also just curious! And hey, if you’re uncomfortable, you can always lie (but please don’t)!<br /><br />
+
+		We also use this information as a way to create authenticity for our site and its users, and to encourage age-appropriate access to site content.  Rest assured that your information is 100% secure on the VolunteerVoice site. You can also control whether other Users can view your personal info through your account settings.  Check out our Privacy Policy for if you’d like to know more.
+		
+
+	</div>
+
+	<style>
+	/* Mask for background, by default is not display */
+	#mask {
+		display: none;
+		background: #000; 
+		position: fixed; left: 0; top: 0; 
+		width: 100%; height: 100%;
+		opacity: 0.8;
+		z-index: 999;
+	}
+
+	/* You can customize to your needs  */
+	.question-popup{
+		display:none;
+		background: #E3E6D5;
+		padding: 30px; 	
+		border: 2px solid #575758;
+		float: left;
+		font-size: 1.2em;
+		position: fixed;
+		top: 50%; left: 48.35%;
+		width:400px;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+
+
+	fieldset { 
+		border:none; 
+	}
+
+	.button { 
+		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
+		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
+		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
+	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+		border-color:#000; 
+		border-width:1px;
+	        border-radius:4px 4px 4px 4px;
+		-moz-border-radius: 4px;
+	        -webkit-border-radius: 4px;
+		color:#333;
+		cursor:pointer;
+		display:inline-block;
+		padding:6px 6px 4px;
+		margin-top:10px;
+		font:12px; 
+		width:214px;
+	}
+	.button:hover { background:#ddd; }
+
+	</style>
 
 
