@@ -1,4 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController 
+  
+  skip_before_filter :require_no_authentication 
+  
   include SimpleCaptcha::ControllerHelpers
   include ActionView::Helpers::TextHelper
   def after_sign_up_path_for(resource)
