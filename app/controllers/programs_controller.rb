@@ -1405,9 +1405,15 @@ class ProgramsController < ApplicationController
     "ZM"=> "Zambia", 
     "ZW"=> "Zimbabwe"]
     
+    if (!current_organization_account.nil?)
+      @org_id = current_organization_account.organization_id
+    else
+      @org_id = Organization.where(:name => params[:program][:organization_name]).first.id
+    end
+    
     @subjects = []
     params[:program][:program_subjects].split(", ").each do |f|
-        @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+        @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f, :organization_id => @org_id)
         @p.save
         @subjects << @p
     end
