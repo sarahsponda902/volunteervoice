@@ -15,6 +15,21 @@ $(document).ready(function(){
 	});
 	createInput();
 	
+	<% if @sizes.include?("Individual") %>
+		$("#individual").attr("checked", true);
+	<% end %>
+	
+	<% if @sizes.include?("Small Groups (2-3)") %>
+		$("#small").attr("checked", true);
+	<% end %>
+	
+	<% if @sizes.include?("Medium Groups (4-10)") %>
+		$("#medium").attr("checked", true);
+	<% end %>
+	
+	<% if @sizes.include?("Large Groups (11+)") %>
+		$("#large").attr("checked", true);
+	<% end %>
 	
 	$('a.rules-window').click(function() {
 
@@ -297,11 +312,11 @@ $(function() {
 <div id="field">
 	<label>Group Sizes: <p style="font-size:0.85em; color:darkblue; "> &gt; What size groups do volunteers work in? You can select more than one.</p></label>
 	<div class="six columns" style="width:50%">
-	<%= check_box_tag "program[program_sizes][]", "Individual", :checked => @sizes.include?("Individual")%> Individual <br />
-	<%= check_box_tag "program[program_sizes][]", "Small Groups (2-3)", :checked => @sizes.include?("Small Groups (2-3)")%> Small Groups (2-3)</div>
+	<%= check_box_tag "program[program_sizes][]", "Individual", :id => "individual"%> Individual <br />
+	<%= check_box_tag "program[program_sizes][]", "Small Groups (2-3)", :id => "small"%> Small Groups (2-3)</div>
 	<div class="six columns" style="width:43%; margin-top:-37px">
-	<%= check_box_tag "program[program_sizes][]", "Medium Groups (4-10)", :checked => @sizes.include?("Medium Groups (4-10)")%> Medium Groups (4-10)<br/>
-	<%= check_box_tag "program[program_sizes][]", "Large Groups (11+)", :checked => @sizes.include?("Large Groups (11+)")%> Large Groups (11+)</div>
+	<%= check_box_tag "program[program_sizes][]", "Medium Groups (4-10)", :id => "medium"%> Medium Groups (4-10)<br/>
+	<%= check_box_tag "program[program_sizes][]", "Large Groups (11+)", :id => "large"%> Large Groups (11+)</div>
   </div><br />
 </div>
 
