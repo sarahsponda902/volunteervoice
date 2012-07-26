@@ -29,7 +29,7 @@
 	<tr>
 		<td><% if user.admin? %>
 			<font style="font-size:1.2em; color:purple; font-weight:600">ADMIN</font><br />
-			<%= button_to "Remove Admin", "/users/#{user.id}/make_admin" %>
+			<%= link_to "Remove Admin", "/users/#{user.id}/make_admin", :style => "font-style:italic; font-size:.8em" %>
 			<% else %>
 			<%= button_to "Make Admin", "/users/#{user.id}/make_admin" %>
 			<% end %></td>
