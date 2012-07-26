@@ -1457,6 +1457,30 @@ end
   def update
     @program = Program.find(params[:id])
       if user_signed_in? && current_user.admin?
+        @program.program_subjects.each do |f|
+          f.destroy!
+        end
+        @program.program_sizes.each do |f|
+          f.destroy!
+        end
+        
+         @subjects = []
+          params[:program][:program_subjects].split(", ").each do |f|
+              @p = ProgramSubject.new(:program_id => params[:id], :subject => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+              @p.save
+              @subjects << @p
+          end
+          params[:program][:program_subjects] = @subjects
+
+          @sizes = []
+          params[:program][:program_sizes].each do |f|
+            @p = ProgramSize.new(:program_id => params[:id], :size => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+            @p.save
+            @sizes << @p
+          end
+          params[:program][:program_sizes] = @sizes
+        
+        
       if @program.update_attributes(params[:program])
             redirect_to "/programs/#{@program.id}"
       else
