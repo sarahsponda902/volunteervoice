@@ -167,6 +167,8 @@ RMTest::Application.routes.draw do
   
   match "registrations/crop" => 'registrations#crop'
   
+  match "users/:user_id/make_admin" => "users#make_admin"
+  
   devise_scope :admin do
     match 'admins/new' => 'admins/registrations#new'
     match 'admin_login' => 'devise/sessions#new'
