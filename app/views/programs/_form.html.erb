@@ -24,7 +24,7 @@ $(document).ready(function(){
 		$("#cost"+count.toString()).val("<%=f%>");
 		$("#length"+count.toString()).val("<%=@lengths[@count]%>");
 		count = count + 1;
-		<% count = count + 1 %>
+		<% @count = @count + 1 %>
 	<% end %>
 	createInput();
 	
