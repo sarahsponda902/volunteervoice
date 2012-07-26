@@ -115,7 +115,6 @@ function createInput(){
 	var label = document.createTextNode("Length of Trip: ");
 	var input2 = document.createElement("input");
 	var label2 = document.createTextNode("Total Cost ($): ");
-	var space = document.createTextNode("\u00A0");
 	var div = document.createElement("div");
 	var br = document.createElement("br");
 	var count = document.createTextNode(countFields.toString() + ". ")
@@ -290,7 +289,7 @@ $(function() {
 		<input id="tags" name="program[organization_name]" type="text"/>
 
 	<% else %>
-		<input type="hidden" value= "<%=Organization.find(@program.organization_id).name%>" name="program[organization_name]" disabled="disabled">
+		<input type="hidden" value= "<%=Organization.find(current_organization_account.organization_id).name%>" name="program[organization_name]" disabled="disabled">
 	<% end %><br /><br />
 	
 	<div id="field">
