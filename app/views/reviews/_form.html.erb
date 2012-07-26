@@ -286,7 +286,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 
 
 	function checkValueAutocomplete() {
-		var orgsArray = <%= array_or_string_for_javascript(orgs_array)%>
+		var orgsArray = <%= array_or_string_for_javascript(orgs_array)%>;
 		if (availableTags.indexOf($("#tags").attr("value")) < 0)
 		{
 			$("#tags").val("");

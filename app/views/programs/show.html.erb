@@ -212,7 +212,7 @@
 		<%= @program.lengths_of_program%><br /><br />
 		<font style="font-weight:600">Start Dates: </font><%= @program.start_dates%><br /><br />
 		<font style="font-weight:600">Program Requirements: </font><%= @program.program_requirements%><br /><br />
-		<font style="font-weight:600">Program Structure: </font><%= @program.program_structure.html_safe%><br />
+		<font style="font-weight:600">Program Structure: </font><%= @program.program_structure.html_safe%><br /><br />
 		<font style="font-weight:600">Partnered Local Organizations: </font><%= @program.partnered_local_organizations%><br /><br />
 		<font style="font-weight:600">Group Size: </font>
 		<% @program_sizes = @program.program_sizes.map{|prog| prog.size}%>
