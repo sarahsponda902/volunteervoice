@@ -2,7 +2,7 @@
 	<% @id = current_user.id unless current_user.nil?%>
 	<div class="container">
 		<div class="row">
-			<div class="twelve columns" align="center" style="font-size:2em">
+			<div class="twelve columns" align="center" style="font-size:2em; margin-top:50px; color:#575758">
 	
 	You are unsubscribed!<br /><br />
 	
@@ -10,7 +10,7 @@
 	<% @contact = Contact.new(:subject => "Subscription Termination Feedback (org)", :to_whom => "contact", :user_id => @id)%>
 	<%= form_for(@contact) do |f| %>
 	    <div class="field">
-	      <%= f.text_area :body, :style => "height:200px; width:500px" %>
+	      <%= f.text_area :body, :style => "height:100px; width:350px" %>
 	    </div>
 
 	    <p style="text-align:center"><%= image_submit_tag "/assets/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
