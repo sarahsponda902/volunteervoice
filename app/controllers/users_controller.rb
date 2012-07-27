@@ -623,7 +623,7 @@ class UsersController < ApplicationController
     @user.notify = !@user.notify unless @user.notify.nil?
     @user.save
     respond_to do |format|
-      format.html {render :action => "successful_unsubscribe", :user_id => @user.id}
+      format.html {render :action => "successful_unsubscribe"}
       format.json {head :no_content}
     end
   end
