@@ -1,4 +1,7 @@
 class ContactMailer < ActionMailer::Base
+  require 'rubygems'
+  require 'madmimi'
+  
   default :from => "noreply@volunteervoice.org"
   default :to => "contact@volunteervoice.org"
 
@@ -33,7 +36,11 @@ class ContactMailer < ActionMailer::Base
        @has_profile = contact.has_profile
        @main_contact = contact.main_contact
        @position = contact.position_of_contact
-       @email = contact.contact_email
+       @email = contact.email
+       
+       @options = {"promotion_name" => "RequestEmail", "recipient" => "request@volunteervoice.org", "from" => "no-reply@volunteervoice.org", "subject" => "New Request"}
+        @yaml_body = {'organization_name' => @organization_name, 'country' => @country, 'url' => @url, 'has_profile' => @has_profile, 'main_contact' => @main_contact, 'position' => @position, 'email' => @email}
+        @errors = MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
        mail(:subject => "New Request for #{@organization_name}", :to => "request@volunteervoice.org")
     end
 end
