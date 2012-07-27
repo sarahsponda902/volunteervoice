@@ -23,7 +23,7 @@ class ContactMailer < ActionMailer::Base
   def to_organizations(message)
      @message = message
      @user_path = "http://localhost:3000/users/#{@message.user_id}"
-     mail(:subject => "Unsubscribe: #{message.subject}", :to => "feedback@volunteervoice.org")
+     mail(:subject => "Unsubscribe: #{message.subject}", :to => "contact@volunteervoice.org")
   end
    
    def to_request(contact)
