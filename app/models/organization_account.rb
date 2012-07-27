@@ -28,6 +28,26 @@ class OrganizationAccount < ActiveRecord::Base
         end
   end
   
+  def send_confirmation_instructions
+    generate_confirmation_token! if self.confirmation_token.nil?
+    UserMailer.deliver_mimi_confirm(self)
+  end
+  
+  def send_reset_password_instructions
+    generate_reset_password_token!
+    UserMailer.deliver_mimi_password(self)
+  end 
+  
+  def deliver_invitation
+    UserMailer.deliver_mimi_invitation(self)
+  end
+  
+  
+  def send_reset_password_instructions
+    generate_reset_password_token!
+    UserMailer.deliver_mimi_password(self)
+  end
+  
   def validate_presence_of_all_fields
     @return = true
     if first_name.nil?

@@ -19,6 +19,12 @@ gem 'omniauth-google'
 
 gem 'google_drive'
 
+gem 'gemcutter'
+
+gem 'tumble'
+
+gem 'mad_mimi_mailer'
+
 gem 'madmimi'
 
 gem 'RedCloth'
