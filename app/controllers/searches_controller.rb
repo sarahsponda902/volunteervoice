@@ -230,9 +230,9 @@ class SearchesController < ApplicationController
     end
      
     
-    @search.regions = @search.regions.join("; ") unless @search.regions.class.name == "String"
-    @search.subjects = @search.subjects.join("; ") unless @search.subjects.class.name == "String"
-    @search.sizes = @search.sizes.join("; ") unless @search.sizes.class.name == "String"
+    @search.regions = @search.regions.join("; ") unless (@search.regions.class.name == "String" || @search.regions.nil?)
+    @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
+    @search.sizes = @search.sizes.join("; ") unless (@search.sizes.class.name == "String" || @search.sizes.nil?)
 
     if @search.length_min_param.nil?
       @search.length_min_param = "weeks"
