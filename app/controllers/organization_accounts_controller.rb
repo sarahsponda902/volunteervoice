@@ -25,7 +25,7 @@ class OrganizationAccountsController < ApplicationController
   # GET /organization_accounts
   # GET /organization_accounts.json
   def index
-    @organization_accounts = OrganizationAccount.all
+    @organization_accounts = OrganizationAccount.all.sort_by(&:organization_name)
     
     if user_signed_in? && current_user.admin?
       respond_to do |format|

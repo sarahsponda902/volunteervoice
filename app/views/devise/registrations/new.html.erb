@@ -5,9 +5,14 @@
 
 $(document).ready(function() {
 	
-	if ($('#volunteeredBefore').val().toString() != "true"){
-		
-	$('#volunteeredBefore').hide();}
+	<% if !resource.volunteered_before || resource.volunteered_before.nil? %>
+		$('#volunteeredBefore').hide();
+	<% end %>
+	<% if resource.notify == false %>
+		$("#checkBefore").hide();
+	<% else %>
+		$("#user_notify").attr("checked", true)
+	<% end %>
 	
 	
 	$('a.question-window').click(function() {
@@ -108,7 +113,8 @@ function submitForm() {
 				<div  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email</label>
 				  <%=f.text_field :email, :style=>"height:22px; width:225px" %></div>
 				
-
+				<div style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Retype Email</label>
+				  <%= f.text_field :email_confirmation, :style => "height:20px; width:200px" %></div>
 				
 		 			 <p  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px" for="user_Date of Birth">Birthday</label><div style="position:absolute; left:15%; height:30px; width:103px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
 					<select id="user_dob_2i" name="user[dob(2i)]" style="position:absolute; left:-5px; width:130px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
@@ -542,12 +548,12 @@ function submitForm() {
 		<br />
 				<image style="position:absolute; left:14.6%; top:73.5%; z-index:9; height:25px;" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:74.5%; left:15%; width:100%">
-		<input id="user_volunteered_before" name="user[volunteered_before]" type="checkbox" onclick="$(volunteeredCheckNoToggle())" style="opacity:0; height:15px; width:15px" value="0"/>
+		<%= f.check_box :volunteered_before, :onclick => "$(volunteeredCheckNoToggle())", :style => "opacity:0; height:15px;width:15px" %>
 		<label style="margin-left:6.5%; margin-top:-20px">Click here if you’ve volunteered abroad before.<br /> We’re just curious.</label></div>
 		
 				<image style="position:absolute; height:25px; left:14.5%; top:80.5%; z-index:9" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:81.5%; left:15%;">
-		<input id="user_notify" name="user[notify]" type="checkbox" onclick="$(beforeCheckNoToggle())" style="opacity:0; height:15px; width:15px" value="1"/>
+		<%= f.check_box :notify, :onclick => "$(beforeCheckNoToggle())", :style => "opacity:0;height:20px;height:20px"%>
 		<label style="margin-left:8%; margin-top:-25px; margin-right:8%" for="user_Yes ofcourse! Notify me of VolunteerVoice's awesome updates and changes">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
 
 		<br />

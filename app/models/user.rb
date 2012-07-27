@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   apply_simple_captcha :message => "did not match the secret code", :distortion => "high"
 
   attr_accessor :login
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :photo, :username, :id, :age, :country, :dob, :notify, :square_photo, :crop_x, :crop_y, :crop_w, :crop_h, :captcha, :captcha_key, :approved, :volunteered_before, :admin_update, :admin_pass, :messages_show, :profile_show, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :confirmation_token, :crops, :square_image, :login, :return_link 
+  attr_accessible :email, :email_confirmation, :password, :password_confirmation, :remember_me, :photo, :username, :id, :age, :country, :dob, :notify, :square_photo, :crop_x, :crop_y, :crop_w, :crop_h, :captcha, :captcha_key, :approved, :volunteered_before, :admin_update, :admin_pass, :messages_show, :profile_show, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :confirmation_token, :crops, :square_image, :login, :return_link 
   has_many :messages
   has_many :reviews, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :dob
   validates_length_of :username, :maximum => 30
   validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
-  before_save :square_image_crop
+  before_save :square_image_crop  
+  before_create :validate_email
 
 
   # Include default devise modules. Others available are:
@@ -36,7 +37,14 @@ mount_uploader :square_image, ImageUploader
       #Simple Private Messaging     
       has_private_messages
 
-
+      def validate_email
+        if !(email == email_confirmation)
+          errors.add(:email, "must match")
+          return false
+        end
+      end
+      
+      
 def self.find_first_by_auth_conditions(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)

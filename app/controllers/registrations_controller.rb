@@ -21,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
     resource.messages_show = false
     resource.profile_show = false
-     if resource.save_with_captcha
+     if (resource.email == resource.email_confirmation) && resource.save_with_captcha
            if resource.confirmed?
              set_flash_message :notice, :signed_up if is_navigational_format?
              sign_in(resource_name, resource)
