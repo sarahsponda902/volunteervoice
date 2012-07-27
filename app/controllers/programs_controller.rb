@@ -1435,7 +1435,6 @@ class ProgramsController < ApplicationController
     @cost_lengths = []
     params[:costs].each do |f|
       @p = ProgramCostLengthMap.new(:program_id => params[:program][:id], :cost => f.to_f, :organization_id => @org_id)
-      @p.save
       @cost_lengths << @p
     end
     
@@ -1446,8 +1445,6 @@ class ProgramsController < ApplicationController
       @p.length = @length[0].to_i.send(@length[1]).to_f
       @p.length_name = @length[1]
       @p.length_number = @length[0]
-      @p.save
-      @p.index!
       @cost_lengths[count] = @p
       count = count + 1
     end
@@ -1474,6 +1471,11 @@ class ProgramsController < ApplicationController
 
     if (user_signed_in? && current_user.admin?) || organization_account_signed_in?
       if @program.save
+            @cost_lengths.each do |f|
+              f.program_id = @program.id
+              f.save!
+              f.index!
+            end
             redirect_to @program
       else
         @program.description = @program.description.gsub(%r{</?[^>]+?>}, '')
