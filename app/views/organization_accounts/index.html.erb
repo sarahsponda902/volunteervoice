@@ -11,7 +11,9 @@
 $(function() {
 	var availableTags = [
 		<% Organization.all.each do |f| %>
+		<% if Organization.organization_accounts.empty? %>
 		"<%=f.name%>",
+		<% end %>
 		<% end %>
 		];
 	$( "#tags" ).autocomplete({
