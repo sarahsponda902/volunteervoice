@@ -325,7 +325,7 @@
 					<% @entries.each do |f|%>
 					<tr>
 						<td style="width:150px; text-align:center"><%= f[0]%></td>
-						<td style="width:150px; text-align:center"><%= "$#{number_with_precision(f[1].to_d, 2)}"%></td>
+						<td style="width:150px; text-align:center"><%= "$#{number_with_precision(f[1].to_d, :precision => 2)}"%></td>
 					</tr>
 					<% end %>
 					</tbody>
