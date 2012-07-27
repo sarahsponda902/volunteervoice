@@ -28,7 +28,7 @@ class Contact < ActiveRecord::Base
           @return = false
       end
       if has_profile.nil?
-          errors.add_to_base("You must select your organization's profile status")
+          errors.add(:has_profile, "=> You must select your organization's profile status")
           @return = false
       end
       return @return
