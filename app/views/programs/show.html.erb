@@ -325,7 +325,7 @@
 					<% @entries.each do |f|%>
 					<tr>
 						<td style="width:150px; text-align:center"><%= f[0]%></td>
-						<td style="width:150px; text-align:center"><%= "$#{f[1]}"%></td>
+						<td style="width:150px; text-align:center"><%= "$#{f[1].round(2)}"%></td>
 					</tr>
 					<% end %>
 					</tbody>
@@ -334,7 +334,7 @@
 	</div>
 	
 	
-	<div id="flag-box" class="flag-popup">
+	<div id="flag-box" class="flag-popup" align="center">
 		<% if user_signed_in? %>
 	  	<%= form_for @flag do |g| %>
 
@@ -381,7 +381,6 @@
 		float: left;
 		color: black;
 		position: fixed;
-		width: 400px;
 		top: 50%; left: 50%;
 		z-index: 99999;
 		box-shadow: 0px 0px 20px #999; /* CSS3 */
