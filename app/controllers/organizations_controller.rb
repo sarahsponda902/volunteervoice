@@ -34,6 +34,7 @@ class OrganizationsController < ApplicationController
 
    
   def show 
+
     
     @flag = Flag.new
      @theCountries = Hash["AF" => "Afghanistan", 
@@ -287,6 +288,22 @@ class OrganizationsController < ApplicationController
      "ZW"=> "Zimbabwe"]
     
     @organization = Organization.find(params[:id])
+    
+    
+    @sorted = ProgramCostLengthMap.where(:organization_id => @organization.id).sort_by(&:length)
+    @lengths = []
+    @sorted.each do |f|
+      @lengths << f.length unless @lengths.include?(f.length)
+    end
+    @grouped = []
+    @lengths.each do |f|
+      @grouped << ProgramCostLengthMap.where(:organization_id => @organization.id, :length => f)
+    end
+    @entries = []
+    @grouped.each do |a|
+      @sorted_group = a.sort_by(&:cost)
+      @entries << [(a.first.length / 604800).round, a.first.cost, a.last.cost]
+    end
     
     if organization_account_signed_in? && current_organization_account.organization_id == @organization.id
       @can_edit = true

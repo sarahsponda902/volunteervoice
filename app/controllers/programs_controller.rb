@@ -766,6 +766,11 @@ class ProgramsController < ApplicationController
   # GET /programs/1.json
   def show
     @program = Program.find(params[:id])
+    @entries = []
+    @program.program_cost_length_maps.sort_by(&:length).each do |p|
+      @entries << [(p.length / 604800).round, p.cost]
+    end
+    
      @results = Review.where(:program_id => @program.id).sort_by(&:created_at).reverse
      @overall = 0
      @results.each do |f|

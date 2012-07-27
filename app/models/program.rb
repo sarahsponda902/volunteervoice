@@ -15,9 +15,7 @@ validates_presence_of :name, :description, :location, :organization_id, :program
 before_save :copy_organization_images_and_program_model
 before_save :square_image_crop
 before_save :validate_subjects_inclusions
-before_save :update_cost_chart
-before_save :update_org_chart
-before_destroy :delete_cost_chart
+
 # Paperclip
     mount_uploader :photo, ImageUploader
     mount_uploader :square_image, ImageUploader
@@ -29,69 +27,8 @@ def copy_organization_images_and_program_model
   self.program_structure = Organization.find(organization_id).program_model_string
 end
 
-def delete_cost_chart
-  session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
-  template = session.spreadsheet_by_title("Testing")
-  ss = session.spreadsheet_by_title("#{name}")
-  if !ss.nil?
-    ss.delete(permanent = true)
-  end
-end
 
-def update_cost_chart
-  session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
-  template = session.spreadsheet_by_title("Testing")
-  ss = session.spreadsheet_by_title("#{name}")
-  if !ss.nil?
-    ss.delete(permanent = true)
-  end
-  ss = template.duplicate( title = "#{name}")
-  ws = ss.worksheets[0]
-  count = 2
-  @ps = program_cost_length_maps.sort_by(&:length)
-  @ps.each do |f|
-    ws["A#{count}"] = (f.length / 604800).round
-    ws["B#{count}"] = f.cost
-    ws["C#{count}"] = (f.cost / ((f.length / 604800).round)).round
-    count = count + 1
-  end
-  ws.save()
-  self.chart = ss.human_url.split("key=")[1]
-end
 
-def update_org_chart
-  session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
-  template = session.spreadsheet_by_title("Testing")
-  ss = session.spreadsheet_by_title("Organization: #{Organization.find(organization_id).name}")
-  if !ss.nil?
-    ss.delete(permanent = true)
-  end
-  ss = template.duplicate( title = "Organization: #{Organization.find(organization_id).name}")
-  ws = ss.worksheets[0]
-  count = 2  
-  @sorted = ProgramCostLengthMap.where(:organization_id => organization_id).sort_by(&:length)
-  @lengths = []
-  @sorted.each do |f|
-    @lengths << f.length unless @lengths.include?(f.length)
-  end
-  @grouped = []
-  @lengths.each do |f|
-    @grouped << ProgramCostLengthMap.where(:organization_id => organization_id, :length => f)
-  end
-  @entries = []
-  @grouped.each do |a|
-    @sorted_group = a.sort_by(&:cost)
-    @entries << [a.first.length, a.first.cost, a.last.cost]
-  end
-  @entries.each do |f|
-    ws["A#{count}"] = (f[0] / 604800).round
-    ws["B#{count}"] = f[1]
-    ws["C#{count}"] = f[2]
-  end
-  ws.save()
-  @org = Organization.find(organization_id)
-  @org.price_ranges = ss.human_url.split("key=")[1]
-end
 
 searchable do
   text :name

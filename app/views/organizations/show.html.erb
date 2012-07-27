@@ -296,15 +296,8 @@ $(document).ready(function () {
 </div>
 </div>
 </div>
-	
-	<div class="price-breakdown-popup" id="price-breakdown-box">
-		<% if !(@organization.price_breakdown.nil?)%>	
-		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758; margin-top:-15px">Information not available</p>
-		<p style="font-family:museoSlab500Regular; font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
-		<% else %>	
-		<iframe width='500' height='300' frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=<%=@organization.price_breakdown%>&output=html&chrome=false'></iframe>
-		<% end %>
-    </div>
+
+
 	</div>
 	</div>	
 	<div class="price-ranges-popup" id="price-ranges-box">
@@ -312,7 +305,19 @@ $(document).ready(function () {
 		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758; margin-top:-15px">Information not available</p>
 		<p style="font-family:museoSlab500Regular;  font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 		<% else %>	
-				<iframe width='500' height='300' frameborder='0' src='https://docs.google.com/spreadsheet/pub?key=<%=@organization.price_ranges%>&output=html&chrome=false'></iframe>
+		<table>
+			<tr>
+				<th># Weeks</th>
+				<th>Min Cost</th>
+				<th>Max Cost</th>
+			</tr>
+			<% @entries.each do |f|%>
+			<tr>
+				<td><%= f[0]%></td>
+				<td><%= f[1]%></td>
+				<td><%= f[2]%></td>
+			</tr>
+		</table>
 		<% end %>
     </div>
 </div>
