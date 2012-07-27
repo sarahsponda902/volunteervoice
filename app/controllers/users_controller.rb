@@ -630,11 +630,6 @@ class UsersController < ApplicationController
   
   
   def successful_unsubscribe
-    @user = User.find(params[:user_id])
-    respond_to do |format|
-      format.html
-      format.json {head :no_content}
-    end
   end
 
   def make_admin
