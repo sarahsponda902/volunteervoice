@@ -7,7 +7,7 @@
 	You are unsubscribed!<br /><br />
 	
 	Some feedback would be really helpful - <br /><br />
-	<% @contact = Contact.new(:subject => "Subscription Termination Feedback (org)", :to_whom => "contact", :user_id => @id)%>
+	<% @contact = Contact.new(:subject => "Subscription Termination Feedback (org)", :to_whom => "contact", :user_id => @id, :email => "nothing@nothing.com")%>
 	<%= form_for(@contact) do |f| %>
 	    <div class="field">
 	      <%= f.text_area :body, :style => "height:100px; width:500px" %>
