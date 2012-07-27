@@ -315,16 +315,20 @@
 		<p style="font-family:museoSlab500Regular; font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 	<% else %>
 	  			<table>
+					<thead>
 					<tr>
-						<th># Weeks</th>
-						<th>Cost</th>
+						<th style="width:150px; text-align:center"># Weeks</th>
+						<th style="width:150px; text-align:center">Cost</th>
 					</tr>
+					</thead>
+					<tbody>
 					<% @entries.each do |f|%>
 					<tr>
-						<td><%= f[0]%></td>
-						<td><%= f[1]%></td>
+						<td style="width:150px; text-align:center"><%= f[0]%></td>
+						<td style="width:150px; text-align:center"><%= f[1]%></td>
 					</tr>
 					<% end %>
+					</tbody>
 				</table>
 	<% end %>
 	</div>
