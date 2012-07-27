@@ -4,13 +4,16 @@
 		<div class="row">
 			<div class="twelve columns" align="center" style="font-size:2em; margin-top:50px; color:#575758">
 	
-	You are unsubscribed!<br /><br />
+	<font style="font-size:1.4em">You are unsubscribed!</font><br /><br /><br />
 	
 	Some feedback would be really helpful - <br /><br />
-	<% @contact = Contact.new(:subject => "Subscription Termination Feedback (org)", :to_whom => "contact", :user_id => @id, :email => "nothing@nothing.com")%>
+	<% @contact = Contact.new(:subject => "Subscription Termination Feedback (user)", :to_whom => "contact", :user_id => @id, :email => "nothing@nothing.com")%>
 	<%= form_for(@contact) do |f| %>
 	    <div class="field">
 	      <%= f.text_area :body, :style => "height:100px; width:500px" %>
+		  <%= f.hidden_field :email, :value => "nothing@nothing.com"%>
+		  <%= f.hidden_field :to_whom, :value => "contact"%>
+		  <%= f.hidden_field :subject, :value => "Subscription Termination Feedback (user)"%>
 	    </div>
 
 	    <p style="text-align:center"><%= image_submit_tag "/assets/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
