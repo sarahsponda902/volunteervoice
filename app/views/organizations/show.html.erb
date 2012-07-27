@@ -300,7 +300,7 @@ $(document).ready(function () {
 
 	</div>
 	</div>	
-	<div class="price-ranges-popup" id="price-ranges-box">
+	<div class="price-ranges-popup" id="price-ranges-box" style="align:center">
 		<% if (ProgramCostLengthMap.where(:organization_id => @organization.id).empty?)%>	
 		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758; margin-top:-15px">Information not available</p>
 		<p style="font-family:museoSlab500Regular;  font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
