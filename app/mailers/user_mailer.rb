@@ -7,26 +7,33 @@ class UserMailer < MadMimiMailer
     body :instrux => "girlpowerproject.herokuapp.com/confirmations/#{resource.confirmation_token}", :usrname => resource.username
   end
   
+  def unlockorg(resource)
+    recipients resource.email
+    from "no-reply@volunteervoice.org"
+    subject "Unlock VolunteerVoice Account"
+    body :instrux => "girlpowerproject.herokuapp.com/organization_accounts/unlock?unlock_token=#{resource.unlock_token}", :usrname => resource.username
+  end
+  
+  
   def unlock(resource)
     recipients resource.email
     from "no-reply@volunteervoice.org"
     subject "Unlock VolunteerVoice Account"
-    if resource.is_a?(OrganizationAccount)
-       body :instrux => "girlpowerproject.herokuapp.com/organization_accounts/unlock?unlock_token=#{resource.unlock_token}", :usrname => resource.username
-    else
-      body = :instrux => "girlpowerproject.herokuapp.com/unlock?unlock_token=#{resource.unlock_token}", :usrname => resource.username
-    end
+    body = :instrux => "girlpowerproject.herokuapp.com/unlock?unlock_token=#{resource.unlock_token}", :usrname => resource.username
+  end
+  
+  def passwordorg(resource)
+    recipients resource.email
+    from "no-reply@volunteervoice.org"
+    subject "Reset Password on VolunteerVoice Account"
+    body :instrux => "girlpowerproject.herokuapp.com/organization_accounts/passwords/#{resource.reset_password_token}", :usrname => "#{resource.first_name} #{resource.last_name}"
   end
   
   def password(resource)
     recipients resource.email
     from "no-reply@volunteervoice.org"
     subject "Reset Password on VolunteerVoice Account"
-    if resource.is_a?(OrganizationAccount)
-       body :instrux => "girlpowerproject.herokuapp.com/organization_accounts/passwords/#{resource.reset_password_token}", :usrname => "#{resource.first_name} #{resource.last_name}"
-    else
-       body :instrux => "girlpowerproject.herokuapp.com/passwords/#{resource.reset_password_token}", :usrname => resource.username
-    end
+    body :instrux => "girlpowerproject.herokuapp.com/passwords/#{resource.reset_password_token}", :usrname => resource.username
   end
   
   def welcome(resource)
