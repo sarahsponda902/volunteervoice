@@ -19,7 +19,7 @@ class UserMailer < MadMimiMailer
     recipients resource.email
     from "no-reply@volunteervoice.org"
     subject "Unlock VolunteerVoice Account"
-    body = :instrux => "girlpowerproject.herokuapp.com/unlock?unlock_token=#{resource.unlock_token}", :usrname => resource.username
+    body :instrux => "girlpowerproject.herokuapp.com/unlock?unlock_token=#{resource.unlock_token}", :usrname => resource.username
   end
   
   def passwordorg(resource)
