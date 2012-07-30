@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726011520) do
+ActiveRecord::Schema.define(:version => 20120730224431) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -222,6 +222,7 @@ ActiveRecord::Schema.define(:version => 20120726011520) do
     t.integer  "failed_attempts",                      :default => 0
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "email_confirmation"
   end
 
   add_index "organization_accounts", ["email"], :name => "index_organization_accounts_on_email", :unique => true
@@ -469,6 +470,7 @@ ActiveRecord::Schema.define(:version => 20120726011520) do
     t.boolean  "crops"
     t.integer  "unread_messages"
     t.string   "return_link"
+    t.string   "email_confirmation"
   end
 
   add_index "users", ["approved"], :name => "index_users_on_approved"

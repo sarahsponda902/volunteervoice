@@ -1,0 +1,9 @@
+Feedback Body: <%= @message.body.html_safe%>
+
+
+
+<% if @message.user_id.nil?%>
+User was not logged in
+<% else %>
+User: <%= @user_path%>
+<% end %>
