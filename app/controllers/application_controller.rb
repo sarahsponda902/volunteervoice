@@ -14,7 +14,7 @@ include SimpleCaptcha::ControllerHelpers
        @link
      else
        if request.referrer
-         if ((URI(request.referrer).path == '/users/sign_in') || (URI(request.referrer).path == '/registrations/mustBe'))
+         if ((URI(request.referrer).path == '/users/sign_in') || (URI(request.referrer).path == '/registrations/mustBe')) || (URI(request.referrer).path == '/sign_up') || (URI(request.referrer).path == '/sign_in') || (URI(request.referrer).path == '/users/sign_up')
            '/'
          else
            request.referrer
