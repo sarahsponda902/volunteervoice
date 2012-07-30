@@ -35,7 +35,7 @@ class OrganizationAccount < ActiveRecord::Base
   
   def send_reset_password_instructions
     generate_reset_password_token!
-    UserMailer.deliver_mimi_password(self)
+    UserMailer.deliver_mimi_passwordorg(self)
   end 
   
   def deliver_invitation
@@ -43,9 +43,8 @@ class OrganizationAccount < ActiveRecord::Base
   end
   
   
-  def send_reset_password_instructions
-    generate_reset_password_token!
-    UserMailer.deliver_mimi_password(self)
+  def send_unlock_instructions
+    UserMailer.deliver_mimi_unlockorg(self)
   end
   
   def validate_presence_of_all_fields
