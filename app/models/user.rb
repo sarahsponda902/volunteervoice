@@ -83,19 +83,6 @@ def square_image_crop
    clean_up_passwords
    result
  end
- 
- def send_confirmation_instructions
-   generate_confirmation_token! if self.confirmation_token.nil?
-   UserMailer.deliver_mimi_confirmation_instructions(self)
- end
- 
- def send_unlock_instructions
-   UserMailer.deliver_mimi_unlock(self)
- end
-         
-  def send_reset_password_instructions
-    generate_reset_password_token!
-    UserMailer.deliver_mimi_password(self)
-  end
+
  
 end
