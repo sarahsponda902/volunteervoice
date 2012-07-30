@@ -47,7 +47,7 @@ class UserMailer < MadMimiMailer
      recipients resource.email
      from "no-reply@volunteervoice.org"
      subject "Create Your VolunteerVoice Account"
-     body :instrux => "girlpowerproject.herokuapp.com/organization_accounts/invitation/accept?invitation_token=#{resource.invitation_token}", :orgnme => Organization.find(resource.organization_id).name}
+     body :instrux => "girlpowerproject.herokuapp.com/organization_accounts/invitation/accept?invitation_token=#{resource.invitation_token}", :orgnme => Organization.find(resource.organization_id).name
   end
   
 end
