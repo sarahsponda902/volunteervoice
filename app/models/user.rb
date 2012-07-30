@@ -86,7 +86,7 @@ def square_image_crop
  
  def send_confirmation_instructions
    generate_confirmation_token! if self.confirmation_token.nil?
-   UserMailer.deliver_mimi_confirm(self)
+   UserMailer.deliver_mimi_confirmation_instructions(self)
  end
  
  def send_unlock_instructions

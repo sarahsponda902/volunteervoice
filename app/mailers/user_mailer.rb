@@ -1,6 +1,6 @@
 class UserMailer < MadMimiMailer
   
-  def confirm(resource)
+  def confirmation_instructions(resource)
     subject "VolunteerVoice Confirmation Email"
     recipients resource.email
     from "no-reply@volunteervoice.org"
