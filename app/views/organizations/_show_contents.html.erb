@@ -42,7 +42,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			<% if @can_edit %>
 			&#9998;
 			<% end %>
-			<a style="font-size:1.2em;" class="organization_url" href="<%=organization.url%>" target="_blank"> <u><%=best_in_place_if @can_edit, organization, :url, :type => :input, :nil => "Click to edit"%></u></a>
+			<a style="font-size:1.2em;" class="organization_url" href="<%=organization.url%>" target="_blank"> <u><%=best_in_place_if @can_edit, organization, :url, :type => :input, :ok_button => "Save", :nil => "Click to edit"%></u></a>
 
 		</div>
 		<div class="three columns"  style="text-align:center; margin-top:-95px; padding:0; width:23%">
@@ -71,7 +71,7 @@ $('.best_in_place').bind('ajax:success', function(){
 				<u><b>Mission:</b></u>
 		</div>
 		<div class="ten columns" style="border:1px solid #575758; height:130px; width:75%; margin:0;padding:10px">
-			<%= best_in_place_if @can_edit, organization, :misson, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to add your mission"%> 
+			<%= best_in_place_if @can_edit, organization, :misson, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :ok_button => "Save", :nil => "Click to add your mission"%> 
 		</div>
 
 		<div class = "two columns" style="font-size:1.5em; margin:0;padding:0; margin-top:25px; padding-left:10px; width:20%">
@@ -87,7 +87,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			headquarters address: </p><%= best_in_place_if @can_edit, organization, :headquarters_location, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%>
+			headquarters address: </p><%= best_in_place_if @can_edit, organization, :headquarters_location, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :ok_button => "Save", :nil => "Click to edit"%>
 		<br />
 		<br />
 		
@@ -95,7 +95,7 @@ $('.best_in_place').bind('ajax:success', function(){
 	    <% if @can_edit%>
 		&#9998; 
 		<% end %>
-	    phone:</p> <%=best_in_place_if @can_edit, organization, :phone, :type => :input, :nil => "Click to edit"%>
+	    phone:</p> <%=best_in_place_if @can_edit, organization, :phone, :type => :input, :ok_button => "Save", :nil => "Click to edit"%>
 		<br />
 		<br />
 		<br />
@@ -104,7 +104,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			email: </p><%=best_in_place_if @can_edit, organization, :email, :type => :input, :nil => "Click to edit"%>
+			email: </p><%=best_in_place_if @can_edit, organization, :email, :type => :input, :ok_button => "Save", :nil => "Click to edit"%>
 		<br />
 		<br />
 		<br />
@@ -124,28 +124,28 @@ $('.best_in_place').bind('ajax:success', function(){
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
-				Operating since:</p><%=best_in_place_if @can_edit, organization, :operating_since, :type => :input, :nil => "Click to edit"%><br /><br />
+				Operating since:</p><%=best_in_place_if @can_edit, organization, :operating_since, :type => :input, :ok_button => "Save", :nil => "Click to edit"%><br /><br />
 			
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
-				Run by:</p><%=best_in_place_if @can_edit, organization, :run_by, :type => :input, :nil => "Click to edit"%><br /><br />
-			<p style="font-weight:600">Full Time Staff: </p><%=best_in_place_if @can_edit, organization, :full_time_staff, :type => :input, :nil => "Click to edit"%><br /><br />
+				Run by:</p><%=best_in_place_if @can_edit, organization, :run_by, :type => :input, :ok_button => "Save", :nil => "Click to edit"%><br /><br />
+			<p style="font-weight:600">Full Time Staff: </p><%=best_in_place_if @can_edit, organization, :full_time_staff, :type => :input, :ok_button => "Save", :nil => "Click to edit"%><br /><br />
 			<p style="font-weight:600"> 
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
-				# Volunteers each year: </p><%=best_in_place_if @can_edit, organization, :num_vols_yr, :type => :input, :nil => "Click to edit"%><br /><br />
+				# Volunteers each year: </p><%=best_in_place_if @can_edit, organization, :num_vols_yr, :type => :input, :ok_button => "Save", :nil => "Click to edit"%><br /><br />
 			<p style="font-weight:600"> 
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
-				# Volunteers to date: </p><%=best_in_place_if @can_edit, organization, :num_vols_date, :type => :input, :nil => "Click to edit"%><br /><br />
+				# Volunteers to date: </p><%=best_in_place_if @can_edit, organization, :num_vols_date, :type => :input, :ok_button => "Save", :nil => "Click to edit"%><br /><br />
 			<p style="font-weight:600"> # Active Programs: </p><%= organization.programs.count%><br /><br />
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			Application Process: </p><%= best_in_place_if @can_edit, organization, :application_process, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%><br /><br />
+			Application Process: </p><%= best_in_place_if @can_edit, organization, :application_process, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :ok_button => "Save", :nil => "Click to edit"%><br /><br />
 			<p style="font-weight:600">Business Model: </p><%= organization.business_model.html_safe%><br /><br />
 			
 			<p style="font-weight:600">ID number: </p><%=organization.id_number%><br /><br />
@@ -165,11 +165,11 @@ $('.best_in_place').bind('ajax:success', function(){
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			Price Includes: </p><%= best_in_place_if @can_edit, organization, :program_costs_includes, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%><br />
+			Price Includes: </p><%= best_in_place_if @can_edit, organization, :program_costs_includes, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :ok_button => "Save", :nil => "Click to edit"%><br />
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%>
+			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :ok_button => "Save", :nil => "Click to edit"%>
 			<p><font style="font-weight:600">Additional Fees: </font><%= organization.additional_fees%></p><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
 			<p style="font-weight:600">Group Sizes: </p><%= groupSizes[0..(groupSizes.count - 2)].join(", ")%><br /><br />
@@ -180,7 +180,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			Preparation/Orientation: </p><%= best_in_place_if @can_edit, organization, :training_resources, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%><br />
+			Preparation/Orientation: </p><%= best_in_place_if @can_edit, organization, :training_resources, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :ok_button => "Save", :nil => "Click to edit"%><br />
 			<p style="font-weight:600">Good to know: </p><%=organization.good_to_know.html_safe%><br />
 		</div>
 	</div>
