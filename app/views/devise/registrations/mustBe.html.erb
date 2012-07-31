@@ -5,11 +5,11 @@ $(document).ready(function() {
 	<% if resource.nil? || !resource.volunteered_before? || resource.volunteered_before.nil? %>
 		$('#volunteeredBefore').hide();
 	<% end %>
+	<% if resource.nil? || resource.notify.nil? || resource.notify == true %>
+		$("#user_notify").attr("checked", true);
+	<% end %>
 	<% if resource.notify == false %>
 		$("#checkBefore").hide();
-	<% end %>
-	<% if resource.notify.nil? || resource.notify == true %>
-		$("#user_notify").attr("checked", true);
 	<% end %>
 	$('#rememberMe').hide();
 	
