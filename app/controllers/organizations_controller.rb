@@ -425,8 +425,7 @@ class OrganizationsController < ApplicationController
             if @organization.will_invite && @organization.invite_email.present?
               OrganizationAccount.invite!(:email => @organization.invite_email, :organization_id => @organization.id, :admin_pass => admin_pass)
             end
-              redirect_to "/organizations/#{@organization.id}/crop"
-            end
+            redirect_to "/organizations/#{@organization.id}/crop"
       else
         @organization.description = @organization.description.gsub(%r{</?[^>]+?>}, '')
         @organization.headquarters_location = @organization.headquarters_location.gsub(%r{</?[^>]+?>}, '')
@@ -455,7 +454,9 @@ end
              format.json { respond_with_bip(@organization) } 
            end
         end
-       end
+      else
+        redirect_to root_path
+      end
   end
 
   # DELETE /organizations/1
