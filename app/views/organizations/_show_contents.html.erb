@@ -73,15 +73,15 @@ $('.best_in_place').bind('ajax:success', function(){
 				<% end %>
 				<u><b>Mission:</b></u>
 		</div>
-		<div class="ten columns" style="border:1px solid #575758; min-height:130px; width:75%; margin:0;padding:10px">
-			<%= best_in_place_if @can_edit, organization, :misson, :type => :textarea, :display_as => :textilize_misson, :nil => "Click to add your mission"%> 
+		<div class="ten columns" style="border:1px solid #575758; height:130px; width:75%; overflow:auto; margin:0;padding:10px">
+			<%= best_in_place_if @can_edit, organization, :misson, :type => :textarea, :display_as => :textilize_misson, :nil => "Click to Edit"%> 
 		</div>
 
 		<div class = "two columns" style="font-size:1.5em; margin:0;padding:0; margin-top:25px; padding-left:10px; width:20%">
 
 			<u><font style="line-height:1.2em">Program Subjects:</font></u>
 		</div>
-		<div class="ten columns" style="border: 1px solid #575758; height:130px; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
+		<div class="ten columns" style="border: 1px solid #575758; height:130px; overflow:auto; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
 <%= programSubjects[0..(programSubjects.count - 2)].join(", ")%>
 		</div>
 	</div>
