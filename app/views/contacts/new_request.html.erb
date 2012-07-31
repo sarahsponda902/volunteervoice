@@ -7,3 +7,58 @@
 	<% end %>
   </div>
 <% end %>
+<div class="container">
+	<div class="row">
+		<div class="twelve columns">
+			<% @contact = Contact.new %>
+			<p style="font-size:2em; font-family:museoSlab500Regular; line-height:1.5em; margin:10px" align="center">Account Request</p>
+			<p style="font-family:museoSlab500Regular; line-height:1.1em; color:#68c2d8">Please complete all fields</p>
+			<%= form_for @contact do |f| %>
+			<div class="six columns" style="width:300px">
+
+			  <div><%= f.label "Organization Name" %>
+			  <%= f.text_field :organization_name, :style => "height:20px; width:198px" %></div><br />
+			<div>
+<%= f.label :country %>
+			  <div style="position:absolute;top:93px; height:30px; width:198px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				 <select style="position:absolute; border:1px solid #575758; left:-5px; width:225px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" id="contact_country" name="contact[country]">
+					<option value=""> Select a Country</option>
+					<% THECOUNTRIES.keys.each do |f| %>
+					<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+					<% end %>
+					</select>
+			</div>
+			<div style="margin-top:50px"><%= f.label "Website URL" %>
+			  <%= f.text_field :organization_url, :style => "height:20px; width:198px" %></div><br />
+			<div>
+			 <%= f.radio_button :has_profile, :value => "Has profile needs access."%> I have a profile already, but need access. <br />
+			<%= f.radio_button :has_profile, :value => "Needs profile and access."%> I don't have a profile, please make me one! <br /></div>
+			
+			
+			</div>
+			
+			<div style="margin-top:25px; margin-left:215px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+
+			</div>
+			<div class="six columns" style=" margin-top:-312px; width:250px; padding-left:30px">
+
+			  <div><%= f.label "Main Contact (First and Last Name)" %>
+			  <%= f.text_field :main_contact, :style =>"height:20px; width:198px"%></div><br />
+
+			  <div><%= f.label "Contact's Position at Company" %>
+			  <%= f.text_field :position_of_contact, :style =>"height:20px; width:198px"%></div><br />
+
+			  <div><%= f.label "Contact Email"%>
+			  <%= f.text_field :contact_email, :style =>"height:20px; width:198px" %></div>
+			
+			
+			<div style="float:right; margin-right:50px; margin-top:25px; font-family:museoSlab500Regular">&lt;&lt;&nbsp;&nbsp; Select one of these</div>
+			
+									<div style="height:180px; width:1px; top:15px; background-color: #575758; position:absolute; left:-20px"></div>
+									
+			<%= f.hidden_field :to_whom, :value => "request"%>
+			<% end %>
+		</div>
+	</div>
+</div>
+</div>
