@@ -29,7 +29,7 @@ class ContactMailer < ActionMailer::Base
      mail(:subject => "Unsubscribe: #{message.subject}", :to => "contact@volunteervoice.org")
   end
    
-   def request(contact)
+   def to_request(contact)
        @organization_name = contact.organization_name
        @country = contact.country
        @url = contact.organization_url
