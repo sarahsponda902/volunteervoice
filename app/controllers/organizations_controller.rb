@@ -438,8 +438,10 @@ end
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    
-       if (user_signed_in? && current_user.admin?) || (!current_organization_account.nil? && @organization.id == current_organization_account.organization_id)
+      if (user_signed_in? && current_user.admin?) || (!current_organization_account.nil? && @organization.id == current_organization_account.organization_id)
+         if @organization.description != params[:organization][:description]
+           params[:organization][:description] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:description] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+         end
          respond_to do |format|
            if @organization.update_attributes(params[:organization])
              format.html { redirect_to "/organizations/#{@organization.id}" }
