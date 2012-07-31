@@ -6,10 +6,6 @@ $(document).ready(function() {
   jQuery(".best_in_place").best_in_place();
 });
 
-$('.best_in_place').bind('ajax:success', function(){ 
-    if ($(this).attr('data-type') == 'textarea')
-        $(this).JQtextile('textile', this.innerHTML);
-});
 </script>
 
 
