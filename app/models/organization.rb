@@ -37,6 +37,10 @@ def roundup(overall)
     (overall*2).round / 2.0
 end
 
+def textilize_me
+  textilize(misson).html_safe
+end
+
 def square_image_crop
    if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
      image = MiniMagick::Image.open(self.image.url)
