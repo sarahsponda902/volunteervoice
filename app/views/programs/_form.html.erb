@@ -270,7 +270,7 @@ $(function() {
 <div class="six columns" style="width:45%; margin-top:40px">
 	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#subjects-box" class="subjects-window" style="color:blue"><u>View all possible subject tags</u></a></label>
 	
-		<input id="subjects" name="program[program_subjects]" style="font-size:.8em; border:1px solid #e67b5a" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects; end%>" onfocus="if (this.value == ' Start typing...') {this.value = ''};"/><p style="font-size:0.85em;  color:darkblue"> &gt; Click to select applicable subjects for this program.</p><br />
+		<input id="subjects" name="program[program_subjects]" style="font-size:.8em; border:1px solid #e67b5a" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects; end%>" onfocus="if (this.value == ' Start typing...') {this.value = '';};"/><p style="font-size:0.85em;  color:darkblue"> &gt; Click to select applicable subjects for this program.</p><br />
 <div class="field">
 	<label for="program_location">Country:</label>
 	<select id="program_location" name="program[location]">
@@ -386,7 +386,7 @@ $(function() {
 	<br />
 	<font style="color:#6aaeba; font-size:1.6em;font-weight:600">For Volunteer Placement Organizations (VPO’s):</font><br />
 	<br />
-	<font style="font-size:1.6em">→ YOU MUST INCLUDE ALL ADDITIONAL FEES IN YOUR OVERALL PROGRAM COSTS.</font><br />
+	<font style="font-size:1.3em">→ YOU MUST INCLUDE ALL ADDITIONAL FEES IN YOUR OVERALL PROGRAM COSTS.</font><br />
 	<br />
 	<ol ><li><b><u>Explanation:</b></u> VVI Includes ALL fees that an organization charges into the overall program cost. This means that if your organization charges any fees in addition to or separately from your designated program fee (placement fees, required donations, etc.), we add the additional fees to your overall costs in our search database.</li>
 	<li><b><u>Why is this required?</b></u> We do this for the benefit of our Users, so that they can set a budget for their volunteer trip and use our site to search based on the ACTUAL price of a program, all fees included. We help Users stick to their actual budget rather than having to do additional math on their own.</li>
@@ -396,7 +396,7 @@ $(function() {
 	<br />
 	<font style="color:#6aaeba; font-size:1.6em;font-weight:600">For Community Based Organizations (CBO’s):</font><br />
 	<br />
-	<font style="font-size:1.6em">→ IF YOU DO NOT HAVE FIRM COSTS FOR YOUR PROJECTS, YOU MUST PROVIDE ESTIMATES.</font><br />
+	<font style="font-size:1.3em">→ IF YOU DO NOT HAVE FIRM COSTS FOR YOUR PROJECTS, YOU MUST PROVIDE ESTIMATES.</font><br />
 	<br />
 	<ol ><li><b><u>Explanation:</b></u> Some CBO’s have predetermined costs, and some don’t. VVI thinks it’s great that CBO’s do not charge extra program fees, but volunteers still want to know how much to expect to pay for food, rent, and essential amenities. Providing prospective volunteers with estimations is incredibly helpful. The more accurate and detailed your estimations are, the easier it will be for prospective Volunteers to determine your projects as a match for them. </li>
 	<li><b><u>Why is this required?</b></u> This requirement is beneficial for both CBO’s and prospective volunteers. When you provide price estimates for each available length of time a program offers, you make your projects more searchable for prospective volunteers that have a budget. Plus, it’s obviously in your favor as an organization to provide accurate, useful financial information about your programs to build a good reputation through VVI.</li>
@@ -484,8 +484,8 @@ input[type="text"] {
 	display:none;
 	background: #D9DEDA;
 	padding: 10px;
-	height:300px; 
-	width:450px;
+	height:400px; 
+	width:600px;
 	overflow:auto;	
 	border: 3px solid #68c2d8;
 	float: left;
@@ -511,7 +511,7 @@ input[type="text"] {
 	float: left;
 	color: #575758;
 	position: fixed;
-	width: 650px;
+	width: 600px;
 	top: 50%; left: 50%;
 	z-index: 99999;
 	box-shadow: 0px 0px 20px #999; /* CSS3 */
@@ -521,5 +521,7 @@ input[type="text"] {
         -moz-border-radius: 3px; /* Firefox */
         -webkit-border-radius: 3px; /* Safari, Chrome */
 }
+
+li{ margin-left:30px; }
 </style>
 
