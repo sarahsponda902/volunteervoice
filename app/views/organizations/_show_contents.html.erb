@@ -42,7 +42,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			<p style="font-size:3.5em; color:#62acbd; line-height:1.3em;"> <%= organization.name %></p>
 				<% if @can_edit %>
 				&#9998;
-	<u><%=best_in_place_if @can_edit, organization, :url, :type => :input, :nil => "Click to edit"%></u>
+	<font style="color:#68c2d8"><u><%=best_in_place_if @can_edit, organization, :url, :type => :input, :nil => "Click to edit"%></u></font>
 				<% else %>
 				<a style="font-size:1.2em;" class="organization_url" href="<%=organization.url%>" target="_blank"> <u><%= organization.url%></u></a>
 				<% end %>
@@ -134,7 +134,7 @@ $('.best_in_place').bind('ajax:success', function(){
 				&#9998; 
 				<% end %>
 				Run by:</p><%=best_in_place_if @can_edit, organization, :run_by, :type => :input, :nil => "Click to edit"%><br /><br />
-			<p style="font-weight:600">Full Time Staff: </p><%=best_in_place_if @can_edit, organization, :full_time_staff, :type => :input, :nil => "Click to edit"%><br /><br />
+			<p style="font-weight:600">Full Time Staff: </p><%=best_in_place_if @can_edit, organization, :full_time_staff, :type => :input, :nil => "Click to edit"%><br />
 			<p style="font-weight:600"> 
 				<% if @can_edit%>
 				&#9998; 
@@ -150,7 +150,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			Application Process: </p><%= best_in_place_if @can_edit, organization, :application_process, :type => :textarea, :display_as => :textilize_application_process, :nil => "Click to edit"%><br /><br />
+			Application Process: </p><%= best_in_place_if @can_edit, organization, :application_process, :type => :textarea, :display_as => :textilize_application_process, :nil => "Click to edit"%><br />
 			<p style="font-weight:600">Business Model: </p><%= organization.business_model.html_safe%><br /><br />
 			
 			<p style="font-weight:600">ID number: </p><%=organization.id_number%><br /><br />
@@ -175,7 +175,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_as => :textilize_program_costs_doesnt_include, :nil => "Click to edit"%><br /><br />
+			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_as => :textilize_program_costs_doesnt_include, :nil => "Click to edit"%><br />
 			<p><font style="font-weight:600">Additional Fees: </font><%= organization.additional_fees%></p><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
 			<p style="font-weight:600">Group Sizes: </p><%= groupSizes[0..(groupSizes.count - 2)].join(", ")%><br /><br />
