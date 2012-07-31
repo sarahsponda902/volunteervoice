@@ -7,8 +7,9 @@ $(document).ready(function() {
 	<% end %>
 	<% if resource.notify == false %>
 		$("#checkBefore").hide();
-	<% else %>
-		$("#user_notify").attr("checked", true)
+	<% end %>
+	<% if resource.notify.nil? || resource.notify == true %>
+		$("#user_notify").attr("checked", true);
 	<% end %>
 	$('#rememberMe').hide();
 	
