@@ -14,7 +14,7 @@
 	
 
 	<p align="right" style="color:#e67b5a; font-size:1.1em; line-height:1.5em;">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
-		<table cellspacing="0" style="border:1px solid #e67b5a; float:center; background-color:#E9ECE9; width:100%" cellpadding="0">
+		<table cellspacing="0" style="border:1px solid #e67b5a; width:700px; margin:auto; background-color:#E9ECE9" cellpadding="0">
 			<% if f.flag_show == false%>
 			<tr><td>This review has been flagged for removal</td></tr>
 			<% else %>
