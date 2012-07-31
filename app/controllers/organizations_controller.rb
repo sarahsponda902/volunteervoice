@@ -55,7 +55,7 @@ class OrganizationsController < ApplicationController
       @entries << [(a.first.length / 604800).round, a.first.cost, a.last.cost]
     end
     
-    if organization_account_signed_in? && current_organization_account.organization_id == @organization.id
+    if (user_signed_in? && current_user.admin?) || (organization_account_signed_in? && current_organization_account.organization_id == @organization.id)
       @can_edit = true
     else
       @can_edit = false
