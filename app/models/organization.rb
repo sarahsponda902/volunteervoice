@@ -37,8 +37,28 @@ def roundup(overall)
     (overall*2).round / 2.0
 end
 
-def textilize_me
+def textilize_misson
   textilize(misson).html_safe
+end
+
+def textilize_headquarters_address
+  textilize(headquarters_address).html_safe
+end
+
+def textilize_application_process
+  textilize(application_process).html_safe
+end
+
+def textilize_program_costs_includes
+  textilize(program_costs_includes).html_safe
+end
+
+def textilize_program_costs_doesnt_include
+  textilize(program_costs_doesnt_include).html_safe
+end
+
+def textilize_tranining_resources
+  textilize(tranining_resources).html_safe
 end
 
 def square_image_crop
