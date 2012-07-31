@@ -445,7 +445,7 @@ end
   def update
     @organization = Organization.find(params[:id])
     
-    if params[:organization][:url][0..3] != "http"
+    if !params[:organization][:url].nil? params[:organization][:url][0..3] != "http"
       params[:organization][:url] = "http://"+params[:organization][:url]
     end
       if (user_signed_in? && current_user.admin?) || (!current_organization_account.nil? && @organization.id == current_organization_account.organization_id)
