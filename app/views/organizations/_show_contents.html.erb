@@ -129,6 +129,7 @@ $('.best_in_place').bind('ajax:success', function(){
 				<% end %>
 				Operating since:</p><%=best_in_place_if @can_edit, organization, :operating_since, :type => :input, :nil => "Click to edit"%><br /><br />
 			
+			<p style="font-weight:600"> 
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
@@ -145,6 +146,7 @@ $('.best_in_place').bind('ajax:success', function(){
 				<% end %>
 				# Volunteers to date: </p><%=best_in_place_if @can_edit, organization, :num_vols_date, :type => :input, :nil => "Click to edit"%><br /><br />
 			<p style="font-weight:600"> # Active Programs: </p><%= organization.programs.count%><br /><br />
+			<p style="font-weight:600"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
@@ -164,7 +166,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			<br />
 			<p><font style="font-weight:600">Price Ranges:</font> <a href="#price-ranges-box" class="price-ranges-window">Click here to view</a> </p><br />
 			
-			
+			<p style="font-weight:600"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
@@ -172,7 +174,8 @@ $('.best_in_place').bind('ajax:success', function(){
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%>
+			<p style="font-weight:600"> 
+			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%><br /><br />
 			<p><font style="font-weight:600">Additional Fees: </font><%= organization.additional_fees%></p><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
 			<p style="font-weight:600">Group Sizes: </p><%= groupSizes[0..(groupSizes.count - 2)].join(", ")%><br /><br />
@@ -180,6 +183,7 @@ $('.best_in_place').bind('ajax:success', function(){
 			
 			
 			<p style="font-weight:600">Program Lengths: </p><%= programLengths.first%> - <%= programLengths.last %> <br /><br />
+			<p style="font-weight:600"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
