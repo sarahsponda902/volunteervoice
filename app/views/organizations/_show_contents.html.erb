@@ -74,7 +74,7 @@ $('.best_in_place').bind('ajax:success', function(){
 				<u><b>Mission:</b></u>
 		</div>
 		<div class="ten columns" style="border:1px solid #575758; height:130px; width:75%; overflow:auto; margin:0;padding:10px">
-			<%= best_in_place_if @can_edit, organization, :misson, :type => :textarea, :display_as => :textilize_misson, :nil => "Click to Edit"%> 
+			<%= best_in_place_if @can_edit, organization, :misson, :type => :textarea, :display_as => :textilize_misson, :nil => "Click to Edit", :sanitize => false%> 
 		</div>
 
 		<div class = "two columns" style="font-size:1.5em; margin:0;padding:0; margin-top:25px; padding-left:10px; width:20%">
