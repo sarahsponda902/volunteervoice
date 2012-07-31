@@ -21,6 +21,8 @@ gem 'google_drive'
 
 gem 'mad_mimi_mailer'
 
+gem 'delayed_job_active_record'
+
 gem 'madmimi'
 
 gem 'RedCloth'
