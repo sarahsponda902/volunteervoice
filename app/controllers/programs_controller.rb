@@ -184,6 +184,9 @@ class ProgramsController < ApplicationController
             end
             redirect_to @program
       else
+        @cost_lengths.each do |f|
+          f.destroy
+        end
         @program.description = @program.description.gsub(%r{</?[^>]+?>}, '')
         @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
         @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
