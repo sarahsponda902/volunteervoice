@@ -57,7 +57,7 @@ def textilize_program_costs_doesnt_include
   textilize(program_costs_doesnt_include).html_safe
 end
 
-def textilize_tranining_resources
+def textilize_training_resources
   textilize(training_resources).html_safe
 end
 
