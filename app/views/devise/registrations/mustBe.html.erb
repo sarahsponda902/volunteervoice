@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	<% if resource.nil? || !resource.volunteered_before || resource.volunteered_before.nil? %>
+	<% if resource.nil? || !resource.volunteered_before? || resource.volunteered_before.nil? %>
 		$('#volunteeredBefore').hide();
 	<% end %>
 	<% if resource.notify == false %>
@@ -316,6 +316,7 @@ function submitForm() {
 					<option value=""> Select a Country</option>
 					<% THECOUNTRIES.keys.each do |f| %>
 					<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+					<% end %>
 					</select>
 							</div>
 		<br />
