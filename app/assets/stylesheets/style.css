@@ -232,8 +232,6 @@ a.orange:hover {color: #62acbd; }
 	
 .pageWrap{}
 
-header.row {}
-
 input[name="search[keywords]"] {  
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
