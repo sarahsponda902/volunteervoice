@@ -58,7 +58,7 @@ def textilize_program_costs_doesnt_include
 end
 
 def textilize_tranining_resources
-  textilize(tranining_resources).html_safe
+  textilize(training_resources).html_safe
 end
 
 def square_image_crop
