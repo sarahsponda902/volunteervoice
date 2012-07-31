@@ -282,6 +282,7 @@
 					<option value=""> Select a Country</option>
 					<% THECOUNTRIES.keys.each do |f| %>
 					<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+					<% end %>
 					</select>
 			</div>
 			<div style="margin-top:50px"><%= f.label "Website URL" %>
