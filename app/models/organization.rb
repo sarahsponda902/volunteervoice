@@ -42,7 +42,7 @@ def textilize_misson
 end
 
 def textilize_headquarters_address
-  textilize(headquarters_address).html_safe
+  textilize(headquarters_location).html_safe
 end
 
 def textilize_application_process
