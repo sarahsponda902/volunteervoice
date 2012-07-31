@@ -358,7 +358,8 @@ class OrganizationsController < ApplicationController
    
    respond_to do |format|
      format.html
-     format.json { respond_with_bip(@organization) }
+     format.xml  { render :xml => @project.to_xml }
+     format.json { render :json => @project.as_json }
    end
  end
 
@@ -446,7 +447,7 @@ end
       if (user_signed_in? && current_user.admin?) || (!current_organization_account.nil? && @organization.id == current_organization_account.organization_id)
         respond_to do |format|
            if @organization.update_attributes(params[:organization])
-             format.html { redirect_to @organization }
+             format.html { redirect_to @organization_idÅ¸¸¸¸ }
              format.json { respond_with_bip(@organization) }
            else
              format.html { render :action => "show" }
