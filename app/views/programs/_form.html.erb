@@ -268,9 +268,9 @@ $(function() {
 </div>
 
 <div class="six columns" style="width:45%; margin-top:40px">
-	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#subjects-box" class="subjects-window" style="color:blue"><u>View all subject tags</u></a></label>
+	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#subjects-box" class="subjects-window" style="color:blue"><u>View all possible subject tags</u></a></label>
 	
-		<input id="subjects" name="program[program_subjects]" style="font-size:.8em; border:1px solid #e67b5a" type="text" value="<%=@subjects%>"/><p style="font-size:0.85em;  color:darkblue"> &gt; Click to select applicable subjects for this program.</p><br />
+		<input id="subjects" name="program[program_subjects]" style="font-size:.8em; border:1px solid #e67b5a" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects; end%>" onfocus="if (this.value == ' Start typing...') {this.value = ''};"/><p style="font-size:0.85em;  color:darkblue"> &gt; Click to select applicable subjects for this program.</p><br />
 <div class="field">
 	<label for="program_location">Country:</label>
 	<select id="program_location" name="program[location]">
