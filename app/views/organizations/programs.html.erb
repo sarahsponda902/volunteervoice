@@ -34,11 +34,11 @@
 	<table style="border-left:1px solid #575758;border-right:1px solid #575758;border-top:1px solid #575758;">
 	<% @organization.programs.each do |p|%>
 	<% if p.location == f%>
-	<tr style="background-color:#D9DEDA">
+	<tr style="background-color:#D9DEDA; margin:0;padding:0">
 		<td style="width:500px"><a href="/programs/<%=p.id%>" style="color:#e67b5a; font-size:1.5em"><%=p.name%></a></td>
 		<td style="width:130px"><%= render :partial => "star", :locals => {:star => p.overall}%></td>
 	</tr>
-	<tr style="border-bottom:1px solid #575758; background-color:#D9DEDA">
+	<tr style="border-bottom:1px solid #575758; background-color:#D9DEDA; margin:0;padding:0">
 		<td colspan="2"><%= p.description.html_safe%></td>
 	</tr>
 	</div>
