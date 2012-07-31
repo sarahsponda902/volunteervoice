@@ -258,6 +258,8 @@ RMTest::Application.routes.draw do
   
   ###### ORGANIZATIONS
   
+  match 'organizations/:id/changeShow' => 'organizations#changeShow'
+  
   match 'organizations/:id/crop' => 'organizations#crop'
   
   match "organizations/:id/edit" => 'organizations#edit'

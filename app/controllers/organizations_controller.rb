@@ -230,6 +230,25 @@ end
     @organization = Organization.find(params[:id])
   end
   
+  
+      def changeShow
+          if (user_signed_in? && current_user.admin?)
+            @organization = Organization.find(params[:id])
+            if @organization.show
+              @organization.show = false
+              @organization.save
+            else
+              @organization.show = true
+              @organization.save
+            end
+              respond_to do |format|
+                format.html {redirect_to organizations_path}
+              end
+          else
+            redirect_to root_path
+          end
+      end
+  
 private
 def admin_pass 
   "4e5d0ed9183ebf2fed541412497e15a30e72f9cb"
