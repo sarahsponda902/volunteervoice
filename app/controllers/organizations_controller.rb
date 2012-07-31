@@ -355,6 +355,11 @@ class OrganizationsController < ApplicationController
    @countries.each do |f|
      @progs[f] = Program.where(:location => f)
    end
+   
+   respond_to do |format|
+     format.html
+     format.json { respond_with_bip(@organization) }
+   end
  end
 
   
