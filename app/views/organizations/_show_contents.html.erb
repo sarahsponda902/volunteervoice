@@ -20,15 +20,15 @@ $('.best_in_place').bind('ajax:success', function(){
 <% programLengths = []%>
 
 <% organization.program_subjects.each do |f|%>
-<% programSubjects << f.subject %>
+<% programSubjects << f.subject unless programSubjects.include?(f.subject)%>
 <% end %>
 
 <% organization.program_sizes.each do |f|%>
-<% groupSizes << f.size %>
+<% groupSizes << f.size unless groupSizes.include?(f.size)%>
 <% end %>
 
 <% organization.program_cost_length_maps.sort_by(&:length).each do |f|%>
-<% programLengths << [f.length_number, f.length_name].join(" ") %>
+<% programLengths << [f.length_number, f.length_name].join(" ") unless programLengths.include?([f.length_number, f.length_name].join(" ")) %>
 <% end %>
 
 
@@ -172,10 +172,10 @@ $('.best_in_place').bind('ajax:success', function(){
 			&#9998; 
 			<% end %>
 			Price Includes: </p><%= best_in_place_if @can_edit, organization, :program_costs_includes, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%><br />
+			<p style="font-weight:600"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			<p style="font-weight:600"> 
 			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_with => lambda { |v| textilize(v).html_safe }, :nil => "Click to edit"%><br /><br />
 			<p><font style="font-weight:600">Additional Fees: </font><%= organization.additional_fees%></p><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
