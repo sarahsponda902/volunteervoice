@@ -326,7 +326,7 @@ a:hover{color:white; background:none}
 
 nav {background:#575758; height: 45px;}
 
-nav li {list-style:none; display:inline-block; text-align:center; width: 24%;  padding-top: 15px; font-size: 1.5em; font-weight:0}
+nav li {list-style:none; display:block; text-align:center; width: 24%;  padding-top: 15px; font-size: 1.5em; font-weight:0}
 
 nav li a:visited{color: white;}
 
