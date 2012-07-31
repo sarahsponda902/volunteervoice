@@ -587,7 +587,24 @@ $(document).ready(function() {
 <div id='VU'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='VU' id='VU2' name='search[regions][]' type='checkbox'> Vanuatu</div>
 <div id='GU'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='GU' id='GU2' name='search[regions][]' type='checkbox'> Guam</div>
 <div id='KI'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='KI' id='KI2' name='search[regions][]' type='checkbox'> Kiribati</div>
-<div id='MH'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='MH' id='MH2' name='search[regions][]' type='checkbox'> Marshall Islands</div><br /><br />
+<div id='MH'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='MH' id='MH2' name='search[regions][]' type='checkbox'> Marshall Islands</div>
+<div id='AS'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='AS' id='AS2' name='search[regions][]' type='checkbox'> American Samoa</div>
+<div id='CK'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='CK' id='CK2' name='search[regions][]' type='checkbox'> Cook Islands</div>
+<div id='PF'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='PF' id='PF2' name='search[regions][]' type='checkbox'> French Polynesia</div>
+<div id='FM'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='FM' id='FM2' name='search[regions][]' type='checkbox'> Micronesia, Federated States of</div>
+<div id='NR'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='NR' id='NR2' name='search[regions][]' type='checkbox'> Nauru</div>
+<div id='NU'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='NU' id='NU2' name='search[regions][]' type='checkbox'> Niue</div>
+<div id='MP'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='MP' id='MP2' name='search[regions][]' type='checkbox'> Northern Mariana Islands</div>
+<div id='PW'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='PW' id='PW2' name='search[regions][]' type='checkbox'> Palau</div>
+<div id='PN'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='PN' id='PN2' name='search[regions][]' type='checkbox'> Pitcairn</div>
+<div id='WS'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='WS' id='WS2' name='search[regions][]' type='checkbox'> Samoa</div>
+<div id='TK'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='TK' id='TK2' name='search[regions][]' type='checkbox'> Tokelau</div>
+<div id='TO'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='TO' id='TO2' name='search[regions][]' type='checkbox'> Tonga</div>
+<div id='TV'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='TV' id='TV2' name='search[regions][]' type='checkbox'> Tuvalu</div>
+<div id='WF'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='WF' id='WF2' name='search[regions][]' type='checkbox'> Wallis and Futuna</div>
+
+
+<br /><br />
 </div>
 
 </div>
@@ -776,59 +793,7 @@ $(document).ready(function() {
 
     }    
 
-        var locations2 = new Array('Agriculture', 
-		'OrganicFarming', 
-		'SustainableDevelopment', 
-		'AnimalCare', 
-		'AnimalRights', 
-		'WildlifeConservation', 
-		'Caregiving', 
-		'ElderCare', 
-		'ChildOrphanCare', 
-		'DisabledCare', 
-		'FeedtheHomeless', 
-		'CommunityDevelopment', 
-		'YouthDevelopmentandOutreach', 
-		'Construction', 
-		'CultureandCommunity', 
-		'PerformingArts', 
-		'Fashion', 
-		'Music', 
-		'SportsRecreation', 
-		'Journalism', 
-		'DisasterRelief', 
-		'Economics', 
-		'Microfinance', 
-		'Education', 
-		'TeachingEnglish', 
-		'TeachingBuddhistMonks', 
-		'TeachingChildren', 
-		'TeachingComputerLiteracy', 
-		'EngineeringandInfrastructure', 
-		'Environmental', 
-		'EcologicalConservation',  
-		'HabitatRestoration', 
-		'HealthandMedicine', 
-		'HIVAIDS', 
-		'Nutrition', 
-		'FamilyPlanning', 
-		'VeterinaryMedicine', 
-		'ClinicalWork', 
-		'DentalWork', 
-		'MedicalResearch', 
-		'HealthEducation', 
-		'PublicHealth', 
-		'HospitalCaregiving', 
-		'HumanRights', 
-		'WomensInitiatives', 
-		'InternationalWorkCamp', 
-		'Recreation', 
-		'AdventureTravel', 
-		'ScientificResearch', 
-		'Archaeology', 
-		'EnvironmentalBiology', 
-		'Technology', 
-		'MediaMarketingandGraphicDesign');
+        var locations2 = <%= array_or_string_for_javascript ALLSUBJECTTAGS %>;
 
         var anyId2 = 'any';
 
