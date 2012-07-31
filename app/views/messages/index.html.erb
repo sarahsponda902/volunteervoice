@@ -5,30 +5,26 @@
     <th>Sender</th>
 	<th>Recipient</th>
 	<th>Message #</th>
-	<th>Subject </th>
   </tr>
 
 <% @messages.each do |f| %>
 
   <tr>
 	<td><% if !(f.sender_deleted)%>
-	<%=f.sender_id%>
+	<%=link_to User.find(f.sender_id).username, User.find(f.sender_id)%>
 	<% else %>
-	<font style="color:red"><%=f.sender_id%></font>
+	<a style="color:red" href="/users/<%=f.sender_id%>"><%= User.find(f.sender_id).username%></a>
 	<% end %></td>
 	
 	
 	<td>
 	<% if !(f.recipient_deleted)%>
-	<%=f.recipient_id%>
+	<%=link_to User.find(f.recipient_id).username, User.find(f.recipient_id)%>
 	<% else %>
-	<font style="color:red"><%=f.recipient_id%></font>
+	<a style="color:red" href="/users/<%=f.recipient_id%>"><%= User.find(f.recipient_id).username%></a>
 	<% end %>
 	</td>
-	
-	
 	<td><%=f.id%></td>
-	<td><%=f.subject%></td>
   </tr>
 
 <% end %>

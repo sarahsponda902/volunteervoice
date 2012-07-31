@@ -1,15 +1,6 @@
 class MessagesController < ApplicationController
 include ActionView::Helpers::TextHelper
-  # GET /messages/1
-  # GET /messages/1.json
-  def show
-    @message = Message.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @message }
-    end
-  end
 
   # GET /messages/new
   # GET /messages/new.json
@@ -23,7 +14,11 @@ include ActionView::Helpers::TextHelper
   end
   
   def index
-    @messages = Message.find(:all, :order => "created_at").reverse
+    if !(current_user.nil?) && current_user.admin?
+      @messages = Message.find(:all, :order => "created_at").reverse
+    else 
+      redirect_to root_path
+    end
   end
 
 
@@ -52,7 +47,9 @@ include ActionView::Helpers::TextHelper
   # DELETE /messages/1.json
   def destroy
     @message = Message.find(params[:id])
-    @message.destroy
+    if !(current_user.nil?) && ((current_user.admin?) || (current_user.id == @message.sender_id) || (current_user.id == @message.recipient_id))
+      @message.destroy
+    end
     
     respond_to do |format|
       format.html { redirect_to "/pages/profile" }
@@ -63,16 +60,25 @@ include ActionView::Helpers::TextHelper
   
   def mark_sent_deleted
     @message = Message.find(params[:id])
-    @message.sender_deleted = true
-    @message.save
-    redirect_to "/pages/profile/sent_deleted"
+    if (current_user.nil?) && ((current_user.admin?) || (current_user.id == @message.sender_id))
+      @message.sender_deleted = true
+      @message.save
+      redirect_to "/pages/profile/sent_deleted"
+    else
+      redirect_to "/pages/profile"
+    end
   end
   
   def mark_deleted
     @message = Message.find(params[:id])
-    @message.recipient_deleted = true
-    @message.save
-    redirect_to "/pages/profile/message_deleted" 
+        if (current_user.nil?) && ((current_user.admin?) || (current_user.id == @message.recipient_id))
+          @message.recipient_deleted = true
+          @message.save
+          redirect_to "/pages/profile/message_deleted"
+        else
+          redirect_to "pages/profile"
+        end
+       
   end
   
 end
