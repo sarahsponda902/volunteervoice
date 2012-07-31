@@ -358,8 +358,8 @@ class OrganizationsController < ApplicationController
    
    respond_to do |format|
      format.html
-     format.xml  { render :xml => @project.to_xml }
-     format.json { render :json => @project.as_json }
+     format.xml  { render :xml => @organization.to_xml }
+     format.json { render :json => @organization.as_json }
    end
  end
 
