@@ -38,8 +38,8 @@
 		<td style="width:70%"><a href="/programs/<%=p.id%>" style="color:#e67b5a; font-size:1.5em"><%=p.name%></a></td>
 		<td><%= render :partial => "star", :locals => {:star => p.overall}%></td>
 	</tr>
-	<tr>
-		<td colspan="2" style="border-bottom:1px solid #575758"><%= p.description.html_safe%></td>
+	<tr style="border-bottom:1px solid #575758">
+		<td colspan="2"><%= p.description.html_safe%></td>
 	</tr>
 	</div>
 	<% end %>
