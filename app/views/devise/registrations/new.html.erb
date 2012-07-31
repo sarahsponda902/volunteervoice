@@ -8,7 +8,7 @@ $(document).ready(function() {
 	<% if resource.nil? || !resource.volunteered_before || resource.volunteered_before.nil? %>
 		$('#volunteeredBefore').hide();
 	<% end %>
-	<% if resource.nil? resource.notify == false %>
+	<% if resource.nil? || resource.notify == false %>
 		$("#checkBefore").hide();
 	<% else %>
 		$("#user_notify").attr("checked", true)
