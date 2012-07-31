@@ -37,9 +37,10 @@ $(document).ready(function() {
 			<p style="font-size:3.5em; color:#62acbd; line-height:1.3em;"> <%= organization.name %></p>
 			<% if @can_edit %>
 			&#9998;
+<u><%=best_in_place_if @can_edit, organization, :url, :type => :input, :ok_button => "Save", :nil => "Click to edit"%></u>
+			<% else %>
+			<a style="font-size:1.2em;" class="organization_url" href="<%=organization.url%>" target="_blank"> <u><%= organization.url%></u></a>
 			<% end %>
-			<a style="font-size:1.2em;" class="organization_url" href="<%=organization.url%>" target="_blank"> <u><%=best_in_place_if @can_edit, organization, :url, :type => :input, :ok_button => "Save", :nil => "Click to edit"%></u></a>
-
 		</div>
 		<div class="three columns"  style="text-align:center; margin-top:-95px; padding:0; width:23%">
 
