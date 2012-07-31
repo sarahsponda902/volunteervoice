@@ -444,13 +444,14 @@ end
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    
-    if !params[:organization][:url].nil? params[:organization][:url][0..3] != "http"
-      params[:organization][:url] = "http://"+params[:organization][:url]
-    end
+
       if (user_signed_in? && current_user.admin?) || (!current_organization_account.nil? && @organization.id == current_organization_account.organization_id)
         respond_to do |format|
            if @organization.update_attributes(params[:organization])
+             if @organization.url[0..3] != "http"
+               @organization.url = "http://"+@organization.url
+               @organization.save!
+             end
              format.html { redirect_to @organization }
              format.json { respond_with_bip(@organization) }
            else
