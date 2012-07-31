@@ -4,10 +4,11 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	
-	if ($('#volunteeredBefore').val().toString() != "true"){
-		
-	$('#volunteeredBefore').hide();}
+	<% if resource.notify? %>
+		$('#volunteeredBefore').show();
+	<% else %>
+		$('#volunteeredBefore').hide();
+	<% end %>
 	
 	
 	$('a.question-window').click(function() {
@@ -88,7 +89,6 @@ function submitForm() {
 		<% end %>
 	  </div>
 	<% end %>
-	<%= devise_error_messages! %>
 	<div class="row">
 	<div class="six columns" style="float:center; text-align:left; margin-top:90px; border-left:1px solid #e67b5a; border-right:1px solid #e67b5a">
 
