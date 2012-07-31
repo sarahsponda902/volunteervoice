@@ -425,7 +425,8 @@ class OrganizationsController < ApplicationController
             if @organization.will_invite && @organization.invite_email.present?
               OrganizationAccount.invite!(:email => @organization.invite_email, :organization_id => @organization.id, :admin_pass => admin_pass)
             end
-            redirect_to "/organizations/#{@organization.id}/crop"
+              redirect_to "/organizations/#{@organization.id}/crop"
+            end
       else
         @organization.description = @organization.description.gsub(%r{</?[^>]+?>}, '')
         @organization.headquarters_location = @organization.headquarters_location.gsub(%r{</?[^>]+?>}, '')
@@ -447,7 +448,7 @@ end
       if (user_signed_in? && current_user.admin?) || (!current_organization_account.nil? && @organization.id == current_organization_account.organization_id)
         respond_to do |format|
            if @organization.update_attributes(params[:organization])
-             format.html { redirect_to @organization_idÅ¸¸¸¸ }
+             format.html { redirect_to @organization }
              format.json { respond_with_bip(@organization) }
            else
              format.html { render :action => "show" }
