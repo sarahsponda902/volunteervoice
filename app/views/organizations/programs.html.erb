@@ -31,15 +31,12 @@
 
 
 <div id="programs-box<%=f%>" class="programs-popup">
-	<table style="border-left:1px solid #575758;border-right:1px solid #575758;border-top:1px solid #575758; border-collapse:collapse;" cellpadding = "0" cellspacing = "0" >
+	<table style="border-left:1px solid #575758;border-right:1px solid #575758;border-top:1px solid #575758;">
 	<% @organization.programs.each do |p|%>
 	<% if p.location == f%>
-	<tr style="background-color:#D9DEDA; margin:0;padding:10px; padding-bottom:0;">
-		<td style="width:500px;padding:0;margin:0"><a href="/programs/<%=p.id%>" style="color:#e67b5a; font-size:1.5em"><%=p.name%></a></td>
+	<tr style="background-color:#D9DEDA;border-bottom:1px solid #575758;">
+		<td style="width:500px;padding:0;margin:0"><a href="/programs/<%=p.id%>" style="color:#e67b5a; font-size:1.5em"><%=p.name%></a><br /><%= p.truncated_description100%></td>
 		<td style="width:130px; padding:0; margin:0"><%= render :partial => "star", :locals => {:star => p.overall}%></td>
-	</tr>
-	<tr style="border-bottom:1px solid #575758; background-color:#D9DEDA;padding:10px; padding-top:0;">
-		<td colspan="2" style="padding:0;margin:0"><%= p.description.html_safe%></td>
 	</tr>
 	</div>
 	<% end %>
