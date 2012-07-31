@@ -12,10 +12,15 @@ $(document).ready(function() {
 			$("#org_change").show();
 		}
 	});
-	
-	if ($('#volunteeredBefore').val().toString() != "true"){
-		
-	$('#volunteeredBefore').hide();}
+	<% if resource.nil? || !resource.volunteered_before || resource.volunteered_before.nil? %>
+		$('#volunteeredBefore').hide();
+	<% end %>
+	<% if resource.nil? resource.notify == false %>
+		$("#checkBefore").hide();
+	<% else %>
+		$("#user_notify").attr("checked", true)
+	<% end %>
+	$('#rememberMe').hide();
 	
 	
 	$('a.question-window').click(function() {

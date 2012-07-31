@@ -5,14 +5,15 @@
 
 $(document).ready(function() {
 	
-	<% if !resource.volunteered_before || resource.volunteered_before.nil? %>
+	<% if resource.nil? || !resource.volunteered_before || resource.volunteered_before.nil? %>
 		$('#volunteeredBefore').hide();
 	<% end %>
-	<% if resource.notify == false %>
+	<% if resource.nil? resource.notify == false %>
 		$("#checkBefore").hide();
 	<% else %>
 		$("#user_notify").attr("checked", true)
 	<% end %>
+
 	
 	
 	$('a.question-window').click(function() {

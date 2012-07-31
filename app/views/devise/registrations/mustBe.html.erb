@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-	<% if !resource.volunteered_before || resource.volunteered_before.nil? %>
+	<% if resource.nil? || !resource.volunteered_before || resource.volunteered_before.nil? %>
 		$('#volunteeredBefore').hide();
 	<% end %>
 	<% if resource.notify == false %>
