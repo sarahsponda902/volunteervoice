@@ -795,6 +795,8 @@ $(document).ready(function() {
 
         var locations2 = <%= array_or_string_for_javascript ALLSUBJECTTAGS %>;
 
+		locations2 = locations2.slice(0, locations2.length - 2);
+
         var anyId2 = 'any';
 
         function toggleBoxes1( el ) {
@@ -880,7 +882,10 @@ function toggleAgriculture( el ) {
 			var cb = document.getElementById(anyAgriculture);
 			cb.checked = true; 
 
-		} 
+		} else {
+			var cb = document.getElementById(anyAgriculture);
+			cb.checked = false;
+	    }
 
 }
 
@@ -1236,7 +1241,9 @@ function toggleTechnology( el ) {
 			var cb = document.getElementById(anyTechnology);
 			cb.checked = true; 
 	
-		}
+		} else {
+		    var cb = document.getElementById(anyTechnology);
+			cb.checked = false;
     }
 }
 	
@@ -1630,7 +1637,6 @@ function toggleOceania( el ) {
 		if (allChecked) {
 			var cb = document.getElementById(anyOceania);
 			cb.checked = true; 
-
 		}
     }
 }
