@@ -237,6 +237,8 @@ $(document).ready(function () {
 				<li><a href="/organizations/<%= @organization.id%>"><img src="/assets/tabProfileYes.png" style="width:125px;margin-top:-75px; margin-left:140px"></a></li>
             </ul>
         </div>
+		<div class="four columns" style="font-size:1.1em;font-family:museoSlab500Regular;color:#68c2d8">*All fields with a small pencil next to them are open for editing.  Just click on the content in that field to adjust as you see fit.  Click anywhere outside the textbox to complete and save your changes.</div><div class="eight columns"></div>
+			
 		
 	<%= render :partial => "show_contents", :locals => {:organization => @organization, :reviews_count => reviews_count, :overall => @overall}%>
 	
