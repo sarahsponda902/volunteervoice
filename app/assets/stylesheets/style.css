@@ -287,7 +287,7 @@ a:hover{color:white; background:none}
 
 #adminNav li:hover ul{visibility:visible; z-index:5;}
 
-#adminNav ul ul{position: absolute; opacity:0.9; right: 28%; top: 25px; visibility:hidden; font-size:.85em; display:block; z-index:5; padding:5px; padding-top:-5px; padding-bottom:10px;
+#adminNav ul ul{position: absolute; opacity:0.9; ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)"; right: 28%; top: 25px; visibility:hidden; font-size:.85em; display:block; z-index:5; padding:5px; padding-top:-5px; padding-bottom:10px;
  background-color:#575758; border-bottom:3px solid #575758; border-left:3px solid #575758; border-right:3px solid #575758; }
 
 #adminNav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
@@ -440,5 +440,5 @@ footerNav h4, .ourCommunity h4 { font-family:'MuseoSlab500Regular', Georgia, "Ti
 	border:2px solid #e67b5a;
 }
 
-.shadowed{opacity:0.8}
+.shadowed{opacity:0.8; ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"}
 
