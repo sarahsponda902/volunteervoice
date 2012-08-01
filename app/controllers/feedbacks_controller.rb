@@ -48,6 +48,7 @@ class FeedbacksController < ApplicationController
         format.html { redirect_to '/pages/thank_you', notice: 'Feedback was successfully created.' }
         format.json { render json: @feedback, status: :created, location: @feedback }
       else
+        flash[:notice] = flash[:notice].to_a.concat @feedback.errors.full_messages
         format.html { render action: "new" }
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
       end

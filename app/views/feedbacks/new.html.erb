@@ -1,0 +1,34 @@
+<% flash.each do |key, value| %>
+  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
+<div class="container">
+	<div class="row">
+		<div class="twelve columns" align="center">
+<p style="text-align:center; margin-top:10px; margin-bottom:10px; font-family:museoSlab500Regular; font-size:2em; color:#575758">Feedback</p>
+<%= form_for(@feedback) do |f| %>
+  <div class="field">
+	<%if user_signed_in?%>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% else %>
+    <p style= "color:#575758; font-size:1em;">Email </p>
+	<%= f.text_field :email, :style => "width:246px; height:18px"%>
+    
+    <% end %>
+  </div>
+  <div class="field">
+    <p style= "color:#575758; font-size:1em;">Message </p>
+    <%= f.text_area :body, :style=>"height:150px; width:250px; border:1px solid gray" %>
+  </div>
+
+  <div class="actions">
+    <p style="text-align:center"><%= image_submit_tag "/assets/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+  </div>
+<% end %>
+</div>
+</div>
+</div>

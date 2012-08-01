@@ -8,6 +8,7 @@ class Feedback < ActiveRecord::Base
   def validates_email
     if !self.user_id
       if !self.email
+        errors.add(:email, "must not be blank")
         return false
       end
     end
