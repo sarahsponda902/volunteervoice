@@ -213,9 +213,9 @@ class SearchesController < ApplicationController
   # PUT /searches/1.json
   def update
     @search = Search.find(params[:id])
-     params[:search][:regions] = params[:search][:regions].join("; ") unless params[:search][:regions].class.name == "String"
-     params[:search][:subjects] = params[:search][:subjects].join("; ") unless params[:search][:subjects].class.name == "String"
-     params[:search][:sizes] = params[:search][:sizes].join("; ") unless params[:search][:sizes].class.name == "String"
+     params[:search][:regions] = params[:search][:regions].join("; ") unless (params[:search][:regions].class.name == "String" || params[:search][:regions].nil?)
+     params[:search][:subjects] = params[:search][:subjects].join("; ") unless (params[:search][:subjects].class.name == "String" || params[:search][:subjects].nil?)
+     params[:search][:sizes] = params[:search][:sizes].join("; ") unless (params[:search][:sizes].class.name == "String" || params[:search][:sizes].nil?)
     
       respond_to do |format|
       if @search.update_attributes(params[:search])
