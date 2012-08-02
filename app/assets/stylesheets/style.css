@@ -440,5 +440,5 @@ footerNav h4, .ourCommunity h4 { font-family:'MuseoSlab500Regular', Georgia, "Ti
 	border:2px solid #e67b5a;
 }
 
-.shadowed{display:block; opacity:.8; filter: alpha(opacity=80);}
+.shadowed{opacity:.8}
 
