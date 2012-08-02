@@ -411,7 +411,7 @@ function openReplyBox(message_id) {
 
     <div id="wrapper" style="width:100%;">
         <div style="height: 31.4px;">
-            <ul class="tab" style="margin-left:15px; margin-top:-16px; margin-bottom:0;">
+            <ul class="tab" style="margin-left:15px; margin-top:-20px; margin-bottom:0;">
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="3">My Reviews</li>
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="2">My Favorites</li>
 				<% if current_user.unread_messages == 0 %>
@@ -423,15 +423,15 @@ function openReplyBox(message_id) {
         </div>
 
 		<div style="border-top:1px solid #e67b5a; width:100%; margin-top:10px;">
-			<div id="messagesTab" style="margin-left:378px; margin-top:-51px">
+			<div id="messagesTab" style="margin-left:378px; margin-top:-55px">
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
 				<p style="margin-top:-66px; margin-left:15px; font-family:architectsDaughterRegular; font-size:1.4em;">My Messages</p>
 			</div>
-			<div id="favoritesTab" style="margin-left:197px; margin-top:-51px">
+			<div id="favoritesTab" style="margin-left:197px; margin-top:-55px">
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
 					<p style="margin-top:-66px; margin-left:18px; font-family:architectsDaughterRegular; font-size:1.4em;">My Favorites</p>
 			</div>
-			<div id="reviewsTab" style="margin-left:15px; margin-top:-51px">
+			<div id="reviewsTab" style="margin-left:15px; margin-top:-55px">
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
 					<p style="margin-top:-66px; margin-left:20px; font-family:architectsDaughterRegular; font-size:1.4em;">My Reviews</p>
 			</div>
@@ -458,7 +458,7 @@ function openReplyBox(message_id) {
               <%end%>
 			
             </div>
-            <div id="red" style="margin-left:5px; margin-top:-20px">
+            <div id="red" style="margin-left:5px; margin-top:-40px">
             </div>
         </div>
 
@@ -481,7 +481,7 @@ function openReplyBox(message_id) {
 	              <%end%>
 
 	            </div>
-	            <div id="sent" style="margin-left:5px; margin-top:-20px">
+	            <div id="sent" style="margin-left:5px; margin-top:-40px">
 	            </div>
 	        </div>
         <div id="green-contents" class="contents"  style="margin-top:40px; width:100%;">
@@ -497,7 +497,7 @@ function openReplyBox(message_id) {
 				<p style="margin-left:35px; margin-top:25px; color:#575758">You have not yet added any favorites.</p>
 				<% end %>
             </div>
-            <div id="green" style="margin-left:5px; margin-top:-20px">
+            <div id="green" style="margin-left:5px; margin-top:-40px">
             </div>
         </div>
         <div id="black-contents" class="contents"  style="margin-top:50px;">
@@ -516,7 +516,7 @@ function openReplyBox(message_id) {
 				<% end %>
                 
             </div>
-            <div id="black" style="margin-left:5px; margin-top:-20px"></div>
+            <div id="black" style="margin-left:5px; margin-top:-40px"></div>
             </div>
 			</div>
 
