@@ -35,7 +35,7 @@
 	<% @organization.programs.each do |p|%>
 	<% if p.location == f%>
 	<tr style="background-color:#D9DEDA;border-bottom:1px solid #575758;">
-		<td style="width:500px"><a href="/programs/<%=p.id%>" style="color:#e67b5a; font-size:1.5em"><%=p.name%></a><br /><%= p.truncated_description100.html_safe%></td>
+		<td style="width:500px"><a href="/programs/<%=p.id%>" style="font-size:1.5em" class="red-link"><%=p.name%></a><br /><%= p.truncated_description100.html_safe%></td>
 		<td style="width:130px"><%= render :partial => "star", :locals => {:star => p.overall}%></td>
 	</tr>
 	</div>
@@ -104,6 +104,11 @@
 	a.programs-window:visited{color:#575758}
 	a.programs-window:active{color:#575758}
 	a.programs-window:hover{color:#68c2d8}
+	
+	a.red-link:link{color:#e67b5a}
+	a.red-link:active{color:#e67b5a}
+	a.red-link:visited{color:#e67b5a}
+	a.red-link:hover{color:white}
 </style>
 
 <script type="text/javascript">
