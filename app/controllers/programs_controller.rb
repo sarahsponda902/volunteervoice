@@ -106,10 +106,6 @@ class ProgramsController < ApplicationController
     @costs = @program.program_cost_length_maps.map(&:cost)
     @lengths = @program.program_cost_length_maps.map{|p| "#{p.length_number} #{p.length_name}"}
     
-    @session = GoogleDrive.login("sarah@volunteervoice.org", "duq7395005693")
-    @ss = @session.spreadsheet_by_title("#{@program.name}")
-    @ws = @ss.worksheets[0]
-    
   end
 
   # POST /programs
