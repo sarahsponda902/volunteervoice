@@ -265,12 +265,20 @@ end
   # DELETE /programs/1.json
   def destroy
     @program = Program.find(params[:id])
+    if (user_signed_in? && current_user.admin?) || (!current_organization_account.nil?)
     @program.destroy
 
     respond_to do |format|
-      format.html { redirect_to programs_url }
+      if user_signed_in? && current_user.admin?
+        format.html { redirect_to "/organizations" }
+      else
+        format.html { redirect_to "/organization_accounts/profile" }
+      end
       format.json { head :no_content }
     end
+  else
+    redirect_to root_path
+  end
   end
   
 end
