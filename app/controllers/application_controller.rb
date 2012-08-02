@@ -4,9 +4,6 @@ class ApplicationController < ActionController::Base
 include SimpleCaptcha::ControllerHelpers
 
    def after_sign_in_path_for(resource)
-     if resource.class.name != "User"
-       root_path
-     else
      if !(resource.return_link.nil?)
        @link = resource.return_link
        resource.return_link = nil
@@ -23,13 +20,9 @@ include SimpleCaptcha::ControllerHelpers
          '/'
        end
     end
-  end
    end
    
    def after_sign_out_path_for(resource)
-     if resource.class.name != "User"
-       root_path
-     else
      if URI(request.referrer).path == '/registrations/mustBe'
        '/'
      else
@@ -38,7 +31,6 @@ include SimpleCaptcha::ControllerHelpers
        else
          request.referrer
        end
-     end
     end
    end
    
