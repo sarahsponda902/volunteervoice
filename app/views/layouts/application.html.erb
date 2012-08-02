@@ -48,14 +48,16 @@
 			<a href="/" style="cursor:pointer"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" style="height:95px"></a>
 			</div>
 			
-			
-			<div class="four columns" style="float:right">
+	<% if !(user_signed_in?) && !(organization_account_signed_in?) %>			
+			<div class="two columns" style="float:right">
 			<div class="row login" style="width:auto">
-
-				<% if !(user_signed_in?) && !(organization_account_signed_in?) %>
 				<a href="#login-box" class="login-window">LOGIN</a>
 				or <a href= "/sign_up" class="register">JOIN</a>
-				<% else %>
+			</div>
+			</div>
+	<% else %>
+			<div class="four columns" style="float:right">
+			<div class="row login" style="width:auto">
 					<% if user_signed_in?%>
 						<a href="/pages/profile"> <%=current_user.username%> 
 							<% if current_user.unread_messages > 0 %>
@@ -66,10 +68,10 @@
 						<a href="/organization_accounts/profile"> <%= Organization.find(current_organization_account.organization_id).name%></a>&nbsp;&nbsp;
 						<a href="/signout" class="logout">LOGOUT</a>
 					<% end %>
-				<% end %>
 				
 			</div>
 			</div>
+	<% end %>
 			
 			
 			
