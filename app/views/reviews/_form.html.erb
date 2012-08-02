@@ -724,7 +724,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 
 
 		<div id="submitButtonHidden" style="text-align:center; margin-top:30px; color:#e67b5a"> <i>You cannot submit your review until<br /> all form fields are filled out <br />(except uploading photos, that's optional)</i></div>
-		<div style="text-align:center; margin-top:30px; display:none" id="submitButtonDiv"><%= image_submit_tag "/assets/submitGreen.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+		<div style="text-align:center; margin-top:30px; display:none" id="submitButtonDiv"><%= image_submit_tag "/assets/submitGreen.png"%></div>
 
 		<div style="margin-left:60%; margin-top:-60px">
 		<article class="formFAQ"><!-- FAQ information/link-->
@@ -842,7 +842,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 <p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this box work?</p>
 <div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
 <li>This box automatically updates with available options, one you have selected which organization you are going to be reviewing. </li>
-<li>Click the arrow on the right side of this box to activate the list of programs. Select the program name that best described what you did and where. This list is composed of all of the CURRENT programs that an organization offers. If your program is not there, and you volunteered with them a while ago, then unfortunately you won't be able to write a review. This feature is designed to keep all reviews about organizations up to date and relevant.</li>
+<li>Cilick the arrow on the right side of this box to activate the list of programs. Select the program name that best described what you did and where. This list is composed of all of the CURRENT programs that an organization offers. If your program is not there, and you volunteered with them a while ago, then unfortunately you won't be able to write a review. This feature is designed to keep all reviews about organizations up to date and relevant.</li>
 </div>
 
 <p style="margin-left:20px; font-size:1em;"><u>Q:</u> I don't see the program that I did. What do I do?</p>
