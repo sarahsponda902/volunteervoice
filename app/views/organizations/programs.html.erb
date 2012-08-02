@@ -24,7 +24,7 @@
 		<% end %>
 <div class="twelve columns" style="margin-left:50px;margin-right:50px;">
 <% @countries.keys.each do |f|%>
-<div class="two columns" style="width: 150px; float:left">
+<div class="three columns">
 	<p><a href="#programs-box<%=f%>" class="programs-window" style="font-family:museoSlab500Regular"><%= THECOUNTRIES[f]%></a></p>
 <a href="#programs-box<%=f%>" class="programs-window"><%= render :partial => "flag", :locals => {:country => f}, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
 </div>
