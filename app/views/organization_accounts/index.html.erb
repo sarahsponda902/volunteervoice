@@ -11,7 +11,7 @@
 $(function() {
 	var availableTags = [
 		<% Organization.all.each do |f| %>
-		<% if f.organization_accounts.empty? %>
+		<% if OrganizationAccount.where(:organization_id => f.id).empty? %>
 		"<%=f.name%>",
 		<% end %>
 		<% end %>
