@@ -29,12 +29,7 @@
 		return false;
 	}
 	</script>
-	<% reviews_count = 0%>
-	<% @results.each do |f|%>
-	<% if f.flag_show != false%>
-	<% reviews_count = reviews_count + 1%>
-	<% end %>
-	<% end %>
+	<% reviews_count = @results.count %>
 		<script type="text/javascript">
 
 
@@ -278,11 +273,9 @@
 		<div class="eleven columns" class="contents">
 		<div id="results">
 			<% @results.each do |f| %>
-			<% if f.flag_show != false%>
 			<div>
 				<%= render :partial => "results", :locals => {:f => f, :program => @program}%>
 			</div>
-			<% end %>
 			<% end %>
 		</div>
 		
