@@ -149,7 +149,7 @@
 		<li class="navs"><a href="/">home</a></li>
 		<li class="navs" style="height:50px"><a id="shower">find a program</a>
 			<div style="margin:auto;">
-				<% if user_logged_in? || organization_account_logged_in? %>
+				<% if user_signed_in? || organization_account_signed_in? %>
 			<ul style="position:absolute; top:165px">
 				<li class="navs"><a href="/pages/program_browse">browse things to do</a></li>
 				<li class="navs"><a href="/programs">browse places to go</a></li>
