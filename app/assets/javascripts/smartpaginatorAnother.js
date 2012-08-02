@@ -140,7 +140,7 @@
                         btnPrev.css('display', '');
                         btnNext.css('display', '');
 						btnNext.css('float', 'right');
-						btnNext.css('marginTop', '-25px');
+						btnNext.css('marginTop', '-23px');
                         btnLast.css('display', 'none');
 
                 }
