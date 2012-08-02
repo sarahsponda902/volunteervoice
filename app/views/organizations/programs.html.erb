@@ -9,7 +9,7 @@
 					<li><a href="/organizations/<%= @organization.id%>/programs"><img src="/assets/tabProgramsYes.png" style="width:125px; margin-top:-75px; margin-left:140px"></a></li>
 	            </ul>
 	        </div>
-	<img src="FlagProgramBlurb.png" />
+	<img src="/assets/FlagProgramBlurb.png" />
 	<div class="row" style="margin-top:100px; border:1px solid #575758; background-color:#E9ECE9;padding-bottom:50px">
 
 		<% @countries = Hash.new %>
@@ -24,9 +24,9 @@
 		<% end %>
 <div class="twelve columns" style="margin-left:50px;margin-right:50px;">
 <% @countries.keys.each do |f|%>
-<div class="three columns">
+<div class="two columns" style="width:200px">
 	<p><a href="#programs-box<%=f%>" class="programs-window" style="font-family:museoSlab500Regular"><%= THECOUNTRIES[f]%></a></p>
-<a href="#programs-box<%=f%>" class="programs-window"><%= render :partial => "flag", :locals => {:country => f}, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
+<a href="#programs-box<%=f%>" class="programs-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/#{THECOUNTRIES2[f]}.png", :style => "height:50px; width:100px; margin-bottom:50px"%></a>
 </div>
 
 
