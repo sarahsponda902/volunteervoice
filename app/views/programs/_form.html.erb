@@ -318,7 +318,9 @@ $(function() {
 	
 	<div id="field">
 		<label for="program_partnered_local_organizations">Partnered Local Organizations</label>
-	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations %></div><br />
+	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations %>
+		<p style="font-size:0.85em; color:darkblue; "> &gt; If you run your own program with no partners, put 'None'.</p>
+		</div><br />
 
 <div id="field">
 	<label>Group Sizes: <p style="font-size:0.85em; color:darkblue; "> &gt; What size groups do volunteers work in? You can select more than one.</p></label>
