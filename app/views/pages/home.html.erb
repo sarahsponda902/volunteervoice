@@ -5,10 +5,7 @@
 <head>
 <link rel="stylesheet" href="style.css">
 <meta charset="utf-8">
-<!--[if lt IE 9]>
-<script src="/assets/html5shiv.js"></script>
-<![endif]-->
-<!-- Javascript/Jquery files for star plugin -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 <script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
 <script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.rating.js' type="text/javascript" language="javascript"></script>
@@ -22,7 +19,7 @@
 <div class="twelve columns">
 <section class="homeBlurb">
 
-<article class="homeOrgs" style="background: url(/assets/Banner2.png) no-repeat">
+<article class="homeOrgs" style="background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/Banner2.png) no-repeat">
 <div class="six columns">
 <h1><%=Organization.count%>&nbsp;&nbsp; Organizations&nbsp;&nbsp; So &nbsp;&nbsp;Far</h1>
 </div>
@@ -46,7 +43,7 @@
 <article class="homeAbout">
 
 <div class="mainArticleHeader" style="text-align:left;">
-	<image src="/assets/whatAbout.png" style="width:300px;height:110px; margin-top:3px;">
+	<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/whatAbout.png" style="width:300px;height:110px; margin-top:3px;">
 </div>
 <p>VolunteerVoice Intl. is a nonprofit start-up headquartered in Oakland, California.  We think that people who are willing to donate their time and resources for a good cause are amazing.  We also think that volunteer organizations are a great way to connect those amazing people with amazing projects. </p><br />
 
@@ -63,7 +60,7 @@
 <!-- user blurb 1-->
 
 <div class="mainArticleHeader">
-	<image src="/assets/reviewsInsight.png" style="height:110px;width:300px; margin-top:3px">
+	<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewsInsight.png" style="height:110px;width:300px; margin-top:3px">
 </div>
 <% @star_count = 35%>
 <% if !(@show_reviews.nil?)%>
@@ -89,7 +86,7 @@
 <div class="four columns">
 <article class="homeOrgsCheckout">
 
-<div class="mainArticleHeader"><image src="/assets/organizationsCheckOut.png" style="width:300px;height:110px; margin-top:3px"></div>
+<div class="mainArticleHeader"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/organizationsCheckOut.png" style="width:300px;height:110px; margin-top:3px"></div>
 
 
 <% if !(@show_organizations.nil?)%>
@@ -245,7 +242,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
   </div>
 
   <div class="actions">
-    <p style="text-align:center"><%= image_submit_tag "/assets/sayIt.png"%></p>
+    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png"%></p>
   </div>
 <% end %>
 	

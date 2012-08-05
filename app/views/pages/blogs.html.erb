@@ -37,7 +37,7 @@ $(document).ready(function() {
 			<div class="row" style="float:center">
 <div class="four columns" style="float:left; width:30%;" id="practical_table">
 	<div align="center">
-<image style="height:30px; margin-top:25px; margin-bottom:5px;" src="/assets/practical.png"><br /></div>
+<image style="height:30px; margin-top:25px; margin-bottom:5px;" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/practical.png"><br /></div>
 <div align="center" style="border-top: 1px solid #e67b5a; padding-top:10px;"><p style="font-family: BebasRegular;font-size:2.0em; line-height:1.1em; color:#575758; width:85%"><font color="#e67b5a">RESEARCH </font> WHERE YOU'RE GOING</p></div>
 <a style="margin-left:5%; font-size:1.2em; color:" href= "#">Title of source</a>
 <p style="margin-left:5%; margin-right:5%">First few lines of the article First few lines of the article First few lines of the article</p><br />
@@ -75,7 +75,7 @@ $(document).ready(function() {
 
 <div class="four columns" id="interesting_table" style="float:left; width:30%;" class="contents">
 	<div align="center">
-<image style="height:30px; margin-top:25px; margin-bottom:5px;" src="/assets/interesting.png"><br /></div>
+<image style="height:30px; margin-top:25px; margin-bottom:5px;" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/interesting.png"><br /></div>
 	<div id="divarticles"style="height:100%;background-color:#E3E6D5; border-top: 1px solid #e67b5a; padding-top:10px;">
 	<% @interesting.each do |f| %>
 	<%= render :partial => "interesting", :locals => {:f => f}%>
@@ -90,7 +90,7 @@ $(document).ready(function() {
 <% @our_blog = @our_blog.sort_by(&:created_at).reverse%>
 <div class="four columns" id="our_blog_table"style="float:left; width:30%;" class="contents">
 	<div align="center">
-<a href="/blog_posts"><image style="height:28px; margin-top:25px; margin-bottom:5px" src="/assets/ourBlog.png" href="/blog_posts"></a><br /></div>
+<a href="/blog_posts"><image style="height:28px; margin-top:25px; margin-bottom:5px" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/ourBlog.png" href="/blog_posts"></a><br /></div>
 	<div id="divvvs" style="height:100%;background-color:#E3E6D5; border-top: 1px solid #e67b5a; padding-top:10px;">
 	<% @our_blog.each do |f| %>
 	<%= render :partial => "our_blog", :locals => {:f => f}%>

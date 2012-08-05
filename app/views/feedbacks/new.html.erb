@@ -1,3 +1,4 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
 <%= pluralize value.length, "errors"%> prevented your review from being created:<br />
@@ -26,7 +27,7 @@
   </div>
 
   <div class="actions">
-    <p style="text-align:center"><%= image_submit_tag "/assets/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
   </div>
 <% end %>
 </div>

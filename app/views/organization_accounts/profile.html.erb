@@ -124,20 +124,20 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 		</div>
 		<div class="eleven columns" style="margin-top:20px;">
 			<div class="four columns" style="margin-top:-3px">
-				<%= link_to (image_tag "/assets/newProgram.png"), "/programs/new", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+				<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/newProgram.png"), "/programs/new", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 			</div>
 			<div class="five columns">
 				<input type="text" id="tags" value="Type to Search..." style="width:300px;height:20px; font-size:1.1em; font-style:italic;" onfocus="this.value = ''; this.style.fontStyle = 'normal'; $('#buttons').hide();">
 			</div>
 			<div id="buttons" style="display:none;">
 				<div style="float:left; margin-top:-3px">
-					<a href="#" id="view"><%= image_tag "/assets/viewProgram.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
+					<a href="#" id="view"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/viewProgram.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
 				</div>
 				<div style="float:left; margin-top:-3px; margin-left:15px">
-					<a href="#" id="edit"><%= image_tag "/assets/editProgram.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
+					<a href="#" id="edit"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editProgram.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
 				</div>
 				<div style="float:left; margin-left:15px; margin-top:-3px">
-					<a href="#delete-box" id="delete" class="delete-window"><%= image_tag "/assets/deleteProgram.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
+					<a href="#delete-box" id="delete" class="delete-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteProgram.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>
 				</div>
 			</div>
 		</div>
@@ -174,12 +174,12 @@ Primary: <%= @organization_account.first_name%>&nbsp;<%= @organization_account.l
 <table id="delete-box" class="delete-popup">
 	<tr><td colspan="2"><p style="font-size:2em; color:#575758; text-align:center">Are you sure?</p></td></tr>
 	<tr style="background-color:#E9ECE9">
-		<td><a class="close-delete-pop" style="cursor:pointer"> <%=image_tag "/assets/noKeepIt.png" %></a></td>
+		<td><a class="close-delete-pop" style="cursor:pointer"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noKeepIt.png" %></a></td>
 		<td>
 		<form action="#" id="delete_button" class="edit_program" method="post">
 			<input name="_method" type="hidden" value="delete">
 			<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-		<%= image_submit_tag "/assets/RealDeleteReviewButton.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+		<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/RealDeleteReviewButton.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 
 		</form>
 </td></tr>

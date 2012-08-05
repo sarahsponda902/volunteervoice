@@ -3,18 +3,18 @@
 	<div class="row">
 		<div class="twelve columns" style="text-align:center">
 
-		<%= image_tag "/assets/AreYouSure.png"%>
+		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/AreYouSure.png"%>
 		
 		<p style="margin-top:30px;font-family:museoSlab500Regular; color:#9bce6c; font-size:2em;">Goodbye forever? Really?</p><br /><br />
 		
 		
 <div style="margin-top:75px">
 	<div class="six columns" style="width:46%; text-align:right; margin-right:20px">		
-<%= link_to (image_tag "/assets/DontTerminateButton.png"), "/pages/profile", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/DontTerminateButton.png"), "/pages/profile", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	</div>
 	<div class="six columns" style="width:46%; text-align:left; margin-left:20px">	
 <%= button_to " ", user_registration_path, :method => :delete, :id => "buttonToDeleteUser", :style => "margin-top:5px"%>
-<%= image_tag "/assets/ConfirmTerminationButton.png", :style => "cursor:pointer; margin-top:-20px", :onclick => "$(buttonToDeleteUser).click()", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ConfirmTerminationButton.png", :style => "cursor:pointer; margin-top:-20px", :onclick => "$(buttonToDeleteUser).click()", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	</div>
 </div>
 </div>

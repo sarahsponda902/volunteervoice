@@ -238,8 +238,8 @@
 </div>
 	<div class="six columns" style="margin-left:4%; width:48%; margin-top:3px; padding-bottom:7px">
 		<br />
-		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "/assets/LearnMore.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%> </a>
-		<p style="margin-left:125px; margin-top:-60px"><%= link_to (image_tag "/assets/ReviewThisProg.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/LearnMore.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%> </a>
+		<p style="margin-left:125px; margin-top:-60px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ReviewThisProg.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
 		<br />
 	</div>
 	<div class="four columns" align="right" style="float:right; margin-right:5px; margin-top:10px; margin-bottom:-30px">
@@ -249,7 +249,7 @@
 		<% @favorite = Favorite.find(:first, :conditions => {:user_id => current_user.id, :program_id => @program.id}) %>
 
 		<% if !(@favorite.nil?) %>
-		<%= link_to (image_tag "/assets/removeFromFavorites.png"), :controller => "favorites", :action => "destroy", :id =>@favorite.id, :the_place => @program.id %>
+		<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/removeFromFavorites.png"), :controller => "favorites", :action => "destroy", :id =>@favorite.id, :the_place => @program.id %>
 		<% else %>
 		<p><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/addFavs.png"), :controller => "favorites", :action => "create", :program_id => @program.id %></p>
 		<% end %>
