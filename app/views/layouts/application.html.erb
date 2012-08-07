@@ -280,7 +280,7 @@
 			<p style="font-size:2em; font-family:museoSlab500Regular; line-height:1.5em; margin:10px" align="center">Account Request</p>
 			<p style="font-family:museoSlab500Regular; line-height:1.1em; color:#68c2d8">Please complete all fields</p>
 			<%= form_for @contact do |f| %>
-			<div class="six columns" style="width:300px">
+			<div class="five columns">
 
 			  <div><%= f.label "Organization Name" %>
 			  <%= f.text_field :organization_name, :style => "height:20px; width:198px" %></div><br />
@@ -306,7 +306,7 @@
 			<div style="margin-top:25px; margin-left:215px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 
 			</div>
-			<div class="six columns" style=" margin-top:-312px; width:250px; padding-left:30px; float:left">
+			<div class="six columns" style=" position:absolute; top:-312px; padding-left:30px;">
 
 			  <div><%= f.label "Main Contact (First and Last Name)" %>
 			  <%= f.text_field :main_contact, :style =>"height:20px; width:198px"%></div><br />
