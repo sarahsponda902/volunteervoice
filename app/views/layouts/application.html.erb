@@ -306,7 +306,7 @@
 			<div style="margin-top:25px; margin-left:215px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 
 			</div>
-			<div class="six columns" style=" position:absolute; top:-312px; left:300px; padding-left:30px;">
+			<div class="six columns" style="position:absolute; top:-312px; left:300px; padding-left:30px;">
 
 			  <div><%= f.label "Main Contact (First and Last Name)" %>
 			  <%= f.text_field :main_contact, :style =>"height:20px; width:198px"%></div><br />
@@ -393,7 +393,7 @@
 		color:#575758;
 		font-size: 1.1em;
 		z-index:9999;
-		position: fixed;
+		position: absolute;
 		top: 50%; left: 50%;
 		box-shadow: 0px 0px 20px #999; /* CSS3 */
 	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
