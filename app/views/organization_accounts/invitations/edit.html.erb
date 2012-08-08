@@ -134,8 +134,8 @@ function submitForm() {
 		
  			<div  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Type of Organization&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#question-box" class="question-window" style="color:#6aaeba; font-size:0.8em">Which one am I?</a></label>
 	<div>
-	  <%= f.radio_button :type_of_company, "Community Based Organization", :style => "height:20px;width:20px;" %> Community Based Organization<br />
-	  <%= f.radio_button :type_of_company, "Volunteer Placement Organization", :style => "height:20px;width:20px;" %> Volunteer Placement Organization</div></div>
+	  <%= f.radio_button :type_of_company, "Community Based Organization", :style => "height:20px;width:20px;" %> <p style="margin-top:-30px; margin-left:20px">Community Based Organization</p><br />
+	  <%= f.radio_button :type_of_company, "Volunteer Placement Organization", :style => "height:20px;width:20px;" %> <p style="margin-top:-30px; margin-left:20px">Volunteer Placement Organization</p></div></div>
 				<image style="position:absolute; left:14.6%; top:94.5%; z-index:9; height:25px;" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:95.5%; left:15%; width:100%">
 		<%= f.check_box :notify, :checked => "checked", :onclick => "$(volunteeredCheckNoToggle())", :style => "opacity:0; height:15px; width:15px" %>
