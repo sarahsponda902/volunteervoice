@@ -10,14 +10,7 @@ class OrganizationAccount < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :email_confirmation, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, :username, :notify, :country, :organization_id, :organization_name, :admin_pass, :login
   before_update :validate_presence_of_all_fields
-  before_create :validate_email
-  
-  def validate_email
-    if !(email == email_confirmation)
-      errors.add(:email, "must match")
-      return false
-    end
-  end
+
   
   def self.find_first_by_auth_conditions(warden_conditions)
         conditions = warden_conditions.dup
