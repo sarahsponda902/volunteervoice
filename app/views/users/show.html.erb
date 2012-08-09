@@ -79,7 +79,7 @@
 	</div>
 		<div class="four columns" id="ageCountryBox" style="margin-top:-5px;float:left; margin-left:15px; padding:5px; padding-right:10px; padding-left:10px; border:1px solid #e67b5a;">
 			<p style="font-size:1.2em; line-height:1.6em; padding-bottom:5px">
-<% if (@user.profile_show)%>
+<% if !(@user.profile_show)%>
 	<%if @user.dob != nil%>
 	<% @now = Time.now.utc.to_date%>
 	Age: <%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
@@ -457,7 +457,7 @@ function beforeCheck() {
 	<% end %>
 
 <% else %>
-	<%@user.username%>'s messaging system is disabled
+	<%=@user.username%>'s messaging system is disabled
 <% end %>
 
 
