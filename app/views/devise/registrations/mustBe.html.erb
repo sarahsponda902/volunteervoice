@@ -30,7 +30,7 @@ $(document).ready(function() {
 		});
 
 		// Add the mask to body
-		$('body').append('<div id="mask"  style="opacity:.5"></div>');
+		$('body').append('<div id="mask"  style="display:block; opacity:.5; filter: alpha(opacity=50); "></div>');
 		$('#mask').fadeIn(300);
 
 		return false;
@@ -101,7 +101,7 @@ function submitForm() {
 
 				<image style="position:absolute; top:192px; height:25px; left:14.3%;" id="rememberMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 				<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:15%; margin-top:20px; padding-bottom:5px;" >
-				<%= f.check_box :remember_me, :onchange =>"$(rememberMeNoToggle())", :style =>"opacity:0;height:20px; width:20px"%></div><div style="margin-left:100px; margin-top:-30px; font-size:1.1em"> Remember me</div><br />
+				<%= f.check_box :remember_me, :onchange =>"$(rememberMeNoToggle())", :style =>"display:block; opacity:0; filter: alpha(opacity=0);height:20px; width:20px"%></div><div style="margin-left:100px; margin-top:-30px; font-size:1.1em"> Remember me</div><br />
 		<p style="margin-left:15%"><%= link_to "Forgot your password?", new_password_path('user') %></p>
 		  <div style="margin-top:30px; text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 		<br />
@@ -321,12 +321,12 @@ function submitForm() {
 		<br />
 				<image style="position:absolute; left:14.7%; top:68.6%; z-index:9; height:25px" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:69.5%; left:15%; width:100%">
-		<%= f.check_box :volunteered_before, :onclick => "$(volunteeredCheckNoToggle())", :style => "opacity:0; height:15px;width:15px" %>
+		<%= f.check_box :volunteered_before, :onclick => "$(volunteeredCheckNoToggle())", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:15px;width:15px" %>
 		<label style="margin-left:6.5%; margin-top:-25px">Click here if you've volunteered abroad before.<br /> We're just curious.</label></div>
 		
 				<image style="position:absolute; height:25px; left:14.7%; top:73.6%; z-index:9" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:74.5%; left:15%;">
-		<%= f.check_box :notify, :onclick => "$(beforeCheckNoToggle())", :style => "opacity:0;height:20px;height:20px"%>
+		<%= f.check_box :notify, :onclick => "$(beforeCheckNoToggle())", :style => "display:block; opacity:0; filter: alpha(opacity=0);height:20px;height:20px"%>
 		<label style="margin-left:8%; margin-top:-30px; margin-right:8%" for="user_Yes ofcourse! Notify me of VolunteerVoice's awesome updates and changes">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
 
 		<br />
