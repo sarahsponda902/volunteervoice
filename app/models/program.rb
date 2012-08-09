@@ -1,7 +1,6 @@
 class Program < ActiveRecord::Base
   require 'rubygems'
   require 'file_size_validator'
-  require 'google_drive'
   include CarrierWave::MiniMagick
   
   
