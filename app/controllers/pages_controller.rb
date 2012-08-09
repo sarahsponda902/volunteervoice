@@ -31,19 +31,6 @@ class PagesController < ApplicationController
   
   def thank_you_request
   end
-  	
-  	def profile
-  	  if (user_signed_in?)
-  	    @user = User.find(current_user.id)
-  	    @reviews = @user.reviews.order("created_at DESC")
-  	    @favorites = @user.favorites
-  	    @messages = Message.where(:recipient_id => current_user.id, :recipient_deleted => false).sort_by(&:created_at).reverse
-  	    @sent_messages = Message.where(:sender_id => current_user.id, :sender_deleted => nil).sort_by(&:created_at).reverse
-  	  
-      else
-        redirect_to :controller => "registrations", :action => "mustBe"
-      end
-    end
     
     def blogs
       @interesting = BlogPost.where(:is_our_blog => false).sort_by{|e| e[:published_at]}.reverse

@@ -1,5 +1,6 @@
 RMTest::Application.routes.draw do
   
+  match 'users/profile' => "users#profile"
     
   match 'users/:id/crop' => 'users#crop'
   

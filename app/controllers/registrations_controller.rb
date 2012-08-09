@@ -5,7 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
   include SimpleCaptcha::ControllerHelpers
   include ActionView::Helpers::TextHelper
   def after_sign_up_path_for(resource)
-         "/pages/profile"
+         "/users/profile"
   end
   
   def after_inactive_sign_up_path_for(resource)
@@ -53,7 +53,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       flash[:notice] = flash[:notice].to_a.concat resource.errors.full_messages
-      redirect_to "/pages/profile"
+      redirect_to "/users/profile"
     end
   end
   
@@ -82,7 +82,7 @@ class RegistrationsController < Devise::RegistrationsController
   
    
    def after_update_path_for(resource)
-     "/pages/profile"
+     "/users/profile"
    end
 
 
