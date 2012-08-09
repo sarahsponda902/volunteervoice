@@ -28,12 +28,11 @@ include ActionView::Helpers::TextHelper
              format.html { redirect_to "/pages/thank_you_review" }
              format.json { render json: @review, status: :created, location: @review }
          else
-           @review.body = @review.body.gsub(%r{</?[^>]+?>}, '')
+           @review.body = @review.body.gsub(%r{</?[^>]+?>}, '') unless @review.body.nil?
            flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
-           respond_to do |format|
-             format.html { render :action => "new" }
-             format.json { render :json => @review.errors, :status => :unprocessable_entity }
-           end
+
+             format.html { render action: "new", notice: 'Error! Please make sure to include both your email and a message.' }
+             format.json { render json: @review.errors, status: :unprocessable_entity }
          end
        end
        else
