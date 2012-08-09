@@ -100,7 +100,7 @@ include ActionView::Helpers::TextHelper
          respond_to do |format|
            if @review.update_attributes(params[:review])
              @review.save
-             format.html { redirect_to "/pages/profile", :notice => 'Review Submitted' }
+             format.html { redirect_to "/users/profile", :notice => 'Review Submitted' }
              format.json { head :no_content }
            else
              params[:review][:body] = @review.body
@@ -143,7 +143,7 @@ include ActionView::Helpers::TextHelper
            if current_user.admin?
              format.html { redirect_to reviews_path }
            else
-             format.html { redirect_to "/pages/profile" }
+             format.html { redirect_to "/users/profile" }
            end
            format.json { head :no_content }
          end

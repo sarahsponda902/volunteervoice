@@ -38,7 +38,7 @@ class UsersController < ApplicationController
     
     @user = User.find(params[:id])
     if user_signed_in? && (@user.id == current_user.id)
-    redirect_to "/pages/profile"
+    redirect_to "/users/profile"
     else
     @message = Message.new
     @flag = Flag.new
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
              redirect_to "/users/#{@user.id}/crop"
           else
              flash[:notice] = 'Your profile was successfully updated.'
-             redirect_to("/pages/profile")
+             redirect_to("/users/profile")
           end
         else
           flash[:notice] = flash[:notice].to_a.concat @user.errors.full_messages

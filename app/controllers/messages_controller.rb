@@ -52,7 +52,7 @@ include ActionView::Helpers::TextHelper
     end
     
     respond_to do |format|
-      format.html { redirect_to "/pages/profile" }
+      format.html { redirect_to "/users/profile" }
       format.json { head :no_content }
     end
 
@@ -65,7 +65,7 @@ include ActionView::Helpers::TextHelper
       @message.save
       redirect_to "/pages/profile/sent_deleted"
     else
-      redirect_to "/pages/profile"
+      redirect_to "/users/profile"
     end
   end
   
