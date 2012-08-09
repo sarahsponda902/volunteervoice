@@ -31,6 +31,8 @@ RMTest::Application.routes.draw do
 
   ##### SEARCHES
   
+  match "searches/:subject/program_browse" => "searches#program_browse"
+  
   match "searches/error" => "searches#error"
   
   match "/searches/erase_old" => "searches#erase_old"

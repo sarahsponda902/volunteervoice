@@ -158,6 +158,63 @@ class SearchesController < ApplicationController
       format.json { render json: @search }
     end
   end
+  
+  
+  def programs_browse
+          @search = Search.new
+      
+              if params[:subject] == "Agriculture"
+                @search.subjects = ["Agriculture", "Organic Farming", "Sustainable Development"]
+              end
+              if params[:subject] == "Animal Care"
+                @search.subjects = ["Animal Care", "Animal Rights", "Wildlife Conservation"]
+              end
+              if params[:subject] == "Caregiving"
+                @search.subjects = ["Caregiving", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless"]
+              end
+              if params[:subject] == "Community Development"
+                @search.subjects = ["Community Development", "Youth Development and Outreach"]
+              end
+              if params[:subject] == "Culture and Community"
+                @search.subjects = ["Culture and Community", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism"]
+              end
+              if params[:subject] == "Disaster Relief"
+                @search.subjects = ["Disaster Relief", "Economics", "Microfinance"]
+              end
+              if params[:subject] == "Education"
+                @search.subjects = ["Teaching English", "Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy"]
+              end
+              if params[:subject] == "Environmental"
+                @search.subjects = ["Environmental", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration"]
+              end
+              if params[:subject] == "Health and Medicine"
+                @search.subjects = ["Health and Medicine", "HIV/AIDS", "Family Planning", "Nutrition", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Caregiving"]
+              end
+              if params[:subject] == "Human Rights"
+                @search.subjects = ["Human Rights", "Women's Initiatives"]
+              end
+              if params[:subject] == "Recreation"
+                @search.subjects = ["Recreation", "Adventure Travel"]
+              end
+              if params[:subject] == "Scientific Research"
+                @search.subjects = ["Scientific Research", "Archaeology", "Environmental Biology"]
+              end
+              if params[:subject] == "Technology"
+                @search.subjects = ["Technology", "Teaching Computer Literacy", "Media, Marketing, and Graphic Design"]
+              end
+              
+              
+              respond_to do |format|
+                if @search.save
+                  format.html { redirect_to @search, notice: 'Search was successfully created.' }
+                  format.json { render json: @search, status: :created, location: @search }
+                else
+                  format.html { render action: "new" }
+                  format.json { render json: @search.errors, status: :unprocessable_entity }
+                end
+              end
+  end
+  
 
   # POST /searches
   # POST /searches.json
