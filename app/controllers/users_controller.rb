@@ -72,7 +72,7 @@ class UsersController < ApplicationController
           flash[:notice] = flash[:notice].to_a.concat @user.errors.full_messages
           flash.now[:notice]
           respond_to do |format|
-            format.html { render :action => "profile" }
+            format.html { render :action => "edit" }
             format.json { render json: @user.errors, status: :unprocessable_entity }
           end
         end
@@ -83,7 +83,7 @@ class UsersController < ApplicationController
   	    @user = User.find(current_user.id)
   	    @reviews = @user.reviews.order("created_at DESC")
   	    @favorites = @user.favorites
-  	    @messages = Message.where(:recipient_id => current_user.id, :recipient_deleted => false).sort_by(&:created_at).reverse
+  	    @messages = Messsage.where(:recipient_id => current_user.id, :recipient_deleted => false).sort_by(&:created_at).reverse
   	    @sent_messages = Message.where(:sender_id => current_user.id, :sender_deleted => nil).sort_by(&:created_at).reverse
   	  
       else
