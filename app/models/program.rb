@@ -15,6 +15,7 @@ validates_presence_of :name, :description, :location, :organization_id, :program
 before_save :copy_organization_images_and_program_model
 before_save :square_image_crop
 before_save :validate_subjects_inclusions
+before_save :validate_photo_width
 
 # Paperclip
     mount_uploader :photo, ImageUploader
@@ -47,6 +48,17 @@ searchable do
   end
   
 end
+
+ def validate_photo_width
+    if !(photo.nil?) && !(photo.url.nil?)
+      @photo = MiniMagick::Image.open(photo.path)
+      if @photo['width'] > 700
+        errors.add(:photo, "must have a width of less than 700 pixels")
+        return false
+      end
+    end
+  end
+
 
 def roundup(overall)
     (overall*2).round / 2.0

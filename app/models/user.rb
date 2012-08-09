@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  require 'file_size_validator'
   include CarrierWave::MiniMagick
 
   apply_simple_captcha :message => "did not match the secret code", :distortion => "high"
@@ -17,7 +16,8 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :dob
   validates_length_of :username, :maximum => 30
   validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
-  before_save :square_image_crop  
+  before_save :square_image_crop 
+  before_save :validate_photo_width 
   before_create :validate_email
 
 
@@ -36,6 +36,16 @@ mount_uploader :square_image, ImageUploader
       
       #Simple Private Messaging     
       has_private_messages
+      
+      def validate_photo_width
+        if !(photo.nil?) && !(photo.url.nil?)
+          @photo = MiniMagick::Image.open(photo.path)
+          if @photo['width'] > 700
+            errors.add(:photo, "must have a width of less than 700 pixels")
+            return false
+          end
+        end
+      end
 
       def validate_email
         if !(email == email_confirmation)
