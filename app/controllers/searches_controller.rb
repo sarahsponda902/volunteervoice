@@ -202,7 +202,7 @@ class SearchesController < ApplicationController
               if params[:subject] == "Technology"
                 @search.subjects = ["Technology", "Teaching Computer Literacy", "Media, Marketing, and Graphic Design"]
               end
-              
+              @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
               
               respond_to do |format|
                 if @search.save
