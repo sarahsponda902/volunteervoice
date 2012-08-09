@@ -516,7 +516,7 @@ function setMessageSubject(subject) {
 				  <%= f.email_field :email, :style => "height:20px; width:198px" %></div><br />
 				<div>
 <%= f.label :country %>
-				  <div style="position:absolute;top:135px; height:30px; width:198px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				  <div style="position:absolute;top:127px; height:30px; width:198px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 					 <select style="position:absolute; border:1px solid #575758; left:-5px; width:225px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" id="user_country" name="user[country]">
 							<% THECOUNTRIES.keys.each do |f| %>
 							<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
@@ -533,7 +533,7 @@ function setMessageSubject(subject) {
 				
 				</div>
 				
-				<div style="margin-top:2px; margin-left:215px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+				<div style="margin-top:2px; margin-left:210px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 				
 				
 								<p style="margin-top:2px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
@@ -553,7 +553,7 @@ function setMessageSubject(subject) {
 				
 				<% end %>
 				
-										<div style="height:210px; width:1px; top:15px; background-color: #575758; position:absolute; left:-20px"></div>
+										<div style="height:190px; width:1px; top:15px; background-color: #575758; position:absolute; left:-20px"></div>
 
 			</div>
 			
@@ -799,7 +799,7 @@ function setMessageSubject(subject) {
 				border-radius:3px 3px 3px 3px;
 			        -moz-border-radius: 3px; /* Firefox */
 			        -webkit-border-radius: 3px; /* Safari, Chrome */
-				width:600px;
+				width:570px;
 			}
 
 			fieldset { 
