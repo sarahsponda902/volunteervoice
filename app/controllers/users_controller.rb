@@ -69,7 +69,8 @@ class UsersController < ApplicationController
              redirect_to("/pages/profile")
           end
         else
-          render :action => "edit"
+          flash[:notice].to_a.concat @user.errors.full_messages
+          redirect_to "/pages/profile"
         end
   end
 
