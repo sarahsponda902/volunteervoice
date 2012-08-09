@@ -508,8 +508,8 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 		<section class="writeDetails"><!-- The Details section of write a review page-->
 		<div align="center" style="font-family:ArchitectsDaughterRegular; font-size:2.5em; color:#62acbd; margin-bottom: 30px;"> The Details </div>
 	<section class="writeReviewContent">
-		<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%">How long did you work with them?</div>
-		<div class="three columns" style="position:absolute; left:40%;top:57px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+		<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:15px">How long did you work with them?</div>
+		<div class="three columns" style="position:absolute; left:40%;top:72px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
 			<select id="review_time_frame" name="review[time_frame]" style="position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="checkFields()"><option value=""> Select a Time Frame</option>
 			<option value="1 week or less">1 week or less</option>
@@ -528,12 +528,12 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 
 
 	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Which Program?</div>
-	<div class="three columns" style="position:absolute; left:40%; top:132px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+	<div class="three columns" style="position:absolute; left:40%; top:147px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 	<select id="review_program_id"  onchange="checkFields()" name="review[program_id]" style="position:absolute; left:-5px; border:1px solid #575758; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;" value="<%=@review.program_id%>"><option value="">Select a Program</option></select>
 		</div>
 
 
-	<div class="ten columns" style="font-size:1.5em; line-height:1.25em; width:80%; margin-left:11%; margin-top:60px">Your Experience <font style="font-size:0.6em;">(Minimum 200 characters)</font></div>
+	<div class="ten columns" style="font-size:1.5em; line-height:1.25em; width:80%; margin-left:11%; margin-top:50px">Your Experience <font style="font-size:0.6em;">(Minimum 200 characters)</font></div>
 
 	   <%= f.text_area :body, :style => "width:400px; font-style:italic; margin-left:11%; height:150px; resize:none; color:gray; border: 1px solid #575758", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @review.body; end), :class => "word_count"%>
 	<span style="float:right" class="counter"></span><br />
