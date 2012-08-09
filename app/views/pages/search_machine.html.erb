@@ -17,7 +17,7 @@ $(document).ready(function() {
     for (count = 0; count <= allTheLocations.length; count++)
     {
         $("#"+allTheLocations[count]).hide();
-        if (theLocations.indexOf(allTheLocations[count]) != -1)
+        if (jQuery.inArray(allTheLocations[count], theLocations) != -1)
          {
 			$("#"+allTheLocations[count]).show();
 		 }
@@ -59,7 +59,7 @@ $(document).ready(function() {
 });
 
 </script>
-729,133
+ 
 
 <div class="container">
     <div class="row" align="center" style="margin-top:30px; margin-bottom:50px">
