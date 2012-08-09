@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   include ActionView::Helpers::TextHelper
 	require 'aws/s3'
+	require 'app/models/message'
   
   helper :all
   helper_method :age
