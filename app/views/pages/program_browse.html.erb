@@ -9,7 +9,7 @@
 	<div style="position:absolute; right:9.5%; top:40px">
 		<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/programsArrow.png" width="65px"%>
 	</div>
-	<div style="position:absolute;top:145px; right:3%; width:130px; text-align:center; font-family:'ArchitectsDaughterRegular'; color:#e67b5a; line-height:2em">
+	<div style="position:absolute;top:145px; left:90%; width:130px; text-align:center; font-family:'ArchitectsDaughterRegular'; color:#e67b5a; line-height:2em">
 		Click on a subject of interest to see which organizations have programs in that field
 	</div>
 </div>
@@ -18,40 +18,40 @@
 <div class="container" style="margin-top:20px">
 
 
-<div class="row" style="background:#bdd99c;padding-top:20px;padding-bottom:30px;width:500px; padding-left:30px; padding-right:20px; line-height:1.4em">
+<div class="row" style="background:#bdd99c;padding-top:20px;padding-bottom:30px;width:400px; padding-left:30px; padding-right:20px; line-height:1.4em">
 
 	<div class = "six columns" style="width:43%">
-		<font size="5px">
+		<font size="4px">
 		<%= link_to "Agriculture (#{@agriculture.count})", "/searches/subject/Agriculture/create"%><br /></font>
 		&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@organic_farming.count})", "/searches/subject/OrganicFarming/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", "/searches/subject/SustainableDevelopment/create"%><br />
 	<br />	
-	<font size="5px"><%= link_to "Animal Care (#{@animal_care.count})", "/searches/subject/AnimalCare/create"%><br /></font>
+	<font size="4px"><%= link_to "Animal Care (#{@animal_care.count})", "/searches/subject/AnimalCare/create"%><br /></font>
 		&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@animal_rights.count})", "/searches/subject/AnimalRights/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", "/searches/subject/WildlifeConservation/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Caregiving (#{@caregiving.count})", "/searches/subject/Caregiving/create"%></font><br />
+		<font size="4px"><%= link_to "Caregiving (#{@caregiving.count})", "/searches/subject/Caregiving/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Elder Care (#{@elder_care.count})", "/searches/subject/ElderCare/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Child/Orphan Care (#{@child_orphan_care.count})", "/searches/subject/Child/OrphanCare/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Disabled Care (#{@disabled_care.count})", "/searches/subject/DisabledCare/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Feed the Homeless (#{@feed_the_homeless.count})", "/searches/subject/FeedtheHomeless/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Community Development (#{@community_development.count})", "/searches/subject/CommunityDevelopment/create"%></font><br />
+		<font size="4px"><%= link_to "Community Development (#{@community_development.count})", "/searches/subject/CommunityDevelopment/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Youth Development and Outreach (#{@youth_development_and_outreach.count})", "/searches/subject/YouthDevelopmentandOutreach/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Construction (#{@construction.count})", "/searches/subject/Construction/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Culture and Community (#{@culture_and_community.count})", "/searches/subject/CultureandCommunity/create"%></font><br />
+		<font size="4px"><%= link_to "Culture and Community (#{@culture_and_community.count})", "/searches/subject/CultureandCommunity/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Performing Arts (#{@performing_arts.count})", "/searches/subject/PerformingArts/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Fashion (#{@fashion.count})", "/searches/subject/Fashion/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Music (#{@music.count})", "/searches/subject/Music/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Sports & Recreation (#{@sports_and_recreation.count})", "/searches/subject/Sports&Recreation/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Journalism (#{@journalism.count})", "/searches/subject/Journalism/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Disaster Relief (#{@disaster_relief.count})", "/searches/subject/DisasterRelief/create"%></font><br />
+		<font size="4px"><%= link_to "Disaster Relief (#{@disaster_relief.count})", "/searches/subject/DisasterRelief/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Economics (#{@economics.count})", "/searches/subject/Economics/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Microfinance (#{@microfinance.count})", "/searches/subject/Microfinance/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Education (#{@education.count})", "/searches/subject/Education/create"%></font><br />
+		<font size="4px"><%= link_to "Education (#{@education.count})", "/searches/subject/Education/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching English (#{@teaching_english.count})", "/searches/subject/TeachingEnglish/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Buddhist Monks (#{@teaching_buddhist_monks.count})", "/searches/subject/TeachingBuddhistMonks/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Children (#{@teaching_children.count})", "/searches/subject/TeachingChildren/create"%><br />
@@ -60,15 +60,15 @@
 		
 		
 		<div class="four columns" style="width:52%">	
-		<font size="5px"><%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", "/searches/subject/EngineeringandInfrastructure/create"%></font><br />
+		<font size="4px"><%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", "/searches/subject/EngineeringandInfrastructure/create"%></font><br />
 		<br />	
-		<font size="5px"><%= link_to "Environmental (#{@environmental.count})", "/searches/subject/Environmental/create"%></font><br />
+		<font size="4px"><%= link_to "Environmental (#{@environmental.count})", "/searches/subject/Environmental/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Ecological Conservation (#{@ecological_conservation.count})", "/searches/subject/EcologicalConservation/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", "/searches/subject/SustainableDevelopment/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", "/searches/subject/WildlifeConservation/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Habitat Restoration (#{@habitat_restoration.count})", "/searches/subject/HabitatRestoration/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Health and Medicine (#{@health_and_medicine.count})", "/searches/subject/HealthandMedicine/create"%></font><br />
+		<font size="4px"><%= link_to "Health and Medicine (#{@health_and_medicine.count})", "/searches/subject/HealthandMedicine/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "HIV/AIDS (#{@hiv_aids.count})", "/searches/subject/HIV/AIDS/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Nutrition (#{@nutrition.count})", "/searches/subject/Nutrition/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Family Planning (#{@family_planning.count})", "/searches/subject/FamilyPlanning/create"%><br />
@@ -80,19 +80,19 @@
 		&nbsp;&nbsp;&nbsp;<%= link_to "Public Health (#{@public_health.count})", "/searches/subject/PublicHealth/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Hospital Care-giving (#{@hospital_care_giving.count})", "/searches/subject/HospitalCare-giving/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Human Rights (#{@human_rights.count})", "/searches/subject/HumanRights/create"%></font><br />
+		<font size="4px"><%= link_to "Human Rights (#{@human_rights.count})", "/searches/subject/HumanRights/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Womens Initiatives (#{@womens_initiatives.count})", "/searches/subject/WomensInitiatives/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "International Work Camp (#{@international_work_camp.count})", "/searches/subject/InternationalWorkCamp/create"%></font><br />
+		<font size="4px"><%= link_to "International Work Camp (#{@international_work_camp.count})", "/searches/subject/InternationalWorkCamp/create"%></font><br />
 		<br />	
-		<font size="5px"><%= link_to "Recreation (#{@recreation.count})", "/searches/subject/Recreation/create"%></font><br />
+		<font size="4px"><%= link_to "Recreation (#{@recreation.count})", "/searches/subject/Recreation/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Adventure Travel (#{@adventure_travel.count})", "/searches/subject/AdventureTravel/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Scientific Research (#{@scientific_research.count})", "/searches/subject/ScientificResearch/create"%></font><br />
+		<font size="4px"><%= link_to "Scientific Research (#{@scientific_research.count})", "/searches/subject/ScientificResearch/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Archaeology (#{@archaeology.count})", "/searches/subject/Archaeology/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Environmental Biology (#{@environmental_biology.count})", "/searches/subject/EnvironmentalBiology/create"%><br />
 		<br />	
-		<font size="5px"><%= link_to "Technology (#{@technology.count})", "/searches/subject/Technology/create"%></font><br />
+		<font size="4px"><%= link_to "Technology (#{@technology.count})", "/searches/subject/Technology/create"%></font><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", "/searches/subject/TeachingComputerLiteracy/create"%><br />
 		&nbsp;&nbsp;&nbsp;<%= link_to "Media Marketing and Graphic Design (#{@media_marketing_and_graphic_design.count})", "/searches/subject/MediaMarketingandGraphicDesign/create"%><br />
 				</div>
