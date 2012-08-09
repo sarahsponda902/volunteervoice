@@ -183,6 +183,7 @@ RMTest::Application.routes.draw do
   
   match "users/:user_id/make_admin" => "users#make_admin"
   
+  
   devise_scope :admin do
     match 'admins/new' => 'admins/registrations#new'
     match 'admin_login' => 'devise/sessions#new'
@@ -196,11 +197,19 @@ RMTest::Application.routes.draw do
   
   ##### PAGES
   
-  match "pages/profile/sent_deleted" => "pages#profile"
+  match "users/profile/sent_deleted" => "users#profile"
   
-  match "pages/profile/message_deleted" => "pages#profile"
+  match "users/profile/message_deleted" => "users#profile"
   
-  match "pages/profile/favorite_deleted" => "pages#profile"
+  match "users/profile/favorite_deleted" => "users#profile"
+  
+  
+  resources :users do 
+    post :send_message, :on => :collection
+    collection do
+      get 'checkname'
+    end
+  end
   
   get "pages/thank_you_request"
   
@@ -208,9 +217,7 @@ RMTest::Application.routes.draw do
   
   get "pages/test"
   
-  get "pages/home"
-  
-  get "pages/profile" 
+  get "pages/home" 
   
   get "pages/profile_messages"
   
@@ -308,16 +315,9 @@ RMTest::Application.routes.draw do
   resources :programs do
   	resources :reviews
   	post :create_review, :on => :collection
-  	end
+  end
 
   resources :reviews
-  
-  resources :users do 
-    post :send_message, :on => :collection
-    collection do
-      get 'checkname'
-    end
-  end
   
   resources :organizations
   
