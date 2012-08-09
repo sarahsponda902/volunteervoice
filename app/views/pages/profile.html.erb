@@ -510,7 +510,7 @@ function setMessageSubject(subject) {
 				<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
 				<div class="six columns" style="width:300px">
 					
-					<p style="margin:10px; margin-bottom:5px; font-size:1.3em; font-family:architectsDaughterRegular">My Info</p>
+					<p style="margin:10px; font-size:1.3em; font-family:architectsDaughterRegular">My Info</p>
 
 				  <div><%= f.label "Registered Email Address" %>
 				  <%= f.email_field :email, :style => "height:20px; width:198px" %></div><br />
@@ -538,9 +538,9 @@ function setMessageSubject(subject) {
 				
 								<p style="margin-top:-25px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
 				</div>
-				<div class="five columns" style="margin-left:300px; margin-top:-330px; padding-left:30px; width:250px">
+				<div class="five columns" style="margin-left:300px; margin-top:-320px; padding-left:30px; width:250px">
 					
-					<p style="margin:15px; font-family:architectsDaughterRegular; font-size:1.3em">My Password</p>
+					<p style="margin:10px; font-family:architectsDaughterRegular; font-size:1.3em">My Password</p>
 
 				  <div><%= f.label :password %>
 				  <%= f.password_field :password, :autocomplete => "off", :style =>"height:20px; width:198px"%></div><br />
