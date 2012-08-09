@@ -79,6 +79,11 @@ class RegistrationsController < Devise::RegistrationsController
     resource = build_resource({})
     respond_with resource
   end
+  
+   
+   def after_update_path_for(resource)
+     "/pages/profile"
+   end
 
 
   private

@@ -26,10 +26,7 @@ include SimpleCaptcha::ControllerHelpers
        end
     end
    end
-   
-   def after_update_path_for(resource)
-     "/pages/profile"
-   end
+
    
    unless Rails.application.config.consider_all_requests_local
        rescue_from Exception, with: :render_500
