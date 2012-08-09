@@ -552,7 +552,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 	
 		<image style="position:absolute; top:83.7%; left:10%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:11%" onclick="$(beforeCheck())">
-		<%= f.check_box :before, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:25px; width:25px", :id => "before"%>
+		<%= f.check_box :before, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:15px; width:15px", :id => "before"%>
 		<label style="margin-left:8%; margin-top:-29px" for="review_I have volunteered with this company before">I have volunteered with this company before</label><br /><br /><br /></div>
 		
 		<%end%>
@@ -566,7 +566,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 		
 		<image style="position:absolute; height:23px; top:89.2%; left:10%" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
 			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; height:25px; margin-left:11%; margin-top:-45px;" onclick="$(termsCheck());">
-		<%= f.check_box :terms, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:25px; width:25px", :id => "terms"%>
+		<%= f.check_box :terms, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:15px; width:15px", :id => "terms"%>
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have read the terms of use">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label></div><br /><br />
 		<%end%>
 		
