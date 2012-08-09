@@ -523,17 +523,17 @@ function setMessageSubject(subject) {
 							<% end %>
 					</select>
 				</div>
-				 <image style="position:absolute; height:25px; top:196px; left:2px;" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_profile_show').attr('checked', false)">
+				 <image style="position:absolute; height:25px; top:174px; left:-2px;" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_profile_show').attr('checked', false)">
 					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-top:55px; padding-bottom:5px;" >
 					<%= f.check_box :profile_show, :onchange => "$(beforeCheck())", :style => "display:block; opacity:0;filter: alpha(opacity=0);margin-left:0px; height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-26px; font-size:.85em"> Hide my age/country on my profile</div><br />
 					
-					<image style="position:absolute; height:25px; top:210px; left:2px;" id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_messages_show').attr('checked', false)">
+					<image style="position:absolute; height:25px; top:200px; left:-2px;" id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_messages_show').attr('checked', false)">
 					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat;margin-top:0px; padding-bottom:5px;" >
 					<%= f.check_box :messages_show, :onchange => "$(messagesCheck())", :style => "display:block; opacity:0;filter: alpha(opacity=0);margin-left:0px; height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-34px; font-size:.85em"> Do not allow others to send me<br />messages</div><br />
 				
 				</div>
 				
-				<div style="margin-top:2px; margin-left:210px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+				<div style="margin-top:2px; margin-left:210px; margin-bottom:10px"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 				
 				
 								<p style="margin-top:-25px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
