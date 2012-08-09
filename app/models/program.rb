@@ -50,7 +50,7 @@ end
 
  def validate_photo_width
     if !(photo.nil?) && !(photo.url.nil?)
-      @photo = MiniMagick::Image.open(photo.path)
+      @photo = MiniMagick::Image.open(photo.url)
       if @photo['width'] > 700
         errors.add(:photo, "must have a width of less than 700 pixels")
         return false
