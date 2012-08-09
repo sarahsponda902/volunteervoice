@@ -72,8 +72,8 @@ class UsersController < ApplicationController
           flash[:notice] = flash[:notice].to_a.concat @user.errors.full_messages
           flash.now[:notice]
           respond_to do |format|
+            format.html { render :action => "edit" }
             format.json { render json: @user.errors, status: :unprocessable_entity }
-            format.html { redirect_to "/pages/profile" }
           end
         end
   end

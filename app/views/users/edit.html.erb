@@ -1,0 +1,10 @@
+<div class="container">
+	<% flash.each do |key, value| %>
+	  <div class="flash <%=key%>">
+	<%= pluralize value.length, "errors"%> prevented your program from being created:<br />
+		<% value.each do |f|%>
+			* <%=f%><br />
+		<% end %>
+	  </div>
+	<% end %>
+</div>
