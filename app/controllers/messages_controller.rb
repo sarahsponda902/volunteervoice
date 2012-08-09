@@ -16,7 +16,7 @@ include ActionView::Helpers::TextHelper
   def index
     if !(current_user.nil?) && current_user.admin?
       @messages = Message.find(:all, :order => "created_at").reverse
-    else 
+    else
       redirect_to root_path
     end
   end

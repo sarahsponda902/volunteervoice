@@ -94,6 +94,9 @@ RMTest::Application.routes.draw do
   
   match "/profile_messages_sent" => 'pages#profile_messages_sent'
   
+  
+  resources :messages
+  
   ##### FAVORITES
   
   match "favorites/:program_id/create" => 'favorites#create'
@@ -301,8 +304,6 @@ RMTest::Application.routes.draw do
 	
   
   ########## RESOURCES
-
-  resources :messages
   
   resources :programs do
   	resources :reviews
