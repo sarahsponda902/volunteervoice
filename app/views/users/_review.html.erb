@@ -33,6 +33,10 @@
 	</td>
 </tr>
 </table>
+
+<% if user_signed_in? && @user.id == current_user.id %>
+	<p style="float:right; text-align:right; margin-right:30px; margin-top:5px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editDelete.png"), :controller => "reviews", :action => "edit", :id => f.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>  </p>
+<% end %>
 	
 </div>
 
