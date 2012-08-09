@@ -119,7 +119,7 @@
 				});
 
 				// Add the mask to body
-				$('body').append('<div id="mask"  style="opacity:.5"></div>');
+				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 				$('#mask').fadeIn(300);
 
 				return false;
@@ -153,7 +153,7 @@
 					});
 
 					// Add the mask to body
-					$('body').append('<div id="mask" style="opacity:.5"></div>');
+					$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 					$('#mask').fadeIn(300);
 
 					return false;
@@ -191,7 +191,7 @@
 					});
 
 					// Add the mask to body
-					$('body').append('<div id="mask" style="opacity:.5"></div>');
+					$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 					$('#mask').fadeIn(300);
 
 					return false;
@@ -226,7 +226,7 @@
 					});
 
 					// Add the mask to body
-					$('body').append('<div id="mask" style="opacity:.5"></div>');
+					$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 					$('#mask').fadeIn(300);
 
 					return false;
@@ -309,35 +309,9 @@ function setMessageSubject(subject) {
 		$("#subject_field").val("Re: "+subject);
 	}
 }
-
-function openReplyBox(message_id) {
-	$("#message-box"+message_id).fadeOut(300);
-	$('#mask').fadeOut(300);
-	$('#mask').remove();
-	$('#message-reply').click();
-}
-
- </script>
+</script>
 
 
-<a href="#message-box" class="message-window" id="message-reply" style="display:none">Reply Link Here</a>
-<% @message = Message.new%>
-<div id="message-box" class="m-popup">
-	<tr><td><p style="font-family:chunkFiveRegular; font-size:2.5em; color:#575758; text-align:center; margin-top:20px; margin-bottom:20px">Reply Message</p></td></tr> 
-	<tr><td>
-	<%= form_for @message do |f|%>
-		<font style="font-size:1.2em; color:#575758; line-height:2em">Subject:</font>
-		<%= f.text_field :subject, :id => "subject_field", :style => "height:20px;width:325px; margin-left:20px"%></td></tr>
-	<tr><td>
-			<%= f.text_area :body, :style => "width:410px;height:75px;overflow:auto; margin-left:20px; margin-right:20px"%>
-			<%= f.hidden_field :sender_id, :id => "sender_id_field"%>
-			<%= f.hidden_field :recipient_id, :id => "recipient_id_field"%>
-			<p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SendButton.png", :onmousedown =>"this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
-	<% end %>
-	</td></tr>
-	
-	
-</div>
 <div class="container">
 	<div class="row">
 	<% if flash.class.name == "Array"%>
@@ -532,11 +506,11 @@ function openReplyBox(message_id) {
 
 			</div>
 			<div id="edit-box" class="edit-popup">
-				<p style="font-size:2em; font-family:chunkFiveRegular; line-height:1.5em; margin:10px" align="center">My Account</p>
+				<p style="font-size:2em; font-family:chunkFiveRegular; line-height:1.5em;" align="center">My Account</p>
 				<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
 				<div class="six columns" style="width:300px">
 					
-					<p style="margin:15px; font-size:1.3em; font-family:architectsDaughterRegular">My Info</p>
+					<p style="margin:10px; margin-bottom:5px; font-size:1.3em; font-family:architectsDaughterRegular">My Info</p>
 
 				  <div><%= f.label "Registered Email Address" %>
 				  <%= f.email_field :email, :style => "height:20px; width:198px" %></div><br />
@@ -550,12 +524,12 @@ function openReplyBox(message_id) {
 					</select>
 				</div>
 				 <image style="position:absolute; height:25px; top:196px; left:2px;" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_profile_show').attr('checked', false)">
-					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:70px; padding-bottom:5px;" >
-					<%= f.check_box :profile_show, :onchange => "$(beforeCheck())", :style => "opacity:0;margin-left:0px; height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-26px; font-size:.85em"> Hide my age/country on my profile</div><br />
+					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-top:55px; padding-bottom:5px;" >
+					<%= f.check_box :profile_show, :onchange => "$(beforeCheck())", :style => "display:block; opacity:0;filter: alpha(opacity=0);margin-left:0px; height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-26px; font-size:.85em"> Hide my age/country on my profile</div><br />
 					
-					<image style="position:absolute; height:25px; top:225px; left:2px;" id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_messages_show').attr('checked', false)">
-					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:0px; padding-bottom:5px;" >
-					<%= f.check_box :messages_show, :onchange => "$(messagesCheck())", :style => "opacity:0;margin-left:0px; height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-34px; font-size:.85em"> Do not allow others to send me<br />messages</div><br />
+					<image style="position:absolute; height:25px; top:210px; left:2px;" id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$('#user_messages_show').attr('checked', false)">
+					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat;margin-top:0px; padding-bottom:5px;" >
+					<%= f.check_box :messages_show, :onchange => "$(messagesCheck())", :style => "display:block; opacity:0;filter: alpha(opacity=0);margin-left:0px; height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-34px; font-size:.85em"> Do not allow others to send me<br />messages</div><br />
 				
 				</div>
 				
@@ -905,48 +879,6 @@ function messagesCheck() {
 
 
 
-<div id="flag-box" class="flag-popup">
-	<% if user_signed_in? %>
-  	<%= form_tag ('/flags') %>
-
-	  <div class="field">
-	    <p style="text-align:center; font-size:1.05em; font-family:cabinRegular; padding-bottom:80px; color:#575758">Report this review for<br />inappropriate content</p>
-		
-		
-		<div class="three columns" style="position:absolute; left:0;top:70px; height:30px; width:250px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-		<select id="category" name="category" style="position:absolute; left:-5px; width:277px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;">
-			<option"Unrelated to Volunteer Trip">Unrelated to Volunteer Trip</option>
-			<option ""><font style="font-Style:italic">Category - </font></option>
-			<option "Spamming">Spamming</option>
-			<option "Harsh Language">Harsh Language</option>
-			<option "Promotion/Advertising">Promotion/Advertising</option>
-			<option "Adult Content">Adult Content</option>
-			<option "Other">Other</option></select></div>
-			
-			
-	<p style="width:150px; height:100px"><textarea id="body" style="height:115px; font-size:0.7em; font-style:italic" onclick="if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');" name="body">Please describe.</textarea>
-	  </div>
-	  <div class="field">
-	    <%hidden_field_tag :flagger_id, :value => current_user.id %>
-	  </div>
-	  <div class="field">
-	    <%hidden_field_tag :poster_id, :value => params[:poster_id] %>
-	  </div>
-	  <div class="field">
-	    <%hidden_field_tag :review_id, :value => params[:review_id] %>
-	  </div>
-
-	  <div class="actions">
-	    <p style="text-align:center; padding-top:15px"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px", :onmouseup => "this.className = 'nothing'", :onmousedown => "this.className = 'shadowed'" %></p>
-	  </div>
-	<% else %>
-	You must be signed in to flag a review.
-	<% end %>
-
-</div>
-
-
-
 
 <style>
 /* Mask for background, by default is not display */
@@ -980,25 +912,6 @@ function messagesCheck() {
         -webkit-border-radius: 3px; /* Safari, Chrome */
 }
 
-/* You can customize to your needs  */
-.flag-popup{
-	display:none;
-	background: #D9DEDA;
-	padding: 10px; 	
-	border: 2px solid #575758;
-	float: left;
-	color:#6aaeba;
-	font-size: 1.1em;
-	position: fixed;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
 
 .delete-popup{
 	display:none;
@@ -1133,7 +1046,7 @@ $(document).ready(function() {
 		});
 
 		// Add the mask to body
-		$('body').append('<div id="mask" style="opacity:0.5"></div>');
+		$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 		$('#mask').fadeIn(300)
 
 		return false;
@@ -1166,7 +1079,7 @@ $(document).ready(function() {
 		});
 
 		// Add the mask to body
-		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 		$('#mask').fadeIn(300);
 
 		return false;
