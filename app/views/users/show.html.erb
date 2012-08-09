@@ -433,7 +433,7 @@ function beforeCheck() {
 
 
 <div id="popup-box" class="popup-popup">
-	<% if @user.messages_show %>
+	<% if @user.messages_show == false %>
 	<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
 
 	<%= form_for(@message) do |f| %>
