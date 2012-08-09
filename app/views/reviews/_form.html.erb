@@ -744,22 +744,18 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 
 		<div id="addPhotos-box" class="addPhotos-popup" style="text-align:left">
 			<p style="font-size:1.6em; text-align:center;margin-top:15px; margin-bottom:20px">Add Photos <font style="font-size:.5em; font-family:architectsDaughterRegular">(max: 512KB)</font></p>
-			<div class="six columns" style="width:300px; float:left; padding-left:20px">
+
 		<%= f.file_field :photo, :id => "one" %> <a onclick="$('#one').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo2, :id => "two"  %><a onclick="$('#two').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo3, :id => "three"  %><a onclick="$('#three').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo4, :id => "four"  %><a onclick="$('#four').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo5, :id => "five"  %><a onclick="$('#five').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		</div>
-		
-		<div class="six columns" style="width:300px; float:left">
 		<%= f.file_field :photo6, :id => "six"  %><a onclick="$('#six').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo7, :id => "seven"  %><a onclick="$('#seven').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo8, :id => "eight"  %><a onclick="$('#eight').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo9, :id => "nine"  %><a onclick="$('#nine').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo10, :id => "ten"  %><a onclick="$('#ten').attr('value', '')" style="cursor:pointer">Remove</a>
-		</div>
-		<br /><br />
+		<%= f.file_field :photo10, :id => "ten"  %><a onclick="$('#ten').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
+
 		<div align = "center" style="margin-top:30px">
 		<input type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/done.png" onclick="closePop(); changeCount(); return false" class="btn_close" onmousedown="this.className = 'shadowed'" onmouseup ="this.className = 'btn_close'">
 		</div>
@@ -1142,7 +1138,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 	        -moz-border-radius: 3px; /* Firefox */
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
 		height:300px;
-		width:650px;
+		width:300px;
 		overflow:auto;
 	}
 
