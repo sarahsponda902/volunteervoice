@@ -1,10 +1,10 @@
 <% if @user.messages_show.nil?%>
-<% @user.messages_show = false%>
+<% @user.messages_show = true%>
 <% @user.save%>
 <% end %>
 
 <% if @user.profile_show.nil?%>
-<% @user.profile_show = false%>
+<% @user.profile_show = true%>
 <% @user.save%>
 <% end %>
 
