@@ -1,5 +1,29 @@
 RMTest::Application.routes.draw do
   
+  
+  ##### UPDATE MESSAGES
+  match "update_messages/:id/send_message" => "update_messages#send_message"
+  match "update_messages/:id/send_message_preview" => "udate_messages#send_message_preview"
+
+  
+  ##### MESSAGES
+  
+  match "messages/:id/mark_deleted" => 'messages#mark_deleted'
+  
+  match "messages/:id/mark_sent_deleted" => 'messages#mark_sent_deleted'
+
+  match "users/send_message/:id" => 'users#send_message'
+  
+  match "users/send_message.:id" => 'users#send_message'
+  
+  match "messages/:recipient_id/create" => 'messages#new'
+  
+  match "messages/:id/delete" => 'messages#destroy'
+  
+  match "/profile_messages_sent" => 'pages#profile_messages_sent'
+ 
+  resources :messages
+  
   match 'users/profile' => "users#profile"
     
   match 'users/:id/crop' => 'users#crop'
@@ -72,30 +96,6 @@ RMTest::Application.routes.draw do
   resources :favorites
   
   resources :ratings
-  
-  ##### UPDATE MESSAGES
-  match "update_messages/:id/send_message" => "update_messages#send_message"
-  match "update_messages/:id/send_message_preview" => "udate_messages#send_message_preview"
-
-  
-  ##### MESSAGES
-  
-  match "messages/:id/mark_deleted" => 'messages#mark_deleted'
-  
-  match "messages/:id/mark_sent_deleted" => 'messages#mark_sent_deleted'
-
-  match "users/send_message/:id" => 'users#send_message'
-  
-  match "users/send_message.:id" => 'users#send_message'
-  
-  match "messages/:recipient_id/create" => 'messages#new'
-  
-  match "messages/:id/delete" => 'messages#destroy'
-  
-  match "/profile_messages_sent" => 'pages#profile_messages_sent'
-  
-  
-  resources :messages
   
   ##### FAVORITES
   
