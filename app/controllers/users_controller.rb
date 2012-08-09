@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   
   include ActionView::Helpers::TextHelper
 	require 'aws/s3'
-	require "#{Rails.root}/app/models/message.rb"
   
   helper :all
   helper_method :age
@@ -84,7 +83,7 @@ class UsersController < ApplicationController
   	    @user = User.find(current_user.id)
   	    @reviews = @user.reviews.order("created_at DESC")
   	    @favorites = @user.favorites
-  	    @messages = ::Messsage.where(:recipient_id => current_user.id, :recipient_deleted => false).sort_by(&:created_at).reverse
+  	    @messages = ::Message.where(:recipient_id => current_user.id, :recipient_deleted => false).sort_by(&:created_at).reverse
   	    @sent_messages = ::Message.where(:sender_id => current_user.id, :sender_deleted => nil).sort_by(&:created_at).reverse
   	  
       else
