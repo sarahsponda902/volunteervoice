@@ -247,10 +247,7 @@
 			    </table>
 		</div>
 		<div id="tabs-5">
-			        <table class="OceaniaContent">
-		            <tr style="background-color:#c1dfdb">
-		                <td>
-		        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+		        <table>
 		        <% THEREGIONS[19].each do |f|%>
 		                                   <% if !(Program.where(:location => f).empty?) %>
 		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
@@ -266,22 +263,14 @@
 		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
 		            <%end%>
 		        <% end %>
-		            </table>
-		                </td>
-		                <td>
-
-		        <table cellpadding="1" style="background-color:#c1dfdb">
 		        <% THEREGIONS[22].each do |f|%>
 		                        <% if !(Program.where(:location => f).empty?) %>
 		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
 		            <%end%>
 		        <% end %>
-		            </table>
-		            </td>
-		        </tr>
 		    </table>
 		</div>
-	</div>
+	</div> <!-- END TABS -->
 
 
 
