@@ -82,7 +82,7 @@
     }
 
     // button
-    var tmp_button = ['folder', 'clock', 'man', 'piggy', 'world'];
+    var tmp_button = ['subject', 'region', 'length', 'size', 'cost'];
     if ($.inArray(options.button, tmp_button) !== -1) {
 
         options.button = '/assets/' + options.button + '.png';
