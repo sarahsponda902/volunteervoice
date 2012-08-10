@@ -234,9 +234,9 @@ $(document).ready(function () {
 	<% end %>
 	
 	<div id="show-contents" class="contents" style="margin-top:100px">
-		<div style="padding-bottom:50px;float:right; margin-right:275px; margin-top:-75px" class="three columns">
+		<div style="padding-bottom:50px;float:right; margin-right:175px; margin-top:-75px" class="three columns">
             <ul class="tab">
-				<li><a href="/organizations/<%= @organization.id%>"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProfileYes.png" style="width:125px;"></a></li>
+				<li><a href="/organizations/<%= @organization.id%>"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProfileYes.png" style="min-width:124px; max-width:126px"></a></li>
 				<li><a href="/organizations/<%= @organization.id%>/programs"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProgramsNo.png" style="width:125px; position:absolute; top:0px"></a></li>
             </ul>
         </div>
@@ -367,21 +367,21 @@ $(document).ready(function () {
 </div>
 <style type="text/css">
    
-    ul.tab
-    {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+  
+   ul.tab
+   {
+       list-style: none;
+       margin: 0;
+       padding: 0;
 		float: right;
-    }
-    ul.tab li
-    {
-        display: inline;
-        padding: 10px;
-        color: #575758;
-        cursor: pointer;
-
-    }
+   }
+   ul.tab li
+   {
+       display: inline;
+       padding: 10px;
+       color: #575758;
+       cursor: pointer;
+   }
 
 /* Mask for background, by default is not display */
 #mask {
