@@ -191,12 +191,13 @@
                      .css('padding', '3px')
                      .css('cursor', 'pointer')
                      .css('position', 'absolute')
-					 .css('background', 'url(' + options.button + ') no-repeat right 0')
                      .attr('title', options.buttonTitle)
                      .css(options.position, width + 'px');
       button.append('<div class="pull-out-button-inner"></div>');
       var buttonInner = $('div', button)
-                          
+                          .css('background', 'url(' + options.button + ') no-repeat right 0')
+                          .css('width', "60px")
+                          .css('height', "30px");
       // hide menu on init
       container.css(options.position, -1 * width + 'px');
 
