@@ -239,7 +239,7 @@ $(function() {
 <div class="container" style="color:#575758">
 	<div class="row">		
 		<div class="twelve columns" style="margin-top:40px">
-<%= form_for @program do |f| %>
+<%= form_for @program, :method => :put do |f| %>
 
 <% if @program.overall.nil?%>
   <div class="field">
