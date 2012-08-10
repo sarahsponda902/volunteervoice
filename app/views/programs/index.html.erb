@@ -1,5 +1,4 @@
-<html>
-<head>
+
     <% @nums = Array.new%>
 	<% @progNums = Array.new%>
     <% @countries_with_programs.each do |f|%>
@@ -7,7 +6,11 @@
     <% @nums << ALLCOUNTRIES.index(f) unless (ALLCOUNTRIES.index(f).nil?)%>
     <% end %>
 	
-	
+	<style>
+	.ui-widget-header{
+		font-size:1.6em;
+	}
+	</style>
 	<%= stylesheet_link_tag "/assets/jquery-ui-1.8.22.custom.css"%>
 	<%= javascript_include_tag "/assets/jquery.js"%>
 	<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"%>
