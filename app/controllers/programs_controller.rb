@@ -204,7 +204,7 @@ end
   # PUT /programs/1.json
   def update
     @program = Program.find(params[:id])
-      if user_signed_in? && current_user.admin?
+      if (user_signed_in? && current_user.admin?) || organization_account_signed_in?
         @program.program_subjects.each do |f|
           f.destroy!
         end
@@ -268,7 +268,8 @@ end
           a.index!
         end
             respond_to do |format|
-               format.html { render :action => "show" }
+               format.html { redirect_to "/programs/#{@program.id}" }
+               format.json { head :no_content }
              end
       else
          flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
