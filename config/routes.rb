@@ -1,5 +1,15 @@
 RMTest::Application.routes.draw do
   
+  ###### PROGRAMS
+  
+  match 'programs/:id/crop' => 'programs#crop'
+  
+  
+  resources :programs do
+  	resources :reviews
+  	post :create_review, :on => :collection
+  end
+  
   
   ##### UPDATE MESSAGES
   match "update_messages/:id/send_message" => "update_messages#send_message"
@@ -263,11 +273,6 @@ RMTest::Application.routes.draw do
   match "searches/:region/program_search" => 'searches#program_search'
 
   
-  ###### PROGRAMS
-  
-  match 'programs/:id/crop' => 'programs#crop'
-  
-  
   
   ###### ORGANIZATIONS
   
@@ -311,11 +316,6 @@ RMTest::Application.routes.draw do
 	
   
   ########## RESOURCES
-  
-  resources :programs do
-  	resources :reviews
-  	post :create_review, :on => :collection
-  end
 
   resources :reviews
   
