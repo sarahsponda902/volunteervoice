@@ -244,12 +244,12 @@ $(document).ready(function() {
     for (count = 0; count < allTheLocations.length; count++)
     {
         $("#"+allTheLocations[count]).hide();
-        if (theLocations.indexOf(allTheLocations[count]) != -1)
+        if (jQuery.inArray(allTheLocations[count], theLocations) != -1)
          {
 			$("#"+allTheLocations[count]).show();
 		 }
 
-			if (search_regions.indexOf(allTheLocations[count]) != -1)
+			if (jQuery.inArray(allTheLocations[count], search_regions) != -1)
 			{
 				$("#"+allTheLocations[count]+"2").prop('checked', true);
 				$("#"+allTheLocations[count]+"5").prop('checked', true);
@@ -261,7 +261,7 @@ $(document).ready(function() {
 	for (count = 0; count < allTheLocations.length; count++)
 	{
 		if ($("#"+allTheLocations[count]).is(":visible")) {
-			if (search_regions.indexOf(allTheLocations[count]) == -1)
+			if (jQuery.inArray(allTheLocations[count], search_regions) != -1)
 			{
 				isAllLocations = false;
 			}
@@ -277,7 +277,7 @@ $(document).ready(function() {
 
     for (count = 0; count < allBigLocations.length; count++)
     {
-			if (search_regions.indexOf(allBigLocations[count]) != -1)
+			if (jQuery.inArray(allBigLocations[count], search_regions) != -1)
 			{
 				$("#any"+allBigLocations[count]+"2").prop('checked', true);
 				$("#any"+allBigLocations[count]+"5").prop('checked', true);
@@ -289,7 +289,7 @@ $(document).ready(function() {
 	var count = 0;
 	for (count = 0; count < allTheSubjects.length; count++)
 	{
-		if (search_subjects.indexOf(allTheSubjects[count]) == -1)
+		if (jQuery.inArray(allTheSubjects[count], search_subjects) == -1)
 		{
 			isAllSubjects = false;
 		}
@@ -303,7 +303,7 @@ $(document).ready(function() {
 	var count = 0;
 	for (count = 0; count < allTheSubjects.length; count++)
     {
-			if (search_subjects.indexOf(allTheSubjects[count]) != -1)
+			if (jQuery.inArray(allTheSubjects[count], search_subjects) != -1)
 			{
 				$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
 				$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
@@ -313,7 +313,7 @@ $(document).ready(function() {
 	var count = 0;
 	for (count = 0; count < allTheSizes.length; count++)
 	{
-		if (search_sizes.indexOf(allTheSizes[count]) == -1)
+		if (jQuery.inArray(allTheSizes[count], search_sizes) == -1)
 		{
 			isAllSizes = false;
 		}
@@ -328,7 +328,7 @@ $(document).ready(function() {
 	for (count = 0; count < allTheSizes.length; count++)
 	{
 
-			if (search_sizes.indexOf(allTheSizes[count]) != -1)
+			if (jQuery.inArray(allTheSizes[count], search_sizes) != -1)
 			{
 				$("#"+(count+1)+"_group").prop('checked', true);
 				$("#size"+(count+1)+"5").prop('checked', true);
