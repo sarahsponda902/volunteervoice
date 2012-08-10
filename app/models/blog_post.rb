@@ -37,12 +37,22 @@ class BlogPost < ActiveRecord::Base
 	before_save :save_tags, :if => :not_resaving?
 	before_save :square_image_crop
 
-
+  before_save :validate_photo_width
 	before_save :parse_body
 	
 	mount_uploader :image, ImageUploader
 	mount_uploader :square_image, ImageUploader
 
+  
+  def validate_photo_width
+    if !(photo.nil?) && !(photo.url.nil?)
+      @photo = MiniMagick::Image.open(photo.url)
+      if @photo['width'] > 700
+        errors.add(:photo, "must have a width of less than 700 pixels")
+        return false
+      end
+    end
+  end
   
   def parse_body
     self.body = RedCloth.new(body).to_html
