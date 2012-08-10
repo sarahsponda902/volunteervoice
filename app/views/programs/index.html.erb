@@ -97,10 +97,7 @@
 			<li><a href="#tabs-5">Oceania</a></li>
 		</ul>
 		<div id="tabs-1">
-			<table class="AmericasContent">
-			            <tr style="background-color:#c1dfdb">
-			                <td>
-			        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+			        <div class="six columns" style="width:45%">
 			        <% THEREGIONS[10].each do |f|%>
 			                        <% if !(Program.where(:location => f).empty?) %>
 			                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
