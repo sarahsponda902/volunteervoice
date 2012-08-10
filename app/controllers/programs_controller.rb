@@ -231,8 +231,10 @@ end
           
           @cost_lengths = []
           params[:costs].each do |f|
-            @p = ProgramCostLengthMap.new(:program_id => params[:id], :cost => f.to_f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
-            @cost_lengths << @p
+            if !(f.nil? || f.empty?)
+              @p = ProgramCostLengthMap.new(:program_id => params[:id], :cost => f.to_f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+              @cost_lengths << @p
+            end
           end
 
           count = 0
@@ -270,7 +272,7 @@ end
          flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          flash.now[:notice]
          respond_to do |format|
-           format.html { render :action => "edit" }
+           format.html { render :action => "show" }
            format.json { render json: @program.errors, status: :unprocessable_entity }
          end 
       end
