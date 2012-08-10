@@ -267,7 +267,7 @@ end
           a.save!
           a.index!
         end
-            redirect_to "/programs/#{@program.id}"
+            render :action => "show"
       else
          flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          flash.now[:notice]
