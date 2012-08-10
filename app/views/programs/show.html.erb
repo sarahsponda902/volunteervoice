@@ -56,7 +56,7 @@
 				});
 
 				// Add the mask to body
-				$('body').append('<div id="mask"></div>');
+				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 				$('#mask').fadeIn(300);
 
 				return false;
@@ -88,7 +88,7 @@
 				});
 
 				// Add the mask to body
-				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 				$('#mask').fadeIn(300);
 
 				return false;
@@ -120,7 +120,7 @@
 				});
 
 				// Add the mask to body
-				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
 				$('#mask').fadeIn(300);
 
 				return false;
@@ -239,7 +239,7 @@
 	<div class="six columns" style="margin-left:4%; width:48%; margin-top:3px; padding-bottom:7px">
 		<br />
 		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/LearnMore.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%> </a>
-		<p style="margin-left:125px; margin-top:-60px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ReviewThisProg.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+		<p style="margin-left:125px; margin-top:-62px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ReviewThisProg.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
 		<br />
 	</div>
 	<div class="four columns" align="right" style="float:right; margin-right:5px; margin-top:10px; margin-bottom:-30px">
@@ -377,6 +377,7 @@
 		border: 2px solid #ddd;
 		float: left;
 		color: black;
+		max-height:300px;
 		position: fixed;
 		top: 50%; left: 50%;
 		z-index: 99999;
@@ -406,6 +407,7 @@
 		border-radius:3px 3px 3px 3px;
 	        -moz-border-radius: 3px; /* Firefox */
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		max-height:300px;
 	}
 	
 	
@@ -426,6 +428,7 @@
 		border-radius:3px 3px 3px 3px;
 	        -moz-border-radius: 3px; /* Firefox */
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		max-height:300px;
 	}
 
 
