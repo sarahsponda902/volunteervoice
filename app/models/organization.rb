@@ -38,27 +38,27 @@ def roundup(overall)
 end
 
 def textilize_misson
-  (misson).gsub(/\n/, "<br>")
+  textilize(misson).html_safe
 end
 
 def textilize_headquarters_address
-  (headquarters_location).gsub(/\n/, "<br>")
+  textilize(headquarters_location).html_safe
 end
 
 def textilize_application_process
-  (application_process).gsub(/\n/, "<br>")
+  textilize(application_process).html_safe
 end
 
 def textilize_program_costs_includes
-  (program_costs_includes).gsub(/\n/, "<br>")
+  textilize(program_costs_includes).html_safe
 end
 
 def textilize_program_costs_doesnt_include
-  (program_costs_doesnt_include).gsub(/\n/, "<br>")
+  textilize(program_costs_doesnt_include).html_safe
 end
 
 def textilize_training_resources
-  (training_resources).gsub(/\n/, "<br>")
+  textilize(training_resources).html_safe
 end
 
 def square_image_crop
