@@ -260,12 +260,10 @@ end
         @subjects.each do |s|
           s.program_id = @program.id
           s.save!
-          s.index!
         end
         @sizes.each do |a|
           a.program_id = @program.id
           a.save!
-          a.index!
         end
             respond_to do |format|
                format.html { redirect_to "/programs/#{@program.id}" }
