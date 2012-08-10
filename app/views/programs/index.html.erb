@@ -96,10 +96,12 @@
             }, 250);
             $("#AfricaRow").click(function(){
 				if ($(".AfricaContent").is(":visible")) {
+				$("#AfricaDiv").css("border", "none");
                 $(".AfricaContent").hide();
                 $(".AfricaBackground").hide();
                 $(".AfricaNoBackground").fadeIn(300);
 			} else {
+				$("#AfricaDiv").css("border-bottom", "1px solid #e67b5a");
 				$(".AfricaContent").fadeIn(300);
                 $(".AfricaBackground").fadeIn(300);
                 $(".AfricaNoBackground").hide();
@@ -109,10 +111,12 @@
 
             $("#EuropeRow").click(function(){
                		if ($(".EuropeContent").is(":visible")) {
+					$("#EuropeDiv").css("border", "none");
 	                $(".EuropeContent").hide();
 	                $(".EuropeBackground").hide();
 	                $(".EuropeNoBackground").fadeIn(300);
 				} else {
+					$("#EuropeDiv").css("border-bottom", "1px solid #e67b5a");
 					$(".EuropeContent").fadeIn(300);
 	                $(".EuropeBackground").fadeIn(300);
 	                $(".EuropeNoBackground").hide();
@@ -135,10 +139,12 @@
 
             $("#AsiaRow").click(function(){
                		if ($(".AsiaContent").is(":visible")) {
+					$("#AsiaDiv").css("border", "none");
 	                $(".AsiaContent").hide();
 	                $(".AsiaBackground").hide();
 	                $(".AsiaNoBackground").fadeIn(300);
 				} else {
+					$("#AsiaDiv").css("border-bottom", "1px solid #e67b5a");
 					$(".AsiaContent").fadeIn(300);
 	                $(".AsiaBackground").fadeIn(300);
 	                $(".AsiaNoBackground").hide();
@@ -148,10 +154,12 @@
 
             $("#OceaniaRow").click(function(){
                 	if ($(".OceaniaContent").is(":visible")) {
+					$("#OceaniaDiv").css("border", "none");
 	                $(".OceaniaContent").hide();
 	                $(".OceaniaBackground").hide();
 	                $(".OceaniaNoBackground").fadeIn(300);
 				} else {
+					$("#OceaniaDiv").css("border-bottom", "1px solid #e67b5a");
 					$(".OceaniaContent").fadeIn(300);
 	                $(".OceaniaBackground").fadeIn(300);
 	                $(".OceaniaNoBackground").hide();
