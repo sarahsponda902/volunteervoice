@@ -217,14 +217,14 @@ end
         
          @subjects = []
           params[:program][:program_subjects].split(", ").each do |f|
-              @p = ProgramSubject.new(:program_id => params[:id], :subject => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+              @p = ProgramSubject.new(:program_id => params[:id], :subject => f, :organization_id => @program.organization_id)
               @subjects << @p
           end
           params[:program][:program_subjects] = @subjects
 
           @sizes = []
           params[:program][:program_sizes].each do |f|
-            @p = ProgramSize.new(:program_id => params[:id], :size => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+            @p = ProgramSize.new(:program_id => params[:id], :size => f, :organization_id => @program.organization_id)
             @sizes << @p
           end
           params[:program][:program_sizes] = @sizes
@@ -232,7 +232,7 @@ end
           @cost_lengths = []
           params[:costs].each do |f|
             if !(f.nil? || f.empty?)
-              @p = ProgramCostLengthMap.new(:program_id => params[:id], :cost => f.to_f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
+              @p = ProgramCostLengthMap.new(:program_id => params[:id], :cost => f.to_f, :organization_id => @program.organization_id)
               @cost_lengths << @p
             end
           end
