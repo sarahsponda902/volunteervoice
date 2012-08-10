@@ -48,7 +48,7 @@ class BlogPost < ActiveRecord::Base
     if !(image.nil?) && !(image.url.nil?)
       @photo = MiniMagick::Image.open(image.url)
       if @photo['width'] > 700
-        errors.add(:photo, "must have a width of less than 700 pixels")
+        errors.add(:image, "must have a width of less than 700 pixels")
         return false
       end
     end
