@@ -46,7 +46,9 @@ Version : 1.0
 }
 
 .pull-out-content {
-  padding:4px;
+  padding:5px;
+  padding-left:20px;
+  padding-right:20px;
 }
 
 .pull-out-content a {
