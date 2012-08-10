@@ -267,7 +267,12 @@ end
         end
             redirect_to "/programs/#{@program.id}"
       else
-         render :action => "edit" 
+         flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
+         flash.now[:notice]
+         respond_to do |format|
+           format.html { render :action => "edit" }
+           format.json { render json: @program.errors, status: :unprocessable_entity }
+         end 
       end
    end
   end
