@@ -218,7 +218,6 @@ end
          @subjects = []
           params[:program][:program_subjects].split(", ").each do |f|
               @p = ProgramSubject.new(:program_id => params[:id], :subject => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
-              @p.save
               @subjects << @p
           end
           params[:program][:program_subjects] = @subjects
@@ -226,7 +225,6 @@ end
           @sizes = []
           params[:program][:program_sizes].each do |f|
             @p = ProgramSize.new(:program_id => params[:id], :size => f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
-            @p.save
             @sizes << @p
           end
           params[:program][:program_sizes] = @sizes
@@ -234,7 +232,6 @@ end
           @cost_lengths = []
           params[:costs].each do |f|
             @p = ProgramCostLengthMap.new(:program_id => params[:id], :cost => f.to_f, :organization_id => Organization.where(:name => params[:program][:organization_name]).first.id)
-            @p.save
             @cost_lengths << @p
           end
 
@@ -245,8 +242,6 @@ end
             @p.length = @length[0].to_i.send(@length[1]).to_f
             @p.length_name = @length[1]
             @p.length_number = @length[0]
-            @p.save
-            @p.index!
             @cost_lengths[count] = @p
             count = count + 1
           end
@@ -255,6 +250,21 @@ end
           
         
       if @program.update_attributes(params[:program])
+        @cost_lengths.each do |f|
+          f.program_id = @program.id
+          f.save!
+          f.index!
+        end
+        @subjects.each do |s|
+          s.program_id = @program.id
+          s.save!
+          s.index!
+        end
+        @sizes.each do |a|
+          a.program_id = @program.id
+          a.save!
+          a.index!
+        end
             redirect_to "/programs/#{@program.id}"
       else
          render :action => "edit" 

@@ -37,6 +37,7 @@ $(document).ready(function(){
 	$("#individual").attr("checked", <%= @individual %>);
 	$("#medium").attr("checked", <%= @medium %>);
 	$("#large").attr("checked", <%= @large %>);
+	$("#program_location").val("<%=@program.location%>");
 	
 	$('a.rules-window').click(function() {
 
