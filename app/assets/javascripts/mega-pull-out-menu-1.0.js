@@ -196,8 +196,8 @@
       button.append('<div class="pull-out-button-inner"></div>');
       var buttonInner = $('div', button)
                           .css('background', 'url(' + options.button + ') no-repeat center 0')
-                          .css('width', options.buttonSize)
-                          .css('height', options.buttonSize);
+                          .css('width', "20px")
+                          .css('height', "20px");
       // hide menu on init
       container.css(options.position, -1 * width + 'px');
 
