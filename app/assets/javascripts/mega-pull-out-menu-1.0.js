@@ -96,7 +96,7 @@
     options.maxWidth = parseInt(options.maxWidth, 10);
 
     // buttonSize has to be in px
-    options.buttonSize = parseInt(options.buttonSize, 10);
+    options.buttonSize = "20px";
 
     // trim the color string
     options.color = $.trim(options.color);
@@ -192,12 +192,12 @@
                      .css('cursor', 'pointer')
                      .css('position', 'absolute')
                      .attr('title', options.buttonTitle)
-                     .css(options.position, width + 'px');
+                     .css(options.position, width + 'px')
+					 .css('width', "20px")
+                     .css('height', "20px");
       button.append('<div class="pull-out-button-inner"></div>');
       var buttonInner = $('div', button)
-                          .css('background', 'url(' + options.button + ') no-repeat center 0')
-                          .css('width', "20px")
-                          .css('height', "20px");
+                          .css('background', 'url(' + options.button + ') no-repeat center 0');
       // hide menu on init
       container.css(options.position, -1 * width + 'px');
 
