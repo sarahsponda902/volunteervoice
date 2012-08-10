@@ -341,7 +341,7 @@ function removePeru() {
 
 		<image style="position:absolute; height:23px; top:88.7%; left:10%" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
 			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; height:25px; margin-left:11%; margin-top:-45px;" onclick="$(termsCheck());">
-		<%= f.check_box :terms, :onchange => "checkFields()", :style="opacity:0; height:25px; width:25px", :id => "terms"%>
+		<%= f.check_box :terms, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:25px; width:25px", :id => "terms"%>
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have read the terms of use">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label> </div><br /><br />
 	</section><!--end writeReviewContent-->
 

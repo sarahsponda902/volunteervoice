@@ -121,7 +121,6 @@ class ProgramsController < ApplicationController
     @subjects = []
     params[:program][:program_subjects].split(", ").each do |f|
         @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f, :organization_id => @org_id)
-        @p.save
         @subjects << @p
     end
     params[:program][:program_subjects] = @subjects
@@ -129,7 +128,6 @@ class ProgramsController < ApplicationController
     @sizes = []
     params[:program][:program_sizes].each do |f|
       @p = ProgramSize.new(:program_id => params[:program][:id], :size => f, :organization_id => @org_id)
-      @p.save
       @sizes << @p
     end
     params[:program][:program_sizes] = @sizes
@@ -178,11 +176,18 @@ class ProgramsController < ApplicationController
               f.save!
               f.index!
             end
-            redirect_to @program
+            @subjects.each do |s|
+              s.program_id = @program.id
+              s.save!
+              s.index!
+            end
+            @sizes.each do |a|
+              a.program_id = @program.id
+              a.save!
+              a.index!
+            end
+          redirect_to @program
       else
-        @cost_lengths.each do |f|
-          f.destroy
-        end
         @program.description = @program.description.gsub(%r{</?[^>]+?>}, '')
         @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
         @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
