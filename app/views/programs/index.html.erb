@@ -88,235 +88,13 @@
 
 
     <div class="container" style="width:95%">
-
-
-<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
-
-<table id="EuropeDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%">
-    <tr id = "EuropeRow">
-        <td width="90%" style="padding:0;margin:0"><div class="EuropeBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Europe</font></div><div class="EuropeNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Europe </font></div></td>
-        <td width="10%" class="EuropeToggle" style="text-align:right; padding:0;margin:0"><div class="EuropeBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="EuropeNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
-    </tr>
-    <table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="EuropeContent">
-            <tr style="background-color:#c1dfdb">
-                <td width="50%">
-        <table cellpadding="1" style="background-color:#c1dfdb;margin-left:50px">
-        <% THEREGIONS[6].each do |f|%>
-                                    <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[7].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-            </table>
-                </td>
-                <td width="50%">
-
-        <table cellpadding="1" style="background-color:#c1dfdb">
-        <% THEREGIONS[8].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[9].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-            </table>
-            </td>
-        </tr>
-    </table>
-</table>
-
-<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
-
-<table id = "AfricaDiv" cellpadding="5" cellspacing="3" style=" margin-left:15%; margin-right:15%; width:70%">
-    <tr id = "AfricaRow" style="background-color:#E3E6D5;">
-        <td width="90%" style="padding:0;margin:0"><div class="AfricaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Africa</font></div><div class="AfricaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%" style="margin-left:5%">Africa </font></div></td>
-        <td width="10%" class="AfricaToggle" style="text-align:right; padding:0;margin:0"><div class="AfricaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="AfricaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
-        </tr>
-        <table style="margin-left:15%; display:none; width:70%" class="AfricaContent">
-            <tr style="background-color:#c1dfdb">
-                <td>
-        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
-        <% THEREGIONS[1].each do |f|%>
-            <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[2].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[3].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-            </table>
-                </td>
-                <td>
-
-        <table cellpadding="1" style="background-color:#c1dfdb">
-        <% THEREGIONS[4].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[5].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-            </table>
-            </td>
-        </tr>
-    </table>
-
-</table>
-
-
-<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
-
-
-<table id="AsiaDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%">
-    <tr id = "AsiaRow">
-        <td width="90%" style="padding:0;margin:0"><div class="AsiaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Asia</font></div><div class="AsiaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Asia </font></div></td>
-        <td width="10%" class="AsiaToggle" style="text-align:right; padding:0;margin:0"><div class="AsiaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="AsiaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
-    </tr>
-<table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="AsiaContent">
-            <tr style="background-color:#c1dfdb">
-                <td>
-        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
-        <% THEREGIONS[14].each do |f|%>
-                                   <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[15].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[16].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[17].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-            </table>
-                </td>
-                <td>
-
-        <table cellpadding="1" style="background-color:#c1dfdb">
-        <% THEREGIONS[18].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-            </table>
-            </td>
-        </tr>
-    </table>
-    </table>
-</table>
-
-<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
-
-<table id="OceaniaDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%">
-    <tr id = "OceaniaRow">
-        <td width="90%" style="padding:0;margin:0"><div class="OceaniaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Oceania</font></div><div class="OceaniaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Oceania </font></div></td>
-        <td width="10%" class="OceaniaToggle" style="text-align:right; padding:0;margin:0"><div class="OceaniaBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="OceaniaNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
-    </tr>
-            <table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="OceaniaContent">
-            <tr style="background-color:#c1dfdb">
-                <td>
-        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
-        <% THEREGIONS[19].each do |f|%>
-                                   <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        <% THEREGIONS[20].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-                <% THEREGIONS[21].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-            </table>
-                </td>
-                <td>
-
-        <table cellpadding="1" style="background-color:#c1dfdb">
-        <% THEREGIONS[22].each do |f|%>
-                        <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-            </table>
-            </td>
-        </tr>
-    </table>
-    </table>
-</table>
-
-<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%;"></div>
-
-<table id="OtherDiv" cellpadding="5" cellspacing="3" style=" background-color:#E3E6D5; margin-left:15%; margin-right:15%; width:70%; display:none">
-    <tr id = "OtherRow">
-        <td width="90%" style="padding:0;margin:0"><div class="OtherBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">Other</font></div><div class="OtherNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-left:5%">Other </font></div></td>
-        <td width="10%" class="OtherToggle" style="text-align:right; padding:0;margin:0"><div class="OtherBackground" style="background-color:#c1dfdb; padding:10px; display:none"><font color="#62acbd" size="5" style="margin-left:5%">- </font></div><div class="OtherNoBackground" style="padding:5px;"><font color="#62acbd" size="5" style="margin-right:15%">+ </font></div></td>
-    </tr>
-            <table style="margin-left:15%; display:none; background-color:#c1dfdb; width:70%" class="OtherContent">
-            <tr style="background-color:#c1dfdb">
-                <td>
-        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
-        <% THEREGIONS[0].each do |f|%>
-                                    <% if !(Program.where(:location => f).empty?) %>
-                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
-            <%end%>
-        <% end %>
-        
-            </table>
-            </td>
-        </tr>
-    </table>
-</table>
-
-<div style="height:1px; background-color:#FC8767; margin-left:15%; margin-right:15%; display:none"></div>
-</div>
-</div>
-<div align="center" style="font-family:architectsDaughterRegular; margin-top:60px;color:#e67b5a; margin-bottom:30px; min-width:960px">
-    Note: if the country you want to visit isn't listed, we have not yet profiled a company with programs there.
-    </div>
-	<script>
-		$(function() {
-			$( "#tabs" ).tabs();
-		});
-		</script>
-
-
-
-	<div class="demo">
-
 	<div id="tabs">
 		<ul>
 			<li><a href="#tabs-1">Americas</a></li>
-			<li><a href="#tabs-2">Proin dolor</a></li>
-			<li><a href="#tabs-3">Aenean lacinia</a></li>
+			<li><a href="#tabs-2">Europe</a></li>
+			<li><a href="#tabs-3">Africa</a></li>
+			<li><a href="#tabs-4">Asia</a></li>
+			<li><a href="#tabs-5">Oceania</a></li>
 		</ul>
 		<div id="tabs-1">
 			<table class="AmericasContent">
@@ -354,15 +132,168 @@
 			    </table>
 		</div>
 		<div id="tabs-2">
-			<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing. Morbi facilisis. Curabitur ornare consequat nunc. Aenean vel metus. Ut posuere viverra nulla. Aliquam erat volutpat. Pellentesque convallis. Maecenas feugiat, tellus pellentesque pretium posuere, felis lorem euismod felis, eu ornare leo nisi vel felis. Mauris consectetur tortor et purus.</p>
+			<table class="EuropeContent">
+		            <tr style="background-color:#c1dfdb">
+		                <td width="50%">
+		        <table cellpadding="1" style="background-color:#c1dfdb;margin-left:50px">
+		        <% THEREGIONS[6].each do |f|%>
+		                                    <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		        <% THEREGIONS[7].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		            </table>
+		                </td>
+		                <td width="50%">
+
+		        <table cellpadding="1" style="background-color:#c1dfdb">
+		        <% THEREGIONS[8].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		        <% THEREGIONS[9].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		            </table>
+		            </td>
+		        </tr>
+		    </table>
 		</div>
 		<div id="tabs-3">
-			<p>Mauris eleifend est et turpis. Duis id erat. Suspendisse potenti. Aliquam vulputate, pede vel vehicula accumsan, mi neque rutrum erat, eu congue orci lorem eget lorem. Vestibulum non ante. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce sodales. Quisque eu urna vel enim commodo pellentesque. Praesent eu risus hendrerit ligula tempus pretium. Curabitur lorem enim, pretium nec, feugiat nec, luctus a, lacus.</p>
-			<p>Duis cursus. Maecenas ligula eros, blandit nec, pharetra at, semper at, magna. Nullam ac lacus. Nulla facilisi. Praesent viverra justo vitae neque. Praesent blandit adipiscing velit. Suspendisse potenti. Donec mattis, pede vel pharetra blandit, magna ligula faucibus eros, id euismod lacus dolor eget odio. Nam scelerisque. Donec non libero sed nulla mattis commodo. Ut sagittis. Donec nisi lectus, feugiat porttitor, tempor ac, tempor vitae, pede. Aenean vehicula velit eu tellus interdum rutrum. Maecenas commodo. Pellentesque nec elit. Fusce in lacus. Vivamus a libero vitae lectus hendrerit hendrerit.</p>
+			    <table class="AfricaContent">
+		            <tr style="background-color:#c1dfdb">
+		                <td>
+		        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+		        <% THEREGIONS[1].each do |f|%>
+		            <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		        <% THEREGIONS[2].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		        <% THEREGIONS[3].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		            </table>
+		                </td>
+		                <td>
+
+		        <table cellpadding="1" style="background-color:#c1dfdb">
+		        <% THEREGIONS[4].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		        <% THEREGIONS[5].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		            </table>
+		            </td>
+		        </tr>
+		    </table>
+		</div>
+		<div id="tabs-4">
+			<table class="AsiaContent">
+			            <tr style="background-color:#c1dfdb">
+			                <td>
+			        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+			        <% THEREGIONS[14].each do |f|%>
+			                                   <% if !(Program.where(:location => f).empty?) %>
+			                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+			            <%end%>
+			        <% end %>
+			        <% THEREGIONS[15].each do |f|%>
+			                        <% if !(Program.where(:location => f).empty?) %>
+			                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+			            <%end%>
+			        <% end %>
+			        <% THEREGIONS[16].each do |f|%>
+			                        <% if !(Program.where(:location => f).empty?) %>
+			                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+			            <%end%>
+			        <% end %>
+			        <% THEREGIONS[17].each do |f|%>
+			                        <% if !(Program.where(:location => f).empty?) %>
+			                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+			            <%end%>
+			        <% end %>
+			            </table>
+			                </td>
+			                <td>
+
+			        <table cellpadding="1" style="background-color:#c1dfdb">
+			        <% THEREGIONS[18].each do |f|%>
+			                        <% if !(Program.where(:location => f).empty?) %>
+			                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+			            <%end%>
+			        <% end %>
+			            </table>
+			            </td>
+			        </tr>
+			    </table>
+		</div>
+		<div id="tabs-5">
+			        <table class="OceaniaContent">
+		            <tr style="background-color:#c1dfdb">
+		                <td>
+		        <table cellpadding="1" style="background-color:#c1dfdb; margin-left:50px">
+		        <% THEREGIONS[19].each do |f|%>
+		                                   <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		        <% THEREGIONS[20].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		                <% THEREGIONS[21].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		            </table>
+		                </td>
+		                <td>
+
+		        <table cellpadding="1" style="background-color:#c1dfdb">
+		        <% THEREGIONS[22].each do |f|%>
+		                        <% if !(Program.where(:location => f).empty?) %>
+		                        <tr style="background-color:#c1dfdb"><td><a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a></td></tr>
+		            <%end%>
+		        <% end %>
+		            </table>
+		            </td>
+		        </tr>
+		    </table>
 		</div>
 	</div>
 
-	</div><!-- End demo -->
+
+
+	<div align="center" style="font-family:architectsDaughterRegular; margin-top:60px;color:#e67b5a; margin-bottom:30px; min-width:960px">
+	    Note: if the country you want to visit isn't listed, we have not yet profiled a company with programs there.
+	    </div>
+	</div>
+		<script>
+			$(function() {
+				$( "#tabs" ).tabs();
+			});
+		</script>
 
 </div>
 
