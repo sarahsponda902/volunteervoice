@@ -206,13 +206,13 @@ end
     @program = Program.find(params[:id])
       if (user_signed_in? && current_user.admin?) || organization_account_signed_in?
         @program.program_subjects.each do |f|
-          f.destroy!
+          f.destroy
         end
         @program.program_sizes.each do |f|
-          f.destroy!
+          f.destroy
         end
         @program.program_cost_length_maps.each do |f|
-          f.destroy!
+          f.destroy
         end
         
          @subjects = []
