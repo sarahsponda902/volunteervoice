@@ -188,7 +188,7 @@
       container.append('<div class="pull-out-button"></div>');
       var button = $('.pull-out-button', container)
                      .css('top', '0')
-                     .css('padding', '10px')
+                     .css('padding', '3px')
                      .css('cursor', 'pointer')
                      .css('position', 'absolute')
                      .attr('title', options.buttonTitle)
