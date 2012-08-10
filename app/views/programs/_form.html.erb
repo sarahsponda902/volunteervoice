@@ -139,8 +139,8 @@ function createInput(){
 	removalLink.onclick = function(){
 	    this.parentNode.parentNode.removeChild(this.parentNode)
 	}
-	removalText = document.createTextNode('Remove Field');
-	removalText.style.color = "red";
+	removalText = document.createTextNode('Remove');
+	removalLink.style.color = "red";
 	removalLink.appendChild(removalText);
 	removalLink.style.marginLeft = "75px";
 	li.appendChild(label);
