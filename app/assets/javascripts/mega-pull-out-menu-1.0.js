@@ -195,7 +195,7 @@
                      .css(options.position, width + 'px');
       button.append('<div class="pull-out-button-inner"></div>');
       var buttonInner = $('div', button)
-                          .css('background', 'url(' + options.button + ') no-repeat right 0')
+                          .css('background', 'url(' + options.button + ') no-repeat left 0')
                           .css('width', "60px")
                           .css('height', "30px");
       // hide menu on init
@@ -220,7 +220,7 @@
                                                    .addClass('pull-out-closed')
                                                    .removeClass('pull-out-opened');
                                           });
-            buttonInner.css('background-position', 'right 0');
+            buttonInner.css('background-position', 'left 0');
 
           }
         );
