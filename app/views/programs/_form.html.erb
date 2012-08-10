@@ -137,7 +137,7 @@ function createInput(){
     input2.name = "costs[]";
     input2.type = "number";
 	removalLink.onclick = function(){
-	    this.parentNode.parentNode.removeChild(this.parentNode)
+	    this.parentNode.parentNode.removeChild(this.parentNode);
 	}
 	removalText = document.createTextNode('Remove');
 	removalLink.style.color = "red";
@@ -148,6 +148,7 @@ function createInput(){
 	li.appendChild(br);
 	li.appendChild(br);
 	li.appendChild(label2);
+	li.appendChild(br);
 	li.appendChild(br);
 	li.appendChild(input2);
 	li.appendChild(br);
