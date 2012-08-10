@@ -279,6 +279,8 @@ end
            format.json { render json: @program.errors, status: :unprocessable_entity }
          end 
       end
+   else
+     redirect_to root_path
    end
   end
 
