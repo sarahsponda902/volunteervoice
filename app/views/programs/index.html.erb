@@ -121,12 +121,12 @@
 
             $("#AmericasRow").click(function(){
                 	if ($(".AmericasContent").is(":visible")) {
-					$("#AmericasDiv").style.border = "none";
+					$("#AmericasDiv").css("border", "none");
 	                $(".AmericasContent").hide();
 	                $(".AmericasBackground").hide();
 	                $(".AmericasNoBackground").fadeIn(300);
 				} else {
-					$("#AmericasDiv").style.borderBottom = "1px solid #e67b5a";
+					$("#AmericasDiv").css("border-bottom", "1px solid #e67b5a");
 					$(".AmericasContent").fadeIn(300);
 	                $(".AmericasBackground").fadeIn(300);
 	                $(".AmericasNoBackground").hide();
