@@ -7,26 +7,28 @@
     <% end %>
 	
 	<style>
+	.ui-tabs .ui-tabs-nav {
+	    text-align: center;
+	}
+
+	.ui-tabs .ui-tabs-nav li {
+	    float: none !important;
+	    display: inline-block;
+	}
+	
 	.ui-tabs {
 		font-size:1.2em;
 	}
 	.ui-tabs-nav {
-		float:none;
 		text-align:center;
 	}
 	.ui-tabs-nav li { 
 		width:110px;
-		float: none; 
-		display: inline; 
 	} 
 	.ui-widget {
 		width:70%;
 		margin:auto;
 	}
-	.ui-tabs-nav li a { 
-		float: none; 
-	}​
-	
 	</style>
 	<%= stylesheet_link_tag "/assets/jquery-ui-1.8.22.custom.css"%>
 	<%= javascript_include_tag "/assets/jquery.js"%>
