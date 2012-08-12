@@ -37,7 +37,8 @@
 	<div class="row">
 	<p style="text-align:center; margin-top:40px">
     <%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/whereGo.png"%></p>
-</div>
+	<p style="margin-top:20px; font-family:architectsDaughterRegular; font-size:1.3em; color: #575758; display:none" id="android-message">Our map does not work on the native android browser. Sorry!</p>
+	</div>
 </div>
     <!-- MAP!!!!! -->
 
@@ -292,6 +293,14 @@
 		<script>
 			$(function() {
 				$( "#tabs" ).tabs();
+			});
+			
+			$(document).ready(function() {
+					var ua = navigator.userAgent.toLowerCase();
+					var isAndroid = ua.indexOf("android") > -1;
+					if (isAndroid) {
+						$("#android-message").show();
+					}
 			});
 		</script>
 
