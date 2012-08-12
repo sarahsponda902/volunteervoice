@@ -216,7 +216,9 @@ font-family: Tahoma, Geneva, sans-serif;
 font-size:13px;
 color: #000000;
 line-height:1.25em;
-width:100%}
+width:100%;
+margin-left:0px;
+margin-top:0px}
 
 .container {min-width:970px}
 
