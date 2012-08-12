@@ -729,7 +729,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 		<div id="addPhotos-box" class="addPhotos-popup" style="text-align:left">
 			<a href="#" class="close"><div class="close_image" onclick="closePop(); changeCount()"></div></a>
 			<p style="font-size:1.6em; text-align:center;margin-top:15px; margin-bottom:20px">Add Photos <font style="font-size:.5em; font-family:architectsDaughterRegular">(max: 512KB)</font></p>
-			<div class="overflow">
+			<div class="overflow" style="height:250px; overflow:auto">
 		<%= f.file_field :photo, :id => "one" %> <a onclick="$('#one').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo2, :id => "two"  %><a onclick="$('#two').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
 		<%= f.file_field :photo3, :id => "three"  %><a onclick="$('#three').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
