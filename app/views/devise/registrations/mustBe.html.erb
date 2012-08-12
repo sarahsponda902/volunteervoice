@@ -89,7 +89,7 @@ function submitForm() {
 	<div class="row">
 				<p style="font-family:ArchitectsDaughterRegular; font-size:3em; color:#e67b5a; text-align:center; margin-top:50px">You have to be logged in for that!</p>
 	
-	<div class="five columns" style="text-align:left; margin-top:90px;">
+	<div class="six columns" style="text-align:left; margin-top:90px; width:45%">
 		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
 		<%= form_for("user", :url => user_session_path) do |f| %>
 			<%= f.hidden_field :return_link, :value => @link%>
@@ -109,7 +109,7 @@ function submitForm() {
 	</div>
 	
 	
-	<div class="six columns" style=" text-align:left; margin-top:90px; border-left:1px solid #e67b5a; float:left; color:#575758">
+	<div class="six columns" style=" text-align:left; margin-top:90px; border-left:1px solid #e67b5a; float:left; color:#575758; width:45%">
 		
 
 		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd; margin-top:-2px">Register</p>
