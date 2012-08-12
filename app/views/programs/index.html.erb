@@ -247,7 +247,7 @@
 		</ul>
 		<div id="tabs-1">
 			<% @americas.each do |f|%> 
-				<%= f%><br />
+				<a href="/searches/<%=f.key%>/create"><%= f.value %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-2">
