@@ -22,7 +22,11 @@ include SimpleCaptcha::ControllerHelpers
        if URI(request.referrer).path == '/reviews/new'
          '/'
        else
-         request.referrer
+         if URI(request.referrer).path == '/users/profile'
+           '/'
+         else
+           request.referrer
+         end
        end
     end
    end
