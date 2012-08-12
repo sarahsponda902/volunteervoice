@@ -89,7 +89,7 @@ function submitForm() {
 	<div class="row">
 				<p style="font-family:ArchitectsDaughterRegular; font-size:3em; color:#e67b5a; text-align:center; margin-top:50px">You have to be logged in for that!</p>
 	
-	<div class="six columns" style="text-align:left; margin-top:90px;">
+	<div class="five columns" style="text-align:left; margin-top:90px;">
 		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
 		<%= form_for("user", :url => user_session_path) do |f| %>
 			<%= f.hidden_field :return_link, :value => @link%>
@@ -322,12 +322,12 @@ function submitForm() {
 				<image style="position:absolute; left:14.7%; top:68.6%; z-index:9; height:25px" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:69.5%; left:15%; width:100%">
 		<%= f.check_box :volunteered_before, :onclick => "$(volunteeredCheckNoToggle())", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:15px;width:15px" %>
-		<label style="margin-left:6.5%; margin-top:-25px">Click here if you've volunteered abroad before.<br /> We're just curious.</label></div>
+		<label style="margin-left:6.5%; margin-top:-25px; font-size:0.6em">Click here if you've volunteered abroad before.<br /> We're just curious.</label></div>
 		
 				<image style="position:absolute; height:25px; left:14.7%; top:73.6%; z-index:9" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:74.5%; left:15%;">
 		<%= f.check_box :notify, :onclick => "$(beforeCheckNoToggle())", :style => "display:block; opacity:0; filter: alpha(opacity=0);height:20px;height:20px"%>
-		<label style="margin-left:8%; margin-top:-30px; margin-right:8%" for="user_Yes ofcourse! Notify me of VolunteerVoice's awesome updates and changes">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
+		<label style="margin-left:8%; margin-top:-30px; margin-right:8%; font-size:0.6em" for="user_notify">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
 
 		<br />
 		<p  style="margin-top:110px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Verify</label></p>
