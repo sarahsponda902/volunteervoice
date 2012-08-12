@@ -266,7 +266,7 @@ $(document).ready(function() {
 	for (count = 0; count < allTheLocations.length; count++)
 	{
 		if ($("#"+allTheLocations[count]).is(":visible")) {
-			if (jQuery.inArray(allTheLocations[count], search_regions) != -1)
+			if (jQuery.inArray(allTheLocations[count], search_regions) == -1)
 			{
 				isAllLocations = false;
 			}
