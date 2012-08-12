@@ -112,9 +112,9 @@
 			<div class="four columns" style="float:right" id="orgLogin">
 			<div class="row" align="right" style="color:white;">
 					<ul>
-						<li style="height:50px;"><p style="margin-right:-74px; padding-right:1px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png"></p> 
+						<li style="height:50px;"><p style="margin-right:-74px; padding-right:1px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
 							<div style="margin-right:-1px">
-								<ul style="width:170px;">
+								<ul style="width:170px;" id="drop_org">
 									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
 									<li><a href="#request-box" class="request-window">Make a Profile</a></li>
 								</ul>
@@ -587,6 +587,13 @@
 			$("#drop_signed_out").css("display", "block");
 		}
 		<% end %>
+	}
+	function show_org_drop() {
+		if ($("#drop_org").css("display") == "block") {
+			$("#drop_org").css("display", "none");
+		} else {
+			$("#drop_org").css("display", "block");
+		}
 	}
 	</script>
 
