@@ -21,6 +21,13 @@
 		width:70%;
 		margin:auto;
 	}
+	
+	a.country-name{
+		color:#575758;
+	}
+	a.country-name:hover{
+		color:white;
+	}
 	</style>
 	<%= stylesheet_link_tag "/assets/jquery-ui-1.8.22.custom.css"%>
 	<%= javascript_include_tag "/assets/jquery.js"%>
@@ -251,27 +258,27 @@
 		</ul>
 		<div id="tabs-1">
 			<% @americas.each do |f|%> 
-				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
+				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-2">
 			<% @europe.each do |f|%> 
-				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
+				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-3">
 			<% @africa.each do |f|%> 
-				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
+				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-4">
 			<% @asia.each do |f|%> 
-				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
+				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-5">
 		      <% @oceania.each do |f|%> 
-				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
+				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 	</div> <!-- END TABS -->
