@@ -215,7 +215,8 @@ body {background:#E3E6D5;
 font-family: Tahoma, Geneva, sans-serif;
 font-size:13px;
 color: #000000;
-line-height:1.25em;}
+line-height:1.25em;
+width:100%}
 
 .container {min-width:970px}
 
