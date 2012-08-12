@@ -468,10 +468,16 @@ window.onscroll = function() {
 			});
 
 			// When clicking on the button close or the mask layer the popup closed
-			$('a.close', '#mask').live('click', function() { 
+			$('#mask').live('click', function() { 
 			  $('#mask').fadeOut(300);
 			  $('#login-box').fadeOut(300);
-			  $('#mask').remove();  
+			  $('#mask').remove();
+			  return false;
+			});
+			$('a.close').live('click', function() { 
+			  $('#mask').fadeOut(300);
+			  $('#login-box').fadeOut(300);
+			  $('#mask').remove(); 
 			  return false;
 			});
 			
@@ -500,10 +506,16 @@ window.onscroll = function() {
 			});
 
 			// When clicking on the button close or the mask layer the popup closed
-			$('a.close', '#mask').live('click', function() { 
+			$('#mask').live('click', function() { 
 			  $('#mask').fadeOut(300);
-			  $('#request-box').fadeOut(300);
-			  $('#mask').remove();  
+			  $('#login-box').fadeOut(300);
+			  $('#mask').remove();
+			  return false;
+			});
+			$('a.close').live('click', function() { 
+			  $('#mask').fadeOut(300);
+			  $('#login-box').fadeOut(300);
+			  $('#mask').remove(); 
 			  return false;
 			});
 			
@@ -536,6 +548,12 @@ window.onscroll = function() {
 			  $('#mask').fadeOut(300);
 			  $('#org-login-box').fadeOut(300);
 			  $('#mask').remove();  
+			  return false;
+			});
+			$('a.close').live('click', function() { 
+			  $('#mask').fadeOut(300);
+			  $('#login-box').fadeOut(300);
+			  $('#mask').remove(); 
 			  return false;
 			});
 			
