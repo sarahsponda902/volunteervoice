@@ -575,9 +575,17 @@
 	}
 	function show_menu() {
 		<% if user_signed_in? || organization_account_signed_in? %>
-		$("#drop_signed_in").css("display", "block");
+		if ($("#drop_signed_in").css("display") == "block") {
+			$("#drop_signed_in").css("display", "none");
+		} else {
+			$("#drop_signed_in").css("display", "block");
+		}
 		<% else %>
-		$("#drop_signed_out").css("display", "block");
+		if ($("#drop_signed_out").css("display") == "block") {
+			$("#drop_signed_out").css("display", "none");
+		} else {
+			$("#drop_signed_out").css("display", "block");
+		}
 		<% end %>
 	}
 	</script>
