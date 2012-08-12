@@ -15,10 +15,6 @@ gem 'jquery-rails'
 
 gem 'best_in_place'
 
-gem 'omniauth-google'
-
-gem 'google_drive'
-
 gem 'mad_mimi_mailer'
 
 gem 'delayed_job_active_record'

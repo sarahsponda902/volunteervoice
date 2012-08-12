@@ -200,7 +200,11 @@
 		<%@asia[f] = THECOUNTRIES[f]%>
 	<% end %>
 <% end %>
-
+<% THEREGIONS[18].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@asia[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
 
 
 
