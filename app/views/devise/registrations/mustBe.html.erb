@@ -322,12 +322,12 @@ function submitForm() {
 				<image style="position:absolute; left:14.7%; top:68.6%; z-index:9; height:25px" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:69.5%; left:15%;">
 		<%= f.check_box :volunteered_before, :onclick => "$(volunteeredCheckNoToggle())", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:15px;width:15px" %>
-		<label for="user_volunteered_before" style="margin-left:6.5%; font-size:0.7em; margin-top:-20px;">Click here if you've volunteered abroad before.<br /> We're just curious.</label></div>
+		<label for="user_volunteered_before" style="margin-left:6.5%; font-size:0.85em; margin-top:-20px;">Click here if you've volunteered abroad before.<br /> We're just curious.</label></div>
 		
 				<image style="position:absolute; height:25px; left:14.7%; top:73.6%; z-index:9" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck())">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:74.5%; left:15%;">
 		<%= f.check_box :notify, :onclick => "$(beforeCheckNoToggle())", :style => "display:block; opacity:0; filter: alpha(opacity=0);height:20px;height:20px"%>
-		<label style="margin-left:8%; margin-top:-30px; margin-right:8%; font-size:0.7em" for="user_notify">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
+		<label style="margin-left:8%; margin-top:-30px; margin-right:8%; font-size:0.85em" for="user_notify">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
 
 		<br />
 		<p  style="margin-top:110px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Verify</label></p>
