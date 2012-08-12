@@ -379,7 +379,7 @@ function setMessageSubject(subject) {
 
     <div id="wrapper" style="width:100%;">
         <div style="height: 30.4px;">
-            <ul class="tab" style="margin-left:15px; margin-top:-20px; margin-bottom:0;">
+            <ul class="tab" style="margin-left:15px; margin-top:-20px; margin-bottom:0;" id="tabs">
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="3">My Reviews</li>
 				<li style="font-family:architectsDaughterRegular; font-size:1.4em;"  id="2">My Favorites</li>
 				<% if current_user.unread_messages == 0 %>
@@ -1086,7 +1086,15 @@ $(document).ready(function() {
 			
 			if ( $.browser.mozilla == true ) {
 				$("#account-right-column").css("margin-top", "-295px");
-			}	
+			}
+			
+				$(document).ready(function() {
+						var ua = navigator.userAgent.toLowerCase();
+						var isAndroid = ua.indexOf("android") > -1;
+						if (isAndroid) {
+							$("#tabs").css("margin-left", "-15px");
+						}
+				});	
 
 });
 
