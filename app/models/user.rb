@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :message => "is already in use"
   validates_presence_of :username, :dob
   validates_length_of :username, :maximum => 30
-  validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
   before_save :square_image_crop 
   before_save :validate_photo_width 
   before_create :validate_email
