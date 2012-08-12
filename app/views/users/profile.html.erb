@@ -497,9 +497,9 @@ function setMessageSubject(subject) {
 			
 			<div id="upload-box" class="upload-popup">
 			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
-				  <div style=" display:block;"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" style="height:40px;margin-top:15px; margin-left:20px; cursor:pointer" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" style="height:25px; width:280px; position:relative; top:-15px; left:25px; background:none; border:none" disabled="true" value="no file selected">
+				  <div class="nine columns" style=" display:block;"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" style="height:40px;margin-top:15px; margin-left:20px; cursor:pointer" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" style="height:25px; width:280px; position:relative; top:-15px; left:25px; background:none; border:none" disabled="true" value="no file selected">
 					  <%= f.hidden_field :crops, :value => true%>
-					  <%= f.file_field :photo, :id => "user_photo", :style => "visibility:hidden", :onchange => "$(nameFile())"%></div>
+					  <%= f.file_field :photo, :id => "user_photo", :style => "display:none", :onchange => "$(nameFile())"%></div>
 				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :height => "40px", :style => "border-radius:10px; float:right; margin-right:20px; margin-top:-50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 				<% end %>
 
