@@ -537,7 +537,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 	<div class="eleven columns">
 	   <%= f.text_area :body, :style => "width:400px; font-style:italic; margin-left:11%; height:150px; resize:none; color:gray; border: 1px solid #575758", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @review.body; end), :class => "word_count"%>
 	<span style="float:right" class="counter"></span><br />
-	</div>
+
 						<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:30px; font-size:1.3em; background:none; border:none;" value="0"/> photos attached</div></div>
 						
 						<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/addPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:140px">No photos attached</div></div>
@@ -570,7 +570,7 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have read the terms of use">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label></div><br /><br />
 		<%end%>
 		
-		
+	</div>
 	</section><!--end writeReviewContent-->
 
 
