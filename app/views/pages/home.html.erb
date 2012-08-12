@@ -227,6 +227,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
 <div id="feedback-box" class="feedback-popup" style="padding:10px">
 <p style="text-align:center; margin-top:10px; margin-bottom:10px; font-family:museoSlab500Regular; font-size:2em; color:#575758">Feedback</p>
 <%= form_for(@feedback) do |f| %>
+<a href="#" class="close"><img style="margin-top:-20px; margin-right:0px" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/close_pop.png"></a>
   <div class="field">
 	<%if user_signed_in?%>
     <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -244,8 +245,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
   <div class="actions">
     <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png"%></p>
   </div>
-<% end %>
-<a href="#" class="close">close</a>	
+<% end %>	
 </div>
 	
 	
