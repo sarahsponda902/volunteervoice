@@ -231,7 +231,7 @@ a.lightBlue:hover {color: #e67b5a;}
 .orange {color: #e67b5a;}
 a.orange:hover {color: #62acbd; }
 
-a.close { float:right; margin:-25px -25px 0 0; height:30px }
+a.close { float:right; margin:-15px -15px 0 0; height:30px }
 div.close_image { background:url(/assets/error.png) no-repeat; height:30px; width:30px }
 	
 .pageWrap{}

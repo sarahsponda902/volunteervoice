@@ -18,6 +18,7 @@
 </table>
 
 <table id="message-box<%=m.id%>" class="m-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
 	<tr style="background-color:#E9ECE9"><td>
 		<font style="font-size:1.4em; color:#575758; line-height:2em;">From: 
 		<% if @user_ids.include?(m.sender_id)%>	

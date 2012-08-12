@@ -496,6 +496,7 @@ function setMessageSubject(subject) {
 			
 			
 			<div id="upload-box" class="upload-popup">
+				<a href="#" class="close"><div class="close_image"></div></a>
 				<p style="text-align:center; font-family:architectsDaughterRegular; color:#575758">Max photo width: 700 pixels</p>
 			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
 				  <div style=" display:block;"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" style="height:40px;margin-top:15px; margin-left:20px; cursor:pointer" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" style="height:25px; width:150px; position:relative; top:-15px; left:25px; background:none; border:none" disabled="true" value="no file selected">
@@ -506,6 +507,7 @@ function setMessageSubject(subject) {
 
 			</div>
 			<div id="edit-box" class="edit-popup">
+				<a href="#" class="close"><div class="close_image"></div></a>
 				<p style="font-size:2em; font-family:chunkFiveRegular; line-height:1.5em;" align="center">My Account</p>
 				<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
 				<div class="six columns" style="width:300px">

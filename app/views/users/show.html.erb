@@ -428,6 +428,7 @@ function beforeCheck() {
 
 
 <div id="popup-box" class="popup-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
 	<% if @user.messages_show == false %>
 	<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
 
@@ -459,6 +460,7 @@ function beforeCheck() {
 </div>
 
 <div id="flag-box" class="flag-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
 	<% if user_signed_in? %>
   	<%= form_for @flag do |g| %>
 
