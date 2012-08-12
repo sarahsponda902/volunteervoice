@@ -37,7 +37,7 @@ $(function() {
 		source: availableTags,
 		select: function(event, ui) {
 			for (i = 0; i < orgNames.length; i++) {
-				if (orgNames[i] == ui.item) {
+				if (orgNames[i] == ui.item.value) {
 					$("#review_program_id").append("<option value='"+allProgs[i]+"'>"+allProgNames[i]+"</option>");
 				}
 			}
