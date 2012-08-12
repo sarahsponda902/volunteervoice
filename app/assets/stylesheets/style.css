@@ -219,7 +219,8 @@ line-height:1.25em;}
 
 .container {min-width:970px}
 
-p {}
+	
+option{ padding-top:5px; padding-left:5px}
 
 h2 {font-family:'ChunkFiveRegular', Georgia, "Times New Roman", serif;}
 
