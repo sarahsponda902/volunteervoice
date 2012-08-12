@@ -23,7 +23,7 @@
 		<td ><p align="right" style="margin-top:-5px; margin-right:10px"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
 </tr>
 <tr style="background-color:#E0EEEE;">
-	<td colspan="3"><p style="margin-left:10px; font-size:1.05em;margin-top:-10px;height:100px; width:96.5%; margin-left:2%; overflow:auto"><%= f.body.gsub("</p>", "<br />").gsub("<p>", "").html_safe %>
+	<td colspan="3"><p id="review-pannel" style="margin-left:10px; font-size:1.05em;margin-top:-10px;height:100px; width:96.5%; margin-left:2%; overflow:auto"><%= f.body.gsub("</p>", "<br />").gsub("<p>", "").html_safe %>
 		<% if !(user_signed_in? && current_user.id == @user.id)%>
 		<a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#poster_id').val(<%=f.user_id%>); $('#review_id').val(<%=f.id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %></a>
 		<% end %>
