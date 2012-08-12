@@ -36,9 +36,8 @@ $(function() {
 	$( "#tags" ).autocomplete({
 		source: availableTags,
 		select: function(event, ui) {
-			$("#review_program_id").append("<option value=''>Select a Program </option>");
 			for (i = 0; i < orgNames.length; i++) {
-				if (orgNames[i] == $("#tags").attr("value")) {
+				if (orgNames[i] == ui.item) {
 					$("#review_program_id").append("<option value='"+allProgs[i]+"'>"+allProgNames[i]+"</option>");
 				}
 			}
