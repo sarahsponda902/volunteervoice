@@ -32,9 +32,9 @@
 <script type="text/javascript">
 window.onscroll = function() {
   document.getElementById('mask').style.top =
-     ($(window).scrollTop() / 2) + 'px';
+     ($(window).scrollTop() - window.innerHeight) + 'px';
   document.getElementById('login-box').style.top =
-	 ($(window).scrollTop() + (window.innerHeight / 4)) + 'px';
+	 ($(window).scrollTop() - (window.innerHeight / 2)) + 'px';
 };
 </script>		
 		
