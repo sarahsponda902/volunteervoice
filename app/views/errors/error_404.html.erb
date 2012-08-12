@@ -148,6 +148,7 @@ a.contact-window:hover{color:#9bce6c}
 </div>
 
 <div id="contact-box" class="contact-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
 	<p style=" font-family:museoSlab500Regular; font-size:3em; color:#68c2d8; line-height:2em;text-align:center">Contact Us</p>
 	<% @contact = Contact.new %>
 		<%= form_for(@contact) do |f| %>
