@@ -310,6 +310,7 @@ $(document).ready(function () {
 	</div>	
 	<div class="price-ranges-popup" id="price-ranges-box" style="align:center">
 		<a href="#" class="close"><div class="close_image"></div></a>
+		<div class="overflow">
 		<% if (ProgramCostLengthMap.where(:organization_id => @organization.id).empty?)%>	
 		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758; margin-top:-15px">Information not disclosed</p>
 		<p style="font-family:museoSlab500Regular;  font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
@@ -334,6 +335,7 @@ $(document).ready(function () {
 		</table>
 		<% end %>
     </div>
+</div>
 </div>
 </div>
 	<div class="info-popup" id="info-box">
@@ -422,8 +424,7 @@ $(document).ready(function () {
 	display:none;
 	background: #E9ECE9;
 	padding: 10px;
-	max-height: 300px;
-	overflow:auto; 	
+	max-height: 300px; 	
 	border: 2px solid #ddd;
 	float: left;
 	color: black;

@@ -393,8 +393,8 @@ $(function() {
 <div id="rules-box" class="rules-popup">
 	<a href="#" class="close"><div class="close_image"></div></a>
 	<b><p style="font-size:2em; text-align:center; font-family:museoSlab500Regular; font-weight:600">Required Pricing Protocol</p></b>
-
 	<br /><br /><br />
+	<div class="overflow">
 	<p style="color:#6aaeba; text-align:center; font-size:1.4em;">For Volunteer Placement Organizations (VPO’s):</p><br />
 	<br />
 	<font style="font-size:1.05em">→ YOU MUST INCLUDE ALL ADDITIONAL FEES IN YOUR OVERALL PROGRAM COSTS.</font><br />
@@ -415,9 +415,10 @@ $(function() {
 	</ol> <br />
 	<br />
 </div>
-
+</div>
 <div id="subjects-box" class="subjects-popup">
 	<a href="#" class="close"><div class="close_image"></div></a>
+	<div class="overflow">
 	<div class="six columns">
 	<font style="font-size:1.2em;"> Agriculture</font><br />
 	&nbsp;&nbsp;&nbsp;&nbsp;      Organic Farming<br />
@@ -479,6 +480,7 @@ $(function() {
 	&nbsp;&nbsp;&nbsp;&nbsp;      Media Marketing and Graphic Design<br />
   </div>
 </div>
+</div>
 
 
 <style>
@@ -495,9 +497,8 @@ input[type="text"] {
 	display:none;
 	background: #D9DEDA;
 	padding: 20px;
-	height:400px; 
-	width:600px;
-	overflow:auto;	
+	height:300px; 
+	width:600px;	
 	border: 3px solid #68c2d8;
 	float: left;
 	color:#575758;
@@ -523,6 +524,7 @@ input[type="text"] {
 	color: #575758;
 	position: fixed;
 	width: 600px;
+	max-height:300px;
 	top: 50%; left: 50%;
 	z-index: 99999;
 	box-shadow: 0px 0px 20px #999; /* CSS3 */
