@@ -12,8 +12,8 @@
 </div>
 
 <div class="container" style="color:#575758">
-	<div class="row" style="text-align:center">
-					<div id="edit-box" class="six columns" style="margin:auto; margin-top:50px; width:700px; text-align:left">
+	<div class="row">
+					<div id="edit-box" class="six columns" style="margin:auto; margin-top:50px; width:700px;float:center">
 						<p style="font-size:3em; font-family:museoSlab500Regular; line-height:1.5em; margin-bottom:20px" align="center">My Account</p>
 						<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
 						<div class="six columns" style="width:300px">
