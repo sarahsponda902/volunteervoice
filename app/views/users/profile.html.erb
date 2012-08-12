@@ -537,7 +537,7 @@ function setMessageSubject(subject) {
 				
 								<p style="margin-top:-30px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
 				</div>
-				<div class="five columns" style="margin-left:300px; margin-top:-290px; padding-left:30px; width:250px">
+				<div class="five columns" id="account-right-column" style="margin-left:300px; margin-top:-290px; padding-left:30px; width:250px">
 					
 					<p style="margin:10px; font-family:architectsDaughterRegular; font-size:1.3em">My Password</p>
 
@@ -1079,7 +1079,10 @@ $(document).ready(function() {
 	}); 
 	return false;
 	});
-	
+			
+			if ( $.browser.mozilla == true ) {
+				$("#account-right-column").css("margin-top", "-300px");
+			}	
 
 });
 
