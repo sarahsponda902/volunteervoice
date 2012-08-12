@@ -541,34 +541,18 @@ var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", 
 						<div style="margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:30px; font-size:1.3em; background:none; border:none;" value="0"/> photos attached</div></div>
 						
 						<div style="margin-top:10px; margin-bottom:30px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/addPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:140px">No photos attached</div></div>
-		
-		<% if !(params[:before].nil?)%>
-		<br />
-		<br />
-		Volunteered with this company before? <font style="font-size:2em;"><%= params[:before]%></font>
-		<br />
-
-		<% else %>
 	
-		<image style="position:absolute; top:83.7%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
+		<image style="position:absolute; top:73.7%; height:23px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
 		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat;" onclick="$(beforeCheck())">
 		<%= f.check_box :before, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:25px; width:25px;", :id => "before"%>
 		<label style=" margin-left:8%; margin-top:-29px" for="review_I have volunteered with this company before">I have volunteered with this company before</label><br /><br /><br /></div>
-		
-		<%end%>
 
 
-		<% if !(params[:terms].nil?)%>
-		<br />
-		Checked terms of use?<font style="font-size:2em"> <%= params[:terms]%></font>
-		<% else %>
-		
-		
-		<image style="position:absolute; height:23px; top:89.2%;" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
+		<image style="position:absolute; height:23px; top:79.2%;" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
 			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; height:25px; margin-top:-45px;" onclick="$(termsCheck());">
 		<%= f.check_box :terms, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:25px; width:25px", :id => "terms"%>
 		<label style="margin-left:8%; margin-top:-25px" for="review_I have read the terms of use">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label></div><br /><br />
-		<%end%>
+
 		
 	</div>
 	</section><!--end writeReviewContent-->
