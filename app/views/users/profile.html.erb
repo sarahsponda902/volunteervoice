@@ -335,7 +335,7 @@ function setMessageSubject(subject) {
 				</div>
 			</div>
 			<div class="row" style="margin-top:40px">
-				<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden">
+				<div class="three columns" style="float:left; height:180px; width:180px; overflow:hidden; margin-left:20px">
 					<% if !(@user.photo.url.nil?)%>
 				<%=image_tag @user.square_image.url, :style => "height:168px; width:168px"%>
 					<% else %>
