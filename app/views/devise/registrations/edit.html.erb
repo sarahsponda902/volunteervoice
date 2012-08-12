@@ -12,8 +12,8 @@
 </div>
 
 <div class="container" style="color:#575758">
-	<div class="row" style="text-align:center">
-					<div id="edit-box" class="six columns" style="margin: 0 auto; margin-top:50px; width:700px;float:center; position:relative">
+	<div class="row" style="margin-top:50px">
+					<div id="edit-box" class="six columns" style="margin: 0 auto;width:700px;position:relative">
 						<p style="font-size:3em; font-family:museoSlab500Regular; line-height:1.5em; margin-bottom:20px" align="center">My Account</p>
 						<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
 						<div class="six columns" style="width:225px; margin-left:95px; padding-right:0px">
@@ -60,8 +60,8 @@
 					</div>
 				</div>
 			</div>
-				<div class="row" style="text-align:center">
-					<div class="six columns" style="margin:0 auto; margin-top:50px; width:700px;float:center; position:relative">
+				<div class="row" style="margin-top:50px">
+					<div class="six columns" style="margin:0 auto; width:700px; position:relative">
 					<div class="six columns" style="width:225px; margin-left:95px; font-family:architectsDaughterRegular; font-size:1.3em; text-align:left; padding-right:0px">My Profile Pic:</div>
 					<div id="upload-box" class="five columns" style="width:300px">
 						  <div style=" display:block;"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" style="height:40px;margin-top:-10px; cursor:pointer" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" style="height:25px; width:100px; position:relative; top:-15px; left:25px; background:none; border:none" disabled="true" value="no file selected">
