@@ -317,7 +317,7 @@ a:hover{color:white; background:none}
 #orgLogin li:hover ul{visibility:visible; display:block; opacity:.9; filter: alpha(opacity=90); transition:opacity 0.2s linear; -moz-transition:opacity 0.2s linear; -webkit-transition:opacity 0.2s linear; -o-transition:opacity 0.2s linear; z-index:5; }
 
 #orgLogin li ul{position:absolute; top:35px;width:164px; height:30px; text-align:center; visibility:hidden; opacity:0; font-size:1.2em; display:block; z-index:5; padding:0px; padding-bottom:10px;
- background-color:#c4826e;}
+ background-color:#c4826e; line-height:1.2em;}
 #orgLogin li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
 
 
