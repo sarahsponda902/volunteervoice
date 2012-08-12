@@ -230,6 +230,9 @@ h4 {font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif; font-s
 a.lightBlue:hover {color: #e67b5a;}
 .orange {color: #e67b5a;}
 a.orange:hover {color: #62acbd; }
+
+a.close { float:right; margin:-30px -30px 0 0; height:30px }
+a.close .close_image { background:url(/assets/error.png) }
 	
 .pageWrap{}
 
