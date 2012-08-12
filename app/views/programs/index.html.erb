@@ -100,7 +100,140 @@
 
 <br />
 <br />
+<% @americas = Hash.new%>
+<% THEREGIONS[10].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@americas[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[11].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@americas[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[12].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@americas[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[13].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@americas[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
 
+
+
+<% @europe = Hash.new %>
+<% THEREGIONS[6].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@europe[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[7].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@europe[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[8].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@europe[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[9].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@europe[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+
+
+
+
+<% @africa = Hash.new %>
+<% THEREGIONS[1].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@africa[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[2].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@africa[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[3].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@africa[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[4].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@africa[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[5].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@africa[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+
+
+
+
+<% @asia = Hash.new %>
+<% THEREGIONS[14].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@asia[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[15].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@asia[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[16].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@asia[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[17].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@asia[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+
+
+
+
+
+<% @oceania = Hash.new %>
+<% THEREGIONS[19].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@oceania[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[20].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@oceania[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[21].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@oceania[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+<% THEREGIONS[22].each do |f|%>
+	<% if !(Program.where(:location => f).empty?) %>
+		<%@oceania[f] = THECOUNTRIES[f]%>
+	<% end %>
+<% end %>
+
+
+
+<% @americas = @americas.sort_by { |country| country.value } %>
+<% @europe = @europe.sort_by { |country| country.value } %>
+<% @africa = @africa.sort_by { |country| country.value } %>
+<% @asia = @asia.sort_by { |country| country.value } %>
+<% @oceania = @oceania.sort_by { |country| country.value } %>
 
 
     <div class="container">
@@ -113,147 +246,29 @@
 			<li><a href="#tabs-5">Oceania</a></li>
 		</ul>
 		<div id="tabs-1">
-			        <div class="six columns" style="width:45%">
-			        <% THEREGIONS[10].each do |f|%>
-			                        <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-			        <% THEREGIONS[11].each do |f|%>
-			                        <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-					</div>
-					<div class="six columns" style="width:45%">
-			        <% THEREGIONS[12].each do |f|%>
-			                        <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-			        <% THEREGIONS[13].each do |f|%>
-			                        <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-					</div>
+			<% @americas.each do |f|%> 
+				<%= f%><br />
+			<% end %>
 		</div>
-		
-		
-		
 		<div id="tabs-2">
-			<div class="six columns" style="width:45%">
-		        <% THEREGIONS[6].each do |f|%>
-		                                    <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		        <% THEREGIONS[7].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		     </div>
-			<div class="six columns" style="width:45%">
-		        <% THEREGIONS[8].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		        <% THEREGIONS[9].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		           </div>
+			<% @europe.each do |f|%> 
+				<%= f%><br />
+			<% end %>
 		</div>
 		<div id="tabs-3">
-			<div class="six columns" style="width:45%">			    
-		        <% THEREGIONS[1].each do |f|%>
-		            <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		        <% THEREGIONS[2].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		        <% THEREGIONS[3].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		        </div>
-				<div class="six columns" style="width:45%">
-		        <% THEREGIONS[4].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		        <% THEREGIONS[5].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		       </div>
+			<% @africa.each do |f|%> 
+				<%= f%><br />
+			<% end %>
 		</div>
 		<div id="tabs-4">
-			<div class="six columns" style="width:45%">
-			        <% THEREGIONS[14].each do |f|%>
-			                                   <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-			        <% THEREGIONS[15].each do |f|%>
-			                        <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-			        <% THEREGIONS[16].each do |f|%>
-			                        <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-			        <% THEREGIONS[17].each do |f|%>
-			                        <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-			        </div>
-					<div class="six columns" style="width:45%">
-			        <% THEREGIONS[18].each do |f|%>
-			                        <% if !(Program.where(:location => f).empty?) %>
-			                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-			            <%end%>
-			        <% end %>
-			       </div>
+			<% @asia.each do |f|%> 
+				<%= f%><br />
+			<% end %>
 		</div>
 		<div id="tabs-5">
-		      <div class="six columns" style="width:45%">
-		        <% THEREGIONS[19].each do |f|%>
-		                                   <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		        <% THEREGIONS[20].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		                <% THEREGIONS[21].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-				</div>
-				<div class="six columns" style="width:45%">
-		        <% THEREGIONS[22].each do |f|%>
-		                        <% if !(Program.where(:location => f).empty?) %>
-		                        <a style="font-size:1.2em" href="/searches/<%=f%>/create"><%=THECOUNTRIES[f]%></a><br>
-		            <%end%>
-		        <% end %>
-		    </div>
+		      <% @oceania.each do |f|%> 
+				<%= f%><br />
+			<% end %>
 		</div>
 	</div> <!-- END TABS -->
 
