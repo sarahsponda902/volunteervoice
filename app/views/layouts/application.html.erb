@@ -14,7 +14,10 @@
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
 
 <meta charset="utf-8">
 
@@ -453,7 +456,7 @@
 				});
 
 				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
+				$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);" data-position="fixed" data-fullscreen="true"></div>');
 				$('#mask').fadeIn(300);
 
 				return false;
