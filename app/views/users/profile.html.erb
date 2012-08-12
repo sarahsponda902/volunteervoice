@@ -496,7 +496,7 @@ function setMessageSubject(subject) {
 			
 			
 			<div id="upload-box" class="upload-popup">
-				<p style="text-align:center; font-family:architectsDaughterRegular; color:#575758">Max photo width: 700px</p><br />
+				<p style="text-align:center; font-family:architectsDaughterRegular; color:#575758">Max photo width: 700 pixels</p>
 			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
 				  <div style=" display:block;"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" style="height:40px;margin-top:15px; margin-left:20px; cursor:pointer" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" style="height:25px; width:150px; position:relative; top:-15px; left:25px; background:none; border:none" disabled="true" value="no file selected">
 					  <%= f.hidden_field :crops, :value => true%>
