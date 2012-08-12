@@ -111,7 +111,7 @@
 			<div class="four columns" style="float:right" id="orgLogin">
 			<div class="row" align="right" style="color:white;">
 					<ul>
-						<li style="height:50px;"><p style="padding-right:1px"><img style="position:absolute; top:0px" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
+						<li style="height:50px;"><p id="orgLogin-image" style="padding-right:1px; margin-left:-74px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
 							<div style="margin-right:-1px">
 								<ul style="width:170px;" id="drop_org">
 									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
@@ -550,6 +550,14 @@
 			
 			if ( $.browser.mozilla == true ) {
 				$("#request-right-column").css("margin-top", "-333px");
+			}
+			
+			var ua = navigator.userAgent.toLowerCase();
+			var isAndroid = ua.indexOf("android") > -1;
+			if (isAndroid) {
+				$("#orgLogin-image").css("margin-top", "-20px");
+				$("#drop-signed-in").css("margin-top", "200px");
+				$("#drop-signed-out").css("margin-top", "210px")
 			}
 		});
 	</script>
