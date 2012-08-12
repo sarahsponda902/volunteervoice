@@ -229,11 +229,11 @@
 
 
 
-<% @americas = @americas.sort_by { |country| country.value } %>
-<% @europe = @europe.sort_by { |country| country.value } %>
-<% @africa = @africa.sort_by { |country| country.value } %>
-<% @asia = @asia.sort_by { |country| country.value } %>
-<% @oceania = @oceania.sort_by { |country| country.value } %>
+<% @americas = @americas.sort_by { |country| country[1] } %>
+<% @europe = @europe.sort_by { |country| country[1] } %>
+<% @africa = @africa.sort_by { |country| country[1] } %>
+<% @asia = @asia.sort_by { |country| country[1] } %>
+<% @oceania = @oceania.sort_by { |country| country[1] } %>
 
 
     <div class="container">
@@ -247,27 +247,27 @@
 		</ul>
 		<div id="tabs-1">
 			<% @americas.each do |f|%> 
-				<a href="/searches/<%=f.key%>/create"><%= f.value %></a><br />
+				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-2">
 			<% @europe.each do |f|%> 
-				<%= f%><br />
+				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-3">
 			<% @africa.each do |f|%> 
-				<%= f%><br />
+				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-4">
 			<% @asia.each do |f|%> 
-				<%= f%><br />
+				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 		<div id="tabs-5">
 		      <% @oceania.each do |f|%> 
-				<%= f%><br />
+				<a href="/searches/<%=f[0]%>/create"><%= f[1] %></a><br />
 			<% end %>
 		</div>
 	</div> <!-- END TABS -->
