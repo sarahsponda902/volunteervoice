@@ -299,10 +299,7 @@ var	count = 0;
 			$("#tags").val("");
 		} 
 	}
-	
-	function removeOptions() {
-		$("#review_program_id").html('');
-	}
+
 
 	function checkFields(){
 		if(($("#tags").attr("value") != " Start typing...")
@@ -477,7 +474,7 @@ var	count = 0;
 
 					
 						<div width="200px">
-						<%= f.text_field :organization_name, :id =>"tags", :style => "float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onblur => "removeOptions(); checkValueAutocomplete()"%></div>
+						<%= f.text_field :organization_name, :id =>"tags", :style => "float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onblur => "checkValueAutocomplete()"%></div>
 				
 
 				</div>
