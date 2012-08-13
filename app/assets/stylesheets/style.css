@@ -196,12 +196,12 @@ html, body, div, span, applet, object, iframe,
 
 
 @font-face {
-    font-family: 'MuseoSlab500Regular';
+    font-family: 'JosefinSlabRegular';
     src: url('Museo_Slab_500-webfont.eot');
     src: url('Museo_Slab_500-webfont.eot?#iefix') format('embedded-opentype'),
          url('Museo_Slab_500-webfont.woff') format('woff'),
          url('Museo_Slab_500-webfont.ttf') format('truetype'),
-         url('Museo_Slab_500-webfont.svg#MuseoSlab500Regular') format('svg');
+         url('Museo_Slab_500-webfont.svg#JosefinSlabRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -240,9 +240,9 @@ margin-top:0px}
 	
 select{ padding-top:5px; padding-left:10px; -webkit-appearance: none}
 
-h2 {font-family:'ChunkFiveRegular', Georgia, "Times New Roman", serif;}
+h2 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
 
-h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:30px; font-weight:600;}
+h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:30px;}
 
 .lightBlue {color: #62acbd;}
 a.lightBlue:hover {color: #e67b5a;}
@@ -282,7 +282,7 @@ a:hover{color:white; background:none}
 
 /* Login */
 
-.login {background:#575758; padding:10px; color: white; font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600;} 
+.login {background:#575758; padding:10px; color: white; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600;} 
 
 
 .login a:visited{color: white;}
@@ -419,7 +419,7 @@ nav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
 /* Footer */
 footer {}
 
-footerNav h4, .ourCommunity h4 { font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif;}
+footerNav h4, .ourCommunity h4 { font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
 .spreadWord li { list-style:none; display:inline;}
 
 
