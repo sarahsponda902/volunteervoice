@@ -94,7 +94,7 @@ $(document).ready(function() {
 <% @our_blog = @our_blog.sort_by(&:created_at).reverse%>
 <div class="four columns" id="our_blog_table"style="float:left; width:30%;" class="contents">
 	<div align="center">
-<a href="/blog_posts"><image style="height:28px; margin-top:25px; margin-bottom:5px" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/ourBlog.png" href="/blog_posts"></a><br /></div>
+<a href="/blog_posts" class="ourBlogImageLink"><image style="height:28px; margin-top:25px; margin-bottom:5px" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/ourBlog.png" href="/blog_posts"></a><br /></div>
 	<div id="divvvs" style="height:100%;background-color:#E3E6D5; border-top: 1px solid #e67b5a; padding-top:10px;">
 	<% @our_blog.each do |f| %>
 	<%= render :partial => "our_blog", :locals => {:f => f}%>
@@ -106,6 +106,9 @@ $(document).ready(function() {
 </div>
 
 <style type="text/css">
+	a.ourBlogImageLink:hover {
+		border:2px solid white;
+	}
 
     .contents 
     {
