@@ -560,8 +560,15 @@
 			if (isAndroid) {
 				$("#orgLogin-image").css("margin-top", "-15px");
 				$("#drop_signed_in").css("top", "223px");
-				$("#drop_signed_out").css("top", "230px")
+				$("#drop_signed_out").css("top", "230px");
 			}
+			
+			var agentID = ua.match(/(iphone|ipod|ipad)/);
+			if (agentID) {
+				$("#drop_signed_in").css("top", "213px");
+				$("#drop_signed_out").css("top", "220px");
+			}
+				
 		});
 	</script>
 
