@@ -230,7 +230,7 @@ $(document).ready(function () {
 <div class="container">
     <div class="row">
 	<% if @can_edit%>
-			<div class="five columns" style="font-size:1.1em;font-family:museoSlab500Regular;color:#68c2d8; margin-top:20px;">*All fields with a small pencil next to them are open for editing.  Just click on the content in that field to adjust as you see fit.  Click anywhere outside the textbox to complete and save your changes.</div><div class="seven columns"></div>
+			<div class="five columns" style="font-size:1.1em;font-family:JosefinSlabRegular;color:#68c2d8; margin-top:20px;">*All fields with a small pencil next to them are open for editing.  Just click on the content in that field to adjust as you see fit.  Click anywhere outside the textbox to complete and save your changes.</div><div class="seven columns"></div>
 	<% end %>
 	
 	<div id="show-contents" class="contents" style="margin-top:100px">
@@ -313,7 +313,7 @@ $(document).ready(function () {
 		<div class="overflow">
 		<% if (ProgramCostLengthMap.where(:organization_id => @organization.id).empty?)%>	
 		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758; margin-top:-15px">Information not disclosed</p>
-		<p style="font-family:museoSlab500Regular;  font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
+		<p style="font-family:JosefinSlabRegular;  font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 		<% else %>	
 		<table>
 			<thead>
