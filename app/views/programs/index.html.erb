@@ -250,11 +250,11 @@
 <% @asia = @asia.sort_by { |country| country[1] } %>
 <% @oceania = @oceania.sort_by { |country| country[1] } %>
 
-<% @americas_count = (@americas.count / 4).round %>
-<% @europe_count = (@europe.count / 4).round %>
-<% @africa_count = (@africa.count / 4).round %>
-<% @asia_count = (@asia.count / 4).round %>
-<% @oceania_count = (@oceania.count / 4).round %>
+<% @americas_count = (@americas.count / 4).round - 1%>
+<% @europe_count = (@europe.count / 4).round - 1%>
+<% @africa_count = (@africa.count / 4).round - 1 %>
+<% @asia_count = (@asia.count / 4).round - 1 %>
+<% @oceania_count = (@oceania.count / 4).round - 1%>
 
 
     <div class="container">
@@ -267,61 +267,165 @@
 			<li onclick="oceania.click();" style="cursor:pointer"><a id="oceania" href="#tabs-5">Oceania</a></li>
 		</ul>
 		<div id="tabs-1">
-			<% @americas.each do |f|%> 
-			
-				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
-
-			<% end %>
-		</div>
-		<div id="tabs-2">
-			<% @europe.each do |f|%> 
-			
-				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
-
-			<% end %>
-		</div>
-		<div id="tabs-3">
-			<% @africa.each do |f|%> 
-			
-				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
-
-			<% end %>
-		</div>
-		<div id="tabs-4">
-			<% @asia.each do |f|%> 
-			
-				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
-
-			<% end %>
-		</div>
-		<div id="tabs-5">
-			<table style="width:22%">
-		      <% @oceania[0..@oceania_count].each do |f|%>
-			  <tr>
+			<table style="width:22%; background-color:transparent">
+		      <% @americas[0..@americas_count].each do |f|%>
+			  <tr style="background-color:transparent">
 				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
 			  </tr>				
 			<% end %>
 			</table>
 			
-			<table style="width:22%">
+			<table style="width:22%; background-color:transparent">
+			  <% @americas[@americas_count..@americas_count*2].each do |f|%>
+				<tr style="background-color:transparent">
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>		
+			<% end %>
+			</table>
+
+			<table style="width:22%; background-color:transparent">
+			  <% @americas[@americas_count*2..@americas_count*3].each do |f|%>
+				<tr style="background-color:transparent">
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>
+			<% end %>
+			</table>
+
+			<table style="width:22%; background-color:transparent">
+			  <% @europe[@americas_count*3..@americas.count].each do |f|%>
+				<tr style="background-color:transparent">
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>
+			<% end %>
+		    </table>
+		</div>
+		<div id="tabs-2">
+			<table style="width:22%; background-color:transparent">
+		      <% @europe[0..@europe_count].each do |f|%>
+			  <tr style="background-color:transparent">
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>				
+			<% end %>
+			</table>
+
+			<table style="width:22%; background-color:transparent">
+			  <% @europe[@europe_count..@europe_count*2].each do |f|%>
+				<tr style="background-color:transparent">
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>		
+			<% end %>
+			</table>
+
+			<table style="width:22%; background-color:transparent">
+			  <% @europe[@europe_count*2..@europe_count*3].each do |f|%>
+				<tr style="background-color:transparent">
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>
+			<% end %>
+			</table>
+
+			<table style="width:22%; background-color:transparent">
+			  <% @europe[@europe_count*3..@europe.count].each do |f|%>
+				<tr style="background-color:transparent">
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>
+			<% end %>
+		    </table>
+		</div>
+		<div id="tabs-3">
+				<table style="width:22%; background-color:transparent">
+			      <% @africa[0..@africa_count].each do |f|%>
+				  <tr style="background-color:transparent">
+					<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+				  </tr>				
+				<% end %>
+				</table>
+
+				<table style="width:22%; background-color:transparent">
+				  <% @africa[@africa_count..@africa_count*2].each do |f|%>
+					<tr style="background-color:transparent">
+					<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+				  </tr>		
+				<% end %>
+				</table>
+
+				<table style="width:22%; background-color:transparent">
+				  <% @africa[@africa_count*2..@africa_count*3].each do |f|%>
+					<tr style="background-color:transparent">
+					<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+				  </tr>
+				<% end %>
+				</table>
+
+				<table style="width:22%; background-color:transparent">
+				  <% @africa[@africa_count*3..@africa.count].each do |f|%>
+					<tr style="background-color:transparent">
+					<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+				  </tr>
+				<% end %>
+			    </table>
+		</div>
+		<div id="tabs-4">
+				<table style="width:22%; background-color:transparent">
+			      <% @asia[0..@asia_count].each do |f|%>
+				  <tr style="background-color:transparent">
+					<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+				  </tr>				
+				<% end %>
+				</table>
+
+				<table style="width:22%; background-color:transparent">
+				  <% @asia[@asia_count..@asia_count*2].each do |f|%>
+					<tr style="background-color:transparent">
+					<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+				  </tr>		
+				<% end %>
+				</table>
+
+				<table style="width:22%; background-color:transparent">
+				  <% @asia[@asia_count*2..@asia_count*3].each do |f|%>
+					<tr style="background-color:transparent">
+					<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+				  </tr>
+				<% end %>
+				</table>
+
+				<table style="width:22%; background-color:transparent">
+				  <% @asia[@asia_count*3..@asia.count].each do |f|%>
+					<tr style="background-color:transparent">
+					<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+				  </tr>
+				<% end %>
+			    </table>
+		</div>
+		<div id="tabs-5">
+			<table style="width:22%; background-color:transparent">
+		      <% @oceania[0..@oceania_count].each do |f|%>
+			  <tr style="background-color:transparent">
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>				
+			<% end %>
+			</table>
+			
+			<table style="width:22%; background-color:transparent">
 			  <% @oceania[@oceania_count..@oceania_count*2].each do |f|%>
-				<tr>
+				<tr style="background-color:transparent">
 				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
 			  </tr>		
 			<% end %>
 			</table>
 			
-			<table style="width:22%">
+			<table style="width:22%; background-color:transparent">
 			  <% @oceania[@oceania_count*2..@oceania_count*3].each do |f|%>
-				<tr>
+				<tr style="background-color:transparent">
 				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
 			  </tr>
 			<% end %>
 			</table>
 			
-			<table style="width:22%">
+			<table style="width:22%; background-color:transparent">
 			  <% @oceania[@oceania_count*3..@oceania.count].each do |f|%>
-				<tr>
+				<tr style="background-color:transparent">
 				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
 			  </tr>
 			<% end %>
