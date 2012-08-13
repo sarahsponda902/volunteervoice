@@ -106,7 +106,7 @@ a.contact-window:hover, a.organizations-window:hover, a.questions-window:hover{
 </style>
 
 
-
+<!-- ERROR MESSAGES -->
 <% if flash.class.name != "String"%>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
@@ -116,7 +116,7 @@ a.contact-window:hover, a.organizations-window:hover, a.questions-window:hover{
 	<% end %>
   </div>
 <% end %>
-<% end %>
+<% end %><!-- END ERROR MESSAGES -->
 
 
 

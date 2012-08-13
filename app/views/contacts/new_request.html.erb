@@ -1,4 +1,38 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.title {
+	font-size:2em; 
+	font-family:JosefinSlabRegular; 
+	line-height:1.5em; 
+	margin:10px;
+}
+.blurb {
+	font-family:JosefinSlabRegular; 
+	line-height:1.1em; 
+	color:#68c2d8
+}
+.centeredContainer {
+	font-family:JosefinSlabRegular; 
+	line-height:1.1em; 
+	color:#68c2d8
+}
+.requestField {
+	height:20px; 
+	width:198px
+}
+.select-div {
+	position:absolute;
+	top:93px; 
+	height:30px; 
+	width:198px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758
+}
+</style>
+
+<!-- ERROR MESSAGES -->
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
 <%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
@@ -6,21 +40,24 @@
 		* <%=f%><br />
 	<% end %>
   </div>
-<% end %>
+<% end %><!-- END ERROR MESSAGES-->
+
+
+<!-- ACCOUNT REQUEST FORM -->
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
 			<% @contact = Contact.new %>
-			<p style="font-size:2em; font-family:JosefinSlabRegular; line-height:1.5em; margin:10px" align="center">Account Request</p>
-			<p style="font-family:JosefinSlabRegular; line-height:1.1em; color:#68c2d8">Please complete all fields</p>
+			<p class="title" align="center">Account Request</p>
+			<p class="blurb">Please complete all fields</p>
 			<%= form_for @contact do |f| %>
-			<div class="six columns" style="width:300px">
+			<div class="six columns centeredContainer">
 
 			  <div><%= f.label "Organization Name" %>
-			  <%= f.text_field :organization_name, :style => "height:20px; width:198px" %></div><br />
+			  <%= f.text_field :organization_name, :class => "requestField" %></div><br />
 			<div>
 <%= f.label :country %>
-			  <div class="select-div" style="position:absolute;top:93px; height:30px; width:198px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+			  <div class="select-div">
 				 <select style="position:absolute; border:1px solid #575758; left:-5px; width:225px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" id="contact_country" name="contact[country]">
 					<option value=""> Select a Country</option>
 					<% THECOUNTRIES.keys.each do |f| %>
