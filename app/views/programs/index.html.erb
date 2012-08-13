@@ -21,6 +21,9 @@
 		width:70%;
 		margin:auto;
 	}
+	.ui-widget-content {
+		padding-bottom:10px;
+	}
 	
 	a.country-name{
 		color:#575758;
@@ -259,35 +262,35 @@
 		</ul>
 		<div id="tabs-1">
 			<% @americas.each do |f|%> 
-			<div class="three columns" style="padding-bottom:10px">
+			<div class="three columns">
 				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
 		</div>
 		<div id="tabs-2">
 			<% @europe.each do |f|%> 
-			<div class="three columns" style="padding-bottom:10px">
+			<div class="three columns">
 				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
 		</div>
 		<div id="tabs-3">
 			<% @africa.each do |f|%> 
-			<div class="three columns" style="padding-bottom:10px">
+			<div class="three columns">
 				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
 		</div>
 		<div id="tabs-4">
 			<% @asia.each do |f|%> 
-			<div class="three columns" style="padding-bottom:10px">
+			<div class="three columns">
 				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
 		</div>
 		<div id="tabs-5">
 		      <% @oceania.each do |f|%> 
-			<div class="three columns" style="padding-bottom:10px">
+			<div class="three columns">
 				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
