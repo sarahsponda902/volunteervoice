@@ -64,12 +64,12 @@
 					<div class="six columns" style="margin:0 auto; width:700px; float:none">
 					<div class="six columns" style="width:225px; margin-left:95px; font-family:architectsDaughterRegular; font-size:1.3em; text-align:left; padding-right:0px">My Profile Pic:</div>
 					<div id="upload-box" class="five columns" style="width:300px">
-						  <div style=" display:block; margin-left:-150px"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" style="height:40px;margin-top:-10px; cursor:pointer" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" style="height:25px; width:100px; position:relative; top:-15px; left:25px; background:none; border:none" disabled="true" value="no file selected">
+						  <div style=" display:block; margin-left:-100px"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" style="height:40px;margin-top:-10px; cursor:pointer" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" style="height:25px; width:100px; position:relative; top:-15px; left:25px; background:none; border:none" disabled="true" value="no file selected">
 							
 				 <input id="user_crops" name="user[crops]" type="hidden" value="false" />
 				
-							  <%= f.file_field :photo, :id => "user_photo", :style => "display:none", :onchange => "$(nameFile()); $('#user_crops').val('true');"%></div>
-							<p style="text-align:center; color:#6aaeba; font-size:.8em; margin-top:-15px">**Max photo width: 700 pixels</p>
+							  <%= f.file_field :photo, :id => "user_photo", :style => "display:none", :onchange => "$(nameFile()); $('#user_crops').val('true');"%>
+							<p style="text-align:center; color:#6aaeba; font-size:.8em; margin-top:-15px">**Max photo width: 700 pixels</p></div>
 
 					</div>
 					</div>
