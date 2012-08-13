@@ -227,7 +227,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 					<div class="six columns">
 				    <div class="field">
 				      Email<br />
-				      <%= f.text_field :email, :class => "popupField", :id => "email-contact", :onkeyup => "checkContactForSubmit();"  %>
+				      <%= f.text_field :email, :class => "popupField", :id => "email-organizations", :onkeyup => "checkOrganizationsForSubmit();"  %>
 				    </div>
 					</div>
 				    <div class="field">
@@ -237,15 +237,15 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 				    <div class="field">
 				      <%= f.label :body %>
-				      <%= f.text_area :body, :class => "popupBodyField", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onkeyup => "checkContactForSubmit();" %>
+				      <%= f.text_area :body, :class => "popupBodyField", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations", :onkeyup => "checkOrganizationsForSubmit();" %>
 				    </div>
 
 
-				  <div id="submit-contact">
+				  <div id="submit-organizations">
 				    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
 				  </div>
 
-				 <div id="nosubmit-contact">
+				 <div id="nosubmit-organizations">
 					<p class="submitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
 				</div>
 				<% end %>
@@ -272,7 +272,7 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 					<div class="six columns">
 				    <div class="field">
 				      Email<br />
-				      <%= f.text_field :email, :class => "popupField", :id => "email-contact", :onkeyup => "checkContactForSubmit();"  %>
+				      <%= f.text_field :email, :class => "popupField", :id => "email-questions", :onkeyup => "checkQuestionsForSubmit();"  %>
 				    </div>
 					</div>
 				    <div class="field">
@@ -282,15 +282,15 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 
 				    <div class="field">
 				      <%= f.label :body %>
-				      <%= f.text_area :body, :class => "popupBodyField", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onkeyup => "checkContactForSubmit();" %>
+				      <%= f.text_area :body, :class => "popupBodyField", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions", :onkeyup => "checkQuestionsForSubmit();" %>
 				    </div>
 
 
-				  <div id="submit-contact">
+				  <div id="submit-questions">
 				    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
 				  </div>
 
-				 <div id="nosubmit-contact">
+				 <div id="nosubmit-questions">
 					<p class="submitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
 				</div>
 				<% end %>
