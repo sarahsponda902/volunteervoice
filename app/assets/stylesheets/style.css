@@ -242,7 +242,7 @@ select{ padding-top:5px; padding-left:10px; -webkit-appearance: none}
 
 h2 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
 
-h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:30px;}
+h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:24px;}
 
 .lightBlue {color: #62acbd;}
 a.lightBlue:hover {color: #e67b5a;}
@@ -349,7 +349,7 @@ a:hover{color:white; background:none}
 
 nav {background:#575758; height: 45px;}
 
-nav li {list-style:none; display:inline-block; text-align:center; width: 24%;  padding-top: 15px; font-size: 1.5em; font-weight:0}
+nav li {list-style:none; display:inline-block; text-align:center; width: 24%;  padding-top: 15px; font-size: 1.8em; font-weight:0}
 
 nav li a:visited{color: white;}
 
