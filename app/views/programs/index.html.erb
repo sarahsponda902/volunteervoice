@@ -8,7 +8,7 @@
 	
 	<style>
 	#tabs{
-		width:70%;
+		width:100%;
 		float:left;
 	}
 	.ui-tabs {
@@ -20,10 +20,6 @@
 	.ui-tabs-nav li { 
 		width:17%;
 	} 
-	.ui-widget {
-		width:70%;
-		margin:auto;
-	}
 	.ui-widget-content {
 		padding-bottom:10px;
 	}
@@ -255,6 +251,7 @@
 
 
     <div class="container">
+	<div class="row" style="width:70%; float:center; margin:auto">
 	<div id="tabs">
 		<ul>
 			<li onclick="americas.click();" style="cursor:pointer"><a id="americas" href="#tabs-1">Americas</a></li>
@@ -299,7 +296,7 @@
 			<% end %>
 		</div>
 	</div> <!-- END TABS -->
-
+</div>
 
 
 	<div align="center" style="font-family:architectsDaughterRegular; margin-top:60px;color:#e67b5a; margin-bottom:30px; min-width:960px">
