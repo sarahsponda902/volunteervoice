@@ -207,6 +207,20 @@ html, body, div, span, applet, object, iframe,
 
 }
 
+
+
+@font-face {
+    font-family: 'JosefinSlabRegular';
+    src: url('JosefinSlab-Regular-webfont.eot');
+    src: url('JosefinSlab-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('JosefinSlab-Regular-webfont.woff') format('woff'),
+         url('JosefinSlab-Regular-webfont.ttf') format('truetype'),
+         url('JosefinSlab-Regular-webfont.svg#JosefinSlabRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 article, aside, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 	}
@@ -227,7 +241,7 @@ select{ padding-top:5px; padding-left:10px; -webkit-appearance: none}
 
 h2 {font-family:'ChunkFiveRegular', Georgia, "Times New Roman", serif;}
 
-h4 {font-family:'MuseoSlab500Regular', Georgia, "Times New Roman", serif; font-size:24px; font-weight:600;}
+h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:24px; font-weight:600;}
 
 .lightBlue {color: #62acbd;}
 a.lightBlue:hover {color: #e67b5a;}
