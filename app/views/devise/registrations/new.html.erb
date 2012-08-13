@@ -117,7 +117,7 @@ function submitForm() {
 				<div style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Retype Email</label>
 				  <%= f.text_field :email_confirmation, :style => "height:20px; width:225px" %></div>
 				
-		 			 <p  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px" for="user_Date of Birth">Birthday</label><div style="position:absolute; left:15%; height:30px; width:103px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
+		 			 <p  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px" for="user_Date of Birth">Birthday</label><div class="select-div" style="position:absolute; left:15%; height:30px; width:103px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
 					<select id="user_dob_2i" name="user[dob(2i)]" style="position:absolute; left:-5px; width:130px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
 					<option value="">Month</option>
 					<option value="1">January</option>
@@ -133,7 +133,7 @@ function submitForm() {
 					<option value="11">November</option>
 					<option value="12">December</option>
 					</select></div>
-					<div style="position:absolute; left:40%; height:30px; width:73px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
+					<div class="select-div" style="position:absolute; left:40%; height:30px; width:73px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
 					<select id="user_dob_3i" name="user[dob(3i)]" style="position:absolute; left:-5px; width:100px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
 					<option value="">Day</option>
 					<option value="1">1</option>
@@ -168,7 +168,7 @@ function submitForm() {
 					<option value="30">30</option>
 					<option value="31">31</option>
 					</select></div>
-	<div style="position:absolute; left:58.7%; height:30px; width:103px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
+	<div class="select-div" style="position:absolute; left:58.7%; height:30px; width:103px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
 					<select id="user_dob_1i" name="user[dob(1i)]" style="position:absolute; left:-5px; width:130px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
 					<option value="">Year</option>
 					<option value="2012">2012</option>
@@ -293,7 +293,7 @@ function submitForm() {
 					<br />
 
 							 <p style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px" for="user_country">Country</label>
-								<div style="position:absolute; left:15%; height:30px; width:307px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
+								<div class="select-div" style="position:absolute; left:15%; height:30px; width:307px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
 							 <select id="user_country" name="user[country]" style="position:absolute; left:-5px; width:334px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
 								<option value=""> Select a Country</option>
 								<% THECOUNTRIES.keys.each do |f| %>

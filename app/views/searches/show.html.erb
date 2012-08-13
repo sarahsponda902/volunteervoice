@@ -473,7 +473,7 @@ $(document).ready(function() {
 	<div class= "row">
 		<div class="four columns" style="float:left; width:200px">
 		<p style="font-size:1.5em; color:#575758; line-height:1.1em; margin-left:-5px"> 	Display:</p>
-		<div style="position:absolute; left:42%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758; z-index:19">
+		<div class="select-div" style="position:absolute; left:42%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758; z-index:19">
 					<%= form_for @search do |f|%>
 			<select id ="display" name="search[showing]" style="position:absolute; left:-5px; width:255px; height:30px; border: 1px solid #575758; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">
 				<option value="Programs">Programs</option>
@@ -485,7 +485,7 @@ $(document).ready(function() {
 	<div class="two columns" style="height:50px;float:left"></div>
 				<p style="font-size:1.5em; color:#575758; line-height:1.1em; margin-left:-20px"> List By:</p>
 				<div style="margin-top:-26px; margin-left:450px">
-		<div style="position:absolute; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758; z-index:20">
+		<div class="select-div" style="position:absolute; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758; z-index:20">
 		<select id ="sort" name="search[sort_by]" style="position:relative; border: 1px solid #575758; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">	
 			<option value = "">Select an Order</option>
 			<option value = "ratinghigh">Rating - High</option>
@@ -971,7 +971,7 @@ $(document).ready(function() {
 
 <div id="lengthOfTrip" style="width:400px; padding-bottom:20px; color:#575758; overflow-x:hidden">
 
-					<div class="three columns" style="position:absolute; left:40px; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+					<div class="select-div three columns" style="position:absolute; left:40px; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
 						<select id= "length_min_number" name="search[length_min_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;"  onchange="$(length_min_number5).val(this.value)">
 							<option value="0">0</option>
@@ -1002,7 +1002,7 @@ $(document).ready(function() {
 						</select>
 				</div>
 
-				<div class="three columns" style="position:absolute; left:90px; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				<div class="select-div three columns" style="position:absolute; left:90px; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
 					<select id= "length_min_param" name="search[length_min_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="$(length_min_param5).val(this.value)">
 						<option value="weeks">Weeks</option>
@@ -1012,7 +1012,7 @@ $(document).ready(function() {
 			</div>
 			<div style="position:absolute; left:220px; font-size:1.1em;color:#575758;">to</div>
 
-					<div class="three columns" style="position:absolute; left:230px; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+					<div class="select-div three columns" style="position:absolute; left:230px; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
 						<select id= "length_max_number" name="search[length_max_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;"  onchange="$(length_max_number5).val(this.value)">
 							<option value="0">0</option>
@@ -1043,7 +1043,7 @@ $(document).ready(function() {
 						</select>
 				</div>
 
-				<div class="three columns" style="position:absolute; left:300px; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				<div class="select-div three columns" style="position:absolute; left:300px; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
 					<select id= "length_max_param" name="search[length_max_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="$(length_max_param5).val(this.value)">
 						<option value="weeks">Weeks</option>
