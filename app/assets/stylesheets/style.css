@@ -223,7 +223,7 @@ margin-top:0px}
 .container {min-width:970px}
 
 	
-select{ padding-top:5px; padding-left:10px; -webkit-appearance: none; }
+select{ padding-top:5px; padding-left:10px; -webkit-appearance: none; background-color:rgba(255,255,255)}
 
 h2 {font-family:'ChunkFiveRegular', Georgia, "Times New Roman", serif;}
 
