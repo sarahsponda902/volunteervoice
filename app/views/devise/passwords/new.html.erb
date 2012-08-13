@@ -1,13 +1,32 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.container {
+	color:#575758;
+}
+.top {
+	margin-top:80px;
+}
+.title {
+	font-size:2em; 
+	font-family:architectsDaughterRegular; 
+	color:#62acbd; 
+	text-align:center;
+}
+.forgotPasswordBoxContainer {
+	margin-top:20px;
+}
+</style>
+
 <%= devise_error_messages! %>
-<div class="container" style="color:#575758">
+<div class="container">
 	<div class="row">
-		<div class="twelve columns" style="margin-top:80px">
-<p style="font-size:2em; font-family:architectsDaughterRegular; color:#62acbd; text-align:center;">Forgot your password?</p>
+		<div class="twelve columns" class="top">
+<p class="title">Forgot your password?</p>
 	</div>
 	</div>
 	<div class="row">
-	<div class="twelve columns" style="margin-top:20px;">
+	<div class="twelve columns forgotPasswordBoxContainer">
 		<div style=" background-color:#E9ECE9; padding-top:30px; padding-left:10px; margin-top:20px; margin-left:15%; margin-right:15%; border:1px solid #e67b5a; height:250px; margin-top:20px">
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
