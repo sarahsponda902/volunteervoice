@@ -21,8 +21,12 @@ $(document).ready(function(){
 		createInput();
 	});
 	if ($.browser.webkit) {
-		$(".selectCosts").css("background", "url('/assets/arrowProgram.png) no-repeat right");
-		$("#program_location").css("background", "url('/assets/arrowProgram.png) no-repeat right");
+		$(".selectCosts").css("background-image", "url('/assets/arrowProgram.png)");
+		$(".selectCosts").css("background-repeat", "no-repeat");
+		$(".selectCosts").css("background-position", "right");
+		$("#program_location").css("background-image", "url('/assets/arrowProgram.png)");
+		$("#program_location").css("background-repeat", "no-repeat");
+		$("#program_location").css("background-position", "right");
 	}
 	<% @costs.each do |f| %>
 		createInput();
