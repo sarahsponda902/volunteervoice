@@ -20,6 +20,10 @@ $(document).ready(function(){
 		event.preventDefault();
 		createInput();
 	});
+	if ($.browser.webkit) {
+		$(".selectCosts").css("background", "url('/assets/arrowProgram.png) no-repeat right");
+		$("#program_location").css("background", "url('/assets/arrowProgram.png) no-repeat right");
+	}
 	<% @costs.each do |f| %>
 		createInput();
 	<% end %>
@@ -126,6 +130,7 @@ function createInput(){
 	div.style.marginTop = "10px";
 	div.style.marginLeft = "-22px";
     input.id = 'length'+countFields;
+	input.className = 'selectCosts';
     input.name = "lengths[]";
  	for (count = 0; count < allTags.length; count++) {
 		var opt = document.createElement("option");
