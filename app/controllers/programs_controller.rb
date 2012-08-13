@@ -179,12 +179,10 @@ class ProgramsController < ApplicationController
             @subjects.each do |s|
               s.program_id = @program.id
               s.save!
-              s.index!
             end
             @sizes.each do |a|
               a.program_id = @program.id
               a.save!
-              a.index!
             end
           redirect_to @program
       else
