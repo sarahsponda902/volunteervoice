@@ -1,4 +1,11 @@
-<div class="blogComment<% if comment.user && comment.user.respond_to?(:admin?) && comment.user.admin? %> blogCommentAdmin<% end %>" style="color:#575758; background:none">
+<style>
+	.blogComment {
+		color:#575758;
+		background:none;
+	}
+</style>
+
+<div class="blogComment<% if comment.user && comment.user.respond_to?(:admin?) && comment.user.admin? %> blogCommentAdmin<% end %>">
 
 	<p class="blogCommentPostedAt">
 		By <span class="blogPoster"><a href="/users/<%=User.find(comment.user_id).id%>"><%= User.find(comment.user_id).username %></a></span>

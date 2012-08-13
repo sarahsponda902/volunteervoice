@@ -46,9 +46,27 @@
 
 	</script>
 
+
+<style>
+	.top{
+		margin-top:30px;
+	}
+	#cropMessage {
+		position:absolute;
+		right:5%;
+		top:300px;
+		width: 150px;
+	}
+	#cropButtons {
+		position:absolute;
+		right:5%;
+		top:200px;
+		width:150px
+	}
+</style>
 </head>
 <body>
-	<div class="container" style="margin-top:30px">
+	<div class="container" class="top">
 		<div class="row">
 			<div class="ten columns">
 
@@ -58,9 +76,9 @@
 	</div>
 </div>
 
-<div style="position:absolute; right:5%; top:300px; width: 150px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed width for a blog post image. It will not get any smaller</div>
+<div id="cropMessage">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed width for a blog post image. It will not get any smaller</div>
 
-<div style="position:absolute; right:5%; top:200px; width:150px">
+<div id="cropButtons">
 	<%= form_for @blog_post do |f|%>
 	x: <%= f.number_field :crop_x %><br />
 	y: <%= f.number_field :crop_y %><br />

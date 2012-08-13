@@ -4,12 +4,21 @@
 <%= stylesheet_link_tag 'blog_kit' %>
 <%= stylesheet_link_tag 'syntax/' + (BlogKit.instance.settings['theme'] || 'mac_classic') %>
 
+<style>
+	#headding {
+		margin-top:10px;
+	}
+	#link {
+		float:right;
+	}
+</style>
+
 <div class="container">
 	<div class="row">
-		<div class="twelve columns" style="margin-top:10px">
-		<p style="float:right;">	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/backToBlog.png"), "/blog_posts" %></p>
+		<div class="twelve columns" id="headding">
+		<p id="link">	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/backToBlog.png"), "/blog_posts" %></p>
 		</div>
-		<div class="twelve columns" style="margin-top:0px">
+		<div class="twelve columns">
 <%= render :object => @blog_post, :partial => 'blog_posts/blog_post', :locals => {:show_comments => true} %>
 		</div>
 	</div>

@@ -1,4 +1,10 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
+<style>
+.blogPostCommentBody{
+	width:100%; 
+	height:75px;
+}
+</style>
 <div class="blogNewComment">
 	<% if !user_signed_in?  %>
 		<p>You must be logged in to post a comment.</p>
@@ -17,7 +23,7 @@
 
 			<p>
 
-				<%= f.text_area :body, :style => 'width:100%; height:75px', :value => "Post a comment...", :onclick => "if (this.value == 'Post a comment...') {this.value =''}" %>
+				<%= f.text_area :body, :class =>"blogPostCommentBody", :value => "Post a comment...", :onclick => "if (this.value == 'Post a comment...') {this.value =''}" %>
 
 			</p>
 			<p style="text-align:center">

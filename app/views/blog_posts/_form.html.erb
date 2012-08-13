@@ -1,6 +1,6 @@
 <head>
 
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="/assets/jquery.js"></script>
 
 <script type="text/javascript">
   // Some simple jQuery to remove the default search value when the user clicks the box
@@ -27,6 +27,14 @@
   });
 </script>
 
+<style>
+	.title {
+		font-size:1.2em;
+	}
+	.warning {
+		color: red;
+	}
+</style>
 </head>
 
 <body>
@@ -62,41 +70,41 @@ For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 				</div>
 			<% end %>
 			<p>
-				<p style="font-size:1.2em">Title </p>
+				<p class="title">Title </p>
 				<%= f.text_field :title %>
 			</p>
 			<br />
 			<p>
-				<p style="font-size:1.2em">Body </p>
+				<p class="title">Body </p>
 				<%= f.text_area :body, :value => "If this is an 'Interesting' blog, copy-paste about 10 sentences (or more) in this box.", :id => "body"%>
 			</p>
 			<br />
 			<p>
-				<p style="font-size:1.2em">Tags (comma separated) </p>
+				<p class="title">Tags (comma separated) </p>
 				<%= f.text_field :tags %><font color="red">Alphanumeric ONLY.</font>
 			</p>
 			<br />	
 			
-			<p style="font-size:1.2em">Image  (crop on next page)</p><br />
+			<p class="title">Image  (crop on next page)</p><br />
 			  <%= f.file_field :image %>
 			<br />
 			</div>	
 		<div class="five columns">
 
-				<p style="font-size:1.2em; color:red">THE SECTION BELOW IS ONLY FOR ARTICLES:</p><br />
+				<p class="title warning">THE SECTION BELOW IS ONLY FOR ARTICLES:</p><br />
 
 				<p>
-				<p style="font-size:1.2em">Link to Article </p>
+				<p class="title">Link to Article </p>
 				<%= f.text_field :blog_link%>
 				</p>
 
 				<p>
-				<p style="font-size:1.2em">Link to Source </p>
+				<p class="title">Link to Source </p>
 				<%= f.text_field :source%>
 				</p>
 
 				<p>
-				<p style="font-size:1.2em">Title of Source </p>
+				<p class="title">Title of Source </p>
 				<%= f.text_field :source_title%>
 				</p>
 
@@ -107,24 +115,22 @@ For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 				
 			
 				<p>
-					<p style="font-size:1.2em">Status </p>
-					<%= f.radio_button :published, false, :checked => true %><font style="font-size:1em"> Draft </font><br />
-					<%= f.radio_button :published, true %><font style="font-size:1em"> Publish </font>
+					<p class="title">Status </p>
+					<%= f.radio_button :published, false, :checked => true %> Draft <br />
+					<%= f.radio_button :published, true %> Publish 
 				</p>
 				<br />
 					<p> 
-						<p style="font-size:1.2em">Type </p>
-					<%= f.radio_button :is_our_blog, true, :checked => true %><font style="font-size:1em"> VV Blog Post ("Our Blog" column)</font><br />
-					<%= f.radio_button :is_our_blog, false%> <font style="font-size:1em">Article ("Interesting" column)</font>
+						<p class="title">Type </p>
+					<%= f.radio_button :is_our_blog, true, :checked => true %> VV Blog Post ("Our Blog" column)<br />
+					<%= f.radio_button :is_our_blog, false%> Article ("Interesting" column)
 					</p>
 			
 				<br />
 				
 				<p>
 					<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png" , :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
-					<style>
-					.shadowed { opacity:0.8}
-					</style>
+
 				</p>
 			
 

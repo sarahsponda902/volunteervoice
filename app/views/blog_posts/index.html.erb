@@ -1,10 +1,32 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<p style="text-align:center; margin-top:40px;"><%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteervoiceBlog.png"%></p>
+
+<style>
+	#blogTitleImage {
+		text-align:center;
+		margin-top:40px;
+	}
+	.spacer {
+		height:20px;
+	}
+	.container {
+		color:#575758;
+	}
+	.title {
+		font-size:1.5em;
+	}
+	.message {
+		font-size:1.2em;
+	}
+</style>
+<div class="container">
+	<div class="row">
+<p id = "blogTitleImage"><%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteervoiceBlog.png"%></p>
 
 <%= render :partial => 'admin_links' %>
-<div style="height:20px"></div>
-
-<div class="container" style="color:#575758">
+<div class="spacer"> </div>
+</div>
+</div>
+<div class="container">
 	<div class="row">
 		<div class="twelve columns">
 
@@ -16,8 +38,8 @@
 
 <% if @blog_posts.size == 0 && !params[:page] %>
 	<div class="blogPost">
-		<p style="font-size:1.5em;">No Blog Posts</p>
-		<p style="font-size:1.2em;">There are currently no blog posts, please check back shortly.</p>
+		<p class="title">No Blog Posts</p>
+		<p class="message">There are currently no blog posts, please check back shortly.</p>
 	</div>
 <% else %>
 	<% if @tag %>
