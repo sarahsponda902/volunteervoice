@@ -13,6 +13,10 @@ $(document).ready(function() {
 
     $('#vv_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 4, datacontainer: 'divvvs', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
+	if ($.browser.opera) {
+		$(".interesting_blog_post").css("marginLeft", "-15px");
+		$(".our_blog_post").css("marginLeft", "-15px");
+	}
 	
 });
 </script>
