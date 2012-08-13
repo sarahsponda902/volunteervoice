@@ -250,6 +250,12 @@
 <% @asia = @asia.sort_by { |country| country[1] } %>
 <% @oceania = @oceania.sort_by { |country| country[1] } %>
 
+<% @americas_count = (@americas.count / 4).round %>
+<% @europe_count = (@europe.count / 4).round %>
+<% @africa_count = (@africa.count / 4).round %>
+<% @asia_count = (@asia.count / 4).round %>
+<% @oceania_count = (@oceania.count / 4).round %>
+
 
     <div class="container">
 	<div id="tabs">
@@ -289,11 +295,38 @@
 			<% end %>
 		</div>
 		<div id="tabs-5">
-		      <% @oceania.each do |f|%>
-		 	<div style="width:18%; float:left">
-				<a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
-			</div>
+			<table style="width:22%">
+		      <% @oceania[0..@oceania_count].each do |f|%>
+			  <tr>
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>				
 			<% end %>
+			</table>
+			
+			<table style="width:22%">
+			  <% @oceania[@oceania_count..@oceania_count*2].each do |f|%>
+				<tr>
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>		
+			<% end %>
+			</table>
+			
+			<table style="width:22%">
+			  <% @oceania[@oceania_count*2..@oceania_count*3].each do |f|%>
+				<tr>
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>
+			<% end %>
+			</table>
+			
+			<table style="width:22%">
+			  <% @oceania[@oceania_count*3..@oceania.count].each do |f|%>
+				<tr>
+				<td><a href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br /></td>
+			  </tr>
+			<% end %>
+		    </table>
+		
 		</div>
 	</div> <!-- END TABS -->
 
