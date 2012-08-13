@@ -279,7 +279,7 @@
 		<div id="request-box" class="request-popup">
 			<a href="#" class="close"><div class="close_image"></div></a>
 			<% @contact = Contact.new %>
-			<p style="font-size:2em; font-family:museoSlab500Regular; line-height:1.5em; margin:10px" align="center">Account Request</p>
+			<p style="font-size:2em; font-family:museoSlab500Regular; line-height:1.2em; margin:10px" align="center">Account Request</p>
 			<p style="font-family:museoSlab500Regular; line-height:1.1em; color:#68c2d8">Please complete all fields</p>
 			<%= form_for @contact do |f| %>
 			<div class="five columns" style="width:300px">
@@ -404,8 +404,6 @@
 		border-radius:3px 3px 3px 3px;
 	        -moz-border-radius: 3px; /* Firefox */
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
-		height:300px;
-		overflow:hidden;
 	}
 	
 	.org-login-popup{
