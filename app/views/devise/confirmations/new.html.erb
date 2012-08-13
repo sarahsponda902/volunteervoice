@@ -30,11 +30,19 @@
 	font-size:1.3em; 
 	margin-bottom:10px;
 }
+.field {
+	height:23px; 
+	width:190px; 
+	background-color:white;
+}
 .blurb {
 	margin-left: 14%;
 	font-family:architectsDaughterRegular; 
 	color: #e67b5a; 
 	line-height:1.8em;
+}
+.submitContainer {
+	margin-top:125px;
 }
 </style>
 
@@ -54,14 +62,14 @@
 
 
   <div class="three columns"><p class="label"> Email: </p>
-  <%= f.email_field :email, :style=>"height:23px; width:190px; background-color:white;" %></div>
+  <%= f.email_field :email, :class=>"field" %></div>
 
 <div class="seven columns" class = "blurb">We apologize for the delay in your registration. Please enter your email here and we will resend your confirmation instructions.</div>
 
 <br />
 <br />
 
-  <div align="center" style="margin-top:125px;">
+  <div align="center" class="submitContainer">
 <%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/resendConfirmation.png"), :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	
 	</div>
