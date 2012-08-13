@@ -19,15 +19,9 @@ $(document).ready(function(){
 	$(".createInput").click(function(event) {
 		event.preventDefault();
 		createInput();
-		if ($.brower.webkit) {
-			$(".selectCosts").css("background-image", "url('/assets/arrowProgram.png')");
-			$(".selectCosts").css("background-repeat", "no-repeat");
-			$(".selectCosts").css("background-position", "right");
-			$(".selectCosts").css("height", "20px");
-		}
 	});
 	if ($.browser.webkit) {
-		$("#program_location").css("height", "20px");
+		$("#program_location").css("height", "25px");
 		$("#program_location").css("background-image", "url('/assets/arrowProgram.png')");
 		$("#program_location").css("background-repeat", "no-repeat");
 		$("#program_location").css("background-position", "right");
@@ -140,6 +134,10 @@ function createInput(){
     input.id = 'length'+countFields;
 	input.className = 'selectCosts';
     input.name = "lengths[]";
+	if ($.brower.webkit) {
+		input.style.background = "url('/assets/arrowProgram.png') no-repeat right";
+		input.style.height = "25px";
+	}
  	for (count = 0; count < allTags.length; count++) {
 		var opt = document.createElement("option");
 		opt.value = allTags[count].toString();
