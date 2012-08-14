@@ -46,7 +46,7 @@
 	text-align:center; 
 	margin-top:50px;
 }
-.leftLoginColumn {
+.six .columns .leftLoginColumn {
 	text-align:left; 
 	margin-top:90px; 
 	width:45%;
@@ -99,14 +99,17 @@
 	margin-top:-30px; 
 	font-size:1.1em;
 }
-.forgotPasswordLink {
+.forgotPasswordLinkContainer {
 	margin-left:15%;
+}
+a.forgotPasswordLink:hover {
+	color:#e67b5a;
 }
 .loginSubmitContainer {
 	margin-top:30px; 
 	text-align:center;
 }
-.rightColumnRegister {
+.six .columns .rightColumnRegister {
 	text-align:left; 
 	margin-top:90px; 
 	border-left:1px solid #e67b5a; 
@@ -260,7 +263,7 @@ select {
 				<image class="checkMark" id="rememberMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="rememberMeNoToggle()">
 				<div class="checkBox">
 				<%= f.check_box :remember_me, :onchange =>"$(rememberMeNoToggle())", :class =>"hiddenCheckBox"%></div><div class="checkBoxLabel"> Remember me</div><br />
-		<p class="forgotPasswordLink"><%= link_to "Forgot your password?", new_password_path('user') %></p>
+		<p class="forgotPasswordLinkContainer"><%= link_to "Forgot your password?", new_password_path('user'), :id => "forgotPasswordLink" %></p>
 		  <div class="loginSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 		<br />
 		<% end %>
