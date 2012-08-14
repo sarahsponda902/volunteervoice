@@ -1,7 +1,7 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-.loginBoxContainer {
+#loginBoxContainer {
 	float:center; 
 	text-align:left; 
 	margin:auto;
@@ -72,7 +72,7 @@
 	  <%= content_tag(:div, value, :class => "flash #{key}") %>
 	<% end %>
 	<div class="row">
-	<div class="six columns loginBoxContainer">
+	<div class="six columns" id="loginBoxContainer">
 	<p class="title">Login</p>
 	<%= form_for(resource, :as => resource_name, :id => "sign_in", :url => session_path(resource_name)) do |f| %>
 	<p  class="loginEmailContainer"><label class="label">Email or Username</label>
