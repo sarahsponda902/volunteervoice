@@ -265,11 +265,11 @@ input[name="search[keywords]"] {
 	margin-bottom: 15px;
 	font-size:15px;
 }
-.search .magGlassSearchButton { /* Contains search magGlassButton only */
+.magGlassSearchButton { /* Contains search magGlassButton only */
 	margin-bottom:15px; 
 	float:right;
 }
-.search #searchDiv { /* Contains search textbox only */
+#searchDiv { /* Contains search textbox only */
 	margin-top:40px; 
 	float:right; 
 	margin-right:5px;
@@ -541,10 +541,10 @@ footerNav h4, .ourCommunity h4 { font-family:'JosefinSlabRegular', Georgia, "Tim
 
 
 
+
 /*************************************/
 /***********MISCELANEOUS*************/
 /***********************************/
-
 
 
 article, aside, figure, footer, header, hgroup, menu, nav, section {
