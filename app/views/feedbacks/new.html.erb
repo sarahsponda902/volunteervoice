@@ -34,16 +34,20 @@
 </style>
 
 <!-- ERROR MESSAGES -->
-<% if !(flash.is_a?(String))%>
+<% if flash.class.name != "String"%>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
+	<% if value.class.name != "String"%>
+<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
 	<% value.each do |f|%>
 		* <%=f%><br />
 	<% end %>
   </div>
 <% end %>
+<% end %>
 <% end %><!-- END ERROR MESSAGES -->
+
+
 <div class="container">
 	<div class="row">
 		<div class="twelve columns" align="center">

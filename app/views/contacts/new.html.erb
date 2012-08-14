@@ -111,11 +111,13 @@ a.contact-window:hover, a.organizations-window:hover, a.questions-window:hover{
 <% if flash.class.name != "String"%>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
+	<% if value.class.name != "String"%>
 <%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
 	<% value.each do |f|%>
 		* <%=f%><br />
 	<% end %>
   </div>
+<% end %>
 <% end %>
 <% end %><!-- END ERROR MESSAGES -->
 
