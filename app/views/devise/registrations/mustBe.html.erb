@@ -46,7 +46,7 @@
 	text-align:center; 
 	margin-top:50px;
 }
-.six .columns .leftLoginColumn {
+#leftLoginColumn {
 	text-align:left; 
 	margin-top:90px; 
 	width:45%;
@@ -109,7 +109,7 @@ a.forgotPasswordLink:hover {
 	margin-top:30px; 
 	text-align:center;
 }
-.six .columns .rightColumnRegister {
+#rightColumnRegister {
 	text-align:left; 
 	margin-top:90px; 
 	border-left:1px solid #e67b5a; 
@@ -250,7 +250,7 @@ select {
 	<div class="row">
 				<p class="title">You have to be logged in for that!</p>
 	
-	<div class="six columns leftLoginColumn">
+	<div class="six columns" id="leftLoginColumn">
 		<p class="subTitle">Login</p>
 		<%= form_for("user", :url => user_session_path) do |f| %>
 			<%= f.hidden_field :return_link, :value => @link%>
@@ -270,7 +270,7 @@ select {
 	</div>
 	
 	
-	<div class="six columns rightColumnRegister">
+	<div class="six columns" id="rightColumnRegister">
 		
 
 		<p class="subTitle subTitleRegister">Register</p>
