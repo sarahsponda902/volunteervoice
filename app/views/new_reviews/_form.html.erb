@@ -174,7 +174,7 @@
 	}
 	#timeFrameSelectDiv {
 		position:absolute; 
-		left:42%;
+		left:46%;
 		top:55px; 
 		height:30px; 
 		width:228px; 
@@ -229,6 +229,14 @@
 		resize:none; 
 		color:gray; 
 		border: 1px solid #575758;
+	}
+	.counter {
+		float:right;
+	}
+	.editImageContainer {
+		margin-left:11%; 
+		margin-top:10px; 
+		margin-bottom:30px;
 	}
 	
 	</style>
@@ -316,12 +324,12 @@
 				</div>
 
 
-				<div class="ten columns" class="yourExperienceLabel">Your Experience <span class="min200Blurb">(Minimum 200 characters)</span></div>
+				<div class="ten columns" id="yourExperienceLabel">Your Experience <span class="min200Blurb">(Minimum 200 characters)</span></div>
 	<div class="eleven columns">
 	   <%= f.text_area :body, :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@new_review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @new_review.body; end), :class => "word_count"%>
-	<span style="float:right" class="counter"></span><br />
+	<span class="counter"></span><br /><!-- Word counter -->
 	
-	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:20px; background:none; border:none; font-size:1.3em" value="0"/> photos attached</div></div>
+	<div class="editImageContainer" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:20px; background:none; border:none; font-size:1.3em" value="0"/> photos attached</div></div>
 	
 	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/addPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:140px">No photos attached</div></div>
 
