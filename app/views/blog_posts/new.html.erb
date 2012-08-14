@@ -1,5 +1,5 @@
 <style>
-	.title {
+	.bigTitle {
 		text-align:center;
 		font-size:3em;
 		margin-top:30px;
@@ -11,6 +11,6 @@
 <% self.respond_to?(:title) && title('New Post') %>
 <% @show_title = false -%>
 <%= stylesheet_link_tag 'blog_kit' %>
-<p class="title">New Blog Post</p>
+<p class="bigTitle">New Blog Post</p>
 
 <%= render :partial => 'form' %>
