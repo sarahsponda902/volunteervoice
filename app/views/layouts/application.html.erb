@@ -495,6 +495,8 @@
 <!--- POPUP PLUGINS -->
 <!--****************-->
 
+
+<!-- User Login Popup -->
   	<div id="login-box" class="login-popup">
 	<a href="#" class="close"><div class="close_image"></div></a><!-- Close button -->
 	  	<%= form_for("user", :url => user_session_path) do |f| %>
@@ -512,11 +514,11 @@
 		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :id => "userLoginButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
 
 		<a class="forgotPasswordLink" href="/users/password/new">Forgot your password?</a>
-		<%end%>
+		<%end%>	
+	</div><!-- End User Login Popup -->
 	
 	
-	</div>
-	
+<!-- Org Login Popup -->	
 	<div id="org-login-box" class="org-login-popup">
 		<a href="#" class="close"><div class="close_image"></div></a>
 	  	<%= form_for("organization_account", :url => organization_account_session_path) do |f| %>
@@ -535,10 +537,12 @@
 
 		<a class="forgotPassword" class="forgotPasswordLink" href="/organization_accounts/password/new">Forgot your password?</a>
 		<%end%>
-	
-	
 	</div>
+	<!-- End Org Login Popup -->
 	
+	
+	
+<!-- Org Request an Account Popup -->	
 		<div id="request-box" class="request-popup">
 			<a href="#" class="close"><div class="close_image"></div></a>
 			<% @contact = Contact.new %>
@@ -591,7 +595,10 @@
 			<% end %>
 		</div>
 	</div>
+<!-- End Org Request an Account Popup -->
 
+
+	
 	
 		<script type="text/javascript">
 

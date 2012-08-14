@@ -328,7 +328,7 @@ input[name="search[keywords]"] {
 /******************************************/
 
 /** ADMIN NAV DROPDOWN **/
-#adminNav { width: 300px; text-align:center;}
+#adminNav { width: 300px; text-align:center;margin-top:-36px;}
 
 #adminNav li {padding:15px; list-style:none; display:inline-block; text-align:center; font-family:Arial; background-color:#575758; width:auto; color:red; font-size:1.3em; margin:auto; float:center}
 
@@ -347,7 +347,7 @@ input[name="search[keywords]"] {
 #adminNav ul ul{position: absolute; display:block; opacity:.9; filter: alpha(opacity=90); right: 28%; top: 25px; visibility:hidden; font-size:.85em; display:block; z-index:5; padding:5px; padding-top:-5px; padding-bottom:10px;
  background-color:#575758; border-bottom:3px solid #575758; border-left:3px solid #575758; border-right:3px solid #575758; }
 
-#adminNav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
+#adminNav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;padding:5px}
 
 
 
