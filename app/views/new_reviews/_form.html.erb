@@ -172,7 +172,7 @@
 		width:40%; 
 		margin-left:11%;
 	}
-	#timeFrameSelect {
+	#timeFrameSelectDiv {
 		position:absolute; 
 		left:40%;
 		top:55px; 
@@ -181,6 +181,54 @@
 		overflow:hidden; 
 		border-right:1px solid #575758; 
 		border-left:1px solid #575758;
+	}
+	select {
+		position:absolute; 
+		left:-5px; 
+		width:255px; 
+		height:30px; 
+		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+		border:1px solid #575758; 
+		background-color:white;
+	}
+	#whichProgramLabel {
+		font-size:1.5em; 
+		line-height:1.25em; 
+		width:40%; 
+		margin-left:11%; 
+		margin-top:40px;
+	}
+	#whichProgramFieldContainer {
+		position:absolute; 
+		left:40%; 
+		top:130px; 
+		height:30px; 
+		width:228px;
+	}
+	#programsField {
+		height:25px; 
+		font-style:italic; 
+		margin-top:5px; 
+		width:228px;
+	}
+	#yourExperienceLabel {
+		font-size:1.5em; 
+		line-height:1.25em; 
+		width:80%; 
+		margin-left:11%; 
+		margin-top:42px;
+	}
+	#min200Blurb {
+		font-size:0.6em;
+	}
+	#theBody {
+		margin-left:10px;
+		width:400px; 
+		font-style:italic; 
+		height:150px; 
+		resize:none; 
+		color:gray; 
+		border: 1px solid #575758;
 	}
 	
 	</style>
@@ -248,8 +296,8 @@
 		<div align="center" class="theDetailsTitle"> The Details </div>
 	<section class="writeReviewContent">
 		<div class="three columns" id="howLongLabel">How long did you work with them?</div>
-		<div class="select-div" class="three columns" id="timeFrameSelect">
-			<select id="new_review_time_frame" onchange = "checkFields()" name="new_review[time_frame]" style="position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;"><option value="">Select a Time Frame</option>
+		<div class="select-div" class="three columns" id="timeFrameSelectDiv">
+			<select id="new_review_time_frame" onchange = "checkFields()" name="new_review[time_frame]"><option value="">Select a Time Frame</option>
 							<option value="1 week or less">1 week or less</option>
 							<option value="2-4 weeks">2-4 weeks</option>
 							<option value="5-8 weeks">5-8 weeks</option>
@@ -262,15 +310,15 @@
 							</select>
 				</div>
 
-				<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Which Program?</div>
-				<div class="three columns" style="position:absolute; left:40%; top:130px; height:30px; width:228px">
-				<%= f.text_field :program, :value => if (@new_review.program.nil?); (" eg. Tutoring children in Peru"); else @new_review.program; end, :style => "height:25px; font-style:italic; margin-top:5px; width:228px", :id => "programsField", :onclick => "removePeru(); this.style.fontStyle = 'normal'", :onblur => "addPeru(); if (this.value == ' eg. Tutoring children in Peru') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}"%>
+				<div class="three columns" id="whichProgramLabel">Which Program?</div>
+				<div class="three columns" id="whichProgramFieldContainer">
+				<%= f.text_field :program, :value => if (@new_review.program.nil?); (" eg. Tutoring children in Peru"); else @new_review.program; end, :id => "programsField", :onclick => "removePeru(); this.style.fontStyle = 'normal'", :onblur => "addPeru(); if (this.value == ' eg. Tutoring children in Peru') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}"%>
 				</div>
 
 
-				<div class="ten columns" style="font-size:1.5em; line-height:1.25em; width:80%; margin-left:11%; margin-top:42px">Your Experience <font style="font-size:0.6em;">(Minimum 200 characters)</font></div>
+				<div class="ten columns" class="yourExperienceLabel">Your Experience <span class="min200Blurb">(Minimum 200 characters)</span></div>
 	<div class="eleven columns">
-	   <%= f.text_area :body, :style => "margin-left:10px;width:400px; font-style:italic; height:150px; resize:none; color:gray; border: 1px solid #575758", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@new_review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @new_review.body; end), :class => "word_count"%>
+	   <%= f.text_area :body, :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@new_review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @new_review.body; end), :class => "word_count"%>
 	<span style="float:right" class="counter"></span><br />
 	
 	<div style="margin-left:11%; margin-top:10px; margin-bottom:30px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:20px; background:none; border:none; font-size:1.3em" value="0"/> photos attached</div></div>
