@@ -6,10 +6,13 @@
 	margin:auto;
 	float:center;
 }
+.mustBeMessage {
+	font-weight:600;
+}
 </style>
 <div class="blogNewComment">
 	<% if !user_signed_in?  %>
-		<p>You must be logged in to post a comment.</p>
+		<p class="mustBeMessage">You must be logged in to post a comment.</p>
 	<% else %>
 		<%= form_for([@blog_post, blog_comment]) do |f| %>
 			<% if blog_comment.errors.size > 0 %>

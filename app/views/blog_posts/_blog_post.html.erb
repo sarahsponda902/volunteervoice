@@ -61,7 +61,7 @@
 		<%= blog_post.body.html_safe %> 
 	</div>
 	<br />
-
+	<br />
 	<p class="blogFooter">
 		<ul class="blogList">
 			<li class="blogListFirst"><%=pluralize(blog_post.blog_comments.count, 'comment') %></li>
@@ -76,7 +76,6 @@
 			<% end %>
 		</ul>
 	</p>
-	<br />
 	<% if !(defined?(show_comments))%>
 	<div class="lineBeforeComments"></div><br />
 	<% end %>
