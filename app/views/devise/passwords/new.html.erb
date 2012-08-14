@@ -26,6 +26,9 @@
 	border:1px solid #e67b5a; 
 	height:250px;
 }
+#labelContainer {
+	width:200px;
+}
 .label {
 	font-size:1.3em; 
 	margin-bottom:10px;
@@ -49,7 +52,7 @@
 <%= devise_error_messages! %>
 <div class="container">
 	<div class="row">
-		<div class="twelve columns" class="top">
+		<div class="twelve columns top">
 <p class="title">Forgot your password?</p>
 	</div>
 	</div>
@@ -59,7 +62,7 @@
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 
-  <div class="three columns"><p class="label"> Email or Username: </p>
+  <div class="three columns" id="labelContainer"><p class="label"> Email or Username: </p>
   <%= f.text_field :login, :class => "field" %></div>
 
 <div class="seven columns blurb">Enter your registered email here.  We will send you a top secret message that will allow you to change your password.</div>
