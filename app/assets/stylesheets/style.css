@@ -355,9 +355,9 @@ adminContainer {
 .orgLogin ul li li {
 	height:20px;
 }
-#orgLoginImage {
+#orgLogin-image {
 	padding-right:1px; 
-	margin-left:-74px;
+	margin-right:-74px;
 }
 #orgLoginBox {
 	width:170px;
