@@ -328,6 +328,8 @@ input[name="search[keywords]"] {
 /******************************************/
 
 /** ADMIN NAV DROPDOWN **/
+#adminNav { background-color:#575758; width:auto; color:red; font-size:1.3em; margin:auto; float:center}
+
 #adminNav li {list-style:none; display:inline-block; text-align:center; font-family:Arial}
 
 #adminNav li a:visited{color: white;}
