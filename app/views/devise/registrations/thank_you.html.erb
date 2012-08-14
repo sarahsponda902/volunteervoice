@@ -1,11 +1,9 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-.container {
-	margin-top:30px;
-}
 .top {
 	text-align:center;
+	margin-top:30px;
 }
 .blurb {
 	margin-top:50px;
@@ -13,7 +11,7 @@
 	color:#9bce6c; 
 	font-size:2em;
 }
-.submitContainer{
+.logoContainer{
 	text-align:center; 
 	margin-top:75px;
 }
@@ -21,14 +19,14 @@
 
 <div class="container">
 	<div class="row">
-		<div class="twelve columns" class="top">
+		<div class="twelve columns top">
 
 		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/thanksInTouch.png"%>
 		
 		<p class="blurb">We really appreciate your feedback! </p>
 		
 		
-<div class="submitContainer">		
+<div class="logoContainer">		
 <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png"), root_path, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 </div>
 </div>
