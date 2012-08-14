@@ -13,7 +13,8 @@
 	line-height:1.2em; 
 	color:#68c2d8;
 	font-size:1.4em;
-	margin-left:20%;
+	width:95%;
+	float:left;
 }
 #centeredContainer {
 	float:center;
@@ -91,9 +92,9 @@ select {
 		<div class="twelve columns">
 			<% @contact = Contact.new %>
 			<p class="title" align="center">Account Request</p>
-			<p class="blurb">Please complete all fields</p>
 			<%= form_for @contact do |f| %>
 			<div class="six columns" id="centeredContainer">
+			<p class="blurb">Please complete all fields</p>
 			<div class="six columns" id="leftSideFields">
 
 			  <div><%= f.label "Organization Name" %>
