@@ -12,6 +12,7 @@
 <p align="center" class="title">Listing flags</p>
 
 <table>
+	<thead>
   <tr>
 	<th>Org Name</th>
 	<th>Poster</th>
@@ -22,7 +23,8 @@
     <th>Destroy?</th>
 	<th>Show Review Anyway?</th>
   </tr>
-
+	</thead>
+	<tdata>
 <% @flags.each do |flag| %>
   <tr>
 	<td width="13%"><%= link_to Organization.find(Review.find(flag.review_id).organization_id).name, Organization.find(Review.find(flag.review_id).organization_id)%></td>
@@ -50,6 +52,7 @@
 	<% end %>
   </tr>
 <% end %>
+	</tdata>
 </table>
 
 <br />

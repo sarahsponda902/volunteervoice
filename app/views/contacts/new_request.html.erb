@@ -81,6 +81,7 @@ select {
 </style>
 
 <!-- ERROR MESSAGES -->
+<% if flash.class.name != "String"%>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
 <%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
@@ -88,7 +89,8 @@ select {
 		* <%=f%><br />
 	<% end %>
   </div>
-<% end %><!-- END ERROR MESSAGES-->
+<% end %>
+<% end %><!-- END ERROR MESSAGES -->
 
 
 <!-- ACCOUNT REQUEST FORM -->

@@ -17,14 +17,15 @@
 <p class="title">Listing Messages</h1>
 
 <table>
+	<thead>
   <tr>
     <th>Sender</th>
 	<th>Recipient</th>
 	<th>Message #</th>
   </tr>
-
+	</thead>
 <% @messages.each do |f| %>
-
+<tdata>
   <tr>
 	<td><% if !(f.sender_deleted)%>
 	<%=link_to User.find(f.sender_id).username, User.find(f.sender_id)%>
@@ -44,6 +45,6 @@
   </tr>
 
 <% end %>
-
+</tdata>
 </table>
 </div>

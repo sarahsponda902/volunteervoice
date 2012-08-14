@@ -1,12 +1,14 @@
 <h1>Listing mad_mimi_emails</h1>
 
 <table>
+	<thead>
   <tr>
     <th></th>
     <th></th>
     <th></th>
   </tr>
-
+	</thead>
+	<tdata>
 <% @mad_mimi_emails.each do |mad_mimi_email| %>
   <tr>
     <td><%= link_to 'Show', mad_mimi_email %></td>
@@ -14,6 +16,7 @@
     <td><%= link_to 'Destroy', mad_mimi_email, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+	</tdata>
 </table>
 
 <br />

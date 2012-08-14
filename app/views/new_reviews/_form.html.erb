@@ -128,12 +128,14 @@
 		margin-bottom:20px;
 	}
 	
+	
 	</style>
 
 
 
 
 <!-- ERROR MESSAGES -->
+<% if flash.class.name != "String"%>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
 <%= pluralize value.length, "errors"%> prevented your review from being created:<br />
@@ -141,6 +143,7 @@
 		* <%=f%><br />
 	<% end %>
   </div>
+<% end %>
 <% end %><!-- END ERROR MESSAGES -->
 
 
@@ -154,7 +157,7 @@
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 
 	<div class="row" >
-		<div class="six columns" style="margin-top:20px;">
+		<div class="six columns" class="leftColumnContainer">
 	<section class="selectCompany"><!--select a company box and blurb-->
 		<section class="selectCompanyBox"><!-- select a company drop-down box-->
 		<label for="review_Select a Company" style="font-size:2em; margin-left:3%">Select a Company:</label>

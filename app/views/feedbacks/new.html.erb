@@ -34,7 +34,7 @@
 </style>
 
 <!-- ERROR MESSAGES -->
-<% if flash.class.name != "String"%>
+<% if !(flash.is_a?(String))%>
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
 <%= pluralize value.length, "errors"%> prevented your review from being created:<br />

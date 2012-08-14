@@ -37,7 +37,7 @@
 	<th>Delete?</th>
   </tr>
 	</thead>
-
+<tdata>
 <% @feedbacks.each do |f| %>
   <tr>
 	<td width="10%"><p class="dateTime"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
@@ -61,6 +61,7 @@
     <td width="7%"><%= button_to "Delete", feedback_path(f.id), :method => :delete, :confirm => "Are you sure?" %></td>
   </tr>
 <% end %>
+</tdata>
 </table>
 
 <br />
