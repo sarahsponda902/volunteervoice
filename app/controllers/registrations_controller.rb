@@ -66,15 +66,6 @@ class RegistrationsController < Devise::RegistrationsController
   def are_you_sure
   end
   
-  def create_admin
-    if user_signed_in? && current_user.admin?
-      resource = build_resource({})
-      respond_with resource
-    else
-      redirect_to root_path
-    end
-  end
-  
   def must_be
     resource = build_resource({})
     respond_with resource
