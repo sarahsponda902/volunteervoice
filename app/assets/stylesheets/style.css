@@ -47,7 +47,12 @@ html, body, div, span, applet, object, iframe,
 		
 }
 
-/* Main Header Text*/
+
+
+
+/*************************/
+/****** FONTS  **********/
+/***********************/
 @font-face {
     font-family: 'BebasRegular';
     src: url('BEBAS___-webfont.eot');
@@ -222,11 +227,14 @@ html, body, div, span, applet, object, iframe,
 }
 
 
-article, aside, figure, footer, header, hgroup, menu, nav, section {
-		display: block;
-}
 
-/** HEADER **/
+
+/*******************************/
+/*******************************/
+/*********** HEADER ************/
+/******************************/
+/******************************/
+
 #header {
 	min-width:970px; 
 	color:#575758;
@@ -238,34 +246,8 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 #headerLogo {
 	height:95px;
 	cursor:pointer;
-}	
+}
 
-
-body {background:#E3E6D5;
-font-family: Tahoma, Geneva, sans-serif;
-font-size:13px;
-color: #000000;
-line-height:1.25em;
-width:100%;
-margin-left:0px;
-margin-top:0px}
-
-.container {min-width:970px; color:#575758}
-
-/** OTHER LINKS **/
-.lightBlue {color: #62acbd;}
-a.lightBlue:hover {color: #e67b5a;}
-.orange {color: #e67b5a;}
-a.orange:hover {color: #62acbd; }
-
-
-
-/** POPUPS CLOSE IMAGE **/
-
-a.close { float:right; margin:-20px -20px 0 0; height:30px; }
-div.close_image { background:url(/assets/error.png) no-repeat; height:30px; width:30px; }
-div.overflow { height:auto; max-height: 250px; overflow:auto; }
-	
 
 
 /*************************/
@@ -305,16 +287,12 @@ input[name="search"] {
 	font-size:15px;
 }
 
-/** All Links (most) **/
-a:active{color:#575758}
-a:visited{color:#575758}
-a:link{color:#575758}
-a:hover{color:white; background:none}
 
+/******************************************/
+/****** LOGIN ROW (orgs and users) *******/
+/****************************************/
 
-
-
-/*** LOGIN ROW ***/
+/** USERS **/
 
 .loginContainer { float:right; }
 
@@ -332,28 +310,7 @@ a:hover{color:white; background:none}
 
 .login.unreadMessagesCount { color:#e67b5a; }
 
-
-
-#adminNav li {list-style:none; display:inline-block; text-align:center; font-family:Arial}
-
-#adminNav li a:visited{color: white;}
-
-#adminNav li a:active{color: white;}
-
-#adminNav li a:link{color:white;}
-
-#adminNav li a{color: white;}
-
-#adminNav li a:hover {color:#c1dfdb;}
-
-#adminNav li:hover ul{visibility:visible; z-index:5;}
-
-#adminNav ul ul{position: absolute; display:block; opacity:.9; filter: alpha(opacity=90); right: 28%; top: 25px; visibility:hidden; font-size:.85em; display:block; z-index:5; padding:5px; padding-top:-5px; padding-bottom:10px;
- background-color:#575758; border-bottom:3px solid #575758; border-left:3px solid #575758; border-right:3px solid #575758; }
-
-#adminNav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
-
-
+/** ORGS **/
 
 #orgLogin li {list-style:none; display:inline-block; text-align:center; font-family:Arial; margin-top:0px; color:white; float:right }
 
@@ -375,8 +332,33 @@ a:hover{color:white; background:none}
 
 
 
+/******************************************/
+/****** NAVIGATION ROWS + DROPDOWNS *******/
+/******************************************/
 
-/* Universal Navigation */
+/** ADMIN NAV DROPDOWN **/
+#adminNav li {list-style:none; display:inline-block; text-align:center; font-family:Arial}
+
+#adminNav li a:visited{color: white;}
+
+#adminNav li a:active{color: white;}
+
+#adminNav li a:link{color:white;}
+
+#adminNav li a{color: white;}
+
+#adminNav li a:hover {color:#c1dfdb;}
+
+#adminNav li:hover ul{visibility:visible; z-index:5;}
+
+#adminNav ul ul{position: absolute; display:block; opacity:.9; filter: alpha(opacity=90); right: 28%; top: 25px; visibility:hidden; font-size:.85em; display:block; z-index:5; padding:5px; padding-top:-5px; padding-bottom:10px;
+ background-color:#575758; border-bottom:3px solid #575758; border-left:3px solid #575758; border-right:3px solid #575758; }
+
+#adminNav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
+
+
+
+/** UNIVERSAL NAVIGATION ROW + FIND A PROGRAM DROPDOWN **/
 .container#globalNav {background-color:#575758;  -moz-box-shadow:    3px 3px 5px 6px #ccc; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-weight:600;
   -webkit-box-shadow: 0px 8px 5px 0px #ccc;
   box-shadow:         0px 8px 5px 0px #ccc;
@@ -412,10 +394,38 @@ nav li ul{ display:block; position:absolute; top:183px; width:220px; text-align:
 nav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
 nav li ul li a:hover{color:#c1dfdb;}
 
+/**** END HEADER ****/
 
 
 
-/* Footer */
+
+
+	
+
+/*************************/
+/****** BODY ************/
+/***********************/
+body {background:#E3E6D5;
+font-family: Tahoma, Geneva, sans-serif;
+font-size:13px;
+color: #000000;
+line-height:1.25em;
+width:100%;
+margin-left:0px;
+margin-top:0px}
+
+.container {min-width:970px; color:#575758}
+
+
+
+
+
+
+/*******************************/
+/*******************************/
+/*********** FOOTER ***********/
+/******************************/
+/******************************/
 
 	/**FOOTER**/
 	#footer {
@@ -475,6 +485,13 @@ nav li ul li a:hover{color:#c1dfdb;}
 
 footerNav h4, .ourCommunity h4 { font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
 .spreadWord li { list-style:none; display:inline;}
+/*** END FOOTER ***/
+
+
+
+
+
+
 
 
 /*********************/
@@ -521,11 +538,18 @@ footerNav h4, .ourCommunity h4 { font-family:'JosefinSlabRegular', Georgia, "Tim
 	border:2px solid #e67b5a;
 }
 
+
+
+
 /*************************************/
 /***********MISCELANEOUS*************/
 /***********************************/
 
 
+
+article, aside, figure, footer, header, hgroup, menu, nav, section {
+		display: block;
+}
 
 select{ padding-top:5px; padding-left:10px; -webkit-appearance: none}
 
@@ -533,5 +557,26 @@ h2 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
 
 h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:24px;}
 
-.shadowed{opacity:.8}
+.shadowed{opacity:.8} /** FOR BUTTONS ONCLICK - OPAQUE */
+
+
+/** All Links (most) **/
+a:active{color:#575758}
+a:visited{color:#575758}
+a:link{color:#575758}
+a:hover{color:white; background:none}
+
+/** OTHER LINKS **/
+.lightBlue {color: #62acbd;}
+a.lightBlue:hover {color: #e67b5a;}
+.orange {color: #e67b5a;}
+a.orange:hover {color: #62acbd; }
+
+
+/** POPUPS CLOSE IMAGE **/
+
+a.close { float:right; margin:-20px -20px 0 0; height:30px; }
+div.close_image { background:url(/assets/error.png) no-repeat; height:30px; width:30px; }
+div.overflow { height:auto; max-height: 250px; overflow:auto; }
+
 
