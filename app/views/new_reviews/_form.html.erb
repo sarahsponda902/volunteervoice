@@ -1,7 +1,4 @@
 
-<head>
-
-
 <script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.js' type="text/javascript"></script>
 <script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
 <script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.rating.js' type="text/javascript" language="javascript"></script>
@@ -12,238 +9,131 @@
 
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
+	<style>
+	
+	#cancel:link{color: #6aaeba}
+	#cancel:active{color: #6aaeba}
+	#cancel:visited{color: #6aaeba}
+	#cancel:hover{color: #e67b5a}
 
-<script type="text/javascript">
+	#termsUse:link{color:#6aaeba}
+	#termsUse:active{color:#6aaeba}
+	#termsUse:visited{color:#6aaeba}
+	#termsUse:hover{color:#e67b5a}
 
-var preparation = "notClicked";
-var support = "notClicked";
-var impact = "notClicked";
-var overall = "notClicked";
-var structure = "notClicked";
-
-  // Some simple jQuery to remove the default search value when the user clicks the box
-
-  $(document).ready(function() {
-	var	ones = 0;
-	var	twos = 0;
-	var	threes = 0;
-	var	fours = 0;
-	var	fives = 0;
-	var	sixs = 0;
-	var	sevens = 0;
-	var	eights = 0;
-	var	nines = 0;
-	var	tens = 0;
-	var	count = 0;
-		$('#editImage').hide();
-		$('#checkBefore').hide();
-		$('#checkTerms').hide();
-		<% if !(@new_review.time_frame.nil?) %>
-		$('#new_review_time_frame').val("<%=@new_review.time_frame%>");
-		<% end %>
-
-		$('.word_count').each(function(){
-			var length = $(this).val().length;
-			$(this).parent().find('.counter').html( length + ' characters');
-			$(this).keyup(function(){
-				var new_length = $(this).val().length;
-				$(this).parent().find('.counter').html( new_length + ' characters');
-			});
-		});
+	li{ margin-bottom:8px}
 
 
-  });
-
-function nameFile() {
-	var str="";
-	str= $("#new_review_photo").val();
-	document.getElementById('filename').value = str.substring(12, str.length);
-}
-
-function clickReviewPhoto() {
-	$("#new_review_photo").click();
-}
-
-
-function beforeCheck() {
-	$('#checkBefore').toggle();
-}
-
-function termsCheck() {
-	$('#checkTerms').toggle();
-}
-
-function submitForm() {
-	$('#theForm').submit();
-}
-
-function removeTwoHundred() {
-	if ($("#theBody").attr("value") == "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.." ) {
-		$("#theBody").attr("value", "");
-    }
-}
-
-function backToTwoHundred() {
-	if ($("#theBody").attr("value") == "" ) {
-		$("#theBody").attr("value", "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.");
-    }
-}
-
-function removePut() {
-	if ($("#put").attr("value") == "  Put the organization's name here" ) {
-		$("#put").attr("value", "");
-    }
-}
-
-function backToPut() {
-	if ($("#put").attr("value") == "" ) {
-		$("#put").attr("value", "  Put the organization's name here");
-    }
-}
-
-function removePhoto(){
-	$("#new_review_photo").attr("value", "" );
-	$("#filename").attr("value", "" );
-}
-
-
-function setClicked(theVar) {
-	if (theVar == 'preparation') {
-		preparation = "clicked";
+	/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
+	div.star-rating{float:left;width:45px;height:40px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden}
+	div.star-rating,div.star-rating a{background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/big_stars.png) no-repeat 0 0px;}
+	div.star-rating a{display:block;width:60px;height:100%;background-position:0 0px;border:0;}
+	div.star-rating-on a{background-position:0 -40px!important}
+	div.star-rating-hover a{background-position:0 -40px}
+	/* Read Only CSS */
+	div.star-rating-readonly a{cursor:default !important}
+	/* Partial Star CSS */
+	div.star-rating{background:transparent!important;overflow:hidden!important;}
+	/* END jQuery.Rating Plugin CSS */
+	
+	a.forgotPassword:link{color:white}
+	a.forgotPassword:active{color:white}
+	a.forgotPassword:visited{color:white}
+	a.forgotPassword:hover{color:#e67b5a}
+	
+	/* Mask for background, by default is not display */
+	#mask {
+		display: none;
+		background: #000; 
+		position: fixed; left: 0; top: 0; 
+		z-index: 10;
+		width: 100%; height: 100%;
+		opacity: 0.8;
+		z-index: 999;
 	}
-	if (theVar == 'support') {
-		support = "clicked";
+	
+	.addPhotos-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #6aaeba;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		position: fixed;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		height:300px;
+		width:350px;
 	}
-	if (theVar == 'impact') {
-		impact = "clicked";
+	
+
+	/* You can customize to your needs  */
+	.terms-popup{
+		display:none;
+		background: #E3E6D5;
+		padding: 10px; 	
+		border: 3px solid #575758;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		position: fixed;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		width:500px;
+		height:300px;
 	}
-	if (theVar == 'structure') {
-		structure = "clicked";
-	}
-	if (theVar == 'overall') {
-		overall = "clicked";
-	}
-}
-
-
-function checkFields(){
-	if(($("#put").attr("value") != "  Put the organization's name here")
-		&& ($("#new_review_time_frame").attr("value") != "Select a Time Frame")
-		&& ($("#theBody").attr("value").length >= 200)
-		&& ($("#terms").attr("value"))
-		&& preparation == "clicked"
-		&& support == "clicked"
-		&& impact == "clicked"
-		&& structure == "clicked"
-		&& overall == "clicked")
-		{
-			$("#submitButtonDiv").show();
-			$("#submitButtonHidden").hide();
-			
-		}
-}
-
-function addPeru() {
-	if ($("#programsField").attr("value") == "" ) {
-		$("#programsField").attr("value", " eg. Tutoring children in Peru");
-    }
-}
-
-function removePeru() {
-	if ($("#programsField").attr("value") == " eg. Tutoring children in Peru" ) {
-		$("#programsField").attr("value", "");
+	
+	/* You can customize to your needs  */
+	.qMark-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #6aaeba;
+		float: left;
+		color:#575758;
+		font-size: 1.1em;
+		position: fixed;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		height:300px;
+		width:500px;
 		
-    }
-	
-}
-
-
-		function changeCount() {
-
-			if ($("#one").attr("value") != "") {
-				ones = 1;
-			} else {
-				ones = 0;
-			}
-
-			if ($("#two").attr("value") != "") {
-				twos = 1;
-			} else {
-				twos = 0;
-			}
-
-			if ($("#three").attr("value") != "") {
-				threes = 1;
-			} else {
-				threes = 0;
-			}
-
-			if ($("#four").attr("value") != "") {
-				fours = 1;
-			} else {
-				fours = 0;
-			}
-
-			if ($("#five").attr("value") != "") {
-				fives = 1;
-			} else {
-				fives = 0;
-			}
-
-			if ($("#six").attr("value") != "") {
-				sixs = 1;
-			} else {
-				sixs = 0;
-			}
-
-			if ($("#seven").attr("value") != "") {
-				sevens = 1;
-			} else {
-				sevens = 0;
-			}
-
-			if ($("#eight").attr("value") != "") {
-				eights = 1;
-			} else {
-				eights = 0;
-			}
-
-			if ($("#nine").attr("value") != "") {
-				nines = 1;
-			} else {
-				nines = 0;
-			}
-
-			if ($("#ten").attr("value") != "") {
-				tens = 1;
-			} else {
-				tens = 0;
-			}
-
-		count = ones + twos + threes + fours + fives + sixs + sevens + eights + nines + tens;
-		$("#total_count").attr("value", count);
-
-		if (count > 0) {
-			$("#editImage").show();
-			$("#addImage").hide();
-		} else {
-			$("#editImage").hide();
-			$("#addImage").hide();
-		}
 	}
 	
-	function closePop() {
-		$('#mask').fadeOut(300); 
-		$('#mask').remove();
-		$('.addPhotos-popup').fadeOut(300);
+	/* START OF PAGE */
+	.container {
+		color:#575758;
+	}
+	.top {
+		margin-top:50px;
+		margin-bottom:20px;
 	}
 	
-
-</script>
-
+	</style>
 
 
-</head>
+
+
+<!-- ERROR MESSAGES -->
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
 <%= pluralize value.length, "errors"%> prevented your review from being created:<br />
@@ -251,11 +141,11 @@ function removePeru() {
 		* <%=f%><br />
 	<% end %>
   </div>
-<% end %>
+<% end %><!-- END ERROR MESSAGES -->
 
-<body>
-<div class="container" style="color:#575758">
-	<div class="row" style="margin-top:50px;margin-bottom:20px" align="center">
+
+<div class="container">
+	<div class="row" align="center" class="top">
 		<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/shareVoice.png"%>
 </div>
 <br />
@@ -773,181 +663,7 @@ function removePeru() {
 <br />
 
 
-<style>
 
-	/* Mask for background, by default is not display */
-	#mask {
-		display: none;
-		background: #000; 
-		position: fixed; left: 0; top: 0; 
-		z-index: 10;
-		width: 100%; height: 100%;
-		opacity: 0.8;
-		z-index: 999;
-	}
-
-	/* You can customize to your needs  */
-	.qMark-popup{
-		display:none;
-		background: #D9DEDA;
-		padding: 10px; 	
-		border: 2px solid #6aaeba;
-		float: left;
-		color:#575758;
-		font-size: 1.1em;
-		position: fixed;
-		top: 50%; left: 50%;
-		z-index: 99999;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-		height:300px;
-		width:500px;
-		
-	}
-
-	img.btn_close { Position the close button
-		float: right; 
-		margin: -28px -28px 0 0;
-	}
-
-	fieldset { 
-		border:none; 
-	}
-
-
-
-	.button { 
-		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-		border-color:#000; 
-		border-width:1px;
-	        border-radius:4px 4px 4px 4px;
-		-moz-border-radius: 4px;
-	        -webkit-border-radius: 4px;
-		color:#68c2d8;
-		cursor:pointer;
-		display:inline-block;
-		padding:6px 6px 4px;
-		margin-top:10px;
-		font:12px; 
-		width:214px;
-	}
-	.button:hover { background:#ddd; }
-	
-	</style>
-	
-	<script type="text/javascript">
-	
-	
-	$(document).ready(function() {
-
-		
-		
-		$('a.qMark-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var qMarkBox = $(this).attr('href');
-
-			//Fade in the Popup
-			$(qMarkBox).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(qMarkBox).height() + 24) / 2; 
-			var popMargLeft = ($(qMarkBox).width() + 24) / 2; 
-
-			$(qMarkBox).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask" style="opacity:.5"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .qMark-popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-
-		
-				$('a.addPhotos-window').click(function() {
-
-			                //Getting the variable's value from a link 
-					var addPhotosBox = $(this).attr('href');
-
-					//Fade in the Popup
-					$(addPhotosBox).fadeIn(300);
-
-					//Set the center alignment padding + border see css style
-					var popMargTop = ($(addPhotosBox).height() + 24) / 2; 
-					var popMargLeft = ($(addPhotosBox).width() + 24) / 2; 
-
-					$(addPhotosBox).css({ 
-						'margin-top' : -popMargTop,
-						'margin-left' : -popMargLeft
-					});
-
-					// Add the mask to body
-					$('body').append('<div id="mask" style="opacity:.5"></div>');
-					$('#mask').fadeIn(300);
-
-					return false;
-				});
-
-				// When clicking on the button close or the mask layer the popup closed
-				$('a.close, #mask').live('click', function() { 
-				  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
-					$('#mask').remove();  
-				}); 
-				return false;
-				});
-
-		});
-		
-
-</script>
-
-
-<style>
-
-#cancel:link{color: #6aaeba}
-#cancel:active{color: #6aaeba}
-#cancel:visited{color: #6aaeba}
-#cancel:hover{color: #e67b5a}
-
-#termsUse:link{color:#6aaeba}
-#termsUse:active{color:#6aaeba}
-#termsUse:visited{color:#6aaeba}
-#termsUse:hover{color:#e67b5a}
-
-li{ margin-bottom:8px}
-
-
-/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
-div.star-rating{float:left;width:45px;height:40px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden}
-div.star-rating,div.star-rating a{background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/big_stars.png) no-repeat 0 0px;}
-div.star-rating a{display:block;width:60px;height:100%;background-position:0 0px;border:0;}
-div.star-rating-on a{background-position:0 -40px!important}
-div.star-rating-hover a{background-position:0 -40px}
-/* Read Only CSS */
-div.star-rating-readonly a{cursor:default !important}
-/* Partial Star CSS */
-div.star-rating{background:transparent!important;overflow:hidden!important;}
-/* END jQuery.Rating Plugin CSS */
-
-</style>
 
 
 
@@ -1128,102 +844,6 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 		</div>
 	</div>
 	
-	
-	<style>
-	
-	a.forgotPassword:link{color:white}
-	a.forgotPassword:active{color:white}
-	a.forgotPassword:visited{color:white}
-	a.forgotPassword:hover{color:#e67b5a}
-	
-	/* Mask for background, by default is not display */
-	#mask {
-		display: none;
-		background: #000; 
-		position: fixed; left: 0; top: 0; 
-		z-index: 10;
-		width: 100%; height: 100%;
-		opacity: 0.8;
-		z-index: 999;
-	}
-	
-	.addPhotos-popup{
-		display:none;
-		background: #D9DEDA;
-		padding: 10px; 	
-		border: 2px solid #6aaeba;
-		float: left;
-		color:#6aaeba;
-		font-size: 1.1em;
-		position: fixed;
-		top: 50%; left: 50%;
-		z-index: 99999;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-		height:300px;
-		width:350px;
-	}
-	
-
-	/* You can customize to your needs  */
-	.terms-popup{
-		display:none;
-		background: #E3E6D5;
-		padding: 10px; 	
-		border: 3px solid #575758;
-		float: left;
-		color:#6aaeba;
-		font-size: 1.1em;
-		position: fixed;
-		top: 50%; left: 50%;
-		z-index: 99999;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-		width:500px;
-		height:300px;
-	}
-
-	img.btn_close { Position the close button
-		float: right; 
-		margin: -28px -28px 0 0;
-	}
-
-	fieldset { 
-		border:none; 
-	}
-
-
-
-	.button { 
-		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-		border-color:#000; 
-		border-width:1px;
-	        border-radius:4px 4px 4px 4px;
-		-moz-border-radius: 4px;
-	        -webkit-border-radius: 4px;
-		color:#68c2d8;
-		cursor:pointer;
-		display:inline-block;
-		padding:6px 6px 4px;
-		margin-top:10px;
-		font:12px; 
-		width:214px;
-	}
-	.button:hover { background:#ddd; }
-	
-	</style>
-	
 	<script type="text/javascript">
 	
 	
@@ -1262,7 +882,304 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 		}); 
 		return false;
 		});
-	});
+
+
+
+			$('a.qMark-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var qMarkBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(qMarkBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(qMarkBox).height() + 24) / 2; 
+				var popMargLeft = ($(qMarkBox).width() + 24) / 2; 
+
+				$(qMarkBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="opacity:.5"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('a.close, #mask').live('click', function() { 
+			  $('#mask , .qMark-popup').fadeOut(300 , function() {
+				$('#mask').remove();  
+			}); 
+			return false;
+			});
+
+
+					$('a.addPhotos-window').click(function() {
+
+				                //Getting the variable's value from a link 
+						var addPhotosBox = $(this).attr('href');
+
+						//Fade in the Popup
+						$(addPhotosBox).fadeIn(300);
+
+						//Set the center alignment padding + border see css style
+						var popMargTop = ($(addPhotosBox).height() + 24) / 2; 
+						var popMargLeft = ($(addPhotosBox).width() + 24) / 2; 
+
+						$(addPhotosBox).css({ 
+							'margin-top' : -popMargTop,
+							'margin-left' : -popMargLeft
+						});
+
+						// Add the mask to body
+						$('body').append('<div id="mask" style="opacity:.5"></div>');
+						$('#mask').fadeIn(300);
+
+						return false;
+					});
+
+					// When clicking on the button close or the mask layer the popup closed
+					$('a.close, #mask').live('click', function() { 
+					  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
+						$('#mask').remove();  
+					}); 
+					return false;
+					});
+
+			});
+	
+
+</script>
+
+<script type="text/javascript">
+
+var preparation = "notClicked";
+var support = "notClicked";
+var impact = "notClicked";
+var overall = "notClicked";
+var structure = "notClicked";
+
+  // Some simple jQuery to remove the default search value when the user clicks the box
+
+  $(document).ready(function() {
+	var	ones = 0;
+	var	twos = 0;
+	var	threes = 0;
+	var	fours = 0;
+	var	fives = 0;
+	var	sixs = 0;
+	var	sevens = 0;
+	var	eights = 0;
+	var	nines = 0;
+	var	tens = 0;
+	var	count = 0;
+		$('#editImage').hide();
+		$('#checkBefore').hide();
+		$('#checkTerms').hide();
+		<% if !(@new_review.time_frame.nil?) %>
+		$('#new_review_time_frame').val("<%=@new_review.time_frame%>");
+		<% end %>
+
+		$('.word_count').each(function(){
+			var length = $(this).val().length;
+			$(this).parent().find('.counter').html( length + ' characters');
+			$(this).keyup(function(){
+				var new_length = $(this).val().length;
+				$(this).parent().find('.counter').html( new_length + ' characters');
+			});
+		});
+
+
+  });
+
+function nameFile() {
+	var str="";
+	str= $("#new_review_photo").val();
+	document.getElementById('filename').value = str.substring(12, str.length);
+}
+
+function clickReviewPhoto() {
+	$("#new_review_photo").click();
+}
+
+
+function beforeCheck() {
+	$('#checkBefore').toggle();
+}
+
+function termsCheck() {
+	$('#checkTerms').toggle();
+}
+
+function submitForm() {
+	$('#theForm').submit();
+}
+
+function removeTwoHundred() {
+	if ($("#theBody").attr("value") == "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.." ) {
+		$("#theBody").attr("value", "");
+    }
+}
+
+function backToTwoHundred() {
+	if ($("#theBody").attr("value") == "" ) {
+		$("#theBody").attr("value", "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.");
+    }
+}
+
+function removePut() {
+	if ($("#put").attr("value") == "  Put the organization's name here" ) {
+		$("#put").attr("value", "");
+    }
+}
+
+function backToPut() {
+	if ($("#put").attr("value") == "" ) {
+		$("#put").attr("value", "  Put the organization's name here");
+    }
+}
+
+function removePhoto(){
+	$("#new_review_photo").attr("value", "" );
+	$("#filename").attr("value", "" );
+}
+
+
+function setClicked(theVar) {
+	if (theVar == 'preparation') {
+		preparation = "clicked";
+	}
+	if (theVar == 'support') {
+		support = "clicked";
+	}
+	if (theVar == 'impact') {
+		impact = "clicked";
+	}
+	if (theVar == 'structure') {
+		structure = "clicked";
+	}
+	if (theVar == 'overall') {
+		overall = "clicked";
+	}
+}
+
+
+function checkFields(){
+	if(($("#put").attr("value") != "  Put the organization's name here")
+		&& ($("#new_review_time_frame").attr("value") != "Select a Time Frame")
+		&& ($("#theBody").attr("value").length >= 200)
+		&& ($("#terms").attr("value"))
+		&& preparation == "clicked"
+		&& support == "clicked"
+		&& impact == "clicked"
+		&& structure == "clicked"
+		&& overall == "clicked")
+		{
+			$("#submitButtonDiv").show();
+			$("#submitButtonHidden").hide();
+			
+		}
+}
+
+function addPeru() {
+	if ($("#programsField").attr("value") == "" ) {
+		$("#programsField").attr("value", " eg. Tutoring children in Peru");
+    }
+}
+
+function removePeru() {
+	if ($("#programsField").attr("value") == " eg. Tutoring children in Peru" ) {
+		$("#programsField").attr("value", "");
+		
+    }
+	
+}
+
+
+		function changeCount() {
+
+			if ($("#one").attr("value") != "") {
+				ones = 1;
+			} else {
+				ones = 0;
+			}
+
+			if ($("#two").attr("value") != "") {
+				twos = 1;
+			} else {
+				twos = 0;
+			}
+
+			if ($("#three").attr("value") != "") {
+				threes = 1;
+			} else {
+				threes = 0;
+			}
+
+			if ($("#four").attr("value") != "") {
+				fours = 1;
+			} else {
+				fours = 0;
+			}
+
+			if ($("#five").attr("value") != "") {
+				fives = 1;
+			} else {
+				fives = 0;
+			}
+
+			if ($("#six").attr("value") != "") {
+				sixs = 1;
+			} else {
+				sixs = 0;
+			}
+
+			if ($("#seven").attr("value") != "") {
+				sevens = 1;
+			} else {
+				sevens = 0;
+			}
+
+			if ($("#eight").attr("value") != "") {
+				eights = 1;
+			} else {
+				eights = 0;
+			}
+
+			if ($("#nine").attr("value") != "") {
+				nines = 1;
+			} else {
+				nines = 0;
+			}
+
+			if ($("#ten").attr("value") != "") {
+				tens = 1;
+			} else {
+				tens = 0;
+			}
+
+		count = ones + twos + threes + fours + fives + sixs + sevens + eights + nines + tens;
+		$("#total_count").attr("value", count);
+
+		if (count > 0) {
+			$("#editImage").show();
+			$("#addImage").hide();
+		} else {
+			$("#editImage").hide();
+			$("#addImage").hide();
+		}
+	}
+	
+	function closePop() {
+		$('#mask').fadeOut(300); 
+		$('#mask').remove();
+		$('.addPhotos-popup').fadeOut(300);
+	}
+	
 
 </script>
 

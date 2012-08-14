@@ -1,4 +1,20 @@
-<p style="font-size:3em; line-height:2em; margin-top:20px;padding-bottom:20px;text-align:center; ">Listing Messages</h1>
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.title {
+	font-size:3em; 
+	line-height:2em; 
+	margin-top:20px;
+	padding-bottom:20px;
+	text-align:center;
+}
+.userLink {
+	color:red;
+}
+</style>
+
+<div class="container">
+<p class="title">Listing Messages</h1>
 
 <table>
   <tr>
@@ -13,7 +29,7 @@
 	<td><% if !(f.sender_deleted)%>
 	<%=link_to User.find(f.sender_id).username, User.find(f.sender_id)%>
 	<% else %>
-	<a style="color:red" href="/users/<%=f.sender_id%>"><%= User.find(f.sender_id).username%></a>
+	<a class="userLink" href="/users/<%=f.sender_id%>"><%= User.find(f.sender_id).username%></a>
 	<% end %></td>
 	
 	
@@ -21,7 +37,7 @@
 	<% if !(f.recipient_deleted)%>
 	<%=link_to User.find(f.recipient_id).username, User.find(f.recipient_id)%>
 	<% else %>
-	<a style="color:red" href="/users/<%=f.recipient_id%>"><%= User.find(f.recipient_id).username%></a>
+	<a class="userLink" href="/users/<%=f.recipient_id%>"><%= User.find(f.recipient_id).username%></a>
 	<% end %>
 	</td>
 	<td><%=f.id%></td>
@@ -30,3 +46,4 @@
 <% end %>
 
 </table>
+</div>
