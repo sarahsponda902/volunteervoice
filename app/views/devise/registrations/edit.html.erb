@@ -86,15 +86,15 @@ select {
 	width:15px;
 }
 .checkBoxLabel {
-	margin-left:33px; 
+	margin-left:30px; 
 	font-size:.85em;
-	width:150px;
+	width:168px;
 }
 .secondLabel {
 	margin-top:-34px;
 }
 .firstLabel {
-	margin-top:-18px; 
+	margin-top:-22px; 
 }
 .myPasswordContainer {
 	padding-left:30px; 
@@ -108,10 +108,10 @@ select {
 	position:absolute; 
 	left:-20px;
 }
-.myProfilePicBoxContainer {
-	margin:0 auto; 
+#myProfilePicBoxContainer {
+	margin:auto; 
 	width:700px; 
-	float:none;
+	float:center;
 }
 .myProfilePicLabel {
 	width:225px; 
@@ -195,7 +195,7 @@ select {
 
 							<image class="checkMark secondMark" id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(messagesCheck());$('#user_messages_show').attr('checked', false)">
 							<div class="checkBox secondBox">
-							<%= f.check_box :messages_show, :onchange => "$(messagesCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel secondLabel"> Do not allow others to send me<br />messages</div><br />
+							<%= f.check_box :messages_show, :onchange => "$(messagesCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel secondLabel"> Do not allow others to send me messages</div><br />
 
 						</div>
 
@@ -219,7 +219,7 @@ select {
 				</div>
 			</div>
 				<div class="row top">
-					<div class="six columns myProfilePicBoxContainer">
+					<div class="six columns" id = "myProfilePicBoxContainer">
 					<div class="six columns myProfilePicLabel">My Profile Pic:</div>
 					<div id="upload-box" class="five columns">
 						  <div class="uploadImageAndFieldContainer"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" class="uploadPhotoImage" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" disabled="true" value="no file selected">
