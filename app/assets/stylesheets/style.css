@@ -251,7 +251,7 @@ a.orange:hover {color: #62acbd; }
 
 a.close { float:right; margin:-20px -20px 0 0; height:30px; }
 div.close_image { background:url(/assets/error.png) no-repeat; height:30px; width:30px; }
-div.overflow { height:250px; overflow:auto; }
+div.overflow { max-height:250px; overflow:auto; }
 	
 .pageWrap{}
 
