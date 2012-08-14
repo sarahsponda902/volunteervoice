@@ -47,10 +47,6 @@ select {
 .requestURLField {
 	margin-top:50px;
 }
-.submitContainer {
-	margin-top:25px; 
-	margin-left:215px;
-}
 .requestSubmitButton {
 	height:40px;
 }
@@ -71,6 +67,10 @@ select {
 	background-color: #575758; 
 	position:absolute; 
 	left:-20px
+}
+.submitContainer {
+	margin-top:25px; 
+	text-align:center;
 }
 </style>
 
@@ -117,10 +117,6 @@ select {
 			
 			
 			</div>
-			
-			<div class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :class => "requestSubmitButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
-
-			</div>
 			<div class="six columns" id="rightSideFields">
 
 			  <div><%= f.label "Main Contact (First and Last Name)" %>
@@ -139,8 +135,11 @@ select {
 									
 			<%= f.hidden_field :to_whom, :value => "request"%>
 			<% end %>
+			</div>
 		</div>
-	</div>
+		<div class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :class => "requestSubmitButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+
+		</div>
 	</div>
 </div>
 </div>
