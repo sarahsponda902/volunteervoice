@@ -58,8 +58,11 @@
 	margin-top:-26px; 
 	font-size:1.1em;
 }
-.forgotPasswordLink {
+.forgotPasswordLinkContainer {
 	margin-left:15%;
+}
+a.forgotPasswordLink:hover {
+	color:#e67b5a;
 }
 .submitContainer {
 	margin-top:30px; 
@@ -85,7 +88,7 @@
 			<div class="checkBox" >
 			<%= f.check_box :remember_me, :class =>"checkBoxHidden", :onclick => "$(beforeCheck5())"%></div><div class="rememberMeLabel"> Remember me</div><br />
 			
-	<p class="forgotPasswordLink"><%= link_to "Forgot your password?", new_password_path(resource) %></p>
+	<p class="forgotPasswordLinkContainer"><%= link_to "Forgot your password?", new_password_path(resource), :id => "forgotPasswordLink" %></p>
 	  <div class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 	<br />
 	<% end %>
