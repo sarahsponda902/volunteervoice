@@ -127,6 +127,16 @@
 		margin-top:50px;
 		margin-bottom:20px;
 	}
+	.selectCompanyLabel {
+		font-size:2em; 
+		margin-left:3%;
+	}
+	.newOrgLinkContainer {
+		margin-top: -25px; 
+		height:30px; 
+		margin-left:57%; 
+		font-size:1.2em;
+	}
 	
 	
 	</style>
@@ -134,21 +144,25 @@
 
 
 
-<!-- ERROR MESSAGES -->
-<% if flash.class.name != "String"%>
-<% flash.each do |key, value| %>
-  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
-	<% value.each do |f|%>
-		* <%=f%><br />
+	<!-- ERROR MESSAGES -->
+	<% if flash.class.name != "String"%>
+	<% flash.each do |key, value| %>
+		<% if value.class.name != "String"%>
+		  <div class="flash <%=key%>">
+	<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+		<% value.each do |f|%>
+			* <%=f%><br />
+		<% end %>
+	  </div>
 	<% end %>
-  </div>
-<% end %>
-<% end %><!-- END ERROR MESSAGES -->
+	<% end %>
+	<% end %><!-- END ERROR MESSAGES -->
+
+
 
 
 <div class="container">
-	<div class="row" align="center" class="top">
+	<div class="row top" align="center">
 		<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/shareVoice.png"%>
 </div>
 <br />
@@ -160,8 +174,8 @@
 		<div class="six columns" class="leftColumnContainer">
 	<section class="selectCompany"><!--select a company box and blurb-->
 		<section class="selectCompanyBox"><!-- select a company drop-down box-->
-		<label for="review_Select a Company" style="font-size:2em; margin-left:3%">Select a Company:</label>
-	<div style="margin-top: -25px; height:30px; margin-left:57%; font-size:1.2em;">
+		<label for="review_Select a Company" class="selectCompanylabel">Select a Company:</label>
+	<div class="newOrg">
 				       
 					Review a New Organization
 

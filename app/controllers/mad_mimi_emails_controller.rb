@@ -2,28 +2,6 @@ class MadMimiEmailsController < ApplicationController
   include ActionView::Helpers::TextHelper
   require 'rubygems'
   require 'madmimi'
-  
-  # GET /mad_mimi_emails
-  # GET /mad_mimi_emails.json
-  def index
-    @mad_mimi_emails = MadMimiEmail.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @mad_mimi_emails }
-    end
-  end
-
-  # GET /mad_mimi_emails/1
-  # GET /mad_mimi_emails/1.json
-  def show
-    @mad_mimi_email = MadMimiEmail.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @mad_mimi_email }
-    end
-  end
 
   # GET /mad_mimi_emails/new
   # GET /mad_mimi_emails/new.json
