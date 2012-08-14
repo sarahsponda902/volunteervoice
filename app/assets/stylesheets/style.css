@@ -240,7 +240,7 @@ html, body, div, span, applet, object, iframe,
 	color:#575758;
 	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
 }
-.tippyTop {
+.headerLogoContainer { 
 	margin-top:15px;
 }
 #headerLogo {

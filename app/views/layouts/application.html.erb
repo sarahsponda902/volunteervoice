@@ -259,10 +259,12 @@
 		<div class="row">
 		<header class="header">
 			
-			<div class="four columns tippyTop">
+			<div class="four columns headerLogoContainer">
 			<a href="/"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo"></a>
 			</div>
 			
+<!-- LOGIN BOXES -->
+	<!-- IF USER NOT SIGNED IN: "Login or Join" -->
 	<% if !(user_signed_in?) && !(organization_account_signed_in?) %>			
 			<div class="three columns loginContainer" id="loginOrJoinContainer">
 			<div class="row login">
@@ -271,6 +273,7 @@
 			</div>
 			</div>
 	<% else %>
+	<!-- IF USER IS SIGNED IN: username:{link to profile} or Logout -->
 			<div class="four columns loginContainer">
 			<div class="row login">
 					<% if user_signed_in?%>
@@ -287,9 +290,32 @@
 			</div>
 			</div>
 	<% end %>
+<!-- END LOGIN BOXES -->			
 			
+
+
+<!-- ORGANIZATION ACCOUNT LOGIN BOX (image) -->			
+			<% if !(user_signed_in?) && !(organization_account_signed_in?)%>
+			<div class="four columns loginContainer" id="orgLogin">
+			<div class="row orgLogin" align="right">
+					<ul>
+						<li><p id="orgLogin-image"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
+							<div>
+								<ul id="orgLoginBox">
+									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
+									<li><a href="#request-box" class="request-window">Make a Profile</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+			</div>
+			</div>
+			<% end %>
+<!-- END ORGANIZATION ACCOUNT LOGIN BOX -->	
+
+
 			
-			
+<!-- ADMIN NAVIGATION DROP-DOWN MENU -->			
 			<% if user_signed_in? && current_user.admin?%>
 			
 			<div class="four columns adminContainer" id="adminNav">
@@ -316,30 +342,13 @@
 				</ul>
 				
 			</div>
-			</div>
-			
-			
-			
+			</div>			
 			<% end %>
-			
-			
-			<% if !(user_signed_in?) && !(organization_account_signed_in?)%>
-			<div class="four columns loginContainer" id="orgLogin">
-			<div class="row orgLogin" align="right">
-					<ul>
-						<li><p id="orgLogin-image"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
-							<div>
-								<ul id="orgLoginBox">
-									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
-									<li><a href="#request-box" class="request-window">Make a Profile</a></li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-			</div>
-			</div>
-			<% end %>
-			
+<!-- END ADMIN NAVIGATION DROP-DOWN MENU -->
+
+
+
+<!-- SEARCH BOX: RIGHT HAND CORNER -->			
 			<div class="six columns searchContainer">
 				<% @search = Search.new%>
 			<%= form_for @search do |f|%>
@@ -352,11 +361,12 @@
 		</div>
 		</div>
 		</header>
-		</div>	
-			
-		<!-- end header-->
+		</div>
+		
+<!-- END SEARCH BOX -->		
 
-		<!-- Global Navigation-->
+
+<!-- GLOBAL NAVIGATION -->
 		
 		<div class="container" id="globalNav">
 		<div class="row">
@@ -364,15 +374,23 @@
 
 		<ul>
 		<li class="navs"><a href="/">home</a></li>
+		<!-- FIND A PROGRAM DROP DOWN -->
 		<li class="navs" id="findProgramNav"><a id="shower" onclick="show_menu();">find a program</a>
 			<div class="findProgramDropDown">
 				<% if user_signed_in? || organization_account_signed_in? %>
+				
+	<!-- NOTE: Different position of drop down if user signed in or out -->
+		<!-- because the ORG LOGIN image pushes the drop-down around -->
+		<!-- ALSO: see bottom for javascript to change position depending on browser -->
+		
+			<!-- DROP DOWN IF ORG LOGIN IMAGE DOES NOT APPEAR (user/org is signed in) -->
 			<ul id="drop_signed_in">
 				<li class="navs"><a href="/pages/program_browse">browse things to do</a></li>
 				<li class="navs"><a href="/programs">browse places to go</a></li>
 				<li class="navs"><a href="/pages/search_machine">use advanced search</a></li>	
 			</ul>
 				<% else %>
+			<!-- DROP DOWN IF ORG LOGIN IMAGE APPEARS (user/org not signed in) -->
 				<ul id="drop_signed_out">
 					<li class="navs"><a href="/pages/program_browse">browse things to do</a></li>
 					<li class="navs"><a href="/programs">browse places to go</a></li>
@@ -381,6 +399,8 @@
 				<% end %>
 			</div>
 		</li>
+		<!-- END PROGRAM DROP-DOWN -->
+		
 		<li class="navs"><a href="/reviews/new">write a review</a></li>
 		<li class="navs"><a href= "/pages/blogs">resources</a></li>
 		</ul>
@@ -388,18 +408,26 @@
 		<div class="dropdown_background"></div>
 
 		</nav></div>
-		</div><!--end navigation-->	
+		</div><!--END GLOBAL NAVIGATION-->	
 
+
+<!-- YEILD CURRENT PAGE DATA/STUFF -->
 <%= yield%>
+<!-- END YEILD -->
+
 
 </div>
 </div><!-- End PageWrap -->
 </div>
 </div>
-<!-- Footer-->
+
+
+
+<!-- FOOTER -->
 <div class="container" id="footer">
 <div class="row">
 <footer class="footer">
+	<!-- LEFT MOST COLUMN (More On Us) -->
 <div class="three columns">
 <article class="footerNav">
 <h4 class="moreOnUsTitle">More on us...</h4>
@@ -410,7 +438,10 @@
 <li><%= link_to "Privacy Policy", "/pages/privacy"%></li>
 <li><a href="/pages/faq">FAQ</a></li>
 </ul>
-</article></div><!--end footerNav-->
+</article></div>
+	<!-- END LEFT MOST COLUMN -->
+	
+	<!-- MIDDLE COLUMN (Social Icons/Links) -->
 <div class="six columns" align="center">
 <article class="spreadWord">
 <img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/spreadTheWord.png" alt="Help Spread The Word" width="300px">
@@ -421,22 +452,34 @@
 <li class="socialLink"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/rss.png" class="socialLinkImage" alt="VolunteerVoice RSS"></li>
 </ul>
 
-</article></div><!--end spreadWord-->
+</article></div>
+<!-- END MIDDLE COLUMN -->
+
+
+<!-- LEFT MOST COLUMN (Facebook box) -->
 <div class="three columns">
 <article class="ourCommunity facebookBox" align="right">
 
     <div class="fb-like-box" data-href="https://www.facebook.com/pages/VolunteerVoice-International/309769649039582" data-width="190" data-height="195" data-show-faces="true" data-border-color="#c1dfdb" data-stream="false" data-header="false"></div>
 
+</article></div>
+<!-- END LEFT MOST COLUMN -->
 
-</article></div><!--end ourCommunity-->
+
+<!-- ANNA's COPYRIGHT MESSAGE -->
 <div class="row">
 <div class="twelve columns">
 <article class="copyright">
 
 <p><small>Copyright 2012 by VolunteerVoice International. All rights reserved. Site design by Anna Smith from <a href="www.secretsnacking.com">Secret Snacking Media</a>.</small></p>
 
-</article></div></div><!--end copyright-->
-</footer></div><!-- end footer -->
+</article></div></div>
+<!-- END ANNA -->
+
+
+</footer></div>
+
+<!-- END FOOTER -->
 
 </div>
 
@@ -445,11 +488,15 @@
 </html>
 
 
-<!--- POPUP PLUGIN -->
 
+
+
+<!--****************-->
+<!--- POPUP PLUGINS -->
+<!--****************-->
 
   	<div id="login-box" class="login-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
+	<a href="#" class="close"><div class="close_image"></div></a><!-- Close button -->
 	  	<%= form_for("user", :url => user_session_path) do |f| %>
 		  <div class="popupFieldLabel">Email or Username:<br />
 		  <%= f.text_field :login, :class => "popupTextField"%></div><br />
@@ -464,7 +511,7 @@
 
 		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :id => "userLoginButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
 
-		<a class="forgotPassword" class="forgotPasswordLink" href="/users/password/new">Forgot your password?</a>
+		<a class="forgotPasswordLink" href="/users/password/new">Forgot your password?</a>
 		<%end%>
 	
 	
