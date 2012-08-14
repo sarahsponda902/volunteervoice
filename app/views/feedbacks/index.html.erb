@@ -21,9 +21,12 @@
 
 <% if user_signed_in? && current_user.admin?%>
 <div class="container">
+	<div class="row">
+		<div class="twelve columns">
 <p class="pageTitle">Listing feedbacks</h1>
 
 <table>
+	<thead>
   <tr>
 	<th>Date Created</th>
     <th>Username/Email</th>
@@ -33,9 +36,9 @@
 	<th>Edit?</th>
 	<th>Delete?</th>
   </tr>
+	</thead>
 
 <% @feedbacks.each do |f| %>
-
   <tr>
 	<td width="10%"><p class="dateTime"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 	<td width="12%">
