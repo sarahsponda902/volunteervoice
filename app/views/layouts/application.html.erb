@@ -302,6 +302,7 @@
 							<li><a href="/organizations">All Organizations</a></li>
 							<li><a href="/feedbacks">All Feedbacks</a></li>
 							<li><a href="/flags">All Flags</a></li>
+							<li><a href="/messages">All Messages</a></li>
 							<li><a href="/reviews">All Reviews</a></li>
 							<li><a href="/new_reviews">All New Reviews</a></li>
 							<li><a href="/users">All Users</a></li>
@@ -456,7 +457,7 @@
 
 		    <image id="checkBefore2" class="rememberMeCheckMark" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck2()">
 			<div class="rememberMeCheckBox" >
-			<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMe2Label"> Remember me</div><br />
+			<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMeLabel"> Remember me</div><br />
 	
 
 		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :id => "userLoginButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
