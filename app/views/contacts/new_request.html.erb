@@ -13,9 +13,12 @@
 	color:#68c2d8;
 }
 .centeredContainer {
-	font-family:JosefinSlabRegular; 
-	line-height:1.1em; 
-	color:#68c2d8
+	float:center;
+	margin:auto;
+	width:650px;
+}
+.leftSideFields {
+	width:250px;
 }
 .requestField {
 	height:20px; 
@@ -88,6 +91,7 @@ select {
 			<p class="blurb">Please complete all fields</p>
 			<%= form_for @contact do |f| %>
 			<div class="six columns centeredContainer">
+			<div class="six columns leftSideFields">
 
 			  <div><%= f.label "Organization Name" %>
 			  <%= f.text_field :organization_name, :class => "requestField" %></div><br />
@@ -133,6 +137,7 @@ select {
 			<%= f.hidden_field :to_whom, :value => "request"%>
 			<% end %>
 		</div>
+	</div>
 	</div>
 </div>
 </div>
