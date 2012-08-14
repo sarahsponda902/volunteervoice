@@ -1,20 +1,54 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<div class="container" style="margin-top:70px">
+
+<style>
+.top {
+	margin-top:70px;
+	text-align:center;
+}
+.goodbyeMessage {
+	margin-top:30px;
+	font-family:JosefinSlabRegular; 
+	color:#9bce6c; 
+	font-size:2em;
+}
+.buttonsContainer {
+	margin-top:75px;
+}
+.leftButtonContainer {
+	width:46%; 
+	text-align:right; 
+	margin-right:20px;
+}
+.rightButtonContainer {
+	width:46%; 
+	text-align:left; 
+	margin-left:20px;
+}
+.hiddenButtonToDeleteUser {
+	margin-top:5px;
+}
+.visibleButtonToDeleteUser {
+	cursor:pointer; 
+	margin-top:-27px
+}
+</style>
+
+<div class="container">
 	<div class="row">
-		<div class="twelve columns" style="text-align:center">
+		<div class="twelve columns top">
 
 		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/AreYouSure.png"%>
 		
-		<p style="margin-top:30px;font-family:JosefinSlabRegular; color:#9bce6c; font-size:2em;">Goodbye forever? Really?</p><br /><br />
+		<p class="goodbyeMessage">Goodbye forever? Really?</p><br /><br />
 		
 		
-<div style="margin-top:75px">
-	<div class="six columns" style="width:46%; text-align:right; margin-right:20px">		
+<div class="buttonsContainer">
+	<div class="six columns leftButtonContainer">		
 <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/DontTerminateButton.png"), "/pages/profile", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	</div>
-	<div class="six columns" style="width:46%; text-align:left; margin-left:20px">	
-<%= button_to " ", user_registration_path, :method => :delete, :id => "buttonToDeleteUser", :style => "margin-top:5px"%>
-<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ConfirmTerminationButton.png", :style => "cursor:pointer; margin-top:-27px", :onclick => "$(buttonToDeleteUser).click()", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+	<div class="six columns rightButtonContainer">	
+<%= button_to " ", user_registration_path, :method => :delete, :id => "buttonToDeleteUser", :class => "hiddenButtonToDeleteUser"%>
+<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ConfirmTerminationButton.png", :class => "visibleButtonToDeleteUser", :onclick => "$(buttonToDeleteUser).click()", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	</div>
 </div>
 </div>

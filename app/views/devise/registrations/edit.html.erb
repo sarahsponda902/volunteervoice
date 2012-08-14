@@ -1,5 +1,13 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
 
+<style>
+.container {
+	color:#575758; 
+	width:100%;
+}
+</style>
+
+<!-- ERROR MESSAGES -->
 <div class="container">
 	<% flash.each do |key, value| %>
 	  <div class="flash <%=key%>">
@@ -11,7 +19,7 @@
 	<% end %>
 </div>
 
-<div class="container" style="color:#575758; width:100%">
+<div class="container">
 	<div class="row" style="margin-top:50px; width:100%">
 					<div id="edit-box" class="six columns" style="margin:0 auto;width:700px; float:none">
 						<p style="font-size:3em; font-family:JosefinSlabRegular; line-height:1.5em; margin-bottom:20px" align="center">My Account</p>
