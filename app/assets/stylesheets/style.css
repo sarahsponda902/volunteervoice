@@ -251,7 +251,7 @@ html, body, div, span, applet, object, iframe,
 
 
 /*************************/
-/****** SEARCHES ********/
+/****** SEARCH **********/
 /***********************/
 
 /** Header Search Bar **/
@@ -274,19 +274,6 @@ input[name="search[keywords]"] {
 	float:right; 
 	margin-right:5px;
 }
-
-/** Blog Search Bar and 404 Error Page Search Bar **/	
-input[name="search"] {  
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
-	border: 0;
-	height:30px;
-	width: 200px;
-	margin-bottom: 15px;
-	font-size:15px;
-}
-
 
 /******************************************/
 /****** LOGIN ROW (orgs and users) *******/
@@ -557,7 +544,7 @@ h2 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
 
 h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:24px;}
 
-.shadowed{opacity:.8} /** FOR BUTTONS ONCLICK - OPAQUE */
+.shadowed{opacity:.8} /** FOR BUTTONS ONCLICK - OPAQUE (will not work in IE) */
 
 
 /** All Links (most) **/
