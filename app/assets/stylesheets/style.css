@@ -281,7 +281,9 @@ input[name="search[keywords]"] {
 
 /** USERS **/
 
-.loginContainer { float:right; width:auto; }
+.loginContainer { float:right; padding-left:0px; } /* contains entire login box/row thing */
+
+#loginOrJoinContainer { width:17%; }
 
 .login {background:#575758; padding:10px; color: white; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600; width:auto} 
 
