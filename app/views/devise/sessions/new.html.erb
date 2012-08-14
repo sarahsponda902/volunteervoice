@@ -1,7 +1,7 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-.loginContainer {
+.loginBoxContainer {
 	float:center; 
 	text-align:left; 
 	margin:auto;
@@ -15,7 +15,7 @@
 	text-align:center; 
 	color:#62acbd;
 }
-.loginContainerFirst {
+.loginEmailContainer {
 	margin-top:35px; 
 	margin-left:15%; 
 	margin-bottom:5px;
@@ -28,7 +28,7 @@
 	height:20px; 
 	width:200px;
 }
-.loginContainerSecond {
+.loginPasswordContainer {
 	margin-top:25px; 
 	margin-bottom:5px; 
 	margin-left:15%;
@@ -72,13 +72,13 @@
 	  <%= content_tag(:div, value, :class => "flash #{key}") %>
 	<% end %>
 	<div class="row">
-	<div class="six columns loginContainer">
+	<div class="six columns loginBoxContainer">
 	<p class="title">Login</p>
 	<%= form_for(resource, :as => resource_name, :id => "sign_in", :url => session_path(resource_name)) do |f| %>
-	<p  class="loginContainerFirst"><label class="label">Email or Username</label>
+	<p  class="loginEmailContainer"><label class="label">Email or Username</label>
 			  <%= f.text_field :login, :class => "field" %></p>
 
-			  <p  class="loginContainerSecond"><label class="label">Password</label>
+			  <p  class="loginPasswordContainer"><label class="label">Password</label>
 			  <%= f.password_field :password, :class => "field" %></p>
 
 			<image class="checkMark" id="checkBefore5" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
