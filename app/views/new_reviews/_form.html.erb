@@ -137,6 +137,15 @@
 		margin-left:57%; 
 		font-size:1.2em;
 	}
+	.topLeftColumnContainer {
+		margin-top:20px;
+	}
+	.topRightColumnContainer {
+		margin-top:5px; 
+		font-family:ArchitectsDaughterRegular; 
+		font-size:0.85em; 
+		color:#62acbd;
+	}
 	
 	
 	</style>
@@ -171,16 +180,12 @@
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 
 	<div class="row" >
-		<div class="six columns" class="leftColumnContainer">
+		<div class="six columns" class="topLeftColumnContainer">
 	<section class="selectCompany"><!--select a company box and blurb-->
 		<section class="selectCompanyBox"><!-- select a company drop-down box-->
-		<label for="review_Select a Company" class="selectCompanylabel">Select a Company:</label>
-	<div class="newOrgTitleContainer">
-				       
-					Review a New Organization
-
-
-				</div>
+		<label for="new_review_organization" class="selectCompanylabel">Select a Company:</label>
+	<div class="newOrgTitleContainer">Review a New Organization
+		</div>
 			</section><!--end selectCompanyBox-->
 		</div>
 		
@@ -188,7 +193,7 @@
 		
 
 
-	<div class="six columns" style=" margin-top:5px; font-family:ArchitectsDaughterRegular; font-size:0.85em; color:#62acbd;">
+	<div class="six columns" style=" topRightColumnContainer">
 
 <article class="selectCompanyBlurb"><!-- select a comany blurb-->
 		<%= f.text_field :organization, :id => "put", :value => if @new_review.organization.nil?; "  Put the organization's name here"; else @new_review.organization; end, :style => "height:25px; width:250px; margin-top:15px; font-style:italic; margin-bottom:5px;", :onclick => "$(removePut()); this.style.fontStyle = 'normal'", :onblur => "$(backToPut()); if (this.value == '  Put the organization's name here') {this.style.fontStyle = 'italic'} else {this.style.fontStyle = 'normal'}", :onchange => "checkFields()"%><br />
