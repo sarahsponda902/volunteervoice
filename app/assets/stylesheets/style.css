@@ -254,7 +254,14 @@ div.close_image { background:url(/assets/error.png) no-repeat; height:30px; widt
 div.overflow { height:auto; max-height: 250px; overflow:auto; }
 	
 .pageWrap{}
+	
 
+
+/*************************/
+/****** SEARCHES ********/
+/***********************/
+
+/** Header Search Bar **/
 input[name="search[keywords]"] {  
     -moz-border-radius: 8px;
     -webkit-border-radius: 8px;
@@ -263,17 +270,30 @@ input[name="search[keywords]"] {
 	height:30px;
 	width: 200px;
 	margin-bottom: 15px;
-	font-size:15px}
-	
-	input[name="search"] {  
-	    -moz-border-radius: 8px;
-	    -webkit-border-radius: 8px;
-	    border-radius: 8px;
-	 	border: 0;
-		height:30px;
-		width: 200px;
-		margin-bottom: 15px;
-		font-size:15px}
+	font-size:15px;
+}
+.search.magGlassSearchButton { /* Contains search magGlassButton only */
+	margin-bottom:15px; 
+	float:right;
+}
+.search#searchDiv { /* Contains search textbox only */
+	margin-top:40px; 
+	float:right; 
+	margin-right:5px;
+}
+
+/** Blog Search Bar and 404 Error Page Search Bar **/	
+input[name="search"] {  
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	border: 0;
+	height:30px;
+	width: 200px;
+	margin-bottom: 15px;
+	font-size:15px;
+}
+
 
 a:active{color:#575758}
 a:visited{color:#575758}
@@ -292,25 +312,6 @@ a:hover{color:white; background:none}
 #headerLogo {
 	height:95px;
 	cursor:pointer;
-}
-
-
-/*Header Search*/
-.searchContainer {
-	float:right;
-}
-.magGlassSearchButton {
-	margin-bottom:15px; 
-	float:right;
-}
-#searchDiv {
-	margin-top:40px; 
-	float:right; 
-	margin-right:5px;
-}
-#searchfield {
-	height:30px;
-	width:200px;
 }
 
 
@@ -378,26 +379,6 @@ a:hover{color:white; background:none}
 
 
 
-
-/*Find A Program Dropdown Menu */
-#findProgramNav {
-	height:50px;
-}
-.findProgramDropDown {
-	margin:auto;
-}
-
-/* Drop down menu at different heights depending if org-login image is there (pushing everything down)*/
-#drop_signed_in {
-	position:absolute; 
-	top:165px;
-}
-#drop_signed_out {
-	position:absolute; 
-	top:177px;
-}
-
-
 /* Universal Navigation */
 .container#globalNav {background-color:#575758;  -moz-box-shadow:    3px 3px 5px 6px #ccc; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-weight:600;
   -webkit-box-shadow: 0px 8px 5px 0px #ccc;
@@ -407,6 +388,14 @@ a:hover{color:white; background:none}
 nav {background:#575758; height: 45px;}
 
 nav li {list-style:none; display:inline-block; text-align:center; width: 24%;  padding-top: 15px; font-size: 1.8em; font-weight:0}
+
+nav #findProgramNav { height:50px; } /** To make sure drop-down doesn't disappear if mouse is less than 50px from top of "Find A Program" */
+
+nav .findProgramDropDown { margin:auto; }
+
+/* Drop down menu at different heights depending if org-login image is there (pushing everything down)*/
+#drop_signed_in {position:absolute; top:165px;}
+#drop_signed_out {position:absolute; top:177px;}
 
 nav li a:visited{color: white;}
 
@@ -449,19 +438,6 @@ nav li ul li a:hover{color:#c1dfdb;}
 .review {border-bottom: 1px solid #575758; margin-bottom: 5px; margin-top: 5px;}
 .review:first child {margin-top: 0px;}
 
-.homeReviews{}
-
-.homeOrgsCheckout{}
-
-
- Section Three-
-
-.homeGlobe{}
-
- Section Four-
-
-.homeUserReviews{}
-
 .bubbleBlue{
 	background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/darkBlueBubble.png); background-repeat:no-repeat; height:130px;width:430px; margin-right:20%}
 	
@@ -475,8 +451,7 @@ nav li ul li a:hover{color:#c1dfdb;}
 
 
 /* Footer */
-footer {}
-	
+
 	/**FOOTER**/
 	#footer {
 		margin-top:75px; 
