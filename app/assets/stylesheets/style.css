@@ -224,7 +224,22 @@ html, body, div, span, applet, object, iframe,
 
 article, aside, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
-	}
+}
+
+/** HEADER **/
+#header {
+	min-width:970px; 
+	color:#575758;
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
+}
+.tippyTop {
+	margin-top:15px;
+}
+#headerLogo {
+	height:95px;
+	cursor:pointer;
+}	
+
 
 body {background:#E3E6D5;
 font-family: Tahoma, Geneva, sans-serif;
@@ -237,23 +252,19 @@ margin-top:0px}
 
 .container {min-width:970px; color:#575758}
 
-	
-select{ padding-top:5px; padding-left:10px; -webkit-appearance: none}
-
-h2 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
-
-h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:24px;}
-
+/** OTHER LINKS **/
 .lightBlue {color: #62acbd;}
 a.lightBlue:hover {color: #e67b5a;}
 .orange {color: #e67b5a;}
 a.orange:hover {color: #62acbd; }
 
+
+
+/** POPUPS CLOSE IMAGE **/
+
 a.close { float:right; margin:-20px -20px 0 0; height:30px; }
 div.close_image { background:url(/assets/error.png) no-repeat; height:30px; width:30px; }
 div.overflow { height:auto; max-height: 250px; overflow:auto; }
-	
-.pageWrap{}
 	
 
 
@@ -272,11 +283,11 @@ input[name="search[keywords]"] {
 	margin-bottom: 15px;
 	font-size:15px;
 }
-.search.magGlassSearchButton { /* Contains search magGlassButton only */
+.search .magGlassSearchButton { /* Contains search magGlassButton only */
 	margin-bottom:15px; 
 	float:right;
 }
-.search#searchDiv { /* Contains search textbox only */
+.search #searchDiv { /* Contains search textbox only */
 	margin-top:40px; 
 	float:right; 
 	margin-right:5px;
@@ -294,25 +305,11 @@ input[name="search"] {
 	font-size:15px;
 }
 
-
+/** All Links (most) **/
 a:active{color:#575758}
 a:visited{color:#575758}
 a:link{color:#575758}
 a:hover{color:white; background:none}
-
-/** HEADER **/
-#header {
-	min-width:970px; 
-	color:#575758;
-	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
-}
-.tippyTop {
-	margin-top:15px;
-}
-#headerLogo {
-	height:95px;
-	cursor:pointer;
-}
 
 
 
@@ -415,39 +412,7 @@ nav li ul{ display:block; position:absolute; top:183px; width:220px; text-align:
 nav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
 nav li ul li a:hover{color:#c1dfdb;}
 
-/* Section One*/
-.homeOrgs {height:140px; background-repeat:no-repeat;margin-top: 30px; margin-bottom: 30px; color: #fff;}
-.homeOrgs h1{font-family: 'BebasRegular',"Arial Black", Gadget, sans-serif; font-size: 3.5em; text-transform: uppercase; margin-top:5px; float: right; margin-right: 50px; text-align:center; width: 350px; line-height:1.5em;}
 
-.homeVoices{ height:140px;margin-top: 30px; margin-bottom: 30px; color: #fff;}
-.homeVoices h1{font-family: 'BebasRegular',"Arial Black", Gadget, sans-serif; font-size: 3em; text-transform: uppercase;margin-top:55px; float:left; margin-left: 25px;text-align:center; width: 350px; line-height:1.5em}
-
-/* Three Column Content Headers */
-.mainArticleHeader {border-top: 1px solid #575758; border-bottom: 1px solid #575758; height: 120px; color: #575758; margin-bottom: 5px; padding-top:5px}
-
-.mainArticleHeader h1 {font-family: 'BebasRegular',"Arial Black", Gadget, sans-serif; font-size: 3.0em; text-transform: uppercase; line-height:1.1em; text-align:center;}
-.mainArticleHeader h2 {font-family: 'BebasRegular',"Arial Black", Gadget, sans-serif; font-size: 5.3em; text-transform: uppercase;line-height: 1.1em;text-align:center;}
-
-.thin {font-size: 1em; font-weight: 100}
-.medium {font-size: 1.8em; font-weight: 300;}
-
-
-/* Three Column Content Headers */
-
-.homeAbout p {width: 100%; font-size: 1.1em; font-weight:lighter; text-align:left; line-height:1.4em;}
-.review {border-bottom: 1px solid #575758; margin-bottom: 5px; margin-top: 5px;}
-.review:first child {margin-top: 0px;}
-
-.bubbleBlue{
-	background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/darkBlueBubble.png); background-repeat:no-repeat; height:130px;width:430px; margin-right:20%}
-	
-.bubbleBlue p, .bubbleGreen p, .bubbleLightBlue p {font-size:11px; padding:15px; text-align:left}	
-
-.bubbleGreen{
-	background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/greenBubble.png); background-repeat:no-repeat; height:130px;width:430px; margin-right:10%}
-
-.bubbleLightBlue{
-	background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/lightBlueBubble.png); background-repeat:no-repeat; height:130px;width:430px; margin-right:10%}
 
 
 /* Footer */
@@ -512,6 +477,10 @@ footerNav h4, .ourCommunity h4 { font-family:'JosefinSlabRegular', Georgia, "Tim
 .spreadWord li { list-style:none; display:inline;}
 
 
+/*********************/
+/******ERRORS********/
+/*******************/
+
 .flash {
   text-align: center;
   width: 100%;
@@ -551,6 +520,18 @@ footerNav h4, .ourCommunity h4 { font-family:'JosefinSlabRegular', Georgia, "Tim
 .field_with_errors input {
 	border:2px solid #e67b5a;
 }
+
+/*************************************/
+/***********MISCELANEOUS*************/
+/***********************************/
+
+
+
+select{ padding-top:5px; padding-left:10px; -webkit-appearance: none}
+
+h2 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
+
+h4 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; font-size:24px;}
 
 .shadowed{opacity:.8}
 
