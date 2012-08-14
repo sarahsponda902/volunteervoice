@@ -299,6 +299,8 @@ input[name="search[keywords]"] {
 
 /** ORGS **/
 
+#orgLogin {float:right;}
+
 .orgLogin {margin-right:-94px}
 
 #orgLogin li {list-style:none; display:inline-block; text-align:center; font-family:Arial; margin-top:0px; color:white; float:right }
