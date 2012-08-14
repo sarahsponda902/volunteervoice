@@ -15,12 +15,12 @@
 	font-size:1.4em;
 	margin-left:20%;
 }
-.centeredContainer {
+#centeredContainer {
 	float:center;
 	margin:auto;
 	width:850px;
 }
-.leftSideFields {
+#leftSideFields {
 	width:375px;
 }
 .requestField {
@@ -53,8 +53,8 @@ select {
 .requestSubmitButton {
 	height:40px;
 }
-.rightSideFields {
-	margin-top:-285px; 
+#rightSideFields {
+	margin-top:-337px; 
 	width:375px; 
 	padding-left:50px;
 }
@@ -93,8 +93,8 @@ select {
 			<p class="title" align="center">Account Request</p>
 			<p class="blurb">Please complete all fields</p>
 			<%= form_for @contact do |f| %>
-			<div class="six columns centeredContainer">
-			<div class="six columns leftSideFields">
+			<div class="six columns" id="centeredContainer">
+			<div class="six columns" id="leftSideFields">
 
 			  <div><%= f.label "Organization Name" %>
 			  <%= f.text_field :organization_name, :class => "requestField" %></div><br />
@@ -121,7 +121,7 @@ select {
 			<div class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :class => "requestSubmitButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 
 			</div>
-			<div class="six columns rightSideFields">
+			<div class="six columns" id="rightSideFields">
 
 			  <div><%= f.label "Main Contact (First and Last Name)" %>
 			  <%= f.text_field :main_contact, :class => "requestField"%></div><br />
