@@ -280,7 +280,86 @@ a:visited{color:#575758}
 a:link{color:#575758}
 a:hover{color:white; background:none}
 
-/* Login */
+/** HEADER **/
+#header {
+	min-width:970px; 
+	color:#575758;
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
+}
+.tippyTop {
+	margin-top:15px;
+}
+#headerLogo {
+	height:95px;
+	cursor:pointer;
+}
+
+
+/*Header Search*/
+.searchContainer {
+	float:right;
+}
+.magGlassSearchButton {
+	margin-bottom:15px; 
+	float:right;
+}
+#searchDiv {
+	margin-top:40px; 
+	float:right; 
+	margin-right:5px;
+}
+#searchfield {
+	height:30px;
+	width:200px;
+}
+
+
+
+
+/*** LOGINS ***/
+
+/*User Login*/
+.loginContainer {
+	float:right;
+}
+.row .login {
+	width:auto;
+}
+.unreadMessagesCount {
+	color:#e67b5a;
+}
+
+/*Admin Drop Down*/
+adminContainer {
+	float:right;
+}
+.adminLinks {
+	background-color:#575758; 
+	color:white; 
+	font-size:1.3em; 
+	text-align:center; 
+	padding-top:7px;
+	padding-bottom:7px;
+}
+.adminLinksTitle {
+	color:red;
+}
+
+/*Org Login*/
+.orgLogin {
+	color:white;
+}
+.orgLogin ul li {
+	height:50px;
+}
+#orgLoginImage {
+	padding-right:1px; 
+	margin-right:-74px;
+}
+#orgLoginBox {
+	width:170px;
+}
+
 
 .login {background:#575758; padding:10px; color: white; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600;} 
 
@@ -339,6 +418,23 @@ a:hover{color:white; background:none}
 
 
 
+/*Find A Program Dropdown Menu */
+#findProgramNav {
+	height:50px;
+}
+.findProgramDropDown {
+	margin:auto;
+}
+
+/* Drop down menu at different heights depending if org-login image is there (pushing everything down)*/
+#drop_signed_in {
+	position:absolute; 
+	top:165px;
+}
+#drop_signed_out {
+	position:absolute; 
+	top:177px;
+}
 
 
 /* Universal Navigation */
@@ -419,6 +515,62 @@ nav li ul li a:hover{color:#c1dfdb;}
 
 /* Footer */
 footer {}
+	
+	/**FOOTER**/
+	#footer {
+		margin-top:75px; 
+		min-width:970px; 
+		color:#575758; 
+		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
+		margin-bottom:0px
+	}
+	.footerNav {
+		margin-top:20px; 
+		line-height:1.5em; 
+		margin-left:20px;
+	}
+	/*Left More on Us Links*/
+	.moreOnUsTitle {
+		margin-bottom:12px;
+	}
+	.footerMoreOnUsLinks {
+		font-size:16px; 
+		line-height:2em;
+	}
+	
+	/*Center Spread Word and Social Icons*/
+	.spreadWord {
+		margin-top:30px;
+	}
+	.socialLinkFirst {
+		margin-left:-5px;
+	}
+	.socialLink {
+		margin-left:10px;
+	}
+	.socialLinkImage {
+		height:35px;
+		width:35px;
+	}
+	
+	/*Left Facebook Box*/
+	.facebookBox {
+		margin-top:10px; 
+		width:190px; 
+		overflow:hidden; 
+	}
+	.facebook-like-box {
+		background-color:none; 
+		margin-top:5px;
+	}
+	
+	/* Bottom Copyright*/
+	.copyright {
+		text-align:center; 
+		margin-top:30px; 
+		font-size:9px;
+	}
+	
 
 footerNav h4, .ourCommunity h4 { font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
 .spreadWord li { list-style:none; display:inline;}

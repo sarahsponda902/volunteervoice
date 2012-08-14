@@ -37,7 +37,7 @@
 	
 	
 	<style>
-	
+	/** LINKS **/
 	a.forgotPassword:link{color:white}
 	a.forgotPassword:active{color:white}
 	a.forgotPassword:visited{color:white}
@@ -58,7 +58,7 @@
 	a.logout:visited{color:white}
 	a.logout:hover{color:#e67b5a}
 	
-	
+	/** ACTUAL POPUP BOXES **/
 	
 	/* Mask for background, by default is not display */
 	#mask {
@@ -71,7 +71,7 @@
 		-moz-opacity: 0.50;
 	}
 
-	/* You can customize to your needs  */
+	/* LOGIN  */
 	.login-popup{
 		display:none;
 		background: #D9DEDA;
@@ -91,6 +91,7 @@
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
 	}
 	
+	/** ORG REQUEST ACCOUNT **/
 	.request-popup{
 		display:none;
 		background: #D9DEDA;
@@ -111,6 +112,7 @@
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
 	}
 	
+	/** ORG LOGIN **/
 	.org-login-popup{
 		display:none;
 		background: #c1dfdb;
@@ -130,52 +132,120 @@
 	        -webkit-border-radius: 3px; /* Safari, Chrome */
 	}
 
-	#header {
-		min-width:970px; 
-		color:#575758;
-		background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
-	}
-	.tippyTop {
-		margin-top:15px;
-	}
-	#headerLogo {
-		height:95px;
-		cursor:pointer;
-	}
-	.loginContainer {
-		float:right;
-	}
-	.row .login {
-		width:auto;
-	}
-	.unreadMessagesCount {
-		color:#e67b5a;
-	}
-	adminContainer {
-		float:right;
-	}
-	.adminLinks {
-		background-color:#575758; 
-		color:white; 
-		font-size:1.3em; 
-		text-align:center; 
-		padding-top:7px;
-		padding-bottom:7px;
-	}
-	.adminLinksTitle {
-		color:red;
-	}
-	.orgLogin {
-		color:white;
-	}
-	.orgLogin ul li {
-		height:50px;
-	}
-	#orgLoginImage {
-		padding-right:1px; 
-		margin-right:-74px;
-	}
 
+	 /****************************/
+	/** POPUPS ACTUAL CONTENT **/
+   /**************************/
+
+	/**Login Popups (both)**/
+	.popupFieldLabel {
+		line-height:1.5em;
+	}
+	.popupTextField {
+		height:15px;
+	}
+	.rememberMeCheckMark {
+		position:absolute; 
+		height:25px; 
+		top:113px; 
+		left:13px; 
+		display:none;
+	}
+	.rememberMeCheckBox {
+		background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
+		background-repeat:no-repeat; 
+		margin-left:5px; 
+		margin-top:10px; 
+		padding-bottom:5px;
+	}
+	.hiddenPopupCheckbox {
+		display:block; 
+		opacity:0;filter: alpha(opacity=0); 
+		height:15px; 
+		width:15px;
+	}
+	.rememberMeLabel {
+		margin-left:33px; 
+		margin-top:-20px; 
+		font-size:.85em;
+	}
+	#userLoginButton {
+		height:35px; 
+	}
+	.forgotPasswordLink {
+		font-size:.85em;
+	}
+	
+	
+	/** Org Account Request Popup **/
+	.accountRequestTitle {
+		font-size:2em; 
+		font-family:JosefinSlabRegular; 
+		line-height:1.2em; 
+		margin:10px;
+	}
+	.accountRequestBlurb {
+		font-family:JosefinSlabRegular; 
+		line-height:1.1em; 
+		color:#68c2d8;
+	}
+	.accountRequestLeftColumnContainer {
+		width:300px;
+	}
+	.accountRequestTextField {
+		height:20px; 
+		width:198px;
+	}
+	.accountRequestSelectDiv {
+		position:absolute;
+		top:92px; 
+		height:30px; 
+		width:198px; 
+		overflow:hidden; 
+		border-right:1px solid #575758; 
+		border-left:1px solid #575758;
+	}
+	select.accountRequestSelect {
+		position:absolute; 
+		border:1px solid #575758; 
+		left:-5px; 
+		width:225px; 
+		height:30px; 
+		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right;
+	}
+	.accountRequestURLLabelDiv {
+		margin-top:50px;
+	}
+	.accountRequestRadioButtonsContainer {
+		margin-top:5px;
+	}
+	.accountRequestSubmitContainer {
+		margin-top:25px; 
+		margin-left:205px;
+	}
+	.accountRequestSubmit {
+		height:40px;
+	}
+	#request-right-column {
+		margin-left:300px; 
+		margin-top:-317px; 
+		padding-left:30px; 
+		width:250px;
+	}
+	.accountRequestSelectOneBlurb {
+		float:right; 
+		margin-right:50px; 
+		margin-top:25px; 
+		font-family:JosefinSlabRegular;
+	}
+	.accountRequestDividingLine {
+		height:180px; 
+		width:1px; 
+		top:15px; 
+		background-color: #575758; 
+		position:absolute; 
+		left:-10px;
+	}
 	</style>
 	
 </head>
@@ -257,7 +327,7 @@
 					<ul>
 						<li><p id="orgLogin-image"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
 							<div>
-								<ul style="width:170px;" id="drop_org">
+								<ul id="orgLoginBox">
 									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
 									<li><a href="#request-box" class="request-window">Make a Profile</a></li>
 								</ul>
@@ -268,13 +338,13 @@
 			</div>
 			<% end %>
 			
-			<div class="six columns" style="float:right">
+			<div class="six columns" class="searchContainer">
 				<% @search = Search.new%>
 			<%= form_for @search do |f|%>
-				<div style="margin-bottom:15px; float:right;">
+				<div class="magGlassSearchButton">
 			    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png", :style => "margin-bottom:-57px", :id =>"searchbutton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
-				<div id="searchDiv" style="margin-top:40px; float:right; margin-right:5px">
-				<input type="text" name="search[keywords]" id="searchfield" style="height:30px;width:200px;"></div>
+				<div id="searchDiv">
+				<input type="text" name="search[keywords]" id="searchfield"></div>
 			<% end %>
 
 		</div>
@@ -292,16 +362,16 @@
 
 		<ul>
 		<li class="navs"><a href="/">home</a></li>
-		<li class="navs" style="height:50px"><a id="shower" onclick="show_menu();">find a program</a>
-			<div style="margin:auto;">
+		<li class="navs" id="findProgramNav"><a id="shower" onclick="show_menu();">find a program</a>
+			<div class="findProgramDropDown">
 				<% if user_signed_in? || organization_account_signed_in? %>
-			<ul style="position:absolute; top:165px" id="drop_signed_in">
+			<ul id="drop_signed_in">
 				<li class="navs"><a href="/pages/program_browse">browse things to do</a></li>
 				<li class="navs"><a href="/programs">browse places to go</a></li>
 				<li class="navs"><a href="/pages/search_machine">use advanced search</a></li>	
 			</ul>
 				<% else %>
-				<ul style="position:absolute; top:177px" id="drop_signed_out">
+				<ul id="drop_signed_out">
 					<li class="navs"><a href="/pages/program_browse">browse things to do</a></li>
 					<li class="navs"><a href="/programs">browse places to go</a></li>
 					<li class="navs"><a href="/pages/search_machine">use advanced search</a></li>	
@@ -325,13 +395,13 @@
 </div>
 </div>
 <!-- Footer-->
-<div class="container" id="footer" style="margin-top:75px; min-width:970px; color:#575758; background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);margin-bottom:0px">
+<div class="container" id="footer">
 <div class="row">
 <footer class="footer">
 <div class="three columns">
-<article class="footerNav"style="margin-top:20px; line-height:1.5em; margin-left:20px;">
-<h4 style="margin-bottom:12px">More on us...</h4>
-<ul style="font-size:16px; line-height:2em;">
+<article class="footerNav">
+<h4 class="moreOnUsTitle">More on us...</h4>
+<ul class="footerMoreOnUsLinks">
 <li><%= link_to "About Us", "/pages/about"%></li>
 <li><%= link_to "Contact Us", "/contacts/new"%></li>
 <li><%= link_to "Terms of Use", "/pages/terms"%></li>
@@ -340,26 +410,26 @@
 </ul>
 </article></div><!--end footerNav-->
 <div class="six columns" align="center">
-<article class="spreadWord" style="margin-top:30px;">
+<article class="spreadWord">
 <img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/spreadTheWord.png" alt="Help Spread The Word" width="300px">
 <ul>
-<li style="margin-left:-5px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/facebook.png" height="35px" width="35px" alt="VolunteerVoice Facebook"></li>
-<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/twitter.png" height="35px" width="35px" alt="VolunteerVoice Twitter"></li>
-<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/google.png" height="35px" width="35px" alt="VolunteerVoice Google+"></li>
-<li style="margin-left:10px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/rss.png" height="35px" width="35px" alt="VolunteerVoice RSS"></li>
+<li class="socialLinkFirst"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/facebook.png" class="socialLinkImage" alt="VolunteerVoice Facebook"></li>
+<li class="socialLink"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/twitter.png" class="socialLinkImage" alt="VolunteerVoice Twitter"></li>
+<li class="socialLink"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/google.png" class="socialLinkImage" alt="VolunteerVoice Google+"></li>
+<li class="socialLink"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/rss.png" class="socialLinkImage" alt="VolunteerVoice RSS"></li>
 </ul>
 
 </article></div><!--end spreadWord-->
 <div class="three columns">
-<article class="ourCommunity" style="margin-top:10px; width:190px; overflow:hidden; " align="right">
+<article class="ourCommunity facebookBox" align="right">
 
-    <div style="background-color:none; margin-top:5px" class="fb-like-box" data-href="https://www.facebook.com/pages/VolunteerVoice-International/309769649039582" data-width="190" data-height="195" data-show-faces="true" data-border-color="#c1dfdb" data-stream="false" data-header="false"></div>
+    <div class="fb-like-box" data-href="https://www.facebook.com/pages/VolunteerVoice-International/309769649039582" data-width="190" data-height="195" data-show-faces="true" data-border-color="#c1dfdb" data-stream="false" data-header="false"></div>
 
 
 </article></div><!--end ourCommunity-->
 <div class="row">
 <div class="twelve columns">
-<article class="copyright" style="text-align:center; margin-top:30px; font-size:9px">
+<article class="copyright">
 
 <p><small>Copyright 2012 by VolunteerVoice International. All rights reserved. Site design by Anna Smith from <a href="www.secretsnacking.com">Secret Snacking Media</a>.</small></p>
 
@@ -379,20 +449,20 @@
   	<div id="login-box" class="login-popup">
 	<a href="#" class="close"><div class="close_image"></div></a>
 	  	<%= form_for("user", :url => user_session_path) do |f| %>
-		  <div style="line-height:1.5em">Email or Username:<br />
-		  <%= f.text_field :login, :style => "height:15px"%></div><br />
+		  <div class="popupFieldLabel">Email or Username:<br />
+		  <%= f.text_field :login, :class => "popupTextField"%></div><br />
 
-		  <div style="line-height:1.5em">Password:<br />
-		  <%= f.password_field :password, :style => "height:15px"%></div>
+		  <div class="popupFieldLabel">Password:<br />
+		  <%= f.password_field :password, :class => "popupTextField"%></div>
 
-		    <image style="position:absolute; height:25px; top:113px; left:13px; display:none" id="checkBefore2" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck2()">
-			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:10px; padding-bottom:5px;" >
-			<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :style =>"display:block; opacity:0;filter: alpha(opacity=0); height:15px; width:15px;"%></div><div style="margin-left:33px; margin-top:-20px; font-size:.85em"> Remember me</div><br />
+		    <image id="checkBefore2" class="rememberMeCheckMark" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck2()">
+			<div class="rememberMeCheckBox" >
+			<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMe2Label"> Remember me</div><br />
 	
 
-		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
+		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :id => "userLoginButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
 
-		<a class="forgotPassword" style="font-size:.85em" href="/users/password/new">Forgot your password?</a>
+		<a class="forgotPassword" class="forgotPasswordLink" href="/users/password/new">Forgot your password?</a>
 		<%end%>
 	
 	
@@ -401,20 +471,20 @@
 	<div id="org-login-box" class="org-login-popup">
 		<a href="#" class="close"><div class="close_image"></div></a>
 	  	<%= form_for("organization_account", :url => organization_account_session_path) do |f| %>
-		  <div style="line-height:1.5em">Email or Username:<br />
-		  <%= f.text_field :login, :style => "height:15px"%></div><br />
+		  <div class="popupFieldLabel">Email or Username:<br />
+		  <%= f.text_field :login, :class => "popupTextField"%></div><br />
 
-		  <div style="line-height:1.5em">Password:<br />
-		  <%= f.password_field :password, :style => "height:15px"%></div>
+		  <div class="popupFieldLabel">Password:<br />
+		  <%= f.password_field :password, :class => "popupTextField"%></div>
 
-		    <image style="position:absolute; height:25px; top:113px; left:13px; display:none" id="checkBefore3" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck3()">
-			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:5px; margin-top:10px; padding-bottom:5px;" >
-			<%= f.check_box :remember_me, :onclick => "$(beforeCheck3())", :style =>"display:block; opacity:0;filter: alpha(opacity=0); height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-20px; font-size:.85em"> Remember me</div><br />
+		    <image class="rememberMeCheckMark" id="checkBefore3" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck3()">
+			<div class="rememberMeCheckBox">
+			<%= f.check_box :remember_me, :onclick => "$(beforeCheck3())", :class =>"hiddenPopupCheckbox"%></div><div class="rememberMeLabel"> Remember me</div><br />
 	
 
 		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
 
-		<a class="forgotPassword" style="font-size:.85em" href="/organization_accounts/password/new">Forgot your password?</a>
+		<a class="forgotPassword" class="forgotPasswordLink" href="/organization_accounts/password/new">Forgot your password?</a>
 		<%end%>
 	
 	
@@ -423,50 +493,50 @@
 		<div id="request-box" class="request-popup">
 			<a href="#" class="close"><div class="close_image"></div></a>
 			<% @contact = Contact.new %>
-			<p style="font-size:2em; font-family:JosefinSlabRegular; line-height:1.2em; margin:10px" align="center">Account Request</p>
-			<p style="font-family:JosefinSlabRegular; line-height:1.1em; color:#68c2d8">Please complete all fields</p>
+			<p class="accountRequestTitle" align="center">Account Request</p>
+			<p class="accountRequestBlurb">Please complete all fields</p>
 			<%= form_for @contact do |f| %>
-			<div class="five columns" style="width:300px">
+			<div class="five columns" class="accountRequestLeftColumnContainer">
 
 			  <div><%= f.label "Organization Name" %>
-			  <%= f.text_field :organization_name, :style => "height:20px; width:198px" %></div><br />
+			  <%= f.text_field :organization_name, :class => "accountRequestTextField" %></div><br />
 			<div>
 <%= f.label :country %>
-			  <div class="select-div" style="position:absolute;top:92px; height:30px; width:198px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-				 <select style="position:absolute; border:1px solid #575758; left:-5px; width:225px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right;" id="contact_country" name="contact[country]">
+			  <div class="select-div accountRequestSelectDiv">
+				 <select class="accountRequestSelect" id="contact_country" name="contact[country]">
 					<option value=""> Select a Country</option>
 					<% THECOUNTRIES.keys.each do |f| %>
 					<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
 					<% end %>
 					</select>
 			</div>
-			<div style="margin-top:50px"><%= f.label "Website URL" %>
-			  <%= f.text_field :organization_url, :style => "height:20px; width:198px" %></div><br />
-			<div style="margin-top:5px">
+			<div class="accountRequestURLLabelDiv"><%= f.label "Website URL" %>
+			  <%= f.text_field :organization_url, :class => "accountRequestTextField" %></div><br />
+			<div class="accountRequestRadioButtonsContainer">
 			 <%= f.radio_button :has_profile, :value => "Has profile needs access."%> I have a profile already, but need access. <br />
 			<%= f.radio_button :has_profile, :value => "Needs profile and access."%> I don't have a profile, please make me one! <br /></div>
 			
 			
 			</div>
 			
-			<div style="margin-top:25px; margin-left:205px;"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+			<div class="accountRequestSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :class =>"accountRequestSubmit", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 
 			</div>
-			<div class="five columns" style="margin-left:300px; margin-top:-317px; padding-left:30px; width:250px" id="request-right-column">
+			<div class="five columns" id="request-right-column">
 
 			  <div><%= f.label "Main Contact (First and Last Name)" %>
-			  <%= f.text_field :main_contact, :style =>"height:20px; width:198px"%></div><br />
+			  <%= f.text_field :main_contact, :class =>"accountRequestTextField"%></div><br />
 
 			  <div><%= f.label "Contact's Position at Company" %>
-			  <%= f.text_field :position_of_contact, :style =>"height:20px; width:198px"%></div><br />
+			  <%= f.text_field :position_of_contact, :class =>"accountRequestTextField"%></div><br />
 
 			  <div><%= f.label "Contact Email"%>
-			  <%= f.text_field :contact_email, :style =>"height:20px; width:198px" %></div>
+			  <%= f.text_field :contact_email, :class =>"accountRequestTextField" %></div>
 			
 			
-			<div style="float:right; margin-right:50px; margin-top:25px; font-family:JosefinSlabRegular">&lt;&lt;&nbsp;&nbsp; Select one of these</div>
+			<div class="accountRequestSelectOneBlurb">&lt;&lt;&nbsp;&nbsp; Select one of these</div>
 			
-									<div style="height:180px; width:1px; top:15px; background-color: #575758; position:absolute; left:-10px"></div>
+			<div class="accountRequestDividingLine"></div>
 									
 			<%= f.hidden_field :to_whom, :value => "request"%>
 			<% end %>
@@ -476,7 +546,7 @@
 	
 		<script type="text/javascript">
 
-
+		//Login Window Jquery
 		$(document).ready(function() {
 
 			$('a.login-window').click(function() {
@@ -517,6 +587,8 @@
 			  return false;
 			});
 			
+			
+			//Account Request JQuery
 			$('a.request-window').click(function() {
 
 		                //Getting the variable's value from a link 
@@ -555,6 +627,8 @@
 			  return false;
 			});
 			
+			
+			//Org Login Window Jquery
 			$('a.org-login-window').click(function() {
 
 		                //Getting the variable's value from a link 
@@ -593,14 +667,23 @@
 			  return false;
 			});
 			
+			
+			
+			////BROWSER SNIFFING!!! AAHH!!!!
+			////// some things looked funky in different browsers
+			
+			//Firefox - account request's right column is too low
 			if ( $.browser.mozilla == true ) {
 				$("#request-right-column").css("margin-top", "-333px");
 			}
+			
+			//Opera - select box would not render formatting, so took it out
 			if ($.browser.opera) {
 				$(".select-div").css("border", "none");
 				$(".select-div").css("overflow", "visible");				
 			}
 			
+			//Android - org's login image is too low & find a program dropDown is too high
 			var ua = navigator.userAgent.toLowerCase();
 			var isAndroid = ua.indexOf("android") > -1;
 			if (isAndroid) {
@@ -609,6 +692,7 @@
 				$("#drop_signed_out").css("top", "230px");
 			}
 			
+			//iOS - find a program dropDown is too high
 			var agentID = ua.match(/(iphone|ipod|ipad)/);
 			if (agentID) {
 				$("#drop_signed_in").css("top", "183px");
@@ -619,13 +703,17 @@
 	</script>
 
 	<script type="text/javascript">
+	//User Login Remember me checkbox toggle if image is clicked
 	function beforeCheck2() {
 		$('#checkBefore2').toggle();
 	}
 	
+	//Org Account Login Remember me checkbox toggle if image is clicked
 	function beforeCheck3() {
 		$('#checkBefore3').toggle();
 	}
+	
+	//For touchscreens - show drop downs on click instead of hover
 	function show_menu() {
 		<% if user_signed_in? || organization_account_signed_in? %>
 		if ($("#drop_signed_in").css("display") == "block") {
