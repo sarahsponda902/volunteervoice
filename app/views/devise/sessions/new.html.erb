@@ -1,38 +1,106 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<script type="text/javascript">
-$(document).ready(function() {
-	$('#rememberMe').hide();
-});
 
-function beforeCheck5() {
-	$("#checkBefore5").toggle();
+<style>
+.container {
+	color:#575758;
 }
+.loginContainer {
+	float:center; 
+	text-align:left; 
+	margin:auto;
+	margin-top:90px; 
+	border-left:1px solid #e67b5a; 
+	border-right:1px solid #e67b5a;
+}
+.title {
+	font-family:ArchitectsDaughterRegular; 
+	font-size:2.1em; 
+	text-align:center; 
+	color:#62acbd;
+}
+.loginContainerFirst {
+	margin-top:35px; 
+	margin-left:15%; 
+	margin-bottom:5px;
+}
+.label {
+	font-size:1.3em; 
+	margin-bottom:10px;
+}
+.field {
+	height:20px; 
+	width:200px;
+}
+.loginContainerSecond {
+	margin-top:25px; 
+	margin-bottom:5px; 
+	margin-left:15%;
+}
+.checkMark {
+	position:absolute; 
+	top:192px; 
+	height:25px; 
+	left:67px;
+	display:none;
+}
+.checkBox {
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
+	background-repeat:no-repeat; 
+	margin-left:56px; 
+	margin-top:20px; 
+	padding-bottom:5px; 
+	margin-left:15%;
+}
+.checkBoxHidden {
+	opacity:0;
+	height:20px; 
+	width:20px;
+}
+.rememberMeLabel {
+	margin-left:22%; 
+	margin-top:-26px; 
+	font-size:1.1em;
+}
+.forgotPasswordLink {
+	margin-left:15%;
+}
+.submitContainer {
+	margin-top:30px; 
+	text-align:center;
+}
+</style>
 
-</script>
-
-<div class="container" align="center" style="color:#575758">
+<div class="container" align="center">
 	<% flash.each do |key, value| %>
 	  <%= content_tag(:div, value, :class => "flash #{key}") %>
 	<% end %>
 	<div class="row">
-	<div class="six columns" style="float:center; text-align:left; margin-top:90px; border-left:1px solid #e67b5a; border-right:1px solid #e67b5a">
-	<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
+	<div class="six columns" class="loginContainer">
+	<p class="title">Login</p>
 	<%= form_for(resource, :as => resource_name, :id => "sign_in", :url => session_path(resource_name)) do |f| %>
-	<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email or Username</label>
-			  <%= f.text_field :login, :style => "height:20px; width:200px" %></p>
+	<p  class="loginContainerFirst"><label class="label">Email or Username</label>
+			  <%= f.text_field :login, :class => "field" %></p>
 
-			  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
-			  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>
+			  <p  class="loginContainerSecond"><label class="label">Password</label>
+			  <%= f.password_field :password, :class => "field" %></p>
 
-			<image style="position:absolute; top:192px; height:25px; left:67px;display:none" id="checkBefore5" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
-			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:56px; margin-top:20px; padding-bottom:5px; margin-left:15%" >
-			<%= f.check_box :remember_me, :style =>"opacity:0;height:20px; width:20px", :onclick => "$(beforeCheck5())"%></div><div style="margin-left:22%; margin-top:-26px; font-size:1.1em"> Remember me</div><br />
+			<image class="checkMark" id="checkBefore5" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png">
+			<div class="checkBox" >
+			<%= f.check_box :remember_me, :class =>"checkBoxHidden", :onclick => "$(beforeCheck5())"%></div><div class="rememberMeLabel"> Remember me</div><br />
 			
-	<p style="margin-left:15%"><%= link_to "Forgot your password?", new_password_path(resource) %></p>
-	  <div style="margin-top:30px; text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+	<p class="forgotPasswordLink"><%= link_to "Forgot your password?", new_password_path(resource) %></p>
+	  <div class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 	<br />
 	<% end %>
 </div>
 </div>
 </div>
 
+<script type="text/javascript">
+
+//Check actual (hidden) box when image checkbox is clicked
+function beforeCheck5() {
+	$("#checkBefore5").toggle();
+}
+
+</script>

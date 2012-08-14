@@ -1,4 +1,32 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.title {
+	text-align:center; 
+	margin-top:10px; 
+	margin-bottom:10px; 
+	font-family:JosefinSlabRegular; 
+	font-size:2em; 
+	color:#575758;
+}
+.label {
+	color:#575758;
+}
+.textField {
+	width:246px; 
+	height:18px;
+}
+.textArea {
+	height:150px; 
+	width:250px; 
+	border:1px solid gray;
+}
+.submitContainer {
+	text-align:center;
+}
+</style>
+
+<!-- ERROR MESSAGES -->
 <% flash.each do |key, value| %>
   <div class="flash <%=key%>">
 <%= pluralize value.length, "errors"%> prevented your review from being created:<br />
@@ -6,28 +34,28 @@
 		* <%=f%><br />
 	<% end %>
   </div>
-<% end %>
+<% end %><!-- END ERROR MESSAGES -->
 <div class="container">
 	<div class="row">
 		<div class="twelve columns" align="center">
-<p style="text-align:center; margin-top:10px; margin-bottom:10px; font-family:JosefinSlabRegular; font-size:2em; color:#575758">Feedback</p>
+<p class="title">Feedback</p>
 <%= form_for(@feedback) do |f| %>
   <div class="field">
 	<%if user_signed_in?%>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <% else %>
-    <p style= "color:#575758; font-size:1em;">Email </p>
-	<%= f.text_field :email, :style => "width:246px; height:18px"%>
+    <p class= "label">Email </p>
+	<%= f.text_field :email, :class => "textField"%>
     
     <% end %>
   </div>
   <div class="field">
-    <p style= "color:#575758; font-size:1em;">Message </p>
-    <%= f.text_area :body, :style=>"height:150px; width:250px; border:1px solid gray" %>
+    <p class= "label">Message </p>
+    <%= f.text_area :body, :class=>"textArea" %>
   </div>
 
   <div class="actions">
-    <p style="text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+    <p class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
   </div>
 <% end %>
 </div>

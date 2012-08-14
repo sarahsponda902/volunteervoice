@@ -1,141 +1,299 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<script type="text/javascript">
 
-$(document).ready(function() {
-	<% if resource.nil? || !resource.volunteered_before? || resource.volunteered_before.nil? %>
-		$('#volunteeredBefore').hide();
-	<% end %>
-	<% if resource.nil? || resource.notify.nil? || resource.notify == true %>
-		$("#user_notify").attr("checked", true);
-	<% else %>
-		$("#checkBefore").hide();
-	<% end %>
-	$('#rememberMe').hide();
-	
-	$('a.question-window').click(function() {
 
-                //Getting the variable's value from a link 
-		var questionBox = $(this).attr('href');
 
-		//Fade in the Popup
-		$(questionBox).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(questionBox).height() + 24) / 2; 
-		var popMargLeft = ($(questionBox).width() + 24) / 2; 
-
-		$(questionBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask"  style="display:block; opacity:.5; filter: alpha(opacity=50); "></div>');
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .question-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-	
-	
-});
-
-function beforeCheck() {
-	$('#checkBefore').toggle();
-	$('#userNotify').toggle();
+<style>
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
 }
 
-function beforeCheckNoToggle() {
-	$('#checkBefore').toggle();
+/* You can customize to your needs  */
+.question-popup{
+	display:none;
+	color:#575758; 
+	width:900px; 
+	line-height:1.5em;
+	background: #E3E6D5;
+	padding: 30px; 	
+	border: 2px solid #575758;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 48.35%;
+	width:400px;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
 }
 
-
-function volunteeredCheck() {
-	$('#volunteeredBefore').toggle();
-	$('#userVolunteered').toggle();
+.container {
+	color:#575758;
+}
+.title {
+	font-family:ArchitectsDaughterRegular; 
+	font-size:3em; 
+	color:#e67b5a; 
+	text-align:center; 
+	margin-top:50px;
+}
+.leftLoginColumn {
+	text-align:left; 
+	margin-top:90px; 
+	width:45%;
+}
+.subTitle {
+	font-family:ArchitectsDaughterRegular; 
+	font-size:2.1em; 
+	text-align:center; 
+	color:#62acbd;
+}
+.fieldContainer {
+	margin-top:35px; 
+	margin-left:15%; 
+	margin-bottom:5px;
+}
+.label {
+	font-size:1.3em; 
+	margin-bottom:10px;
+}
+.field {
+	height:20px; 
+	width:200px;
+}
+.passwordField {
+	margin-top:25px;
+}
+.checkMark {
+	position:absolute; 
+	top:197px; 
+	height:25px; 
+	left:14.3%;
 }
 
-function volunteeredCheckNoToggle() {
-	$('#volunteeredBefore').toggle();
+.checkBox {
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
+	background-repeat:no-repeat; 
+	margin-left:15%; 
+	margin-top:20px; 
+	padding-bottom:5px;
 }
-
-function rememberMe() {
-	$('#rememberMe').toggle();
-	$('#remember_me').toggle();
+.hiddenCheckBox {
+	display:block; 
+	opacity:0; 
+	filter: alpha(opacity=0);
+	height:20px; 
+	width:20px;
 }
-
-function rememberMeNoToggle() {
-	$('#rememberMe').toggle();
+.checkBoxLabel {
+	margin-left:100px; 
+	margin-top:-30px; 
+	font-size:1.1em;
 }
-
-function submitForm() {
-	$('#the_form').submit();
+.forgotPasswordLink {
+	margin-left:15%;
 }
+.loginSubmitContainer {
+	margin-top:30px; 
+	text-align:center;
+}
+.rightColumnRegister {
+	text-align:left; 
+	margin-top:90px; 
+	border-left:1px solid #e67b5a; 
+	float:left; 
+	color:#575758; 
+	width:45%;
+}
+.subTitleRegister {
+	margin-top:-2px;
+}
+.registerLabelContainer {
+	margin-top:25px; 
+	margin-left:15%; 
+	margin-bottom:5px
+}
+.firstRegisterLabelContainer, .countryRegisterLabelContainer {
+	margin-top:35px;
+}
+.select-div {
+	position:absolute; 
+	height:30px;  
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+.dobMonthDiv {
+	width:103px;
+	left:15%; 
+}
+select {
+	position:absolute; 
+	left:-5px;
+	height:30px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+	background-color:white; 
+	border:1px solid #575758;
+}
+.dobMonthSelect, .dobYearSelect {
+	width:130px; 
+}
+.dobDayDiv {
+	left:41%; 
+	width:73px; 
+}
+.dobDaySelect {
+	width:100px; 
+}
+.dobYearDiv {
+	left:60.2%; 
+	width:103px;
+}
+.question-window {
+	float:right; 
+	margin-right:20px; 
+	margin-top:5px; 
+	font-size:2.5em; 
+	color:#6aaeba;
+}
+.countrySelectDiv {
+	left:15%; 
+	height:30px; 
+}
+.countrySelect {
+	width:334px;
+}
+.checkMarkRegisterFirst {
+	position:absolute; 
+	left:14.7%; 
+	top:68.6%; 
+	z-index:9; 
+	height:25px;
+}
+.checkBoxRegisterFirst {
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
+	position:absolute; 
+	background-repeat:no-repeat; 
+	top:69.5%; 
+	left:15%;
+}
+.checkBoxHiddenRegister {
+	display:block; 
+	opacity:0; 
+	filter: alpha(opacity=0); 
+	height:15px;
+	width:15px;
+}
+.labelCheckBoxFirst {
+	margin-left:9.7%; 
+	font-size:0.85em; 
+	margin-top:-20px; 
+	min-width:400px;
+}
+.checkMarkRegisterSecond {
+	position:absolute; 
+	height:25px; 
+	left:14.7%; 
+	top:73.6%; 
+	z-index:9;
+}
+.checkBoxRegisterSecond {
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
+	position:absolute; 
+	background-repeat:no-repeat; 
+	top:74.5%; 
+	left:15%;
+}
+.labelCheckBoxSecond {
+	margin-left:10%; 
+	margin-top:-30px; 
+	font-size:0.85em;
+}
+.captchaLabelContainer {
+	margin-top:110px; 
+	margin-left:15%; 
+	margin-bottom:5px;
+}
+.captchaContainer {
+	margin-top:15px;
+	margin-left:15%;
+}
+.registerSubmitContainer {
+	text-align:center; 
+	margin-top:10px
+}
+.popupTitle {
+	font-family:architectsDaughterRegular; 
+	font-size:1.6em; 
+	font-color:#575758; 
+	line-height:2em; 
+	text-align:center;
+}
+</style>
 
-</script>
 
-</script>
 
-<div class="container" align="center" style="color:#575758">
+<div class="container" align="center">
 
 	<div class="row">
-				<p style="font-family:ArchitectsDaughterRegular; font-size:3em; color:#e67b5a; text-align:center; margin-top:50px">You have to be logged in for that!</p>
+				<p class="title">You have to be logged in for that!</p>
 	
-	<div class="six columns" style="text-align:left; margin-top:90px; width:45%">
-		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd;">Login</p>
+	<div class="six columns leftLoginColumn">
+		<p class="subTitle">Login</p>
 		<%= form_for("user", :url => user_session_path) do |f| %>
 			<%= f.hidden_field :return_link, :value => @link%>
-		<p  style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email or Username</label>
-				  <%= f.text_field :login, :style => "height:20px; width:200px" %></p>
+		<p  class="fieldContainer"><label class="label">Email or Username</label>
+				  <%= f.text_field :login, :class => "field" %></p>
 
-				  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
-				  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>
+				  <p class="fieldContainer passwordField"><label class="label">Password</label>
+				  <%= f.password_field :password, :class => "field" %></p>
 
-				<image style="position:absolute; top:197px; height:25px; left:14.3%;" id="rememberMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="rememberMeNoToggle()">
-				<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:15%; margin-top:20px; padding-bottom:5px;" >
-				<%= f.check_box :remember_me, :onchange =>"$(rememberMeNoToggle())", :style =>"display:block; opacity:0; filter: alpha(opacity=0);height:20px; width:20px"%></div><div style="margin-left:100px; margin-top:-30px; font-size:1.1em"> Remember me</div><br />
-		<p style="margin-left:15%"><%= link_to "Forgot your password?", new_password_path('user') %></p>
-		  <div style="margin-top:30px; text-align:center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+				<image class="checkMark" id="rememberMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="rememberMeNoToggle()">
+				<div class="checkBox">
+				<%= f.check_box :remember_me, :onchange =>"$(rememberMeNoToggle())", :class =>"hiddenCheckBox"%></div><div class="checkBoxLabel"> Remember me</div><br />
+		<p class="forgotPasswordLink"><%= link_to "Forgot your password?", new_password_path('user') %></p>
+		  <div class="loginSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 		<br />
 		<% end %>
 	</div>
 	
 	
-	<div class="six columns" style=" text-align:left; margin-top:90px; border-left:1px solid #e67b5a; float:left; color:#575758; width:45%">
+	<div class="six columns rightColumnRegister">
 		
 
-		<p style="font-family:ArchitectsDaughterRegular; font-size:2.1em; text-align:center; color:#62acbd; margin-top:-2px">Register</p>
+		<p class="subTitle subTitleRegister">Register</p>
 
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :id =>"the_form") do |f| %>
 
 
-		  <p  style="margin-top:30px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Username</label>
-				  <%= f.text_field :username, :style => "height:20px; width:200px" %></p>
+		  <p  class="registerLabelContainer firstRegisterLabelContainer"><label class="label">Username</label>
+				  <%= f.text_field :username, :class => "field" %></p>
 
-				  <p  style="margin-top:25px; margin-bottom:5px; margin-left:15%;"><label style="font-size:1.3em; margin-bottom:10px">Password</label>
-				  <%= f.password_field :password, :style => "height:20px; width:200px" %></p>
+				  <p  class="registerLabelContainer"><label class="label">Password</label>
+				  <%= f.password_field :password, :class => "field" %></p>
 
-				  <p  style="margin-top:25px; margin-left:15%;margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Retype Password</label>
-				  <%= f.password_field :password_confirmation, :style => "height:20px; width:200px" %></p>
+				  <p  class="registerLabelContainer"><label class="label">Retype Password</label>
+				  <%= f.password_field :password_confirmation, :class => "field" %></p>
 
-				<p  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Email</label>
-				  <%= f.text_field :email, :style => "height:20px; width:200px" %></p>
+				<p  class="registerLabelContainer"><label class="label">Email</label>
+				  <%= f.text_field :email, :class => "field" %></p>
 				
-				<p  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Retype Email</label>
-				  <%= f.text_field :email_confirmation, :style => "height:20px; width:200px" %></p>
+				<p  class="registerLabelContainer"><label class="label">Retype Email</label>
+				  <%= f.text_field :email_confirmation, :class => "field" %></p>
 				
 
 				
-		 			 <p  style="margin-top:25px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px" for="user_Date of Birth">Birthday</label><div class="select-div" style="position:absolute; left:15%; height:30px; width:103px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
-					<select id="user_dob_2i" name="user[dob(2i)]" style="position:absolute; left:-5px; width:130px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
+		 			 <p  class="registerLabelContainer"><label class="label" for="user_Date of Birth">Birthday</label><div class="select-div dobMonthDiv">
+					<select id="user_dob_2i" name="user[dob(2i)]" class="dobMonthSelect">
 					<option value="">Month</option>
 					<option value="1">January</option>
 					<option value="2">February</option>
@@ -150,8 +308,9 @@ function submitForm() {
 					<option value="11">November</option>
 					<option value="12">December</option>
 					</select></div>
-					<div class="select-div" style="position:absolute; left:41%; height:30px; width:73px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
-					<select id="user_dob_3i" name="user[dob(3i)]" style="position:absolute; left:-5px; width:100px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
+					
+					<div class="select-div dobDayDiv">
+					<select id="user_dob_3i" name="user[dob(3i)]" class="dobDaySelect">
 					<option value="">Day</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -185,8 +344,8 @@ function submitForm() {
 					<option value="30">30</option>
 					<option value="31">31</option>
 					</select></div>
-	<div class="select-div" style="position:absolute; left:60.2%; height:30px; width:103px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
-					<select id="user_dob_1i" name="user[dob(1i)]" style="position:absolute; left:-5px; width:130px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
+	<div class="select-div dobYearDiv" style="" id="dropArrow">
+					<select id="user_dob_1i" name="user[dob(1i)]" class="dobYearSelect">
 						<option value="">Year</option>
 						<option value="2012">2012</option>
 						<option value="2011">2011</option>
@@ -305,13 +464,13 @@ function submitForm() {
 					</div> 
 					</p>
 					
-					<a style="float:right; margin-right:20px; margin-top:5px; font-size:2.5em; color:#6aaeba" href="#question-box" class="question-window">?</a>
+					<a href="#question-box" class="question-window">?</a>
 
 					<br />
 
-							 <p style="margin-top:35px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px" for="user_country">Country</label>
-								<div class="select-div" style="position:absolute; left:15%; height:30px; width:307px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758" id="dropArrow">
-							 <select id="user_country" name="user[country]" style="position:absolute; left:-5px; width:334px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border:1px solid #575758">
+							 <p style="registerLabelContainer countryRegisterLabelContainer"><label class="label" for="user_country">Country</label>
+								<div class="select-div countrySelectDiv">
+							 <select id="user_country" name="user[country]" class="countrySelect">
 					<option value=""> Select a Country</option>
 					<% THECOUNTRIES.keys.each do |f| %>
 					<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
@@ -319,24 +478,24 @@ function submitForm() {
 					</select>
 							</div>
 		<br />
-				<image style="position:absolute; left:14.7%; top:68.6%; z-index:9; height:25px" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
-		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:69.5%; left:15%;">
-		<%= f.check_box :volunteered_before, :onclick => "$(volunteeredCheckNoToggle())", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:15px;width:15px" %>
-		<label for="user_volunteered_before" style="margin-left:9.7%; font-size:0.85em; margin-top:-20px; min-width:400px">Click here if you've volunteered abroad before. We're just curious.</label></div>
+				<image class="checkMarkRegisterFirst" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
+		<div class="checkBoxRegisterFirst">
+		<%= f.check_box :volunteered_before, :onclick => "$(volunteeredCheckNoToggle())", :class => "checkBoxHiddenRegister"%>
+		<label for="user_volunteered_before" class="labelCheckBoxFirst">Click here if you've volunteered abroad before. We're just curious.</label></div>
 		
-				<image style="position:absolute; height:25px; left:14.7%; top:73.6%; z-index:9" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck())">
-		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); position:absolute; background-repeat:no-repeat; top:74.5%; left:15%;">
-		<%= f.check_box :notify, :onclick => "$(beforeCheckNoToggle())", :style => "display:block; opacity:0; filter: alpha(opacity=0);height:20px;height:20px"%>
-		<label style="margin-left:10%; margin-top:-30px; font-size:0.85em" for="user_notify">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
+				<image class="checkMarkRegisterSecond" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck())">
+		<div class="checkBoxRegisterSecond">
+		<%= f.check_box :notify, :onclick => "$(beforeCheckNoToggle())", :class => "hiddenCheckBox"%>
+		<label class="labelCheckBoxSecond" for="user_notify">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
 
 		<br />
-		<p  style="margin-top:110px; margin-left:15%; margin-bottom:5px"><label style="font-size:1.3em; margin-bottom:10px">Verify</label></p>
-		<div style="margin-top:15px; margin-left:15%"><%= f.simple_captcha :label => ""%>
+		<p  class="captchaLabelContainer"><label class="label">Verify</label></p>
+		<div class="captchaContainer"><%= f.simple_captcha :label => ""%>
 		</div>
 		<br />
 		
 
-<p style="text-align:center; margin-top:10px"><%=image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+<p class="registerSubmitContainer"><%=image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
 		<% end %>
 </div>
 <br />
@@ -346,69 +505,98 @@ function submitForm() {
 	</div>
 	</div>
 
-	<div id="question-box" class="question-popup" style="color:#575758; width:900px; line-height:1.5em">
+	<div id="question-box" class="question-popup">
 		<a href="#" class="close"><div class="close_image"></div></a>
-		<p style="font-family:architectsDaughterRegular; font-size:1.6em; font-color:#575758; line-height:2em; text-align:center;">Why do I have to give my birthday and personal info?</p><br />
+		<p class="popupTitle">Why do I have to give my birthday and personal info?</p><br />
 	  	VolunteerVoice requires Users to include birthday information because we need to learn more about who is using our site, and how to make it better for those groups. That’s the reason behind asking for your affiliated country and whether you’ve volunteered yet, as well.  We’re also just curious! And hey, if you’re uncomfortable, you can always lie (but please don’t)!<br /><br />
 
 		We also use this information as a way to create authenticity for our site and its users, and to encourage age-appropriate access to site content.  Rest assured that your information is 100% secure on the VolunteerVoice site. You can also control whether other Users can view your personal info through your account settings.  Check out our Privacy Policy for if you’d like to know more.
 
 	</div>
 
-	<style>
-	/* Mask for background, by default is not display */
-	#mask {
-		display: none;
-		background: #000; 
-		position: fixed; left: 0; top: 0; 
-		width: 100%; height: 100%;
-		opacity: 0.8;
-		z-index: 999;
+	
+	<script type="text/javascript">
+
+	$(document).ready(function() {
+		//SET checkmark fields to their already-set values if they exist
+		<% if resource.nil? || !resource.volunteered_before? || resource.volunteered_before.nil? %>
+			$('#volunteeredBefore').hide();
+		<% end %>
+		<% if resource.nil? || resource.notify.nil? || resource.notify == true %>
+			$("#user_notify").attr("checked", true);
+		<% else %>
+			$("#checkBefore").hide();
+		<% end %>
+		// always have the "Remember Me" box unchecked
+		$('#rememberMe').hide();
+		
+		
+		
+		/////////////////////////////
+		// QUESTIONS WINDOW POPUP
+		////////////////////////////
+		
+		$('a.question-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var questionBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(questionBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(questionBox).height() + 24) / 2; 
+			var popMargLeft = ($(questionBox).width() + 24) / 2; 
+
+			$(questionBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask"  style="display:block; opacity:.5; filter: alpha(opacity=50); "></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .question-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+
+
+
+	});
+	
+	//check box when checkmark appears
+	function beforeCheck() {
+		$('#checkBefore').toggle();
+		$('#userNotify').toggle();
+	}
+	//check box when checkmark appears
+	function beforeCheckNoToggle() {
+		$('#checkBefore').toggle();
 	}
 
-	/* You can customize to your needs  */
-	.question-popup{
-		display:none;
-		background: #E3E6D5;
-		padding: 30px; 	
-		border: 2px solid #575758;
-		float: left;
-		font-size: 1.2em;
-		position: fixed;
-		top: 50%; left: 48.35%;
-		width:400px;
-		z-index: 99999;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	//check box when checkmark appears
+	function volunteeredCheck() {
+		$('#volunteeredBefore').toggle();
+		$('#userVolunteered').toggle();
+	}
+	//check box when checkmark appears
+	function volunteeredCheckNoToggle() {
+		$('#volunteeredBefore').toggle();
 	}
 
-	fieldset { 
-		border:none; 
+	//check box when checkmark appears
+	function rememberMeNoToggle() {
+		$('#rememberMe').toggle();
 	}
 
-	.button { 
-		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-		border-color:#000; 
-		border-width:1px;
-	        border-radius:4px 4px 4px 4px;
-		-moz-border-radius: 4px;
-	        -webkit-border-radius: 4px;
-		color:#333;
-		cursor:pointer;
-		display:inline-block;
-		padding:6px 6px 4px;
-		margin-top:10px;
-		font:12px; 
-		width:214px;
-	}
-	.button:hover { background:#ddd; }
-
-	</style>
+	</script>
+	
 

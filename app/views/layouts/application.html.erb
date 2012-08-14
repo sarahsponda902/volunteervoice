@@ -30,37 +30,181 @@
 </script>		
 		
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>Volunteer Voice</title>
+
 	<%= csrf_meta_tag %>
 	<%= stylesheet_link_tag "application", :media => :all%>
 	<%= javascript_include_tag "application"%>
-	</head>
+	
+	
+	<style>
+	
+	a.forgotPassword:link{color:white}
+	a.forgotPassword:active{color:white}
+	a.forgotPassword:visited{color:white}
+	a.forgotPassword:hover{color:#e67b5a}
+	
+	a.login-window:link{color:white}
+	a.login-window:active{color:white}
+	a.login-window:visited{color:white}
+	a.login-window:hover{color:#9bce6c}
+	
+	a.register:link{color:white}
+	a.register:active{color:white}
+	a.register:visited{color:white}
+	a.register:hover{color:#e67b5a}
+	
+	a.logout:link{color:white}
+	a.logout:active{color:white}
+	a.logout:visited{color:white}
+	a.logout:hover{color:#e67b5a}
+	
+	
+	
+	/* Mask for background, by default is not display */
+	#mask {
+		display: none;
+		background: #000; 
+		position: fixed; left: 0; top: 0; 
+		z-index: 10;
+		width: 100%; height: 100%;
+		opacity: 0.5;
+		-moz-opacity: 0.50;
+	}
+
+	/* You can customize to your needs  */
+	.login-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 3px solid #575758;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		z-index:9999;
+		position: fixed;
+		top: 50%; left: 50%;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+	
+	.request-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 5px; 	
+		border: 3px solid #575758;
+		width:560px;
+		float: left;
+		color:#575758;
+		font-size: 1.1em;
+		z-index:9999;
+		position: fixed;
+		top: 50%; left: 50%;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+	
+	.org-login-popup{
+		display:none;
+		background: #c1dfdb;
+		padding: 10px; 	
+		border: 3px solid #e67b5a;
+		float: left;
+		color:#575758;
+		font-size: 1.1em;
+		z-index:9999;
+		position: fixed;
+		top: 50%; left: 50%;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+
+	#header {
+		min-width:970px; 
+		color:#575758;
+		background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
+	}
+	.tippyTop {
+		margin-top:15px;
+	}
+	#headerLogo {
+		height:95px;
+		cursor:pointer;
+	}
+	.loginContainer {
+		float:right;
+	}
+	.row .login {
+		width:auto;
+	}
+	.unreadMessagesCount {
+		color:#e67b5a;
+	}
+	adminContainer {
+		float:right;
+	}
+	.adminLinks {
+		background-color:#575758; 
+		color:white; 
+		font-size:1.3em; 
+		text-align:center; 
+		padding-top:7px;
+		padding-bottom:7px;
+	}
+	.adminLinksTitle {
+		color:red;
+	}
+	.orgLogin {
+		color:white;
+	}
+	.orgLogin ul li {
+		height:50px;
+	}
+	#orgLoginImage {
+		padding-right:1px; 
+		margin-right:-74px;
+	}
+
+	</style>
+	
+</head>
 
 	<body>
-		<div id="pageWrap" style="min-height:100%; height:auto !important; height:100%;margin 0 auto -300px">
+		<div id="pageWrap">
 		<!-- Header-->
-		<div class="container" id="header" style="min-width:970px; color:#575758; background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);">
+		<div class="container" id="header">
 		<div class="row">
 		<header class="header">
 			
-			<div class="four columns" style="margin-top:15px">
-			<a href="/" style="cursor:pointer"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" style="height:95px"></a>
+			<div class="four columns tippyTop">
+			<a href="/"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo"></a>
 			</div>
 			
 	<% if !(user_signed_in?) && !(organization_account_signed_in?) %>			
-			<div class="three columns" style="float:right">
-			<div class="row login" style="width:auto">
+			<div class="three columns loginContainer">
+			<div class="row login">
 				<a href="#login-box" class="login-window">LOGIN</a>
 				or <a href= "/sign_up" class="register">JOIN</a>
 			</div>
 			</div>
 	<% else %>
-			<div class="four columns" style="float:right">
-			<div class="row login" style="width:auto">
+			<div class="four columns loginContainer">
+			<div class="row login">
 					<% if user_signed_in?%>
 						<a href="/users/profile"> <%=current_user.username%> 
 							<% if current_user.unread_messages > 0 %>
-								<font style="color:#e67b5a">(<%=current_user.unread_messages%>)</font><% end %></a>&nbsp;&nbsp;
+								<span class="unreadMessagesCount">(<%=current_user.unread_messages%>)</span><% end %></a>&nbsp;&nbsp;
 						<a href= "/signout" class="logout">LOGOUT</a>
 					<% end %>
 					<% if organization_account_signed_in?%>
@@ -76,10 +220,10 @@
 			
 			<% if user_signed_in? && current_user.admin?%>
 			
-			<div class="four columns" style="float:right" id="adminNav">
-			<div class="row" style="background-color:#575758; color:white; font-size:1.3em; text-align:center; padding-top:7px;padding-bottom:7px;">
+			<div class="four columns adminContainer" id="adminNav">
+			<div class="row adminLinks">
 				<ul>
-					<li><p style="color:red">Admin Links</p>
+					<li><p class="adminLinksTitle">Admin Links</p>
 						<div>
 						<ul>
 							<li><a href="/registrations/create_admin">New Admin Account</a></li>
@@ -108,11 +252,11 @@
 			
 			
 			<% if !(user_signed_in?) && !(organization_account_signed_in?)%>
-			<div class="four columns" style="float:right" id="orgLogin">
-			<div class="row" align="right" style="color:white;">
+			<div class="four columns" class="loginContainer" id="orgLogin">
+			<div class="row orgLogin" align="right">
 					<ul>
-						<li style="height:50px;"><p id="orgLogin-image" style="padding-right:1px; margin-right:-74px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
-							<div style="margin-right:-1px">
+						<li><p id="orgLogin-image"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
+							<div>
 								<ul style="width:170px;" id="drop_org">
 									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
 									<li><a href="#request-box" class="request-window">Make a Profile</a></li>
@@ -329,104 +473,6 @@
 		</div>
 	</div>
 
-	
-	
-	<style>
-	
-	a.forgotPassword:link{color:white}
-	a.forgotPassword:active{color:white}
-	a.forgotPassword:visited{color:white}
-	a.forgotPassword:hover{color:#e67b5a}
-	
-	a.login-window:link{color:white}
-	a.login-window:active{color:white}
-	a.login-window:visited{color:white}
-	a.login-window:hover{color:#9bce6c}
-	
-	a.register:link{color:white}
-	a.register:active{color:white}
-	a.register:visited{color:white}
-	a.register:hover{color:#e67b5a}
-	
-	a.logout:link{color:white}
-	a.logout:active{color:white}
-	a.logout:visited{color:white}
-	a.logout:hover{color:#e67b5a}
-	
-	
-	
-	/* Mask for background, by default is not display */
-	#mask {
-		display: none;
-		background: #000; 
-		position: fixed; left: 0; top: 0; 
-		z-index: 10;
-		width: 100%; height: 100%;
-		opacity: 0.5;
-		-moz-opacity: 0.50;
-	}
-
-	/* You can customize to your needs  */
-	.login-popup{
-		display:none;
-		background: #D9DEDA;
-		padding: 10px; 	
-		border: 3px solid #575758;
-		float: left;
-		color:#6aaeba;
-		font-size: 1.1em;
-		z-index:9999;
-		position: fixed;
-		top: 50%; left: 50%;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-	}
-	
-	.request-popup{
-		display:none;
-		background: #D9DEDA;
-		padding: 5px; 	
-		border: 3px solid #575758;
-		width:560px;
-		float: left;
-		color:#575758;
-		font-size: 1.1em;
-		z-index:9999;
-		position: fixed;
-		top: 50%; left: 50%;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-	}
-	
-	.org-login-popup{
-		display:none;
-		background: #c1dfdb;
-		padding: 10px; 	
-		border: 3px solid #e67b5a;
-		float: left;
-		color:#575758;
-		font-size: 1.1em;
-		z-index:9999;
-		position: fixed;
-		top: 50%; left: 50%;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-	}
-	
-
-	</style>
 	
 		<script type="text/javascript">
 

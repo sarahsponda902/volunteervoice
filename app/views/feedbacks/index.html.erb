@@ -1,7 +1,27 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.pageTitle {
+	font-size:3em; 
+	line-height:2em; 
+	margin-top:20px;
+	padding-bottom:20px;
+	text-align:center; 
+}
+.linkToGo {
+	margin-left:11px;
+}
+.dateTime {
+	color:blue;
+}
+.editFeedback {
+	margin-left:11px;
+}
+</style>
+
 <% if user_signed_in? && current_user.admin?%>
 
-<p style="font-size:3em; line-height:2em; margin-top:20px;padding-bottom:20px;text-align:center; ">Listing feedbacks</h1>
+<p class="pageTitle">Listing feedbacks</h1>
 
 <table>
   <tr>
@@ -17,7 +37,7 @@
 <% @feedbacks.each do |f| %>
 
   <tr>
-	<td width="10%"><p style="color:blue"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
+	<td width="10%"><p class="dateTime"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 	<td width="12%">
 	<% if f.user_id.nil?%>
 	<%= f.email%>
@@ -27,14 +47,14 @@
 	</td>
 	
 	<td width ="50%"><%= f.truncated100.html_safe %></td>
-    <td width="7%"><p style="margin-left:11px"><%= link_to 'Go', f %></p></td>
+    <td width="7%"><p class="linkToGo"><%= link_to 'Go', f %></p></td>
 	<td width="7%">
 	<% if f.show %>
 	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), "/feedbacks/#{f.id}/changeShow" %>
 	<% else %>
 	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), "/feedbacks/#{f.id}/changeShow" %>
 	<% end %>
-    <td width="7%"><p style="margin-left:11px"><%= link_to 'Edit', edit_review_path(f) %></p></td>
+    <td width="7%"><p class="editFeedback"><%= link_to 'Edit', edit_feedback_path(f) %></p></td>
     <td width="7%"><%= button_to "Delete", feedback_path(f.id), :method => :delete, :confirm => "Are you sure?" %></td>
   </tr>
 <% end %>
