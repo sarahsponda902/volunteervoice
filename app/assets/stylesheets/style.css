@@ -345,22 +345,6 @@ adminContainer {
 	color:red;
 }
 
-/*Org Login*/
-.orgLogin {
-	color:white;
-}
-.orgLogin ul li {
-	height:50px;
-	width:170px;
-}
-.orgLogin ul li li {
-	height:20px;
-}
-#orgLogin-image {
-	padding-right:1px; 
-	margin-right:-150px;
-}
-
 
 .login {background:#575758; padding:10px; color: white; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600;} 
 
@@ -397,7 +381,7 @@ adminContainer {
 
 
 
-#orgLogin li {list-style:none; display:inline-block; text-align:center; font-family:Arial; margin-top:0px}
+#orgLogin li {list-style:none; display:inline-block; text-align:center; font-family:Arial; margin-top:0px; color:white; float:right }
 
 #orgLogin li a:visited{color: white;}
 
@@ -411,7 +395,7 @@ adminContainer {
 
 #orgLogin li:hover ul{visibility:visible; display:block; opacity:.9; filter: alpha(opacity=90); transition:opacity 0.2s linear; -moz-transition:opacity 0.2s linear; -webkit-transition:opacity 0.2s linear; -o-transition:opacity 0.2s linear; z-index:5; }
 
-#orgLogin li ul{position:absolute; top:35px;width:164px; height:30px; text-align:center; visibility:hidden; opacity:0; font-size:1.2em; display:block; z-index:5; padding:0px; padding-bottom:10px;
+#orgLogin li ul{position:absolute; top:35px;width:170px; text-align:center; visibility:hidden; opacity:0; font-size:1.2em; display:block; z-index:5; padding:0px; padding-bottom:10px;
  background-color:#c4826e; line-height:1.2em;}
 #orgLogin li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
 
