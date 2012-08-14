@@ -281,7 +281,7 @@ input[name="search[keywords]"] {
 
 /** USERS **/
 
-.loginContainer { float:right; }
+.loginContainer { float:right; width:auto; }
 
 .login {background:#575758; padding:10px; color: white; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600; width:auto} 
 
@@ -300,8 +300,6 @@ input[name="search[keywords]"] {
 /** ORGS **/
 
 #orgLogin {float:right;}
-
-.orgLogin {margin-right:-94px}
 
 #orgLogin li {list-style:none; display:inline-block; text-align:center; font-family:Arial; margin-top:0px; color:white; float:right }
 
