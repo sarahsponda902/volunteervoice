@@ -28,7 +28,9 @@
 }
 .submitContainer {
 	text-align:center;
-	height:35px;
+}
+#submitButton {
+	height:30px;
 }
 </style>
 
@@ -61,7 +63,7 @@
   </div>
 
   <div class="actions">
-    <p class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+    <p class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'", :id => "submitButton"%></p>
   </div>
 <% end %>
 </div>
