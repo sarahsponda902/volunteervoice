@@ -351,16 +351,14 @@ adminContainer {
 }
 .orgLogin ul li {
 	height:50px;
+	width:170px;
 }
 .orgLogin ul li li {
 	height:20px;
 }
 #orgLogin-image {
 	padding-right:1px; 
-	margin-right:-74px;
-}
-#orgLoginBox {
-	width:174px;
+	margin-right:-150px;
 }
 
 
