@@ -281,9 +281,9 @@ input[name="search[keywords]"] {
 
 /** USERS **/
 
-.loginContainer { float:right; padding-left:0px; } /* contains entire login box/row thing */
+.loginContainer { float:right; } /* contains entire login/join/username/signout box */
 
-#loginOrJoinContainer { width:17%; }
+#loginOrJoinContainer { width:17%; padding-left:0px; } /* only for "Login or Join" -> make room for orgLoginTab */
 
 .login {background:#575758; padding:10px; color: white; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600; width:auto} 
 
