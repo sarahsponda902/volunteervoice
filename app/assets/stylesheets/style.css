@@ -365,7 +365,7 @@ nav .findProgramDropDown { margin:auto; }
 
 /* Drop down menu at different heights depending if org-login image is there (pushing everything down)*/
 #drop_signed_in {position:absolute; top:165px;}
-#drop_signed_out {position:absolute; top:177px;}
+#drop_signed_out {position:absolute; top:183px;}
 
 nav li a:visited{color: white;}
 
