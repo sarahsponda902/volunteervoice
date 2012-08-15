@@ -1,3 +1,15 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+#leftColumn, #rightColumn {
+	width:45%;
+}
+textarea {
+	width:350px;
+	height:200px;
+}
+
+</style>
 
 
 <% if user_signed_in? && current_user.admin?%>
@@ -18,7 +30,7 @@
 		For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 		
 		</div>
-		<div class="six columns" style="width:45%">
+		<div class="six columns" id="leftColumn">
 <%= form_for @organization, :html => {:multipart => true} do |f| %>
 
 	<div class = "field">
@@ -91,7 +103,7 @@
     <%= f.text_field :price_breakdown, :value => @organization.price_breakdown %></div>
 </div>
 
-<div class="six columns" style="width:45%">
+<div class="six columns" id="rightColumn">
   <div class="field">
     Good To Know<br />
     <%= f.text_area :good_to_know, :value => @organization.good_to_know %></div>
@@ -134,10 +146,3 @@
 </div>
 <% end %>
 
-<style>
-textarea {
-	width:350px;
-	height:200px;
-}
-
-</style>

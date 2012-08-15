@@ -1,4 +1,107 @@
- 
+<style>
+.dateWritten {
+	color:#e67b5a; 
+	font-size:1.1em; 
+	line-height:1.5em;
+}
+.reviewTable {
+	border:1px solid #e67b5a; 
+	width:970px; 
+	margin:auto; 
+	margin-left:-30px; 
+	background-color:#E9ECE9;
+}
+.reviewBackground {
+	background-color:#E9ECE9;
+}
+.reviewProgramLabel {
+	margin-top:5px; 
+	font-size:1.1em;
+	color:#575758;
+}
+.reviewHeaderProgram {
+	font-family:architectsDaughterRegular;
+}
+.programData {
+	width:45%;
+}
+.tripWasData {
+	width:30%;
+}
+.starData {
+	width:24%;
+}
+.tripWasLabel {
+	margin-top:5px; 
+	font-size:1.1em;
+}
+.reviewStarContainer {
+	width:150px;
+}
+.reviewBodyContainer {
+	color:#575758;
+}
+a.review-window {
+	font-style:italic;
+}
+.reviewPhotos, .reviewSignature {
+	margin:0;
+	padding:0;
+}
+.usernameContainer {
+	margin-top:-10px; 
+	text-align:left; 
+}
+.usernameLink {
+	color:#62acbd; 
+	font-family:architectsDaughterRegular;
+}
+.flagContainer {
+	margin-top:-15px; 
+	float:right;
+}
+.reviewPopupBackground {
+	background-color:#D9DEDA;
+}
+.reviewPopupLabel {
+	font-size:1.1em;
+}
+.reviewPopupProgram, .reviewPopupTimeFrame {
+	font-family:architectsDaughterRegular; 
+	font-size:1.1em;
+}
+.reviewPopupDateWritten {
+	margin-top:-19px; 
+	text-align:right;
+}
+.reviewPopupUsername {
+	text-align:right; 
+	font-family:architectsDaughterRegular; 
+	color:#6aaeba; 
+	margin-right:30px;
+}
+.reviewPopupPhotos {
+	height:30px;
+}
+.reviewPopupFooter {
+	border-top:1px solid #575758;
+}
+.reviewPopupStarLabel {
+	text-align:center;
+}
+.reviewPopupStarContainer {
+	text-align:center; 
+	margin-top:-15px;
+}
+.reviewPopupStarContainer {
+	width:90px;
+	max-width:90px;
+	margin:auto;
+	float:center;
+}
+</style> 
+
+
   <%@photos = [] %>
     <%@photos << f.photo unless f.photo.blank?%>
     <%@photos << f.photo2 unless f.photo2.blank?%>
@@ -13,27 +116,26 @@
 	
 	
 
-	<p align="right" style="color:#e67b5a; font-size:1.1em; line-height:1.5em;">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
-		<table cellspacing="0" style="border:1px solid #e67b5a; width:970px; margin:auto; margin-left:-30px; background-color:#E9ECE9" cellpadding="0">
+	<p align="right" class="dateWritten">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
+		<table cellspacing="0" class="reviewTable" cellpadding="0">
 			<% if f.flag_show == false%>
 			<tr><td>This review has been flagged for removal</td></tr>
 			<% else %>
-			<tr style="background-color:#E9ECE9" height="30px">
-				<td style="width:40%"><p  style="margin-top:5px; font-size:1.1em;color:#575758" >	Program: <font style="font-family:architectsDaughterRegular"> <%=Program.find(f.program_id).name%></font></p></td>
-				<td style="width:30%"><p  style="margin-top:5px; font-size:1.1em;" >Trip Was: <font style="font-family:architectsDaughterRegular"> <%=f.time_frame%></font></p></td>
-				<td style="width:28%"><p align="right" style="width:150px"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
+			<tr class="reviewBackground" height="30px">
+				<td class="programData"><p  class="reviewProgramLabel" >	Program: <span class="reviewProgram"> <%=Program.find(f.program_id).name%></span></p></td>
+				<td class="tripWasData"><p  class="tripWasLabel" >Trip Was: <font style="font-family:architectsDaughterRegular"> <%=f.time_frame%></font></p></td>
+				<td class="starData"><p align="right" class="reviewStarContainer"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
 			</tr>
-			<tr style="background-color:#E9ECE9">
-				<td colspan="3"><p style="color:#575758"><%= f.truncated200.html_safe%> <a href="#review-box<%=f.id%>" class="review-window" style="font-style:italic">See full review</a></p></td>
+			<tr class="reviewBackground">
+				<td colspan="3"><p class="reviewBodyContainer"><%= f.truncated200.html_safe%> <a href="#review-box<%=f.id%>" class="review-window">See full review</a></p></td>
 			</tr>
-			<tr style="margin:0;padding:0; background-color:#E9ECE9;">
-				<td style="width:54%">
+			<tr class="reviewBackground reviewPhotos">
+				<td>
 				<% @photos.each do |photo| %>
 			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
 			    <% end %> 
 			  	</td>
-				<td style="width:1%"></td>
-				<td style="width:45%;margin:0;padding:0"><p style="margin-top:-10px; text-align:left; "><a style="color:#62acbd; font-family:architectsDaughterRegular" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p style="margin-top:-15px; float:right"><a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#review_id').val(<%=f.id%>); $('#poster_id').val(<%=f.user_id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a></p></td>
+				<td colspan="2" class="reviewSignature"><p class="usernameContainer"><a class="usernameLink" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p class="flagContainer"><a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#review_id').val(<%=f.id%>); $('#poster_id').val(<%=f.user_id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a></p></td>
 			</tr>
 			<% end %>
 		</table>
@@ -41,27 +143,29 @@
 	
 		<table id="review-box<%=f.id%>" class="review-popup">
 			<a href="#" class="close"><div class="close_image"></div></a>
-			<tr style="background-color:#D9DEDA"><td colspan="5"><font style="font-size:1.1em">Program: </font><font style="font-family:architectsDaughterRegular; font-size:1.1em"><%=(Program.find(f.program_id)).name%></font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size:1.1em">Length of Trip: </font><font style="font-family:architectsDaughterRegular; font-size:1.1em"><%=f.time_frame%></font><p style="margin-top:-19px; text-align:right">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td></tr>
-			<tr style="background-color:#D9DEDA"><td colspan="5"><%=f.body.html_safe%></td></tr>
-			<tr style="background-color:#D9DEDA"><td></td>
-				<td></td><td colspan="3"><p style="text-align:right; font-family:architectsDaughterRegular; color:#6aaeba; margin-right:30px">-<%=User.find(f.user_id).username%>&nbsp;&nbsp;&nbsp;&nbsp;
+			<tr class="reviewPopupBackground"><td colspan="5"><span class="reviewPopupLabel">Program: </span><span class="reviewPopupProgram"><%=(Program.find(f.program_id)).name%></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="reviewPopupLabel">Length of Trip: </span><span class="reviewPopupTimeFrame"><%=f.time_frame%></span><p style="reviewPopupDateWritten">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td></tr>
+			<tr class="reviewPopupBackground"><td colspan="5"><%=f.body.html_safe%></td></tr>
+			<tr class="reviewPopupBackground">
+				<td></td>
+				<td></td>
+				<td colspan="3"><p style="reviewPopupUsername">-<%=User.find(f.user_id).username%>&nbsp;&nbsp;&nbsp;&nbsp;
 			<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();", :style => "float:right", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
-			<tr style="background-color:#D9DEDA"><td colspan="5">	<% @photos.each do |photo| %>
-			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
+			<tr class="reviewPopupBackground"><td colspan="5">	<% @photos.each do |photo| %>
+			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" class="reviewPopupPhotos"/></a>
 			    <% end %></td></tr>
-			<tr style="border-top:1px solid #575758; background-color:#D9DEDA">
-				<td style="width:20%"><p style="text-align:center">Preparation/Orientation</p></td>
-				<td style="width:20%"><p style="text-align:center">Support</p></td>
-				<td style="width:20%"><p style="text-align:center">Project Impact</p></td>
-				<td style="width:20%"><p style="text-align:center">Structure/Sustainability</p></td>
-				<td style="width:20%"><p style="text-align:center">Overall</p></td>
+			<tr class="reviewPopupFooter reviewPopupBackground">
+				<td><p class="reviewPopupStarLabel">Preparation/Orientation</p></td>
+				<td><p class="reviewPopupStarLabel">Support</p></td>
+				<td><p class="reviewPopupStarLabel">Project Impact</p></td>
+				<td><p class="reviewPopupStarLabel">Structure/Sustainability</p></td>
+				<td><p class="reviewPopupStarLabel">Overall</p></td>
 			</tr>
-			<tr style="background-color:#D9DEDA">
-				<td><p style="text-align:center; margin-top:-15px"><p style="width:90px"><%=render :partial => "star", :locals => {:star => f.preparation}%></p></p></td>
-				<td><p style="text-align:center; margin-top:-15px"><p style="width:90px"><%=render :partial => "star", :locals => {:star => f.support}%></p></p></td>
-				<td><p style="text-align:center; margin-top:-15px"><p style="width:90px"><%=render :partial => "star", :locals => {:star => f.impact}%></p></p></td>
-				<td><p style="text-align:center; margin-top:-15px"><p style="width:90px"><%=render :partial => "star", :locals => {:star => f.structure}%></p></p></td>
-				<td><p style="text-align:center; margin-top:-15px"><p style="width:90px"><%=render :partial => "star", :locals => {:star => f.overall}%></p></p></td>
+			<tr class="reviewPopupBackground">
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.preparation}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p style="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.support}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p style="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.impact}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p style="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.structure}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p style="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.overall}%></p></p></td>
 			</tr>
 				
 				
