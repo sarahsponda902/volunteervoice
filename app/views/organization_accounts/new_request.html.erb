@@ -1,0 +1,155 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.title {
+	font-size:2em; 
+	font-family:JosefinSlabRegular; 
+	line-height:1.5em; 
+	margin:10px;
+	margin-top:30px;
+}
+.blurb {
+	font-family:JosefinSlabRegular; 
+	line-height:1.4em; 
+	color:#68c2d8;
+	font-size:1.3em;
+	width:80%;
+	float:left;
+	padding-left:110px;
+}
+#centeredContainer {
+	float:center;
+	margin:auto;
+	width:750px;
+}
+#leftSideFields {
+	width:325px;
+	margin-left:110px;
+}
+.requestField {
+	height:20px; 
+	width:198px;
+}
+.select-div {
+	position:absolute;
+	top:93px; 
+	height:30px; 
+	width:198px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+select {
+	position:absolute; 
+	border:1px solid #575758; 
+	left:-5px; width:225px; 
+	height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+	background-color:white;
+}
+.requestURLField {
+	margin-top:50px;
+}
+.requestSubmitButton {
+	height:40px;
+}
+#rightSideFields { 
+	width:325px; 
+	margin-top:-245px;
+	margin-left:315px;
+}
+.selectOneBlurb {
+	float:right; 
+	margin-right:175px; 
+	margin-top:25px; 
+	font-family:JosefinSlabRegular;
+}
+.dividingLine {
+	height:180px; 
+	width:1px; 
+	top:15px; 
+	background-color: #575758; 
+	position:absolute; 
+	left:-53px
+}
+.submitContainer {
+	clear:both; 
+	text-align:center;
+}
+.requestSubmitButton {
+	margin-top:30px;
+}
+</style>
+
+<!-- ERROR MESSAGES -->
+<% if flash.class.name != "String"%>
+<% flash.each do |key, value| %>
+  <div class="flash <%=key%>">
+	<% if value.class.name != "String"%>
+<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
+<% end %>
+<% end %><!-- END ERROR MESSAGES -->
+
+
+<!-- ACCOUNT REQUEST FORM -->
+<div class="container">
+	<div class="row">
+		<div class="twelve columns">
+			<% @contact = Contact.new %>
+			<p class="title" align="center">Account Request</p>
+			<%= form_for @contact do |f| %>
+			<div class="six columns" id="centeredContainer">
+			<p class="blurb">Please complete all fields</p>
+			<div class="six columns" id="leftSideFields">
+
+			  <div><%= f.label "Organization Name" %>
+			  <%= f.text_field :organization_name, :class => "requestField" %></div><br />
+			<div>
+<%= f.label :country %>
+			  <div class="select-div">
+				 <select id="contact_country" name="contact[country]">
+					<option value=""> Select a Country</option>
+					<!-- LIST OF COUNTRIES in INITIALIZERS > CONSTANTS -->
+					<% THECOUNTRIES.keys.each do |f| %> 
+					<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+					<% end %>
+					</select>
+			</div>
+			<div class="requestURLField"><%= f.label "Website URL" %>
+			  <%= f.text_field :organization_url, :class => "requestField" %></div><br />
+			<div>
+			 <%= f.radio_button :has_profile, :value => "Has profile needs access."%> I have a profile already, but need access. <br />
+			<%= f.radio_button :has_profile, :value => "Needs profile and access."%> I don't have a profile, please make me one! <br /></div>
+			
+			
+			</div>
+			<div class="six columns" id="rightSideFields">
+
+			  <div><%= f.label "Main Contact (First and Last Name)" %>
+			  <%= f.text_field :main_contact, :class => "requestField"%></div><br />
+
+			  <div><%= f.label "Contact's Position at Company" %>
+			  <%= f.text_field :position_of_contact, :class => "requestField"%></div><br />
+
+			  <div><%= f.label "Contact Email"%>
+			  <%= f.text_field :contact_email, :class => "requestField" %></div>
+			
+			
+			<div class="selectOneBlurb">&lt;&lt;&nbsp;&nbsp; Select one of these</div>
+			
+			<div class = "dividingLine"></div>
+									
+			<%= f.hidden_field :to_whom, :value => "request"%>
+			<% end %>
+			</div>
+		</div>
+		<div class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submit.png", :class => "requestSubmitButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+
+		</div>
+	</div>
+</div>
+</div>

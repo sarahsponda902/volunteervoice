@@ -1,0 +1,82 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.top {
+	margin-top:80px;
+}
+.container {
+	color:#575758;
+}
+.title {
+	font-size:2em; 
+	font-family:architectsDaughterRegular; 
+	color:#62acbd; 
+	text-align:center;
+}
+.resendPasswordBoxContainer {
+	margin-top:20px;
+}
+.resendPasswordBox {
+	background-color:#E9ECE9; 
+	padding-top:30px; 
+	padding-left:10px; 
+	margin-top:20px; 
+	margin-left:15%; 
+	margin-right:15%; 
+	border:1px solid #e67b5a; 
+	height:250px; 
+}
+.label {
+	font-size:1.3em; 
+	margin-bottom:10px;
+}
+.field {
+	height:23px; 
+	width:190px; 
+	background-color:white;
+}
+.blurb {
+	margin-left: 14%;
+	font-family:architectsDaughterRegular; 
+	color: #e67b5a; 
+	line-height:1.8em;
+}
+.submitContainer {
+	margin-top:125px;
+}
+</style>
+
+<div class="container">
+	  <%= devise_error_messages! %>
+	<div class="row">
+		<div class="twelve columns top">
+
+<p class="title">Resend Confirmation Instructions</p>
+	</div>
+	</div>
+	<div class="row">
+	<div class="twelve columns resendPasswordBoxContainer">
+		<div class="resendPasswordBox">
+
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+
+
+  <div class="three columns"><p class="label"> Email: </p>
+  <%= f.email_field :email, :class=>"field" %></div>
+
+<div class="seven columns blurb">We apologize for the delay in your registration. Please enter your email here and we will resend your confirmation instructions.</div>
+
+<br />
+<br />
+
+  <div align="center" class="submitContainer">
+<%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/resendConfirmation.png"), :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+	
+	</div>
+<% end %>
+
+
+</div>
+</div>
+</div>
+</div>

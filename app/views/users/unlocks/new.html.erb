@@ -1,0 +1,85 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+
+<style>
+.container {
+	color:#575758;
+}
+.top {
+	margin-top:80px;
+}
+.title {
+	font-size:2em; 
+	font-family:architectsDaughterRegular; 
+	color:#62acbd; 
+	text-align:center;
+}
+.unlockBoxContainer {
+	margin-top:20px;
+}
+.unlockBox {
+	background-color:#E9ECE9; 
+	padding-top:30px; 
+	padding-left:10px; 
+	margin-top:20px; 
+	margin-left:15%; 
+	margin-right:15%; 
+	border:1px solid #e67b5a; 
+	height:250px; 
+	margin-top:20px;
+}
+.label {
+	font-size:1.3em; 
+	margin-bottom:10px;
+}
+.field {
+	height:23px; 
+	width:190px; 
+	background-color:white;
+}
+.blurb {
+	margin-left: 14%;
+	font-family:architectsDaughterRegular; 
+	color: #e67b5a; 
+	line-height:1.8em;
+}
+.submitContainer {
+	margin-top:125px;
+}
+</style>
+
+
+<%= devise_error_messages! %>
+
+<div class="container">
+	<div class="row">
+		<div class="twelve columns top">
+			<%= devise_error_messages! %>
+<p class="title">Send Unlock Instructions</p>
+	</div>
+	</div>
+	<div class="row">
+	<div class="twelve columns unlockBoxContainer">
+		<div class="unlockBox">
+
+<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+
+  <div class="three columns"><p class="label"> Email: </p>
+  <%= f.email_field :email, :class=>"field" %></div>
+
+<div class="seven columns blurb">Enter your registered email here.  We will send you a top secret message that will allow you to unlock your account.</div>
+
+<br />
+<br />
+
+  <div align="center" class="submitContainer">
+<%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/SendMyInfoButton.png"), :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+	
+	</div>
+<% end %>
+
+
+</div>
+</div>
+</div>
+</div>
