@@ -51,29 +51,6 @@
 	margin-top:50px;
 }
 
-#companyName {max-width:90px}
-#contactName {max-width:90px}
-#contactEmail {max-width:90px}
-#country {max-width:20px}
-#typeOfCompany {max-width:75px}
-#dateCreated {max-width:90px}
-#lastUpdated {max-width:90px}
-#lastLogin {max-width:90px}
-#loginCount {max-width:20px}
-#invitation {max-width:90px}
-#edit {max-width:50px}
-#delete {max-width:75px}
-
-td button {width:60px}
-
-#hasProfile {max-width:20px}
-#unapprovedCompanyName {max-width:90px}
-#unapprovedCountry {max-width:20px}
-#url {max-width:150px}
-#unapprovedContact {max-width:90px}
-#unapprovedContactPosition {max-width:90px}
-#unapprovedContactEmail {max-width:90px}
-#removeFromList {max-width:60px}
 </style>
 
 
@@ -117,14 +94,14 @@ td button {width:60px}
 <table>
 	<thead>
 	<tr>
-		<th id="hasProfile">Has a Profile?</th>
-		<th id="unapprovedCompanyName">Company Name</th>
-		<th id="unapprovedCountry">Country</th>
-		<th id="url">Website URL</th>
-		<th id="unapprovedContact">Main Contact</th>
-		<th id="unapprovedContactPosition">Contact's Position</th>
-		<th id="unapprovedContactEmail">Contact's Email</th>
-		<th id="removeFromList">Remove from List?</th>
+		<th>Has a Profile?</th>
+		<th>Company Name</th>
+		<th>Country</th>
+		<th>Website URL</th>
+		<th>Main Contact</th>
+		<th>Contact's Position</th>
+		<th>Contact's Email</th>
+		<th>Remove from List?</th>
 	</tr>
 	</thead>
 	<tdata>
@@ -157,18 +134,18 @@ td button {width:60px}
 <table>
 	<thead>
   <tr>
-    <th id="companyName">Company Name</th>
-    <th id="contactName">Contact's Name</th>
-    <th id="contactEmail">Contact's Email</th>
-    <th id="country">Country</th>
-    <th id="typeOfCompany">Type of Company</th>
-    <th id="dateCreated">Date Created</th>
-    <th id="lastUpdated">Last Updated</th>
-    <th id="lastLogin">Last Login</th>
-    <th id="loginCount">Login Count</th>
-    <th id="invitation">Invitation</th>
-    <th id="edit"></th>
-	<th id="delete"></th>
+    <th>Company Name</th>
+    <th>Contact's Name</th>
+    <th>Contact's Email</th>
+    <th>Country</th>
+    <th>Type of Company</th>
+    <th>Date Created</th>
+    <th>Last Updated</th>
+    <th>Last Login</th>
+    <th>Login Count</th>
+    <th>Invitation</th>
+    <th></th>
+    <th></th>
   </tr>
 </thead>
 <tdata>
@@ -205,7 +182,7 @@ td button {width:60px}
 		<% end %>
 	</td>
     <td><%= link_to 'Edit', edit_organization_account_path(oa) %></td>
-	<td><%= button_to 'Delete', oa, method: :delete %></td>
+    <td><%= button_to 'Delete', oa, method: :delete %></td>
   </tr>
 <% end %>
 </tdata>
