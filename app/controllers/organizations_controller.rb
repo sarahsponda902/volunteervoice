@@ -25,7 +25,7 @@ class OrganizationsController < ApplicationController
     if user_signed_in? && current_user.admin?
       @organization = Organization.find(params[:id])
     else
-      redirect_to "/pages/blogs"
+      redirect_to "/organizations/#{@organization.id}"
     end
   end
 
