@@ -1,7 +1,4 @@
 
-<!DOCTYPE html>
-<html>
-<head>
 
 	<link href="/assets/imgareaselect-default.css" rel="stylesheet" type="text/css" />
 
@@ -10,46 +7,27 @@
 	
 	<script src="/assets/jquery.imgareaselect.min.js"></script>
 
-	
-	<script type="text/javascript">
-	$(function(){
-   
+<style>
+.top {
+	margin-top:30px;
+}
+.cropBlurb {
+	position:absolute; 
+	right:5%; 
+	top:300px; 
+	width: 150px;
+}
+.cropFields {
+	position:absolute; 
+	right:5%; 
+	top:200px; 
+	width:150px;
+}
+</style>
 
 
-	    function updateVars (img, selection) {
-	        $("#organization_crop_w").val(selection.width);
-	        $("#organization_crop_h").val(selection.height);    
-	        $("#organization_crop_x").val(selection.x1);
-			$("#organization_crop_y").val(selection.y1);
 
-	    }         
-
-	    function init() {
-
-	        $('#crop_me').imgAreaSelect({
-	            hide:true,
-	            movable : true,
-	            autoHide : false,
-				aspectRatio: '1:1',
-				minHeight:250,
-	            onSelectEnd: updateVars
-	  			
-	        });
-
-
-	    }
-
-	    init();
-
-	});
-
-	
-
-	</script>
-
-</head>
-<body>
-	<div class="container" style="margin-top:30px">
+	<div class="container top">
 		<div class="row">
 			<div class="ten columns">
 
@@ -59,9 +37,9 @@
 	</div>
 </div>
 
-<div style="position:absolute; right:5%; top:300px; width: 150px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed size for a organization image. It will not get any smaller</div>
+<div class="cropBlurb">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed size for a organization image. It will not get any smaller</div>
 
-<div style="position:absolute; right:5%; top:200px; width:150px">
+<div class="cropFields">
 	<%= form_for @organization do |f|%>
 	x: <%= f.number_field :crop_x %><br />
 	y: <%= f.number_field :crop_y %><br />
@@ -70,4 +48,40 @@
 	<%= f.submit "Crop"%>
 	<% end %>
 </div>	
-</html>
+
+
+<script type="text/javascript">
+$(function(){
+
+
+
+    function updateVars (img, selection) {
+        $("#organization_crop_w").val(selection.width);
+        $("#organization_crop_h").val(selection.height);    
+        $("#organization_crop_x").val(selection.x1);
+		$("#organization_crop_y").val(selection.y1);
+
+    }         
+
+    function init() {
+
+        $('#crop_me').imgAreaSelect({
+            hide:true,
+            movable : true,
+            autoHide : false,
+			aspectRatio: '1:1',
+			minHeight:250,
+            onSelectEnd: updateVars
+  			
+        });
+
+
+    }
+
+    init();
+
+});
+
+
+
+</script>
