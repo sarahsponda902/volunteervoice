@@ -2,30 +2,7 @@ class ProgramsController < ApplicationController
 
 	include ActionView::Helpers::TextHelper
 	require 'aws/s3'
-	
-	
-	def crop
-    if user_signed_in? && current_user.admin?
-      @program = Program.find(params[:id])
-    else
-      redirect_to "/pages/blogs"
-    end
-  end
-	
-  # GET /programs
-  # GET /programs.json
-  def index
-    @programs = Program.all  
-    @countries_with_programs = []
-    @programs.each do |f|
-      @countries_with_programs << f.location unless @countries_with_programs.include?(f.location)
-    end
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @programs }
-    end
 
-  end
 
   # GET /programs/1
   # GET /programs/1.json

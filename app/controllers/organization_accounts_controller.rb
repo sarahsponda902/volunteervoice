@@ -32,6 +32,9 @@ class OrganizationAccountsController < ApplicationController
     end
   end
   
+  def thank_you_request
+  end
+  
   # GET /organization_accounts
   # GET /organization_accounts.json
   def index

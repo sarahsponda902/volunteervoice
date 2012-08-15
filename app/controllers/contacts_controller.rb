@@ -23,7 +23,7 @@ include ActionView::Helpers::TextHelper
       @contact.is_request = true  
         if @contact.save(:validate => false)
           ContactMailer.to_request(@contact).deliver
-          format.html { redirect_to "/pages/thank_you_request", notice: 'Contact was successfully sent.' }
+          format.html { redirect_to "/organization_accounts/thank_you_request", notice: 'Contact was successfully sent.' }
           format.json { render json: @contact, status: :created, location: @contact }
         else
           flash[:notice] = flash[:notice].to_a.concat @contact.errors.full_messages
@@ -45,7 +45,7 @@ include ActionView::Helpers::TextHelper
           ContactMailer.to_feedback(@contact).deliver
         end
         
-          format.html { redirect_to "/pages/thank_you", notice: 'Contact was successfully sent.' }
+          format.html { redirect_to "/contacts/thank_you", notice: 'Contact was successfully sent.' }
           format.json { render json: @contact, status: :created, location: @contact }
       else
         @contact.body = @contact.body.gsub(%r{</?[^>]+?>}, '') unless @contact.body.nil?

@@ -40,6 +40,8 @@ class NewReviewsController < ApplicationController
     end
   end
 
+  def thank_you_new_review
+  end
 
   # POST /new_reviews
   # POST /new_reviews.json
@@ -50,7 +52,7 @@ class NewReviewsController < ApplicationController
     
     respond_to do |format|
       if @new_review.save
-        format.html { redirect_to "/pages/thank_you_new_review" }
+        format.html { redirect_to "/new_reviews/thank_you_new_review" }
         format.json { render json: @new_review, status: :created, location: @new_review }
       else
         @new_review.body = @new_review.body.gsub(%r{</?[^>]+?>}, '')

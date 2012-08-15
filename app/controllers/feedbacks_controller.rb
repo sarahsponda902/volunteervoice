@@ -45,7 +45,7 @@ class FeedbacksController < ApplicationController
     @feedback.truncated100 = (truncate @feedback.body, :length => 100)
     respond_to do |format|
       if @feedback.save
-        format.html { redirect_to '/pages/thank_you', notice: 'Feedback was successfully created.' }
+        format.html { redirect_to '/feedbacks/thank_you', notice: 'Feedback was successfully created.' }
         format.json { render json: @feedback, status: :created, location: @feedback }
       else
         flash[:notice] = flash[:notice].to_a.concat @feedback.errors.full_messages
@@ -53,6 +53,9 @@ class FeedbacksController < ApplicationController
         format.json { render json: @feedback.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def thank_you
   end
 
   # DELETE /feedbacks/1

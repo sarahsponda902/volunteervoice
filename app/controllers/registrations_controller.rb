@@ -56,9 +56,7 @@ class RegistrationsController < Devise::RegistrationsController
       redirect_to "/users/profile"
     end
   end
-  
-  def thank_you
-  end
+
   
   def email_confirm
   end

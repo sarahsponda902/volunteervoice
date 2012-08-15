@@ -26,7 +26,7 @@ include ActionView::Helpers::TextHelper
              @org.overall = (((@org.overall.to_f)*(@org.reviews_count.to_f) + @review.overall.to_f)/(@org.reviews_count.to_f + 1))
              @org.reviews_count = @org.reviews_count + 1
              @org.save
-             format.html { redirect_to "/pages/thank_you_review" }
+             format.html { redirect_to "/reviews/thank_you_review" }
              format.json { render json: @review, status: :created, location: @review }
          else
            @review.body = @review.body.gsub(%r{</?[^>]+?>}, '') unless @review.body.nil?
@@ -42,6 +42,9 @@ include ActionView::Helpers::TextHelper
      else
        redirect_to "/registrations/mustBe"
      end
+    end
+    
+    def thank_you_review
     end
     
     def index

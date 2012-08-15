@@ -58,6 +58,8 @@ RMTest::Application.routes.draw do
 
   ##### SEARCHES
   
+  match "searches/places" => "searches#places"
+  
   match "searches/:subject/programs_browse" => "searches#programs_browse"
   
   match "searches/error" => "searches#error"
@@ -207,7 +209,7 @@ RMTest::Application.routes.draw do
     end
   end
   
-  get "pages/thank_you_request"
+  get "organization_accounts/thank_you_request"
   
   get "pages/enable_js"
   
@@ -221,7 +223,7 @@ RMTest::Application.routes.draw do
   
   get "pages/profile_favorites"
   
-  get "pages/blogs"
+  get "blog_posts/resources"
   
   get "pages/about_form"
   
@@ -229,7 +231,7 @@ RMTest::Application.routes.draw do
   
   get "searches/index"
   
-  get "pages/search_machine"
+  get "searches/search_machine"
   
   get "pages/get_info"
   
@@ -237,7 +239,7 @@ RMTest::Application.routes.draw do
   
   get "pages/search_machine_results"
   
-  get "pages/program_browse"
+  get "searches/program_browse"
   
   get "pages/program_browse_results"
   
@@ -245,7 +247,7 @@ RMTest::Application.routes.draw do
   
   get "pages/organization_sorted"
   
-  get "pages/thank_you"
+  get "feedbacks/thank_you"
 
   
   get "pages/about"
@@ -253,15 +255,10 @@ RMTest::Application.routes.draw do
   get "pages/terms"
   get "pages/privacy"
   get "pages/faq"
-  get "pages/thank_you_review"
-  get "pages/thank_you_new_review"
+  get "reviews/thank_you_review"
+  get "new_reviews/thank_you_new_review"
   
   match "searches/:region/program_search" => 'searches#program_search'
-
-  
-  ###### PROGRAMS
-  
-  match 'programs/:id/crop' => 'programs#crop'
   
   
   resources :programs do
@@ -290,7 +287,7 @@ RMTest::Application.routes.draw do
   
   match "pages/blog_posts" => 'blog_posts#index'
   
-  match "pages/blog_search" => 'pages#blog_search'
+  match "blog_posts/resources_search" => 'blog_posts#resources_search'
   
   match "blog_posts/:id/crop" => 'blog_posts#crop'
   
