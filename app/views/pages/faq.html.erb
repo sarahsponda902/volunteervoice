@@ -1,112 +1,7 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
 
-<head>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
-	$(document).ready(function(){
 
-	$(".question1").click(function(){
-	    $(".answer1").slideToggle(300);
-	  });
-	
-	$(".question2").click(function(){
-	    $(".answer2").slideToggle(300);
-	  });
-
-	$(".question3").click(function(){
-	    $(".answer3").slideToggle(300);
-	  });
-
-	$(".question4").click(function(){
-	    $(".answer4").slideToggle(300);
-	  });
-
-	$(".question5").click(function(){
-	    $(".answer5").slideToggle(300);
-	  });
-	
-	$(".question6").click(function(){
-	    $(".answer6").slideToggle(300);
-	  });
-
-	$(".question7").click(function(){
-	    $(".answer7").slideToggle(300);
-	  });
-
-	$(".question8").click(function(){
-	    $(".answer8").slideToggle(300);
-	  });
-
-	$(".question9").click(function(){
-	    $(".answer9").slideToggle(300);
-	  });
-
-	$(".question10").click(function(){
-	    $(".answer10").slideToggle(300);
-	  });
-	
-	$(".question11").click(function(){
-	    $(".answer11").slideToggle(300);
-	  });
-
-	$(".question12").click(function(){
-	    $(".answer12").slideToggle(300);
-	  });
-
-	$(".question13").click(function(){
-	    $(".answer13").slideToggle(300);
-	  });
-
-	$(".question14").click(function(){
-	    $(".answer14").slideToggle(300);
-	  });
-
-	$(".question15").click(function(){
-	    $(".answer15").slideToggle(300);
-	  });
-	
-	$(".question16").click(function(){
-	    $(".answer16").slideToggle(300);
-	  });
-
-	$(".question17").click(function(){
-	    $(".answer17").slideToggle(300);
-	  });
-
-	$(".question18").click(function(){
-	    $(".answer18").slideToggle(300);
-	  });
-
-	$(".question19").click(function(){
-	    $(".answer19").slideToggle(300);
-	  });
-
-	$(".question20").click(function(){
-	    $(".answer20").slideToggle(300);
-	  });
-	
-	$(".question21").click(function(){
-	    $(".answer21").slideToggle(300);
-	  });
-
-	$(".question22").click(function(){
-	    $(".answer22").slideToggle(300);
-	  });
-
-	$(".question23").click(function(){
-	    $(".answer23").slideToggle(300);
-	  });
-
-	$(".question24").click(function(){
-	    $(".answer24").slideToggle(300);
-	  });
-
-	$(".question25").click(function(){
-	    $(".answer25").slideToggle(300);
-	  });
-	});
-	
-	</script>
+  <script type="text/javascript" src="/assets/jquery.js"></script>
 
 	<style type="text/css"> 
 	div.answer1, div.answer2, div.answer3, div.answer4, div.answer5, div.answer6, div.answer7, div.answer8, div.answer9, div.answer10, div.answer11, div.answer12, div.answer13, div.answer14, div.answer15, div.answer16, div.answer17, div.answer18, div.answer19, div.answer20, div.answer21, div.answer22, div.answer23, div.answer24, div.answer25
@@ -116,6 +11,7 @@
 	text-align:left;
 	display:none;
 	font-size:1.1em;
+	margin-left:20px
 	}
 	div.question1, div.question2, div.question3, div.question4, div.question5, div.question6, div.question7, div.question8, div.question9, div.question10, div.question11, div.question12, div.question13, div.question14, div.question15, div.question16, div.question17, div.question18, div.question19, div.question20, div.question21, div.question22, div.question23, div.question24, div.question25
 	{
@@ -126,91 +22,112 @@
 		color: #68c2d8;
 		font-size:1.3em;
 	}
+	#titleContainer {
+		margin-top:30px;
+	}
+	#bodyContainer {
+		margin-top:30px; 
+		margin-left:35px;
+	}
+	.mainSubTitle {
+		color:#9bce6c; 
+		font-family:josefinSlabRegular; 
+		font-size:1.8em;
+	}
+	.secondSubTitle {
+		margin-top:50px;
+	}
+	a.contactUsLink {
+		color:#68c2d8;
+	}
+	a.contactUsLink:hover {
+		color:white;
+	}
 	
 	</style>
 	</head>
 
 	<body>
-		<div class="container" style="color:#575758">
-			<div class="row" align="center" style="margin-top:30px">
+		<div class="container">
+			<div class="row" align="center" id="titleContainer">
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/faq.png"%>
 			</div>
-			<div class="row" style="margin-top:30px; margin-left:35px">
-		<h3 style="color:#9bce6c; font-family:chunkfiveregular; font-size:1.8em">For Users</h3>
+			<div class="row" id="bodyContainer">
+		<h3 class="mainSubTitle">For Users</h3>
 
 	<div class="question1">1. Where does VolunteerVoice get this information?</div>
 
-	<div class="answer1" style="margin-left:20px">
+	<div class="answer1">
 	VV gets its information from a couple of sources, mainly from the websites of the volunteer organizations themselves, or from direct correspondence with those companies. 
 	</div>
 	<div class="question2">2. How do I write a review?</div>
 
-	<div class="answer2" style="margin-left:20px">
+	<div class="answer2" >
 	 To write a review, you must first register on the site by going to the Register form.  Signing up is easy, and once it is done you are free to submit reviews and comments.  <br /><br />There are 2 ways to get to the “Write A Review” form, one is to click the button in the top navigation bar, the other is to visit the Profile Page of the company you worked with and to select the “Review This Company” button at the bottom of the company information section.  Fill out all of the required information, click “Submit”, and your review will be posted.
 	</div>
 	<div class="question3">3. The organization that I want to review isn’t registered on the site. What should I do?</div>
 
-	<div class="answer3" style="margin-left:20px">
+	<div class="answer3">
 	Write a review anyway! Go to the “Write A Review” form, and in the “Select A Company” box click the option “Review A New Company”.  Complete the form, submit your review, and we will use it to research and build a profile for that company.  This is actually the most important feature on our site, as it helps up expand our profile database and learn about new organizations.  We will send you a message once the profile is done and your review is posted.
 	</div>
 	
 	<div class="question4">4. Can I write more than one review for an organization?</div>
 
-	<div class="answer4" style="margin-left:20px">
+	<div class="answer4">
 	No, you cannot.  You can edit or remove your review at any time, but you can only have one review for a company up at time.  If you have volunteered with an organization more than once, then you should try and describe each experience in one review and give one overall rating.
 	</div>
 	
 	<div class="question5">5. Why do I have to register to write reviews and comments?</div>
 
-	<div class="answer5" style="margin-left:20px">
+	<div class="answer5">
 	We want to do everything we can to ensure authenticity on our site, and to eliminate spam or dishonest/destructive information.  There is obviously no binding, legal way to guarantee that all reviews on our site are made by actual volunteers, which is why we constantly scan reviews/comments for suspicious activity, follow up on “flagged” items, and ask users to sign the online Terms of Use agreement with every review. 
 	</div>
 	
 	<div class="question6">6. Why do I have to list my birthday when I register?</div>
 
-	<div class="answer6" style="margin-left:20px">
+	<div class="answer6">
 	VolunteerVoice wants to know as much as possible about its users so that we can improve the site according to user needs.  Knowing the average age of users is a very helpful piece of information when deciding what features to include or leave out on our site.  We do not submit this personal information to any outside resources and only use it for our own research.  Users do have the option of displaying their age for social networking purposes on their profiles, but you may absolutely change your privacy options to keep that information invisible to other users.	</div>
 	
 	<div class="question7">7. What are my privacy options? How do I change them?</div>
 
-	<div class="answer7" style="margin-left:20px">
+	<div class="answer7">
 Users can change their privacy options at any time when logged in by going to their user Profile Page, and selecting the “My Privacy Settings” link in the top-right hand corner.  A box will pop up on the page that allows the user to decide what information will be displayed on their profile to other users, if any.  A user can decide to display their age, country, reviews, favorites, and comments--or to display no information at all except for username.  It is totally up to the User.  Merely check the boxes under “My Privacy Settings” to change your account’s public appearance.	</div>
 	
 	<div class="question8">8. I forgot my password/ My password was stolen/ I want to change my password. </div>
 
-	<div class="answer8" style="margin-left:20px">
+	<div class="answer8">
 	Users must fill out the “Password Lookup” form by clicking on the “Password Lookup” link that appears below the Login box.  Enter the email address that was used to register the account, verify that you aren’t a spambot by filling in the “verify” info box, and click ‘Send My Info’ to receive an email with all of your login information.  Once logged in, you can change your password at your discretion.	</div>
 	
 	<div class="question9">9. What does VolunteerVoice do with my private information when I register?</div>
 
-	<div class="answer9" style="margin-left:20px">
+	<div class="answer9">
 We use your personal information to learn more about our users, and that’s all.  We release your information to absolutely no outside parties, and store it securely so that we can learn more about users and develop our site to meet your needs.  	</div>
 	
 	<div class="question10">10. Can I write a review for an organization that I volunteered with if I now work for the organization?</div>
 
-	<div class="answer10" style="margin-left:20px">
+	<div class="answer10">
 Sure.  Your experience with that organization must have been good if it made you want to work with them! It would be helpful to include that information in your review, and tell a little about your job working for them.  	</div>
 	
 	<div class="question11">11. I volunteered with an organization more than 10 years ago, can I still review them?</div>
 
-	<div class="answer11" style="margin-left:20px">
+	<div class="answer11">
 That choice is yours.  It might be a good idea to hold off on writing a bad review of an organization if you volunteered with them a long time ago, since they may have changed a lot since you had that experience.  The point of this site is to provide <b> accurate, helpful</b> information on organizations for prospective volunteers, so bear that in mind when you make your decision.
 	</div>
 	
 	<div class="question12">12. Who writes the reviews?</div>
 
-	<div class="answer12" style="margin-left:20px">
+	<div class="answer12">
 	Reviews are written by people who have volunteered with these organizations before, and have decided to take the time to share their experience.  VolunteerVoice writes no reviews, and interferes in no way with what Users choose to say, so long as that information is not proven to be inaccurate, inappropriate, or highly offensive.
 	</div>
 	
 	<div class="question13">13. What does VolunteerVoice do to make sure that people aren’t posting fake reviews or just trying to promote their own volunteer companies?</div>
 
-	<div class="answer13" style="margin-left:20px">
+	<div class="answer13">
 	Here at VolunteerVoice, we try to encourage authenticity and accuracy from reviews by asking for specific kinds of detailed information on reviews, requiring valid email accounts, monitoring review language, and allowing Users to flag information that appears suspicious.  Since this is an open, online site and service, we do what we can to encourage constructive, accurate information, and are constantly striving to improve upon our information and security measures.	</div>
 	
 	<div class="question14">14. How can I help as an individual?</div>
 
-	<div class="answer14" style="margin-left:20px">
+	<div class="answer14">
 	Write a review! Read our articles! Follow our blog! Flag suspicious reviews! Just basically help us share and keep track of the information on this site, to help improve our services for everyone. 	</div>
 	
 	
@@ -219,61 +136,61 @@ That choice is yours.  It might be a good idea to hold off on writing a bad revi
 	
 	
 	
-	<h3 style="color:#9bce6c; font-family:chunkfiveregular; font-size:1.8em; margin-top:50px">For Volunteer Organizations</h3>
+	<h3 class="mainSubTitle secondSubTitle">For Volunteer Organizations</h3>
 	
 	<div class="question15">1. Why am I registered on this website?</div>
 
-	<div class="answer15" style="margin-left:20px">
+	<div class="answer15">
 	You are registered on this site because you are an international volunteer organization that VolunteerVoice has researched and selected.</div>
 	
 	<div class="question16">2. Can I remove my company from this site?</div>
 
-	<div class="answer16" style="margin-left:20px">
+	<div class="answer16">
 	This site only uses information that you as an organization have already made public.  This site is designed to encourage people that have volunteered with your organization to share their experiences. Your organization’s presence on this site is a positive thing.</div>
 	
 	<div class="question17">3. Why is my volunteer organization not registered on this site? What can I do to get a profile?</div>
 
-	<div class="answer17" style="margin-left:20px">
-	If you organization is not on this site, it is simply because we have not heard about it yet from our own researchers, or from users.  If you would like to bring your organization to our attention, you can <a href="/contacts/new" style="color:#68c2d8">contact us here</a> and provide us with a link to your own information.  	</div>
+	<div class="answer17">
+	If you organization is not on this site, it is simply because we have not heard about it yet from our own researchers, or from users.  If you would like to bring your organization to our attention, you can <a href="/contacts/new" class="contactUsLink">contact us here</a> and provide us with a link to your own information.  	</div>
 	
 	<div class="question18">4. My organization does not have a website, is it still possible to have a profile on the site?</div>
 
-	<div class="answer18" style="margin-left:20px">
+	<div class="answer18">
 	An organization’s website and online information is a central way that we keep track of legitimate organizations, so if your organization does not have a site and would like to be profiled on the site, please send us other information to help us confirm your organization’s existence and legitimacy.</div>
 	
 	<div class="question19">5. Is it possible to remove a bad review from my company’s profile?</div>
 
-	<div class="answer19" style="margin-left:20px">
+	<div class="answer19">
 	VolunteerVoice does not interfere with User reviews unless they are proven to be inapproprate, illegitimate, or offensive.  This site is designed to encourage unbiased reviews, to help both organizations and Users.  As an organization, you can use negative reviews to learn more about what your customers may need.</div>
 	
 	<div class="question20">6. Can I edit the information on my company’s profile?</div>
 
-	<div class="answer20" style="margin-left:20px">
+	<div class="answer20">
 	VolunteerVoice has sole charge of the Company information on this site, but if our information is inaccurate, please contact us and provide is with appropriate information/documentation so that we can update your profile. We want to make sure that our information is as accurate as possible, so we are happy to receive feedback regarding any misinformation on the site.</div>
 	
 	<div class="question21">7. Can I encourage volunteers who know our organization to put reviews up on the site?</div>
 
-	<div class="answer21" style="margin-left:20px">
+	<div class="answer21">
 	Yes of course! We want to have positive relationships with the many great volunteer organizations that are out there, and we would love to be of service to you.  Please feel free to refer your volunteers to our site.  <br /><br />	If you would like to feature positive reviews from our site for you company, please contact us about using VolunteerVoice content at the following email address: <br /> <%= mail_to "questions@volunteervoice.org"%></div>
 	
 	<div class="question22">8. Can I write a review for the organization I volunteered with if I now work for that organization?</div>
 
-	<div class="answer22" style="margin-left:20px">
+	<div class="answer22">
 	Sure.  Your experience with that organization must have been good if it made you want to work with them. It would be helpful to include that information in your review, and tell a little about your job working for them.  </div>
 	
 	<div class="question23">9. Does it cost anything to be listed on this site?</div>
 
-	<div class="answer23" style="margin-left:20px">
+	<div class="answer23">
 	Nope, having a profile on our site is totally free.  </div>
 	
 	<div class="question24">10. How can I help as an organization?</div>
 
-	<div class="answer24" style="margin-left:20px">
+	<div class="answer24">
 Help us keep your information up to date, and refer your prospective and patron volunteers to our site!	</div>
 	
 	<div class="question25">11. Do I need permission to post a review from VolunteerVoice on our site?</div>
 
-	<div class="answer25" style="margin-left:20px">
+	<div class="answer25">
 	Please contact us here if you would like to use any of our site’s content for your own purposes:<br /><%= mail_to "questions@volunteervoice.org"%>	</div>
 	
 	
@@ -283,5 +200,111 @@ Help us keep your information up to date, and refer your prospective and patron 
 
 	</body>
 
+	<script>
+		$(document).ready(function(){
+
+			//when you click a question, the answer's visibility toggles
+		$(".question1").click(function(){
+		    $(".answer1").slideToggle(300);
+		  });
+
+		$(".question2").click(function(){
+		    $(".answer2").slideToggle(300);
+		  });
+
+		$(".question3").click(function(){
+		    $(".answer3").slideToggle(300);
+		  });
+
+		$(".question4").click(function(){
+		    $(".answer4").slideToggle(300);
+		  });
+
+		$(".question5").click(function(){
+		    $(".answer5").slideToggle(300);
+		  });
+
+		$(".question6").click(function(){
+		    $(".answer6").slideToggle(300);
+		  });
+
+		$(".question7").click(function(){
+		    $(".answer7").slideToggle(300);
+		  });
+
+		$(".question8").click(function(){
+		    $(".answer8").slideToggle(300);
+		  });
+
+		$(".question9").click(function(){
+		    $(".answer9").slideToggle(300);
+		  });
+
+		$(".question10").click(function(){
+		    $(".answer10").slideToggle(300);
+		  });
+
+		$(".question11").click(function(){
+		    $(".answer11").slideToggle(300);
+		  });
+
+		$(".question12").click(function(){
+		    $(".answer12").slideToggle(300);
+		  });
+
+		$(".question13").click(function(){
+		    $(".answer13").slideToggle(300);
+		  });
+
+		$(".question14").click(function(){
+		    $(".answer14").slideToggle(300);
+		  });
+
+		$(".question15").click(function(){
+		    $(".answer15").slideToggle(300);
+		  });
+
+		$(".question16").click(function(){
+		    $(".answer16").slideToggle(300);
+		  });
+
+		$(".question17").click(function(){
+		    $(".answer17").slideToggle(300);
+		  });
+
+		$(".question18").click(function(){
+		    $(".answer18").slideToggle(300);
+		  });
+
+		$(".question19").click(function(){
+		    $(".answer19").slideToggle(300);
+		  });
+
+		$(".question20").click(function(){
+		    $(".answer20").slideToggle(300);
+		  });
+
+		$(".question21").click(function(){
+		    $(".answer21").slideToggle(300);
+		  });
+
+		$(".question22").click(function(){
+		    $(".answer22").slideToggle(300);
+		  });
+
+		$(".question23").click(function(){
+		    $(".answer23").slideToggle(300);
+		  });
+
+		$(".question24").click(function(){
+		    $(".answer24").slideToggle(300);
+		  });
+
+		$(".question25").click(function(){
+		    $(".answer25").slideToggle(300);
+		  });
+		});
+
+		</script>
 
 

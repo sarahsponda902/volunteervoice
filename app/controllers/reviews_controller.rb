@@ -11,10 +11,11 @@ include ActionView::Helpers::TextHelper
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
       
       @user_review_progs = []
+      if !current_user.admin?
         current_user.reviews.each do |f|
           @user_review_progs << Program.find(f.program_id).id
         end
-
+      end
     if !(@user_review_progs.include?(@review.program_id))
        respond_to do |format|
          if @review.save

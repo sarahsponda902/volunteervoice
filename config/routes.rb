@@ -32,6 +32,8 @@ RMTest::Application.routes.draw do
   
   get 'users/successful_unsubscribe'
   
+  match "organization_accounts/new_request" => 'organization_accounts#new_request'
+  
   match 'organization_accounts/:id/change_subscription' => 'users#change_subscription'
   
   get 'organization_accounts/successful_unsubscribe'
@@ -74,8 +76,6 @@ RMTest::Application.routes.draw do
   get "flags/thank_you"
   
   ##### CONTACTS
-  
-  match "contacts/new_request" => 'contacts#new_request'
 
   resources :mad_mimi_emails
 
@@ -148,8 +148,6 @@ RMTest::Application.routes.draw do
     match 'sign_in' => 'devise/sessions#new'
   
     match 'signout' => 'devise/sessions#destroy'
-    
-    match "registrations/thank_you" => 'registrations#thank_you'
     
     match "registrations/mustBe" => 'registrations#mustBe'
     

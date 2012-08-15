@@ -22,6 +22,16 @@ class OrganizationAccountsController < ApplicationController
     end
   end
   
+  
+  def new_request
+    @contact = Contact.new
+    
+    respond_to do |format|
+      format.html # new_request.html.erb
+      format.json { render json: @contact }
+    end
+  end
+  
   # GET /organization_accounts
   # GET /organization_accounts.json
   def index

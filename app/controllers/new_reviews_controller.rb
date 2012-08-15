@@ -40,10 +40,6 @@ class NewReviewsController < ApplicationController
     end
   end
 
-  # GET /new_reviews/1/edit
-  def edit
-    @new_review = NewReview.find(params[:id])
-  end
 
   # POST /new_reviews
   # POST /new_reviews.json
@@ -64,27 +60,8 @@ class NewReviewsController < ApplicationController
       end
     end
   end
-
-  # PUT /new_reviews/1
-  # PUT /new_reviews/1.json
-  def update
-    if user_signed_in? && current_user.admin?
-    @new_review = NewReview.find(params[:id])
-
-    respond_to do |format|
-      if @new_review.update_attributes(params[:new_review])
-        format.html { redirect_to @new_review, notice: 'New review was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @new_review.errors, status: :unprocessable_entity }
-      end
-    end
-  else
-    redirect_to root_path
-  end
-  end
-
+  
+  
   # DELETE /new_reviews/1
   # DELETE /new_reviews/1.json
   def destroy

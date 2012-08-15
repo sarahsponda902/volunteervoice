@@ -437,7 +437,11 @@ var	count = 0;
 <% programs_array = Program.where(:organization_id => @review.organization_id).map { |p| [p.name, p.id]}%>
 <% end %>
 <%= form_for @review do |f| %>
+	<% if params[:user_id].nil? %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<% else %>
+	<%= f.hidden_field :user_id, :value => params[:user_id] %>
+	<% end %>
 	<% if !(params[:created_at].nil?)%>
 	<%= f.hidden_field :created_at, :value => params[:created_at]%>
 	<% end %>
