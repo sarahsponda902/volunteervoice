@@ -1,28 +1,58 @@
-<br /><br />
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.pageTitle {
+	font-size:3em; 
+	text-align:center; 
+	line-height:1.3em;
+	margin-top:50px;
+}
+.orgsLabel {
+	font-size:2em;
+}
+.description {
+	width:50%;
+}
+.noAccount {
+	color:red;
+}
+.hasAccount {
+	color:green;
+}
+.orgSquareImage {
+	height:100px;
+	width:100px;
+}
+.showControl {
+	width:7%;
+}
+</style>
 <div class="container">
 	<div class="row">
-<p style="font-size:3em; text-align:center; line-height:1.3em">Listing organizations</p><br />
+<p class="pageTitle">Listing organizations</p><br />
 
 <%= link_to 'Create New Organization', new_organization_path %>
 
 <br /><br />
-<p style="font-size:2em">Out-of-date Organizations</p><br />
+<p class="orgsLabel">Out-of-date Organizations</p><br />
 <table align="center">
+	<thead>
   <tr>
      <th>Name</th>
 	<th>Organization Account</th>
 	<th>Account Email</th>
      <th>Last Updated</th>
   </tr>
-
+	</thead>
+	<tdata>
 <% @organizations.each do |organization| %>
 <% if organization.updated_at < 1.month.ago %>
   <tr>
   	<td><%= link_to organization.name, organization %></td>
 	<td><% if OrganizationAccount.where(:organization_id => organization.id).empty? %>
-		<font style="color:red">No Account</font>
+		<span class="noAccount">No Account</span>
 		<% else %>
-		<%= link_to "Click to View", OrganizationAccount.where(:organization_id => organization.id).first, :style => "color:green"%>
+		<%= link_to "Click to View", OrganizationAccount.where(:organization_id => organization.id).first, :class => "hasAccount"%>
 		<% end %>
 		</td>
 	<td><%= mail_to OrganizationAccount.where(:organization_id => organization.id).first.email %></td>
@@ -30,28 +60,30 @@
   </tr>
 <% end %>
 <% end %>
-
+	</tdata>
 </table>
 <br /><br />
-<p style="font-size:2em">All Organizations</p><br />
+<p class="orgLabel">All Organizations</p><br />
 <table align="center">
+	<thead>
   <tr>
      <th>Name</th>
 	<th># of Programs</th>
-    <th style="width:50%">Description</th>
+    <th class="description">Description</th>
      <th>Image</th>
-	 <th>Show?</th>
+	 <th class="showControl">Show?</th>
     <th>Delete?</th>
     <th>Edit?</th>
   </tr>
-
+	</thead>
+	<tdata>
 <% @organizations.each do |organization| %>
   <tr>
   	<td><%= link_to organization.name, organization %></td>
 	<td><%= organization.programs.count %></td>
     <td><%= organization.description.html_safe %></td>
-	<td><%= image_tag organization.square_image.url, :style => "height:100px;width:100px" %></td>
-	<td width="7%"><% if organization.show %>
+	<td><%= image_tag organization.square_image.url, :class => "orgSquareImage" %></td>
+	<td><% if organization.show %>
 	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), "/organizations/#{organization.id}/changeShow" %>
 	<% else %>
 	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), "/organizations/#{organization.id}/changeShow" %>
@@ -60,7 +92,7 @@
 	<td><%= link_to "Edit", edit_organization_path(organization) %></td>
   </tr>
 <% end %>
-
+	</tdata>
 </table>
 </div>
 </div>
