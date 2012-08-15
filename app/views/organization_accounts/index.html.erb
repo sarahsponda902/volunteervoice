@@ -51,18 +51,20 @@
 	margin-top:50px;
 }
 
-#companyName {width:10%}
-#contactName {width:10%}
-#contactEmail {width:10%}
-#country {width:5%}
-#typeOfCompany {width:7.5%}
-#dateCreated {width:10%}
-#lastUpdated {width:10%}
-#lastLogin {width:10%}
-#loginCount {width:5%}
-#invitation {width:7.5%}
-#editDelete {width:7.5%}
+#companyName {max-width:90px}
+#contactName {max-width:90px}
+#contactEmail {max-width:90px}
+#country {max-width:20px}
+#typeOfCompany {max-width:75px}
+#dateCreated {max-width:90px}
+#lastUpdated {max-width:90px}
+#lastLogin {max-width:90px}
+#loginCount {max-width:20px}
+#invitation {max-width:90px}
+#edit {max-width:50px}
+#delete {max-width:75px}
 
+td button {width:60px}
 </style>
 
 
@@ -156,7 +158,8 @@
     <th id="lastLogin">Last Login</th>
     <th id="loginCount">Login Count</th>
     <th id="invitation">Invitation</th>
-    <th id="editDelete"></th>
+    <th id="edit"></th>
+	<th id="delete"></th>
   </tr>
 </thead>
 <tdata>
@@ -192,9 +195,8 @@
 		<%= "Accepted" %>
 		<% end %>
 	</td>
-    <td><%= link_to 'Edit', edit_organization_account_path(oa) %>
-		<br />
-		<%= button_to 'Delete', oa, method: :delete %></td>
+    <td><%= link_to 'Edit', edit_organization_account_path(oa) %></td>
+	<td><%= button_to 'Delete', oa, method: :delete %></td>
   </tr>
 <% end %>
 </tdata>
