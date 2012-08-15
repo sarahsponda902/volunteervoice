@@ -6,9 +6,7 @@
 <span class="postType"> - Article Post </span>
 <% end %>
 <span class="blogPostTags">
-(<%f.blog_tags[0..2].each do |a|%>
-<%= a.tag%>,
-<% end %>)
+(<%=f.blog_tags[0..2].join(", ")%>)
 </span>
 
 <p class="postBody">
