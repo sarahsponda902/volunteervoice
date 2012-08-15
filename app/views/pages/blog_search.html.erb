@@ -3,146 +3,36 @@
 <%= stylesheet_link_tag "/assets/smartpaginator.css"%>
 
 <%= javascript_include_tag "/assets/smartpaginatorRight.js"%>
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-	$('#VV').hide();
-	$('#Article').hide();
-	$('#Both').show();
-	
-	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 15, datacontainer: 'divarticles', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
-
-    $('#vv_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 15, datacontainer: 'divvvs', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
-
-    $('#both_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 15, datacontainer: 'divboths', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
-	
-});
-
-function hideAll(){
-	$("#Both").hide();
-	$("#VV").hide();
-	$("#Article").hide();
-	$("#both-check").attr("checked", false);
-	$("#article-check").attr("checked", false );
-	$("#vv-check").attr("checked", false);
+<style>
+.blogPostContainer {
+	padding: 10px;
 }
-</script>
+a.blogPostLink {
+	font-size:1.6em; 
+	color:#62acbd;
+}
+a.blogPostLink:hover {
+	color:white;
+}
+span.postType {
+	font-size:3.5em;
+	color:#575758;
+}
+span.blogPostTags {
+	font-size:2.5em;
+	line-height:2.5em;
+}
+.postBody {
+	font-size:2.5em;
+	line-height:1.5em;
+}
+</style>
 
-<div class="container" style="margin-top:25px" style="color:#575758">
-        <div class="row" style="width:90%; float:center; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/resourcesTexture.png);">
-	        <div class="six columns" style="margin-left:15px; padding-top:15px; padding-bottom:15px; font-family:ArchitectsDaughterRegular; font-size:1.2em; color:white; line-height:1.8em; width:50%">
-					Here there will be a paragraph. It will probably have something to do with the blog. Here there will be a paragraph. Yay for the blog. More text about the blog. I wonder what this will say
-
-				</div>
-					<div class="six columns" style="margin-top: 51px; margin-right:-8px; width:44%; padding-left:0">
-						<form accept-charset="UTF-8" action="/pages/blog_search" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-							<div style="float:right; margin-right:20px; margin-left:10px">
-							        <input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlassSmaller.png" style="background:transparent; height:28px" alt="Search Button" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'">
-							</div>
-						        <input id="searchfield" name="search" style="width:80%;float:right" type="text" />
-
-						</form>
-					</div>
-				</div>
-<br />
-<div class="row">
-<div class=" twelve columns" style="margin-left:20px; margin-top:15px; font-family:architectsDaughterRegular; color:#e67b5a; font-size:1.0em">
-You've got <%=@results.count%> search results
-</div>
-</div>
-<br />
-
-<div class="row" style="z-index: 999">
-<div class="twelve columns" style="margin-top:10px; margin-bottom:10px; margin-left:30px; color:#575758;">
-<input checked="checked" id="both-check" name="both-check" type="checkbox" value="check" onclick='$(hideAll()); $("#Both").fadeIn(300); $(this).attr("checked", true );'  /> Show All (<%= @results.count %>)&nbsp;&nbsp;
-<input id="article-check" name="article-check" type="checkbox" value="check" onclick='$(hideAll()); $("#Article").fadeIn(300);  $(this).attr("checked", true );'  /> Only Articles (<%= @interesting.count %>) &nbsp;&nbsp;
-<input id="vv-check" name="vv-check" type="checkbox" value="check" onclick='$(hideAll()); $("#VV").fadeToggle(300);  $(this).attr("checked", true );'  /> Only VolunteerVoice Blog (<%= @our_blog.count %>)
-</div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="row" style="width:90%; float:center; ">
-<div id = "Article" style="margin-top:0" class="contents">
-	<% if !(@interesting.empty?)%>
-<div id="divarticles" style="border:1px solid #e67b5a; width:100%">
-<% @interesting.each do |f|%>
-<%= render :partial => "blog_post", :locals => { :f => f }%>
-<% end %>
-
-
-</div>
-<div id="article_pager" style="margin-top:-106px; width:200px">
-</div>
-<%else%>
-<div style="border:1px solid #e67b5a; height:200px; background-color:white; width:110%; float:center">
-<div style="margin:25px">
-<div style="border-top:1px solid #68c2d8; height:150px; border-bottom:1px solid #68c2d8">
-	<p style="text-align:center; margin-top:50px; font-family:architectsDaughterRegular;font-size:3em; color: #68c2d8">We've got nothin'</p>
-</div>
-</div>
-</div>
-<% end %>
-</div>
-
-<div id = "VV" style="margin-top:0; width:100%" class="contents">
-<% if !(@our_blog.empty?)%>
-<div id="divvvs" style=" border:1px solid #e67b5a; width:100%">
-<% @our_blog.each do |f|%>
-<%= render :partial => "blog_post", :locals => { :f => f }%>
-<% end %>
-<br />
-</div>
-<div id="vv_pager" style="margin-top:-106px; width:200px">
-</div>
-
-<%else%>
-<div style="border:1px solid #e67b5a; height:200px; background-color:white; width:90%; float:center">
-<div style="margin:25px">
-<div style="border-top:1px solid #68c2d8; height:150px; border-bottom:1px solid #68c2d8">
-	<p style="text-align:center; margin-top:50px; font-family:architectsDaughterRegular;font-size:3em; color: #68c2d8">We've got nothin'</p>
-</div>
-</div>
-</div>
-<% end %>
-</div>
-
-
-<div id = "Both" style="margin-top:0; width:100%" class="contents">
-	<% if !(@results.empty?)%>
-<div id="divboths" style="border:1px solid #e67b5a; width:100%;">
-
-<% @results.each do |f|%>
-
-<%= render :partial => "blog_post", :locals => { :f => f }%>
-<% end %>
-<br />
-</div>
-<div id="both_pager" style="margin-top:-106px; width:200px">
-</div>
-<%else%>
-<div style="border:1px solid #e67b5a; height:200px; background-color:white; width:100%; float:center">
-<div style="margin:25px">
-<div style="border-top:1px solid #68c2d8; height:150px; border-bottom:1px solid #68c2d8">
-	<p style="text-align:center; margin-top:50px; font-family:architectsDaughterRegular;font-size:3em; color: #68c2d8">We've got nothin'</p>
-</div>
-</div>
-</div>
-<% end %>
-</div>
-
-</div>
-</div>
-</div>
-<style type="text/css">
-
+<style>
     .contents
     {
 
-        width: 91%; /*height: 150px;*/
+        width: 91%; 
         margin: 0;
 
     }
@@ -170,7 +60,7 @@ You've got <%=@results.count%> search results
         padding: 8px;
     }
 
-	#divvvs
+	#divours
     {
         margin: 10;
 
@@ -178,12 +68,12 @@ You've got <%=@results.count%> search results
         font-size: 14px;
         background-color: White;
     }
-    #divvvs > div
+    #divours > div
     {
         width: 98%;
         padding: 8px;
     }
-    #divvvs > div p
+    #divours > div p
     {
         width: 95%;
         padding: 8px;
@@ -215,5 +105,240 @@ You've got <%=@results.count%> search results
 	.pager span {
 		float:right;
 	}
+	
+	
 
 </style>
+
+<style>
+.top {
+	margin-top:25px;
+}
+#blogSearchBox {
+	width:90%; 
+	float:center; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/resourcesTexture.png);
+}
+#blogSearchBoxBlurb {
+	margin-left:15px; 
+	padding-top:15px; 
+	padding-bottom:15px; 
+	font-family:ArchitectsDaughterRegular; 
+	font-size:1.2em; 
+	color:white; 
+	line-height:1.8em; 
+	width:50%;
+}
+#blogSearchBarContainer {
+	margin-top: 51px; 
+	margin-right:-8px; 
+	width:44%; 
+	padding-left:0;
+}
+.blogSearchButtonContainer {
+	float:right; 
+	margin-right:20px; 
+	margin-left:10px;
+}
+.blogSearchButtonContainer input {
+	height:28px;
+}
+.blogSearchBar {
+	width:80%;
+	float:right;
+}
+#blogSearchResultsCounterContainer {
+	margin-left:20px; 
+	margin-top:15px; 
+	font-family:architectsDaughterRegular; 
+	color:#e67b5a; 
+	font-size:1.0em;
+}
+#showWhichTypeCheckboxContainer {
+	z-index: 999;
+}
+#showWhichTypeCheckboxContainerInner {
+	margin-top:10px; 
+	margin-bottom:10px; 
+	margin-left:30px; 
+	color:#575758;
+}
+#blogSearchResultsContainer {
+	width:90%; 
+	float:center; 
+}
+#article, #ours, #both {
+	margin-top:0;
+	width:100%;
+}
+#divarticles, #divours, #divboths {
+	border:1px solid #e67b5a; 
+	width:100%;
+}
+#article_pager, #our_pager, #both_pager {
+	margin-top:-106px; 
+	width:200px;
+}
+.noSearchResultsContainer {
+	border:1px solid #e67b5a; 
+	height:200px; 
+	background-color:white; 
+	width:110%; 
+	float:center;
+	margin:auto;
+}
+.noSearchResultsInnerContainer {
+	margin:25px;
+}
+.weveGotNothingContainer {
+	border-top:1px solid #68c2d8; 
+	height:150px; 
+	border-bottom:1px solid #68c2d8;
+}
+p.weveGotNothingBlurb {
+	text-align:center; 
+	margin-top:50px; 
+	font-family:architectsDaughterRegular;
+	font-size:3em; 
+	color: #68c2d8;
+}
+</style>
+
+
+
+<div class="container top">
+	<div class="row" id="blogSearchBox">
+		<div class="six columns" id="blogSearchBoxBlurb">
+					Here there will be a paragraph. It will probably have something to do with the blog. Here there will be a paragraph. Yay for the blog. More text about the blog. I wonder what this will say
+
+		</div>
+		<div class="six columns" id="blogSearchBarContainer">
+			<form accept-charset="UTF-8" action="/pages/blog_search" method="get">
+				<input name="utf8" type="hidden" value="&#x2713;" />
+				<div class="blogSearchButtonContainer">
+					<input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlassSmaller.png" alt="Search Button" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'">
+				</div>
+				<input id="searchfield" name="search" class="blogSearchBar" type="text" />
+			</form>
+		</div>
+	</div>
+	<br />
+	<div class="row">
+		<div class=" twelve columns" id="blogSearchResultsCounterContainer">
+			You've got <%=@results.count%> search results
+		</div>
+	</div>
+	<br />
+
+	<div class="row" id="showWhichTypeCheckboxContainer">
+		<div class="twelve columns" id="showWhichTypeCheckboxContainerInner">
+			<input checked="checked" id="both-check" name="both-check" type="checkbox" value="check" onclick='$(hideAll()); $("#both").fadeIn(300); $(this).attr("checked", true );'  /> Show All (<%= @results.count %>)&nbsp;&nbsp;
+			<input id="article-check" name="article-check" type="checkbox" value="check" onclick='$(hideAll()); $("#article").fadeIn(300);  $(this).attr("checked", true );'  /> Only Articles (<%= @interesting.count %>) &nbsp;&nbsp;
+			<input id="vv-check" name="vv-check" type="checkbox" value="check" onclick='$(hideAll()); $("#ours").fadeToggle(300);  $(this).attr("checked", true );'  /> Only VolunteerVoice Blog (<%= @our_blog.count %>)
+		</div>
+	</div>
+
+
+
+	<div class="row" id="blogSearchResultsContainer">
+		<div id = "article" class="contents">
+			<% if !(@interesting.empty?)%>
+				<div id="divarticles">
+					<% @interesting.each do |f|%>
+						<%= render :partial => "blog_post", :locals => { :f => f }%>
+					<% end %>
+				</div>
+				<div id="article_pager"></div>
+			<%else%>
+				<div class="noSearchResultsContainer">
+					<div class="noSearchResultsInnerContainer">
+						<div class="weveGotNothinContainer">
+							<p class="weveGotNothinBlurb">We've got nothin'</p>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+		<div id = "ours" class="contents">
+			<% if !(@our_blog.empty?)%>
+				<div id="divours">
+					<% @our_blog.each do |f|%>
+						<%= render :partial => "blog_post", :locals => { :f => f }%>
+					<% end %>
+					<br />
+				</div>
+				<div id="our_pager">
+			<%else%>
+				<div class="noSearchResultsContainer">
+					<div class="noSearchResultsInnerContainer">
+						<div class="weveGotNothinContainer">
+							<p class="weveGotNothinBlurb">We've got nothin'</p>								
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+
+		<div id = "both" class="contents">
+			<% if !(@results.empty?)%>
+				<div id="divboths">
+					<% @results.each do |f|%>
+						<%= render :partial => "blog_post", :locals => { :f => f }%>
+					<% end %>
+					<br />
+				</div>
+				<div id="both_pager"></div>
+			<%else%>
+				<div class="noSearchResultsContainer">
+					<div class="noSearchResultsInnerContainer">
+						<div class="weveGotNothinContainer">
+							<p class="weveGotNothinBlurb">We've got nothin'</p>								
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+
+	</div>
+</div>
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	//hide "only our blog posts" and "only article posts" divs
+		//show "both our blog and article posts" div
+	$('#ours').hide();
+	$('#article').hide();
+	$('#both').show();
+	
+	
+	//Initialize the "only article posts" smartpaginator pagination on 'divarticles'
+		//article_pager will be contain "1-1 of 4", ">", etc.
+	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 15, datacontainer: 'divarticles', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+	//Initialize the "only our blog posts" smartpaginator pagination on 'divours'
+		//our_pager will be contain "1-1 of 4", ">", etc.
+    $('#our_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 15, datacontainer: 'divours', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+	//Initialize the "both types of posts" smartpaginator pagination on 'divboths'
+		//both_pager will be contain "1-1 of 4", ">", etc.
+    $('#both_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 15, datacontainer: 'divboths', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	
+});
+
+
+//hides all search results
+	// called before showing search results of a new type of post to ensure that no two "type of post" divs are showing at the same time
+function hideAll(){
+	$("#both").hide();
+	$("#ours").hide();
+	$("#article").hide();
+	$("#both-check").attr("checked", false);
+	$("#article-check").attr("checked", false );
+	$("#vv-check").attr("checked", false);
+}
+</script>

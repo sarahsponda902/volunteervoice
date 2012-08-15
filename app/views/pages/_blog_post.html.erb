@@ -1,17 +1,19 @@
-<div style="padding: 10px">
-<a href="/blog_posts/<%=f.id%>" style="font-size:1.6em; color:#62acbd"><%=f.title%></a>
+<div class="blogPostContainer">
+<a href="/blog_posts/<%=f.id%>" class="blogPostLink"><%=f.title%></a>
 <% if f.is_our_blog %>
-<font size = "3.5em" color="gray"> - VolunteerVoice Blog Post </font>
+<span class="postType"> - VolunteerVoice Blog Post </span>
 <% else %>
-<font size = "3.5em" color="gray"> - Article Post </font>
+<span class="postType"> - Article Post </span>
 <% end %>
-<font size="2.5em" line-height="2.5em">
+<span class="blogPostTags">
 (<%f.blog_tags[0..2].each do |a|%>
 <%= a.tag%>,
 <% end %>)
+</span>
 
-<br />
+<div class="postBody">
 <%= f.truncated100.html_safe %>
-</font>
+</div>
+
 
 </div>
