@@ -1,0 +1,108 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<div class="container" align="center" style="margin-top: 50px">
+<div class="row">
+	<div class="twelve columns" style="text-align:center">
+			<img src= "https://s3-us-west-1.amazonaws.com/volunteervoice/images/whatDo.png">
+	</div>
+</div>
+</div>
+
+
+<div class="container" style="margin-top:20px">
+	<div class="row">
+		<div class="two columns"> </div>
+		<div class="eight columns" style="background:#bdd99c;padding-top:20px;padding-bottom:30px; padding-left:30px; padding-right:20px; line-height:1.4em; margin:auto">
+
+			<div class = "six columns" style="width:47%">
+		<font style="font-size:1.45em">
+		<%= link_to "Agriculture (#{@agriculture.count})", "/searches/Agriculture/programs_browse"%><br /></font>
+		&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@organic_farming.count})", "/searches/OrganicFarming/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", "/searches/SustainableDevelopment/programs_browse"%><br />
+	<br />	
+	<font style="font-size:1.45em"><%= link_to "Animal Care (#{@animal_care.count})", "/searches/AnimalCare/programs_browse"%><br /></font>
+		&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@animal_rights.count})", "/searches/AnimalRights/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", "/searches/WildlifeConservation/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Caregiving (#{@caregiving.count})", "/searches/Caregiving/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Elder Care (#{@elder_care.count})", "/searches/ElderCare/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Child/Orphan Care (#{@child_orphan_care.count})", "/searches/Child/OrphanCare/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Disabled Care (#{@disabled_care.count})", "/searches/DisabledCare/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Feed the Homeless (#{@feed_the_homeless.count})", "/searches/FeedtheHomeless/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Community Development (#{@community_development.count})", "/searches/CommunityDevelopment/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Youth Development and Outreach (#{@youth_development_and_outreach.count})", "/searches/YouthDevelopmentandOutreach/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Construction (#{@construction.count})", "/searches/Construction/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Culture and Community (#{@culture_and_community.count})", "/searches/CultureandCommunity/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Performing Arts (#{@performing_arts.count})", "/searches/PerformingArts/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Fashion (#{@fashion.count})", "/searches/Fashion/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Music (#{@music.count})", "/searches/Music/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Sports & Recreation (#{@sports_and_recreation.count})", "/searches/SportsRecreation/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Journalism (#{@journalism.count})", "/searches/Journalism/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Disaster Relief (#{@disaster_relief.count})", "/searches/DisasterRelief/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Economics (#{@economics.count})", "/searches/Economics/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Microfinance (#{@microfinance.count})", "/searches/Microfinance/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Education (#{@education.count})", "/searches/Education/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching English (#{@teaching_english.count})", "/searches/TeachingEnglish/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Buddhist Monks (#{@teaching_buddhist_monks.count})", "/searches/TeachingBuddhistMonks/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Children (#{@teaching_children.count})", "/searches/TeachingChildren/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", "/searches/TeachingComputerLiteracy/programs_browse"%><br />
+		</div>
+		
+		
+		<div class="four columns" style="width:47%">	
+		<font style="font-size:1.45em"><%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", "/searches/EngineeringandInfrastructure/programs_browse"%></font><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Environmental (#{@environmental.count})", "/searches/Environmental/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Ecological Conservation (#{@ecological_conservation.count})", "/searches/EcologicalConservation/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", "/searches/SustainableDevelopment/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", "/searches/WildlifeConservation/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Habitat Restoration (#{@habitat_restoration.count})", "/searches/HabitatRestoration/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Health and Medicine (#{@health_and_medicine.count})", "/searches/HealthandMedicine/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "HIV/AIDS (#{@hiv_aids.count})", "/searches/HIVAIDS/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Nutrition (#{@nutrition.count})", "/searches/Nutrition/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Family Planning (#{@family_planning.count})", "/searches/FamilyPlanning/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Veterinary Medicine (#{@veterinary_medicine.count})", "/searches/VeterinaryMedicine/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Clinical Work (#{@clinical_work.count})", "/searches/ClinicalWork/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Dental Work (#{@dental_work.count})", "/searches/DentalWork/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Medical Research (#{@medical_research.count})", "/searches/MedicalResearch/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Health Education (#{@health_education.count})", "/searches/HealthEducation/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Public Health (#{@public_health.count})", "/searches/PublicHealth/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Hospital Care-giving (#{@hospital_care_giving.count})", "/searches/HospitalCaregiving/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Human Rights (#{@human_rights.count})", "/searches/HumanRights/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Women's Initiatives (#{@womens_initiatives.count})", "/searches/WomensInitiatives/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "International Work Camp (#{@international_work_camp.count})", "/searches/InternationalWorkCamp/programs_browse"%></font><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Recreation (#{@recreation.count})", "/searches/Recreation/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Adventure Travel (#{@adventure_travel.count})", "/searches/AdventureTravel/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Scientific Research (#{@scientific_research.count})", "/searches/ScientificResearch/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Archaeology (#{@archaeology.count})", "/searches/Archaeology/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Environmental Biology (#{@environmental_biology.count})", "/searches/EnvironmentalBiology/programs_browse"%><br />
+		<br />	
+		<font style="font-size:1.45em"><%= link_to "Technology (#{@technology.count})", "/searches/Technology/programs_browse"%></font><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", "/searches/TeachingComputerLiteracy/programs_browse"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Media Marketing and Graphic Design (#{@media_marketing_and_graphic_design.count})", "/searches/MediaMarketingandGraphicDesign/programs_browse"%><br />
+			</div>
+
+		</div>
+		<div class="two columns" style="margin-top:-50px; width:12%">
+				<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/programsArrow.png" width="65px">
+		<br />
+		<br />
+					
+			<div style="margin-left:10px; text-align:center; font-size:.9em; font-family:'ArchitectsDaughterRegular'; color:#e67b5a; line-height:2em;">
+				Click on a subject of interest to see which organizations have programs in that field
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+		

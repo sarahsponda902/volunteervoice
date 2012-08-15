@@ -1,0 +1,324 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
+
+<%= javascript_include_tag "/assets/smartpaginator.js"%>
+
+<style>
+table {
+	width:100%;
+	background-color:#E3E6D5; 
+	margin-bottom:15px;
+}
+tr, td {
+	background-color:#E3E6D5;
+}
+.squareImageContainer {
+	margin-top:-10px;
+}
+.squareImage {
+	height:100px; 
+	width:300px;
+}
+.datePostedContainer {
+	margin-left:3%; 
+	margin-right:3%; 
+}
+.datePostedContainerInteresting {
+	margin-top:-20px;
+}
+.datePostedContainerOurBlog {
+	margin-top:-10px;
+}
+.articleTitleContainer {
+	margin-left:3%; 
+	margin-top:-10px; 
+	margin right:3%; 
+	font-size:2em; 
+	line-height:1.1em;
+}
+a.article-title{
+	color:#62acbd;
+}
+a.article-title:link{
+	color:#62acbd;
+}
+a.article-title:visited{
+	color:#62acbd;
+}
+a.article-title:active{
+	color:#62acbd;
+}
+a.article-title:hover{
+	color:white;
+}
+.blogPostBody { 
+	margin-top:-5px; 
+	margin-right:3%;
+}
+.blogPostBodyOurBlog {
+	margin-left:3%;
+}
+.blogPostBodyInteresting {
+	margin-left:1%;
+}
+.sourceLinkContainer {
+	margin-left:10%; 
+	margin-right:6%; 
+	color: #575758; 
+	margin-top:-30px;
+}
+.fromLabel {
+	font-weight:600;
+}
+</style>
+
+<style type="text/css">
+    .contents 
+    {
+        width: 33%; /*height: 150px;*/
+        margin: 0;
+    }
+	#divOurBlog
+    {
+        margin: 10;
+        font: verdana;
+        font-size: 14px;
+        background-color: White;
+    }
+	#divarticles
+    {
+        margin: 10;
+        font: verdana;
+        font-size: 14px;
+        background-color: White;
+    }
+</style>
+
+<style>
+.blogTitleImage {
+	display:block;
+	margin-bottom:-8px;
+	height:30px; 
+	margin-top:25px;
+}
+.ourBlogImage {
+	height:28px; 
+	margin-top:28px;
+}
+.ourBlogImage:hover {
+	opacity:0.5;
+	filter: alpha(opacity=50);
+}
+.top {
+	padding-top:30px;
+}
+#blogSearchContainer {
+	width:90%; 
+	float:center; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/resourcesTexture.png);
+	margin:auto;
+}
+#blogSearchBlurbContainer {
+	margin-left:15px; 
+	padding-top:15px; 
+	padding-bottom:15px; 
+	font-family:ArchitectsDaughterRegular; 
+	font-size:1.2em; 
+	color:white; 
+	line-height:1.8em; 
+	width:50%;
+}
+#blogSearchFieldContainer {
+	margin-top: 51px; 
+	margin-right:-8px; 
+	width:44%; 
+	padding-left:0;
+}
+.blogSearchMagGlassContainer {
+	float:right; 
+	margin-right:20px; 
+	margin-left:10px;
+}
+#blogSearchMagGlassButton {
+	height:28px;
+}
+#searchfield {
+	width:80%;
+	float:right;
+	-moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+ 	border: 0;
+	height:30px;
+}
+#blogColumnsContainer {
+	float:center;
+	margin:auto;
+}
+#practical_table {
+	float:left; 
+	width:30%;
+}
+.blogTitleImage {
+	height:30px; 
+	margin-top:25px;
+}
+.leftColumnSubTitleContainer {
+	border-top: 1px solid #e67b5a; 
+	padding-top:10px;
+}
+.leftColumnSubTitleInnerContainer {
+	font-family: BebasRegular;
+	font-size:2.0em; 
+	line-height:1.1em; 
+	color:#575758; 
+	width:85%;
+}
+.leftColumnSubTitleRed {
+	color:#e67b5a;
+}
+a.leftColumnTitleOfSource {
+	margin-left:5%; 
+	font-size:1.2em;
+}
+.leftColumnArticleBody {
+	margin-left:5%; 
+	margin-right:5%;
+}
+#interesting_table {
+	float:left; 
+	width:30%;
+}
+#divarticles {
+	height:100%;
+	background-color:#E3E6D5; 
+	border-top: 1px solid #e67b5a; 
+	padding-top:10px;
+}
+#article_pager {
+	position:relative; 
+	width: 85%;
+	top:10px;
+}
+#our_blog_table {
+	float:left; 
+	width:30%;
+}
+#divOurBlog {
+	height:100%;
+	background-color:#E3E6D5; 
+	border-top: 1px solid #e67b5a; 
+	padding-top:10px;
+}
+#our_pager {
+	position:relative; 
+	width: 85%;
+	top:10px;
+}
+</style>
+
+
+
+<div class="container top">
+	<div class="row" id="blogSearchContainer">
+        <div class="six columns" id="blogSearchBlurbContainer">
+				A little research can go a long way in helping you make the most of your volunteer experience.  Use this section to find websites, articles, and blog posts on all things awesome.
+
+		</div>
+		<div class="six columns" id="blogSearchFieldContainer">
+			<form accept-charset="UTF-8" action="/pages/blog_search" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+				<div class="blogSearchMagGlassContainer">
+					<input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlassSmaller.png" id="blogSearchMagGlassButton" alt="Search Button" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'">
+				</div>
+				<input id="searchfield" name="search" type="text" />
+			</form>
+		</div>
+	</div>
+	<div class="row" id="blogColumnsContainer">
+		<div class="four columns" id="practical_table">
+			<div align="center">
+				<image class="blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/practical.png"><br />
+			</div>
+			<div align="center" class="leftColumnSubTitleContainer"><p class="leftColumnSubTitleInnerContainer"><span class="leftColumnSubTitleRed">RESEARCH </span> WHERE YOU'RE GOING</p></div>
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br />
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br />
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p class="leftColumnSubTitleInnerContainer">LEARN THE <span class="leftColumnSubTitleRed">LANGUAGE </span></p></div>
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p class="leftColumnSubTitleInnerContainer">GET A <span class="leftColumnSubTitleRed">VISA </span></p></div>
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br />
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p class="leftColumnSubTitleInnerContainer">HEALTH AND <span class="leftColumnSubTitleRed">SAFETY </span></p></div>
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p class="leftColumnSubTitleInnerContainer"> <span class="leftColumnSubTitleRed">FLIGHT  </span> &nbsp; INFO</p></div>
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+<div align="center"><p class="leftColumnSubTitleInnerContainer"><span class="leftColumnSubTitleRed">FUNDING </span> YOUR TRIP</p></div>
+<a class="leftColumnTitleOfSource" href= "#">Title of source</a>
+<p class="leftColumnArticleBody">First few lines of the article First few lines of the article First few lines of the article</p><br /><br />
+
+</div>
+
+
+
+
+<div class="four columns" id="interesting_table">
+	<div align="center">
+<image class="blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/interesting.png"><br /></div>
+	<div id="divarticles">
+	<% @interesting.each do |f| %>
+	<%= render :partial => "interesting", :locals => {:f => f}%>
+	<% end %>
+	</div>
+	<div id="article_pager"></div>
+
+</div>
+
+
+<% @our_blog = @our_blog.sort_by(&:created_at).reverse%>
+<div class="four columns" id="our_blog_table">
+	<div align="center" class="ourBlogTitleContainer">
+<a href="/blog_posts" class="ourBlogImageLink"><image class="ourBlogImage blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/ourBlog.png" href="/blog_posts"></a><br /></div>
+	<div id="divOurBlog">
+	<% @our_blog.each do |f| %>
+	<%= render :partial => "our_blog", :locals => {:f => f}%>
+	<% end %>
+	</div>
+	<div id="our_pager"></div>
+</div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	//Initialize the "article posts" smartpaginator pagination on 'divarticles'
+		//article_pager will be contain "1-1 of 4", ">", etc.
+	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 3, datacontainer: 'divarticles', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+	//Initialize the "our blog posts" smartpaginator pagination on 'divOurBlog'
+		//our_pager will be contain "1-1 of 4", ">", etc.
+    $('#our_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 4, datacontainer: 'divOurBlog', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+
+
+//Opera does not center blog posts within columns. This code is to center them in opera
+	if ($.browser.opera) {
+		$(".interesting_blog_post").css("marginLeft", "-13px");
+		$(".our_blog_post").css("marginLeft", "-13px");
+	}
+	
+});
+</script>

@@ -1,0 +1,17 @@
+<div class="blogPostContainer">
+<a href="/blog_posts/<%=f.id%>" class="blogPostLink"><%=f.title%></a>
+<% if f.is_our_blog %>
+<span class="postType"> - VolunteerVoice Blog Post </span>
+<% else %>
+<span class="postType"> - Article Post </span>
+<% end %>
+<span class="blogPostTags">
+(<%=f.blog_tags[0..2].map{|f| f.tag}.join(", ")%>)
+</span>
+
+<p class="postBody">
+<%= f.truncated100.html_safe %>
+</p>
+
+
+</div>
