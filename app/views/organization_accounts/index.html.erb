@@ -7,29 +7,59 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 
 
-<script type="text/javascript">
-$(function() {
-	var availableTags = [
-		<% Organization.all.each do |f| %>
-		<% if OrganizationAccount.where(:organization_id => f.id).empty? %>
-		"<%=f.name%>",
-		<% end %>
-		<% end %>
-		];
-	$( "#tags" ).autocomplete({
-		source: availableTags
-	});
-});
+<style>
+.pageTitle {
+	font-size:3em; 
+	margin-top:50px;
+}
+#inviteOrgBox {
+	margin-top:50px; 
+	float:left; 
+	padding:10px; 
+	margin-right:50px; 
+	background-color:#5CE6E6;
+}
+.title {
+	font-size:1.4em;
+}
+#uninvitedOrgsBox {
+	float:left;
+	background-color:#5CE6E6; 
+	padding:10px; 
+	margin-top:20px;
+}
+.bigTitle {
+	font-size:1.6em;
+}
+#unapprovedOrgsBox {
+	background-color:#FFFF66; 
+	padding:10px; 
+	margin-top:50px;
+}
+.yes {
+	color:green; 
+	font-weight:600;
+}
+.no {
+	color:red; 
+	font-weight:600;
+}
+#approvedOrgsBox {
+	background-color:#66FF66; 
+	padding:10px; 
+	margin-top:50px;
+}
 
-</script>
+</style>
+
 
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-<p align="center" style="font-size:3em; margin-top:50px">Organization Accounts</p><br />
+<p align="center" class="pageTitle">Organization Accounts</p><br />
 
-<div align="center" class="three columns" style="margin-top:50px; float:left; padding:10px; margin-right:50px; background-color:lightblue">
-<p align="center" style="font-size:1.4em">Invite an Existing Organization </p><br />
+<div align="center" class="three columns" id="inviteOrgBox">
+<p align="center" class="title">Invite an Existing Organization </p><br />
 <%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
 	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
 	Contact's Email<br /><input name="email" type="email" /><br /><br />
@@ -38,24 +68,30 @@ $(function() {
 <% end %>
 </div>
 <br /><br />
-<div class="seven columns" style="float:left;background-color:lightblue; padding:10px; margin-top:20px">
-<p style="font-size:1.6em;">Uninvited Organizations</p><br />
+<div class="seven columns" id="uninvitedOrgsBox">
+<p class="bigTitle">Uninvited Organizations</p><br />
 <table>
+	<thead>
 	<tr>
 	    <th>Company</th>
 	</tr>
+	</thead>
+	<tdata>
 	<% Organization.where(:will_invite => nil).each do |o|%>
 	<tr>
 		<td><%= link_to o.name, o%></td>
 	</tr>
+
 	<% end %>
+	</tdata>
 </table>
 </div>
 
 <br /><br /><br />
-<div class="twelve columns" style="background-color:lightyellow; padding:10px; margin-top:50px">
-<p style="font-size:1.6em;">Unapproved Organization Accounts</p><br />
+<div class="twelve columns" id="unapprovedOrgsBox">
+<p class="bigTitle">Unapproved Organization Accounts</p><br />
 <table>
+	<thead>
 	<tr>
 		<th>Has a Profile?</th>
 		<th>Company Name</th>
@@ -66,14 +102,16 @@ $(function() {
 		<th>Contact's Email</th>
 		<th>Remove from List?</th>
 	</tr>
+	</thead>
+	<tdata>
 	<% Contact.where(:to_whom => "request").each do |contact|%>
 	<% if OrganizationAccount.where(:email => contact.contact_email).empty? %>
 	<tr>
 		<td>
 			<% if contact.has_profile %>
-			<font style="color:green; font-weight:600"><%= "Yes" %></font>
+			<font class="yes"><%= "Yes" %></font>
 			<% else %>
-			<font style="color:red; font-weight:600"><%= "No" %></font>
+			<font class="no"><%= "No" %></font>
 			<% end %>
 		</td>
 		<td><%= contact.organization_name %></td>
@@ -86,12 +124,14 @@ $(function() {
 	</tr>
 	<% end %>
 	<% end %>
+	</tdata>
 </table>
 </div>
 <br /><br /><br />
-<div class="twelve columns" style="background-color:lightgreen; padding:10px; margin-top:50px">
-<p style="font-size:1.6em;">Approved Organization Accounts</p><br />
+<div class="twelve columns" class="approvedOrgsBox">
+<p class="bigTitle">Approved Organization Accounts</p><br />
 <table>
+	<thead>
   <tr>
     <th>Company Name</th>
     <th>Contact's Name</th>
@@ -106,7 +146,8 @@ $(function() {
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tdata>
 <% @organization_accounts.each do |oa| %>
   <tr>
 	<td><%= link_to Organization.find(oa.organization_id).name, Organization.find(oa.organization_id)%></td>
@@ -143,6 +184,7 @@ $(function() {
     <td><%= button_to 'Delete', oa, method: :delete %></td>
   </tr>
 <% end %>
+</tdata>
 </table>
 </div>			
 	
@@ -151,3 +193,21 @@ $(function() {
 </div>
 </div>
 
+
+<script type="text/javascript">
+
+//Autocomplete of uninvited+unconfirmed organizations
+$(function() {
+	var availableTags = [
+		<% Organization.all.each do |f| %>
+		<% if OrganizationAccount.where(:organization_id => f.id).empty? %>
+		"<%=f.name%>",
+		<% end %>
+		<% end %>
+		];
+	$( "#tags" ).autocomplete({
+		source: availableTags
+	});
+});
+
+</script>
