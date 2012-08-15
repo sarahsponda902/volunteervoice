@@ -191,13 +191,12 @@ span.blogPostTags {
 	border:1px solid #e67b5a; 
 	height:200px; 
 	background-color:white; 
-	width:100%; 
+	width:90%; 
 	float:center;
 	margin:auto;
 }
 .noSearchResultsInnerContainer {
 	margin:25px;
-	margin-bottom:5px;
 }
 .weveGotNothinContainer {
 	border-top:1px solid #68c2d8; 
@@ -234,7 +233,7 @@ p.weveGotNothinBlurb {
 	<br />
 	<div class="row">
 		<div class=" twelve columns" id="blogSearchResultsCounterContainer">
-			You've got <%=@results.count%> search results
+			You've got <%=pluralize @results.count, "search result"%> 
 		</div>
 	</div>
 	<br />
