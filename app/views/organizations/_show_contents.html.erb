@@ -1,48 +1,75 @@
-<%= javascript_include_tag "/assets/JQtextile.js"%>
+<style>
+a.organization_url:active{color:#68c2d8}
+a.organization_url:visited{color:#68c2d8}
+a.organization_url:link{color:#68c2d8}
+a.organization_url:hover{color:white; background:none}
 
-<script type="text/javascript">
-$(document).ready(function() {
-  /* Activating Best In Place */
-  $(".best_in_place").best_in_place();
-});
-</script>
+#organizationContentBox {
+	border:1px solid #575758; 
+	background-color:#E9ECE9; 
+	padding:bottom:25px; 
+	color:#575758; 
+	width:950px; 
+	margin-top:50px;
+}
+#squareImageContainer {
+	margin:0;
+	padding:0; 
+	width:18%; 
+	margin-top:20px; 
+	padding-left:20px;
+}
+.squareImage {
+	height:130px;
+	width:130px;
+}
+#majorInfoContainer {
+	width:53%; 
+	text-align:left; 
+	margin:0; 
+	padding:0; 
+	margin-top:-25px; 
+	padding-left:10px;
+}
+.orgNameContainer {
+	font-size:3.5em; 
+	color:#62acbd; 
+	line-height:1.3em;
+}
+.urlContainer {
+	color:#68c2d8;
+}
+a#urlCantEdit {
+	font-size:1.2em;
+}
+#orgRatingContainer {
+	text-align:center; 
+	margin-top:-95px; 
+	padding:0; 
+	width:23%; 
+	float:right;
+}
+</style>
 
 
-<% programSubjects = []%>
-<% groupSizes = []%>
-<% programLengths = []%>
-
-<% organization.program_subjects.each do |f|%>
-<% programSubjects << f.subject unless programSubjects.include?(f.subject)%>
-<% end %>
-
-<% organization.program_sizes.each do |f|%>
-<% groupSizes << f.size unless groupSizes.include?(f.size)%>
-<% end %>
-
-<% organization.program_cost_length_maps.sort_by(&:length).each do |f|%>
-<% programLengths << [f.length_number, f.length_name].join(" ") unless programLengths.include?([f.length_number, f.length_name].join(" ")) %>
-<% end %>
-
-
-<div class="container" style="border:1px solid #575758; background-color:#E9ECE9; padding:bottom:25px; color:#575758; width:950px; margin-top:50px">
+<div class="container" id="organizationContentBox">
 	<div class="row">
-		<div class="two columns" style="margin:0;padding:0; width:18%; margin-top:20px; padding-left:20px">
-			<%= image_tag organization.square_image.url, :style =>"height:130px;width:130px" %>
+		<div class="two columns" id="squareImageContainer">
+			<%= image_tag organization.square_image.url, :class =>"squareImage" %>
 		</div>
 		
-		<div class="six columns" style="width:53%; text-align:left; margin:0; padding:0; margin-top:-25px; padding-left:10px;">
+		<div class="six columns" id="majorInfoContainer">
 			<br />
-			<p style="font-size:3.5em; color:#62acbd; line-height:1.3em;"> <%= organization.name %></p>
+			<p class="orgNameContainer"> <%= organization.name %></p>
 				<% if @can_edit %>
 				&#9998;
-	<font style="color:#68c2d8"><u><%=best_in_place_if @can_edit, organization, :url, :type => :input, :nil => "Click to edit"%></u></font>
+	<span class="urlContainer"><u><%=best_in_place_if @can_edit, organization, :url, :type => :input, :nil => "Click to edit"%></u></span>
 				<% else %>
-				<a style="font-size:1.2em;" class="organization_url" href="<%=organization.url%>" target="_blank"> <u><%= organization.url%></u></a>
+				<a id="urlCantEdit" class="organization_url" href="<%=organization.url%>" target="_blank"> <u><%= organization.url%></u></a>
 				<% end %>
 
 		</div>
-		<div class="three columns"  style="text-align:center; margin-top:-95px; padding:0; width:23%; float:right">
+		<div class="three columns"  id="orgRatingContainer">
 
 			<br />
 			<br />
@@ -76,7 +103,7 @@ $(document).ready(function() {
 			<u><font style="line-height:1.2em">Program Subjects:</font></u>
 		</div>
 		<div class="ten columns" style="border: 1px solid #575758; height:130px; overflow:auto; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
-<%= programSubjects[0..(programSubjects.count - 2)].join(", ")%>
+<%= @programSubjects[0..(@programSubjects.count - 2)].join(", ")%>
 		</div>
 	</div>
 	<div class="three columns" style="float:left;margin-left:10px; padding:10px; height:295px; background-color:#c1dfdb; height:310.5px; overflow:auto;">
@@ -172,11 +199,11 @@ $(document).ready(function() {
 			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_as => :textilize_program_costs_doesnt_include, :nil => "Click to edit"%><br />
 			<p><font style="font-weight:600">Additional Fees: </font><%= organization.additional_fees%></p><br />
 			<p><font style="font-weight:600">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
-			<p style="font-weight:600">Group Sizes: </p><%= groupSizes[0..(groupSizes.count - 2)].join(", ")%><br /><br />
+			<p style="font-weight:600">Group Sizes: </p><%= @groupSizes[0..(@groupSizes.count - 2)].join(", ")%><br /><br />
 			
 			
 			
-			<p style="font-weight:600">Program Lengths: </p><%= programLengths.first%> - <%= programLengths.last %> <br /><br />
+			<p style="font-weight:600">Program Lengths: </p><%= @programLengths.first%> - <%= @programLengths.last %> <br /><br />
 			<p style="font-weight:600"> 
 			<% if @can_edit%>
 			&#9998; 
@@ -196,18 +223,18 @@ $(document).ready(function() {
 
 	<p style="text-align:right; margin-top:-85px; padding-bottom:20px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/vviInfo.png"), "#info-box", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'info-window'", :class => "info-window"%> </p>
 
+	</div>
 </div>
 </div>
-</div>
-<style>
-a.organization_url:active{color:#68c2d8}
-a.organization_url:visited{color:#68c2d8}
-a.organization_url:link{color:#68c2d8}
-a.organization_url:hover{color:white; background:none}
-</style>
 
 
 
+<script type="text/javascript">
+$(document).ready(function() {
+  /* Activating Best In Place */
+  $(".best_in_place").best_in_place();
+});
+</script>
 
 
 

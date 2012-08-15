@@ -106,6 +106,23 @@ class OrganizationsController < ApplicationController
      @progs[f] = Program.where(:location => f)
    end
    
+   
+    @programSubjects = []
+    @groupSizes = []
+    @programLengths = []
+
+    @organization.program_subjects.each do |f|
+      @programSubjects << f.subject unless @programSubjects.include?(f.subject)
+    end 
+
+    @organization.program_sizes.each do |f|
+      @groupSizes << f.size unless @groupSizes.include?(f.size)
+    end 
+
+    @organization.program_cost_length_maps.sort_by(&:length).each do |f|
+      @programLengths << [f.length_number, f.length_name].join(" ") unless @programLengths.include?([f.length_number, f.length_name].join(" ")) 
+    end 
+   
    respond_to do |format|
      format.html
      format.xml  { render :xml => @organization.to_xml }
