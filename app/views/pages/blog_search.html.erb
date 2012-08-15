@@ -106,8 +106,7 @@ span.blogPostTags {
     background-color: white;
 }
 #article_pager, #our_pager, #both_pager {
-	margin-top:-170px; 
-	width:200px;
+	width:85%;
 }
 .noSearchResultsContainer {
 	border:1px solid #e67b5a; 
@@ -185,12 +184,12 @@ p.weveGotNothinBlurb {
 	<div class="row" id="blogSearchResultsContainer">
 		<div id = "article" class="contents">
 			<% if !(@interesting.empty?)%>
+				<div id="article_pager"></div>
 				<div id="divarticles">
 					<% @interesting.each do |f|%>
 						<%= render :partial => "blog_post", :locals => { :f => f }%>
 					<% end %>
 				</div>
-				<div id="article_pager"></div>
 			<%else%>
 				<div class="noSearchResultsContainer">
 					<div class="noSearchResultsInnerContainer">
@@ -204,13 +203,13 @@ p.weveGotNothinBlurb {
 
 		<div id = "ours" class="contents">
 			<% if !(@our_blog.empty?)%>
+				<div id="our_pager"></div>
 				<div id="divours">
 					<% @our_blog.each do |f|%>
 						<%= render :partial => "blog_post", :locals => { :f => f }%>
 					<% end %>
 					<br />
 				</div>
-				<div id="our_pager"></div>
 			<%else%>
 				<div class="noSearchResultsContainer">
 					<div class="noSearchResultsInnerContainer">
@@ -225,13 +224,13 @@ p.weveGotNothinBlurb {
 
 		<div id = "both" class="contents">
 			<% if !(@results.empty?)%>
+				<div id="both_pager"></div>
 				<div id="divboths">
 					<% @results.each do |f|%>
 						<%= render :partial => "blog_post", :locals => { :f => f }%>
 					<% end %>
 					<br />
 				</div>
-				<div id="both_pager"></div>
 			<%else%>
 				<div class="noSearchResultsContainer">
 					<div class="noSearchResultsInnerContainer">
