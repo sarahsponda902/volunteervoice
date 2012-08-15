@@ -442,7 +442,7 @@
 
 				<div class="ten columns" id="yourExperienceLabel">Your Experience <span class="min200Blurb">(Minimum 200 characters)</span></div>
 	<div class="eleven columns">
-	   <%= f.text_area :body, :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@new_review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @new_review.body; end), :class => "word_count"%>
+	   <%= f.text_area :body, :id => "theBody", :onfocus => "removeTextAreaText()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "addTextAreaText();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@new_review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @new_review.body; end), :class => "word_count"%>
 	<span class="counter"></span><br /><!-- Word counter -->
 	
 	<div class="editImageContainer" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a>&nbsp;&nbsp;&nbsp; <div class="photoCounterContainer">You have <input id="total_count" disabled="true" class="photoCount" value="0"/> photos attached</div></div>
@@ -1078,7 +1078,7 @@
 	$(document).ready(function() {
 
 		
-		
+		//Terms of Use Popup JQuery
 		$('a.terms-window').click(function() {
 
 	                //Getting the variable's value from a link 
@@ -1112,7 +1112,7 @@
 		});
 
 
-
+		//JQuery for Question Mark popup
 			$('a.qMark-window').click(function() {
 
 		                //Getting the variable's value from a link 
@@ -1144,8 +1144,10 @@
 			}); 
 			return false;
 			});
+			
+			
 
-
+			//JQuery for Adding Photos Popup
 					$('a.addPhotos-window').click(function() {
 
 				                //Getting the variable's value from a link 
@@ -1179,22 +1181,18 @@
 					return false;
 					});
 
-			});
 	
 
-</script>
-
-<script type="text/javascript">
-
+//Set all fields to "not clicked" for javascript function (checkFields) that checks if form has been filled out to determine whether the submit button should appear yet
 var preparation = "notClicked";
 var support = "notClicked";
 var impact = "notClicked";
 var overall = "notClicked";
 var structure = "notClicked";
 
-  // Some simple jQuery to remove the default search value when the user clicks the box
 
-  $(document).ready(function() {
+
+	//each number (ie. ones) represents that # photo upload (ie. photo1)
 	var	ones = 0;
 	var	twos = 0;
 	var	threes = 0;
@@ -1206,13 +1204,16 @@ var structure = "notClicked";
 	var	nines = 0;
 	var	tens = 0;
 	var	count = 0;
-		$('#editImage').hide();
-		$('#checkBefore').hide();
-		$('#checkTerms').hide();
+		$('#editImage').hide(); //hide the "edit photos" image/div
+		$('#checkBefore').hide(); //hide the "volunteered before" checkmark image
+		$('#checkTerms').hide(); //hide the "terms" checkmark image
+		
+		//set time-frame drop-down to selected value
 		<% if !(@new_review.time_frame.nil?) %>
 		$('#new_review_time_frame').val("<%=@new_review.time_frame%>");
 		<% end %>
 
+		//jQuery that makes word count function
 		$('.word_count').each(function(){
 			var length = $(this).val().length;
 			$(this).parent().find('.counter').html( length + ' characters');
@@ -1225,59 +1226,54 @@ var structure = "notClicked";
 
   });
 
+//show the file name in the fake file-name text-box (disabled) when a file is uploaded
 function nameFile() {
 	var str="";
 	str= $("#new_review_photo").val();
 	document.getElementById('filename').value = str.substring(12, str.length);
 }
 
-function clickReviewPhoto() {
-	$("#new_review_photo").click();
-}
-
-
+//toggle visibility of check mark image of "volunteered before" checkbox when checkbox is clicked
 function beforeCheck() {
 	$('#checkBefore').toggle();
 }
 
+//toggle visibility of check mark image of "terms" checkbox when checkbox is clicked
 function termsCheck() {
 	$('#checkTerms').toggle();
 }
 
-function submitForm() {
-	$('#theForm').submit();
-}
 
-function removeTwoHundred() {
+//remove the "tell all!..." from the textArea
+function removeTextAreaText() {
 	if ($("#theBody").attr("value") == "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.." ) {
 		$("#theBody").attr("value", "");
     }
 }
 
-function backToTwoHundred() {
+//add the "tell all!..." to the textArea
+function addTextAreaText() {
 	if ($("#theBody").attr("value") == "" ) {
 		$("#theBody").attr("value", "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.");
     }
 }
 
+//remove the "put the..." from the top textBox (org name)
 function removePut() {
 	if ($("#put").attr("value") == "  Put the organization's name here" ) {
 		$("#put").attr("value", "");
     }
 }
 
+//add the "put the..." to the top textBox (org name)
 function backToPut() {
 	if ($("#put").attr("value") == "" ) {
 		$("#put").attr("value", "  Put the organization's name here");
     }
 }
 
-function removePhoto(){
-	$("#new_review_photo").attr("value", "" );
-	$("#filename").attr("value", "" );
-}
 
-
+//set the var representing each set of stars to "clicked" if they have been clicked
 function setClicked(theVar) {
 	if (theVar == 'preparation') {
 		preparation = "clicked";
@@ -1296,7 +1292,7 @@ function setClicked(theVar) {
 	}
 }
 
-
+//check if the fields have been filled out, and show the submit button if needed
 function checkFields(){
 	if(($("#put").attr("value") != "  Put the organization's name here")
 		&& ($("#new_review_time_frame").attr("value") != "Select a Time Frame")
@@ -1314,12 +1310,15 @@ function checkFields(){
 		}
 }
 
+//add "Tutoring children..." to the "Which Program?" text box
 function addPeru() {
 	if ($("#programsField").attr("value") == "" ) {
 		$("#programsField").attr("value", " eg. Tutoring children in Peru");
     }
 }
 
+
+//remove "Tutoring children..." from the "Which Program?" text box
 function removePeru() {
 	if ($("#programsField").attr("value") == " eg. Tutoring children in Peru" ) {
 		$("#programsField").attr("value", "");
@@ -1328,7 +1327,9 @@ function removePeru() {
 	
 }
 
-
+	//change the total count of images uploaded to display next to the "edit photos" or "add photos" images
+		// if more than 0 images uploaded, show the "edit photos" image and image count
+			// else show the "add photos" image and "No photos attached" next to it
 		function changeCount() {
 
 			if ($("#one").attr("value") != "") {
@@ -1403,6 +1404,8 @@ function removePeru() {
 		}
 	}
 	
+	
+	//close the "addPhotos-popup"
 	function closePop() {
 		$('#mask').fadeOut(300); 
 		$('#mask').remove();
