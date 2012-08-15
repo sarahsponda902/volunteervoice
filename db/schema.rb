@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120731040020) do
+ActiveRecord::Schema.define(:version => 20120815224512) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -157,12 +157,12 @@ ActiveRecord::Schema.define(:version => 20120731040020) do
     t.string   "subject"
     t.string   "from"
     t.string   "promotion_name"
-    t.string   "list_names"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "username"
     t.string   "api_key"
     t.string   "bcc"
+    t.text     "list_names"
   end
 
   create_table "messages", :force => true do |t|
