@@ -46,27 +46,89 @@
 	a.programs-window:active{color:#575758}
 	a.programs-window:hover{color:#68c2d8}
 	
+	a.red-link{font-size:1.5em}
 	a.red-link:link{color:#e67b5a}
 	a.red-link:active{color:#e67b5a}
 	a.red-link:visited{color:#e67b5a}
 	a.red-link:hover{color:white}
+	
+	#top {
+		padding-bottom:250px;
+	}
+	.tabsContainer {
+		padding-bottom:20px;
+		float:right; 
+		margin-right:125px; 
+		margin-top:25px;
+	}
+	#leftTabImage {
+		width:125px;
+	}
+	#rightTabImage {
+		width:125px; 
+		margin-top:-75px; 
+		margin-left:140px;
+	}
+	.flagProgramBlurbContainer{
+		position:absolute; 
+		top:230px;
+	}
+	#flagProgramBlurbImage {
+		width:800px; 
+		min-width:800px;
+	}
+	#allFlagsContainer {
+		margin-top:100px; 
+		border:1px solid #575758; 
+		background-color:#E9ECE9;
+		padding-bottom:10px; 
+		width:99%;
+	}
+	#innerBoxOfFlags {
+		margin:auto;
+	}
+	.eachFlagContainer {
+		width:16.5%; 
+		padding:0; 
+		margin:0; 
+		margin-top:10px; 
+		margin-bottom:30px;
+		float:left;
+	}
+	a.programs-window {
+		font-family:JosefinSlabRegular;
+	}
+	.flagImage {
+		height:50px; 
+		width:100px;
+	}
+	table.showingPrograms {
+		border-left:1px solid #575758;
+		border-right:1px solid #575758;
+		border-top:1px solid #575758;
+	}
+	tr {
+		background-color:#D9DEDA;
+		border-bottom:1px solid #575758;
+	}
+	
 </style>
 
 
 
 
-	<div class="container" style="padding-bottom:250px;">
+	<div class="container" id="top">
 	    <div class="row">
 
-			<div style="padding-bottom:20px;float:right; margin-right:125px; margin-top:25px" class="three columns">
+			<div class="tabsContainer" class="three columns">
 	            <ul class="tab">
-					<li><a href="/organizations/<%= @organization.id%>"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProfileNo.png" style="width:125px;"></a></li>
-					<li><a href="/organizations/<%= @organization.id%>/programs"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProgramsYes.png" style="width:125px; margin-top:-75px; margin-left:140px"></a></li>
+					<li><a href="/organizations/<%= @organization.id%>"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProfileNo.png" id="leftTabImage"></a></li>
+					<li><a href="/organizations/<%= @organization.id%>/programs"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProgramsYes.png" id="rightTabImage"></a></li>
 	            </ul>
 	        </div>
-	<div style="position:absolute; top:230px">
-	<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/FlagProgramBlurb.png" style="width:800px; min-width:800px" /></div>
-	<div class="row" style="margin-top:100px; border:1px solid #575758; background-color:#E9ECE9;padding-bottom:10px; width:99%">
+	<div class="flagProgramBlurbContainer">
+	<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/FlagProgramBlurb.png" id="flagProgramBlurbImage" /></div>
+	<div class="row" id="allFlagsContainer">
 
 		<% @countries = Hash.new %>
 		<% @progs = @organization.programs%>
@@ -78,23 +140,23 @@
 		<% @countries[f.location] = @countries[f.location] + 1%>
 		<% end %>
 		<% end %>
-<div class="twelve columns" align="center" style="margin:auto">
+<div class="twelve columns" align="center" id="innerBoxOfFlags">
 <% @countries.keys.each do |f|%>
-<div class="two columns" style="width:16.5%; padding:0; margin:0; margin-top:10px; margin-bottom:30px">
-	<p><a href="#programs-box<%=f%>" class="programs-window" style="font-family:JosefinSlabRegular"><%= THECOUNTRIES[f]%></a></p>
-<a href="#programs-box<%=f%>" class="programs-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/#{THECOUNTRIES2[f]}.png", :style => "height:50px; width:100px;"%></a>
+<div class="eachFlagContainer">
+	<p><a href="#programs-box<%=f%>" class="programs-window"><%= THECOUNTRIES[f]%></a></p>
+<a href="#programs-box<%=f%>" class="programs-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flags/#{THECOUNTRIES2[f]}.png", :class => "flagImage"%></a>
 </div>
 
 
 
 <div id="programs-box<%=f%>" class="programs-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
-	<table style="border-left:1px solid #575758;border-right:1px solid #575758;border-top:1px solid #575758;">
+	<a href="#" class="close"><p class="close_image"></p></a>
+	<table class="showingPrograms">
 	<% @organization.programs.each do |p|%>
 	<% if p.location == f%>
-	<tr style="background-color:#D9DEDA;border-bottom:1px solid #575758;">
-		<td style="width:500px"><a href="/programs/<%=p.id%>" style="font-size:1.5em" class="red-link"><%=p.name%></a><br /><%= p.truncated_description100.html_safe%></td>
-		<td style="width:130px"><%= render :partial => "star", :locals => {:star => p.overall}%></td>
+	<tr>
+		<td width="500px"><a href="/programs/<%=p.id%>" class="red-link"><%=p.name%></a><br /><%= p.truncated_description100.html_safe%></td>
+		<td width="130px"><%= render :partial => "star", :locals => {:star => p.overall}%></td>
 	</tr>
 	</div>
 	<% end %>
