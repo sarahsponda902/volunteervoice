@@ -40,12 +40,12 @@
 	
 		<table id="review-box<%=f.id%>" class="review-popup">
 			<a href="#" class="close"><div class="close_image"></div></a>
-			<tr class="reviewPopupBackground"><td colspan="5"><span class="reviewPopupLabel">Program: </span><span class="reviewPopupProgram"><%=(Program.find(f.program_id)).name%></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="reviewPopupLabel">Length of Trip: </span><span class="reviewPopupTimeFrame"><%=f.time_frame%></span><p style="reviewPopupDateWritten">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td></tr>
+			<tr class="reviewPopupBackground"><td colspan="5"><span class="reviewPopupLabel">Program: </span><span class="reviewPopupProgram"><%=(Program.find(f.program_id)).name%></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="reviewPopupLabel">Length of Trip: </span><span class="reviewPopupTimeFrame"><%=f.time_frame%></span><p class="reviewPopupDateWritten">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td></tr>
 			<tr class="reviewPopupBackground"><td colspan="5"><%=f.body.html_safe%></td></tr>
 			<tr class="reviewPopupBackground">
 				<td></td>
 				<td></td>
-				<td colspan="3"><p style="reviewPopupUsername">-<%=User.find(f.user_id).username%>&nbsp;&nbsp;&nbsp;&nbsp;
+				<td colspan="3"><p class="reviewPopupUsername">-<%=User.find(f.user_id).username%>&nbsp;&nbsp;&nbsp;&nbsp;
 			<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();", :style => "float:right", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
 			<tr class="reviewPopupBackground"><td colspan="5">	<% @photos.each do |photo| %>
 			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" class="reviewPopupPhotos"/></a>
@@ -59,10 +59,10 @@
 			</tr>
 			<tr class="reviewPopupBackground">
 				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.preparation}%></p></p></td>
-				<td><p class="reviewPopupStarContainer"><p style="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.support}%></p></p></td>
-				<td><p class="reviewPopupStarContainer"><p style="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.impact}%></p></p></td>
-				<td><p class="reviewPopupStarContainer"><p style="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.structure}%></p></p></td>
-				<td><p class="reviewPopupStarContainer"><p style="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.overall}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.support}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.impact}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.structure}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.overall}%></p></p></td>
 			</tr>
 				
 				
