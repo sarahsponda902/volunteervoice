@@ -1,56 +1,3 @@
-<style>
-a.organization_url:active{color:#68c2d8}
-a.organization_url:visited{color:#68c2d8}
-a.organization_url:link{color:#68c2d8}
-a.organization_url:hover{color:white; background:none}
-
-#organizationContentBox {
-	border:1px solid #575758; 
-	background-color:#E9ECE9; 
-	padding:bottom:25px; 
-	color:#575758; 
-	width:950px; 
-	margin-top:50px;
-}
-#squareImageContainer {
-	margin:0;
-	padding:0; 
-	width:18%; 
-	margin-top:20px; 
-	padding-left:20px;
-}
-.squareImage {
-	height:130px;
-	width:130px;
-}
-#majorInfoContainer {
-	width:53%; 
-	text-align:left; 
-	margin:0; 
-	padding:0; 
-	margin-top:-25px; 
-	padding-left:10px;
-}
-.orgNameContainer {
-	font-size:3.5em; 
-	color:#62acbd; 
-	line-height:1.3em;
-}
-.urlContainer {
-	color:#68c2d8;
-}
-a#urlCantEdit {
-	font-size:1.2em;
-}
-#orgRatingContainer {
-	text-align:center; 
-	margin-top:-95px; 
-	padding:0; 
-	width:23%; 
-	float:right;
-}
-</style>
-
 
 <div class="container" id="organizationContentBox">
 	<div class="row">
@@ -73,10 +20,10 @@ a#urlCantEdit {
 
 			<br />
 			<br />
-			<p style="margin-top:-25px"><%= render :partial => "bigStar", :locals => {:star => organization.roundup(overall)}%></p>
+			<p class="starRating"><%= render :partial => "bigStar", :locals => {:star => organization.roundup(overall)}%></p>
 			<br />
 
-			<p style="font-family:ArchitectsDaughterRegular; font-size:1.1em; color:#e67b5a; line-height:1.3em">Based on <%= pluralize reviews_count, "reviews"%></p> 
+			<p class="starRatingBasedOn">Based on <%= pluralize reviews_count, "reviews"%></p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{organization.id}/edit"%>
@@ -86,28 +33,28 @@ a#urlCantEdit {
 
 
 
-<div class="row" style="margin-top:50px">
+<div class="row infoContainer">
 	<div class="nine columns">
-		<div class="two columns" style="font-size:1.5em; width:20%; padding-left:10px">
+		<div class="two columns" id="missionLabelContainer">
 				 <% if @can_edit %>
 				&#9998;&nbsp;&nbsp;
 				<% end %>
 				<u><b>Mission:</b></u>
 		</div>
-		<div class="ten columns" style="border:1px solid #575758; height:130px; width:75%; overflow:auto; margin:0;padding:10px">
+		<div class="ten columns" id="missionContainer">
 			<%= best_in_place_if @can_edit, organization, :misson, :type => :textarea, :display_as => :textilize_misson, :nil => "Click to Edit"%> 
 		</div>
 
-		<div class = "two columns" style="font-size:1.5em; margin:0;padding:0; margin-top:25px; padding-left:10px; width:20%">
+		<div class = "two columns" id="programSubjectsContainer">
 
-			<u><font style="line-height:1.2em">Program Subjects:</font></u>
+			<u><span class="programSubjectsLabel">Program Subjects:</span></u>
 		</div>
-		<div class="ten columns" style="border: 1px solid #575758; height:130px; overflow:auto; width:75%; margin:0;padding:10px; margin-top:25px; float:left">
+		<div class="ten columns" id="programSubjectsBox">
 <%= @programSubjects[0..(@programSubjects.count - 2)].join(", ")%>
 		</div>
 	</div>
-	<div class="three columns" style="float:left;margin-left:10px; padding:10px; height:295px; background-color:#c1dfdb; height:310.5px; overflow:auto;">
-		<p style="font-weight:600; font-size:1.1em"> 
+	<div class="three columns" id="hqInfoContainer">
+		<p class="hqLabelContainer"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
@@ -115,7 +62,7 @@ a#urlCantEdit {
 		<br />
 		<br />
 		
-		<p style="font-weight:600; font-size:1.1em">
+		<p class="hqLabelContainer">
 	    <% if @can_edit%>
 		&#9998; 
 		<% end %>
@@ -124,7 +71,7 @@ a#urlCantEdit {
 		<br />
 		<br />
 		
-		<p style="font-weight:600; font-size:1.1em"> 
+		<p class="hqLabelContainer"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
@@ -137,79 +84,79 @@ a#urlCantEdit {
 	</div>
 </div>
 <div class="row">
-	<div class="twelve columns" style="font-size:1.5em; margin-top:25px; width:20%; padding-left:10px">
+	<div class="twelve columns" id="detailsBoxLabel">
 
 		<u><b>Details:</b></u>
 	</div>
 	<div class="eleven columns">
-		<div class="six columns" style="font-size:1.1em;">
+		<div class="six columns" id="leftColumnDetails">
 			<br />
-			<p style="font-weight:600"> 
+			<p class="detailsLabel"> 
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
 				Operating since:</p><%=best_in_place_if @can_edit, organization, :operating_since, :type => :input, :nil => "Click to edit"%><br /><br />
 			
-			<p style="font-weight:600"> 
+			<p class="detailsLabel"> 
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
 				Run by:</p><%=best_in_place_if @can_edit, organization, :run_by, :type => :input, :nil => "Click to edit"%><br />
-			<p style="font-weight:600">Full Time Staff: </p><%=best_in_place_if @can_edit, organization, :full_time_staff, :type => :input, :nil => "Click to edit"%><br /><br />
-			<p style="font-weight:600"> 
+			<p class="detailsLabel">Full Time Staff: </p><%=best_in_place_if @can_edit, organization, :full_time_staff, :type => :input, :nil => "Click to edit"%><br /><br />
+			<p class="detailsLabel"> 
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
 				# Volunteers each year: </p><%=best_in_place_if @can_edit, organization, :num_vols_yr, :type => :input, :nil => "Click to edit"%><br /><br />
-			<p style="font-weight:600"> 
+			<p class="detailsLabel"> 
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
 				# Volunteers to date: </p><%=best_in_place_if @can_edit, organization, :num_vols_date, :type => :input, :nil => "Click to edit"%><br /><br />
-			<p style="font-weight:600"> # Active Programs: </p><%= organization.programs.count%><br /><br />
-			<p style="font-weight:600"> 
+			<p class="detailsLabel"> # Active Programs: </p><%= organization.programs.count%><br /><br />
+			<p class="detailsLabel"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
 			Application Process: </p><%= best_in_place_if @can_edit, organization, :application_process, :type => :textarea, :display_as => :textilize_application_process, :nil => "Click to edit"%><br />
-			<p style="font-weight:600">Business Model: </p><%= organization.business_model.html_safe%><br /><br />
+			<p class="detailsLabel">Business Model: </p><%= organization.business_model.html_safe%><br /><br />
 			
-			<p style="font-weight:600">ID number: </p><%=organization.id_number%><br /><br />
+			<p class="detailsLabel">ID number: </p><%=organization.id_number%><br /><br />
 			
-			<p style="font-weight:600">Volunteer Program Model: </p><%=organization.program_model_string%><br /><br />
+			<p class="detailsLabel">Volunteer Program Model: </p><%=organization.program_model_string%><br /><br />
 			
-			<p style="font-weight:600">Types of Programs: </p>
+			<p class="detailsLabel">Types of Programs: </p>
 			<%= organization.types_of_programs%>
 			<br /><br />
 			
 		</div>
-		<div class="six columns" style="width:45%; border-left:1px solid #e67b5a; font-size:1.1em; padding-left:2%">
+		<div class="six columns" id="rightColumnDetails">
 			<br />
-			<p><font style="font-weight:600">Price Ranges:</font> <a href="#price-ranges-box" class="price-ranges-window">Click here to view</a> </p><br />
+			<p><font class="detailsLabel">Price Ranges:</font> <a href="#price-ranges-box" class="price-ranges-window">Click here to view</a> </p><br />
 			
-			<p style="font-weight:600"> 
+			<p class="detailsLabel"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
 			Price Includes: </p><%= best_in_place_if @can_edit, organization, :program_costs_includes, :type => :textarea, :display_as => :textilize_program_costs_includes, :nil => "Click to edit"%><br />
-			<p style="font-weight:600"> 
+			<p class="detailsLabel"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
 			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_as => :textilize_program_costs_doesnt_include, :nil => "Click to edit"%><br />
-			<p><font style="font-weight:600">Additional Fees: </font><%= organization.additional_fees%></p><br />
-			<p><font style="font-weight:600">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
-			<p style="font-weight:600">Group Sizes: </p><%= @groupSizes[0..(@groupSizes.count - 2)].join(", ")%><br /><br />
+			<p><font class="detailsLabel">Additional Fees: </font><%= organization.additional_fees%></p><br />
+			<p><font class="detailsLabel">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
+			<p class="detailsLabel">Group Sizes: </p><%= @groupSizes[0..(@groupSizes.count - 2)].join(", ")%><br /><br />
 			
 			
 			
-			<p style="font-weight:600">Program Lengths: </p><%= @programLengths.first%> - <%= @programLengths.last %> <br /><br />
-			<p style="font-weight:600"> 
+			<p class="detailsLabel">Program Lengths: </p><%= @programLengths.first%> - <%= @programLengths.last %> <br /><br />
+			<p class="detailsLabel"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
 			Preparation/Orientation: </p><%= best_in_place_if @can_edit, organization, :training_resources, :type => :textarea, :display_as => :textilize_training_resources, :nil => "Click to edit"%><br />
-			<p style="font-weight:600">Good to know: </p><%=organization.good_to_know.html_safe%><br />
+			<p class="detailsLabel">Good to know: </p><%=organization.good_to_know.html_safe%><br />
 		</div>
 	</div>
 
@@ -218,10 +165,10 @@ a#urlCantEdit {
 
 <br />
 <br />
-		<p style="text-align:center; margin-left:35px">	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewThisOrg.png"), {:controller => "reviews", :action => "new", :organization_id => organization.id}, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'", :style =>"height:20px"%></p>
+		<p class="reviewOrgButtonContainer">	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewThisOrg.png"), {:controller => "reviews", :action => "new", :organization_id => organization.id}, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'", :style =>"height:20px"%></p>
 
 
-	<p style="text-align:right; margin-top:-85px; padding-bottom:20px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/vviInfo.png"), "#info-box", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'info-window'", :class => "info-window"%> </p>
+	<p class="getInfoButtonContainer"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/vviInfo.png"), "#info-box", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'info-window'", :class => "info-window"%> </p>
 
 	</div>
 </div>
@@ -230,6 +177,7 @@ a#urlCantEdit {
 
 
 <script type="text/javascript">
+//BestInPlace only appears in the contents partial, so the jQuery is here.
 $(document).ready(function() {
   /* Activating Best In Place */
   $(".best_in_place").best_in_place();

@@ -122,6 +122,14 @@ class OrganizationsController < ApplicationController
     @organization.program_cost_length_maps.sort_by(&:length).each do |f|
       @programLengths << [f.length_number, f.length_name].join(" ") unless @programLengths.include?([f.length_number, f.length_name].join(" ")) 
     end 
+    
+    @organization.page_views = (@organization.page_views + 1)
+     @organization.save! 
+
+
+
+
+    
    
    respond_to do |format|
      format.html

@@ -1,4 +1,4 @@
-<head>
+
 	<link rel="stylesheet" href="/assets/lightbox.css" type="text/css" media="screen" />
 	<%= javascript_include_tag "/assets/jquery.js"%>	
 	
@@ -125,9 +125,491 @@
 		float:center;
 	}
 	</style>
+	
+	<style>
+	a.organization_url:active{color:#68c2d8}
+	a.organization_url:visited{color:#68c2d8}
+	a.organization_url:link{color:#68c2d8}
+	a.organization_url:hover{color:white; background:none}
+
+	#organizationContentBox {
+		border:1px solid #575758; 
+		background-color:#E9ECE9; 
+		padding:bottom:25px; 
+		color:#575758; 
+		width:950px; 
+		margin-top:50px;
+	}
+	#squareImageContainer {
+		margin:0;
+		padding:0; 
+		width:18%; 
+		margin-top:20px; 
+		padding-left:20px;
+	}
+	.squareImage {
+		height:130px;
+		width:130px;
+	}
+	#majorInfoContainer {
+		width:53%; 
+		text-align:left; 
+		margin:0; 
+		padding:0; 
+		margin-top:-25px; 
+		padding-left:10px;
+	}
+	.orgNameContainer {
+		font-size:3.5em; 
+		color:#62acbd; 
+		line-height:1.3em;
+	}
+	.urlContainer {
+		color:#68c2d8;
+	}
+	a#urlCantEdit {
+		font-size:1.2em;
+	}
+	#orgRatingContainer {
+		text-align:center; 
+		margin-top:-95px; 
+		padding:0; 
+		width:23%; 
+		float:right;
+	}
+	.starRating {
+		margin-top:-25px;
+	}
+	.starRatingBasedOn {
+		font-family:ArchitectsDaughterRegular; 
+		font-size:1.1em; 
+		color:#e67b5a; 
+		line-height:1.3em;
+	}
+	.infoContainer {
+		margin-top:50px;
+	}
+	#missionLabelContainer {
+		font-size:1.5em; 
+		width:20%; 
+		padding-left:10px;
+	}
+	#missionContainer {
+		border:1px solid #575758; 
+		height:130px; 
+		width:75%; 
+		overflow:auto; 
+		margin:0;
+		padding:10px;
+	}
+	#programSubjectsContainer {
+		font-size:1.5em; 
+		margin:0;
+		padding:0; 
+		margin-top:25px; 
+		padding-left:10px; 
+		width:20%;
+	}
+	.programSubjectsLabel {
+		line-height:1.2em;
+	}
+	#programSubjectsBox {
+		border: 1px solid #575758; 
+		height:130px; 
+		overflow:auto; 
+		width:75%; 
+		margin:0;
+		padding:10px; 
+		margin-top:25px; 
+		float:left;
+	}
+	#hqInfoContainer {
+		float:left;
+		margin-left:10px; 
+		padding:10px; 
+		height:295px; 
+		background-color:#c1dfdb; 
+		height:310.5px; 
+		overflow:auto;
+	}
+	.hqLabelContainer {
+		font-weight:600; 
+		font-size:1.1em;
+	}
+	#detailsBoxLabel {
+		font-size:1.5em; 
+		margin-top:25px; 
+		width:20%; 
+		padding-left:10px;
+	}
+	#leftColumnDetails {
+		font-size:1.1em;
+	}
+	.detailsLabel {
+		font-weight:600;
+	}
+	#rightColumnDetails {
+		width:45%; 
+		border-left:1px solid #e67b5a; 
+		font-size:1.1em; 
+		padding-left:2%;
+	}
+	.reviewOrgButtonContainer {
+		text-align:center; 
+		margin-left:35px;
+	}
+	.getInfoButtonContainer {
+		text-align:right; 
+		margin-top:-85px; 
+		padding-bottom:20px;
+	}
+	</style>
+
+
+
+	<style type="text/css">
+
+
+	   ul.tab
+	   {
+	       list-style: none;
+	       margin: 0;
+	       padding: 0;
+			float: right;
+	   }
+	   ul.tab li
+	   {
+	       display: inline;
+	       padding: 10px;
+	       color: #575758;
+	       cursor: pointer;
+	   }
+
+	/* Mask for background, by default is not display */
+	#mask {
+		display: none;
+		background: #000; 
+		position: fixed; left: 0; top: 0; 
+		width: 100%; height: 100%;
+		opacity: 0.8;
+		z-index: 10;
+	}
+
+	/* You can customize to your needs  */
+	.flag-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #575758;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		position: fixed;
+		width:300px;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+
+	/* You can customize to your needs  */
+	.price-ranges-popup{
+		display:none;
+		background: #E9ECE9;
+		padding: 10px;
+		max-height: 300px; 	
+		border: 2px solid #ddd;
+		float: left;
+		color: black;
+		position: fixed;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+
+
+	.review-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #e67b5a;
+		float: left;
+		color: black;
+		position: fixed;
+		width: 650px;
+		top: 50%; left: 50%;
+		z-index: 55;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+
+	.info-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #575758;
+		float: left;
+		font-size: 1.2em;
+		color:#575758;
+		position: fixed;
+		width: 500px;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+	}
+
+
+
+	a.price-breakdown-window:active{color:#68c2d8}
+	a.price-breakdown-window:visited{color:#68c2d8}
+	a.price-breakdown-window:link{color:#68c2d8}
+	a.price-breakdown-window:hover{color:#e67b5a; background:none}
+
+	a.review-window:active{color:#68c2d8}
+	a.review-window:visited{color:#68c2d8}
+	a.review-window:link{color:#68c2d8}
+	a.review-window:hover{color:#e67b5a; background:none}
+
+	#canEditBlurb {
+		font-size:1.1em;
+		font-family:JosefinSlabRegular;
+		color:#68c2d8; 
+		margin-top:20px;
+	}
+	#show-contents { /* overarching container */
+		margin-top:100px;
+	}
+	#tabContainer {
+		padding-bottom:50px;
+		float:right; 
+		margin-right:175px; 
+		margin-top:-75px;
+	}
+	#leftTabImage {
+		width:125px; 
+		min-width:125px;
+	}
+	#rightTabImage {
+		width:125px; 
+		position:absolute; 
+		top:0px;
+	}
+	#reviewsContainer {
+		float:center; 
+		text-align:center; 
+		margin:auto;
+	}
+	.reviewsAndInsightLabel {
+		font-family:chunkFiveRegular;
+		font-size:3em; 
+		line-height:1.7em; 
+		margin-top:25px; 
+		margin-bottom:25px; 
+		color: #62acbd;
+	}
+	.listByLabel {
+		font-size:1.5em; 
+		color:#575758; 
+		line-height:1.1em; 
+		margin-left:40px; 
+		font-weight:600;
+	}
+	#results {
+		margin-left:20px; 
+		margin-right:20px;
+	}
+	#pageViews {
+		margin-top:20px; 
+		margin-bottom:5px;
+	}
+	.infoNotDisclosedTitle {
+		font-size:2em; 
+		line-height:2em; 
+		text-align:center; 
+		color:#575758; 
+		margin-top:-15px;
+	}
+	.infoNotDisclosedBlurb {
+		font-family:JosefinSlabRegular;  
+		font-size:1.1em; 
+		line-height:1.2em; 
+		color:#6aaeba; 
+		margin-left:10px; 
+		margin-right:10px; 
+		text-align:center;
+	}
+	.priceRangesColumn {
+		width:100px; 
+		text-align:center;
+	}
+	.infoPopupBlurb {
+		font-family:architectsDaughterRegular; 
+		line-height:1.3em;
+	}
+	.flagPopupTitle {
+		text-align:center; 
+		font-size:1.2em; 
+		font-family:cabinRegular; 
+		margin-bottom:20px; 
+		color:#575758;
+	}
+	.flagTextArea {
+		height:115px; 
+		font-size:0.9em; 
+		font-style:italic; 
+		margin:auto;
+	}
+	.flagSubmitContainer {
+		text-align:center; 
+		padding-top:15px;
+	}
+	</style>
+
+
+
+	
+<div class="container">
+    <div class="row">
+	<% if @can_edit%> 
+			<div class="five columns" id="canEditBlurb">*All fields with a small pencil next to them are open for editing.  Just click on the content in that field to adjust as you see fit.  Click anywhere outside the textbox to complete and save your changes.</div><div class="seven columns"></div>
+	<% end %>
+	
+	<div id="show-contents" class="contents">
+		<div id="tabContainer" class="three columns">
+            <ul class="tab">
+				<li><a href="/organizations/<%= @organization.id%>"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProfileYes.png" id="leftTabImage"></a></li>
+				<li><a href="/organizations/<%= @organization.id%>/programs"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProgramsNo.png" id="rightTabImage"></a></li>
+            </ul>
+        </div>
+			
+		
+	<%= render :partial => "show_contents", :locals => {:organization => @organization, :@results.count => @results.count, :overall => @overall}%>
+	
+	<div class="row">
+			<div class="twelve columns" id="reviewsContainer">
+			<p class="reviewsAndInsightLabel">Reviews &amp; Insight</p>
+			</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class = "eleven columns" class="contents">
+	<div id="results">
+
+	
+				<% @results.each do |f| %>
+				<div>
+					<%= render :partial => "results", :locals => {:f => f}%>
+				</div>
+				<% end %>
+		
+	</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+</div>
+</div>
+</div>
+
+<div class = "container">
+<div class = "row">
+	<div id="reviews_pager">
+	</div>
+	<div id= "four columns" align="center" id="pageViews">
+		<% if !(current_user.nil?) && current_user.admin? %>
+		<%= link_to "edit", "/organizations/#{@organization.id}/edit"%>
+		  | Page views: <%= @organization.page_views%>
+		<% end %>
+	</div>
+</div>
+</div>
+</div>
+</div>
+
+
+	</div>
+	</div>	
+	<div class="price-ranges-popup" id="price-ranges-box" >
+		<a href="#" class="close"><div class="close_image"></div></a>
+		<% if (ProgramCostLengthMap.where(:organization_id => @organization.id).empty?)%>	
+		<p class="infoNotDisclosedTitle">Information not disclosed</p>
+		<p class="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
+		<% else %>	
+		<table>
+			<thead>
+			<tr>
+				<th class="priceRangesColumn"># Weeks</th>
+				<th class="priceRangesColumn">Min Cost</th>
+				<th class="priceRangesColumn">Max Cost</th>
+			</tr>
+			</thead>
+			<tbody>
+			<% @entries.each do |f|%>
+			<tr>
+				<td class="priceRangesColumn"><%= f[0]%></td>
+				<td class="priceRangesColumn"><%= "$#{number_with_precision(f[1].to_d, :precision => 2)}"%></td>
+				<td class="priceRangesColumn"><%= "$#{number_with_precision(f[2].to_d, :precision => 2)}"%></td>
+			</tr>
+			<% end %>
+			</tbody>
+		</table>
+		<% end %>
+</div>
+</div>
+</div>
+	<div class="info-popup" id="info-box">
+		<a href="#" class="close"><div class="close_image"></div></a>
+		<p class="infoPopupBlurb">We get the vast majority of our information directly from International Volunteer Organizations themselves.  We do a lot of research online, spend a lot of time on their websites, and are also in direct correspondence with many of the organizations on our site.  If we can’t fill in all the blanks from these direct resources, we consult public resources such as GuideStar, the Better Business Bureau, or equivalent organizations in other countries.  </p>
+    </div>
+</div>
+</div>
+
+<div id="flag-box" class="flag-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<% if user_signed_in? %>
+  	<%= form_for @flag do |g| %>
+	    <p class="flagPopupTitle">Report this review for <br />inappropriate content</p>
+	<br />
+
+	<%=g.text_area :body, :class => "flagTextArea", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe."%>
+
+	    <%=g.hidden_field :flagger_id, :value => current_user.id %>
+
+	    <%=g.hidden_field :poster_id, :id => "poster_id" %>
+
+	    <%=g.hidden_field :review_id, :id => "review_id" %>
+
+	    <p class="flagSubmitContainer"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+		<% end %>
+	<% else %>
+	<p>You must be signed in to flag a review.</p>
+	<% end %>
+</div>
+
 
 
 	<script>
+	//Scrolling for Lightbox2 plugin
 	  jQuery(document).ready(function($) {
 	      $('a').smoothScroll({
 	        speed: 1000,
@@ -135,20 +617,16 @@
 	      });
 	  });
 
-	</script>
-	
-	<script type="text/javascript">
+	//close the review popup (called if user clicks "flag this review" from within the review popup)
 	function removePopup() {
 		$('#mask').fadeOut(300);
 		$('.review-popup').fadeOut(300);
 		$('#mask').remove();  
 		return false;
 	}
-	</script>
-	
-		<script type="text/javascript">
 
 
+//jQuery for the "Flag a Review" popup
 		$(document).ready(function() {
 			$('a.flag-window').click(function() {
 
@@ -182,6 +660,8 @@
 			return false;
 			});
 
+
+//jQuery for the "Get Info ?-mark" popup
 			$('a.info-window').click(function() {
 
 			            //Getting the variable's value from a link 
@@ -214,38 +694,10 @@
 			return false;
 			});
 
-			$('a.price-ranges-window').click(function() {
 
-			            //Getting the variable's value from a link 
-				var priceRangesBox = $(this).attr('href');
 
-				//Fade in the Popup
-				$(priceRangesBox).fadeIn(300);
 
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(priceRangesBox).height() + 24) / 2; 
-				var popMargLeft = ($(priceRangesBox).width() + 24) / 2; 
-
-				$(priceRangesBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .price-ranges-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-
+//jQuery for the organization's "Price Breakdown" popup
 			$('a.price-breakdown-window').click(function() {
 
 			            //Getting the variable's value from a link 
@@ -278,6 +730,9 @@
 			return false;
 			});
 			
+			
+			
+//jQuery for the organization's many "Review" popups			
 			$('a.review-window').click(function() {
 
 			            //Getting the variable's value from a link 
@@ -309,357 +764,14 @@
 			}); 
 			return false;
 			});
+			
+
+
+
+//Initialize smartpaginator's jQuery paginator on a div called "results"
+	//the "reviews_pager" div is the "1-10 of 40 ----> 1 2 3 4 ..." pager
+			
+				$('#reviews_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 		});
 		</script>
-
-<%@organization.page_views = (@organization.page_views + 1)%>
-<% @organization.save! %>
-
-<% reviews_count = @results.count %>
-
-
-<script type="text/javascript">
-$(document).ready(function () {
-	$('#reviewws_pager').smartpaginator({ totalrecords: <%=reviews_count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
-
-
-});
-
-</script>
-
-</head>
-
-
-	
-<div class="container">
-    <div class="row">
-	<% if @can_edit%>
-			<div class="five columns" style="font-size:1.1em;font-family:JosefinSlabRegular;color:#68c2d8; margin-top:20px;">*All fields with a small pencil next to them are open for editing.  Just click on the content in that field to adjust as you see fit.  Click anywhere outside the textbox to complete and save your changes.</div><div class="seven columns"></div>
-	<% end %>
-	
-	<div id="show-contents" class="contents" style="margin-top:100px">
-		<div style="padding-bottom:50px;float:right; margin-right:175px; margin-top:-75px" class="three columns">
-            <ul class="tab">
-				<li><a href="/organizations/<%= @organization.id%>"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProfileYes.png" style="width:125px; min-width:125px"></a></li>
-				<li><a href="/organizations/<%= @organization.id%>/programs"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProgramsNo.png" style="width:125px; position:absolute; top:0px"></a></li>
-            </ul>
-        </div>
-			
-		
-	<%= render :partial => "show_contents", :locals => {:organization => @organization, :reviews_count => reviews_count, :overall => @overall}%>
-	
-	<div class="row">
-			<div class="twelve columns" style="float:center; text-align:center">
-			<p style="font-family:chunkFiveRegular;font-size:3em; line-height:1.7em; margin-top:25px; margin-bottom:25px; color: #62acbd">Reviews &amp; Insight</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="fivecolumns">
-			<p style="font-size:1.5em; color:#575758; line-height:1.1em; margin-left:40px; font-weight:600"> List By:</p>	
-
-				<form accept-charset="UTF-8" action="sorted_results" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
-					<div class="select-div" style="position:relative; left:18%;top:-25px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-				<select id="sort" name="sort"  style="position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white; border: 1px solid #575758" onchange="this.form.submit()"><option value="ratinghigh">Rating - High</option>
-				<option value="ratinglow">Rating - Low</option>
-				<option value="alphabetical">Alphabetical</option>
-				<option value="pricelow">Price - Low</option>
-				<option value="pricehigh">Price - High</option></select>
-								<input id="resulting_ids" name="resulting_ids" type="hidden" value="2 3" />
-								<input id="type" name="type" type="hidden" value="Program" />
-								</div>
-				</form>
-			</div>
-
-		</div>
-
-	<div class="container" style="height:100%">
-		<div class="row">
-			<div class = "eleven columns" class="contents">
-	<div id="results" style="margin-left:20px; margin-right:20px;">
-
-	
-				<% @results.each do |f| %>
-				<div>
-					<%= render :partial => "results", :locals => {:f => f}%>
-				</div>
-				<% end %>
-		
-	</div>
-			</div>
-		</div>
-	</div>
-	
-</div>
-</div>
-</div>
-</div>
-
-<div class = "container">
-<div class = "row">
-	<div id="reviewws_pager">
-	</div>
-	<div id= "four columns" align="center" style="margin-top:20px; margin-bottom:5px">
-		<% if !(current_user.nil?) && current_user.admin? %>
-		<%= link_to "edit", "/organizations/#{@organization.id}/edit"%>
-		  | Page views: <%= @organization.page_views%>
-		<% end %>
-	</div>
-</div>
-</div>
-</div>
-</div>
-
-
-	</div>
-	</div>	
-	<div class="price-ranges-popup" id="price-ranges-box" style="align:center">
-		<a href="#" class="close"><div class="close_image"></div></a>
-		<% if (ProgramCostLengthMap.where(:organization_id => @organization.id).empty?)%>	
-		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758; margin-top:-15px">Information not disclosed</p>
-		<p style="font-family:JosefinSlabRegular;  font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
-		<% else %>	
-		<table>
-			<thead>
-			<tr>
-				<th style="width:100px; text-align:center"># Weeks</th>
-				<th style="width:100px; text-align:center">Min Cost</th>
-				<th style="width:100px; text-align:center">Max Cost</th>
-			</tr>
-			</thead>
-			<tbody>
-			<% @entries.each do |f|%>
-			<tr>
-				<td style="width:100px; text-align:center"><%= f[0]%></td>
-				<td style="width:100px; text-align:center"><%= "$#{number_with_precision(f[1].to_d, :precision => 2)}"%></td>
-				<td style="width:100px; text-align:center"><%= "$#{number_with_precision(f[2].to_d, :precision => 2)}"%></td>
-			</tr>
-			<% end %>
-			</tbody>
-		</table>
-		<% end %>
-</div>
-</div>
-</div>
-	<div class="info-popup" id="info-box">
-		<a href="#" class="close"><div class="close_image"></div></a>
-		<p style="font-family:architectsDaughterRegular; line-height:1.3em">We get the vast majority of our information directly from International Volunteer Organizations themselves.  We do a lot of research online, spend a lot of time on their websites, and are also in direct correspondence with many of the organizations on our site.  If we can’t fill in all the blanks from these direct resources, we consult public resources such as GuideStar, the Better Business Bureau, or equivalent organizations in other countries.  </p>
-    </div>
-</div>
-</div>
-
-<div id="flag-box" class="flag-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
-	<% if user_signed_in? %>
-  	<%= form_for @flag do |g| %>
-
-	<tr style="background-color:#D9DEDA"><td colspan="2">
-	    <p style="text-align:center; font-size:1.2em; font-family:cabinRegular; margin-bottom:20px; color:#575758">Report this review for <br />inappropriate content</p></td></tr>
-
-		<tr style="background-color:#D9DEDA;"><td colspan="2">
-	<%=g.text_area :body, :style => "height:115px; font-size:0.9em; font-style:italic; margin:auto", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe."%>
-
-	    <%=g.hidden_field :flagger_id, :value => current_user.id %>
-
-	    <%=g.hidden_field :poster_id, :id => "poster_id" %>
-
-	    <%=g.hidden_field :review_id, :id => "review_id" %>
-		</td></tr>
-
-		<tr style="background-color:#D9DEDA;"><td colspan="2">
-	    <p style="text-align:center; padding-top:15px"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
-		<% end %>
-	<% else %>
-	<tr><td>You must be signed in to flag a review.</td></tr>
-	<% end %>
-</div>
-<style type="text/css">
-   
-  
-   ul.tab
-   {
-       list-style: none;
-       margin: 0;
-       padding: 0;
-		float: right;
-   }
-   ul.tab li
-   {
-       display: inline;
-       padding: 10px;
-       color: #575758;
-       cursor: pointer;
-   }
-
-/* Mask for background, by default is not display */
-#mask {
-	display: none;
-	background: #000; 
-	position: fixed; left: 0; top: 0; 
-	width: 100%; height: 100%;
-	opacity: 0.8;
-	z-index: 10;
-}
-
-/* You can customize to your needs  */
-.flag-popup{
-	display:none;
-	background: #D9DEDA;
-	padding: 10px; 	
-	border: 2px solid #575758;
-	float: left;
-	color:#6aaeba;
-	font-size: 1.1em;
-	position: fixed;
-	width:300px;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
-
-/* You can customize to your needs  */
-.price-ranges-popup{
-	display:none;
-	background: #E9ECE9;
-	padding: 10px;
-	max-height: 300px; 	
-	border: 2px solid #ddd;
-	float: left;
-	color: black;
-	position: fixed;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
-
-
-.review-popup{
-	display:none;
-	background: #D9DEDA;
-	padding: 10px; 	
-	border: 2px solid #e67b5a;
-	float: left;
-	color: black;
-	position: fixed;
-	width: 650px;
-	top: 50%; left: 50%;
-	z-index: 55;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
-
-.info-popup{
-	display:none;
-	background: #D9DEDA;
-	padding: 10px; 	
-	border: 2px solid #575758;
-	float: left;
-	font-size: 1.2em;
-	color:#575758;
-	position: fixed;
-	width: 500px;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
-
-
-img.btn_close { Position the close button
-	float: right; 
-	margin: -28px -28px 0 0;
-}
-
-fieldset { 
-	border:none; 
-}
-
-form.show_chart .textbox label { 
-	display:block; 
-	padding-bottom:7px; 
-}
-
-form.show_chart .textbox span { 
-	display:block;
-}
-
-form.show_chart p, form.show_chart span { 
-	color:#999; 
-	font-size:11px; 
-	line-height:18px;
-} 
-
-form.show_chart .textbox input { 
-	background:#666666; 
-	border-bottom:1px solid #333;
-	border-left:1px solid #000;
-	border-right:1px solid #333;
-	border-top:1px solid #000;
-	color:#fff; 
-        border-radius: 3px 3px 3px 3px;
-	-moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-	font:13px Arial, Helvetica, sans-serif;
-	padding:6px 6px 4px;
-	width:200px;
-}
-
-form.show_chart input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
-form.show_chart input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
-
-.button { 
-	background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-	background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-	background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-	border-color:#000; 
-	border-width:1px;
-        border-radius:4px 4px 4px 4px;
-	-moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-	color:#333;
-	cursor:pointer;
-	display:inline-block;
-	padding:6px 6px 4px;
-	margin-top:10px;
-	font:12px; 
-	width:214px;
-}
-.button:hover { background:#ddd; }
-
-
-a.price-breakdown-window:active{color:#68c2d8}
-a.price-breakdown-window:visited{color:#68c2d8}
-a.price-breakdown-window:link{color:#68c2d8}
-a.price-breakdown-window:hover{color:#e67b5a; background:none}
-
-a.review-window:active{color:#68c2d8}
-a.review-window:visited{color:#68c2d8}
-a.review-window:link{color:#68c2d8}
-a.review-window:hover{color:#e67b5a; background:none}
-
-a.price-ranges-window:active{color:#68c2d8}
-a.price-ranges-window:visited{color:#68c2d8}
-a.price-ranges-window:link{color:#68c2d8}
-a.price-ranges-window:hover{color:#e67b5a; background:none}
-
-
-</style>
