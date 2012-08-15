@@ -7,6 +7,15 @@
 	line-height:1.3em;
 	margin-top:50px;
 }
+a#newOrgLink{
+	color:green;
+	font-size:1.2em;
+	line-height:2em;
+	font-weight:bold;
+}
+a#newOrgLink:hover{
+	color:white;
+}
 .orgsLabel {
 	font-size:2em;
 }
@@ -31,7 +40,7 @@
 	<div class="row">
 <p class="pageTitle">Listing organizations</p><br />
 
-<%= link_to 'Create New Organization', new_organization_path %>
+<a href="/organizations/new" id="newOrgLink">Create New Organization </a>
 
 <br /><br />
 <p class="orgsLabel">Out-of-date Organizations</p><br />
@@ -63,7 +72,7 @@
 	</tdata>
 </table>
 <br /><br />
-<p class="orgLabel">All Organizations</p><br />
+<p class="orgsLabel">All Organizations</p><br />
 <table align="center">
 	<thead>
   <tr>
