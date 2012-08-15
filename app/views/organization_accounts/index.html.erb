@@ -51,6 +51,18 @@
 	margin-top:50px;
 }
 
+#companyName {width:10%}
+#contactName {width:10%}
+#contactEmail {width:10%}
+#country {width:5%}
+#typeOfCompany {width:7.5%}
+#dateCreated {width:10%}
+#lastUpdated {width:10%}
+#lastLogin {width:10%}
+#loginCount {width:5%}
+#invitation {width:7.5%}
+#editDelete {width:7.5%}
+
 </style>
 
 
@@ -134,18 +146,17 @@
 <table>
 	<thead>
   <tr>
-    <th width="10%">Company Name</th>
-    <th width="5%">Contact's Name</th>
-    <th width="10%">Contact's Email</th>
-    <th width="5%">Country</th>
-    <th width="7.5%">Type of Company</th>
-    <th width="10%">Date Created</th>
-    <th width="10%">Last Updated</th>
-    <th width="10%">Last Login</th>
-    <th width="10%">Login Count</th>
-    <th width="10%">Invitation</th>
-    <th width="5%"></th>
-    <th width="7.5%"></th>
+    <th id="companyName">Company Name</th>
+    <th id="contactName">Contact's Name</th>
+    <th id="contactEmail">Contact's Email</th>
+    <th id="country">Country</th>
+    <th id="typeOfCompany">Type of Company</th>
+    <th id="dateCreated">Date Created</th>
+    <th id="lastUpdated">Last Updated</th>
+    <th id="lastLogin">Last Login</th>
+    <th id="loginCount">Login Count</th>
+    <th id="invitation">Invitation</th>
+    <th id="editDelete"></th>
   </tr>
 </thead>
 <tdata>
@@ -181,8 +192,9 @@
 		<%= "Accepted" %>
 		<% end %>
 	</td>
-    <td><%= link_to 'Edit', edit_organization_account_path(oa) %></td>
-    <td><%= button_to 'Delete', oa, method: :delete %></td>
+    <td><%= link_to 'Edit', edit_organization_account_path(oa) %>
+		<br />
+		<%= button_to 'Delete', oa, method: :delete %></td>
   </tr>
 <% end %>
 </tdata>
