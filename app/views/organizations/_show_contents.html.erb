@@ -23,7 +23,7 @@
 			<p class="starRating"><%= render :partial => "bigStar", :locals => {:star => organization.roundup(overall)}%></p>
 			<br />
 
-			<p class="starRatingBasedOn">Based on <%= pluralize reviews_count, "reviews"%></p> 
+			<p class="starRatingBasedOn">Based on <%= pluralize @results.count, "reviews"%></p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{organization.id}/edit"%>

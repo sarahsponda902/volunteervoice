@@ -1,7 +1,14 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-
-<p style="font-size:3em; line-height:2em; margin-top:20px; margin-bottom:20px; text-align:center">Editing organization</p>
-<p style="color:red"> Make sure that, in all of the big text boxes, you remove all html tags and redo your formatting with the redcloth/textile format provided below</p>
+<style>
+.editingTitle {
+	font-size:3em; 
+	line-height:2em; 
+	margin-top:20px; 
+	margin-bottom:20px; 
+	text-align:center;
+}
+</style>
+<p class="editingTitle">Editing organization</p>
 
 <%= render 'form' %>
 
