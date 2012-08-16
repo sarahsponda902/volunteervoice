@@ -135,10 +135,22 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
 	text-align:left;
 	font-family:architectsDaughterRegular;
 }
-.bubbleBlue p.bigFeedbackUserSign, .bubbleGreen p.bigFeedbackUserSign, .bubbleLightBlue p.bigFeedbackUserSign {
+#bigFeedbackUserSignGreen {
 	text-align:right;
 }
-.bubbleBlue p.smallFeedbackUserSign, .bubbleGreen p.smallFeedbackUserSign, .bubbleLightBlue p.smallFeedbackUserSign {
+#smallFeedbackUserSignGreen {
+	text-align:right;
+}
+#bigFeedbackUserSignBlue {
+	text-align:right;
+}
+#smallFeedbackUserSignBlue {
+	text-align:right;
+}
+#bigFeedbackUserSignLightBlue {
+	text-align:right;
+}
+#smallFeedbackUserSignLightBlue {
 	text-align:right;
 }	
 
@@ -442,13 +454,13 @@ a.red-link:hover{color:white}
 <% if !(feedback).nil?%>
 <p>"<%= truncate(feedback.body.html_safe, :length => 200, :omission => ' . . . ') %>"</p>
 <% if feedback.body.length <= 100%>
-<p class="smallFeedbackUserSigning">-- <%if feedback.user_id.nil?%>
+<p id="smallFeedbackUserSigningBlue">-- <%if feedback.user_id.nil?%>
 <%="anonymous"%>
 <%else%>
 <%= link_to User.find(feedback.user_id).username, User.find(feedback.user_id) %><%end%></p>
 <% end %>
 <% if feedback.body.length > 100 %>
-<p class="bigFeedbackUserSigning">-- <%if feedback.user_id.nil?%>
+<p id="bigFeedbackUserSigningBlue">-- <%if feedback.user_id.nil?%>
 <%="anonymous"%>
 <%else%>
 <%= link_to User.find(feedback.user_id).username, User.find(feedback.user_id) %><%end%></p>
@@ -463,14 +475,14 @@ a.red-link:hover{color:white}
 <% if !(feedback).nil?%>
 <p>"<%= truncate(feedback.body.html_safe, :length => 200, :omission => ' . . .') %>"</p>
 <% if feedback.body.length <= 100%>
-<p class="smallFeedbackUserSigning">-- 
+<p id="smallFeedbackUserSigningGreen">-- 
 <%if feedback.user_id.nil?%>
 <%="anonymous"%>
 <%else%>
 <%= link_to User.find(feedback.user_id).username, User.find(feedback.user_id) %><%end%></p>
 <% end %>
 <% if feedback.body.length > 100 %>
-<p class="bigFeedbackUserSigning">-- <%if feedback.user_id.nil?%>
+<p id="bigFeedbackUserSigningGreen">-- <%if feedback.user_id.nil?%>
 <%="anonymous"%>
 <%else%>
 <%= link_to User.find(feedback.user_id).username, User.find(feedback.user_id) %><%end%></p>
@@ -485,13 +497,13 @@ a.red-link:hover{color:white}
 <% if !(feedback).nil?%>
 <p>"<%= truncate(feedback.body.html_safe, :length => 200, :omission => ' . . .') %>"</p>
 <% if feedback.body.length <= 100%>
-<p class="smallFeedbackUserSigning">-- <%if feedback.user_id.nil?%>
+<p id="smallFeedbackUserSigningLightBlue">-- <%if feedback.user_id.nil?%>
 <%="anonymous"%>
 <%else%>
 <%= link_to User.find(feedback.user_id).username, User.find(feedback.user_id) %><%end%></p>
 <% end %>
 <% if feedback.body.length > 100 %>
-<p class="bigFeedbackUserSigning">-- <%if feedback.user_id.nil?%>
+<p id="bigFeedbackUserSigningLightBlue">-- <%if feedback.user_id.nil?%>
 <%="anonymous"%>
 <%else%>
 <%= link_to User.find(feedback.user_id).username, User.find(feedback.user_id) %><%end%></p>
