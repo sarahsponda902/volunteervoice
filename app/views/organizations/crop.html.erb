@@ -14,8 +14,12 @@
 .cropBlurb {
 	position:absolute; 
 	right:5%; 
-	top:350px; 
-	width: 150px;
+	top:300px; 
+	width: 150px; 
+	background-color:white;
+	border:2px solid #575758; 
+	color:#575758; 
+	padding:5px;
 }
 .cropFields {
 	position:absolute; 
@@ -37,15 +41,16 @@
 	</div>
 </div>
 
-<div class="cropBlurb">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed size for a organization image. It will not get any smaller</div>
+<div class="cropBlurb">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop".</div>
 
 <div class="cropFields">
 	<%= form_for @organization do |f|%>
-	x: <%= f.number_field :crop_x %><br />
-	y: <%= f.number_field :crop_y %><br />
-	w: <%= f.number_field :crop_w %><br />
-	h: <%= f.number_field :crop_h %><br />
-	<%= f.submit "Crop"%>
+	<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+	<%= f.hidden_field :crop_x %><br />
+	<%= f.hidden_field :crop_y %><br />
+	<%= f.hidden_field :crop_w %><br />
+	<%= f.hidden_field :crop_h %><br />
+	<% #f.hidden_field :crops, :value => false%>
 	<% end %>
 </div>	
 

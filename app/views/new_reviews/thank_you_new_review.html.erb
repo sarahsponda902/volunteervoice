@@ -1,15 +1,39 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
 
-<div class="container" style="margin-top:30px">
-	<div class="row">
-		<div class="twelve columns" style="text-align:center">
+<style>
+#top {
+	margin-top:30px;
+}
+#innerContainer {
+	text-align:center;
+}
+.thanksInTouchImage {
+	width:650px;
+}
+.lowerBlurb {
+	margin-top:50px;
+	font-family:JosefinSlabRegular; 
+	color:#9bce6c; 
+	font-size:2em;
+	line-height:1.2em;
+}
+.logoContainer {
+	text-align:center; 
+	margin-top:75px;
+}
+</style>
 
-		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/thanksReviewNew.png"%>
+
+<div class="container" id="top">
+	<div class="row">
+		<div class="twelve columns" id="innerContainer">
+
+		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/thanksNewReview.png", :class => "thanksInTouchImage"%>
 		
-		<p style="margin-top:50px;font-family:JosefinSlabRegular; color:#9bce6c; font-size:2em; line-height:1.2em">We will post it as soon as we finish building a profile for this organization. You're the best.</p>
-		 
+		<p class="lowerBlurb">We will post it as soon as we finish building a profile for this organization. You're the best. </p>
 		
-<div style="text-align:center; margin-top:75px">		
+		
+<div class="logoContainer">		
 <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png"), root_path, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 </div>
 </div>
