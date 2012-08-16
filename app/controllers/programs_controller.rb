@@ -198,13 +198,6 @@ end
   def update
     @program = Program.find(params[:id])
     
-    params[:program][:description] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:description] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:program][:program_cost_breakdown] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:program_cost_breakdown] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
-    params[:program][:cost_includes] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:cost_includes] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:program][:cost_doesnt_include] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:cost_doesnt_include] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:program][:accommodations] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:accommodations] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    
-    
     
       if (user_signed_in? && current_user.admin?) || organization_account_signed_in?
         @program.program_subjects.each do |f|

@@ -12,165 +12,84 @@
 <link href='/assets/mega-pull-out-menu-styles.css' type="text/css" rel="stylesheet"/>
 
 <script type="text/javascript" src="/assets/mega-pull-out-menu-1.0.js"></script>
-<script type="text/javascript">
-$(function() { 
 
-$('#programCountries').pullOut({
-  position: 'right',
-  top: '260px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'world',
-  color: 'lightblue'
-});	
-	
-$('#programSubjects').pullOut({
-  position: 'right',
-  top: '180px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'folder',
-  color: 'lightblue'
-});
+<style>
+#top-contents {
+	text-align:center; 
+	width:100%; 
+	margin-top:50px
+}
+#searchMatchesContainer {
+	margin-left:50px; 
+	font-family:architectsDaughterRegular; 
+	color:#62acbd; 
+	font-size:1.3em;
+}
+#displayContainer {
+	margin-left:5px;
+}
+#displayBy {
+	font-size:1.5em; 
+	color:#575758; 
+	line-height:1.1em;
+}
+.select-div {
+	position:absolute; 
+	top:-4px;
+	height:30px; 
+	width:228px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#displayBySelectDiv {
+	left:21%;
+}
+#listBySelectDiv {
+	left:19.2%;
+}
+select#display{
+	position:absolute; 
+	left:-5px; 
+	width:255px; 
+	height:30px; 
+	border: 1px solid #575758; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+	background-color:white;
+}
+#outerListByContainer {
+	margin-left:-250px;
+}
+#listByContainer {
+	height:50px;
+}
+#innerListByContainer {
+	margin-top:-22px;
+}
+.listByLabel {
+	font-size:1.5em; 
+	color:#575758; 
+	line-height:1.1em;
+}
+select#sort {
+	position:relative; 
+	left:-5px; 
+	width:255px; 
+	height:30px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+	background-color:white;
+}
+#searchResultsContainer {
+	margin-top:-50px;
+}
+</style>
 
-$('#lengthOfTrip').pullOut({
-  position: 'right',
-  top: '340px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'clock',
-  color: 'lightblue'
-});
-
-$('#groupSize').pullOut({
-  position: 'right',
-  top: '420px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'man',
-  color: 'lightblue'
-});
-
-$('#priceRange').pullOut({
-  position: 'right',
-  top: '500px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'piggy',
-  color: 'lightblue'
-});
-
-
-});
-</script>
-
-
-
-
-<script type="text/javascript">
-
-
-$(document).ready(function() {
-	<% if @search.showing == "Organizations" %>
-	$("#display").val("Organizations");
-	<% else %>
-	$("#sort").append("<option value = 'pricelow'>Price - Low</option>");
-	$("#sort").append("<option value = 'pricehigh'>Price - High</option>");
-	<% end %>
-	<% if !(@search.sort_by.nil?)%>
-	$("#sort").val("<%=@search.sort_by%>");
-	<% end %>
-
-	
-	$('a.window').click(function() {
-
-                //Getting the variable's value from a link 
-		var box = $(this).attr('href');
-
-		//Fade in the Popup
-		$(box).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(box).height() + 24) / 2; 
-		var popMargLeft = ($(box).width() + 24) / 2; 
-
-		$(box).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask"></div>')
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-		$('a.country-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var box = $(this).attr('href');
-
-			//Fade in the Popup
-			$(box).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(box).height() + 24) / 2; 
-			var popMargLeft = ($(box).width() + 24) / 2; 
-
-			$(box).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask"></div>')
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-});
-
-
-</script>
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-	
-	$('#program').smartpaginator({ totalrecords: 0, recordsperpage: 5, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
-
-	
-});
-
-</script>
 
 
 <div class="container">
-<div style="text-align:center; width:100%; margin-top:50px" id ="programs-contents1">	
+<div id ="top-contents">	
 <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteerPrograms.png"%><br /><br />
-	<p align="left" style="margin-left:50px; font-family:architectsDaughterRegular; color:#62acbd; font-size:1.3em"> Your search has 0 matches:</p>
+	<p align="left" id="searchMatchesContainer"> Your search has 0 matches:</p>
 
 	<br />
 	<br />
@@ -180,25 +99,31 @@ $(document).ready(function() {
 
 <div class = "container">
 	<div class= "row">
-		<div class="five columns" style="margin-left:5px">
-		<p style="font-size:1.5em; color:#575758; line-height:1.1em"> 	Display:</p>
-		<div style="position:absolute; left:21%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+		<div class="five columns" id="displayContainer">
+		<p id="displayBy"> 	Display:</p>
+		<div class="select-div" id="displayBySelectDiv">
 					<%= form_for @search do |f|%>
-			<select id ="display" name="search[showing]" style="position:absolute; left:-5px; width:255px; height:30px; border: 1px solid #575758; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">
+			<select id ="display" name="search[showing]" onchange="this.form.submit()">
 				<option value="Programs">Programs</option>
 				<option value="Organizations">Organizations</option></select>
 
 		</div>
 		</div>
 </div>
+
+
+<!-- REAL submit form button. Hidden. Onclick of fake submit buttons, submit form-->
 <%= f.submit "Submit", :id => "submit_form", :style => "display:none"%>
-<div class="container" style="margin-left:-250px">
+
+
+
+<div class="container" id="outerListByContainer">
 	<div class="row">
-	<div class="two columns" style="height:50px"></div>
-			<div class="five columns" style="margin-top:-22px">
-				<p style="font-size:1.5em; color:#575758; line-height:1.1em"> List By:</p>
-		<div style="position:absolute; left:19.2%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-		<select id ="sort" name="search[sort_by]" style="position:relative; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">	
+	<div class="two columns" id="listByContainer"></div>
+			<div class="five columns" id="innerListByContainer">
+				<p class="listByLabel"> List By:</p>
+		<div class="select-div" id="listBySelectDiv">
+		<select id ="sort" name="search[sort_by]" onchange="this.form.submit()">	
 			<option value = "">Select an Order</option>
 			<option value = "ratinghigh">Rating - High</option>
 			<option value = "ratinglow">Rating - Low</option>
@@ -214,6 +139,9 @@ $(document).ready(function() {
 
 </div>
 
+
+
+<!-- Hidden search facets. For some reason, search facets within tabs would not save on form submit. So I hid a corresponding hidden search facet for each visible facet, and submitted those values -->
 <div id="realSearchFacets">
 	
 	
@@ -577,14 +505,43 @@ $(document).ready(function() {
 
 </div>
 
+
+<style>
+#programs-contents {
+	margin-left:-10px; 
+	margin-top:60px;
+}
+#noResultsOuterContainer {
+	border:1px solid #e67b5a; 
+	height:200px; 
+	background-color:white; 
+	margin-left:25px;
+}
+#noResultsInnerContainer {
+	margin:25px;
+}
+#noResultsBlurbContainer {
+	border-top:1px solid #68c2d8; 
+	height:150px; 
+	border-bottom:1px solid #68c2d8;
+}
+#noResultsBlurb {
+	text-align:center; 
+	margin-top:25px; 
+	font-family:architectsDaughterRegular;
+	font-size:3em; 
+	color: #68c2d8; 
+	line-height:1.2em;
+}
+</style>
 <div class="container">
 	<div class="row">	
-<div class="eleven columns" style="margin-top:-50px">
-<div class="contents" id="programs-contents" style="margin-left:-10px; margin-top:60px;">
-		<div style="border:1px solid #e67b5a; height:200px; background-color:white; margin-left:25px;">
-		<div style="margin:25px">
-		<div style="border-top:1px solid #68c2d8; height:150px; border-bottom:1px solid #68c2d8">
-			<p style="text-align:center; margin-top:25px; font-family:architectsDaughterRegular;font-size:3em; color: #68c2d8; line-height:1.2em">Your search has been cleared, <br />why don't you make a new one!</p>
+<div class="eleven columns" id="searchResultsContainer">
+<div class="contents" id="programs-contents">
+		<div id="noResultsOuterContainer">
+		<div id="noResultsInnerContainer">
+		<div id="noResultsBlurbContainer">
+			<p id="noResultsBlurb">Your search has been cleared, <br />why don't you make a new one!</p>
 		</div>
 		</div>
 		</div>
@@ -603,7 +560,7 @@ $(document).ready(function() {
 </div>
 </div>
 
-<body style="oveflow-x:hidden">
+<div class="tabsContainer">
 
 <div id="programSubjects" style="width:600px; height:460px; overflow-y:auto; padding-bottom:20px; color:#575758; overflow-x:hidden">
 	
@@ -1028,6 +985,160 @@ $(document).ready(function() {
 </div>
 <%end%>
 </body>
+
+
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	<% if @search.showing == "Organizations" %>
+	$("#display").val("Organizations");
+	<% else %>
+	$("#sort").append("<option value = 'pricelow'>Price - Low</option>");
+	$("#sort").append("<option value = 'pricehigh'>Price - High</option>");
+	<% end %>
+	<% if !(@search.sort_by.nil?)%>
+	$("#sort").val("<%=@search.sort_by%>");
+	<% end %>
+
+	
+	$('a.window').click(function() {
+
+                //Getting the variable's value from a link 
+		var box = $(this).attr('href');
+
+		//Fade in the Popup
+		$(box).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(box).height() + 24) / 2; 
+		var popMargLeft = ($(box).width() + 24) / 2; 
+
+		$(box).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask"></div>')
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+		$('a.country-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var box = $(this).attr('href');
+
+			//Fade in the Popup
+			$(box).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(box).height() + 24) / 2; 
+			var popMargLeft = ($(box).width() + 24) / 2; 
+
+			$(box).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask"></div>')
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+});
+
+
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('#program').smartpaginator({ totalrecords: 0, recordsperpage: 5, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
+
+	
+});
+
+</script>
+
+
+<script type="text/javascript">
+$(function() { 
+
+$('#programCountries').pullOut({
+  position: 'right',
+  top: '260px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'world',
+  color: 'lightblue'
+});	
+	
+$('#programSubjects').pullOut({
+  position: 'right',
+  top: '180px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'folder',
+  color: 'lightblue'
+});
+
+$('#lengthOfTrip').pullOut({
+  position: 'right',
+  top: '340px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'clock',
+  color: 'lightblue'
+});
+
+$('#groupSize').pullOut({
+  position: 'right',
+  top: '420px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'man',
+  color: 'lightblue'
+});
+
+$('#priceRange').pullOut({
+  position: 'right',
+  top: '500px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'piggy',
+  color: 'lightblue'
+});
+
+
+});
+</script>
+
 <script type='text/javascript'>
 
 

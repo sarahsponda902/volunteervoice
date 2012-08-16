@@ -227,18 +227,7 @@ end
   # PUT /organizations/1.json
   def update
     @organization = Organization.find(params[:id])
-    params[:organization][:description] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:description] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:organization][:headquarters_location] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:headquarters_location] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html   
-    params[:organization][:good_to_know] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:good_to_know] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:organization][:training_resources] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:training_resources] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:organization][:run_by] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:run_by] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:organization][:misson] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:misson] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:organization][:program_costs_includes] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:program_costs_includes] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:organization][:program_costs_doesnt_include] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:program_costs_doesnt_include] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:organization][:price_breakdown] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:price_breakdown] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    params[:organization][:application_process] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:organization][:application_process] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
-
       if (user_signed_in? && current_user.admin?) || (!current_organization_account.nil? && @organization.id == current_organization_account.organization_id)
         respond_to do |format|
            if @organization.update_attributes(params[:organization])
