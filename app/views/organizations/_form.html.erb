@@ -12,6 +12,10 @@ textarea {
 	text-align:center;
 	display:none;
 }
+#editingImageBlurb{
+	display:none;
+	color:red;
+}
 
 </style>
 
@@ -52,6 +56,9 @@ textarea {
     <%= f.text_area :description, :value => @organization.description %></div>
   <div class= "field">
 	<%= f.label :image %>
+	<div id="editingImageBlurb">
+		If blank, org's photo will not change.
+	</div>
 	<%= f.file_field :image, :value => @organization.image %></div>
   <div class="field">
 	Mission<br />
@@ -155,6 +162,8 @@ $(document).ready(function() {
 	var actionName = (window.location.pathname).split("/").last;
 	if (actionName == "new") {
 		$("#inviteOrgContainer").show();
+	} else {
+		$("#editingImageBlurb").show();
 	}
 });
 </script>
