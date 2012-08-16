@@ -498,7 +498,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 
 	<div class="writeReviewLabel ten columns" id="yourExperience">Your Experience <font style="font-size:0.6em;">(Minimum 200 characters)</font></div>
 	<div class="eleven columns">
-	   <%= f.text_area :body, :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @review.body; end), :class => "word_count"%>
+	   <%= f.text_area :body, :id => "theBody", :onfocus => "removeTextAreaMessage()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTextAreaMessage();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @review.body; end), :class => "word_count"%>
 	<span class="counter"></span><br />
 
 						<div id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div id="photoCountHasPhotos">You have <input id="total_count" disabled="true" id="actualPhotoCountHasPhotos" value="0"/> photos attached</div></div>
@@ -1286,15 +1286,17 @@ a.privacyLink:hover, .mailToHelp:hover{
 	//array of all organization names
 	var orgNames = <%= array_or_string_for_javascript(@orgNames.map {|s| s.gsub("'", '')}) %>;
 
-	//
+	//list of all organization names for "org name" autocomplete at top
 	var availableTags = [
 		<% Organization.all.each do |f| %>
 		"<%=f.name%>",
 		<% end %>
 		];
+	//initializing autocomplete on "tags" div
 	$(function() {
 		$( "#tags" ).autocomplete({
 			source: availableTags,
+			//on selecting a autocomplete option, append prog names to "Select a Program" dropdown
 			select: function(event, ui) {
 				for (i = 0; i < orgNames.length; i++) {
 					if (orgNames[i] == ui.item.value) {
@@ -1305,20 +1307,26 @@ a.privacyLink:hover, .mailToHelp:hover{
 		});
 	});
 
+
 	$(document).ready(function() {
+		//if org name is already defined, set "tags" value to org name
 		<% if !(@review.organization_id.nil?)%>
 			$("#tags").val(("<%=Organization.find(@review.organization_id).name.to_s%>"));
 			<% Organization.find(@review.organization_id).programs.each do |f| %>
 			$("#review_program_id").append("<option value="+"<%=f.id%>"+">"+"<%=f.name%>"+"</option>");
 			<%end%>
 		<%end%>
+		//if prog name is already defined, set "tags" value to prog name
 		<% if !(@review.program_id.nil?) %>
 			$("#review_program_id").val("<%=@review.program_id%>");
 		<% end %>
+		//if review time frame is already defined, set "tags" value to time frame name
 		<% if !(@review.time_frame.nil?) %>
 			$("#review_time_frame").val("<%=@review.time_frame%>");
 		<% end %>
 
+	//each var represents an uploaded photo. ie. "one" represents the photo that is uploaded by the user clicking the first upload button that appears in the popup
+	//each var is set to zero on document ready. when it is set to 1, change the photo counter to add one
 	var	ones = 0;
 	var	twos = 0;
 	var	threes = 0;
@@ -1330,10 +1338,15 @@ a.privacyLink:hover, .mailToHelp:hover{
 	var	nines = 0;
 	var	tens = 0;
 	var	count = 0;
+	
+	//
+	
+	//hide the editImage div, and the checkmark images
 		$('#editImage').hide();
 		$('#checkBefore').hide();
 		$('#checkTerms').hide();
 
+	//initialize the word counter for the text area
 		$('.word_count').each(function(){
 			var length = $(this).val().length;
 			$(this).parent().find('.counter').html( length + ' characters');
@@ -1344,6 +1357,7 @@ a.privacyLink:hover, .mailToHelp:hover{
 		});
 
 
+		//jQuery for the terms of conditions popup
 		$('a.terms-window').click(function() {
 
 	                //Getting the variable's value from a link 
@@ -1377,6 +1391,7 @@ a.privacyLink:hover, .mailToHelp:hover{
 		});
 
 
+		//jQuery for the question mark popup
 		$('a.qMark-window').click(function() {
 
 	                //Getting the variable's value from a link 
@@ -1409,6 +1424,8 @@ a.privacyLink:hover, .mailToHelp:hover{
 		return false;
 		});
 
+
+		//jQuery for the "show all companies" popup
 			$('a.allCompanies-window').click(function() {
 
 		                //Getting the variable's value from a link 
@@ -1441,6 +1458,8 @@ a.privacyLink:hover, .mailToHelp:hover{
 			return false;
 			});
 
+
+			//jQuery for the photo upload popup
 				$('a.addPhotos-window').click(function() {
 
 			                //Getting the variable's value from a link 
@@ -1472,67 +1491,55 @@ a.privacyLink:hover, .mailToHelp:hover{
 				}); 
 				return false;
 				});
+				
+
+				//set all the vars representing the stars to "notClicked" on document ready
+					//when the star set is clicked, it's var will be set to clicked
+					//this is for the function that determines whether all form fields have been filled out
+				var preparation = "notClicked";
+				var support = "notClicked";
+				var impact = "notClicked";
+				var overall = "notClicked";
+				var structure = "notClicked";
 
 		});
 
-		var preparation = "notClicked";
-		var support = "notClicked";
-		var impact = "notClicked";
-		var overall = "notClicked";
-		var structure = "notClicked";
 
-
-		function nameFile() {
-			var str="";
-			str= $("#review_photo").val();
-			document.getElementById('filename').value = str.substring(12, str.length);
-		}
-
+		
+		//close the "add photos popup" when "done" is clicked
 		function closePop() {
 			$('#mask').fadeOut(300); 
 			$('#mask').remove();
 			$('.addPhotos-popup').fadeOut(300);
 		}
 
-		function clickReviewPhoto() {
-			$("#review_photo").click();
-		}
 
-
+		//toggle visibility of "volunteered before" checkmark image when checkbox is clicked
 		function beforeCheck() {
 			$('#checkBefore').toggle();
 		}
 
+		//toggle visibility of "terms" checkmark image when checkbox is clicked
 		function termsCheck() {
 			$('#checkTerms').toggle();
 		}
 
-		function removeTwoHundred() {
+		//remove the message in the text area when clicked
+		function removeTextAreaMessage() {
 			if ($("#theBody").value == "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not." ) {
 				$("#theBody").value = "";
 		    }
 		}
 
-		function backToTwoHundred() {
+		//add the message back to the text area if textarea is blank onblur
+		function backToTextAreaMessage() {
 			if ($("#theBody").attr("value") == "" ) {
 				$("#theBody").attr("value", "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.");
 		    }
 		}
 
-		function removePut() {
-			if ($("#put").attr("value") == "  Put the organization's name here" ) {
-				$("#put").attr("value", "");
-		    }
-		}
 
-		function backToPut() {
-			if ($("#put").attr("value") == "" ) {
-				$("#put").attr("value", "  Put the organization's name here");
-		    }
-		}
-
-
-
+		//set vars representing star sets to "clicked" when clicked
 		function setClicked(theVar) {
 			if (theVar == 'preparation') {
 				preparation = "clicked";
@@ -1551,7 +1558,7 @@ a.privacyLink:hover, .mailToHelp:hover{
 			}
 		}
 
-
+		//make sure the value inside the autocomplete box is an actual org name
 		function checkValueAutocomplete() {
 			if (jQuery.inArray($("#tags").attr("value"), availableTags) < 0)
 			{
@@ -1559,7 +1566,7 @@ a.privacyLink:hover, .mailToHelp:hover{
 			} 
 		}
 
-
+		//check to see if all fields have been filled out. If so, show submit button
 		function checkFields(){
 			if(($("#tags").attr("value") != " Start typing...")
 			    && ($("#tags").attr("value") !="")
@@ -1583,11 +1590,7 @@ a.privacyLink:hover, .mailToHelp:hover{
 
 
 
-		function showRemove() {
-			$("#removeThePhoto").toggle();
-		}
-
-
+		//change count of photos when a new photo is uploaded or discarded
 		function changeCount() {
 
 			if ($("#one").attr("value") != "") {
