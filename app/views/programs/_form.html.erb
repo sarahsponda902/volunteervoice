@@ -428,8 +428,9 @@ a.createInput:hover {
 $(document).ready(function(){
 	
 	//set the organization name if necessary and applicable
+	<% if user_signed_in? && current_user.admin? %>
 	$("#tags").val("<%=Organization.find(@program.organization_id).name%>");
-	
+	<% end %>
 	
 	//when "+ add cost/length" is clicked, create 2 new input fields:
 		//one for the new length of time, one for the new total cost

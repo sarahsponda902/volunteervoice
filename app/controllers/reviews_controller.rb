@@ -75,6 +75,19 @@ include ActionView::Helpers::TextHelper
        if user_signed_in?
        @review.organization_id = params[:organization_id]
        @review.program_id = params[:program_id]
+       
+        orgs_array = Organization.all.map { |org| org.name.to_s } 
+
+        @progs = []
+        @orgNames = []
+        @progNames = []
+        Program.all.each do |f|
+          @progs << f.id
+          @orgNames << Organization.find(f.organization_id).name
+          @progNames << f.name 
+        end 
+
+       
        respond_to do |format|
          format.html # new.html.erb
          format.json { render :json => @review }

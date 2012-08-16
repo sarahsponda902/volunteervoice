@@ -9,1036 +9,54 @@
 <script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
 <script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.rating.js' type="text/javascript" language="javascript"></script>
 <script src='http://jquery-fyneworks.googlecode.com/svn/trunk/documentation/documentation.js' type="text/javascript"></script>
-<% orgs_array = Organization.all.map { |org| org.name.to_s } %>
-
-<% progs = []%>
-<% orgNames = []%>
-<% progNames = []%>
-<% Program.all.each do |f|%>
-<% progs << f.id%>
-<% orgNames << Organization.find(f.organization_id).name%>
-<% progNames << f.name %>
-<% end %>
-
-<script>
-
-var allProgs = <%= array_or_string_for_javascript(progs) %>;
-var allProgNames = <%= array_or_string_for_javascript(progNames.map {|s| s.gsub("'", '')}) %>;
-var orgNames = <%= array_or_string_for_javascript(orgNames.map {|s| s.gsub("'", '')}) %>;
-
-
-var availableTags = [
-	<% Organization.all.each do |f| %>
-	"<%=f.name%>",
-	<% end %>
-	];
-$(function() {
-	$( "#tags" ).autocomplete({
-		source: availableTags,
-		select: function(event, ui) {
-			for (i = 0; i < orgNames.length; i++) {
-				if (orgNames[i] == ui.item.value) {
-					$("#review_program_id").append("<option value='"+allProgs[i]+"'>"+allProgNames[i]+"</option>");
-				}
-			}
-		}
-	});
-});
-
-$(document).ready(function() {
-	<% if !(@review.organization_id.nil?)%>
-		$("#tags").val(("<%=Organization.find(@review.organization_id).name.to_s%>"));
-		<% Organization.find(@review.organization_id).programs.each do |f| %>
-		$("#review_program_id").append("<option value="+"<%=f.id%>"+">"+"<%=f.name%>"+"</option>");
-		<%end%>
-	<%end%>
-	<% if !(@review.program_id.nil?) %>
-		$("#review_program_id").val("<%=@review.program_id%>");
-	<% end %>
-	<% if !(@review.time_frame.nil?) %>
-		$("#review_time_frame").val("<%=@review.time_frame%>");
-	<% end %>
-	
-var	ones = 0;
-var	twos = 0;
-var	threes = 0;
-var	fours = 0;
-var	fives = 0;
-var	sixs = 0;
-var	sevens = 0;
-var	eights = 0;
-var	nines = 0;
-var	tens = 0;
-var	count = 0;
-	$('#editImage').hide();
-	$('#checkBefore').hide();
-	$('#checkTerms').hide();
-	
-	$('.word_count').each(function(){
-		var length = $(this).val().length;
-		$(this).parent().find('.counter').html( length + ' characters');
-		$(this).keyup(function(){
-			var new_length = $(this).val().length;
-			$(this).parent().find('.counter').html( new_length + ' characters');
-		});
-	});
-	
-	
-	$('a.terms-window').click(function() {
-
-                //Getting the variable's value from a link 
-		var termsBox = $(this).attr('href');
-
-		//Fade in the Popup
-		$(termsBox).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(termsBox).height() + 24) / 2; 
-		var popMargLeft = ($(termsBox).width() + 24) / 2; 
-
-		$(termsBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .terms-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-	
-	$('a.qMark-window').click(function() {
-
-                //Getting the variable's value from a link 
-		var qMarkBox = $(this).attr('href');
-
-		//Fade in the Popup
-		$(qMarkBox).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(qMarkBox).height() + 24) / 2; 
-		var popMargLeft = ($(qMarkBox).width() + 24) / 2; 
-
-		$(qMarkBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .qMark-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-		$('a.allCompanies-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var allCompaniesBox = $(this).attr('href');
-
-			//Fade in the Popup
-			$(allCompaniesBox).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(allCompaniesBox).height() + 24) / 2; 
-			var popMargLeft = ($(allCompaniesBox).width() + 24) / 2; 
-
-			$(allCompaniesBox).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .allCompanies-popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-		
-			$('a.addPhotos-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var addPhotosBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(addPhotosBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(addPhotosBox).height() + 24) / 2; 
-				var popMargLeft = ($(addPhotosBox).width() + 24) / 2; 
-
-				$(addPhotosBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-		
-	});
-
-	var preparation = "notClicked";
-	var support = "notClicked";
-	var impact = "notClicked";
-	var overall = "notClicked";
-	var structure = "notClicked";
-
-
-	function nameFile() {
-		var str="";
-		str= $("#review_photo").val();
-		document.getElementById('filename').value = str.substring(12, str.length);
-	}
-
-	function closePop() {
-		$('#mask').fadeOut(300); 
-		$('#mask').remove();
-		$('.addPhotos-popup').fadeOut(300);
-	}
-
-	function clickReviewPhoto() {
-		$("#review_photo").click();
-	}
-
-
-	function beforeCheck() {
-		$('#checkBefore').toggle();
-	}
-
-	function termsCheck() {
-		$('#checkTerms').toggle();
-	}
-
-	function removeTwoHundred() {
-		if ($("#theBody").value == "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not." ) {
-			$("#theBody").value = "";
-	    }
-	}
-
-	function backToTwoHundred() {
-		if ($("#theBody").attr("value") == "" ) {
-			$("#theBody").attr("value", "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.");
-	    }
-	}
-
-	function removePut() {
-		if ($("#put").attr("value") == "  Put the organization's name here" ) {
-			$("#put").attr("value", "");
-	    }
-	}
-
-	function backToPut() {
-		if ($("#put").attr("value") == "" ) {
-			$("#put").attr("value", "  Put the organization's name here");
-	    }
-	}
 
 
 
-	function setClicked(theVar) {
-		if (theVar == 'preparation') {
-			preparation = "clicked";
-		}
-		if (theVar == 'support') {
-			support = "clicked";
-		}
-		if (theVar == 'impact') {
-			impact = "clicked";
-		}
-		if (theVar == 'structure') {
-			structure = "clicked";
-		}
-		if (theVar == 'overall') {
-			overall = "clicked";
-		}
-	}
-	
-
-	function checkValueAutocomplete() {
-		if (jQuery.inArray($("#tags").attr("value"), availableTags) < 0)
-		{
-			$("#tags").val("");
-		} 
-	}
+<style>
 
 
-	function checkFields(){
-		if(($("#tags").attr("value") != " Start typing...")
-		    && ($("#tags").attr("value") !="")
-			&& ($("#review_time_frame").attr("value") != "Select a Time Frame")
-			&& ($("#review_program_id").attr("value") != "Select a Program")
-			&& ($("#review_time_frame").attr("value") != "")
-			&& ($("#review_program_id").attr("value") != "")
-			&& ($("#theBody").attr("value").length >= 200)
-			&& ($("#terms").attr("value"))
-			&& preparation == "clicked"
-			&& support == "clicked"
-			&& impact == "clicked"
-			&& structure == "clicked"
-			&& overall == "clicked")
-			{
-				$("#submitButtonDiv").show();
-				$("#submitButtonHidden").hide();
+ul.circle { list-style-type: circle; }
+a.forgotPassword:link{color:white}
+a.forgotPassword:active{color:white}
+a.forgotPassword:visited{color:white}
+a.forgotPassword:hover{color:#e67b5a}
 
-			}
-	}
-
-
-
-	function showRemove() {
-		$("#removeThePhoto").toggle();
-	}
-	
-	
-	function changeCount() {
-
-		if ($("#one").attr("value") != "") {
-			ones = 1;
-		} else {
-			ones = 0;
-		}
-
-		if ($("#two").attr("value") != "") {
-			twos = 1;
-		} else {
-			twos = 0;
-		}
-
-		if ($("#three").attr("value") != "") {
-			threes = 1;
-		} else {
-			threes = 0;
-		}
-	
-		if ($("#four").attr("value") != "") {
-			fours = 1;
-		} else {
-			fours = 0;
-		}
-	
-		if ($("#five").attr("value") != "") {
-			fives = 1;
-		} else {
-			fives = 0;
-		}
-	
-		if ($("#six").attr("value") != "") {
-			sixs = 1;
-		} else {
-			sixs = 0;
-		}
-
-		if ($("#seven").attr("value") != "") {
-			sevens = 1;
-		} else {
-			sevens = 0;
-		}
-
-		if ($("#eight").attr("value") != "") {
-			eights = 1;
-		} else {
-			eights = 0;
-		}
-	
-		if ($("#nine").attr("value") != "") {
-			nines = 1;
-		} else {
-			nines = 0;
-		}
-	
-		if ($("#ten").attr("value") != "") {
-			tens = 1;
-		} else {
-			tens = 0;
-		}
-
-	count = ones + twos + threes + fours + fives + sixs + sevens + eights + nines + tens;
-	$("#total_count").attr("value", count);
-	
-	if (count > 0) {
-		$("#editImage").show();
-		$("#addImage").hide();
-	} else {
-		$("#editImage").hide();
-		$("#addImage").show();
-	}
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
 }
-	
-	
-	</script>
 
-
-
-
-
-
-
-
-</head>
-<% flash.each do |key, value| %>
-  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
-	<% value.each do |f|%>
-		* <%=f%><br />
-	<% end %>
-  </div>
-<% end %>
-
-<body>
-<div class="container" style="color:#575758">
-	<div class="row" style="margin-top:50px;margin-bottom:20px" align="center">
-<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/shareVoice.png"%>
-</div>
-<br />
-
-
-<% organizations_array = Organization.all.map { |org| [org.name, org.id] } %>
-<% if @review.organization_id.nil?%>
-<% programs_array = Program.all.map { |p| [p.name, p.id]}%>
-<% else %>
-<% programs_array = Program.where(:organization_id => @review.organization_id).map { |p| [p.name, p.id]}%>
-<% end %>
-<%= form_for @review do |f| %>
-	<% if params[:user_id].nil? %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<% else %>
-	<%= f.hidden_field :user_id, :value => params[:user_id] %>
-	<% end %>
-	<% if !(params[:created_at].nil?)%>
-	<%= f.hidden_field :created_at, :value => params[:created_at]%>
-	<% end %>
-	<% if !(params[:updated_at].nil?)%>
-	<%= f.hidden_field :updated_at, :value => params[:updated_at]%>
-	<% end %>
-	
-	<% if !(params[:preparation].nil?)%>
-	<%= f.hidden_field :preparation, :value => params[:preparation]%>
-	<% end %>
-	<% if !(params[:support].nil?)%>
-	<%= f.hidden_field :support, :value => params[:support]%>
-	<% end %>
-	<% if !(params[:impact].nil?)%>
-	<%= f.hidden_field :impact, :value => params[:impact]%>
-	<% end %>
-	<% if !(params[:structure].nil?)%>
-	<%= f.hidden_field :structure, :value => params[:structure]%>
-	<% end %>
-	<% if !(params[:overall].nil?)%>
-	<%= f.hidden_field :overall, :value => params[:overall]%>
-	<% end %>
-
-
-
-	<div class="row" >
-		<div class="six columns" style="margin-top:20px;">
-	<section class="selectCompany"><!--select a company box and blurb-->
-		<section class="selectCompanyBox"><!-- select a company drop-down box-->
-		<label for="review_Select a Company" style="font-size:2em; margin-left:3%">Select a Company:</label>
-	<div style="margin-top: -30px; height:30px;">
-				       
-
-					
-						<div width="200px">
-						<%= f.text_field :organization_name, :id =>"tags", :style => "float:right; margin-right:10px; margin-top:5px; width:200px; height:20px; font-style:italic", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onblur => "checkValueAutocomplete()"%></div>
-				
-
-				</div>
-				<div style="margin-left:55%; margin-top:3px"><a href="#allCompanies-box" id="allCompaniesShow" class="allCompanies-window">List All</a> | <a href="/new_reviews/new" id="reviewNew">Review New Company</a>
-				</div>
-			</section><!--end selectCompanyBox-->
-		</div>
-		
-	
-		
-
-
-	<div class="six columns" style=" margin-top:5px; font-family:ArchitectsDaughterRegular; font-size:0.85em; color:#62acbd;">
-
-<article class="selectCompanyBlurb"><!-- select a comany blurb-->
-		<p style="padding-left:1%; line-height:1.7em">If the name of your organization isn’t here, we don’t know about them yet. Click ‘Review New Company’, and type their name in the box that appears. We’d really appreciate it. </p>
-    </article><!--end selectCompanyBlurb-->
-
-	</section><!--end selectCompany-->
-
-	</div><!--end right columns-->
-
-	</div><!--end row two-->
-
-
-<div class="row"><!--row three-->
-
-	<div class = "six columns" style="margin-top:75px; padding-right:25px; border-right:1px solid #e67b5a">
-		<section class="writeDetails"><!-- The Details section of write a review page-->
-		<div align="center" style="font-family:ArchitectsDaughterRegular; font-size:2.5em; color:#62acbd; margin-bottom: 30px;"> The Details </div>
-	<section class="writeReviewContent">
-		<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:18px">How long did you work with them?</div>
-		<div class="select-div three columns" style="position:absolute; left:40%;top:75px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-
-			<select id="review_time_frame" name="review[time_frame]" style="position:absolute; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="checkFields()"><option value=""> Select a Time Frame</option>
-			<option value="1 week or less">1 week or less</option>
-			<option value="2-4 weeks">2-4 weeks</option>
-			<option value="5-8 weeks">5-8 weeks</option>
-			<option value="9-12 weeks">9-12 weeks</option>
-			<option value="3-6 months">3-6 months</option>
-			<option value="6-12 months">6-12 months</option>
-			<option value="1-2 years">1-2 years</option>
-			<option value="2+ years">2+ years</option>
-			
-			</select>
-</div>
-
-
-
-
-	<div class="three columns" style="font-size:1.5em; line-height:1.25em; width:40%; margin-left:11%; margin-top:40px">Which Program?</div>
-	<div class="select-div three columns" style="position:absolute; left:40%; top:150px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
-	<select id="review_program_id"  onchange="checkFields()" name="review[program_id]" style="position:absolute; left:-5px; border:1px solid #575758; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; border:1px solid #575758; background-color:white;" value="<%=@review.program_id%>"><option value="">Select a Program</option></select>
-		</div>
-
-
-	<div class="ten columns" style="font-size:1.5em; line-height:1.25em; width:80%; margin-left:11%; margin-top:42px">Your Experience <font style="font-size:0.6em;">(Minimum 200 characters)</font></div>
-	<div class="eleven columns">
-	   <%= f.text_area :body, :style => "margin-left:10px;width:400px; font-style:italic; height:150px; resize:none; color:gray; border: 1px solid #575758", :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @review.body; end), :class => "word_count"%>
-	<span style="float:right" class="counter"></span><br />
-
-						<div style="margin-top:10px; margin-bottom:30px; margin-left:10px" id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:120px">You have <input id="total_count" disabled="true" style="width:17px; font-family:architectsDaughterRegular; height:30px; font-size:1.3em; background:none; border:none;" value="0"/> photos attached</div></div>
-						
-						<div style="margin-top:10px; margin-bottom:30px; margin-left:10px" id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/addPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div style="margin-top:-28px; margin-left:140px">No photos attached</div></div>
-	
-		<image style="position:absolute; top:70.7%; height:23px; left:7px" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
-		<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-left:10px" onclick="$(beforeCheck())">
-		<%= f.check_box :before, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:25px; width:25px;", :id => "before"%>
-		<label style=" margin-left:8%; margin-top:-29px" for="review_I have volunteered with this company before">I have volunteered with this company before</label><br /><br /><br /></div>
-
-
-		<image style="position:absolute; height:23px; top:81.2%; left:7px" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
-			<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; height:25px; margin-top:-45px;margin-left:10px" onclick="$(termsCheck());">
-		<%= f.check_box :terms, :onchange => "checkFields()", :style => "display:block; opacity:0; filter: alpha(opacity=0); height:25px; width:25px", :id => "terms"%>
-		<label style="margin-left:8%; margin-top:-25px" for="review_I have read the terms of use">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label></div><br /><br />
-
-		
-	</div>
-	</section><!--end writeReviewContent-->
-
-
-	</section><!--end writeDetails-->
-	</div><!--end left columns-->
-
-	<div class="six columns" style="float:right; margin-top:-568px">
-		<section class="writeNumbers"><!-- Numbers section of write a review page-->
-		<div align="center" style="font-family:ArchitectsDaughterRegular; font-size:2.5em; color:#62acbd; margin-bottom: 30px;"> The Numbers </div>
-		<section class="writeReviewContent"><!-- overall styling the same for both The Details column and The Numbers column-->
-		<div style="text-align:center; font-size:1.5em; line-height:2.5em;">
-	Preparation/Orientation
-	<br />
-	
-
-	<div style="margin-left:27%" onclick="setClicked('preparation'); checkFields();">
-		<% if !(params[:preparation].nil?)%>
-		<%= params[:preparation]%>
-		<% else %>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "0.5"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "1"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "1.5"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "2"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "2.5"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "3"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "3.5"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "4"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "4.5"/>
-	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "5"/>
-	<% end %>
-	</div>
-
-	<br />
-
-
-	Support
-	<br />
-
-	<div style="margin-left:27%" onclick="setClicked('support'); checkFields();">
-		<% if !(params[:support].nil?)%>
-		<%= params[:support]%>
-		<% else %>
-		
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "0.5"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "1"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "1.5"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "2"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "2.5"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "3"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "3.5"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "4"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "4.5"/>
-	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "5"/>
-	<% end %>
-	</div>
-	<br />
-
-
-	Project Impact
-	<br />
-
-	<div style="margin-left:27%" onclick="setClicked('impact'); checkFields();">
-		<% if !(params[:impact].nil?)%>
-		<%= params[:impact]%>
-		<% else %>
-		
-		
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "0.5"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "1"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "1.5"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "2"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "2.5"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "3"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "3.5"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "4"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "4.5"/>
-	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "5"/>
-	<% end %>
-	</div>
-	<br />
-
-
-	
-
-
-	Project Structure/Sustainability
-	<br />
-
-	<div style="margin-left:27%" onclick="setClicked('structure'); checkFields();">
-		<% if !(params[:structure].nil?)%>
-		<%= params[:structure]%>
-		<% else %>
-		
-		
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "0.5"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "1"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "1.5"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "2"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "2.5"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "3"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "3.5"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "4"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "4.5"/>
-		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "5"/>
-		
-		<%end%>
-		</div>
-<br />
-
-	
-
-	Overall?
-	<br />
-
-	<div style="margin-left:27%" onclick="setClicked('overall'); checkFields();">
-		<% if !(params[:overall].nil?)%>
-		<%= params[:overall]%>
-		<% else %>
-		
-		
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "0.5"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "1"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "1.5"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "2"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "2.5"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "3"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "3.5"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "4"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "4.5"/>
-		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "5"/>
-		
-		<% end %>
-		</div>
-
-
-	</section><!--end writeReviewContent-->
-
-
-	</section><!--end writeNumbers-->
-
-	</div><!--end right columns-->
-	</div><!--end row three-->
-
-
-
-
-	<div class="row"><!--row four-->
-		<div class="twelve columns" align="center" style="margin-top:20px;">
-
-	<section class="reviewSubmit"><!-- submit review button and FAQ link-->
-
-
-		<div id="submitButtonHidden" style="text-align:center; margin-top:30px; color:#e67b5a"> <i>You cannot submit your review until<br /> all form fields are filled out <br />(except uploading photos, that's optional)</i></div>
-		<div style="text-align:center; margin-top:30px; display:none" id="submitButtonDiv"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png"%></div>
-
-		<div style="margin-left:60%; margin-top:-60px">
-		<article class="formFAQ"><!-- FAQ information/link-->
-			 <a href="#qMark-box" class="qMark-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/clickLearnForm.png" onmousedown = "this.className = 'shadowed'" onmouseup = "this.className = 'nothing'"></a>
-			</article><!--end formFAQ-->
-		</div>
-		</section><!--end reviewSubmit-->
-		<br />
-	
-		
-		<% if current_user.admin? %>
-		<div class = "field" style="height:40px;">
-		<%= f.check_box :show %>	Show on Homepage? 
-		</div>
-		<% end %>
-		
-
-		<div id="addPhotos-box" class="addPhotos-popup" style="text-align:left">
-			<a href="#" class="close"><div class="close_image" onclick="closePop(); changeCount()"></div></a>
-			<p style="font-size:1.6em; text-align:center;margin-top:15px; margin-bottom:20px">Add Photos <font style="font-size:.5em; font-family:architectsDaughterRegular">(max: 512KB)</font></p>
-			<div class="overflow" style="height:250px; overflow:auto">
-		<%= f.file_field :photo, :id => "one" %><a onclick="$('#one').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo2, :id => "two"  %><a onclick="$('#two').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo3, :id => "three"  %><a onclick="$('#three').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo4, :id => "four"  %><a onclick="$('#four').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo5, :id => "five"  %><a onclick="$('#five').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo6, :id => "six"  %><a onclick="$('#six').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo7, :id => "seven"  %><a onclick="$('#seven').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo8, :id => "eight"  %><a onclick="$('#eight').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo9, :id => "nine"  %><a onclick="$('#nine').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-		<%= f.file_field :photo10, :id => "ten"  %><a onclick="$('#ten').attr('value', '')" style="cursor:pointer">Remove</a><br /><br />
-
-		<div align = "center" style="margin-top:30px">
-		<input type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/done.png" onclick="closePop(); changeCount(); return false" class="btn_close" onmousedown="this.className = 'shadowed'" onmouseup ="this.className = 'btn_close'">
-		</div>
-		</div>
-		</div>		
-
-<% end %>
-
-
-<div id="qMark-box" class="qMark-popup" style="text-align:left">
-<a href="#" class="close"><div class="close_image"></div></a>
-<p style="font-size:1.7em; text-align:center; color:#6aaeba"><u>Help! Write A Review Form</u></p>
-	<div class="overflow">
-<br /><p style="font-size:1.3em; font-weight:600">1. Select a Company</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this box work?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>This is a smart-filter box, so as you type in the name of the Volunteer Organization that you worked for, it will filter the names for you. </li>
-<li>Once you see the name of the Organization you are looking for, click on that name in the list to fill this box.</li>
-<li>This box only works if you SPELL correctly! So make sure to check your spelling. If you spell the name of your organization incorrectly, it will not show up in the list.</li>
-<li>This box is required information, and you cannot submit your form unless it is completed.</li>
-</div>
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What if I enter the correct name of my Organization and it's not listed?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>If the organization that you volunteered with is not registered on the site, then you need to select the "Review a New Company" option located below the smart-list in order to submit your review. </li>
-<li>Clicking the "Review a New Company" option will bring you to another window where you can type in the name of the organization that you worked with. (Again, please check your spelling so that we can easily find this company and make a profile for them).</li>
-</div>
-
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> I accidentally clicked on the wrong Organization, how do I change the name?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Just click and delete the Organization name to clear the box and start over. You can do this at any point while writing your review.</li>
-
-</div>
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> I clicked "Review A New Company" without meaning to. How do I return to the original page?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Click the "Cancel" text-link at the bottom, right of the second box to return to the original page.</li>
-
-</div>
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> I want to review an organization I worked with, but am not totally sure of the name or if I am spelling it correctly.  What should I do?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>If you are unsure of the name of the organization that you worked with, you can click the "Show All Companies" text-link below the "Review New Company" link and a pop-up will appear listing all the countries. From there you can find the organization you are thinking of, and proceed to type it in the smart-filter box. </li>
-<li>This form will not save any information that you write on it, so don't write out your long, detailed review until you're going to submit it. Or, save that written information in a safe place on your own computer or email account.</li>
-</div>
-
-
-
-
-<br /><p style="font-size:1.3em; font-weight:600">2. How long did you work with them?</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this box work?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Click the arrow on the right-hand side of this box to view the possible time-periods. Click to select whichever time period best describes the length of your trip in that country, and specifically the time period that best describes how long you spent working with an organization. </li>
-<li><u>Example:</u> If you traveled in China for 1 year but only worked with an organization for three months, then please select the time category for "three months" time.</li>
-
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Are these the only time periods to choose from? Do I have to select one of these?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Yes, and yes. This is the most simple, accurate way to collect this information.</li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Why do I have to say how long I worked with the organization?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>We want to encourage authenticity and accuracy in the reviews on this site. The point of writing these reviews is to help prospective volunteers research and decide on organizations to volunteer with, so the authenticity of these reviews is important. </li>
-<li>This is very useful information to have for prospective volunteers. Someone looking to volunteer for six months will likely want to pay the most attention to reviews from people that volunteered for the same time period.  Someone looking to volunteer for two weeks will similarly want to pay attention to the reviews from people in that same period.</li>
-
-</div>
-
-
-
-
-<br /><p style="font-size:1.3em; font-weight:600">3. Which Programs?</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this box work?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>This box automatically updates with available options, one you have selected which organization you are going to be reviewing. </li>
-<li>Cilick the arrow on the right side of this box to activate the list of programs. Select the program name that best described what you did and where. This list is composed of all of the CURRENT programs that an organization offers. If your program is not there, and you volunteered with them a while ago, then unfortunately you won't be able to write a review. This feature is designed to keep all reviews about organizations up to date and relevant.</li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> I don't see the program that I did. What do I do?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>If your program is not there and you volunteered with the organization over a year ago, then it is likely that the program you participated in is no longer offered, and you won't be able to review it. This feature is designed to keep all reviews about organizations up to date and relevant.</li>
-<li>If your program is not there and you volunteered within the last year, then we might have messed up! Please contact us and let us know your organization and program names, and we will get back to you about whether that program is no longer offered, or if we made the humongous mistake of leaving it out.</li>
-
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Why can't I review a program that is no longer offered?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>A central component of this site's value is founded in the idea of "information". But not just any information, a lot of accurate, organized, relevant, helpful information from multiple sources. Reviews are a form of this information, and it's very important that we keep reviews as accurate, relevant and helpful as possible - which <em>means</em>, not letting reviews for out-of-commission or unconfirmed programs affect the profile of a volunteer organization. </li>
-<li>We would still love to hear your story, and there are other ways to share. WE are currently in the midst of developing a User blog post/travel essay system. Drop us a line, send us a write up, or pester us with complaints about your stifled review. Whatever suits your fancy. There are plenty of ways to share your voice.</li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u>Why do I have to specify which program I did?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>So many reasons! First of all, to make sure that you're reviewing a presently operating program and to keep the site information relevant.</li>
-<li>Second of all, to be useful to other users who are checking out your review and looking up organizations.  Reading reviews about organizations themselves could be helpful in many ways, but an organization's programs can vary a lot in their quality and scope for different reasons. Being specific helps users in finding their ideal program.</li>
-
-</div>
-
-
-
-
-
-<br /><p style="font-size:1.3em; font-weight:600">4. Your Review</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this box work?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Simply click in teh box and start typing. THis is the most important part of your review -- where you get to speak your mind! Please include here all the information and details that you care to. The more that you share, the more that you help.</li>
-<li>There is a minimum of 200 characters in this box, a requirement that must be met in order to submit your review to the site.</li>
-
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Why is there a minimum of 200 characters?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>The character minimum is designed to encourage users to share at LEAST one or two sentences of detail about their experience.  Again, we are just trying to encourage accuracy, authenticity, and helpful information flow. You don't have to write a whole essay, but hopefully you can think of at least a few sentences to describe your volunteer experience!</li>
-
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> I can't type anymore characters into the text box. What's going on?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>This box does have a maximum of 10,000 characters, so you've reached the limit. We're so happy that you have so much to say about your experience! But for the sake of space, try to figure out a way to say everything that you want to in 10,000 characters. Thank you! </li>
-
-</div>
-
-
-
-
-
-<br /><p style="font-size:1.3em; font-weight:600">5. I have volunteered with this company before</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this check box work?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Simply click the box to the left of this statement to fill the box with your check of affirmation.</li>
-<li>Checking this box is required to submit your review to the site.</li>
-
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What's the point of this?'</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Authenticity! And to filter out dishonest reviews or spammers. We just want reviewers to own and confirm this statement to try and keep the reviews on this site as real as possible. </li>
-
-</div>
-
-
-
-
-
-<br /><p style="font-size:1.3em; font-weight:600">6. I have read and accept the Terms of Use</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this check box work?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Simply click the box to the left of this statement to fill the box with your check of affirmation. </li>
-<li>Checking this box is required to submit your review to the site.</li>
-
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What's the point of this?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>By clicking this box you are agreeing to abide by the rules/responsibilities laid out in our "Terms of Use". Basically, you are agreeing to be honest and responsible for what you say here, and not to write lewd or fake reviews for organizations, ESPECIALLY if you didn't actually volunteer with them. Again, just trying to keep it real. </li>
-
-</div>
-
-
-
-
-<br /><p style="font-size:1.3em; font-weight:600">7. Upload a Photo</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this work?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Click the "Upload" button. This will trigger a pop-up that allows you to browse your computer for image files. Click the image file you want to upload, make sure that the correct file name is highlighted, and then click "Select".
-	<li style="margin-left:10px">NOTE: You can only upload photos that are located on your computer.</li> </li>
-<li>Clicking "Select" will enter the image file name into the "Upload" box. And you're done!</li>
-
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> I'm trying to upload a photo and it's not working. What's going on?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Either the photo is not saved in the correct format (.jpg, .jpeg, .png, or .gif) or our upload application is malfunctioning. Send us the image you are trying to upload, and a description of what happens in your attempt to upload it to:help@volunteervoice.org, and we will figure out the problem.</li>
-<li>We currently only have space for one photo per review, though we are looking to expand that number very soon. If you've already uploaded a photo, you can't upload another because we haven't built the space for it. Yet!</li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Do I have to upload a photo?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Nope. This is the only part of the review form that is optional. You do not need to upload a photo in order to submit your review. </li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> I uploaded a photo that I didn't mean to/don't want anymore. Can I remove it?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Yes, just click the "remove" link to the right of the name of the image.</li>
-<li>Please note that you cannot upload new photos after submitting your review, so make sure to get the most important and helpful one on here before you submit your review.</li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Can I upload photos of anything I want?!</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>No! Please don't upload photos of you and your friends from home hanging out...at home. These photos are targeted at helping give users an idea about your VOLUNTEER TRIP, so please stick to photos that were taken on your trip.</li>
-<li>Pictures of you and other volunteers, or your sleeping quarters, or your host family, or anything on your trip is a great idea. Markets, busses, food, anything in the "volunteer trip" category is perfect.</li>
-<li><u>NOTE:</u> Please bear in mind that inappropriate or non-trip related photos may cause your review to be "flagged" by other Users, and result in the removal of your review. So choose your photos wisely!</li>
-
-</div>
-
-
-
-
-
-<br /><p style="font-size:1.3em; font-weight:600">8. Star-rating</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> How does this work?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Just use your mouse to click and fill in the stars for whatever rating you see fit. </li>
-<li>At least 1/2 star is required for each category in order to submit your review to the site.</li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> What do the different star ratings mean?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>There is no exact chart, but basically:
-	<li style="margin-left:10px">1/2 star = Bad. Worst rating possible.</li>
-	<li style="margin-left:10px">2 and 1/2 star = Mediocre. Some good parts, some disappointing parts.</li>
-	<li style="margin-left:10px">5 star = Awesome. Best company ever. High standards. Great experience.</li>
-</li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Can I give a zero-star review if I had a horrible time?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Sorry, but at least 1/2 star is required, and will get your point across. </li>
-<li><u>NOTE:</u> Please try and remember that you are rating the COMPANY, and your experience with that company. If you hated the country's food and customs, try not to let that weigh in too much. If your organization didn't prepare you at all for the local culture, then certainly let it weigh in.</li>
-</div>
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> I selected a star rating I didn't mean to. Can I change it?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>Yes, you can change the star rating at any point in your review. Just click the stars.</li>
-
-</div>
-
-
-
-
-<br /><p style="font-size:1.3em; font-weight:600">9. Submit</p><br />
-
-
-<p style="margin-left:20px; font-size:1em;"><u>Q:</u> Where is the submit button?</p>
-<div style="margin-top:15px; margin-bottom:15px; margin-left:50px; line-height:1.2em">
-<li>If you do not see the submit button, it is because some part of the form has not been completed. The only way to submit a review is to complete ALL FIELDS (except for uploading photos, that is optional). </li>
-<li>Common mistakes to check for:
-	<li style="margin-left:20px">SELECT A COMPANY: Make sure that you clicked the name from the list that appears below this box or entered the name exactly as it appeared. If you did this correctly, the name will become bolded. If not, the box becomes blank. So double check that there is an bolded name inside the "Select a Company" box.</li>
-	<li style="margin-left:20px">REVIEW A NEW COMPANY: If you selected "Review A New Company", make sure that you entered the organization's name into the box on the right.  If you don't enter a name in this box, the form will be considered incomplete.</li>
-	<li style="margin-left:20px">CHECKBOXES: Make sure that you have clicked and affirmed both of the checkboxes below the written review section. Both boxes deed to be "checked" or the form will be considered incomplete</li>
-</li>
-</div>
-</div>
-
-</div>
-
-
-
-</div><!--end row four-->
-
-</div><!-- end container -->
-
-
-<br />
-<br />
-
-<div id="allCompanies-box" class="allCompanies-popup" style="text-align:left">
-	<a href="#" class="close"><div class="close_image"></div></a>
-	<p style="font-size:1.6em; text-align:center;margin-top:15px; margin-bottom:20px">Company Name Lookup Table</p>
-		<div class="overflow">
-	<% @allOfTheOrgs = []%>
-	<% Organization.all.each do |f| %>
-	<% @allOfTheOrgs << f.name %>
-	<% end %>
-	
-	<% @allOfTheOrgs.sort! { |a,b| a.downcase <=> b.downcase } %>
-	
-	<% @allOfTheOrgs.each do |o| %>
-	<li style="line-height:1.3em; font-size:1.1em; color:#575758; margin-left:10px"><%=o%></li>
-	<% end %>
-	</div>
-	
-</div>
-
-
+/* You can customize to your needs  */
+.terms-popup{
+	display:none;
+	background: #E3E6D5;
+	padding: 10px; 	
+	border: 3px solid #575758;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+	width:500px;
+	height:300px;
+}
+
+
+
+</style>
 	<style>
 	
 	a.forgotPassword:link{color:white}
@@ -1087,6 +105,7 @@ var	count = 0;
 	
 	.allCompanies-popup{
 		display:none;
+		text-align:left;
 		background: #D9DEDA;
 		padding: 10px; 	
 		border: 2px solid #6aaeba;
@@ -1107,6 +126,7 @@ var	count = 0;
 	}
 	
 	.addPhotos-popup{
+		text-align:left;
 		display:none;
 		background: #D9DEDA;
 		padding: 10px; 	
@@ -1127,37 +147,6 @@ var	count = 0;
 		width:300px;
 		
 	}
-
-	img.btn_close { Position the close button
-		float: right; 
-		margin: -28px -28px 0 0;
-	}
-
-	fieldset { 
-		border:none; 
-	}
-
-
-
-	.button { 
-		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-		border-color:#000; 
-		border-width:1px;
-	        border-radius:4px 4px 4px 4px;
-		-moz-border-radius: 4px;
-	        -webkit-border-radius: 4px;
-		color:#68c2d8;
-		cursor:pointer;
-		display:inline-block;
-		padding:6px 6px 4px;
-		margin-top:10px;
-		font:12px; 
-		width:214px;
-	}
-	.button:hover { background:#ddd; }
 	
 	</style>
 
@@ -1188,17 +177,938 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 </style>
 
 
+
+<style>
+#pageTitleContainer {
+	margin-top:50px;
+	margin-bottom:20px;
+}
+.labelTop {
+	font-size:2em; 
+	margin-left:3%;
+}
+#organizationNameContainer {
+	margin-top: -30px; 
+	height:30px;
+}
+#organizationNameContainerInner {
+	width:200px;
+}
+#tags {
+	float:right; 
+	margin-right:10px; 
+	margin-top:5px; 
+	width:200px; 
+	height:20px; 
+	font-style:italic;
+}
+#companyLinksContainer {
+	margin-left:55%; 
+	margin-top:3px;
+}
+#selectCompanyBlurbContainer {
+	margin-top:5px; 
+	font-family:ArchitectsDaughterRegular; 
+	font-size:0.85em; 
+	color:#62acbd;
+}
+#writeReviewLeftColumn {
+	margin-top:75px; 
+	padding-right:25px; 
+	border-right:1px solid #e67b5a;
+}
+.selectCompanyBlurb p {
+	padding-left:1%; 
+	line-height:1.7em;
+}
+#theDetailsColumnLabel {
+	font-family:ArchitectsDaughterRegular; 
+	font-size:2.5em; 
+	color:#62acbd; 
+	margin-bottom: 30px;
+}
+.writeReviewLabel {
+	font-size:1.5em; 
+	line-height:1.25em; 
+	width:40%; 
+	margin-left:11%; 
+}
+#timeFrame {
+	margin-top:18px;
+}
+#whichProgram {
+	margin-top:40px
+}
+#timeFrameSelectDiv, #whichProgramSelectDiv {
+	position:absolute; 
+	left:40%;
+	height:30px; 
+	width:228px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#timeFrameSelectDiv {
+	top:75px;
+}
+#whichProgramSelectDiv {
+	top:150px;
+}
+#review_time_frame, #review_program_id {
+	position:absolute; 
+	left:-5px; 
+	width:255px; 
+	height:30px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
+#yourExperience {
+	margin-top:42px;
+}
+#theBody {
+	margin-left:10px;
+	width:400px; 
+	font-style:italic; 
+	height:150px; 
+	resize:none; 
+	color:gray; 
+	border: 1px solid #575758;
+}
+.counter {
+	float:right;
+}
+#editImage, #addImage {
+	margin-top:10px; 
+	margin-bottom:30px; 
+	margin-left:10px;
+}
+
+#photoCountHasPhotos {
+	margin-top:-28px; 
+	margin-left:120px;
+}
+#photoCountNoPhotos {
+	margin-top:-28px; 
+	margin-left:140px;
+}
+#actualPhotoCountHasPhotos {
+	width:17px; 
+	font-family:architectsDaughterRegular; 
+	height:30px; 
+	font-size:1.3em; 
+	background:none; 
+	border:none;
+}
+.checkMark {
+	position:absolute;  
+	height:23px; 
+	left:7px;
+}
+#checkBefore {
+	top:70.7%;
+}
+.checkBox {
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
+	background-repeat:no-repeat; 
+	margin-left:10px;
+}
+#termsCheckBoxImage {
+	height:25px; 
+	margin-top:-45px;
+}
+.hiddenCheckBox {
+	display:block; 
+	opacity:0; 
+	filter: alpha(opacity=0); 
+	height:25px; 
+	width:25px;
+}
+.checkBoxLabel {
+	margin-left:8%; 
+	margin-top:-29px;
+}
+#checkTerms {
+	top:81.2%;
+}
+#labelForTerms {
+	margin-top:-25px;
+}
+#writeReviewRightColumn {
+	float:right; 
+	margin-top:-568px;
+}
+#theNumbersTitle {
+	font-family:ArchitectsDaughterRegular; 
+	font-size:2.5em; 
+	color:#62acbd; 
+	margin-bottom: 30px;
+}
+.starsLabel {
+	text-align:center; 
+	font-size:1.5em; 
+	line-height:2.5em;
+}
+.starSet {
+	margin-left:27%;
+}
+#submitContainer {
+	margin-top:20px;
+}
+#submitButtonHidden {
+	text-align:center; 
+	margin-top:30px; 
+	color:#e67b5a;
+}
+#submitButtonDiv {
+	text-align:center; 
+	margin-top:30px; 
+	display:none;
+}
+#qMarkContainer {
+	margin-left:60%; 
+	margin-top:-60px;
+}
+.adminShowOnHomepage {
+	height:40px;
+}
+</style>
+
+
+<!-- ERROR MESSAGES -->
+<% if flash.class.name != "String"%>
+<% flash.each do |key, value| %>
+	<% if value.class.name != "String"%>
+	  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
+<% end %>
+<% end %><!-- END ERROR MESSAGES -->
+
+<body>
+<div class="container">
+	<div class="row" id="pageTitleContainer" align="center">
+<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/shareVoice.png"%>
+</div>
+<br />
+
+
+
+<%= form_for @review do |f| %>
+	<% if params[:user_id].nil? %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<% else %>
+	<%= f.hidden_field :user_id, :value => params[:user_id] %>
+	<% end %>
+	<% if !(params[:created_at].nil?)%>
+	<%= f.hidden_field :created_at, :value => params[:created_at]%>
+	<% end %>
+	<% if !(params[:updated_at].nil?)%>
+	<%= f.hidden_field :updated_at, :value => params[:updated_at]%>
+	<% end %>
+	
+	<% if !(params[:preparation].nil?)%>
+	<%= f.hidden_field :preparation, :value => params[:preparation]%>
+	<% end %>
+	<% if !(params[:support].nil?)%>
+	<%= f.hidden_field :support, :value => params[:support]%>
+	<% end %>
+	<% if !(params[:impact].nil?)%>
+	<%= f.hidden_field :impact, :value => params[:impact]%>
+	<% end %>
+	<% if !(params[:structure].nil?)%>
+	<%= f.hidden_field :structure, :value => params[:structure]%>
+	<% end %>
+	<% if !(params[:overall].nil?)%>
+	<%= f.hidden_field :overall, :value => params[:overall]%>
+	<% end %>
+
+
+
+	<div class="row" >
+		<div class="six columns" style="margin-top:20px;">
+	<section class="selectCompany"><!--select a company box and blurb-->
+		<section class="selectCompanyBox"><!-- select a company drop-down box-->
+		<label for="review_organization_name" class="labelTop">Select a Company:</label>
+	<div id="organizationNameContainerOuter">
+				       
+
+					
+						<div id="organizationNameContainerInner">
+						<%= f.text_field :organization_name, :id =>"tags", :onfocus => "if (this.value == ' Start typing...') {this.value = ''}; this.style.fontStyle = 'normal'", :value => " Start typing...", :onblur => "checkValueAutocomplete()"%></div>
+				
+
+				</div>
+				<div id="companyLinksContainer"><a href="#allCompanies-box" id="allCompaniesShow" class="allCompanies-window">List All</a> | <a href="/new_reviews/new" id="reviewNew">Review New Company</a>
+				</div>
+			</section><!--end selectCompanyBox-->
+		</div>
+		
+	
+		
+
+
+	<div class="six columns" id="selectCompanyBlurbContainer">
+
+<article class="selectCompanyBlurb"><!-- select a comany blurb-->
+		<p>If the name of your organization isn’t here, we don’t know about them yet. Click ‘Review New Company’, and type their name in the box that appears. We’d really appreciate it. </p>
+    </article><!--end selectCompanyBlurb-->
+
+	</section><!--end selectCompany-->
+
+	</div><!--end right columns-->
+
+	</div><!--end row two-->
+
+
+<div class="row"><!--row three-->
+
+	<div class = "six columns" style="writeReviewLeftColumn">
+		<section class="writeDetails"><!-- The Details section of write a review page-->
+		<div align="center" id="theDetailsColumnLabel"> The Details </div>
+	<section class="writeReviewContent" id="timeFrame">
+		<div class="writeReviewLabel three columns">How long did you work with them?</div>
+		<div class="select-div three columns" id="timeFrameSelectDiv">
+
+			<select id="review_time_frame" name="review[time_frame]" onchange="checkFields()"><option value=""> Select a Time Frame</option>
+			<option value="1 week or less">1 week or less</option>
+			<option value="2-4 weeks">2-4 weeks</option>
+			<option value="5-8 weeks">5-8 weeks</option>
+			<option value="9-12 weeks">9-12 weeks</option>
+			<option value="3-6 months">3-6 months</option>
+			<option value="6-12 months">6-12 months</option>
+			<option value="1-2 years">1-2 years</option>
+			<option value="2+ years">2+ years</option>
+			
+			</select>
+</div>
+
+
+
+
+	<div class="writeReviewLabel three columns" id="whichProgram">Which Program?</div>
+	<div class="select-div three columns" id="whichProgramSelectDiv">
+	<select id="review_program_id"  onchange="checkFields()" name="review[program_id]" value="<%=@review.program_id%>"><option value="">Select a Program</option></select>
+		</div>
+
+
+	<div class="writeReviewLabel ten columns" id="yourExperience">Your Experience <font style="font-size:0.6em;">(Minimum 200 characters)</font></div>
+	<div class="eleven columns">
+	   <%= f.text_area :body, :id => "theBody", :onfocus => "removeTwoHundred()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTwoHundred();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @review.body; end), :class => "word_count"%>
+	<span class="counter"></span><br />
+
+						<div id="editImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div id="photoCountHasPhotos">You have <input id="total_count" disabled="true" id="actualPhotoCountHasPhotos" value="0"/> photos attached</div></div>
+						
+						<div id="addImage"><a href="#addPhotos-box" class="addPhotos-window"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/addPhotos.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'addPhotos-window'"%></a>&nbsp;&nbsp;&nbsp; <div id="photoCountNoPhotos">No photos attached</div></div>
+	
+		<image class="checkMark" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
+		<div class="checkBox" onclick="$(beforeCheck())">
+		<%= f.check_box :before, :onchange => "checkFields()", :class => "hiddenCheckBox", :id => "before"%>
+		<label class="checkBoxLabel" for="review_before">I have volunteered with this company before</label><br /><br /><br /></div>
+
+
+		<image class="checkMark" id="checkTerms" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck()">
+			<div class="checkBox" id="termsCheckBoxImage" onclick="$(termsCheck());">
+		<%= f.check_box :terms, :onchange => "checkFields()", :class => "hiddenCheckBox", :id => "terms"%>
+		<label class="checkBoxLabel" id="labelForTerms" for="review_terms">I have read and accept the <a href="#terms-box" class="terms-window" id="termsUse">terms of use </a></label></div><br /><br />
+
+		
+	</div>
+	</section><!--end writeReviewContent-->
+
+
+	</section><!--end writeDetails-->
+	</div><!--end left columns-->
+
+	<div class="six columns" id="writeReviewRightColumn">
+		<section class="writeNumbers"><!-- Numbers section of write a review page-->
+		<div align="center" id="theNumbersTitle"> The Numbers </div>
+		<section class="writeReviewContent"><!-- overall styling the same for both The Details column and The Numbers column-->
+		<div class="starsLabel">
+	Preparation/Orientation
+	<br />
+	
+
+	<div class="starSet" onclick="setClicked('preparation'); checkFields();">
+		<% if !(params[:preparation].nil?)%>
+		<%= f.hidden_field :preparation, :value => params[:preparation]%>
+		<%= params[:preparation]%>
+		<% else %>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "0.5"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "1"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "1.5"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "2"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "2.5"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "3"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "3.5"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "4"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "4.5"/>
+	<input name="review[preparation]" type="radio" class="star {split:2}" id="preparation" value= "5"/>
+	<% end %>
+	</div>
+
+	<br />
+
+
+	Support
+	<br />
+
+	<div class="starSet" onclick="setClicked('support'); checkFields();">
+		<% if !(params[:support].nil?)%>
+		<%= f.hidden_field :support, :value => params[:support]%>
+		<%= params[:support]%>
+		<% else %>
+		
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "0.5"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "1"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "1.5"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "2"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "2.5"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "3"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "3.5"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "4"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "4.5"/>
+	<input name="review[support]" type="radio" class="star {split:2}" id="support" value= "5"/>
+	<% end %>
+	</div>
+	<br />
+
+
+	Project Impact
+	<br />
+
+	<div class="starSet" onclick="setClicked('impact'); checkFields();">
+		<% if !(params[:impact].nil?)%>
+		<%= f.hidden_field :impact, :value => params[:impact]%>
+		<%= params[:impact]%>
+		<% else %>
+		
+		
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "0.5"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "1"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "1.5"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "2"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "2.5"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "3"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "3.5"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "4"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "4.5"/>
+	<input name="review[impact]" type="radio" class="star {split:2}" id="impact" value= "5"/>
+	<% end %>
+	</div>
+	<br />
+
+
+	
+
+
+	Project Structure/Sustainability
+	<br />
+
+	<div class="starSet" onclick="setClicked('structure'); checkFields();">
+		<% if !(params[:structure].nil?)%>
+		<%= f.hidden_field :structure, :value => params[:structure]%>
+		<%= params[:structure]%>
+		<% else %>
+		
+		
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "0.5"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "1"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "1.5"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "2"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "2.5"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "3"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "3.5"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "4"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "4.5"/>
+		<input name="review[structure]" type="radio" class="star {split:2}" id="structure" value= "5"/>
+		
+		<%end%>
+		</div>
+<br />
+
+	
+
+	Overall?
+	<br />
+
+	<div class="starSet" onclick="setClicked('overall'); checkFields();">
+		<% if !(params[:overall].nil?)%>
+		<%= f.hidden_field :overall, :value => params[:overall]%>
+		<%= params[:overall]%>
+		<% else %>
+		
+		
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "0.5"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "1"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "1.5"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "2"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "2.5"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "3"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "3.5"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "4"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value= "4.5"/>
+		<input name="review[overall]" type="radio" class="star {split:2}" id="overall" value = "5"/>
+		
+		<% end %>
+		</div>
+
+
+	</section><!--end writeReviewContent-->
+
+
+	</section><!--end writeNumbers-->
+
+	</div><!--end right columns-->
+	</div><!--end row three-->
+
+
+
+
+	<div class="row"><!--row four-->
+		<div class="twelve columns" align="center" id="submitContainer">
+
+	<section class="reviewSubmit"><!-- submit review button and FAQ link-->
+
+
+		<div id="submitButtonHidden"> <i>You cannot submit your review until<br /> all form fields are filled out <br />(except uploading photos, that's optional)</i></div>
+		<div id="submitButtonDiv"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png"%></div>
+
+		<div id="qMarkContainer">
+		<article class="formFAQ"><!-- FAQ information/link-->
+			 <a href="#qMark-box" class="qMark-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/clickLearnForm.png" onmousedown = "this.className = 'shadowed'" onmouseup = "this.className = 'nothing'"></a>
+			</article><!--end formFAQ-->
+		</div>
+		</section><!--end reviewSubmit-->
+		<br />
+	
+		
+		<% if current_user.admin? %>
+		<div class = "adminShowOnHomepage">
+		<%= f.check_box :show %>	Show on Homepage? 
+		</div>
+		<% end %>
+		
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+
+		<div id="addPhotos-box" class="addPhotos-popup">
+			<a href="#" class="close"><div class="close_image" onclick="closePop(); changeCount()"></div></a>
+			<p id="addPhotosTitle">Add Photos <span id="addPhotosWarning">(max: 512KB)</span></p>
+			<div class="overflow" id="overflowPhotosPopup">
+		<%= f.file_field :photo, :id => "one" %><a onclick="$('#one').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo2, :id => "two"  %><a onclick="$('#two').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo3, :id => "three"  %><a onclick="$('#three').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo4, :id => "four"  %><a onclick="$('#four').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo5, :id => "five"  %><a onclick="$('#five').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo6, :id => "six"  %><a onclick="$('#six').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo7, :id => "seven"  %><a onclick="$('#seven').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo8, :id => "eight"  %><a onclick="$('#eight').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo9, :id => "nine"  %><a onclick="$('#nine').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+		<%= f.file_field :photo10, :id => "ten"  %><a onclick="$('#ten').attr('value', '')" class="removePhotoLink">Remove</a><br /><br />
+
+		<div align = "center" id="doneButtonContainer">
+		<input type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/done.png" onclick="closePop(); changeCount(); return false" class="btn_close" onmousedown="this.className = 'shadowed'" onmouseup ="this.className = 'btn_close'">
+		</div>
+		</div>
+		</div>		
+
+<% end %>
+
+
+<div id="qMark-box" class="qMark-popup" style="text-align:left">
+<a href="#" class="close"><div class="close_image"></div></a>
+<p id="qMarkTitle"><u>Help! Write A Review Form</u></p>
+	<div class="overflow">
+<br /><p class="qMarkSubTitle">1. Select a Company</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> How does this box work?</p>
+<div class="qMarkAnswer">
+<li>This is a smart-filter box, so as you type in the name of the Volunteer Organization that you worked for, it will filter the names for you. </li>
+<li>Once you see the name of the Organization you are looking for, click on that name in the list to fill this box.</li>
+<li>This box only works if you SPELL correctly! So make sure to check your spelling. If you spell the name of your organization incorrectly, it will not show up in the list.</li>
+<li>This box is required information, and you cannot submit your form unless it is completed.</li>
+</div>
+
+
+<p class="qMarkQuestion"><u>Q:</u> What if I enter the correct name of my Organization and it's not listed?</p>
+<div class="qMarkAnswer">
+<li>If the organization that you volunteered with is not registered on the site, then you need to select the "Review a New Company" option located below the smart-list in order to submit your review. </li>
+<li>Clicking the "Review a New Company" option will bring you to another window where you can type in the name of the organization that you worked with. (Again, please check your spelling so that we can easily find this company and make a profile for them).</li>
+</div>
+
+
+
+<p class="qMarkQuestion"><u>Q:</u> I accidentally clicked on the wrong Organization, how do I change the name?</p>
+<div class="qMarkAnswer">
+<li>Just click and delete the Organization name to clear the box and start over. You can do this at any point while writing your review.</li>
+
+</div>
+
+
+<p class="qMarkQuestion"><u>Q:</u> I clicked "Review A New Company" without meaning to. How do I return to the original page?</p>
+<div class="qMarkAnswer">
+<li>Click the "Cancel" text-link at the bottom, right of the second box to return to the original page.</li>
+
+</div>
+
+
+<p class="qMarkQuestion"><u>Q:</u> I want to review an organization I worked with, but am not totally sure of the name or if I am spelling it correctly.  What should I do?</p>
+<div class="qMarkAnswer">
+<li>If you are unsure of the name of the organization that you worked with, you can click the "Show All Companies" text-link below the "Review New Company" link and a pop-up will appear listing all the countries. From there you can find the organization you are thinking of, and proceed to type it in the smart-filter box. </li>
+<li>This form will not save any information that you write on it, so don't write out your long, detailed review until you're going to submit it. Or, save that written information in a safe place on your own computer or email account.</li>
+</div>
+
+
+
+
+<br /><p class="qMarkSubTitle">2. How long did you work with them?</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> How does this box work?</p>
+<div class="qMarkAnswer">
+<li>Click the arrow on the right-hand side of this box to view the possible time-periods. Click to select whichever time period best describes the length of your trip in that country, and specifically the time period that best describes how long you spent working with an organization. </li>
+<li><u>Example:</u> If you traveled in China for 1 year but only worked with an organization for three months, then please select the time category for "three months" time.</li>
+
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> Are these the only time periods to choose from? Do I have to select one of these?</p>
+<div class="qMarkAnswer">
+<li>Yes, and yes. This is the most simple, accurate way to collect this information.</li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> Why do I have to say how long I worked with the organization?</p>
+<div class="qMarkAnswer">
+<li>We want to encourage authenticity and accuracy in the reviews on this site. The point of writing these reviews is to help prospective volunteers research and decide on organizations to volunteer with, so the authenticity of these reviews is important. </li>
+<li>This is very useful information to have for prospective volunteers. Someone looking to volunteer for six months will likely want to pay the most attention to reviews from people that volunteered for the same time period.  Someone looking to volunteer for two weeks will similarly want to pay attention to the reviews from people in that same period.</li>
+
+</div>
+
+
+
+
+<br /><p class="qMarkSubTitle">3. Which Programs?</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> How does this box work?</p>
+<div class="qMarkAnswer">
+<li>This box automatically updates with available options, one you have selected which organization you are going to be reviewing. </li>
+<li>Cilick the arrow on the right side of this box to activate the list of programs. Select the program name that best described what you did and where. This list is composed of all of the CURRENT programs that an organization offers. If your program is not there, and you volunteered with them a while ago, then unfortunately you won't be able to write a review. This feature is designed to keep all reviews about organizations up to date and relevant.</li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> I don't see the program that I did. What do I do?</p>
+<div class="qMarkAnswer">
+<li>If your program is not there and you volunteered with the organization over a year ago, then it is likely that the program you participated in is no longer offered, and you won't be able to review it. This feature is designed to keep all reviews about organizations up to date and relevant.</li>
+<li>If your program is not there and you volunteered within the last year, then we might have messed up! Please contact us and let us know your organization and program names, and we will get back to you about whether that program is no longer offered, or if we made the humongous mistake of leaving it out.</li>
+
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> Why can't I review a program that is no longer offered?</p>
+<div class="qMarkAnswer">
+<li>A central component of this site's value is founded in the idea of "information". But not just any information, a lot of accurate, organized, relevant, helpful information from multiple sources. Reviews are a form of this information, and it's very important that we keep reviews as accurate, relevant and helpful as possible - which <em>means</em>, not letting reviews for out-of-commission or unconfirmed programs affect the profile of a volunteer organization. </li>
+<li>We would still love to hear your story, and there are other ways to share. WE are currently in the midst of developing a User blog post/travel essay system. Drop us a line, send us a write up, or pester us with complaints about your stifled review. Whatever suits your fancy. There are plenty of ways to share your voice.</li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u>Why do I have to specify which program I did?</p>
+<div class="qMarkAnswer">
+<li>So many reasons! First of all, to make sure that you're reviewing a presently operating program and to keep the site information relevant.</li>
+<li>Second of all, to be useful to other users who are checking out your review and looking up organizations.  Reading reviews about organizations themselves could be helpful in many ways, but an organization's programs can vary a lot in their quality and scope for different reasons. Being specific helps users in finding their ideal program.</li>
+
+</div>
+
+
+
+
+
+<br /><p class="qMarkSubTitle">4. Your Review</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> How does this box work?</p>
+<div class="qMarkAnswer">
+<li>Simply click in teh box and start typing. THis is the most important part of your review -- where you get to speak your mind! Please include here all the information and details that you care to. The more that you share, the more that you help.</li>
+<li>There is a minimum of 200 characters in this box, a requirement that must be met in order to submit your review to the site.</li>
+
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> Why is there a minimum of 200 characters?</p>
+<div class="qMarkAnswer">
+<li>The character minimum is designed to encourage users to share at LEAST one or two sentences of detail about their experience.  Again, we are just trying to encourage accuracy, authenticity, and helpful information flow. You don't have to write a whole essay, but hopefully you can think of at least a few sentences to describe your volunteer experience!</li>
+
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> I can't type anymore characters into the text box. What's going on?</p>
+<div class="qMarkAnswer">
+<li>This box does have a maximum of 10,000 characters, so you've reached the limit. We're so happy that you have so much to say about your experience! But for the sake of space, try to figure out a way to say everything that you want to in 10,000 characters. Thank you! </li>
+
+</div>
+
+
+
+
+
+<br /><p class="qMarkSubTitle">5. I have volunteered with this company before</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> How does this check box work?</p>
+<div class="qMarkAnswer">
+<li>Simply click the box to the left of this statement to fill the box with your check of affirmation.</li>
+<li>Checking this box is required to submit your review to the site.</li>
+
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> What's the point of this?'</p>
+<div class="qMarkAnswer">
+<li>Authenticity! And to filter out dishonest reviews or spammers. We just want reviewers to own and confirm this statement to try and keep the reviews on this site as real as possible. </li>
+
+</div>
+
+
+
+
+
+<br /><p class="qMarkSubTitle">6. I have read and accept the Terms of Use</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> How does this check box work?</p>
+<div class="qMarkAnswer">
+<li>Simply click the box to the left of this statement to fill the box with your check of affirmation. </li>
+<li>Checking this box is required to submit your review to the site.</li>
+
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> What's the point of this?</p>
+<div class="qMarkAnswer">
+<li>By clicking this box you are agreeing to abide by the rules/responsibilities laid out in our "Terms of Use". Basically, you are agreeing to be honest and responsible for what you say here, and not to write lewd or fake reviews for organizations, ESPECIALLY if you didn't actually volunteer with them. Again, just trying to keep it real. </li>
+
+</div>
+
+
+
+
+<br /><p class="qMarkSubTitle">7. Upload a Photo</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> How does this work?</p>
+<div class="qMarkAnswer">
+<li>Click the "Upload" button. This will trigger a pop-up that allows you to browse your computer for image files. Click the image file you want to upload, make sure that the correct file name is highlighted, and then click "Select".
+	<li class="qMarkSubAnswer">NOTE: You can only upload photos that are located on your computer.</li> </li>
+<li>Clicking "Select" will enter the image file name into the "Upload" box. And you're done!</li>
+
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> I'm trying to upload a photo and it's not working. What's going on?</p>
+<div class="qMarkAnswer">
+<li>Either the photo is not saved in the correct format (.jpg, .jpeg, .png, or .gif) or our upload application is malfunctioning. Send us the image you are trying to upload, and a description of what happens in your attempt to upload it to:help@volunteervoice.org, and we will figure out the problem.</li>
+<li>We currently only have space for one photo per review, though we are looking to expand that number very soon. If you've already uploaded a photo, you can't upload another because we haven't built the space for it. Yet!</li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> Do I have to upload a photo?</p>
+<div class="qMarkAnswer">
+<li>Nope. This is the only part of the review form that is optional. You do not need to upload a photo in order to submit your review. </li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> I uploaded a photo that I didn't mean to/don't want anymore. Can I remove it?</p>
+<div class="qMarkAnswer">
+<li>Yes, just click the "remove" link to the right of the name of the image.</li>
+<li>Please note that you cannot upload new photos after submitting your review, so make sure to get the most important and helpful one on here before you submit your review.</li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> Can I upload photos of anything I want?!</p>
+<div class="qMarkAnswer">
+<li>No! Please don't upload photos of you and your friends from home hanging out...at home. These photos are targeted at helping give users an idea about your VOLUNTEER TRIP, so please stick to photos that were taken on your trip.</li>
+<li>Pictures of you and other volunteers, or your sleeping quarters, or your host family, or anything on your trip is a great idea. Markets, busses, food, anything in the "volunteer trip" category is perfect.</li>
+<li><u>NOTE:</u> Please bear in mind that inappropriate or non-trip related photos may cause your review to be "flagged" by other Users, and result in the removal of your review. So choose your photos wisely!</li>
+
+</div>
+
+
+
+
+
+<br /><p class="qMarkSubTitle">8. Star-rating</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> How does this work?</p>
+<div class="qMarkAnswer">
+<li>Just use your mouse to click and fill in the stars for whatever rating you see fit. </li>
+<li>At least 1/2 star is required for each category in order to submit your review to the site.</li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> What do the different star ratings mean?</p>
+<div class="qMarkAnswer">
+<li>There is no exact chart, but basically:
+	<li class="qMarkSubAnswer">1/2 star = Bad. Worst rating possible.</li>
+	<li class="qMarkSubAnswer">2 and 1/2 star = Mediocre. Some good parts, some disappointing parts.</li>
+	<li class="qMarkSubAnswer">5 star = Awesome. Best company ever. High standards. Great experience.</li>
+</li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> Can I give a zero-star review if I had a horrible time?</p>
+<div class="qMarkAnswer">
+<li>Sorry, but at least 1/2 star is required, and will get your point across. </li>
+<li><u>NOTE:</u> Please try and remember that you are rating the COMPANY, and your experience with that company. If you hated the country's food and customs, try not to let that weigh in too much. If your organization didn't prepare you at all for the local culture, then certainly let it weigh in.</li>
+</div>
+
+<p class="qMarkQuestion"><u>Q:</u> I selected a star rating I didn't mean to. Can I change it?</p>
+<div class="qMarkAnswer">
+<li>Yes, you can change the star rating at any point in your review. Just click the stars.</li>
+
+</div>
+
+
+
+
+<br /><p class="qMarkSubTitle">9. Submit</p><br />
+
+
+<p class="qMarkQuestion"><u>Q:</u> Where is the submit button?</p>
+<div class="qMarkAnswer">
+<li>If you do not see the submit button, it is because some part of the form has not been completed. The only way to submit a review is to complete ALL FIELDS (except for uploading photos, that is optional). </li>
+<li>Common mistakes to check for:
+	<li class="qMarkSubAnswer">SELECT A COMPANY: Make sure that you clicked the name from the list that appears below this box or entered the name exactly as it appeared. If you did this correctly, the name will become bolded. If not, the box becomes blank. So double check that there is an bolded name inside the "Select a Company" box.</li>
+	<li class="qMarkSubAnswer">REVIEW A NEW COMPANY: If you selected "Review A New Company", make sure that you entered the organization's name into the box on the right.  If you don't enter a name in this box, the form will be considered incomplete.</li>
+	<li class="qMarkSubAnswer">CHECKBOXES: Make sure that you have clicked and affirmed both of the checkboxes below the written review section. Both boxes deed to be "checked" or the form will be considered incomplete</li>
+</li>
+</div>
+</div>
+
+</div>
+
+
+
+</div><!--end row four-->
+
+</div><!-- end container -->
+
+
+<br />
+<br />
+
+
+
+<style>
+#addPhotosTitle {
+	font-size:1.6em; 
+	text-align:center;
+	margin-top:15px; 
+	margin-bottom:20px;
+}
+#addPhotosWarning {
+	font-size:.5em; 
+	font-family:architectsDaughterRegular;
+}
+#overflowPhotosPopup {
+	height:250px; 
+	overflow:auto;
+}
+.removePhotoLink {
+	cursor:pointer;
+}
+#doneButtonContainer {
+	margin-top:30px;
+}
+
+
+
+#qMarkTitle {
+	font-size:1.7em; 
+	text-align:center; 
+	color:#6aaeba;
+}
+.qMarkSubTitle {
+	font-size:1.3em; 
+	font-weight:600;
+}
+.qMarkQuestion {
+	margin-left:20px; 
+}
+.qMarkAnswer {
+	margin-top:15px; 
+	margin-bottom:15px; 
+	margin-left:50px; 
+	line-height:1.2em;
+}
+.qMarkSubAnswer {
+	margin-left:20px;
+}
+
+
+
+#companyPopupTitle {
+	font-size:1.6em; 
+	text-align:center;
+	margin-top:15px; 
+	margin-bottom:20px;
+}
+.companyPopupOrgName {
+	line-height:1.3em; 
+	font-size:1.1em; 
+	color:#575758; 
+	margin-left:10px;
+}
+.majorTermsTitle {
+	line-height:1.4em; 
+	font-family:josefinSlabRegular; 
+	color:#9bce6c; 
+	font-size:2em; 
+	margin:20px;
+}
+a.privacyLink, .mailToHelp {
+	color:#68c2d8;
+}
+a.privacyLink:hover, .mailToHelp:hover{
+	color:white;
+}
+</style>
+
+
+<div id="allCompanies-box" class="allCompanies-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<p id="companyPopupTitle">Company Name Lookup Table</p>
+		<div class="overflow">
+	<% @allOfTheOrgs = []%>
+	<% Organization.all.each do |f| %>
+	<% @allOfTheOrgs << f.name %>
+	<% end %>
+	
+	<% @allOfTheOrgs.sort! { |a,b| a.downcase <=> b.downcase } %>
+	
+	<% @allOfTheOrgs.each do |o| %>
+	<li class="companyPopupOrgName"><%=o%></li>
+	<% end %>
+	</div>
+	
+</div>
+
+
+
+
+
 	<div id="terms-box" class="terms-popup" style="color:#575758">
 <a href="#" class="close"><div class="close_image"></div></a>
 	<div class="overflow">
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">1. Description of Volunteervoice Services and User Acceptance</p>
+		<p class="majorTermsTitle">1. Description of Volunteervoice Services and User Acceptance</p>
 		<ul class="circle">
 		<li>Thanks for visiting VolunteerVoice! VolunteerVoice ("VolunteerVoice", "we", "our", or "us") is a volunteer review site that doubles as both a place for experienced volunteers to share their stories, and a place for prospective volunteers to research organizations and prepare for their trips abroad.  A lot of information from a lot of different sources passes through this site, and this Terms of Use is designed to help you better understand how we use our information, and what you as a User agree to when accessing it.  If you use this site and any function, information, service, plugin, or otherwise sourced from VolunteerVoice, you are agreeing to these Terms of Use.</li><br /> 
 		<li>As an organization, we reserve the right to change, modify, or update these terms at our discretion.  If these terms are changed,  you will find that most updated version of the Terms of Use posted here, and can note the most recent update date above.  Any changes to these Terms of Use will become effective immediately upon posting.</li><br /> 
 		<li>These Terms of Use and your use of the site will be and are governed by and in accordance with the laws of the State of California, without resort to its conflict of law provisions.    You thus irrevocably and unconditionally consent to submit to these Terms, and the State of California’s Law.  We as an organization may freely transfer or delegate our own rights and duties under these Terms.  If any of our Terms is illegal or invalid, the remaining provisions and Terms will persist in full effect.    In the event that any of these Terms is in fact determined as illegal or insubstantial,  the Terms shall be negotiated among VolunteerVoice parties and redrafted to an acceptable and legal form. </li><br /> 
 		</ul>
 		<br /> 
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">2. Site Content</p>
+		<p class="majorTermsTitle">2. Site Content</p>
 		<ul class="circle">
 			<li>
 		The VolunteerVoice site contains a lot of information from a lot of different sources (volunteer organization websites, blog sites, users).  All of our information posting adheres to the legal parameters of utilizing outside content. </li> <br /> 
@@ -1280,7 +1190,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 		The VolunteerVoice messaging system is designed to allow Users to connect with one another based on shared experiences or volunteer and travel questions.  Users have a choice about whether this messaging system is enable on their account, and may choose NOT to allow other Users to message them.  This is your right as a registered User.</li>
 		<li>
 		Users engaging in the messaging system agree to use appropriate, responsible language when writing reviews.  Users may not write any content that violates the personal rights of others, or that is hateful or inappropriate in language.  Content that is found by us or by another user to violate the rights and privacy of others will be promptly removed.  The User will be notified, and their profile will be highly monitored.</li>
-		<li>If you as a User find that the messaging system is being abused by a User in some way, please contact us with that user’s information at:  <%= mail_to "help@volunteervoice.org" %></li>
+		<li>If you as a User find that the messaging system is being abused by a User in some way, please contact us with that user’s information at:  <%= mail_to "help@volunteervoice.org", :class => "mailToHelp" %></li>
 		<li>By registering with VolunteerVoice and submitting a valid email, you are agreeing to allow VolunteerVoice to periodically reach out and communicate with you via email messages regarding the site.  By having an active messaging system you are also agreeing the VolunteerVoice may use this messaging system to communicate with you when it sees fit.</li>
 		</ul>
 		</li><br /> 
@@ -1294,51 +1204,51 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 		</li><br /> 
 		</ul>
 		<br /> 
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">3. Spam/Viruses/Unsolicited Communications</p>
+		<p class="majorTermsTitle">3. Spam/Viruses/Unsolicited Communications</p>
 		<ul class="circle">
 		<li>
 		No one may post lewd, pornographic, or inappropriate images and or other content on this site.  No one may use this site to post spam, advertisements, chain letters, junk email, surveys, or other mass messages of any kind, whether affiliated with an organization or otherwise.  No one may use this site to start, spread, or regulate any kind of computer virus.</li><br /> 
 		<li>You understand that we may take any action necessary to remove or prevent any of the above listed activities or related activities from occurring on our website.</li><br /> 
 		</ul>
 		<br />
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">4. Data Authenticity</p>
+		<p class="majorTermsTitle">4. Data Authenticity</p>
 		<ul class="circle">
 			<li>
 		VolunteerVoice is all about honest information exchange, and we circulate a lot of information on this site, from many resources.  We as an organization will always move to ensure the authenticity and accuracy of the information that we post here, especially in reference to the profiles that we maintain for volunteer organizations.  We retrieve the vast majority of our information from public resources, and as such that is the limit of or knowledge.  We always welcome users and organizations to assist us in maintaining and ensuring the accuracy of our information by providing us with concrete alternative resources and contacting us directly.</li><br /> 
 		</ul>
 		<br />
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">5. Data Security</p>
+		<p class="majorTermsTitle">5. Data Security</p>
 		<ul class="circle">
 			<li>
 		We are dedicated to keeping your User data safe and secure, and as such have taken appropriate electronic and infrastructural measures to safeguard our information as an organization, and your information as a user.</li><br /> 
 		</ul>
 		<br />
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">6. Disclaimer of Warranties, Limitation of Liabilities and Indemnity</p>
+		<p class="majorTermsTitle">6. Disclaimer of Warranties, Limitation of Liabilities and Indemnity</p>
 		<ul class="circle">
 			<li>
 
 		ALL USERS AND VISITORS UNDERSTAND THAT THEY USE VOLUNTEERVOICE SITE AND SERVICES AT THEIR OWN RISK. USERS ACCEPT THE SITE AND ITS FUNCTIONS ON AN “AS IS” BASIS  WITHOUT ANY WARRANTIES, REPRESENTATIONS, OR CONDITIONS OF ANY KIND.  WE MAKE NO GUARANTEE THAT VOLUNTEERVOICE SERVICES WILL FUNCTION FREE FROM INTERRUPTION, DAMAGE, VIRUSES, OR HARMFUL COMPONENTS OF ANY KIND.  WHILE WE MAY TAKE VARIOUS SECURITY MEASURES IN REGARD TO OUR SITE, WE DO NOT GUARANTEE THAT ANY SITE, SERVICE, OR CONTENT ACCESSED THROUGH OR RELATED TO OUR SITE IS FREE FROM VIRUSES OR OTHER HARMFUL CONTENT OR COMPONENTS.  WE MAKE NO GUARANTEES, WARRANTIES, OR REPRESENTATIONS ABOUT THE SECURITY OF OUR SITE AND ITS SERVICES. IN NO EVENT SHALL VOLUNTEERVOICE, ITS AFFILIATES, INVESTORS, DIRECTORS, OFFICERS, EMPLOYEES, AGENTS, OR SUPPLIERS BE LIABLE FOR ANY DAMAGES, PAYMENTS, DEFICIENCIES, FINES, JUDGEMENTS,  OR LOSS OF PROFITS ARISING OUT OF OR IN CONNECTION WITH THE SITE AND ANY SERVICE INCLUDED  OR MADE AVAILABLE ON OR THROUGH THE SITE, WHETHER THE DAMAGES ARE DIRECT, INDIRECT, PUNITIVE, INCIDENTAL,  EXEMPLARY, CONSEQUENTIAL, OR SPECIAL, AND REGARDLESS OF THE FORM OF ACTION (WHETHER IN CONTRACT, TORT, STRICT LIABILITY OR OTHERWISE), EVEN IF VOLUNTEERVOICE HAS BEEN ADVISED ON THE POSSIBLITY OF DAMAGES AND IS AWARE OF THAT POSSIBLITY. THIS INCLUDES INFORMATION, ADVERTISEMENTS, PRODUCTS, OR SERVICES THAT ARE ADVERTISED ON, OBTAINED IN, OR PROVIDED THROUGH SITES RELATED TO,  ACCESSED THROUGH, OR BY VOLUNTEERVOICE.  YOU ACKNOWLEDGE AND AGREE BY USING THE SITE THAT YOU HAVE RELIED UPON NO GUARANTEES OR WARRANTIES WITH REGARDS TO ANY ASPECT OF THIS SITE. YOU AGREE HERE TO THE INDEMNIFICATION AND DEFENSE OF VOLUNTEERVOICE AND ITS AFFILIATES AGAINST ANY AND ALL LIABILITIES, CLAIMS, EXPENSES, DAMAGES, OR ANY OTHER LOSSES THAT MAY BE IN ANY WAY RELATED TO AN ALLEGED BREACH OF VOLUNTEERVOICE’S SERVICES OR USE.  THESE TERMS OPERATE TO THE FULLEST EXTENT PERMISSIBLE BY CALIFORNIA LAW.</li><br /> 
 		</ul>
 		<br />
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">7. Changes in Policy</p>
+		<p class="majorTermsTitle">7. Changes in Policy</p>
 		<ul class="circle">
 			<li>VolunteerVoice reserves the right to alter, change, or modify any part of these Terms of Use at any time.  Any policy changes made will be enforced upon being posted.  </li><br /> 
 		</ul>
 		<br />
 
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">8. Termination</p>
+		<p class="majorTermsTitle">8. Termination</p>
 		<ul class="circle">
 			<li>
 		We reserve the right to terminate User access to the site without notice or liability to the User, under these Terms, and to prevent or block User access in the event that VolunteerVoice finds it necessary or appropriate in any way.
 		</li><br /> 
 		</ul>
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">9. Collection of User Information</p>
+		<p class="majorTermsTitle">9. Collection of User Information</p>
 		<ul class="circle">
 			<li>
-		For more details on the collection of user information, refer to our <%= link_to "Privacy Policy", "/pages/privacy", :style => "color:#68c2d8"%>.</li><br /> 
+		For more details on the collection of user information, refer to our <%= link_to "Privacy Policy", "/pages/privacy", :class => "privacyLink"%>.</li><br /> 
 		</ul>
 		<br />
-		<p style="line-height:1.2em; font-family:chunkFiveRegular; color:#9bce6c; font-size:2em; margin:20px;">10. Making Claims of Copyright Infringement and Reporting Violations</p>
+		<p class="majorTermsTitle">10. Making Claims of Copyright Infringement and Reporting Violations</p>
 		<ul class="circle">
 			<li>
 		If you believe any content or service on this site infringes upon a copyright that you are in control of, you may file a notification of infringement and send it to the following address:
@@ -1350,7 +1260,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 		<li>	
 		To be effective, the notice must be written and contain the following information:  (a) the physical or electron signature of an individual authorized to act on behalf of the owner of the copyright; (b) an accurate description of the copyrighted work that you believe has been infringed; ( c) a description of the location of that material on the VolunteerVoice website that allows us to locate and identify the item of which you speak; (d) a written statement about your claim that the use on our site is not authorized by the copyright owner, its agent, or the law; (e) a statement by you, made under penalty of perjury, that the information included in your notice is accurate and that you are either the owner of the copyright or legally authorized to act on behalf of the copyright owner; (f) your contact information.</li><br /> 
 		<li>
-		If you believe that some aspect of these Terms of Use violates your legal rights or the rights of your organization, please contact us at: <%= mail_to "help@volunteervoice.org" %>
+		If you believe that some aspect of these Terms of Use violates your legal rights or the rights of your organization, please contact us at: <%= mail_to "help@volunteervoice.org", :class => "mailToHelp"%>
 		</li><br /> 
 		</ul>
 		<br />
@@ -1365,82 +1275,395 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 	</div>
 	
 	
-	<style>
+	<script>
+
+	//array of all program objects
+	var allProgs = <%= array_or_string_for_javascript(@progs) %>;
 	
-
-	ul.circle { list-style-type: circle; }
-	a.forgotPassword:link{color:white}
-	a.forgotPassword:active{color:white}
-	a.forgotPassword:visited{color:white}
-	a.forgotPassword:hover{color:#e67b5a}
+	//array of all program names
+	var allProgNames = <%= array_or_string_for_javascript(@progNames.map {|s| s.gsub("'", '')}) %>;
 	
-	/* Mask for background, by default is not display */
-	#mask {
-		display: none;
-		background: #000; 
-		position: fixed; left: 0; top: 0; 
-		z-index: 10;
-		width: 100%; height: 100%;
-		opacity: 0.8;
-		z-index: 999;
+	//array of all organization names
+	var orgNames = <%= array_or_string_for_javascript(@orgNames.map {|s| s.gsub("'", '')}) %>;
+
+	//
+	var availableTags = [
+		<% Organization.all.each do |f| %>
+		"<%=f.name%>",
+		<% end %>
+		];
+	$(function() {
+		$( "#tags" ).autocomplete({
+			source: availableTags,
+			select: function(event, ui) {
+				for (i = 0; i < orgNames.length; i++) {
+					if (orgNames[i] == ui.item.value) {
+						$("#review_program_id").append("<option value='"+allProgs[i]+"'>"+allProgNames[i]+"</option>");
+					}
+				}
+			}
+		});
+	});
+
+	$(document).ready(function() {
+		<% if !(@review.organization_id.nil?)%>
+			$("#tags").val(("<%=Organization.find(@review.organization_id).name.to_s%>"));
+			<% Organization.find(@review.organization_id).programs.each do |f| %>
+			$("#review_program_id").append("<option value="+"<%=f.id%>"+">"+"<%=f.name%>"+"</option>");
+			<%end%>
+		<%end%>
+		<% if !(@review.program_id.nil?) %>
+			$("#review_program_id").val("<%=@review.program_id%>");
+		<% end %>
+		<% if !(@review.time_frame.nil?) %>
+			$("#review_time_frame").val("<%=@review.time_frame%>");
+		<% end %>
+
+	var	ones = 0;
+	var	twos = 0;
+	var	threes = 0;
+	var	fours = 0;
+	var	fives = 0;
+	var	sixs = 0;
+	var	sevens = 0;
+	var	eights = 0;
+	var	nines = 0;
+	var	tens = 0;
+	var	count = 0;
+		$('#editImage').hide();
+		$('#checkBefore').hide();
+		$('#checkTerms').hide();
+
+		$('.word_count').each(function(){
+			var length = $(this).val().length;
+			$(this).parent().find('.counter').html( length + ' characters');
+			$(this).keyup(function(){
+				var new_length = $(this).val().length;
+				$(this).parent().find('.counter').html( new_length + ' characters');
+			});
+		});
+
+
+		$('a.terms-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var termsBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(termsBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(termsBox).height() + 24) / 2; 
+			var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+			$(termsBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .terms-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+
+
+		$('a.qMark-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var qMarkBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(qMarkBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(qMarkBox).height() + 24) / 2; 
+			var popMargLeft = ($(qMarkBox).width() + 24) / 2; 
+
+			$(qMarkBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .qMark-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+
+			$('a.allCompanies-window').click(function() {
+
+		                //Getting the variable's value from a link 
+				var allCompaniesBox = $(this).attr('href');
+
+				//Fade in the Popup
+				$(allCompaniesBox).fadeIn(300);
+
+				//Set the center alignment padding + border see css style
+				var popMargTop = ($(allCompaniesBox).height() + 24) / 2; 
+				var popMargLeft = ($(allCompaniesBox).width() + 24) / 2; 
+
+				$(allCompaniesBox).css({ 
+					'margin-top' : -popMargTop,
+					'margin-left' : -popMargLeft
+				});
+
+				// Add the mask to body
+				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+				$('#mask').fadeIn(300);
+
+				return false;
+			});
+
+			// When clicking on the button close or the mask layer the popup closed
+			$('a.close, #mask').live('click', function() { 
+			  $('#mask , .allCompanies-popup').fadeOut(300 , function() {
+				$('#mask').remove();  
+			}); 
+			return false;
+			});
+
+				$('a.addPhotos-window').click(function() {
+
+			                //Getting the variable's value from a link 
+					var addPhotosBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(addPhotosBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(addPhotosBox).height() + 24) / 2; 
+					var popMargLeft = ($(addPhotosBox).width() + 24) / 2; 
+
+					$(addPhotosBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+					$('#mask').fadeIn(300);
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('a.close, #mask').live('click', function() { 
+				  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
+					$('#mask').remove();  
+				}); 
+				return false;
+				});
+
+		});
+
+		var preparation = "notClicked";
+		var support = "notClicked";
+		var impact = "notClicked";
+		var overall = "notClicked";
+		var structure = "notClicked";
+
+
+		function nameFile() {
+			var str="";
+			str= $("#review_photo").val();
+			document.getElementById('filename').value = str.substring(12, str.length);
+		}
+
+		function closePop() {
+			$('#mask').fadeOut(300); 
+			$('#mask').remove();
+			$('.addPhotos-popup').fadeOut(300);
+		}
+
+		function clickReviewPhoto() {
+			$("#review_photo").click();
+		}
+
+
+		function beforeCheck() {
+			$('#checkBefore').toggle();
+		}
+
+		function termsCheck() {
+			$('#checkTerms').toggle();
+		}
+
+		function removeTwoHundred() {
+			if ($("#theBody").value == "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not." ) {
+				$("#theBody").value = "";
+		    }
+		}
+
+		function backToTwoHundred() {
+			if ($("#theBody").attr("value") == "" ) {
+				$("#theBody").attr("value", "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.");
+		    }
+		}
+
+		function removePut() {
+			if ($("#put").attr("value") == "  Put the organization's name here" ) {
+				$("#put").attr("value", "");
+		    }
+		}
+
+		function backToPut() {
+			if ($("#put").attr("value") == "" ) {
+				$("#put").attr("value", "  Put the organization's name here");
+		    }
+		}
+
+
+
+		function setClicked(theVar) {
+			if (theVar == 'preparation') {
+				preparation = "clicked";
+			}
+			if (theVar == 'support') {
+				support = "clicked";
+			}
+			if (theVar == 'impact') {
+				impact = "clicked";
+			}
+			if (theVar == 'structure') {
+				structure = "clicked";
+			}
+			if (theVar == 'overall') {
+				overall = "clicked";
+			}
+		}
+
+
+		function checkValueAutocomplete() {
+			if (jQuery.inArray($("#tags").attr("value"), availableTags) < 0)
+			{
+				$("#tags").val("");
+			} 
+		}
+
+
+		function checkFields(){
+			if(($("#tags").attr("value") != " Start typing...")
+			    && ($("#tags").attr("value") !="")
+				&& ($("#review_time_frame").attr("value") != "Select a Time Frame")
+				&& ($("#review_program_id").attr("value") != "Select a Program")
+				&& ($("#review_time_frame").attr("value") != "")
+				&& ($("#review_program_id").attr("value") != "")
+				&& ($("#theBody").attr("value").length >= 200)
+				&& ($("#terms").attr("value"))
+				&& preparation == "clicked"
+				&& support == "clicked"
+				&& impact == "clicked"
+				&& structure == "clicked"
+				&& overall == "clicked")
+				{
+					$("#submitButtonDiv").show();
+					$("#submitButtonHidden").hide();
+
+				}
+		}
+
+
+
+		function showRemove() {
+			$("#removeThePhoto").toggle();
+		}
+
+
+		function changeCount() {
+
+			if ($("#one").attr("value") != "") {
+				ones = 1;
+			} else {
+				ones = 0;
+			}
+
+			if ($("#two").attr("value") != "") {
+				twos = 1;
+			} else {
+				twos = 0;
+			}
+
+			if ($("#three").attr("value") != "") {
+				threes = 1;
+			} else {
+				threes = 0;
+			}
+
+			if ($("#four").attr("value") != "") {
+				fours = 1;
+			} else {
+				fours = 0;
+			}
+
+			if ($("#five").attr("value") != "") {
+				fives = 1;
+			} else {
+				fives = 0;
+			}
+
+			if ($("#six").attr("value") != "") {
+				sixs = 1;
+			} else {
+				sixs = 0;
+			}
+
+			if ($("#seven").attr("value") != "") {
+				sevens = 1;
+			} else {
+				sevens = 0;
+			}
+
+			if ($("#eight").attr("value") != "") {
+				eights = 1;
+			} else {
+				eights = 0;
+			}
+
+			if ($("#nine").attr("value") != "") {
+				nines = 1;
+			} else {
+				nines = 0;
+			}
+
+			if ($("#ten").attr("value") != "") {
+				tens = 1;
+			} else {
+				tens = 0;
+			}
+
+		count = ones + twos + threes + fours + fives + sixs + sevens + eights + nines + tens;
+		$("#total_count").attr("value", count);
+
+		if (count > 0) {
+			$("#editImage").show();
+			$("#addImage").hide();
+		} else {
+			$("#editImage").hide();
+			$("#addImage").show();
+		}
 	}
 
-	/* You can customize to your needs  */
-	.terms-popup{
-		display:none;
-		background: #E3E6D5;
-		padding: 10px; 	
-		border: 3px solid #575758;
-		float: left;
-		color:#6aaeba;
-		font-size: 1.1em;
-		position: fixed;
-		top: 50%; left: 50%;
-		z-index: 99999;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-		width:500px;
-		height:300px;
-	}
 
-	img.btn_close { Position the close button
-		float: right; 
-		margin: -28px -28px 0 0;
-	}
-
-	fieldset { 
-		border:none; 
-	}
-
-
-
-	.button { 
-		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-		border-color:#000; 
-		border-width:1px;
-	        border-radius:4px 4px 4px 4px;
-		-moz-border-radius: 4px;
-	        -webkit-border-radius: 4px;
-		color:#68c2d8;
-		cursor:pointer;
-		display:inline-block;
-		padding:6px 6px 4px;
-		margin-top:10px;
-		font:12px; 
-		width:214px;
-	}
-	.button:hover { background:#ddd; }
+		</script>
 	
-	.shadowed{ opacity:0.8}
-
-	
-	</style>
 
 
