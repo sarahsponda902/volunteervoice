@@ -429,7 +429,9 @@ $(document).ready(function(){
 	
 	//set the organization name if necessary and applicable
 	<% if user_signed_in? && current_user.admin? %>
-	$("#tags").val("<%=Organization.find(@program.organization_id).name%>");
+		<% if !@program.organization_id.nil? %> 
+			$("#tags").val("<%=Organization.find(@program.organization_id).name%>");
+		<% end %>
 	<% end %>
 	
 	//when "+ add cost/length" is clicked, create 2 new input fields:
