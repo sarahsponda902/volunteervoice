@@ -1,32 +1,60 @@
+<%= javascript_include_tag "/assets/jquery" %>
+
+<style>
+.pageTitle {
+	font-size:3em; 
+	text-align:center; 
+	margin-bottom:50px;
+	margin-top:50px;
+}
+.searchCount {
+	font-size:1.2em;
+}
+.clearOld {
+	font-size:1.5em;
+}
+td {
+	text-align:center;
+}
+.willBeCleared {
+	color:red; 
+	font-weight:600;
+}
+</style>
+
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-<p style="font-size:3em; text-align:center; margin-bottom:50px;margin-top:50px">Listing Searches</p>
-<p style="font-size:1.2em">Search Count: <%= @searches.count%> </p><br /><br />
-<p style="font-size:1.5em"><%= button_to "Clear Old Searches", "/searches/erase_old"%></p>
+<p class="pageTitle">Listing Searches</p>
+<p class="searchCount">Search Count: <%= @searches.count%> </p><br /><br />
+<p class="clearOld"><%= button_to "Clear Old Searches", "/searches/erase_old"%></p>
 <br /><br /><br />
 
 
 <table>
+	<thead>
   <tr>
 
     <th>Created At</th>
     <th>Updated At</th>
 	<th>Will Be Cleared?</th>
   </tr>
+</thead>
+<tdata>
 <% @searches.each do |search| %>
   <tr>
     <td><%= search.created_at.strftime("%A %B %e %I:%M %p") %></td>
     <td><%= search.updated_at.strftime("%A %B %e %I:%M %p")%></td>
-	<td style="text-align:center">
+	<td>
 		<% if search.updated_at < 24.hours.ago %>
-		<font style="color:red; font-weight:600">X</font>
+		<span class="willBeCleared">X</span>
 		<% else %>
 		no
 		<% end %>
 	</td>
   </tr>
 <% end %>
+</tdata>
 </table>
 </div>
 </div>
