@@ -1,15 +1,33 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-
-<div class="container" style="margin-top:30px">
+<style>
+#top {
+	margin-top:30px;
+}
+#messageContainer {
+	text-align:center;
+}
+#message {
+	margin-top:50px;
+	font-family:JosefinSlabRegular; 
+	color:#9bce6c; 
+	font-size:2em; 
+	line-height:1.2em;
+}
+#logoContainer {
+	text-align:center; 
+	margin-top:75px;
+}
+</style>
+<div class="container" id="top">
 	<div class="row">
-		<div class="twelve columns" style="text-align:center">
+		<div class="twelve columns" id="messageContainer">
 
 		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/YouveAlreadyReviewed.png"%>
 		
-		<p style="margin-top:50px;font-family:JosefinSlabRegular; color:#9bce6c; font-size:2em; line-height:1.2em">You can adjust or delete your review from your User Profile.  Click on your Username at the top, and have at it.</p>
+		<p id="message">You can adjust or delete your review from your User Profile.  Click on your Username at the top, and have at it.</p>
 		 
 		
-<div style="text-align:center; margin-top:75px">		
+<div id="logoContainer">		
 <%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png"), root_path, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 </div>
 </div>
