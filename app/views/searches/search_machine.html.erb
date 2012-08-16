@@ -138,7 +138,41 @@ input[type="number"]{
 #innerLengthOfTripContainer {
 	margin-top:10px;
 }
-
+#lengthMinNumberDiv {
+	position:absolute; 
+	height:20px; 
+	width:58px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#length_min_number {
+	position:absolute; 
+	left:-5px; 
+	width:81px; 
+	height:20px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
+#lengthMinParamDiv {
+	position:absolute; 
+	left:15%; 
+	height:20px; 
+	width:88px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#lengthMinParam {
+	position:absolute; 
+	left:-5px; 
+	width:111px; 
+	height:20px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
 </style>
  
 
@@ -292,9 +326,9 @@ input[type="number"]{
         <p id="lengthOfTripTitle">Length of Trip:</p>
 		<div class="ten columns" id="innerLengthOfTripContainer">
 
-					<div class="select-div three columns" style="position:absolute; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+					<div class="select-div three columns" id="lengthMinNumberDiv">
 
-						<select id= "length_min_number" name="search[length_min_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;">
+						<select id= "length_min_number" name="search[length_min_number]">
 							<option val="0" selected="selected">0</option>
 							<option val="1">1</option>
 							<option val="2">2</option>
@@ -323,9 +357,9 @@ input[type="number"]{
 						</select>
 				</div>
 
-				<div class="select-div three columns" style="position:absolute; left:15%; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				<div class="select-div three columns" id="lengthMinParamDiv">
 
-					<select id= "length_min_param" name="search[length_min_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;">
+					<select id= "length_min_param" name="search[length_min_param]">
 						<option value="weeks" selected="selected">Weeks</option>
 						<option value="months">Months</option>
 						<option value="years">Years</option>	
