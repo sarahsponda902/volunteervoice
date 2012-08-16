@@ -160,7 +160,6 @@ class OrganizationsController < ApplicationController
     @organization.headquarters_location = @organization.headquarters_location.gsub(%r{</?[^>]+?>}, '')
     @organization.good_to_know = @organization.good_to_know.gsub(%r{</?[^>]+?>}, '')
     @organization.training_resources = @organization.training_resources.gsub(%r{</?[^>]+?>}, '')
-    @organization.run_by = @organization.run_by.gsub(%r{</?[^>]+?>}, '')
     @organization.misson = @organization.misson.gsub(%r{</?[^>]+?>}, '')
     @organization.program_costs_includes = @organization.program_costs_includes.gsub(%r{</?[^>]+?>}, '')
     @organization.program_costs_doesnt_include = @organization.program_costs_doesnt_include.gsub(%r{</?[^>]+?>}, '')
@@ -181,7 +180,6 @@ class OrganizationsController < ApplicationController
     @organization.headquarters_location = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.headquarters_location ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html   
     @organization.good_to_know = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.good_to_know ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.training_resources = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.training_resources ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @organization.run_by = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.run_by ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.misson = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.misson ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.program_costs_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @organization.program_costs_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @organization.program_costs_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
@@ -207,7 +205,6 @@ class OrganizationsController < ApplicationController
         @organization.headquarters_location = @organization.headquarters_location.gsub(%r{</?[^>]+?>}, '')
         @organization.good_to_know = @organization.good_to_know.gsub(%r{</?[^>]+?>}, '')
         @organization.training_resources = @organization.training_resources.gsub(%r{</?[^>]+?>}, '')
-        @organization.run_by = @organization.run_by.gsub(%r{</?[^>]+?>}, '')
         @organization.misson = @organization.misson.gsub(%r{</?[^>]+?>}, '')
         @organization.program_costs_includes = @organization.program_costs_includes.gsub(%r{</?[^>]+?>}, '')
         @organization.program_costs_doesnt_include = @organization.program_costs_doesnt_include.gsub(%r{</?[^>]+?>}, '')
