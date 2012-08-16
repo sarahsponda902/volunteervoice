@@ -103,6 +103,42 @@ input[type="number"]{
 	width:45%; 
 	margin-top:30px;
 }
+#groupSizeContainer, #lengthOfTripContainer {
+	margin:0;
+	padding:10px;
+}
+#groupSizeTitle {
+	padding:20px;
+	padding-bottom:5px;
+	font-size:1.3em; 
+	margin-left:-10px; 
+	font-weight:580; 
+	line-height:1.1em; 
+	color:#575758; 
+	margin-bottom:3px; 
+	background-color:#E3E6D5; 
+	padding-top:35px;
+}
+#groupSizesLeftCol, #groupSizesRightCol {
+	width:45%;
+}
+#lengthOfTripTitle {
+	padding:20px;
+	padding-bottom:5px;
+	font-size:1.3em; 
+	font-weight:580; 
+	line-height:1.1em; 
+	color:#575758; 
+	margin-bottom:3px;
+	background-color:#E3E6D5; 
+	padding-top:35px; 
+	width:120%; 
+	margin-left:-10px;
+}
+#innerLengthOfTripContainer {
+	margin-top:10px;
+}
+
 </style>
  
 
@@ -232,15 +268,15 @@ input[type="number"]{
 </div>
 
 
-<div style="margin:0;padding:10px;" class="twelve columns">
+<div id="groupSizeContainer" class="twelve columns">
 
-        <p style="padding:20px;padding-bottom:5px;font-size:1.3em; margin-left:-10px; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px; background-color:#E3E6D5; padding-top:35px">Group size:</p>
+        <p id="groupSizeTitle">Group size:</p>
         <input onClick='toggleBoxes3(this)'value="false" id='any3' name='search[sizes][]' type='checkbox'><span class="anyTitle">Any</span><br />
-		<div class="six columns" style="width:45%">
+		<div class="six columns" id="groupSizesLeftCol">
         <input onclick='toggleBoxes3(this)' value='Individual' id='1_group' name='search[sizes][]' type='checkbox'>Individual<br />
 		<input onclick='toggleBoxes3(this)' value='Small Groups (2-3)' id='2_group' name='search[sizes][]' type='checkbox'>Small Groups (2-3)<br />
 		</div>
-		<div class="six columns" style="width:45%">
+		<div class="six columns" id="groupSizesRightCol">
 		<input onclick='toggleBoxes3(this)' value='Medium Groups (4-10)' id='3_group' name='search[sizes][]' type='checkbox'>Medium Groups (4-10)<br />
 		<input onclick='toggleBoxes3(this)' value='Large Groups (11+)' id='4_group' name='search[sizes][]' type='checkbox'>Large Gropus (11+)<br /></div>
 </div>
@@ -250,11 +286,11 @@ input[type="number"]{
 
 
 
-<div style="margin:0;padding:10px;" class="twelve columns">
+<div id="lengthOfTripContainer" class="twelve columns">
 
 
-        <p style="padding:20px;padding-bottom:5px;font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px;background-color:#E3E6D5; padding-top:35px; width:120%; margin-left:-10px">Length of Trip:</p>
-		<div class="ten columns" style="margin-top:10px">
+        <p id="lengthOfTripTitle">Length of Trip:</p>
+		<div class="ten columns" id="innerLengthOfTripContainer">
 
 					<div class="select-div three columns" style="position:absolute; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
 
