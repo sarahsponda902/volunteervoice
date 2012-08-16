@@ -8,6 +8,10 @@ textarea {
 	width:350px;
 	height:200px;
 }
+#inviteOrgContainer {
+	text-align:center;
+	display:none;
+}
 
 </style>
 
@@ -128,7 +132,7 @@ textarea {
 
 </div>
 
-<div class="twelve columns" style="text-align:center">
+<div class="twelve columns" id="inviteOrgContainer">
 	<br /><br />
 	<div class="field">
     <%= f.check_box :will_invite, :value => @organization.will_invite %> Invite organization to create an account?</div>
@@ -146,3 +150,11 @@ textarea {
 </div>
 <% end %>
 
+<script>
+$(document).ready(function() {
+	var actionName = (window.location.pathname).split("/").last;
+	if (actionName == "new") {
+		$("#inviteOrgContainer").show();
+	}
+});
+</script>
