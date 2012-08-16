@@ -1085,60 +1085,64 @@ $(document).ready(function() {
 <script type="text/javascript">
 $(function() { 
 
-$('#programCountries').pullOut({
-  position: 'right',
-  top: '260px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'world',
-  color: 'lightblue'
-});	
-	
 $('#programSubjects').pullOut({
   position: 'right',
-  top: '180px',
+  top: '200px',
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
-  button: 'folder',
-  color: 'lightblue'
+  button: 'subject',
+  color: 'lightblue',
+  buttonTitle: 'Subjects'
 });
 
+$('#programCountries').pullOut({
+  position: 'right',
+  top: '235px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'region',
+  color: 'lightblue',
+  buttonTitle: 'Countries'
+});	
+
 $('#lengthOfTrip').pullOut({
+  position: 'right',
+  top: '270px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'length',
+  color: 'lightblue',
+  buttonTitle: 'Length of Trip'
+});
+
+$('#groupSize').pullOut({
+  position: 'right',
+  top: '305px',
+  showOn: 'click',
+  slideSpeed: 'normal',
+  scrollWithContent: false,
+  button: 'size',
+  color: 'lightblue',
+  buttonTitle: 'Group Sizes'
+});
+
+$('#priceRange').pullOut({
   position: 'right',
   top: '340px',
   showOn: 'click',
   slideSpeed: 'normal',
   scrollWithContent: false,
-  button: 'clock',
-  color: 'lightblue'
-});
-
-$('#groupSize').pullOut({
-  position: 'right',
-  top: '420px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'man',
-  color: 'lightblue'
-});
-
-$('#priceRange').pullOut({
-  position: 'right',
-  top: '500px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'piggy',
-  color: 'lightblue'
+  button: 'cost',
+  color: 'lightblue',
+  buttonTitle: 'Cost'
 });
 
 
 });
 </script>
-
 <script type='text/javascript'>
 
 
