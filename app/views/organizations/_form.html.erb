@@ -139,15 +139,20 @@ textarea {
 
 </div>
 
-<div class="twelve columns" id="inviteOrgContainer">
+<div class="twelve columns">
 	<br /><br />
+	
+	
+	<div id="inviteOrgContainer">
 	<div class="field">
     <%= f.check_box :will_invite, :value => @organization.will_invite %> Invite organization to create an account?</div>
 
 	<div class="field">
     Email at which to send the invitation:<br />
     <%= f.text_field :invite_email, :value => @organization.invite_email %></div><br />
-
+	</div>
+	
+	
   <div class="actions">
     <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png" %>     
 </div>
