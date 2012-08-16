@@ -39,7 +39,7 @@ a.forgotPassword:hover{color:#e67b5a}
 	padding: 10px; 	
 	border: 3px solid #575758;
 	float: left;
-	color:#6aaeba;
+	color:#575758;
 	font-size: 1.1em;
 	position: fixed;
 	top: 50%; left: 50%;
@@ -1085,6 +1085,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 	color:#9bce6c; 
 	font-size:2em; 
 	margin:20px;
+	margin-top:0px;
 }
 a.privacyLink, .mailToHelp {
 	color:#68c2d8;
@@ -1507,7 +1508,8 @@ a.privacyLink:hover, .mailToHelp:hover{
 				$('a.close, #mask').live('click', function() { 
 				  $('#mask , .addPhotos-popup').fadeOut(300 , function() {
 					$('#mask').remove();  
-				}); 
+				});
+				changeCount(); 
 				return false;
 				});
 				
