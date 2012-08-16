@@ -431,9 +431,7 @@ select {
 $(document).ready(function(){
 	
 	//set the organization name if necessary and applicable
-	<% if (user_signed_in? && current_user.admin?) %>
 	$("#tags").val("<%=Organization.find(@program.organization_id).name");
-	<% end %>
 	
 	
 	//when "+ add cost/length" is clicked, create 2 new input fields:
@@ -452,7 +450,7 @@ $(document).ready(function(){
 	}
 	
 	
-	/*create inputs for all of program's the existing cost/length objects, if any*/
+	//create inputs for all of program's the existing cost/length objects, if any
 	<% @costs.each do |f| %>
 		createInput();
 	<% end %>
@@ -471,7 +469,7 @@ $(document).ready(function(){
 	$("#medium").attr("checked", <%= @medium %>);
 	$("#large").attr("checked", <%= @large %>);
 	
-	/*set the program's location select menu to the program's location*/
+	//set the program's location select menu to the program's location
 	$("#program_location").val("<%=@program.location%>");
 	
 	
