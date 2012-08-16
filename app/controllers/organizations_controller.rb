@@ -163,7 +163,6 @@ class OrganizationsController < ApplicationController
     @organization.run_by = @organization.run_by.gsub(%r{</?[^>]+?>}, '')
     @organization.misson = @organization.misson.gsub(%r{</?[^>]+?>}, '')
     @organization.program_costs_includes = @organization.program_costs_includes.gsub(%r{</?[^>]+?>}, '')
-    @organization.program_subjects = @organization.program_subjects.gsub(%r{</?[^>]+?>}, '')
     @organization.program_costs_doesnt_include = @organization.program_costs_doesnt_include.gsub(%r{</?[^>]+?>}, '')
     
   else
