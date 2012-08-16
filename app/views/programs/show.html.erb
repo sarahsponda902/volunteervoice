@@ -9,6 +9,18 @@
 	<script src="/assets/jquery.smooth-scroll.min.js"></script>
 	<script src="/assets/lightbox.js"></script>
 	
+	
+
+		<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
+
+		<%= javascript_include_tag "/assets/smartpaginator.js"%>
+
+
+
+	<script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
+	<script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.rating.js' type="text/javascript" language="javascript"></script>
+	<script src='http://jquery-fyneworks.googlecode.com/svn/trunk/documentation/documentation.js' type="text/javascript"></script>
+	
 	<style>
 	.dateWritten {
 		color:#e67b5a; 
@@ -119,177 +131,348 @@
 	</style>
 	
 	
-
-	<script>
-	  jQuery(document).ready(function($) {
-	      $('a').smoothScroll({
-	        speed: 1000,
-	        easing: 'easeInOutCubic'
-	      });
-	  });
 	
-	
+		<style>
+		/* Mask for background, by default is not display */
+		#mask {
+			display: none;
+			background: #000; 
+			position: fixed; left: 0; top: 0; 
+			z-index: 10;
+			width: 100%; height: 100%;
+			opacity: 0.8;
+			z-index: 999;
+		}
 
-	</script>
-	
-	<script type="text/javascript">
-	function removePopup() {
-		$('#mask').fadeOut(300);
-		$('.review-popup').fadeOut(300);
-		$('#mask').remove();  
-		return false;
-	}
-	</script>
-	<% reviews_count = @results.count %>
-		<script type="text/javascript">
+		/* You can customize to your needs  */
+		.popup-box{
+			display:none;
+			background: #E9ECE9;
+			padding: 10px; 	
+			border: 2px solid #ddd;
+			float: left;
+			color: black;
+			max-height:300px;
+			position: fixed;
+			top: 50%; left: 50%;
+			z-index: 99999;
+			box-shadow: 0px 0px 20px #999; /* CSS3 */
+		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+			border-radius:3px 3px 3px 3px;
+		        -moz-border-radius: 3px; /* Firefox */
+		        -webkit-border-radius: 3px; /* Safari, Chrome */
+		}
 
-
-		$(document).ready(function() {
-
-				$('#reviews_pager').smartpaginator({ totalrecords: <%=reviews_count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
-
-
-			$('a.popup-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var popupBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(popupBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(popupBox).height() + 24) / 2; 
-				var popMargLeft = ($(popupBox).width() + 24) / 2; 
-
-				$(popupBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .popup-box').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-
-			$('a.flag-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var flagBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(flagBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(flagBox).height() + 24) / 2; 
-				var popMargLeft = ($(flagBox).width() + 24) / 2; 
-
-				$(flagBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .flag-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-			
-			$('a.review-window').click(function() {
-
-			            //Getting the variable's value from a link 
-				var reviewBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(reviewBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(reviewBox).height() + 24) / 2; 
-				var popMargLeft = ($(reviewBox).width() + 24) / 2; 
-
-				$(reviewBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
-
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
-
-				return false;
-			});
-
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .review-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-			
-
-		});
+		/* You can customize to your needs  */
+		.flag-popup{
+			display:none;
+			background: #D9DEDA;
+			padding: 10px; 	
+			border: 2px solid #575758;
+			float: left;
+			color:#6aaeba;
+			font-size: 1.1em;
+			position: fixed;
+			top: 50%; left: 50%;
+			z-index: 99999;
+			box-shadow: 0px 0px 20px #999; /* CSS3 */
+		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+			border-radius:3px 3px 3px 3px;
+		        -moz-border-radius: 3px; /* Firefox */
+		        -webkit-border-radius: 3px; /* Safari, Chrome */
+			max-height:300px;
+		}
 
 
-	</script>
+		.review-popup{
+			display:none;
+			background: #E9ECE9;
+			padding: 10px; 	
+			border: 2px solid #ddd;
+			float: left;
+			color: black;
+			position: fixed;
+			width: 650px;
+			top: 50%; left: 50%;
+			z-index: 99999;
+			box-shadow: 0px 0px 20px #999; /* CSS3 */
+		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+			border-radius:3px 3px 3px 3px;
+		        -moz-border-radius: 3px; /* Firefox */
+		        -webkit-border-radius: 3px; /* Safari, Chrome */
+			max-height:300px;
+		}
 
 
-	<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
+		/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
+		div.rating-cancel,div.star-rating{float:left;width:25px;height:25px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden}
+		div.rating-cancel,div.rating-cancel a{background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/delete.gif) no-repeat 0 -16px}
+		div.star-rating,div.star-rating a{background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/starsWorking.png) no-repeat 0 0px}
+		div.rating-cancel a,div.star-rating a{display:block;width:30px;height:100%;background-position:0 0px;border:0}
+		div.star-rating-on a{background-position:0 -25px!important}
+		div.star-rating-hover a{background-position:0 -32px}
+		/* Read Only CSS */
+		div.star-rating-readonly a{cursor:default !important}
+		/* Partial Star CSS */
+		div.star-rating{background:transparent!important;overflow:hidden!important}
+		/* END jQuery.Rating Plugin CSS */
 
-	<%= javascript_include_tag "/assets/smartpaginator.js"%>
-	
+
+	#orgLink:active{color:#68c2d8}
+	#orgLink:visited{color:#68c2d8}
+	#orgLink:link{color:#68c2d8}
+	#orgLink:hover{color:white; background:none}
+
+	a.popup-window:active{color:#68c2d8}
+	a.popup-window:visited{color:#68c2d8}
+	a.popup-window:link{color:#68c2d8}
+	a.popup-window:hover{color:#e67b5a; background:none}
+
+	a.review-window:active{color:#68c2d8}
+	a.review-window:visited{color:#68c2d8}
+	a.review-window:link{color:#68c2d8}
+	a.review-window:hover{color:#e67b5a; background:none}
+
+	a.organization_url:active{color:#68c2d8}
+	a.organization_url:visited{color:#68c2d8}
+	a.organization_url:link{color:#68c2d8}
+	a.organization_url:hover{color:white; background:none}
+
+	</style>
 
 
-<script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.MetaData.js' type="text/javascript" language="javascript"></script>
-<script src='http://jquery-star-rating-plugin.googlecode.com/svn/trunk/jquery.rating.js' type="text/javascript" language="javascript"></script>
-<script src='http://jquery-fyneworks.googlecode.com/svn/trunk/documentation/documentation.js' type="text/javascript"></script>
-</head>
-<div style="margin-top:20px; margin-left:20px">
+<style>
+.backToLinkContainer {
+	margin-top:20px; 
+	margin-left:20px;
+}
+a.backToLink {
+	font-family:architectsDaughterRegular; 
+	color:#575758;
+}
+a.backToLink:hover { 
+	color:white;
+}
+#programContentBox {
+	margin:auto; 
+	margin-top:50px; 
+	width:900px; 
+	float:center; 
+	border:1px solid #575758; 
+	background-color:#E9ECE9; 
+	color:#575758;
+}
+#innerProgramContentBox {
+	width:95%;
+}
+#progSquareImageContainer {
+	margin:0;
+	padding:0; 
+	margin-top:20px; 
+	width:14%; 
+	padding-left:20px;
+}
+#squareImage {
+	margin:0;
+	padding:0; 
+	margin-top:20px; 
+	width:14%; 
+	padding-left:20px;
+}
+#orgNameContainer {
+	width:53%; 
+	text-align:left; 
+	margin:0; 
+	padding:0; 
+	margin-top:20px;
+}
+#orgNameContainer {
+	font-size:3em; 
+	line-height:1em;
+}
+a.organization_url {
+	font-size:1.2em;
+}
+#progRatingContainer {
+	text-align:center; 
+	margin:0; 
+	padding:0; 
+	width:28%;
+}
+.programRatingTitle {
+	font-family:ArchitectsDaughterRegular; 
+	font-size:1.2em; 
+	color:#575758; 
+	line-height:2em; 
+	margin-top:20px;
+}
+.basedOnReviewsContainer {
+	font-family:ArchitectsDaughterRegular; 
+	font-size:.9em; 
+	color:#e67b5a; 
+	line-height:1.3em;
+}
+#programNameContainer {
+	margin-bottom:25px;
+	margin-left:15px; 
+	margin-top:30px;
+}
+#programName {
+	font-size:2.5em; 
+	color:#e67b5a; 
+	line-height:1em;
+}
+.detailsLabelContainer {
+	margin-left:4%;
+}
+#detailsLabel {
+	font-size:1.6em; 
+	line-height:2em;
+}
+#leftColumnContainer {
+	border:1px solid #575758; 
+	margin-left:4%; 
+	padding-bottom:2%; 
+	padding-right:1%;
+}
+#innerLeftColumnContainer {
+	margin-left:2%; 
+	margin-top:2%;
+}
+.detailLabel {
+	font-weight:600;
+}
+#rightColumnContainer {
+	width:45%; 
+	margin-left:2%; 
+	margin-top:2%; 
+	padding-left:2%; 
+	border-left: 1px solid #e67b5a;
+}
+#descriptionLabelContainer {
+	margin-left:4%; 
+	margin-top:2%;
+}
+#programDescriptionLabel {
+	font-size:1.6em; 
+	line-height:2em;
+}
+#programDescriptionContainer {
+	border:1px solid #575758; 
+	margin-left:4%; 
+	padding-bottom:2%; 
+	padding-right:1%;
+}
+#programDescription {
+	margin-left:20px; 
+	padding-top:2%; 
+	margin-right:2%;
+}
+#buttonsContainer {
+	margin-left:4%; 
+	width:48%; 
+	margin-top:3px; 
+	padding-bottom:7px;
+}
+#reviewProgramButton {
+	margin-left:125px; 
+	margin-top:-62px;
+}
+#addToFavoritesContainer {
+	float:right; 
+	margin-right:5px; 
+	margin-top:10px; 
+	margin-bottom:-30px;
+}
+#reviewsContainer {
+	height:100%; 
+	color:#575758;
+}
+#reviewsCount {
+	font-size:1.4em; 
+	line-height:2em; 
+	margin-left:20px;
+}
+</style>
+
+
+<style>
+.infoNotDisclosedTitle {
+	font-size:2em; 
+	line-height:2em; 
+	text-align:center; 
+	color:#575758; 
+	margin-top:-15px;
+}
+.infoNotDisclosedBlurb {
+	font-family:JosefinSlabRegular; 
+	font-size:1.1em; 
+	line-height:1.2em; 
+	color:#6aaeba; 
+	margin-left:10px; 
+	margin-right:10px; 
+	text-align:center;
+}
+th {
+	width:150px; text-align:center;
+}
+.priceRangeCost, .priceRangeNumWeeks {
+	width:150px; text-align:center;
+}
+.flagPopupTitle {
+	text-align:center; 
+	font-size:1.2em; 
+	font-family:cabinRegular; 
+	margin-bottom:20px; 
+	color:#575758;
+}
+.flagBody {
+	height:115px; 
+	font-size:0.9em; 
+	font-style:italic; 
+	margin:auto;
+}
+.flagSubmitContainer {
+	text-align:center; 
+	padding-top:15px;
+}
+</style>
+
+<% reviews_count = @results.count %>
+
+
+
+<div class="backToLinkContainer">
 <%if request.referrer %>
 	<%if (URI(request.referrer).path.split('/')[1] == 'searches')%>
-				<a href="<%=URI(request.referrer).path%>" style="font-family:architectsDaughterRegular; color:#575758">&lt; Back to Search Results</a>
+				<a href="<%=URI(request.referrer).path%>" class="backToLink">&lt; Back to Search Results</a>
 	<% end %>
 	<%if (URI(request.referrer).path.split('/')[1] == 'organizations')%>
-				<a href="<%=URI(request.referrer).path%>" style="font-family:architectsDaughterRegular; color:#575758">&lt; Back to Organization Profile</a>
+				<a href="<%=URI(request.referrer).path%>" class="backToLink">&lt; Back to Organization Profile</a>
 	<% end %>
 <% end %>
 </div>
-<div class="container" style=" margin:auto; margin-top:50px; width:900px; float:center; border:1px solid #575758; background-color:#E9ECE9; color:#575758">
-	<div class="row" style="width:95%">
-		<div class="two columns" style="margin:0;padding:0; margin-top:20px; width:14%; padding-left:20px">
-			<%= image_tag @program.square_image.url, :height => "100px", :width => "100px"%>
+<div class="container" id="programContentBox">
+	<div class="row" id="innerProgramContentBox">
+		<div class="two columns" id="progSquareImageContainer">
+			<%= image_tag @program.square_image.url, :id => "squareImage"%>
 		</div>
-		<div class="seven columns" style="width:53%; text-align:left; margin:0; padding:0; margin-top:20px">
+		<div class="seven columns" id="orgNameContainer">
 			<br />
-			<p style="font-size:3em; line-height:1em;"> <a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
-			<a style="font-size:1.2em;" href="<%=Organization.find(@program.organization_id).url%>" class="organization_url" target="_blank"><u> <%=Organization.find(@program.organization_id).url%></u></a>
+			<p id="orgNameContainer"> <a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
+			<a href="<%=Organization.find(@program.organization_id).url%>" class="organization_url" target="_blank"><u> <%=Organization.find(@program.organization_id).url%></u></a>
 
 		</div>
-		<div class="two columns"  style="text-align:center; margin:0; padding:0; width:28%">
+		<div class="two columns"  id="progRatingContainer">
 
-			<p style="font-family:ArchitectsDaughterRegular; font-size:1.2em; color:#575758; line-height:2em; margin-top:20px">Program Rating: </p>
+			<p class="programRatingTitle">Program Rating: </p>
 			<%= render :partial => "bigStar", :locals => {:stars => (@program.roundup(@overall))}%>
 			<br />
 
-			<p style="font-family:ArchitectsDaughterRegular; font-size:.9em; color:#e67b5a; line-height:1.3em">Based on <%= @program.reviews.count%> reviews</p> 
+			<p class="basedOnReviewsContainer">Based on <%= @program.reviews.count%> reviews</p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{@program.id}/edit"%> <br /><br /><br />
@@ -299,61 +482,61 @@
 	</div>
 	<div class="row">
 
-	<div class="ten columns" style="margin-bottom:25px;margin-left:15px; margin-top:30px">
-		<p style="font-size:2.5em; color:#e67b5a; line-height:1em"><%= @program.name%></p>
+	<div class="ten columns" class="programNameContainer">
+		<p id="programName"><%= @program.name%></p>
 	</div>
-	<div class="ten columns" style="margin-left:4%">
-		<p style="font-size:1.6em; line-height:2em"><u>Details:</u></p>
+	<div class="ten columns" class="detailsLabelContainer">
+		<p id="detailsLabel"><u>Details:</u></p>
 	</div>
 	
-	<div class="eleven columns" style="border:1px solid #575758; margin-left:4%; padding-bottom:2%; padding-right:1%;">
-		<div class="six columns" style="margin-left:2%; margin-top:2%">
-		<font style="font-weight:600">Subjects: </font>
+	<div class="eleven columns" id="leftColumnContainer">
+		<div class="six columns" id="innerLeftColumnContainer">
+		<span class="detailLabel">Subjects: </span>
 		<% @program_subjects = @program.program_subjects.map{|prog| prog.subject}%>
 		<%= @program_subjects[0..(@program.program_subjects.count - 2)].join(", ")%><br /><br />
-		<font style="font-weight:600">Country: </font><%= THECOUNTRIES[@program.location]%><br /><br />
-		<font style="font-weight:600">Location: </font><%= @program.specific_location%><br /><br />
-		<font style="font-weight:600">Program Started: </font> <%=@program.program_started%><br /><br />
-		<font style="font-weight:600">Lengths of Program: </font>
+		<span class="detailLabel">Country: </span><%= THECOUNTRIES[@program.location]%><br /><br />
+		<span class="detailLabel">Location: </span><%= @program.specific_location%><br /><br />
+		<span class="detailLabel">Program Started: </span> <%=@program.program_started%><br /><br />
+		<span class="detailLabel">Lengths of Program: </span>
 		<%= @program.lengths_of_program%><br /><br />
-		<font style="font-weight:600">Start Dates: </font><%= @program.start_dates%><br /><br />
-		<font style="font-weight:600">Program Requirements: </font><%= @program.program_requirements%><br /><br />
-		<font style="font-weight:600">Program Structure: </font><%= @program.program_structure.html_safe%><br /><br />
-		<font style="font-weight:600">Partnered Local Organizations: </font><%= @program.partnered_local_organizations%><br /><br />
-		<font style="font-weight:600">Group Sizes: </font>
+		<span class="detailLabel">Start Dates: </span><%= @program.start_dates%><br /><br />
+		<span class="detailLabel">Program Requirements: </span><%= @program.program_requirements%><br /><br />
+		<span class="detailLabel">Program Structure: </span><%= @program.program_structure.html_safe%><br /><br />
+		<span class="detailLabel">Partnered Local Organizations: </span><%= @program.partnered_local_organizations%><br /><br />
+		<span class="detailLabel">Group Sizes: </span>
 		<% @program_sizes = @program.program_sizes.map{|prog| prog.size}%>
 		<%= @program_sizes[0..(@program.program_sizes.count - 2)].join(", ")%>
 		
 		<br /><br />
-	<font style="font-weight:600">	Accommodations: </font><%= @program.accommodations%><br /><br />
+	<span class="detailLabel">	Accommodations: </span><%= @program.accommodations%><br /><br />
 		
-	<font style="font-weight:600">	Food Situation: </font><%= @program.food_situation%><br />
+	<span class="detailLabel">	Food Situation: </span><%= @program.food_situation%><br />
 		<br /><br /><br />
 	</div>
 	
-	<div class="six columns" style="width:45%; margin-left:2%; margin-top:2%; padding-left:2%; border-left: 1px solid #e67b5a;">
-		<font style="font-weight:600">	Program Cost Chart: </font><a href="#popup" class="popup-window">Click here to view</a><br /><br /> 
-		<font style="font-weight:600">Program Cost Breakdown: </font><%= @program.program_cost_breakdown.html_safe%><br />
-	<font style="font-weight:600">	-Includes: </font><%= @program.cost_includes.html_safe%><br />
-	<font style="font-weight:600">	-Doesn't Include: </font><%= @program.cost_doesnt_include.html_safe%><br />
+	<div class="six columns" id="detailsRightColumn">
+		<span class="detailLabel">	Program Cost Chart: </span><a href="#popup" class="popup-window">Click here to view</a><br /><br /> 
+		<span class="detailLabel">Program Cost Breakdown: </span><%= @program.program_cost_breakdown.html_safe%><br />
+	<span class="detailLabel">	-Includes: </span><%= @program.cost_includes.html_safe%><br />
+	<span class="detailLabel">	-Doesn't Include: </span><%= @program.cost_doesnt_include.html_safe%><br />
 	</div>
 </div>
 
-<div class="ten columns" style="margin-left:4%; margin-top:2%">
-	<p style="font-size:1.6em; line-height:2em"><u>Description:</u></p>
+<div class="ten columns" id="descriptionLabelContainer">
+	<p id="programDescriptionLabel"><u>Description:</u></p>
 </div>
-	<div class="eleven columns" style="border:1px solid #575758; margin-left:4%; padding-bottom:2%; padding-right:1%;">
+	<div class="eleven columns" id="programDescriptionContainer">
 
-	<div style="margin-left:20px; padding-top:2%; margin-right:2%">	<%=@program.description.html_safe%></div>
+	<div id="programDescription">	<%=@program.description.html_safe%></div>
 
 </div>
-	<div class="six columns" style="margin-left:4%; width:48%; margin-top:3px; padding-bottom:7px">
+	<div class="six columns" id="buttonsContainer">
 		<br />
 		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/LearnMore.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%> </a>
-		<p style="margin-left:125px; margin-top:-62px"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ReviewThisProg.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+		<p id="reviewProgramButton"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ReviewThisProg.png"), :controller => "reviews", :action => "new", :organization_id => @program.organization_id, :program_id => @program.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
 		<br />
 	</div>
-	<div class="four columns" align="right" style="float:right; margin-right:5px; margin-top:10px; margin-bottom:-30px">
+	<div class="four columns" align="right" id="addToFavoritesContainer">
 		<br />
 		<% if !(current_user.nil?)%>
 
@@ -372,11 +555,11 @@
 	</div>
 </div>
 	
-<div class="container" style="height:100%; color:#575758;">
+<div class="container" id="reviewsContainer">
 	<div class="row">
 		<br />
 		<br />
-		<p style="font-size:1.4em; line-height:2em; margin-left:20px"><%=@results.count%> Reviews</p>
+		<p id="reviewsCount"><%=@results.count%> Reviews</p>
 		
 	</div>
 	
@@ -419,21 +602,21 @@
 
   	<div id="popup" class="popup-box">
 	<% if @program.program_cost_length_maps.empty?%>
-		<p style="font-size:2em; line-height:2em; text-align:center; color:#575758; margin-top:-15px">Information not disclosed</p>
-		<p style="font-family:JosefinSlabRegular; font-size:1.1em; line-height:1.2em; color:#6aaeba; margin-left:10px; margin-right:10px; text-align:center">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
+		<p class="infoNotDisclosedTitle">Information not disclosed</p>
+		<p style="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 	<% else %>
 	  			<table>
 					<thead>
 					<tr>
-						<th style="width:150px; text-align:center"># Weeks</th>
-						<th style="width:150px; text-align:center">Cost</th>
+						<th># Weeks</th>
+						<th>Cost</th>
 					</tr>
 					</thead>
 					<tbody>
 					<% @entries.each do |f|%>
 					<tr>
-						<td style="width:150px; text-align:center"><%= f[0]%></td>
-						<td style="width:150px; text-align:center"><%= "$#{number_with_precision(f[1].to_d, :precision => 2)}"%></td>
+						<td class="priceRangeNumWeeks"><%= f[0]%></td>
+						<td class="priceRangeCost"><%= "$#{number_with_precision(f[1].to_d, :precision => 2)}"%></td>
 					</tr>
 					<% end %>
 					</tbody>
@@ -447,11 +630,11 @@
 		<% if user_signed_in? %>
 	  	<%= form_for @flag do |g| %>
 
-		<tr style="background-color:#D9DEDA"><td colspan="2">
-		    <p style="text-align:center; font-size:1.2em; font-family:cabinRegular; margin-bottom:20px; color:#575758">Report this review for <br />inappropriate content</p></td></tr>
+		<tr><td colspan="2">
+		    <p class="flagPopupTitle">Report this review for <br />inappropriate content</p></td></tr>
 
-			<tr style="background-color:#D9DEDA;"><td colspan="2">
-		<%=g.text_area :body, :style => "height:115px; font-size:0.9em; font-style:italic; margin:auto", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe."%>
+			<tr><td colspan="2">
+		<%=g.text_area :body, :class => "flagBody", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe."%>
 
 		    <%=g.hidden_field :flagger_id, :value => current_user.id %>
 
@@ -460,187 +643,145 @@
 		    <%=g.hidden_field :review_id, :id => "review_id" %>
 			</td></tr>
 
-			<tr style="background-color:#D9DEDA;"><td colspan="2">
-		    <p style="text-align:center; padding-top:15px"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px"%></p></td></tr>
+			<tr><td colspan="2">
+		    <p class="flagSubmitContainer"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px"%></p></td></tr>
 			<% end %>
 		<% else %>
 		<tr><td>You must be signed in to flag a review.</td></tr>
 		<% end %>
 	</div>
-	
-	
-	<style>
-	/* Mask for background, by default is not display */
-	#mask {
-		display: none;
-		background: #000; 
-		position: fixed; left: 0; top: 0; 
-		z-index: 10;
-		width: 100%; height: 100%;
-		opacity: 0.8;
-		z-index: 999;
-	}
 
-	/* You can customize to your needs  */
-	.popup-box{
-		display:none;
-		background: #E9ECE9;
-		padding: 10px; 	
-		border: 2px solid #ddd;
-		float: left;
-		color: black;
-		max-height:300px;
-		position: fixed;
-		top: 50%; left: 50%;
-		z-index: 99999;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-	}
-	
-	/* You can customize to your needs  */
-	.flag-popup{
-		display:none;
-		background: #D9DEDA;
-		padding: 10px; 	
-		border: 2px solid #575758;
-		float: left;
-		color:#6aaeba;
-		font-size: 1.1em;
-		position: fixed;
-		top: 50%; left: 50%;
-		z-index: 99999;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-		max-height:300px;
-	}
-	
-	
-	.review-popup{
-		display:none;
-		background: #E9ECE9;
-		padding: 10px; 	
-		border: 2px solid #ddd;
-		float: left;
-		color: black;
-		position: fixed;
-		width: 650px;
-		top: 50%; left: 50%;
-		z-index: 99999;
-		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
-		max-height:300px;
-	}
+<script>
+
+//scroll function for the lightbox2 popup plugin
+  jQuery(document).ready(function($) {
+      $('a').smoothScroll({
+        speed: 1000,
+        easing: 'easeInOutCubic'
+      });
+  });
 
 
-	img.btn_close { Position the close button
-		float: right; 
-		margin: -28px -28px 0 0;
-	}
 
-	fieldset { 
-		border:none; 
-	}
+//removes "show full review" popup and mask
+	//called when user clicks "flag" from within the "show full review" popup
+function removePopup() {
+	$('#mask').fadeOut(300);
+	$('.review-popup').fadeOut(300);
+	$('#mask').remove();  
+	return false;
+}
 
-	form.show_chart .textbox label { 
-		display:block; 
-		padding-bottom:7px; 
-	}
 
-	form.show_chart .textbox span { 
-		display:block;
-	}
 
-	form.show_chart p, form.show_chart span { 
-		color:#999; 
-		font-size:11px; 
-		line-height:18px;
-	} 
+	$(document).ready(function() {
+		//for review pagination. initialized the smartpaginator plugin on the "results" div
+			//the "reviews_pager" div contains the 1-10 of 40 --- < 1 2 3 >
+			$('#reviews_pager').smartpaginator({ totalrecords: <%=reviews_count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-	form.show_chart .textbox input { 
-		background:#666666; 
-		border-bottom:1px solid #333;
-		border-left:1px solid #000;
-		border-right:1px solid #333;
-		border-top:1px solid #000;
-		color:#fff; 
-	        border-radius: 3px 3px 3px 3px;
-		-moz-border-radius: 3px;
-	        -webkit-border-radius: 3px;
-		font:13px Arial, Helvetica, sans-serif;
-		padding:6px 6px 4px;
-		width:200px;
-	}
+			//jQuery for the "Price Ranges" popup
+		$('a.popup-window').click(function() {
 
-	form.show_chart input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
-	form.show_chart input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
+	                //Getting the variable's value from a link 
+			var popupBox = $(this).attr('href');
 
-	.button { 
-		background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-		background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-		background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-	        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-		border-color:#000; 
-		border-width:1px;
-	        border-radius:4px 4px 4px 4px;
-		-moz-border-radius: 4px;
-	        -webkit-border-radius: 4px;
-		color:#333;
-		cursor:pointer;
-		display:inline-block;
-		padding:6px 6px 4px;
-		margin-top:10px;
-		font:12px; 
-		width:214px;
-	}
-	.button:hover { background:#ddd; }
-	
-	
-	/* jQuery.Rating Plugin CSS - http://www.fyneworks.com/jquery/star-rating/ */
-	div.rating-cancel,div.star-rating{float:left;width:25px;height:25px;text-indent:-999em;cursor:pointer;display:block;background:transparent;overflow:hidden}
-	div.rating-cancel,div.rating-cancel a{background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/delete.gif) no-repeat 0 -16px}
-	div.star-rating,div.star-rating a{background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/starsWorking.png) no-repeat 0 0px}
-	div.rating-cancel a,div.star-rating a{display:block;width:30px;height:100%;background-position:0 0px;border:0}
-	div.star-rating-on a{background-position:0 -25px!important}
-	div.star-rating-hover a{background-position:0 -32px}
-	/* Read Only CSS */
-	div.star-rating-readonly a{cursor:default !important}
-	/* Partial Star CSS */
-	div.star-rating{background:transparent!important;overflow:hidden!important}
-	/* END jQuery.Rating Plugin CSS */
-	
-	</style>
+			//Fade in the Popup
+			$(popupBox).fadeIn(300);
 
-<style>
-#orgLink:active{color:#68c2d8}
-#orgLink:visited{color:#68c2d8}
-#orgLink:link{color:#68c2d8}
-#orgLink:hover{color:white; background:none}
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(popupBox).height() + 24) / 2; 
+			var popMargLeft = ($(popupBox).width() + 24) / 2; 
 
-a.popup-window:active{color:#68c2d8}
-a.popup-window:visited{color:#68c2d8}
-a.popup-window:link{color:#68c2d8}
-a.popup-window:hover{color:#e67b5a; background:none}
+			$(popupBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
 
-a.review-window:active{color:#68c2d8}
-a.review-window:visited{color:#68c2d8}
-a.review-window:link{color:#68c2d8}
-a.review-window:hover{color:#e67b5a; background:none}
+			// Add the mask to body
+			$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+			$('#mask').fadeIn(300);
 
-a.organization_url:active{color:#68c2d8}
-a.organization_url:visited{color:#68c2d8}
-a.organization_url:link{color:#68c2d8}
-a.organization_url:hover{color:white; background:none}
+			return false;
+		});
 
-</style>
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .popup-box').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+
+
+		//jQuery for the "flag a review" popup
+		$('a.flag-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var flagBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(flagBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(flagBox).height() + 24) / 2; 
+			var popMargLeft = ($(flagBox).width() + 24) / 2; 
+
+			$(flagBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .flag-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+		
+		
+		//jQuery for the "see full review" popup
+		$('a.review-window').click(function() {
+
+		            //Getting the variable's value from a link 
+			var reviewBox = $(this).attr('href');
+
+			//Fade in the Popup
+			$(reviewBox).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(reviewBox).height() + 24) / 2; 
+			var popMargLeft = ($(reviewBox).width() + 24) / 2; 
+
+			$(reviewBox).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .review-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+		
+
+	});
+
+
+</script>
