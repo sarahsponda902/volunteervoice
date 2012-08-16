@@ -56,6 +56,7 @@ class ProgramsController < ApplicationController
     @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
     @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
     @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
+    @program.accommodations = @program.accommodations.gsub(%r{</?[^>]+?>}, '')
     
     @subjects = @program.program_subjects.map(&:subject).join(", ")
     @sizes = @program.program_sizes.map(&:size)
@@ -150,6 +151,7 @@ class ProgramsController < ApplicationController
     @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
     @program.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     @program.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    @program.accommodations = RedCloth.new( ActionController::Base.helpers.sanitize( @program.accommodations ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
     
     
     if (@program.overall.nil?) 
@@ -181,6 +183,8 @@ class ProgramsController < ApplicationController
         @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
         @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
         @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
+        @program.accommodations = @program.accommodations.gsub(%r{</?[^>]+?>}, '')
+        
         flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          render :action => "new" 
       end
@@ -193,6 +197,15 @@ end
   # PUT /programs/1.json
   def update
     @program = Program.find(params[:id])
+    
+    params[:program][:description] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:description] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    params[:program][:program_cost_breakdown] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:program_cost_breakdown] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+    params[:program][:cost_includes] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:cost_includes] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    params[:program][:cost_doesnt_include] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:cost_doesnt_include] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    params[:program][:accommodations] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:accommodations] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    
+    
+    
       if (user_signed_in? && current_user.admin?) || organization_account_signed_in?
         @program.program_subjects.each do |f|
           f.destroy

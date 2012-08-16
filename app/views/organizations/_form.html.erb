@@ -83,7 +83,7 @@ textarea {
     <%= f.text_field :num_vols_yr, :value => @organization.num_vols_yr %></div>
   <div class="field">
     <%= f.label :application_process %>
-    <%= f.text_field :application_process, :value => @organization.application_process %></div>
+    <%= f.text_area :application_process, :value => @organization.application_process %></div>
   <div class="field">
     <%= f.label :business_model %>
     <%= f.radio_button :business_model, "Certified Nonprofit" %> Certified Nonprofit<br />
@@ -114,7 +114,7 @@ textarea {
 
   <div class="field">
     Program Costs Breakdown<br />
-    <%= f.text_field :price_breakdown, :value => @organization.price_breakdown %></div>
+    <%= f.text_area :price_breakdown, :value => @organization.price_breakdown %></div>
 </div>
 
 <div class="six columns" id="rightColumn">

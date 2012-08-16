@@ -505,7 +505,7 @@ th {
 		<%= @program_sizes[0..(@program.program_sizes.count - 2)].join(", ")%>
 		
 		<br /><br />
-	<span class="detailLabel">	Accommodations: </span><%= @program.accommodations%><br /><br />
+	<span class="detailLabel">	Accommodations: </span><%= @program.accommodations.html_safe%><br />
 		
 	<span class="detailLabel">	Food Situation: </span><%= @program.food_situation%><br />
 		<br /><br /><br />

@@ -132,7 +132,7 @@
 		</div>
 		<div class="six columns" id="rightColumnDetails">
 			<br />
-			<p><font class="detailsLabel">Price Ranges:</font> <a href="#price-ranges-box" class="price-ranges-window">Click here to view</a> </p><br />
+			<p><span class="detailsLabel">Price Ranges:</span> <a href="#price-ranges-box" class="price-ranges-window">Click here to view</a> </p><br />
 			
 			<p class="detailsLabel"> 
 			<% if @can_edit%>
@@ -144,8 +144,8 @@
 			&#9998; 
 			<% end %>
 			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_as => :textilize_program_costs_doesnt_include, :nil => "Click to edit"%><br />
-			<p><font class="detailsLabel">Additional Fees: </font><%= organization.additional_fees%></p><br />
-			<p><font class="detailsLabel">Price Breakdown: </font><%= organization.price_breakdown %></p><br />
+			<p><span class="detailsLabel">Additional Fees: </span><%= organization.additional_fees%></p><br />
+			<p><span class="detailsLabel">Price Breakdown: </span><%= organization.price_breakdown.html_safe %></p><br />
 			<p class="detailsLabel">Group Sizes: </p><%= @groupSizes[0..(@groupSizes.count - 2)].join(", ")%><br /><br />
 			
 			
