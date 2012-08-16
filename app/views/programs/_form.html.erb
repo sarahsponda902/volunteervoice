@@ -5,27 +5,440 @@
 <script type="text/javascript" src="/assets/jquery.js"></script>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<% if @costs.nil?%>
-<% @costs = []%>
+
+
+<style>
+textarea {
+	width:350px;
+	height:125px;
+}
+input[type="text"] {
+	width:347px;
+	height:20px;
+}
+li.popup{ margin-left:30px; }
+
+.rules-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 20px;
+	height:300px; 
+	width:600px;	
+	border: 3px solid #68c2d8;
+	float: left;
+	color:#575758;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+
+.subjects-popup{
+	display:none;
+	border: 3px solid #68c2d8;
+	background: #E9ECE9;
+	padding: 10px; 	
+	float: left;
+	color: #575758;
+	position: fixed;
+	width: 600px;
+	max-height:300px;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+#top {
+	margin-top:40px;
+}
+#topLabels {
+	font-size:1.3em; 
+	float:left;
+}
+.warning {
+	font-size:0.7em;
+}
+#topFields {
+	float:left;
+}
+.topTextField {
+	width:537px;
+}
+.topTextArea {
+	width:540px; 
+	height:125px;
+}
+#leftSideColumn {
+	width:45%; 
+	margin-top:40px;
+}
+a.subjects-window {
+	color:blue;
+}
+a.subjects-window:hover{
+	color:white;
+}
+#subjects {
+	font-size:.8em; 
+	border:1px solid #e67b5a;
+}
+.littleMessage {
+	font-size:0.85em;  
+	color:#1B32E0;
+}
+#rightHandColumn {
+	width:40%; 
+	border-left:1px solid #575758; 
+	padding-left:5%; 
+	margin-top:40px;
+}
+a.rules-window {
+	color:red;
+}
+a.rules-window:hover {
+	color:white;
+}
+#weeklyCostLabel {
+	font-size:1.3em;
+}
+.cost_lengths {
+	margin-top:20px; 
+	background:#78DEF5; 
+	padding:10px; 
+	width:327px;
+}
+.costLengthsLine {
+	width:150px; 
+	height:1px; 
+	background-color:#575758; 
+	margin-bottom:10px;
+}
+#fields {
+	margin-left:20px;
+}
+.createInput {
+	color:blue;
+	margin-left:25px;
+}
+#submitButtonContainer {
+	margin-top:60px; 
+	margin-left:55px;
+}
+
+
+
+
+.pricingPopupTitle {
+	font-size:2em; 
+	text-align:center; 
+	font-family:JosefinSlabRegular; 
+	font-weight:600;
+}
+.pricingSubTitle {
+	color:#6aaeba; 
+	text-align:center; 
+	font-size:1.4em;
+}
+.pricingWarning {
+	font-size:1.05em;
+}
+.redWarning {
+	color:#e67b5a;
+}
+.mainSubjectsTitle {
+	font-size:1.2em;
+}
+#rightSubjectPopupColumn {
+	width:42%;
+}
+
+</style>
+
+
+
+
+<!-- ERROR MESSAGES -->
+<% if flash.class.name != "String"%>
+<% flash.each do |key, value| %>
+	<% if value.class.name != "String"%>
+	  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
 <% end %>
-<% @small = false unless !@small.nil? %>
-<% @individual = false unless !@individual.nil? %>
-<% @medium = false unless !@medium.nil? %>
-<% @large = false unless !@large.nil? %>
+<% end %>
+<% end %><!-- END ERROR MESSAGES -->
+
+<div class="container">
+	<div class="row">		
+		<div class="twelve columns" id="top">
+<%= form_for @program do |f| %>
+
+<% if @program.overall.nil?%>
+  <div class="field">
+	<%= f.hidden_field :overall, :value => 0%>
+	</div>
+<% end %>
+
+<div class="four columns" id="topLabels">
+	Program Title: <br /><br /><br />
+    Link to Program on your Website: <br /><br /><br />
+	Description:<br /><br />
+	<span class="warning">
+	(This description should be basic and tell volunteers WHAT they will be doing, not WHY)<br /></span>
+</div>
+<div class="seven columns" id="topFields">
+  <div class="field">
+    <%= f.text_field :name, :value => @program.name, :class => "topTextField" %><br /><br />
+  </div>
+  <div class="field">
+		<%= f.text_field :check_it_out, :value => @program.check_it_out, :class => "topTextField" %><br /><br />
+  </div>
+  <div class="field">
+    <%= f.text_area :description, :value => @program.description, :class => "topTextArea" %>
+  </div>
+</div>
+
+<div class="six columns" id="leftSideColumn">
+	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#subjects-box" class="subjects-window"><u>View all possible subject tags</u></a></label>
+	
+		<input id="subjects" name="program[program_subjects]" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects; end%>" onfocus="if (this.value == ' Start typing...') {this.value = '';};"/><p class="littleMessage"> &gt; Click to select applicable subjects for this program.</p><br />
+<div class="field">
+	<label for="program_location">Country:</label>
+	<select id="program_location" name="program[location]">
+		<option value=""> Select a Country</option>
+		<% THECOUNTRIES.keys.each do |f| %>
+		<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+		<% end %>
+	</select>
+</div><br />
+
+<div id= "field">
+	<label for="program_specific_location">Location (City/Town):</label>
+  <%= f.text_field :specific_location, :value => @program.specific_location %>
+<p class="littleMessage "> &gt; Name only (no description) of the exact town(s) or city(ies)</p>
+</div><br />
+
+	<% if (current_organization_account.nil?) && @program.organization_id.nil?%>
+		<label for="tags">Organization: </label>
+		<input id="tags" name="program[organization_name]" type="text"/>
+
+	<% else %>
+		<input type="hidden" value= "<%=Organization.find(current_organization_account.organization_id).name%>" name="program[organization_name]" disabled="disabled">
+	<% end %><br /><br />
+	
+	<div id="field">
+		<label for="program_program_started">Program Started: </label>
+	<%= f.text_field :program_started, :value => @program.program_started %>
+	<p class="littleMessage"> &gt; Month and year that this program began.</p>
+	</div><br />
+	
+	<div id="field">
+		<label for="program_lengths_of_program">Lengths of Program: </label>
+	<%= f.text_field :lengths_of_program, :value => @program.lengths_of_program %>
+	<p class="littleMessage"> &gt; Min and Max that volunteers can be with this project. Average time is also helpful.</p>
+	</div><br />
+	
+	<div id="field">
+		<label for="program_start_dates">Start Dates: </label>
+	<%= f.text_field :start_dates, :value => @program.start_dates %>
+	</div><br />
+	
+	<div id="field">
+		<label for="program_program_requirements">Program Requirements: </label>
+	<%= f.text_field :program_requirements, :value => @program.program_requirements %>
+	</div><br />
+	
+	<div id="field">
+		<label for="program_partnered_local_organizations">Partnered Local Organizations</label>
+	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations %>
+		<p class="littleMessage"> &gt; If you run your own program with no partners, put 'None'.</p>
+		</div><br />
+
+<div id="field">
+	<label>Group Sizes: <p class="littleMessage"> &gt; What size groups do volunteers work in? You can select more than one.</p></label>
+	<div class="six columns" style="width:50%">
+	<input type="checkbox" name="program[program_sizes][]" value= "Individual" id = "individual"> Individual <br />
+	<input type="checkbox" name="program[program_sizes][]" value="Small Groups (2-3)" id = "small"> Small Groups (2-3)</div>
+	<div class="six columns" style="width:43%; margin-top:-37px">
+	<input type="checkbox" name="program[program_sizes][]" value="Medium Groups (4-10)" id = "medium"> Medium Groups (4-10)<br/>
+	<input type="checkbox" name="program[program_sizes][]" value="Large Groups (11+)" id = "large"> Large Groups (11+)</div>
+  </div><br />
+</div>
+
+<div class="six columns" id="rightHandColumn">
+	<div id= "field">
+		<label for="program_accommodations">Accommodations: </label>
+		<%= f.text_field :accommodations, :value => @program.accommodations %>
+		<p class="littleMessage "> &gt; Homestay, Hostel, Hotel or Camping. You should also mention plumbing, electricity, and other amenities.</p>
+	</div><br />
+	
+	<div id= "field">
+		<label for="program_food_situation">Food Situation: </label>
+		<%= f.text_field :food_situation, :value => @program.food_situation %>
+		<p class="littleMessage "> &gt; You can describe how many meals, who cooks them (volunteers or someone else), type of food, etc.</p>
+	</div><br />
+
+<div id= "field">
+	<label for="program_cost_includes" >Price Includes: </label>
+	<%= f.text_area :cost_includes, :value => @program.cost_includes %>
+</div><br />
+<div id= "field">
+	<label for="program_cost_doesnt_include">Price Doesn't Include: </label>
+	<%= f.text_area :cost_doesnt_include, :value => @program.cost_doesnt_include %>
+</div><br />
+<div id= "field">
+	<label "program_program_cost_breakdown" >Program Cost Breakdown: </label>
+	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
+</div><br /><br />
+
+<span id="weeklyCostLabel">Weekly Costs:&nbsp;&nbsp;&nbsp;</span><a href="#rules-box" class="rules-window"><u>Click here for important pricing rules</u></a><br />
+<div class="cost_lengths">
+	<div class="costLengthsLine"></div>
+<ul id="fields">
+
+</ul>
+	
+	<p><a href='#' class="createInput">+ Add a Length &amp; Cost</a></p>
+</div>
+</div>
+<div class="twelve columns" align="center">
+
+  <div class="actions" id="submitButtonContainer">
+    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/publish.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
+  </div>
+<% end %>
+</div>
+</div>
+</div>
+
+
+<div id="rules-box" class="rules-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<b><p class="pricingPopupTitle">Required Pricing Protocol</p></b>
+	<br /><br /><br />
+	<div class="overflow">
+	<p class="pricingSubTitle">For Volunteer Placement Organizations (VPO’s):</p><br />
+	<br />
+	<span class="pricingWarning">→ YOU MUST INCLUDE ALL ADDITIONAL FEES IN YOUR OVERALL PROGRAM COSTS.</span><br />
+	<br />
+	<ol ><li class="popup"><b><u>Explanation:</b></u> VVI Includes ALL fees that an organization charges into the overall program cost. This means that if your organization charges any fees in addition to or separately from your designated program fee (placement fees, required donations, etc.), we add the additional fees to your overall costs in our search database.</li>
+	<li class="popup"><b><u>Why is this required?</b></u> We do this for the benefit of our Users, so that they can set a budget for their volunteer trip and use our site to search based on the ACTUAL price of a program, all fees included. We help Users stick to their actual budget rather than having to do additional math on their own.</li>
+	<li class="popup"><b><u>How is this enforced?</b></u> VVI regularly audits programs that are submitted by Organizations to ensure that all financial information is accurate and according to site standards. We also Users to help us maintain the integrity of the site.</li>
+	<li class="popup"><b><u>What happens if I don’t do this?</b></u> As an organization, you agree to adhere to our Pricing Protocol when using this website. Failure to do so will result in One <u>One Initial Citation</u>. A <u>Second Offense</u> will result in <span style="color:#e67b5a">TERMINATION OF YOUR ORGANIZATION’S CONTROL OVER ITS ACCOUNT ON OUR WEBSITE. </span></li>
+	</ol><br /><br /><br />
+	<p class="pricingSubTitle">For Community Based Organizations (CBO’s):</p><br />
+	<br />
+	<span class="pricingWarning">→ IF YOU DO NOT HAVE FIRM COSTS FOR YOUR PROJECTS, YOU MUST PROVIDE ESTIMATES.</span><br />
+	<br />
+	<ol ><li class="popup"><b><u>Explanation:</b></u> Some CBO’s have predetermined costs, and some don’t. VVI thinks it’s great that CBO’s do not charge extra program fees, but volunteers still want to know how much to expect to pay for food, rent, and essential amenities. Providing prospective volunteers with estimations is incredibly helpful. The more accurate and detailed your estimations are, the easier it will be for prospective Volunteers to determine your projects as a match for them. </li>
+	<li class="popup"><b><u>Why is this required?</b></u> This requirement is beneficial for both CBO’s and prospective volunteers. When you provide price estimates for each available length of time a program offers, you make your projects more searchable for prospective volunteers that have a budget. Plus, it’s obviously in your favor as an organization to provide accurate, useful financial information about your programs to build a good reputation through VVI.</li>
+	<li class="popup"><b><u>How is this enforced?</b></u> VVI regularly audits programs that are submitted by Organizations to ensure that all financial information is accurate and according to site standards. We also encourage Users to help us maintain the integrity of the site.</li>
+	<li class="popup"><b><u>What happens if I don’t do this?</b></u> As an organization, you agree to adhere to our Pricing Protocol when using this website. Failure to do so will result in <u>One Initial Citation</u>. A <u>Second Offense</u> will result in <span class="redWarning">suspension of your organization’s control over its account on our website.</span></li>
+	</ol> <br />
+	<br />
+</div>
+</div>
+<div id="subjects-box" class="subjects-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<div class="overflow">
+	<div class="six columns">
+	<span class="mainSubjectsTitle"> Agriculture</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Organic Farming<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Sustainable Development<br />
+	<br /><span class="mainSubjectsTitle"> Animal Care</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Animal Rights<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Wildlife Conservation<br />
+	<br /><span class="mainSubjectsTitle"> Caregiving</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Elder Care<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Child/Orphan Care<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Disabled Care<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Feed the Homeless<br />
+	<br /><span class="mainSubjectsTitle"> Community Development</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Youth Development and Outreach<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Construction<br />
+	<br /><span class="mainSubjectsTitle"> Culture and Community</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Performing Arts<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Fashion<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Music<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Sports &amp; Recreation<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Journalism<br />
+	<br /><span class="mainSubjectsTitle"> Disaster Relief</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Economics<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Microfinance<br />
+	<br /><span class="mainSubjectsTitle"> Education</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching English<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching Buddhist Monks<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching Children<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching Computer Literacy<br />
+	</div>
+	<div class="six columns" id="rightSubjectPopupColumn">
+	<span class="mainSubjectsTitle"> Engineering and Infrastructure</span><br />
+	<br /><span class="mainSubjectsTitle"> Environmental</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Ecological Conservation<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Sustainable Development<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Wildlife Conservation<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Habitat Restoration<br />
+	<br /><span class="mainSubjectsTitle"> Health and Medicine</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      HIV/AIDS<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Nutrition<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Family Planning<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Veterinary Medicine<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Clinical Work<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Dental Work<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Medical Research<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Health Education<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Public Health<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Hospital Care-giving<br />
+	<br /><span class="mainSubjectsTitle"> Human Rights</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Women's Initiatives<br />
+	<br /><span class="mainSubjectsTitle"> International Work Camp</span><br />
+	<br /><span class="mainSubjectsTitle"> Recreation</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Adventure Travel<br />
+	<br /><span class="mainSubjectsTitle"> Scientific Research</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Archaeology<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Environmental Biology<br />
+	<br /><span class="mainSubjectsTitle"> Technology</span><br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching Computer Literacy<br />
+	&nbsp;&nbsp;&nbsp;&nbsp;      Media Marketing and Graphic Design<br />
+  </div>
+</div>
+</div>
 
 
 <script type="text/javascript">
 $(document).ready(function(){
+	//when "+ add cost/length" is clicked, create 2 new input fields:
+		//one for the new length of time, one for the new total cost
 	$(".createInput").click(function(event) {
 		event.preventDefault();
 		createInput();
 	});
+	
+	//since these dropdowns are not styled like the rest of ours, they appear without any indicator arrow (because of the -webkit-appearance:none), we put in some arrows just for chrome and safari
 	if ($.browser.webkit) {
 		$("#program_location").css("height", "25px");
 		$("#program_location").css("background-image", "url('/assets/arrowProgram.png')");
 		$("#program_location").css("background-repeat", "no-repeat");
 		$("#program_location").css("background-position", "right");
 	}
+	
+	
+	//create inputs for all of program's the existing cost/length objects, if any
 	<% @costs.each do |f| %>
 		createInput();
 	<% end %>
@@ -38,12 +451,18 @@ $(document).ready(function(){
 		<% @count = @count + 1 %>
 	<% end %>
 
+	//check the check boxes if the program has those attributes
 	$("#small").attr("checked", <%= @small %>);
 	$("#individual").attr("checked", <%= @individual %>);
 	$("#medium").attr("checked", <%= @medium %>);
 	$("#large").attr("checked", <%= @large %>);
+	
+	//set the program's location select menu to the program's location
 	$("#program_location").val("<%=@program.location%>");
 	
+	
+	
+	//jQuery for the "Pricing Rules" popup
 	$('a.rules-window').click(function() {
 
                 //Getting the variable's value from a link 
@@ -76,6 +495,8 @@ $(document).ready(function(){
 	return false;
 	});
 	
+	
+	//jQuery for the "Subjects Popup"
 	$('a.subjects-window').click(function() {
 
 	            //Getting the variable's value from a link 
@@ -109,13 +530,19 @@ $(document).ready(function(){
 	});
 });
 
-
+//possible tags for the "length of time" select box when creating a new cost/length input
 var allTags = ["1 week", "2 weeks", "3 weeks", "4 weeks", "5 weeks", "6 weeks", "7 weeks", "8 weeks", "9 weeks", "10 weeks", "11 weeks", "12 weeks", "4 months", "5 months", "6 months", "7 months", "8 months", "9 months", "10 months", "11 months", "12 months", "13 months", "14 months", "15 months", "16 months", "17 months", "18 months", "19 months", "20 months", "21 months", "22 months", "23 months", "2 years", "25 months", "26 months", "27 months", "28 months", "29 months", "30 months", "31 months", "32 months", "33 months", "34 months", "35 months", "3 years"];
 
+
+// counter for use in iterating through allTags to make the select box
 var count = 0;
+
+//counter for use in creating the div names
 var countFields = 0;
+
+//creates two new input fields and appends them to the "fields" div
 function createInput(){
-    field_area = document.getElementById('fields');
+    field_area = document.getElementById('fields'); //div to append new fields to
 	var li = document.createElement("li");
     var input = document.createElement("select");
 	var label = document.createTextNode("Length of Trip: ");
@@ -125,30 +552,43 @@ function createInput(){
 	var br = document.createElement("br");
 	var removalLink = document.createElement("a");
 	var count = document.createTextNode(countFields.toString() + ". ");
+	
+	//line dividing the new fields from the already-created fields
 	div.style.backgroundColor = "#575758";
 	div.style.height = "1px";
 	div.style.width = "150px";
 	div.style.marginBottom = "10px";
 	div.style.marginTop = "10px";
 	div.style.marginLeft = "-22px";
+	
+	//length of time field (select box)
     input.id = 'length'+countFields;
 	input.className = 'selectCosts';
     input.name = "lengths[]";
+
+	//if webkit, add a dropdown arrow to the select box, since we took it out with "-webkit-appearance:none" in /assets/style.css
 	if ($.browser.webkit) {
 		input.style.background = "url('/assets/arrowProgram.png') no-repeat right";
 		input.style.height = "25px";
 		input.style.backgroundColor = "white";
 		input.style.width = "150px";
 	}
+	
+	//create each option for the select box using "allTags"
  	for (count = 0; count < allTags.length; count++) {
 		var opt = document.createElement("option");
 		opt.value = allTags[count].toString();
 		opt.text = allTags[count].toString();
 		input.options.add(opt);
 	};
+	
+	//creating the "total cost" number field
 	input2.id = 'cost'+countFields;
     input2.name = "costs[]";
     input2.type = "number";
+
+	//creating the "remove this field" link.
+		//removes both the "cost" and "length" fields
 	removalLink.onclick = function(){
 	    this.parentNode.parentNode.removeChild(this.parentNode);
 	}
@@ -156,6 +596,9 @@ function createInput(){
 	removalLink.style.color = "red";
 	removalLink.appendChild(removalText);
 	removalLink.style.cursor = "pointer";
+	
+	
+	//append all items to the "fields" div
 	li.appendChild(label);
 	li.appendChild(input);
 	li.appendChild(br);
@@ -250,304 +693,4 @@ $(function() {
 				});
 				</script>
 
-				<% flash.each do |key, value| %>
-				  <div class="flash <%=key%>">
-				<%= pluralize value.length, "errors"%> prevented your program from being created:<br />
-					<% value.each do |f|%>
-						* <%=f%><br />
-					<% end %>
-				  </div>
-				<% end %>
-
-<div class="container" style="color:#575758">
-	<div class="row">		
-		<div class="twelve columns" style="margin-top:40px">
-<%= form_for @program do |f| %>
-
-<% if @program.overall.nil?%>
-  <div class="field">
-	<%= f.hidden_field :overall, :value => 0%>
-	</div>
-<% end %>
-
-<div class="four columns" style="font-size:1.3em; float:left">
-	Program Title: <br /><br /><br />
-    Link to Program on your Website: <br /><br /><br />
-	Description:<br /><br />
-	<font style="font-size:0.7em">
-	(This description should be basic and tell volunteers WHAT they will be doing, not WHY)<br /></font>
-</div>
-<div class="seven columns" style="float:left">
-  <div class="field">
-    <%= f.text_field :name, :value => @program.name, :style => "width:537px;" %><br /><br />
-  </div>
-  <div class="field">
-		<%= f.text_field :check_it_out, :value => @program.check_it_out, :style => "width:537px;" %><br /><br />
-  </div>
-  <div class="field">
-    <%= f.text_area :description, :value => @program.description, :style => "width:540px; height:125px" %>
-  </div>
-</div>
-
-<div class="six columns" style="width:45%; margin-top:40px">
-	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#subjects-box" class="subjects-window" style="color:blue"><u>View all possible subject tags</u></a></label>
-	
-		<input id="subjects" name="program[program_subjects]" style="font-size:.8em; border:1px solid #e67b5a" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects; end%>" onfocus="if (this.value == ' Start typing...') {this.value = '';};"/><p style="font-size:0.85em;  color:darkblue"> &gt; Click to select applicable subjects for this program.</p><br />
-<div class="field">
-	<label for="program_location">Country:</label>
-	<select id="program_location" name="program[location]">
-		<option value=""> Select a Country</option>
-		<% THECOUNTRIES.keys.each do |f| %>
-		<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
-		<% end %>
-	</select>
-</div><br />
-
-<div id= "field">
-	<label for="program_specific_location">Location (City/Town):</label>
-  <%= f.text_field :specific_location, :value => @program.specific_location %>
-<p style="font-size:0.85em; color:darkblue; "> &gt; Name only (no description) of the exact town(s) or city(ies)</p>
-</div><br />
-
-	<% if (current_organization_account.nil?) && @program.organization_id.nil?%>
-		<label for="tags">Organization: </label>
-		<input id="tags" name="program[organization_name]" type="text"/>
-
-	<% else %>
-		<input type="hidden" value= "<%=Organization.find(current_organization_account.organization_id).name%>" name="program[organization_name]" disabled="disabled">
-	<% end %><br /><br />
-	
-	<div id="field">
-		<label for="program_program_started">Program Started: </label>
-	<%= f.text_field :program_started, :value => @program.program_started %>
-	<p style="font-size:0.85em; color:darkblue; "> &gt; Month and year that this program began.</p>
-	</div><br />
-	
-	<div id="field">
-		<label for="program_lengths_of_program">Lengths of Program: </label>
-	<%= f.text_field :lengths_of_program, :value => @program.lengths_of_program %>
-	<p style="font-size:0.85em; color:darkblue; "> &gt; Min and Max that volunteers can be with this project. Average time is also helpful.</p>
-	</div><br />
-	
-	<div id="field">
-		<label for="program_start_dates">Start Dates: </label>
-	<%= f.text_field :start_dates, :value => @program.start_dates %>
-	</div><br />
-	
-	<div id="field">
-		<label for="program_program_requirements">Program Requirements: </label>
-	<%= f.text_field :program_requirements, :value => @program.program_requirements %>
-	</div><br />
-	
-	<div id="field">
-		<label for="program_partnered_local_organizations">Partnered Local Organizations</label>
-	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations %>
-		<p style="font-size:0.85em; color:darkblue; "> &gt; If you run your own program with no partners, put 'None'.</p>
-		</div><br />
-
-<div id="field">
-	<label>Group Sizes: <p style="font-size:0.85em; color:darkblue; "> &gt; What size groups do volunteers work in? You can select more than one.</p></label>
-	<div class="six columns" style="width:50%">
-	<input type="checkbox" name="program[program_sizes][]" value= "Individual" id = "individual"> Individual <br />
-	<input type="checkbox" name="program[program_sizes][]" value="Small Groups (2-3)" id = "small"> Small Groups (2-3)</div>
-	<div class="six columns" style="width:43%; margin-top:-37px">
-	<input type="checkbox" name="program[program_sizes][]" value="Medium Groups (4-10)" id = "medium"> Medium Groups (4-10)<br/>
-	<input type="checkbox" name="program[program_sizes][]" value="Large Groups (11+)" id = "large"> Large Groups (11+)</div>
-  </div><br />
-</div>
-
-<div class="six columns" style="width:40%; border-left:1px solid #575758; padding-left:5%; margin-top:40px">
-	<div id= "field">
-		<label for="program_accommodations">Accommodations: </label>
-		<%= f.text_field :accommodations, :value => @program.accommodations %>
-		<p style="font-size:0.85em; color:darkblue; "> &gt; Homestay, Hostel, Hotel or Camping. You should also mention plumbing, electricity, and other amenities.</p>
-	</div><br />
-	
-	<div id= "field">
-		<label for="program_food_situation">Food Situation: </label>
-		<%= f.text_field :food_situation, :value => @program.food_situation %>
-		<p style="font-size:0.85em; color:darkblue; "> &gt; You can describe how many meals, who cooks them (volunteers or someone else), type of food, etc.</p>
-	</div><br />
-
-<div id= "field">
-	<label for="program_cost_includes" >Price Includes: </label>
-	<%= f.text_area :cost_includes, :value => @program.cost_includes %>
-</div><br />
-<div id= "field">
-	<label for="program_cost_doesnt_include">Price Doesn't Include: </label>
-	<%= f.text_area :cost_doesnt_include, :value => @program.cost_doesnt_include %>
-</div><br />
-<div id= "field">
-	<label "program_program_cost_breakdown" >Program Cost Breakdown: </label>
-	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
-</div><br /><br />
-
-<font style="font-size:1.3em;">Weekly Costs:&nbsp;&nbsp;&nbsp;</font><a href="#rules-box" class="rules-window" style="color:red"><u>Click here for important pricing rules</u></a><br />
-<div class="cost_lengths" style="margin-top:20px; background:lightblue; padding:10px; width:327px">
-	<div style="width:150px; height:1px; background-color:#575758; margin-bottom:10px"></div>
-<ul id="fields" style="margin-left:20px">
-
-</ul>
-	
-	<p><a style="color:blue;margin-left:25px" href='#' class="createInput">+ Add a Length &amp; Cost</a></p>
-</div>
-</div>
-<div class="twelve columns" align="center">
-
-  <div class="actions" style="margin-top:60px; margin-left:55px">
-    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/publish.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
-  </div>
-<% end %>
-</div>
-</div>
-</div>
-
-
-<div id="rules-box" class="rules-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
-	<b><p style="font-size:2em; text-align:center; font-family:JosefinSlabRegular; font-weight:600">Required Pricing Protocol</p></b>
-	<br /><br /><br />
-	<div class="overflow">
-	<p style="color:#6aaeba; text-align:center; font-size:1.4em;">For Volunteer Placement Organizations (VPO’s):</p><br />
-	<br />
-	<font style="font-size:1.05em">→ YOU MUST INCLUDE ALL ADDITIONAL FEES IN YOUR OVERALL PROGRAM COSTS.</font><br />
-	<br />
-	<ol ><li class="popup"><b><u>Explanation:</b></u> VVI Includes ALL fees that an organization charges into the overall program cost. This means that if your organization charges any fees in addition to or separately from your designated program fee (placement fees, required donations, etc.), we add the additional fees to your overall costs in our search database.</li>
-	<li class="popup"><b><u>Why is this required?</b></u> We do this for the benefit of our Users, so that they can set a budget for their volunteer trip and use our site to search based on the ACTUAL price of a program, all fees included. We help Users stick to their actual budget rather than having to do additional math on their own.</li>
-	<li class="popup"><b><u>How is this enforced?</b></u> VVI regularly audits programs that are submitted by Organizations to ensure that all financial information is accurate and according to site standards. We also Users to help us maintain the integrity of the site.</li>
-	<li class="popup"><b><u>What happens if I don’t do this?</b></u> As an organization, you agree to adhere to our Pricing Protocol when using this website. Failure to do so will result in One <u>One Initial Citation</u>. A <u>Second Offense</u> will result in <font style="color:#e67b5a">TERMINATION OF YOUR ORGANIZATION’S CONTROL OVER ITS ACCOUNT ON OUR WEBSITE. </font></li>
-	</ol><br /><br /><br />
-	<p style="color:#6aaeba; text-align:center; font-size:1.4em;">For Community Based Organizations (CBO’s):</p><br />
-	<br />
-	<font style="font-size:1.05em">→ IF YOU DO NOT HAVE FIRM COSTS FOR YOUR PROJECTS, YOU MUST PROVIDE ESTIMATES.</font><br />
-	<br />
-	<ol ><li class="popup"><b><u>Explanation:</b></u> Some CBO’s have predetermined costs, and some don’t. VVI thinks it’s great that CBO’s do not charge extra program fees, but volunteers still want to know how much to expect to pay for food, rent, and essential amenities. Providing prospective volunteers with estimations is incredibly helpful. The more accurate and detailed your estimations are, the easier it will be for prospective Volunteers to determine your projects as a match for them. </li>
-	<li class="popup"><b><u>Why is this required?</b></u> This requirement is beneficial for both CBO’s and prospective volunteers. When you provide price estimates for each available length of time a program offers, you make your projects more searchable for prospective volunteers that have a budget. Plus, it’s obviously in your favor as an organization to provide accurate, useful financial information about your programs to build a good reputation through VVI.</li>
-	<li class="popup"><b><u>How is this enforced?</b></u> VVI regularly audits programs that are submitted by Organizations to ensure that all financial information is accurate and according to site standards. We also encourage Users to help us maintain the integrity of the site.</li>
-	<li class="popup"><b><u>What happens if I don’t do this?</b></u> As an organization, you agree to adhere to our Pricing Protocol when using this website. Failure to do so will result in <u>One Initial Citation</u>. A <u>Second Offense</u> will result in <font style="color:#e67b5a">suspension of your organization’s control over its account on our website.</font></li>
-	</ol> <br />
-	<br />
-</div>
-</div>
-<div id="subjects-box" class="subjects-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
-	<div class="overflow">
-	<div class="six columns">
-	<font style="font-size:1.2em;"> Agriculture</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Organic Farming<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Sustainable Development<br />
-	<br /><font style="font-size:1.2em;"> Animal Care</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Animal Rights<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Wildlife Conservation<br />
-	<br /><font style="font-size:1.2em;"> Caregiving</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Elder Care<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Child/Orphan Care<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Disabled Care<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Feed the Homeless<br />
-	<br /><font style="font-size:1.2em;"> Community Development</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Youth Development and Outreach<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Construction<br />
-	<br /><font style="font-size:1.2em;"> Culture and Community</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Performing Arts<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Fashion<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Music<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Sports &amp; Recreation<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Journalism<br />
-	<br /><font style="font-size:1.2em;"> Disaster Relief</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Economics<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Microfinance<br />
-	<br /><font style="font-size:1.2em;"> Education</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching English<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching Buddhist Monks<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching Children<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching Computer Literacy<br />
-	</div>
-	<div class="six columns" style="width:42%">
-	<font style="font-size:1.2em;"> Engineering and Infrastructure</font><br />
-	<br /><font style="font-size:1.2em;"> Environmental</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Ecological Conservation<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Sustainable Development<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Wildlife Conservation<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Habitat Restoration<br />
-	<br /><font style="font-size:1.2em;"> Health and Medicine</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      HIV/AIDS<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Nutrition<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Family Planning<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Veterinary Medicine<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Clinical Work<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Dental Work<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Medical Research<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Health Education<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Public Health<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Hospital Care-giving<br />
-	<br /><font style="font-size:1.2em;"> Human Rights</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Women's Initiatives<br />
-	<br /><font style="font-size:1.2em;"> International Work Camp</font><br />
-	<br /><font style="font-size:1.2em;"> Recreation</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Adventure Travel<br />
-	<br /><font style="font-size:1.2em;"> Scientific Research</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Archaeology<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Environmental Biology<br />
-	<br /><font style="font-size:1.2em;"> Technology</font><br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Teaching Computer Literacy<br />
-	&nbsp;&nbsp;&nbsp;&nbsp;      Media Marketing and Graphic Design<br />
-  </div>
-</div>
-</div>
-
-
-<style>
-textarea {
-	width:350px;
-	height:125px;
-}
-input[type="text"] {
-	width:347px;
-	height:20px;
-}
-
-.rules-popup{
-	display:none;
-	background: #D9DEDA;
-	padding: 20px;
-	height:300px; 
-	width:600px;	
-	border: 3px solid #68c2d8;
-	float: left;
-	color:#575758;
-	font-size: 1.1em;
-	position: fixed;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
-
-
-.subjects-popup{
-	display:none;
-	border: 3px solid #68c2d8;
-	background: #E9ECE9;
-	padding: 10px; 	
-	float: left;
-	color: #575758;
-	position: fixed;
-	width: 600px;
-	max-height:300px;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
-
-li.popup{ margin-left:30px; }
-</style>
 

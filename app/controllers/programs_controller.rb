@@ -35,7 +35,13 @@ class ProgramsController < ApplicationController
   # GET /programs/new.json
   def new
     @program = Program.new
-
+    @costs = []
+     @small = false unless !@small.nil? 
+     @individual = false unless !@individual.nil? 
+     @medium = false unless !@medium.nil? 
+     @large = false unless !@large.nil? 
+    
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @program }
