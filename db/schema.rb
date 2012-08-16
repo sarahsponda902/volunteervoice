@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815224512) do
+ActiveRecord::Schema.define(:version => 20120816195506) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -136,21 +136,23 @@ ActiveRecord::Schema.define(:version => 20120815224512) do
   create_table "feedbacks", :force => true do |t|
     t.text     "body"
     t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.boolean  "show"
     t.string   "email"
     t.text     "truncated100"
+    t.boolean  "admin_read",   :default => false
   end
 
   create_table "flags", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.text     "body"
     t.integer  "poster_id"
     t.integer  "flagger_id"
     t.integer  "review_id"
     t.string   "category"
+    t.boolean  "admin_read", :default => false
   end
 
   create_table "mad_mimi_emails", :force => true do |t|
@@ -178,8 +180,8 @@ ActiveRecord::Schema.define(:version => 20120815224512) do
   end
 
   create_table "new_reviews", :force => true do |t|
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.text     "body"
     t.integer  "user_id"
     t.boolean  "before"
@@ -203,6 +205,7 @@ ActiveRecord::Schema.define(:version => 20120815224512) do
     t.string   "photo8"
     t.string   "photo9"
     t.string   "photo10"
+    t.boolean  "admin_read",   :default => false
   end
 
   create_table "organization_accounts", :force => true do |t|
@@ -258,8 +261,6 @@ ActiveRecord::Schema.define(:version => 20120815224512) do
     t.integer  "num_reviews"
     t.string   "email"
     t.integer  "operating_since"
-    t.integer  "num_vols_date"
-    t.integer  "num_vols_yr"
     t.text     "good_to_know"
     t.integer  "reviews_count"
     t.text     "training_resources"
@@ -290,6 +291,8 @@ ActiveRecord::Schema.define(:version => 20120815224512) do
     t.boolean  "published_docs"
     t.string   "additional_fees"
     t.integer  "full_time_staff"
+    t.string   "num_vols_yr"
+    t.string   "num_vols_date"
   end
 
   create_table "pages", :force => true do |t|
@@ -368,8 +371,8 @@ ActiveRecord::Schema.define(:version => 20120815224512) do
   create_table "reviews", :force => true do |t|
     t.text     "body"
     t.integer  "program_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.integer  "user_id"
     t.boolean  "show"
     t.integer  "organization_id"
@@ -395,6 +398,7 @@ ActiveRecord::Schema.define(:version => 20120815224512) do
     t.text     "truncated100"
     t.text     "truncated200"
     t.boolean  "flag_show"
+    t.boolean  "admin_read",        :default => false
   end
 
   create_table "searches", :force => true do |t|
@@ -487,6 +491,7 @@ ActiveRecord::Schema.define(:version => 20120815224512) do
     t.integer  "unread_messages"
     t.string   "return_link"
     t.string   "email_confirmation"
+    t.boolean  "admin_read",                :default => false
   end
 
   add_index "users", ["approved"], :name => "index_users_on_approved"

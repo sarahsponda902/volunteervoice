@@ -77,10 +77,10 @@ textarea {
     <%= f.text_field :operating_since, :value => @organization.operating_since %></div>
   <div class="field">
     Number of Volunteers to Date<br />
-    <%= f.number_field :num_vols_date, :value => @organization.num_vols_date %></div>
+    <%= f.text_field :num_vols_date, :value => @organization.num_vols_date %></div>
   <div class="field">
     Number of Volunteers per Year<br />
-    <%= f.number_field :num_vols_yr, :value => @organization.num_vols_yr %></div>
+    <%= f.text_field :num_vols_yr, :value => @organization.num_vols_yr %></div>
   <div class="field">
     <%= f.label :application_process %>
     <%= f.text_field :application_process, :value => @organization.application_process %></div>
