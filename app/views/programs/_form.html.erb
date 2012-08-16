@@ -431,7 +431,7 @@ select {
 $(document).ready(function(){
 	
 	//set the organization name if necessary and applicable
-	$("#tags").val("<%=Organization.find(@program.organization_id).name");
+	$("#tags").val("<%=Organization.find(@program.organization_id).name%>");
 	
 	
 	//when "+ add cost/length" is clicked, create 2 new input fields:
