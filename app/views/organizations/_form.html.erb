@@ -167,8 +167,8 @@ textarea {
 
 <script>
 $(document).ready(function() {
-	var actionName = (window.location.pathname).split("/").last;
-	if (actionName == "new") {
+	var actionName = (window.location.pathname).split("/");
+	if (actionName[actionName.length - 1] == "new") {
 		$("#inviteOrgContainer").show();
 	} else {
 		$("#editingImageBlurb").show();
