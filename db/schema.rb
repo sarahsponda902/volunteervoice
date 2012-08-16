@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816195506) do
+ActiveRecord::Schema.define(:version => 20120816201917) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -277,12 +277,10 @@ ActiveRecord::Schema.define(:version => 20120816195506) do
     t.text     "truncated75"
     t.text     "misson"
     t.text     "program_costs_includes"
-    t.string   "application_process"
     t.string   "program_model_string"
     t.string   "business_model"
     t.string   "run_by"
     t.string   "price_ranges"
-    t.string   "price_breakdown"
     t.text     "program_costs_doesnt_include"
     t.text     "headquarters_location"
     t.string   "types_of_programs"
@@ -293,6 +291,8 @@ ActiveRecord::Schema.define(:version => 20120816195506) do
     t.integer  "full_time_staff"
     t.string   "num_vols_yr"
     t.string   "num_vols_date"
+    t.text     "application_process"
+    t.text     "price_breakdown"
   end
 
   create_table "pages", :force => true do |t|
@@ -344,7 +344,6 @@ ActiveRecord::Schema.define(:version => 20120816195506) do
     t.string   "partnered_local_organizations"
     t.text     "cost_includes"
     t.text     "program_cost_breakdown"
-    t.text     "accommodations"
     t.string   "check_it_out"
     t.string   "length"
     t.string   "group_size"
@@ -366,6 +365,7 @@ ActiveRecord::Schema.define(:version => 20120816195506) do
     t.string   "lengths_of_program"
     t.string   "food_situation"
     t.string   "program_requirements"
+    t.text     "accommodations"
   end
 
   create_table "reviews", :force => true do |t|
