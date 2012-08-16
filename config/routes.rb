@@ -4,7 +4,7 @@ RMTest::Application.routes.draw do
   get "/new_reviews/thank_you_new_review"
   get "/organization_accounts/thank_you_request"
   get "/searches/program_browse"
-  get "/blog_posts/resources"
+  match "/blog_posts/resources" => "blog_posts#resources"
   
   ##### UPDATE MESSAGES
   match "update_messages/:id/send_message" => "update_messages#send_message"
