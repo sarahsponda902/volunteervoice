@@ -1,60 +1,4 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<% if !(current_user.nil?)%>
-
-<script type="text/javascript">
-$(document).ready(function() {
-	$('.close-delete-pop').click(function () {
-		$('#mask').fadeOut(300);
-		$('.delete-popup').fadeOut(300);
-		$('#mask').remove();
-	});
-	
-	$('a.delete-window').click(function() {
-
-                //Getting the variable's value from a link 
-		var deleteBox = $(this).attr('href');
-
-		//Fade in the Popup
-		$(deleteBox).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(deleteBox).height() + 24) / 2; 
-		var popMargLeft = ($(deleteBox).width() + 24) / 2; 
-
-		$(deleteBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask" style="opacity:.5"></div>');
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .delete-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-	
-});
-</script>
-<% flash.each do |key, value| %>
-  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your review from being updated:<br />
-	<% value.each do |f|%>
-		* <%=f%><br />
-	<% end %>
-  </div>
-<% end %>
-	
-<%= render "edit_review" %>
-
 
 <style>
 #mask {
@@ -90,6 +34,30 @@ fieldset {
 	border:none; 
 }
 </style>
+
+
+
+
+<% if !(current_user.nil?)%>
+
+
+<!-- ERROR MESSAGES -->
+<% if flash.class.name != "String"%>
+<% flash.each do |key, value| %>
+	<% if value.class.name != "String"%>
+	  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
+<% end %>
+<% end %><!-- END ERROR MESSAGES -->
+	
+<%= render "edit_review" %>
+
+
 <% end %>
 
 <% if current_user.nil?%>
@@ -97,3 +65,49 @@ fieldset {
 <% redirect_to "/registrations/mustBe"%>
 
 <% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	//close the "are you sure you want to delete" popup
+	$('.close-delete-pop').click(function () {
+		$('#mask').fadeOut(300);
+		$('.delete-popup').fadeOut(300);
+		$('#mask').remove();
+	});
+	
+	//"are you sure you want to delete" popup jQuery
+	$('a.delete-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var deleteBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(deleteBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(deleteBox).height() + 24) / 2; 
+		var popMargLeft = ($(deleteBox).width() + 24) / 2; 
+
+		$(deleteBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .delete-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	
+});
+</script>
