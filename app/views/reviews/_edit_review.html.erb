@@ -15,17 +15,37 @@
 	border-left:1px solid #e67b5a; 
 	border-right: 1px solid #e67b5a;
 }
+#pageTitle {
+	font-size:2.3em;
+	font-family:JosefinSlabRegular;
+	color:#e67b5a;
+	margin-left:7%; 
+	line-height:1.3em;
+}
+#addOnBody {
+	width:700px;
+	height:150px; 
+	margin-left:7%;
+}
+#currentReviewBody {
+	margin-left:7%; 
+	margin-right:7%;
+}
+#outerStarsContainer {
+	margin-left:8.45%; 
+	margin-right:8.45%;
+}
 </style>
 
 <div class="container">
 	<div class="row" id="top">
 		<div class="ten columns" id="editReviewContainer">
-			<p style="font-size:2.3em;font-family:JosefinSlabRegular;color:#e67b5a;margin-left:7%; line-height:1.3em">Review Add-on:</p>
+			<p id="pageTitle">Review Add-on:</p>
 			<%= form_for @review do |f|%>
-			<%= f.text_area :body, :value => "", :style => "width:700px;height:150px; margin-left:7%"%>
-			<div style="margin-left:7%; margin-right:7%;"><%= @review.body.html_safe%></div>
+			<%= f.text_area :body, :value => "", :id => "addOnBody"%>
+			<div id="currentReviewBody"><%= @review.body.html_safe%></div>
 		</div>
-		<div class="ten columns" style="margin-left:8.45%; margin-right:8.45%">
+		<div class="ten columns" id="outerStarsContainer">
 			<br />
 			<br />
 			<br />
