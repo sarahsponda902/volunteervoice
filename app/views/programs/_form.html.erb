@@ -12,7 +12,7 @@ textarea {
 	width:350px;
 	height:125px;
 }
-input[type="text"] {
+.textField {
 	width:347px;
 	height:20px;
 }
@@ -220,7 +220,7 @@ a.createInput:hover {
 <div class="six columns" id="leftSideColumn">
 	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#subjects-box" class="subjects-window"><u>View all possible subject tags</u></a></label>
 	
-		<input id="subjects" name="program[program_subjects]" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects; end%>" onfocus="if (this.value == ' Start typing...') {this.value = '';};"/><p class="littleMessage"> &gt; Click to select applicable subjects for this program.</p><br />
+		<input id="subjects" class="textField" name="program[program_subjects]" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects; end%>" onfocus="if (this.value == ' Start typing...') {this.value = '';};"/><p class="littleMessage"> &gt; Click to select applicable subjects for this program.</p><br />
 <div class="field">
 	<label for="program_location">Country:</label>
 	<select id="program_location" name="program[location]">
@@ -233,13 +233,13 @@ a.createInput:hover {
 
 <div id= "field">
 	<label for="program_specific_location">Location (City/Town):</label>
-  <%= f.text_field :specific_location, :value => @program.specific_location %>
+  <%= f.text_field :specific_location, :value => @program.specific_location, :class => "textField" %>
 <p class="littleMessage "> &gt; Name only (no description) of the exact town(s) or city(ies)</p>
 </div><br />
 
 	<% if (user_signed_in? && current_user.admin?)%>
 		<label for="tags">Organization: </label>
-		<input id="tags" name="program[organization_name]" type="text"/>
+		<input id="tags" name="program[organization_name]" type="text" class="textField"/>
 
 	<% else %>
 		<input type="hidden" value= "<%=Organization.find(current_organization_account.organization_id).name%>" name="program[organization_name]" disabled="disabled">
@@ -247,29 +247,29 @@ a.createInput:hover {
 	
 	<div id="field">
 		<label for="program_program_started">Program Started: </label>
-	<%= f.text_field :program_started, :value => @program.program_started %>
+	<%= f.text_field :program_started, :value => @program.program_started, :class => "textField" %>
 	<p class="littleMessage"> &gt; Month and year that this program began.</p>
 	</div><br />
 	
 	<div id="field">
 		<label for="program_lengths_of_program">Lengths of Program: </label>
-	<%= f.text_field :lengths_of_program, :value => @program.lengths_of_program %>
+	<%= f.text_field :lengths_of_program, :value => @program.lengths_of_program, :class => "textField" %>
 	<p class="littleMessage"> &gt; Min and Max that volunteers can be with this project. Average time is also helpful.</p>
 	</div><br />
 	
 	<div id="field">
 		<label for="program_start_dates">Start Dates: </label>
-	<%= f.text_field :start_dates, :value => @program.start_dates %>
+	<%= f.text_field :start_dates, :value => @program.start_dates, :class => "textField" %>
 	</div><br />
 	
 	<div id="field">
 		<label for="program_program_requirements">Program Requirements: </label>
-	<%= f.text_field :program_requirements, :value => @program.program_requirements %>
+	<%= f.text_field :program_requirements, :value => @program.program_requirements, :class => "textField" %>
 	</div><br />
 	
 	<div id="field">
 		<label for="program_partnered_local_organizations">Partnered Local Organizations</label>
-	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations %>
+	<%= f.text_field :partnered_local_organizations, :value => @program.partnered_local_organizations, :class => "textField" %>
 		<p class="littleMessage"> &gt; If you run your own program with no partners, put 'None'.</p>
 		</div><br />
 
@@ -293,7 +293,7 @@ a.createInput:hover {
 	
 	<div id= "field">
 		<label for="program_food_situation">Food Situation: </label>
-		<%= f.text_field :food_situation, :value => @program.food_situation %>
+		<%= f.text_field :food_situation, :value => @program.food_situation, :class => "textField" %>
 		<p class="littleMessage "> &gt; You can describe how many meals, who cooks them (volunteers or someone else), type of food, etc.</p>
 	</div><br />
 
