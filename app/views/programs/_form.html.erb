@@ -614,25 +614,33 @@ function createInput(){
 };
 
 
-
+//Autocomplete for the organization-name 
+	//Only visible to admins, when org-accounts view this page, the org-name is automatically set to their org
 $(function() {
+	//set "availableTags" to an array of all Org names
 	var availableTags = [
 		<% Organization.all.each do |f| %>
 		"<%=f.name%>",
 		<% end %>
 		];
+	//initialize the jQuery UI autocomplete on the "tags" input
 	$( "#tags" ).autocomplete({
 		source: availableTags
 	});
 });
-	</script>
-			
-			<script type="text/javascript">
+
+
+//Multi-valued autocomplete box for the subject-tags 
 				$(function() {
+					//all possible subject tags
 					var availableSubjects = ["Agriculture", "Organic Farming", "Sustainable Development", "Animal Care", "Animal Rights", "Wildlife Conservation", "Caregiving", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless", "Community Development", "Youth Development and Outreach", "Construction", "Culture & Community", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism", "Disaster Relief", "Economics", "Microfinance", "Education", "Teaching English", "Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy", "Engineering and Infrastructure", "Environmental", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration", "Health and Medicine", "HIV/AIDS", "Nutrition", "Family Planning", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Care-giving", "Human Rights", "Women's Initiatives", "International Work Camp", "Recreation", "Adventure Travel", "Scientific Research", "Archaeology", "Environmental Biology", "Technology", "Teaching Computer Literacy", "Media, Marketing, and Graphic Design" ];
+					
+					//splits the value of the "subjects" input by commas
 					function split( val ) {
 						return val.split( /,\s*/ );
 					}
+					
+					//gets the last subject tag entered
 					function extractLast( term ) {
 						return split( term ).pop();
 					}
@@ -645,6 +653,7 @@ $(function() {
 								event.preventDefault();
 							}
 						})
+						//initializes the jQuery UI autocomplete on the "subjects" input
 						.autocomplete({
 							minLength: 0,
 							source: function( request, response ) {

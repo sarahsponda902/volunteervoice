@@ -7,25 +7,25 @@ class ContactMailer < ActionMailer::Base
 
   def to_contact(message)
     @message = message
-    @user_path = "http://localhost:3000/users/#{@message.user_id}"
+    @user_path = "http://girlpowerproject.herokuapp.com/users/#{@message.user_id}"
     mail(:subject => "Contact Us: #{message.subject}")
   end
   
   def to_organizations(message)
      @message = message
-     @user_path = "http://localhost:3000/users/#{@message.user_id}"
+     @user_path = "http://girlpowerproject.herokuapp.com/users/#{@message.user_id}"
       mail(:subject => "Contact Us: #{message.subject}", :to => "organizations@volunteervoice.org")
   end
   
   def to_questions(message)
       @message = message
-      @user_path = "http://localhost:3000/users/#{@message.user_id}"
+      @user_path = "http://girlpowerproject.herokuapp.com/users/#{@message.user_id}"
        mail(:subject => "Contact Us: #{message.subject}", :to => "questions@volunteervoice.org")
   end
    
   def to_organizations(message)
      @message = message
-     @user_path = "http://localhost:3000/users/#{@message.user_id}"
+     @user_path = "http://girlpowerproject.herokuapp.com/users/#{@message.user_id}"
      mail(:subject => "Unsubscribe: #{message.subject}", :to => "contact@volunteervoice.org")
   end
    
