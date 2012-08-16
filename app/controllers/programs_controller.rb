@@ -89,6 +89,14 @@ class ProgramsController < ApplicationController
     @costs = @program.program_cost_length_maps.map(&:cost)
     @lengths = @program.program_cost_length_maps.map{|p| "#{p.length_number} #{p.length_name}"}
     
+    
+    if (current_organization_account.nil?)
+      if !(user_signed_in? && current_user.admin?)
+        redirect_to root_path       
+      end
+    end
+    
+    
   end
 
   # POST /programs
