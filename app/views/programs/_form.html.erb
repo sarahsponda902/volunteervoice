@@ -431,7 +431,7 @@ select {
 $(document).ready(function(){
 	
 	//set the organization name if necessary and applicable
-	<% if user_signed_in? && current_user.admin? %>
+	<% if (user_signed_in? && current_user.admin?) %>
 	$("#tags").val("<%=Organization.find(@program.organization_id).name");
 	<% end %>
 	
@@ -684,11 +684,12 @@ $(function() {
 								// remove the current input
 								terms.pop();
 								// add the selected item
+									//check if fewer than 4 tags already
 								if (terms.length < 4) {
 									terms.push( ui.item.value );
 									// add placeholder to get the comma-and-space at the end
 									terms.push( "" );
-								} else {
+								} else { //if #tags > 4
 									alert("You can only select four subject tags.")
 								}
 								this.value = terms.join( ", " );
