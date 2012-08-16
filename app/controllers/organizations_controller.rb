@@ -192,15 +192,12 @@ class OrganizationsController < ApplicationController
     if @organization.url[0..3] != "http"
       @organization.url = "http://"+@organization.url
     end
-
-    
-    
     @organization.reviews_count = 0
     @organization.overall = 0
-    @organization.index!
     
     if user_signed_in? && current_user.admin?
       if @organization.save
+        @organization.index!
             if @organization.will_invite && @organization.invite_email.present?
               OrganizationAccount.invite!(:email => @organization.invite_email, :organization_id => @organization.id, :admin_pass => admin_pass)
             end

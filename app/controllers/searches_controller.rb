@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
         format.json { render json: @searches }
       end
     else
-      redirect_to "/pages/search_machine"
+      redirect_to "/searches/search_machine"
     end
   end
   
@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
       end
       redirect_to "/searches"
     else
-      redirect_to "/pages/search_machine"
+      redirect_to "/searches/search_machine"
     end
   end
   
@@ -217,7 +217,10 @@ class SearchesController < ApplicationController
   
    def search_machine
       @search = Search.new
-      
+       @locations = [] 
+       Program.all.each do |f| 
+       @locations << f.location unless @locations.include?(f.location) 
+       end 
     end
 
 
