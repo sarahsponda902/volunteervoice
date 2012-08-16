@@ -227,6 +227,155 @@ class SearchesController < ApplicationController
       @programs.each do |f|
         @countries_with_programs << f.location unless @countries_with_programs.include?(f.location)
       end
+      
+         @nums = Array.new
+    	 @progNums = Array.new
+         @countries_with_programs.each do |f|
+    	 @progNums << Program.where(:location => f).count unless f == ""
+         @nums << ALLCOUNTRIES.index(f) unless (ALLCOUNTRIES.index(f).nil?)
+         end 
+      
+      
+          @americas = Hash.new
+          THEREGIONS[10].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@americas[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[11].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@americas[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[12].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@americas[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[13].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@americas[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+
+
+
+          @europe = Hash.new 
+          THEREGIONS[6].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@europe[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[7].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@europe[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[8].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@europe[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[9].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@europe[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+
+
+
+
+          @africa = Hash.new 
+          THEREGIONS[1].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@africa[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[2].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@africa[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[3].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@africa[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[4].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@africa[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[5].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@africa[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+
+
+
+
+          @asia = Hash.new 
+          THEREGIONS[14].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@asia[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[15].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@asia[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[16].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@asia[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[17].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@asia[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[18].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@asia[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+
+
+
+
+          @oceania = Hash.new 
+          THEREGIONS[19].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@oceania[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[20].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@oceania[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[21].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@oceania[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+          THEREGIONS[22].each do |f|
+         	 if !(Program.where(:location => f).empty?) 
+         		@oceania[f] = THECOUNTRIES[f]
+         	 end 
+          end 
+
+
+
+          @americas = @americas.sort_by { |country| country[1] } 
+          @europe = @europe.sort_by { |country| country[1] } 
+          @africa = @africa.sort_by { |country| country[1] } 
+          @asia = @asia.sort_by { |country| country[1] } 
+          @oceania = @oceania.sort_by { |country| country[1] } 
+      
+      
       respond_to do |format|
         format.html # index.html.erb
         format.json { render :json => @programs }

@@ -1,10 +1,9 @@
+	
 
-    <% @nums = Array.new%>
-	<% @progNums = Array.new%>
-    <% @countries_with_programs.each do |f|%>
-	<% @progNums << Program.where(:location => f).count unless f == ""%>
-    <% @nums << ALLCOUNTRIES.index(f) unless (ALLCOUNTRIES.index(f).nil?)%>
-    <% end %>
+	<%= stylesheet_link_tag "/assets/jquery-ui-1.8.22.custom.css"%>
+	<%= javascript_include_tag "/assets/jquery.js"%>
+	<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"%>
+	
 	
 	<style>
 	#tabs{
@@ -28,63 +27,71 @@
 		color:white;
 	}
 	</style>
-	<%= stylesheet_link_tag "/assets/jquery-ui-1.8.22.custom.css"%>
-	<%= javascript_include_tag "/assets/jquery.js"%>
-	<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js"%>
+	
+	<style>
+	.pageTitle {
+		text-align:center; 
+		margin-top:40px;
+	}
+	#android-message {
+		margin-top:20px; 
+		text-align:center; 
+		font-family:architectsDaughterRegular; 
+		font-size:1.3em; 
+		color: #575758; 
+		display:none;
+	}
+	#mapContainer {
+		width:80%;
+	}
+	#visualization {
+		margin-left:6.5%;
+	}
+	#clickARegionBlurb {
+		float:right; 
+		min-width:110px; 
+		text-align:center; 
+		line-height:2em; 
+		margin-top:200px; 
+		font-family:architectsDaughterRegular; 
+		color:#62acbd;
+		width:13%;
+	}
+	#tabsContainer {
+		width:70%; 
+		float:center; 
+		margin:auto;
+	}
+	li {
+		cursor:pointer;
+	}
+	.countriesColumn {
+		width:24%; 
+		text-align:center; 
+		float:left;
+		padding:0.5%;
+		margin:0; 
+		padding-left:0; 
+	}
+	a.searchesLink {
+		line-height:1.5em;
+	}
+	#noteBottomBlurb {
+		font-family:architectsDaughterRegular; 
+		margin-top:60px;
+		color:#e67b5a; 
+		margin-bottom:30px; 
+		min-width:960px;
+	}
+	</style>
 
 <div class="container">
 	<div class="row">
-	<p style="text-align:center; margin-top:40px">
+	<p class="pageTitle">
     <%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/whereGo.png"%></p>
-	<p style="margin-top:20px; text-align:center; font-family:architectsDaughterRegular; font-size:1.3em; color: #575758; display:none" id="android-message">Our map does not work on the native android browser. Sorry!</p>
+	<p id="android-message">Our map does not work on the native android browser. Sorry!</p>
 	</div>
 </div>
-    <!-- MAP!!!!! -->
-
-     <head>
-		 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-		      <script type="text/javascript">
-		    var numbers = <%= escape_javascript(@nums.to_json)%>;
-			var programNumbers = <%= array_or_string_for_javascript(@progNums)%>;
-		    var countries = <%= array_or_string_for_javascript(ALLCOUNTRIES)%>;
-			var names = <%= array_or_string_for_javascript(ALLCOUNTRYNAMES)%>
-
-
-
-		    google.load("visualization", "1", {"packages": ["geochart"]});
-		    google.setOnLoadCallback(drawRegionsMap);
-		        function drawRegionsMap() {
-		            var data = new google.visualization.DataTable();
-		            data.addRows(numbers.length);
-		            data.addColumn("string", "CountryID");
-		            data.addColumn("string", "Country");
-		            data.addColumn("number", "Programs");
-					data.addColumn({type:'string', role:'tooltip'});
-
-		            for (var i=0; i<numbers.length; i++) {
-		                data.setValue(i, 0, countries[numbers[i]]);
-		                data.setValue(i, 1, names[numbers[i]]);
-		                data.setValue(i, 2, 200);
-						data.setValue(i, 3, "Programs: "+programNumbers[i].toString());
-		            }
-
-		            var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
-		            var container = document.getElementById("visualization");
-		            var geochart = new google.visualization.GeoChart(container);
-		           google.visualization.events.addListener(geochart, "error", function errorHandler(e) {
-		                google.visualization.errors.removeError(e.id);
-		            });
-		            google.visualization.events.addListener(geochart, "regionClick", 
-		            function(eventData) 
-		                  { 
-		                    document.location = "http://girlpowerproject.herokuapp.com/searches/"+eventData.region+"/create"; 
-		                  });
-
-		            geochart.draw(data, options);
-		    };
-
-		      </script>
-		    </head>
 
 		    <body>
 		        <br />
@@ -92,10 +99,10 @@
 		        <br />
 		        <br />
 		        <div class="row">
-		            <div class="eleven columns" align="center" style="width:80%">
-		      <div style="margin-left:6.5%" id="visualization" ></div>
+		            <div class="eleven columns" align="center" id="mapContainer">
+		      <div id="visualization" ></div>
 		            </div>
-		        <div class="one columns" style="float:right; min-width:110px; text-align:center; line-height:2em; margin-top:200px; font-family:architectsDaughterRegular; color:#62acbd;width:13%">
+		        <div class="one columns" id="clickARegionBlurb">
 		            Click a region or country to see which organizations can get you there!
 		            </div>
 		        </div>
@@ -107,188 +114,51 @@
 
 <br />
 <br />
-<% @americas = Hash.new%>
-<% THEREGIONS[10].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@americas[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[11].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@americas[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[12].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@americas[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[13].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@americas[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
 
-
-
-<% @europe = Hash.new %>
-<% THEREGIONS[6].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@europe[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[7].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@europe[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[8].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@europe[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[9].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@europe[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-
-
-
-
-<% @africa = Hash.new %>
-<% THEREGIONS[1].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@africa[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[2].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@africa[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[3].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@africa[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[4].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@africa[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[5].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@africa[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-
-
-
-
-<% @asia = Hash.new %>
-<% THEREGIONS[14].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@asia[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[15].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@asia[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[16].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@asia[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[17].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@asia[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[18].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@asia[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-
-
-
-
-<% @oceania = Hash.new %>
-<% THEREGIONS[19].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@oceania[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[20].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@oceania[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[21].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@oceania[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-<% THEREGIONS[22].each do |f|%>
-	<% if !(Program.where(:location => f).empty?) %>
-		<%@oceania[f] = THECOUNTRIES[f]%>
-	<% end %>
-<% end %>
-
-
-
-<% @americas = @americas.sort_by { |country| country[1] } %>
-<% @europe = @europe.sort_by { |country| country[1] } %>
-<% @africa = @africa.sort_by { |country| country[1] } %>
-<% @asia = @asia.sort_by { |country| country[1] } %>
-<% @oceania = @oceania.sort_by { |country| country[1] } %>
 
 
     <div class="container">
-	<div class="row" style="width:70%; float:center; margin:auto">
+	<div class="row" id="tabsContainer">
 	<div id="tabs">
 		<ul>
-			<li onclick="americas.click();" style="cursor:pointer"><a id="americas" href="#tabs-1">Americas</a></li>
-			<li onclick="europe.click();" style="cursor:pointer"><a id="europe" href="#tabs-2">Europe</a></li>
-			<li onclick="africa.click();" style="cursor:pointer"><a id="africa" href="#tabs-3">Africa</a></li>
-			<li onclick="asia.click();" style="cursor:pointer"><a id="asia" href="#tabs-4">Asia</a></li>
-			<li onclick="oceania.click();" style="cursor:pointer"><a id="oceania" href="#tabs-5">Oceania</a></li>
+			<li onclick="americas.click();" ><a id="americas" href="#tabs-1">Americas</a></li>
+			<li onclick="europe.click();" ><a id="europe" href="#tabs-2">Europe</a></li>
+			<li onclick="africa.click();" ><a id="africa" href="#tabs-3">Africa</a></li>
+			<li onclick="asia.click();" ><a id="asia" href="#tabs-4">Asia</a></li>
+			<li onclick="oceania.click();" ><a id="oceania" href="#tabs-5">Oceania</a></li>
 		</ul>
 		<div id="tabs-1">
 			<% @americas.each do |f|%> 
-			<div class="three columns" style="width:24%; text-align:center; float:left; padding-left:0; margin-left:0">
-				<a style="line-height:1.5em" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
+			<div class="countriesColumn">
+				<a class="searches_link" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
 		</div>
 		<div id="tabs-2">
 			<% @europe.each do |f|%> 
-			<div class="three columns" style="width:24%; text-align:center; float:left; padding-left:0; margin-left:0">
-				<a style="line-height:1.5em" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
+			<div class="countriesColumn">
+				<a class="searchesLink" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
 		</div>
 		<div id="tabs-3">
 			<% @africa.each do |f|%> 
-			<div class="three columns" style="width:24%; text-align:center; float:left; padding-left:0; margin-left:0">
-				<a style="line-height:1.5em" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
+			<div class="countriesColumn">
+				<a class="searchesLink" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
 		</div>
 		<div id="tabs-4">
 			<% @asia.each do |f|%> 
-			<div class="three columns" style="width:24%; text-align:center; float:left; padding-left:0; margin-left:0">
-				<a style="line-height:1.5em" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
+			<div class="countriesColumn">
+				<a class="searchesLink" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>
 			<% end %>
 		</div>
 		<div id="tabs-5">
 		      <% @oceania.each do |f|%>
-			<div class="three columns" style="width:24%; text-align:center; float:left; padding-left:0; margin-left:0">
-				<a style="line-height:1.5em" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
+			<div class="countriesColumn">
+				<a class="searchesLink" href="/searches/<%=f[0]%>/create" class="country-name"><%= f[1] %></a><br />
 			</div>	
 			<% end %>
 		</div>
@@ -296,15 +166,16 @@
 </div>
 
 
-	<div align="center" style="font-family:architectsDaughterRegular; margin-top:60px;color:#e67b5a; margin-bottom:30px; min-width:960px">
+	<div align="center" id="noteBottomBlurb">
 	    Note: if the country you want to visit isn't listed, we have not yet profiled a company with programs there.
 	    </div>
 	</div>
 		<script>
+		//initialize jQuery UI tabs on the "tabs" div
 			$(function() {
 				$( "#tabs" ).tabs();
 			});
-			
+		//if browser is Android, map doesn't work. So show messge
 			$(document).ready(function() {
 					var ua = navigator.userAgent.toLowerCase();
 					var isAndroid = ua.indexOf("android") > -1;
@@ -313,6 +184,53 @@
 					}
 			});
 		</script>
+		
+		<!-- MAP!!!!! -->
+
+
+			 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+			      <script type="text/javascript">
+			//set up vars for creating map
+			    var numbers = <%= escape_javascript(@nums.to_json)%>;
+				var programNumbers = <%= array_or_string_for_javascript(@progNums)%>;
+			    var countries = <%= array_or_string_for_javascript(ALLCOUNTRIES)%>;
+				var names = <%= array_or_string_for_javascript(ALLCOUNTRYNAMES)%>
+
+
+				//google geochart map
+			    google.load("visualization", "1", {"packages": ["geochart"]});
+			    google.setOnLoadCallback(drawRegionsMap);
+			        function drawRegionsMap() {
+			            var data = new google.visualization.DataTable();
+			            data.addRows(numbers.length);
+			            data.addColumn("string", "CountryID");
+			            data.addColumn("string", "Country");
+			            data.addColumn("number", "Programs");
+						data.addColumn({type:'string', role:'tooltip'});
+
+			            for (var i=0; i<numbers.length; i++) {
+			                data.setValue(i, 0, countries[numbers[i]]);
+			                data.setValue(i, 1, names[numbers[i]]);
+			                data.setValue(i, 2, 200);
+							data.setValue(i, 3, "Programs: "+programNumbers[i].toString());
+			            }
+
+			            var options = {width: 1.4*556, height: 1.4*347, backgroundColor: "#E3E6D5", datalessRegionColor:"#BCDFC3", colors:["#FC8767", "#FC8767"], legend:"none"};
+			            var container = document.getElementById("visualization");
+			            var geochart = new google.visualization.GeoChart(container);
+			           google.visualization.events.addListener(geochart, "error", function errorHandler(e) {
+			                google.visualization.errors.removeError(e.id);
+			            });
+			            google.visualization.events.addListener(geochart, "regionClick", 
+			            function(eventData) 
+			                  { 
+			                    document.location = "http://girlpowerproject.herokuapp.com/searches/"+eventData.region+"/create"; 
+			                  });
+
+			            geochart.draw(data, options);
+			    };
+
+			      </script>
 
 </div>
 
