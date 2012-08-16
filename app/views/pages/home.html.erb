@@ -92,7 +92,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
 	font-weight: 100;
 }
 .medium {
-	font-size: 1.8em; 
+	font-size: 1.6em; 
 	font-weight: 300;
 }
 
@@ -319,6 +319,11 @@ a.red-link:hover{color:white}
 .feedbackSubmitContainer {
 	text-align:center;
 }
+.companyName {
+	width:190px;
+	float:left;
+	height:auto;
+}
 </style>
 
 <!-- Section One-->
@@ -402,7 +407,7 @@ a.red-link:hover{color:white}
 <div class="company review companyBox">
 <div class="row" class="reviewBoxInnerContainer">
 <p alt="Company Photo" class="companyPhotoContainer"><image src="<%=f.square_image.url%>" class="companyPhoto"></p>
-<p class="medium left companyName"><a class="blue-link" href="/organizations/<%=f.id%>"><%=f.name %></a></p><br /><br />
+<p class="medium companyName"><a class="blue-link" href="/organizations/<%=f.id%>"><%=f.name %></a></p><br /><br />
 <div class="companyStarsContainer"><%= render :partial => "star", :locals => {:star => f.overall}%></div>
 <div class="companyDescriptionContainer"><p><%= f.truncated75.html_safe%></p></div></div>
 <p class="companyProgramsList">Programs: <% @programs = Program.where(:organization_id => f.id).limit(3)%>
