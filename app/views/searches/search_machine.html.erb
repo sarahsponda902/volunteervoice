@@ -82,6 +82,23 @@ input[type="number"]{
 	color:#575758; 
 	width:45%;
 }
+.programSubjectsTitle {
+	font-size:1.3em; 
+	font-weight:580; 
+	line-height:1.1em; 
+	color:#575758; 
+	padding-bottom:6px; 
+	margin-top:-10px; 
+	margin-left:-10px; 
+	background-color:#E3E6D5; 
+	width:260%; 
+	padding-left:20px; 
+	margin-bottom:5px;
+}
+.anyTitle {
+	font-size:1.2em; 
+	color:#575758;
+}
 </style>
  
 
@@ -96,21 +113,21 @@ input[type="number"]{
 
         <div class="six columns"  id="searchMachineLeftCol">
             <div class="six columns" id="programSubjectsContainer">
-                <p style="font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; padding-bottom:6px; margin-top:-10px; margin-left:-10px; background-color:#E3E6D5; width:260%; padding-left:20px; margin-bottom:5px"><b>Program Subjects:</b></p>    
-            <input onClick='toggleBoxes1(this)'value="false" id='any' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
+                <p class="programSubjectsTitle"><b>Program Subjects:</b></p>    
+            <input onClick='toggleBoxes1(this)'value="false" id='any' name='search[subjects][]' type='checkbox'><span class="anyTitle">Any</span><br /><br />
             
 
-<div id='Agriculture1'><input onclick='toggleBoxes1(this);toggleAgriculture(this)' value='Agriculture' id='Agriculture2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Agriculture</font></div>
+<div id='Agriculture1'><input onclick='toggleBoxes1(this);toggleAgriculture(this)' value='Agriculture' id='Agriculture2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Agriculture</span></div>
             <div id='OrganicFarming1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleAgriculture(this)' value='Organic Farming' id='OrganicFarming2' name='search[subjects][]' type='checkbox'>Organic Farming</div><br />
 
 
 
-            <div id='AnimalCare1'><input onclick='toggleBoxes1(this);toggleAnimalCare(this)' value='Animal Care' id='AnimalCare2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Animal Care</font></div>
+            <div id='AnimalCare1'><input onclick='toggleBoxes1(this);toggleAnimalCare(this)' value='Animal Care' id='AnimalCare2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Animal Care</span></div>
             <div id='AnimalRights1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleAnimalCare(this)' value='Animal Rights' id='AnimalRights2' name='search[subjects][]' type='checkbox'>Animal Rights</div><br />
 
 
 
-            <div id='Caregiving1'><input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Caregiving' id='Caregiving2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em;">Caregiving</font></div>
+            <div id='Caregiving1'><input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Caregiving' id='Caregiving2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em;">Caregiving</span></div>
             <div id='ElderCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Elder Care' id='ElderCare2' name='search[subjects][]' type='checkbox'>Elder Care</div>
             <div id='ChildOrphanCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Child/Orphan Care' id='ChildOrphanCare2' name='search[subjects][]' type='checkbox'>Child/Orphan Care</div>
             <div id='DisabledCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Disabled Care' id='DisabledCare2' name='search[subjects][]' type='checkbox'>Disabled Care</div>
@@ -118,16 +135,16 @@ input[type="number"]{
 
 
 
-            <div id='CommunityDevelopment1'><input onclick='toggleBoxes1(this);toggleCommunityDevelopment(this)' value='Community Development' id='CommunityDevelopment2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Community Development</font></div>
+            <div id='CommunityDevelopment1'><input onclick='toggleBoxes1(this);toggleCommunityDevelopment(this)' value='Community Development' id='CommunityDevelopment2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Community Development</span></div>
             <div id='YouthDevelopmentandOutreach1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCommunityDevelopment(this)' value='Youth Development and Outreach' id='YouthDevelopmentandOutreach2' name='search[subjects][]' type='checkbox'>Youth Development and<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Outreach</div><br />
 
 
 
-            <div id='Construction1'><input onclick='toggleBoxes1(this)' value='Construction' id='Construction2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Construction</font></div><br />
+            <div id='Construction1'><input onclick='toggleBoxes1(this)' value='Construction' id='Construction2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Construction</span></div><br />
 
 
 
-            <div id='CultureandCommunity1'><input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Culture and Community' id='CultureandCommunity2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Culture and Community</font></div>
+            <div id='CultureandCommunity1'><input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Culture and Community' id='CultureandCommunity2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Culture and Community</span></div>
             <div id='PerformingArts1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Performing Arts' id='PerformingArts2' name='search[subjects][]' type='checkbox'>Performing Arts</div>
             <div id='Fashion1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Fashion' id='Fashion2' name='search[subjects][]' type='checkbox'>Fashion</div>
             <div id='Music1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCultureandCommunity(this)' value='Music' id='Music2' name='search[subjects][]' type='checkbox'>Music</div>
@@ -136,13 +153,13 @@ input[type="number"]{
 
 
 
-            <div id='DisasterRelief1'><input onclick='toggleBoxes1(this);toggleDisasterRelief(this)' value='Disaster Relief' id='DisasterRelief2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Disaster Relief</font></div>
+            <div id='DisasterRelief1'><input onclick='toggleBoxes1(this);toggleDisasterRelief(this)' value='Disaster Relief' id='DisasterRelief2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Disaster Relief</span></div>
             <div id='Economics1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleDisasterRelief(this)' value='Economics' id='Economics2' name='search[subjects][]' type='checkbox'>Economics</div>
             <div id='Microfinance1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleDisasterRelief(this)' value='Microfinance' id='Microfinance2' name='search[subjects][]' type='checkbox'>Microfinance</div><br />
 
 
 
-            <div id='Education1'><input onclick='toggleBoxes1(this);toggleEducation(this)' value='Education' id='Education2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Education</font></div>
+            <div id='Education1'><input onclick='toggleBoxes1(this);toggleEducation(this)' value='Education' id='Education2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Education</span></div>
             <div id='TeachingEnglish1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching English' id='TeachingEnglish2' name='search[subjects][]' type='checkbox'>Teaching English</div>
             <div id='TeachingBuddhistMonks1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching Buddhist Monks' id='TeachingBuddhistMonks2' name='search[subjects][]' type='checkbox'>Teaching Buddhist Monks</div>
             <div id='TeachingChildren1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching Children' id='TeachingChildren2' name='search[subjects][]' type='checkbox'>Teaching Children</div>
@@ -155,12 +172,12 @@ input[type="number"]{
 	
 	
 	
-	            <div id='EngineeringandInfrastructure1'><input onclick='toggleBoxes1(this)' value='Engineering and Infrastructure' id='EngineeringandInfrastructure2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Engineering and <br />&nbsp;&nbsp;&nbsp;Infrastructure</font></div><br />
+	            <div id='EngineeringandInfrastructure1'><input onclick='toggleBoxes1(this)' value='Engineering and Infrastructure' id='EngineeringandInfrastructure2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Engineering and <br />&nbsp;&nbsp;&nbsp;Infrastructure</span></div><br />
 	
 	
 	
 
-            <div id='Environmental1'><input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Environmental' id='Environmental2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Environmental</font></div>
+            <div id='Environmental1'><input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Environmental' id='Environmental2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Environmental</span></div>
             <div id='EcologicalConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Ecological Conservation' id='EcologicalConservation2' name='search[subjects][]' type='checkbox'>Ecological Conservation</div>
             <div id='SustainableDevelopment1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Sustainable Development' id='SustainableDevelopment2' name='search[subjects][]' type='checkbox'>Sustainable Development</div>
             <div id='WildlifeConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEnvironmental(this)' value='Wildlife Conservation' id='WildlifeConservation2' name='search[subjects][]' type='checkbox'>Wildlife Conservation</div>
@@ -168,7 +185,7 @@ input[type="number"]{
 
 
 
-            <div id='HealthandMedicine1'><input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Health and Medicine' id='HealthandMedicine2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Health and Medicine</font></div>
+            <div id='HealthandMedicine1'><input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Health and Medicine' id='HealthandMedicine2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Health and Medicine</span></div>
             <div id='HIVAIDS1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='HIV/AIDS' id='HIVAIDS2' name='search[subjects][]' type='checkbox'>HIV/AIDS</div>
             <div id='Nutrition1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Nutrition' id='Nutrition2' name='search[subjects][]' type='checkbox'>Nutrition</div>
             <div id='FamilyPlanning1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHealthandMedicine(this)' value='Family Planning' id='FamilyPlanning2' name='search[subjects][]' type='checkbox'>Family Planning</div>
@@ -182,27 +199,27 @@ input[type="number"]{
 
 
 
-            <div id='HumanRights1'><input onclick='toggleBoxes1(this);toggleHumanRights(this)' value='Human Rights' id='HumanRights2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Human Rights</font></div>
+            <div id='HumanRights1'><input onclick='toggleBoxes1(this);toggleHumanRights(this)' value='Human Rights' id='HumanRights2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Human Rights</span></div>
             <div id='WomensInitiatives1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleHumanRights(this)' value='Womens Initiatives' id='WomensInitiatives2' name='search[subjects][]' type='checkbox'>Women's Initiatives</div><br />
 
 
 
-            <div id='InternationalWorkCamp1'><input onclick='toggleBoxes1(this)' value='International Work Camp' id='InternationalWorkCamp2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">International Work Camp</font></div><br />
+            <div id='InternationalWorkCamp1'><input onclick='toggleBoxes1(this)' value='International Work Camp' id='InternationalWorkCamp2' name='search[subjects][]' type='checkbox'><span class="anyTitle">International Work Camp</span></div><br />
 
 
 
-            <div id='Recreation1'><input onclick='toggleBoxes1(this);toggleRecreation(this)' value='Recreation' id='Recreation2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Recreation</font></div>
+            <div id='Recreation1'><input onclick='toggleBoxes1(this);toggleRecreation(this)' value='Recreation' id='Recreation2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Recreation</span></div>
             <div id='AdventureTravel1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleRecreation(this)' value='Adventure Travel' id='AdventureTravel2' name='search[subjects][]' type='checkbox'>Adventure Travel</div><br />
 
 
 
-            <div id='ScientificResearch1'><input onclick='toggleBoxes1(this);toggleScientificResearch(this)' value='Scientific Research' id='ScientificResearch2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Scientific Research</font></div>
+            <div id='ScientificResearch1'><input onclick='toggleBoxes1(this);toggleScientificResearch(this)' value='Scientific Research' id='ScientificResearch2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Scientific Research</span></div>
             <div id='Archaeology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleScientificResearch(this)' value='Archaeology' id='Archaeology2' name='search[subjects][]' type='checkbox'>Archaeology</div>
             <div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleScientificResearch(this)' value='Environmental Biology' id='EnvironmentalBiology2' name='search[subjects][]' type='checkbox'>Environmental Biology</div><br />
 
 
 
-            <div id='Technology1'><input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Technology</font></div>
+            <div id='Technology1'><input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Technology</span></div>
             <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' name='search[subjects][]' type='checkbox'>Teaching Computer <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Literacy</div>
             <div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' name='search[subjects][]' type='checkbox'>Media, Marketing, and <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graphic Design</div>
 
@@ -214,7 +231,7 @@ input[type="number"]{
 <div style="margin:0;padding:10px;" class="twelve columns">
 
         <p style="padding:20px;padding-bottom:5px;font-size:1.3em; margin-left:-10px; font-weight:580; line-height:1.1em; color:#575758; margin-bottom:3px; background-color:#E3E6D5; padding-top:35px">Group size:</p>
-        <input onClick='toggleBoxes3(this)'value="false" id='any3' name='search[sizes][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Any</font><br />
+        <input onClick='toggleBoxes3(this)'value="false" id='any3' name='search[sizes][]' type='checkbox'><span class="anyTitle">Any</span><br />
 		<div class="six columns" style="width:45%">
         <input onclick='toggleBoxes3(this)' value='Individual' id='1_group' name='search[sizes][]' type='checkbox'>Individual<br />
 		<input onclick='toggleBoxes3(this)' value='Small Groups (2-3)' id='2_group' name='search[sizes][]' type='checkbox'>Small Groups (2-3)<br />
@@ -335,7 +352,7 @@ input[type="number"]{
 <div class="six columns"  style="background-color:#c1dfdb; color:#575758; width:45%">
 <div class="six columns" style="width:45%; padding:10px">
 <p style="font-size:1.3em; font-weight:580; line-height:1.1em; color:#575758; padding-right:10px; margin-top:-10px; margin-bottom:3px; padding-left:20px; margin-left:-10px; background-color:#E3E6D5;padding-bottom:8px; width:215%; "><b>Program Countries:</b></p>
-<input onClick='toggleBoxes(this)'value="false" id='any6' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
+<input onClick='toggleBoxes(this)'value="false" id='any6' name='search[regions][]' type='checkbox'><span class="anyTitle"> Any</span><br /><br /> 
 
 <div id="others">
 <div id='AQ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this)' value='AQ' id='AQ2' name='search[regions][]' type='checkbox'> Antarctica</div>
@@ -357,7 +374,7 @@ input[type="number"]{
 
 
 
-<div id="AfricaDiv"><input onclick='toggleBoxes(this);toggleAfrica(this)' value='Africa' id='anyAfrica2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Africa</font></div>
+<div id="AfricaDiv"><input onclick='toggleBoxes(this);toggleAfrica(this)' value='Africa' id='anyAfrica2' name='search[regions][]' type='checkbox'><span class="anyTitle">Africa</span></div>
 <div id='DZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAfrica(this)' value='DZ' id='DZ2' name='search[regions][]' type='checkbox'> Algeria</div>
 <div id='EG'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAfrica(this)' value='EG' id='EG2' name='search[regions][]' type='checkbox'> Egypt</div>
 <div id='LY'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAfrica(this)' value='LY' id='LY2' name='search[regions][]' type='checkbox'> Libya</div>
@@ -423,7 +440,7 @@ input[type="number"]{
 
 
 
-<div id="EuropeDiv"><input onclick='toggleBoxes(this);toggleEurope(this)' value='Europe' id='anyEurope2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Europe</font></div>
+<div id="EuropeDiv"><input onclick='toggleBoxes(this);toggleEurope(this)' value='Europe' id='anyEurope2' name='search[regions][]' type='checkbox'><span class="anyTitle">Europe</span></div>
 <div id='AX'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleEurope(this)' value='AX' id='AX2' name='search[regions][]' type='checkbox'> Åland Islands</div>
 <div id='DK'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleEurope(this)' value='DK' id='DK2' name='search[regions][]' type='checkbox'> Denmark</div>
 <div id='EE'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleEurope(this)' value='EE' id='EE2' name='search[regions][]' type='checkbox'> Estonia</div>
@@ -483,7 +500,7 @@ input[type="number"]{
 
 
 
-	<div id="AmericasDiv"><input onclick='toggleBoxes(this);toggleAmericas(this)' value='Americas' id='anyAmericas2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Americas</font></div>
+	<div id="AmericasDiv"><input onclick='toggleBoxes(this);toggleAmericas(this)' value='Americas' id='anyAmericas2' name='search[regions][]' type='checkbox'><span class="anyTitle">Americas</span></div>
 	<div id='BM'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAmericas(this)' value='BM' id='BM2' name='search[regions][]' type='checkbox'> Bermuda</div>
 	<div id='CA'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAmericas(this)' value='CA' id='CA2' name='search[regions][]' type='checkbox'> Canada</div>
 	<div id='GL'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAmericas(this)' value='GL' id='GL2' name='search[regions][]' type='checkbox'> Greenland</div>
@@ -542,7 +559,7 @@ input[type="number"]{
 	
 	
 	
-<div id="AsiaDiv"><input onclick='toggleBoxes(this);toggleAsia(this)' value='Asia' id='anyAsia2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Asia</font></div>
+<div id="AsiaDiv"><input onclick='toggleBoxes(this);toggleAsia(this)' value='Asia' id='anyAsia2' name='search[regions][]' type='checkbox'><span class="anyTitle">Asia</span></div>
 <div id='KZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAsia(this)' value='KZ' id='KZ2' name='search[regions][]' type='checkbox'> Kazakhstan</div>
 <div id='KG'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAsia(this)' value='KG' id='KG2' name='search[regions][]' type='checkbox'> Kyrgyzstan</div>
 <div id='TJ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleAsia(this)' value='TJ' id='TJ2' name='search[regions][]' type='checkbox'> Tajikistan</div>
@@ -600,7 +617,7 @@ input[type="number"]{
 
 
 
-<div id="OceaniaDiv"><input onclick='toggleBoxes(this);toggleOceania(this)' value='Oceania' id='anyOceania2' name='search[regions][]' type='checkbox'><font style="font-size:1.2em; color:#575758">Oceania</font></div>
+<div id="OceaniaDiv"><input onclick='toggleBoxes(this);toggleOceania(this)' value='Oceania' id='anyOceania2' name='search[regions][]' type='checkbox'><span class="anyTitle">Oceania</span></div>
 <div id='AU'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='AU' id='AU2' name='search[regions][]' type='checkbox'> Australia</div>
 <div id='NZ'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='NZ' id='NZ2' name='search[regions][]' type='checkbox'> New Zealand</div>
 <div id='NF'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes(this);toggleOceania(this)' value='NF' id='NF2' name='search[regions][]' type='checkbox'> Norfolk Island</div>
