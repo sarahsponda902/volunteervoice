@@ -1,10 +1,39 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
 
-<% if user_signed_in? && current_user.admin?%>
+<style>
+#pageTitle {
+	font-size:3em; 
+	line-height:2em; 
+	margin-top:20px;
+	padding-bottom:20px;
+	text-align:center;
+}
+.dateCreated {
+	color:blue;
+}
+.good {
+	color:green;
+}
+.fair {
+	color:orange;
+}
+.poor {
+	color:red;
+}
+.goToContainer {
+	margin-left:11px;
+}
+</style>
 
-<p style="font-size:3em; line-height:2em; margin-top:20px;padding-bottom:20px;text-align:center; ">Listing reviews</h1>
+
+
+<% if user_signed_in? && current_user.admin?%>
+<div class="container">
+	<div class="row">
+<p id="pageTitle ">Listing reviews</h1>
 
 <table>
+	<thead>
   <tr>
 	<th>Date Created</th>
     <th>Username</th>
@@ -15,24 +44,25 @@
 	<th>Edit?</th>
 	<th>Delete?</th>
   </tr>
-
+</thead>
+<tdata>
 <% @reviews.each do |f| %>
 
   <tr>
-	<td width="10%"><p style="color:blue"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
+	<td width="10%"><p class="dateCreated"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 	<td width="15%"><%= link_to User.find(f.user_id).username, User.find(f.user_id)%></td>
 	<td width="5%">
 		<% if f.overall >= 4%>
-		<p style="color:green"><%= f.overall%></p>
+		<p class="good"><%= f.overall%></p>
 		<% end %>
 		<% if f.overall > 2 && f.overall < 4 %>
-		<p style="color:orange"><%= f.overall%></p>
+		<p class="fair"><%= f.overall%></p>
 		<% end %>
 		<% if f.overall <= 2 %>
-		<p style="color:red"><%= f.overall%></p>
+		<p class="poor"><%= f.overall%></p>
 		<% end %></td>
 	<td width ="40%"><%= f.truncated200.html_safe %></td>
-    <td width="7%"><p style="margin-left:11px"><%= link_to 'Go', f %></p></td>
+    <td width="7%"><p class="goToContainer"><%= link_to 'Go', f %></p></td>
 	<td width="7%"><% if f.show %>
 	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), "/reviews/#{f.id}/changeShow" %>
 	<% else %>
@@ -42,8 +72,10 @@
     <td width="7%"><%= link_to 'Destroy', f, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
+</tdata>
 </table>
-
+</div>
+</div>
 <br />
 
 <% end %>
