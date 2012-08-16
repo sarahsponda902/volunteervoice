@@ -99,6 +99,10 @@ input[type="number"]{
 	font-size:1.2em; 
 	color:#575758;
 }
+#programSubjectsLeftContainer{
+	width:45%; 
+	margin-top:30px;
+}
 </style>
  
 
@@ -127,7 +131,7 @@ input[type="number"]{
 
 
 
-            <div id='Caregiving1'><input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Caregiving' id='Caregiving2' name='search[subjects][]' type='checkbox'><font style="font-size:1.2em;">Caregiving</span></div>
+            <div id='Caregiving1'><input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Caregiving' id='Caregiving2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Caregiving</span></div>
             <div id='ElderCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Elder Care' id='ElderCare2' name='search[subjects][]' type='checkbox'>Elder Care</div>
             <div id='ChildOrphanCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Child/Orphan Care' id='ChildOrphanCare2' name='search[subjects][]' type='checkbox'>Child/Orphan Care</div>
             <div id='DisabledCare1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleCaregiving(this)' value='Disabled Care' id='DisabledCare2' name='search[subjects][]' type='checkbox'>Disabled Care</div>
@@ -167,7 +171,7 @@ input[type="number"]{
 
 
             </div>
-            <div class="six columns" style="width:45%; margin-top:30px">
+            <div class="six columns" id="programSubjectsLeftContainer">
 	
 	
 	
