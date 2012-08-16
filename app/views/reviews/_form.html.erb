@@ -179,6 +179,9 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 
 
 <style>
+#selctCompanyContainer {
+	margin-top:20px;
+}
 #pageTitleContainer {
 	margin-top:50px;
 	margin-bottom:20px;
@@ -226,6 +229,9 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 	font-size:2.5em; 
 	color:#62acbd; 
 	margin-bottom: 30px;
+}
+#yourExperienceWarning {
+	font-size:0.6em;
 }
 .writeReviewLabel {
 	font-size:1.5em; 
@@ -430,7 +436,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 
 
 	<div class="row" >
-		<div class="six columns" style="margin-top:20px;">
+		<div class="six columns" id="seelctCompanyContainer">
 	<section class="selectCompany"><!--select a company box and blurb-->
 		<section class="selectCompanyBox"><!-- select a company drop-down box-->
 		<label for="review_organization_name" class="labelTop">Select a Company:</label>
@@ -467,7 +473,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 
 <div class="row"><!--row three-->
 
-	<div class = "six columns" style="writeReviewLeftColumn">
+	<div class = "six columns" id="writeReviewLeftColumn">
 		<section class="writeDetails"><!-- The Details section of write a review page-->
 		<div align="center" id="theDetailsColumnLabel"> The Details </div>
 	<section class="writeReviewContent" id="timeFrame">
@@ -496,7 +502,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 		</div>
 
 
-	<div class="writeReviewLabel ten columns" id="yourExperience">Your Experience <font style="font-size:0.6em;">(Minimum 200 characters)</font></div>
+	<div class="writeReviewLabel ten columns" id="yourExperience">Your Experience <span id="yourExperienceWarning">(Minimum 200 characters)</span></div>
 	<div class="eleven columns">
 	   <%= f.text_area :body, :id => "theBody", :onfocus => "removeTextAreaMessage()", :onclick =>"if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.value = ''};this.style.fontStyle = 'normal'; this.style.color = 'black' ", :onblur => "backToTextAreaMessage();checkFields(); if (this.value == 'Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not.') {this.style.fontStyle = 'italic'; this.style.color = 'gray'} else {this.style.fontStyle = 'normal'}", :value => (if (@review.body.nil?); "Tell it all! But please remember that offensive language will jeopardize whether your review stays published or not."; else @review.body; end), :class => "word_count"%>
 	<span class="counter"></span><br />
@@ -729,7 +735,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 <% end %>
 
 
-<div id="qMark-box" class="qMark-popup" style="text-align:left">
+<div id="qMark-box" class="qMark-popup">
 <a href="#" class="close"><div class="close_image"></div></a>
 <p id="qMarkTitle"><u>Help! Write A Review Form</u></p>
 	<div class="overflow">
@@ -1098,7 +1104,7 @@ a.privacyLink:hover, .mailToHelp:hover{
 
 
 
-	<div id="terms-box" class="terms-popup" style="color:#575758">
+	<div id="terms-box" class="terms-popup">
 <a href="#" class="close"><div class="close_image"></div></a>
 	<div class="overflow">
 		<p class="majorTermsTitle">1. Description of Volunteervoice Services and User Acceptance</p>
