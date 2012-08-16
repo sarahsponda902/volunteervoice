@@ -1,5 +1,6 @@
 RMTest::Application.routes.draw do
   get "/contacts/thank_you"
+  get "/feedbacks/thank_you"
   
   ##### UPDATE MESSAGES
   match "update_messages/:id/send_message" => "update_messages#send_message"
