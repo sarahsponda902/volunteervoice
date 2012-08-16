@@ -73,7 +73,7 @@ li.popup{ margin-left:30px; }
 #topFields {
 	float:left;
 }
-.topTextField {
+#topTextFieldProgram, #topTextFieldURL {
 	width:537px;
 }
 .topTextArea {
@@ -210,10 +210,10 @@ select {
 </div>
 <div class="seven columns" id="topFields">
   <div class="field">
-    <%= f.text_field :name, :value => @program.name, :class => "topTextField" %><br /><br />
+    <%= f.text_field :name, :value => @program.name, :id => "topTextFieldProgram" %><br /><br />
   </div>
   <div class="field">
-		<%= f.text_field :check_it_out, :value => @program.check_it_out, :class => "topTextField" %><br /><br />
+		<%= f.text_field :check_it_out, :value => @program.check_it_out, :id => "topTextFieldURL" %><br /><br />
   </div>
   <div class="field">
     <%= f.text_area :description, :value => @program.description, :class => "topTextArea" %>
@@ -429,6 +429,13 @@ select {
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	//set the organization name if necessary and applicable
+	<% if user_signed_in? && current_user.admin? %>
+	$("#tags").val("<%=Organization.find(@program.organization_id).name");
+	<% end %>
+	
+	
 	//when "+ add cost/length" is clicked, create 2 new input fields:
 		//one for the new length of time, one for the new total cost
 	$(".createInput").click(function(event) {
