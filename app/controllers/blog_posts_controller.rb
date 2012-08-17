@@ -7,8 +7,66 @@ class BlogPostsController < ApplicationController
 
 	layout :choose_layout
 
-	before_filter :require_user, :except => [:index, :show, :tag]
-	before_filter :require_admin, :except => [:index, :show, :tag]
+	before_filter :require_user, :except => [:index, :show, :tag, :resources, :resources_search]
+	before_filter :require_admin, :except => [:index, :show, :tag, :resources, :resources_search]
+	
+	
+	
+  
+  def resources_search
+    @search_words = params[:search] 
+    
+    @interesting_search = Sunspot.search(BlogPost) do
+      keywords params[:search]
+      with :is_our_blog, false
+    end
+    @our_blog_search = Sunspot.search(BlogPost) do
+      keywords params[:search]
+      with :is_our_blog, true 
+    end
+    @interesting_tags_search = Sunspot.search(BlogTag) do
+      with :tag, params[:search].gsub(/[^0-9A-Za-z]/, "").split(" ")
+      with :is_our_blog, false
+    end
+    @our_blog_tags_search = Sunspot.search(BlogTag) do
+      with :tag, params[:search].gsub(/[^0-9A-Za-z]/, "").split(" ")
+      with :is_our_blog, true
+    end
+    @interesting = []
+    @our_blog = []
+    @interesting_tags_search.results.each do |f|
+      @interesting << BlogPost.find(f.blog_post_id)
+    end
+    @interesting_search.results.each do |f|
+      @interesting << f unless @interesting.include?(f)
+    end
+    @interesting = @interesting.sort_by{|e| e[:published_at]}.reverse
+    
+    @our_blog_tags_search.results.each do |f|
+      @our_blog << BlogPost.find(f.blog_post_id)
+    end
+    @our_blog_search.results.each do |f|
+      @our_blog << f unless @our_blog.include?(f)
+    end
+    @our_blog = @our_blog.sort_by{|e| e[:published_at]}.reverse
+    @results = @interesting + @our_blog
+    @results = @results.sort_by{|e| e[:published_at]}.reverse
+  end
+
+
+  def resources
+    @interesting = BlogPost.where(:is_our_blog => false).sort_by{|e| e[:published_at]}.reverse
+    
+    @our_blog = BlogPost.where(:is_our_blog => true).sort_by{|e| e[:published_at]}.reverse
+
+    @boolA = true
+    @boolV = true
+    
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
 
   def index
     @blog_posts = BlogPost.published.paginate(:page => params[:page], :order => 'updated_at DESC')
@@ -20,6 +78,7 @@ class BlogPostsController < ApplicationController
 			format.atom
     end
   end
+  
   
   def crop
     if user_signed_in? && current_user.admin?
@@ -128,57 +187,7 @@ class BlogPostsController < ApplicationController
       redirect_to "/pages/blogs"
     end
   end
-  
-  
-  def resources_search
-    @search_words = params[:search] 
-    
-    @interesting_search = Sunspot.search(BlogPost) do
-      keywords params[:search]
-      with :is_our_blog, false
-    end
-    @our_blog_search = Sunspot.search(BlogPost) do
-      keywords params[:search]
-      with :is_our_blog, true 
-    end
-    @interesting_tags_search = Sunspot.search(BlogTag) do
-      with :tag, params[:search].gsub(/[^0-9A-Za-z]/, "").split(" ")
-      with :is_our_blog, false
-    end
-    @our_blog_tags_search = Sunspot.search(BlogTag) do
-      with :tag, params[:search].gsub(/[^0-9A-Za-z]/, "").split(" ")
-      with :is_our_blog, true
-    end
-    @interesting = []
-    @our_blog = []
-    @interesting_tags_search.results.each do |f|
-      @interesting << BlogPost.find(f.blog_post_id)
-    end
-    @interesting_search.results.each do |f|
-      @interesting << f unless @interesting.include?(f)
-    end
-    @interesting = @interesting.sort_by{|e| e[:published_at]}.reverse
-    
-    @our_blog_tags_search.results.each do |f|
-      @our_blog << BlogPost.find(f.blog_post_id)
-    end
-    @our_blog_search.results.each do |f|
-      @our_blog << f unless @our_blog.include?(f)
-    end
-    @our_blog = @our_blog.sort_by{|e| e[:published_at]}.reverse
-    @results = @interesting + @our_blog
-    @results = @results.sort_by{|e| e[:published_at]}.reverse
-  end
 
-
-  def resources
-    @interesting = BlogPost.where(:is_our_blog => false).sort_by{|e| e[:published_at]}.reverse
-    
-    @our_blog = BlogPost.where(:is_our_blog => true).sort_by{|e| e[:published_at]}.reverse
-
-    @boolA = true
-    @boolV = true
-  end
 
 
   def destroy
