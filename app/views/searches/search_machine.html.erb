@@ -164,7 +164,7 @@ input[type="number"]{
 	border-right:1px solid #575758; 
 	border-left:1px solid #575758;
 }
-#lengthMinParam {
+#length_min_param {
 	position:absolute; 
 	left:-5px; 
 	width:111px; 
@@ -172,6 +172,42 @@ input[type="number"]{
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
 	border:1px solid #575758; 
 	background-color:white;
+}
+#length_max_param {
+	position:absolute; 
+	left:-5px; 
+	width:111px; 
+	height:20px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
+#lengthMaxNumDiv {
+	position:absolute; 
+	left:56%; 
+	height:20px; 
+	width:58px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#length_max_number {
+	position:absolute; 
+	left:-5px; 
+	width:81px; 
+	height:20px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
+#lengthMaxParamDiv {
+	position:absolute; 
+	left:75%; 
+	height:20px; 
+	width:88px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
 }
 </style>
  
@@ -367,9 +403,9 @@ input[type="number"]{
 			</div>
 			<div style="position:absolute; left:51%; font-size:1.1em;color:#575758;">to</div>
 
-					<div class="select-div three columns" style="position:absolute; left:56%; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+					<div class="select-div three columns" id="lengthMaxNumDiv">
 
-						<select id= "length_max_number" name="search[length_max_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;">
+						<select id= "length_max_number" name="search[length_max_number]">
 							<option val="0">0</option>
 							<option val="1">1</option>
 							<option val="2" selected="selected">2</option>
@@ -398,9 +434,9 @@ input[type="number"]{
 						</select>
 				</div>
 
-				<div class="select-div three columns" style="position:absolute; left:75%; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				<div class="select-div three columns" id="lengthMaxParamDiv">
 
-					<select id= "length_max_param" name="search[length_max_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;">
+					<select id= "length_max_param" name="search[length_max_param]">
 						<option value="weeks">Weeks</option>
 						<option value="months">Months</option>
 						<option value="years" selected="selected">Years</option>	
