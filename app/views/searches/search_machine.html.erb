@@ -999,7 +999,7 @@ input[type="number"]{
 
 <script type='text/javascript'>
 
-
+	//toggle all country checkboxes
    var locations6 = <%= array_or_string_for_javascript(ALLCOUNTRIES)%>.concat('anyAfrica', 'anyEurope', 'anyAmericas', 'anyAsia', 'anyOceania');
 
     var anyId6 = 'any6';
@@ -1029,6 +1029,8 @@ input[type="number"]{
 
     }    
 
+
+	//toggle all subject checkboxes
         var locations2 = <%= array_or_string_for_javascript ALLSUBJECTTAGS %>;
 
 		locations2.pop();
@@ -1064,6 +1066,7 @@ input[type="number"]{
 
 
     <script type='text/javascript'>
+	//toggle all 'group sizes' checkboxes
         var locations4 = new Array('1', '2', '3', '4');
 
         var anyId4 = 'any3';
@@ -1094,6 +1097,8 @@ input[type="number"]{
 					}
         }    
 
+
+//toggle Agricultre subcategory checkboxes
 var locationsAgriculture = new Array('OrganicFarming');
 
 var anyAgriculture = 'Agriculture2';
@@ -1494,7 +1499,7 @@ function toggleTechnology( el ) {
 </script>
 	
 <script type="text/javascript">
-
+//toggle Africa checkboxes
 var locationsAfrica = new Array('DZ', 
 'EG', 
 'LY', 
@@ -1583,6 +1588,8 @@ function toggleAfrica( el ) {
 </script>
 
 <script type="text/javascript">
+
+//toggle Europe checkboxes
 var locationsEurope = new Array('AX', 
 'DK', 
 'EE', 
@@ -1667,7 +1674,7 @@ function toggleEurope( el ) {
 </script>
 
 <script type="text/javascript">
-
+//toggle Americas checkboxes
 var locationsAmericas = new Array('BM', 
 'CA', 
 'GL', 
@@ -1753,7 +1760,7 @@ function toggleAmericas( el ) {
 </script>
 
 <script type="text/javascript">
-
+//toggle Asia checkboxes
 var locationsAsia = new Array('KZ', 
 'KG', 
 'TJ', 
@@ -1864,7 +1871,7 @@ var locationsOceania = new Array('AU',
 'TO', 
 'TV', 
 'WF');
-
+//toggle Oceania checkboxes
 var anyOceania = 'anyOceania2'; 
 
 function toggleOceania( el ) {
@@ -1904,7 +1911,10 @@ var allTheLocations = <%= array_or_string_for_javascript(ALLCOUNTRIES)%>;
 
 
 $(document).ready(function() {
+	//hide the "others" category of countries. Leasie doesn't want to use it right now
 	$("#others").hide();
+	
+	//show the country if there is a program in that country
     var count = 0;
     for (count = 0; count <= allTheLocations.length; count++)
     {
@@ -1915,6 +1925,8 @@ $(document).ready(function() {
 		 }
     }
 
+
+//qMark popup jQuery
 	$('a.qMark-window').click(function() {
 
                 //Getting the variable's value from a link 
