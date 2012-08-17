@@ -5,6 +5,7 @@ RMTest::Application.routes.draw do
   get "/organization_accounts/thank_you_request"
   get "/searches/program_browse"
   match "/blog_posts/resources" => "blog_posts#resources"
+  match "/searches/search_machine" => "searches#search_machine"
   
   ##### UPDATE MESSAGES
   match "update_messages/:id/send_message" => "update_messages#send_message"
