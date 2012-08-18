@@ -451,8 +451,10 @@ $(document).ready(function(){
 	
 	
 	//create inputs for all of program's the existing cost/length objects, if any
+	<% if !(@costs.nil? || @costs.empty?) %>
 	<% @costs.each do |f| %>
 		createInput();
+	<% end %>
 	<% end %>
 	count = 0;
 	<% @count = 0 %>
