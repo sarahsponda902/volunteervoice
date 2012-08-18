@@ -19884,3 +19884,8 @@ Migrating to AddAccommodationsToPrograms (20120816201917)
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_confirmation_token')
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_approved')[0m
+Processing by ApplicationController#verify as HTML
+Completed 500 Internal Server Error in 1ms
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.8ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (99.9ms)
