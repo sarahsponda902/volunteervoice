@@ -606,12 +606,12 @@ function setMessageSubject(subject) {
 			<p style="color:#575758; margin-left:200px; margin-top:-80px">
               You do not have any messages in your inbox.</p>
               <% else %>
-			<p style="margin-top:-180px"> </p>
+			<p style="margin-top:-80px">
               <% @messages.each do |m| %>
 
               <%= render :partial => "message", :locals => {:m => m} %>
               <%end%>
-
+			</p>
               <%end%>
 			
             </div>
