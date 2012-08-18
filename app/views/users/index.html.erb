@@ -1,16 +1,49 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<% if current_user.admin?%>
+<style>
+.pageTitle {
+	font-size:3em; 
+	text-align:center; 
+	line-height:2em; 
+	margin-top:20px; 
+	margin-bottom:20px;
+}
+.admin {
+	font-size:1.2em; 
+	color:purple; 
+	font-weight:600;
+}
+.removeAdminLink {
+	font-style:italic; 
+	font-size:.8em;
+}
+.dateStarted {
+	color:blue;
+}
+.yesConfirmed {
+	font-weight:600;
+	color:green;
+}
+.notConfirmed {
+	font-weight:600;
+	color:red;
+}
+.copyEmailsTitle {
+	font-size:1.5em; 
+	line-height:2em;
+}
+</style>
+
+
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-<p style="font-size:3em; text-align:center; line-height:2em; margin-top:20px; margin-bottom:20px">Users:</p>
+<p class="pageTitle">Users:</p>
 <p>
 </p>
-<% if @users.empty? %>
-<b>There are not yet any users </b>
-<% else %>
+
 
 <table>
+	<thead>
 	<tr>
 		<th width="5%">Admin?</td>
 		<th width="12%">Date Joined</th>
@@ -23,17 +56,18 @@
 		<th width="5%">Edit</th>
 		<th width="7%">Delete</th>
 	</tr>
-	<% @users = @users.sort_by(&:created_at).reverse%>
+	</thead>
+	<tdata>
 
 <% @users.each do |user|%>
 	<tr>
 		<td><% if user.admin? %>
-			<font style="font-size:1.2em; color:purple; font-weight:600">ADMIN</font><br />
-			<%= link_to "Remove Admin", "/users/#{user.id}/make_admin", :style => "font-style:italic; font-size:.8em" %>
+			<span class="admin">ADMIN</span><br />
+			<%= link_to "Remove Admin", "/users/#{user.id}/make_admin", :class => "removeAdminLink" %>
 			<% else %>
 			<%= button_to "Make Admin", "/users/#{user.id}/make_admin" %>
 			<% end %></td>
-		<td><p style="color:blue"><%= user.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
+		<td><p class="dateStarted"><%= user.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
 		<td><%= link_to user.username, user %></td>
 		<td><%= user.email %></td>
 		<td><% @now = Time.now.utc.to_date%>
@@ -41,22 +75,23 @@
 		<td><%= THECOUNTRIES[user.country] %></td>
 		<td><%= image_tag user.square_image.url, :style => "height:30px" %></td>
 		<td><% if user.confirmed? %>
-			<font style="font-weight:600;color:green">Yes</font>
+			<span class="yesConfirmed">Yes</span>
 			<% else %>
-			<font style="font-weight:600;color:red">No</font>
+			<span class="notConfirmed">No</span>
 			<% end %>
 		</td>
 		<td><%= link_to "Edit", user_registration_path(user.id), :controller => "registrations", :action => "edit"%></td>
 		<td><%= button_to "Delete", "/users/#{user.id}", method: :delete%></td>
 	</tr>
 <% end %>
+</tdata>
 </table>
-<% end %>
+
 </div>
 </div>
 <div class="row">
 	<div class="twelve columns">
-		<p style="font-size:1.5em; line-height:2em">Copy Emails Below</p>
+		<p class="copyEmailsTitle">Copy Emails Below</p>
 		<% @user_emails = User.where(:notify => true).map(&:email)%>
 		<% count = 1%>
 		<%@user_emails.each do |f|%>
@@ -67,10 +102,5 @@
 </div>
 </div>
 
-<% else %>
-Sorry, only admins can view this page.
-<br />
-<%= link_to "Home", root_path%>
-<% end %>
 
 

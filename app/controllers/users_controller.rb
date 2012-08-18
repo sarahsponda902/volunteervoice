@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     
     if user_signed_in? && current_user.admin?
     @users = User.all
+    @users = @users.sort_by(&:created_at).reverse
     @unapproved_users = User.where(:approved => false)
     @approved_users = User.where(:approved => true)
     respond_to do |format|
