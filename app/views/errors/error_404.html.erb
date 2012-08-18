@@ -45,7 +45,7 @@ a.contact-window:link{color:#6aaeba}
 a.contact-window:visited{color:#6aaeba}
 a.contact-window:hover{color:#9bce6c}
 
-.top {
+#top {
 	text-align:center; 
 	margin-top:50px;
 }
@@ -58,7 +58,7 @@ a.contact-window:hover{color:#9bce6c}
 .secondBlurb {
 	line-height:0.85em;
 }
-.searchContainer {
+.errorSearchContainer {
 	margin:auto;
 	float:center;
 	margin-top:50px; 
@@ -95,13 +95,13 @@ a.contact-window:hover{color:#9bce6c}
 
 <div class="container">
 	<div class="row">
-		<div class="twelve columns top">
+		<div class="twelve columns" id="top">
 <img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/Error404.png"><br /><br />
   <div class="blurbsContainer">
     <p>The page you were looking for doesn't exist! Weird.</p>
     <p class="secondBlurb">Please feel free to <a href="#contact-box" class="contact-window">contact us</a> if you are very confused.<br /><br />Or just try searching for something else!</p>
   </div>
-<div class="searchContainer">
+<div class="errorSearchContainer">
 	<form accept-charset="UTF-8" action="/searches/create" method="post">
 	  <input id="keywords" name="search[keywords]" type="text" />
 	  <input name="commit" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/searchButton.png" />
