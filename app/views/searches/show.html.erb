@@ -99,456 +99,168 @@ a.search_link {
 </style>
 
 
-<script type="text/javascript">
-$(function() { 
 
-$('#programSubjects').pullOut({
-  position: 'right',
-  top: '200px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'subject',
-  color: 'lightblue',
-  buttonTitle: 'Subjects'
-});
+		<style type="text/css">
+	        #divProgram
+	        {
+	            margin: 10;
+	            font: verdana;
+	            font-size: 14px;
+	            background-color: White;
+	        }
+	        #divProgram > div
+	        {
+	            width: 98%;
+	            padding: 8px;
+	        }
+	        #divProgram > div p
+	        {
+	            width: 95%;
+	            padding: 8px;
+	        }
+			#divOrganization
+	        {
+	            margin: 10;
+	            font: verdana;
+	            font-size: 14px;
+	            background-color: White;
+	        }
+	        #divOrganization> div
+	        {
+	            width: 98%;
+	            padding: 8px;
+	        }
+	        #divOrganization > div p
+	        {
+	            width: 95%;
+	            padding: 8px;
+	        }
+</style>
 
-$('#programCountries').pullOut({
-  position: 'right',
-  top: '235px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'region',
-  color: 'lightblue',
-  buttonTitle: 'Countries'
-});	
+<style>
 
-$('#lengthOfTrip').pullOut({
-  position: 'right',
-  top: '270px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'length',
-  color: 'lightblue',
-  buttonTitle: 'Length of Trip'
-});
-
-$('#groupSize').pullOut({
-  position: 'right',
-  top: '305px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'size',
-  color: 'lightblue',
-  buttonTitle: 'Group Sizes'
-});
-
-$('#priceRange').pullOut({
-  position: 'right',
-  top: '340px',
-  showOn: 'click',
-  slideSpeed: 'normal',
-  scrollWithContent: false,
-  button: 'cost',
-  color: 'lightblue',
-  buttonTitle: 'Cost'
-});
-
-
-});
-</script>
-
-
-    
-    <% @locations = [] %>
-    <% Program.all.each do |f| %>
-    <% @locations << f.location unless @locations.include?(f.location) %>
-    <% end %>
-	
-	<% if !(@search.regions.nil?) && !(@search.regions.include?(";"))%>
-		<% @search_regions = [] << @search.regions%>
-	<% else %>
-	<% if @search.regions.nil? %>
-		<% @search_regions = [] %>
-	<% else %>
-		<% @search_regions = @search.regions.split("; ")%>
-	<% end %>
-	<% end %>
-	
-	<% if !(@search.subjects.nil?) && !(@search.subjects.include?(";"))%>
-		<% @search_subjects = [] << @search.subjects %>
-	<% else %>
-	<% if @search.subjects.nil? %>
-	<% @search_subjects = [] %>
-		<% else %>
-		<% @search_subjects = @search.subjects.split("; ")%>
-	<% end %>
-	<% end %>
-	
-	<% if !(@search.sizes.nil?) && !(@search.sizes.include?(";"))%>
-		<% @search_sizes = [] << @search.sizes %>
-	<% else %>
-	
-	<% if @search.sizes.nil?%>
-		<% @search_sizes = []%>
-	<% else %>
-	
-		<% @search_sizes = @search.sizes.split("; ")%>
-	<% end %>
-	<% end %>
-	
-	
-	<% if @search.price_max.nil?%>
-		<% @search.price_max = 99999%>
-	<% end %>
-	<% if @search.price_min.nil?%>
-		<% @search.price_min = 0%>
-	<% end %>
-<script type="text/javascript">
-var theLocations = <%=array_or_string_for_javascript(@locations)%>;
-var search_regions = <%= array_or_string_for_javascript(@search_regions)%>;
-var search_subjects = <%= array_or_string_for_javascript(@search_subjects)%>;
-var search_sizes = <%= array_or_string_for_javascript(@search_sizes)%>;
-var allTheLocations = new Array("AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW");
-
-var allBigLocations = new Array("Africa", "Asia", "Oceania", "Americas", "Europe");
-
-var allTheSubjects = new Array('Agriculture', 
-'Organic Farming', 
-'Sustainable Development', 
-'Animal Care', 
-'Animal Rights', 
-'Wildlife Conservation', 
-'Caregiving', 
-'Elder Care', 
-'Child/Orphan Care', 
-'Disabled Care', 
-'Feed the Homeless', 
-'Community Development', 
-'Youth Development and Outreach', 
-'Construction', 
-'Culture and Community', 
-'Performing Arts', 
-'Fashion', 
-'Music', 
-'Sports &amp; Recreation', 
-'Journalism', 
-'Disaster Relief', 
-'Economics', 
-'Microfinance', 
-'Education', 
-'Teaching English', 
-'Teaching Buddhist Monks', 
-'Teaching Children', 
-'Teaching Computer Literacy', 
-'Engineering and Infrastructure', 
-'Environmental', 
-'Ecological Conservation', 
-'Habitat Restoration', 
-'Health and Medicine', 
-'HIV/AIDS', 
-'Nutrition', 
-'Family Planning', 
-'Veterinary Medicine', 
-'Clinical Work', 
-'Dental Work', 
-'Medical Research', 
-'Health Education', 
-'Public Health', 
-'Hospital Care-giving', 
-'Human Rights', 
-'Womens Initiatives', 
-'International Work Camp', 
-'Recreation', 
-'Adventure Travel', 
-'Scientific Research', 
-'Archaeology', 
-'Environmental Biology', 
-'Technology', 
-'Media Marketing and Graphic Design');
-
-var allTheSubjectsIds = new Array('Agriculture', 
-'OrganicFarming', 
-'SustainableDevelopment', 
-'AnimalCare', 
-'AnimalRights', 
-'WildlifeConservation', 
-'Caregiving', 
-'ElderCare', 
-'ChildOrphanCare', 
-'DisabledCare', 
-'FeedtheHomeless', 
-'CommunityDevelopment', 
-'YouthDevelopmentandOutreach', 
-'Construction', 
-'CultureandCommunity', 
-'PerformingArts', 
-'Fashion', 
-'Music', 
-'SportsRecreation', 
-'Journalism', 
-'DisasterRelief', 
-'Economics', 
-'Microfinance', 
-'Education', 
-'TeachingEnglish', 
-'TeachingBuddhistMonks', 
-'TeachingChildren', 
-'TeachingComputerLiteracy', 
-'EngineeringandInfrastructure', 
-'Environmental', 
-'EcologicalConservation', 
-'HabitatRestoration', 
-'HealthandMedicine', 
-'HIVAIDS', 
-'Nutrition', 
-'FamilyPlanning', 
-'VeterinaryMedicine', 
-'ClinicalWork', 
-'DentalWork', 
-'MedicalResearch', 
-'HealthEducation', 
-'PublicHealth', 
-'HospitalCaregiving', 
-'HumanRights', 
-'WomensInitiatives', 
-'InternationalWorkCamp', 
-'Recreation', 
-'AdventureTravel', 
-'ScientificResearch', 
-'Archaeology', 
-'EnvironmentalBiology', 
-'Technology', 
-'MediaMarketingandGraphicDesign');
-
-var allTheSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
-var isAllSizes = true;
-var isAllLocations = true;
-var isAllSubjects = true;
-
-$(document).ready(function() {
-	
-	
-    var count = 0;
-    for (count = 0; count < allTheLocations.length; count++)
-    {
-        $("#"+allTheLocations[count]).hide();
-        if (jQuery.inArray(allTheLocations[count], theLocations) != -1)
-         {
-			$("#"+allTheLocations[count]).show();
-		 }
-
-			if (jQuery.inArray(allTheLocations[count], search_regions) != -1)
-			{
-				$("#"+allTheLocations[count]+"2").prop('checked', true);
-				$("#"+allTheLocations[count]+"5").prop('checked', true);
-			}
-	
-    }
-	
-	var count = 0;
-	for (count = 0; count < allTheLocations.length; count++)
-	{
-		if ($("#"+allTheLocations[count]).is(":visible")) {
-			if (jQuery.inArray(allTheLocations[count], search_regions) == -1)
-			{
-				isAllLocations = false;
-			}
-		}
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+	    /* display: none; <- Crashes Chrome on hover */
+	    -webkit-appearance: none;
+	    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 	}
 	
-	if (isAllLocations) {
-		$("#any6").prop('checked', true);
-		$("#any11").prop('checked', true);
+	input[type="checkbox"] {
+		margin-right:4px;
 	}
+
 	
+	a.search_link:active{color:#68c2d8}
+	a.search_link:visited{color:#68c2d8}
+	a.search_link:link{color:#68c2d8}
+	a.search_link:hover{color:#9bce6c; background:none}
+	
+	a.search_link_prog:active{color:#e67b5a}
+	a.search_link_prog:visited{color:#e67b5a}
+	a.search_link_prog:link{color:#e67b5a}
+	a.search_link_prog:hover{color:#9bce6c; background:none}
+	
+	a.programLink:active{color:#e67b5a}
+	a.programLink:visited{color:#e67b5a}
+	a.programLink:link{color:#e67b5a}
+	a.programLink:hover{color:#68c2d8; background:none}
 
 
-    for (count = 0; count < allBigLocations.length; count++)
-    {
-			if (jQuery.inArray(allBigLocations[count], search_regions) != -1)
-			{
-				$("#any"+allBigLocations[count]+"2").prop('checked', true);
-				$("#any"+allBigLocations[count]+"5").prop('checked', true);
-			}
-	
-    }
-
-
-	var count = 0;
-	for (count = 0; count < allTheSubjects.length; count++)
-	{
-		if (jQuery.inArray(allTheSubjects[count], search_subjects) == -1)
-		{
-			isAllSubjects = false;
-		}
-	}
-	
-	if (isAllSubjects) {
-		$("#any10").prop('checked', true);
-		$("#any").prop('checked', true);
-	}
-	
-	var count = 0;
-	for (count = 0; count < allTheSubjects.length; count++)
-    {
-			if (jQuery.inArray(allTheSubjects[count], search_subjects) != -1)
-			{
-				$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
-				$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
-			}
-	}
-	
-	var count = 0;
-	for (count = 0; count < allTheSizes.length; count++)
-	{
-		if (jQuery.inArray(allTheSizes[count], search_sizes) == -1)
-		{
-			isAllSizes = false;
-		}
-	}
-	
-	if (isAllSizes) {
-		$("#any3").prop("checked", true);
-		$("#any13").prop("checked", true);
-	}
-	
-	var count = 0;
-	for (count = 0; count < allTheSizes.length; count++)
-	{
-
-			if (jQuery.inArray(allTheSizes[count], search_sizes) != -1)
-			{
-				$("#"+(count+1)+"_group").prop('checked', true);
-				$("#size"+(count+1)+"5").prop('checked', true);
-			}
-
-	}
-	$("#length_min_number").val(<%=@search.length_min_number.to_i%>);
-	$("#length_max_number").val(<%=@search.length_max_number.to_i%>);
-	$("#length_min_param").val("<%=@search.length_min_param%>");
-	$("#length_max_param").val("<%=@search.length_max_param%>");
-	$("#length_min_number5").val(<%=@search.length_min_number.to_i%>);
-	$("#length_max_number5").val(<%=@search.length_max_number.to_i%>);
-	$("#length_min_param5").val("<%=@search.length_min_param%>");
-	$("#length_max_param5").val("<%=@search.length_max_param%>");
-	$("#price_max").val(<%=@search.price_max.to_i%>);
-	$("#price_max5").val(<%=@search.price_max.to_i%>);
-	$("#price_min").val(<%=@search.price_min.to_i%>);
-	$("#price_min5").val(<%=@search.price_min.to_i%>);
-});
-
-function toggleChecked(checkboxId) {
-	if ($("#"+checkboxId).checked) {
-		$("#"+checkboxId).checked = false;
-	} else {
-		$("#"+checkboxId).checked = true;
-	}
+</style>
+<style>
+#programs-contents1 {
+	text-align:center; 
+	width:100%; 
+	margin-top:50px;
 }
-
-</script>
-<script type="text/javascript">
-
-
-$(document).ready(function() {
-	<% if @search.showing == "Organizations" %>
-	$("#display").val("Organizations");
-	<% else %>
-	$("#sort").append("<option value = 'pricelow'>Price - Low</option>");
-	$("#sort").append("<option value = 'pricehigh'>Price - High</option>");
-	<% end %>
-	<% if !(@search.sort_by.nil?)%>
-	$("#sort").val("<%=@search.sort_by%>");
-	<% end %>
-
-	
-	$('a.window').click(function() {
-
-                //Getting the variable's value from a link 
-		var box = $(this).attr('href');
-
-		//Fade in the Popup
-		$(box).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(box).height() + 24) / 2; 
-		var popMargLeft = ($(box).width() + 24) / 2; 
-
-		$(box).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask"></div>')
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-		$('a.country-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var box = $(this).attr('href');
-
-			//Fade in the Popup
-			$(box).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(box).height() + 24) / 2; 
-			var popMargLeft = ($(box).width() + 24) / 2; 
-
-			$(box).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask"></div>')
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-});
-
-
-</script>
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-	
-	$('.program').smartpaginator({ totalrecords: <%=@the_results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
-
-	
-});
-
-</script>
+#searchResultsCount {
+	margin-left:50px; 
+	font-family:architectsDaughterRegular; 
+	color:#62acbd; 
+	font-size:1.3em;
+}
+#displayByContainer {
+	float:left; 
+	width:200px;
+}
+#displayByLabel {
+	font-size:1.5em; 
+	color:#575758; 
+	line-height:1.1em; 
+	margin-left:-5px;
+}
+#displaySelectDiv {
+	position:absolute; 
+	left:42%;
+	top:-4px; 
+	height:30px; 
+	width:228px; 
+	overflow:hidden; 
+	border-right:1px solid #575758;
+	border-left:1px solid #575758; 
+	z-index:5;
+}
+#display {
+	position:absolute; 
+	left:-5px; 
+	width:255px; 
+	height:30px; 
+	border: 1px solid #575758; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+	background-color:white;
+}
+#listByContainer {
+	height:50px;
+	float:left;
+}
+#lisByLabel {
+	font-size:1.5em; 
+	color:#575758; 
+	line-height:1.1em; 
+	margin-left:-20px;
+}
+#listBySelectDiv {
+	position:absolute; 
+	height:30px; 
+	width:228px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758; 
+	z-index:6;
+}
+#sort {
+	position:relative; 
+	border: 1px solid #575758; 
+	left:-5px; 
+	width:255px; 
+	height:30px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+	background-color:white;
+}
+#searchResultsTabsBlurb {
+	position:absolute; 
+	right:85px; 
+	top:280px;
+}
+#listBySelectDivContainer {
+	margin-top:-26px; 
+	margin-left:450px;
+}
+.hiddenSearchFacet {
+	display:none;
+}
+#resultsContentContainer {
+	margin-top:-26px; 
+	margin-left:450px;
+}
+</style>
 
 
 <div class="container">
-<div style="text-align:center; width:100%; margin-top:50px" id ="programs-contents1">	
+<div id ="programs-contents1">	
 <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SearchResultsTitle.png"%><br /><br />
-	<p align="left" style="margin-left:50px; font-family:architectsDaughterRegular; color:#62acbd; font-size:1.3em"> Your search has <%= pluralize @the_results.count, "match"%>:</p>
+	<p align="left" id="searchResultsCount"> Your search has <%= pluralize @the_results.count, "match"%>:</p>
 
 	<br />
 	<br />
@@ -558,22 +270,25 @@ $(document).ready(function() {
 
 <div class = "container">
 	<div class= "row">
-		<div class="four columns" style="float:left; width:200px">
-		<p style="font-size:1.5em; color:#575758; line-height:1.1em; margin-left:-5px"> 	Display:</p>
-		<div class="select-div" style="position:absolute; left:42%;top:-4px; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758; z-index:19">
+		<div class="four columns" id="displayByContainer">
+		<p id="displayByLabel"> 	Display:</p>
+		<div class="select-div" id="displaySelectDiv">
 					<%= form_for @search do |f|%>
-			<select id ="display" name="search[showing]" style="position:absolute; left:-5px; width:255px; height:30px; border: 1px solid #575758; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">
+			<select id ="display" name="search[showing]" onchange="this.form.submit()">
 				<option value="Programs">Programs</option>
 				<option value="Organizations">Organizations</option></select>
  
 		</div>
+		
+<!-- This is the actual submit button. Clicking "apply" inside the pull outs did not work for some reason. So when they are clicked, this button is clicked and the form is submitted -->
 <%= f.submit "Submit", :id => "submit_form", :style => "display:none"%>
 	</div>
-	<div class="two columns" style="height:50px;float:left"></div>
-				<p style="font-size:1.5em; color:#575758; line-height:1.1em; margin-left:-20px"> List By:</p>
-				<div style="margin-top:-26px; margin-left:450px">
-		<div class="select-div" style="position:absolute; height:30px; width:228px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758; z-index:20">
-		<select id ="sort" name="search[sort_by]" style="position:relative; border: 1px solid #575758; left:-5px; width:255px; height:30px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; background-color:white;" onchange="this.form.submit()">	
+	
+	<div class="two columns" id="listByContainer"></div>
+				<p id="listByLabel"> List By:</p>
+				<div id="listBySelectDivContainer">
+		<div class="select-div" id="listBySelectDiv">
+		<select id ="sort" name="search[sort_by]" onchange="this.form.submit()">	
 			<option value = "">Select an Order</option>
 			<option value = "ratinghigh">Rating - High</option>
 			<option value = "ratinglow">Rating - Low</option>
@@ -582,7 +297,7 @@ $(document).ready(function() {
 
 			</div>
 	</div>
-	<div style="position:absolute; right:85px; top:280px"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/SearchResultsBlurb.png"></div>
+	<div id="searchResultsTabsBlurb"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/SearchResultsBlurb.png"></div>
 	</div>
 
 </div>
@@ -593,363 +308,540 @@ $(document).ready(function() {
 	<!-- SUBJECTS -->
 	
 	
-		<input type='checkbox' name='search[subjects][]' value="false" id="any10" style="display:none">
-	<input type='checkbox' name='search[subjects][]' value="Agriculture" id="Agriculture5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Organic Farming" id="OrganicFarming5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Sustainable Development" id="SustainableDevelopment5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Animal Care" id="AnimalCare5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Animal Rights" id="AnimalRights5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Wildlife Conservation" id="WildlifeConservation5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Caregiving" id="Caregiving5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Elder Care" id="ElderCare5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Child/Orphan Care" id="ChildOrphanCare5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Disabled Care" id="DisabledCare5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Feed the Homeless" id="FeedtheHomeless5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Community Development" id="CommunityDevelopment5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Youth Development and Outreach" id="YouthDevelopmentandOutreach5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Construction" id="Construction5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Culture and Community" id="CultureandCommunity5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Performing Arts" id="PerformingArts5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Fashion" id="Fashion5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Music" id="Music5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Sports & Recreation" id="SportsRecreation5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Journalism" id="Journalism5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Disaster Relief" id="DisasterRelief5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Economics" id="Economics5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Microfinance" id="Microfinance5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Education" id="Education5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Teaching English" id="TeachingEnglish5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Teaching Buddhist Monks" id="TeachingBuddhistMonks5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Teaching Children" id="TeachingChildren5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Teaching Computer Literacy" id="TeachingComputerLiteracy5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Engineering and Infrastructure" id="EngineeringandInfrastructure5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Environmental" id="Environmental5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Ecological Conservation" id="EcologicalConservation5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Habitat Restoration" id="HabitatRestoration5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Health and Medicine" id="HealthandMedicine5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="HIV/AIDS" id="HIVAIDS5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Nutrition" id="Nutrition5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Family Planning" id="FamilyPlanning5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Veterinary Medicine" id="VeterinaryMedicine5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Clinical Work" id="ClinicalWork5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Dental Work" id="DentalWork5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Medical Research" id="MedicalResearch5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Health Education" id="HealthEducation5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Public Health" id="PublicHealth5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Hospital Care-giving" id="HospitalCaregiving5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Human Rights" id="HumanRights5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Womens Initiatives" id="WomensInitiatives5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="International Work Camp" id="InternationalWorkCamp5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Recreation" id="Recreation5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Adventure Travel" id="AdventureTravel5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Scientific Research" id="ScientificResearch5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Archaeology" id="Archaeology5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Environmental Biology" id="EnvironmentalBiology5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Technology" id="Technology5" style='display:none'>
-	<input type='checkbox' name='search[subjects][]' value="Media Marketing and Graphic Design" id="MediaMarketingandGraphicDesign5" style="display:none">
+		<input type='checkbox' name='search[subjects][]' value="false" id="any10" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Agriculture" id="Agriculture5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Organic Farming" id="OrganicFarming5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Sustainable Development" id="SustainableDevelopment5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Animal Care" id="AnimalCare5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Animal Rights" id="AnimalRights5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Wildlife Conservation" id="WildlifeConservation5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Caregiving" id="Caregiving5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Elder Care" id="ElderCare5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Child/Orphan Care" id="ChildOrphanCare5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Disabled Care" id="DisabledCare5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Feed the Homeless" id="FeedtheHomeless5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Community Development" id="CommunityDevelopment5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Youth Development and Outreach" id="YouthDevelopmentandOutreach5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Construction" id="Construction5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Culture and Community" id="CultureandCommunity5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Performing Arts" id="PerformingArts5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Fashion" id="Fashion5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Music" id="Music5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Sports & Recreation" id="SportsRecreation5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Journalism" id="Journalism5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Disaster Relief" id="DisasterRelief5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Economics" id="Economics5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Microfinance" id="Microfinance5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Education" id="Education5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Teaching English" id="TeachingEnglish5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Teaching Buddhist Monks" id="TeachingBuddhistMonks5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Teaching Children" id="TeachingChildren5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Teaching Computer Literacy" id="TeachingComputerLiteracy5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Engineering and Infrastructure" id="EngineeringandInfrastructure5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Environmental" id="Environmental5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Ecological Conservation" id="EcologicalConservation5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Habitat Restoration" id="HabitatRestoration5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Health and Medicine" id="HealthandMedicine5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="HIV/AIDS" id="HIVAIDS5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Nutrition" id="Nutrition5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Family Planning" id="FamilyPlanning5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Veterinary Medicine" id="VeterinaryMedicine5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Clinical Work" id="ClinicalWork5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Dental Work" id="DentalWork5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Medical Research" id="MedicalResearch5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Health Education" id="HealthEducation5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Public Health" id="PublicHealth5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Hospital Care-giving" id="HospitalCaregiving5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Human Rights" id="HumanRights5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Womens Initiatives" id="WomensInitiatives5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="International Work Camp" id="InternationalWorkCamp5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Recreation" id="Recreation5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Adventure Travel" id="AdventureTravel5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Scientific Research" id="ScientificResearch5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Archaeology" id="Archaeology5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Environmental Biology" id="EnvironmentalBiology5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Technology" id="Technology5" class="hiddenSearchFacet">
+	<input type='checkbox' name='search[subjects][]' value="Media Marketing and Graphic Design" id="MediaMarketingandGraphicDesign5" class="hiddenSearchFacet">
 	
 	<!-- END SUBJECTS -->
 	
 	
 	<!-- COUNTRIES -->
-	<input type='checkbox' name='search[regions][]' id='any11' value='false' style='display:none'>
+	<input type='checkbox' name='search[regions][]' id='any11' value='false' class="hiddenSearchFacet">
 	
 	
-	<input type='checkbox' name='search[regions][]' id='AF5' value='AF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AX5' value='AX' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AL5' value='AL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='DZ5' value='DZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AS5' value='AS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AD5' value='AD' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AO5' value='AO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AI5' value='AI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AQ5' value='AQ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AG5' value='AG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AR5' value='AR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AM5' value='AM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AW5' value='AW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AU5' value='AU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AT5' value='AT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AZ5' value='AZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BS5' value='BS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BH5' value='BH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BD5' value='BD' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BB5' value='BB' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BY5' value='BY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BE5' value='BE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BZ5' value='BZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BJ5' value='BJ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BM5' value='BM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BT5' value='BT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BO5' value='BO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BQ5' value='BQ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BA5' value='BA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BW5' value='BW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BV5' value='BV' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BR5' value='BR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IO5' value='IO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BN5' value='BN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BG5' value='BG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BF5' value='BF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BI5' value='BI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KH5' value='KH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CM5' value='CM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CA5' value='CA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CV5' value='CV' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KY5' value='KY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CF5' value='CF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TD5' value='TD' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CL5' value='CL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CN5' value='CN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CX5' value='CX' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CC5' value='CC' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CO5' value='CO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KM5' value='KM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CG5' value='CG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CD5' value='CD' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CK5' value='CK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CR5' value='CR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CI5' value='CI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='HR5' value='HR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CU5' value='CU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CW5' value='CW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CY5' value='CY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CZ5' value='CZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='DK5' value='DK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='DJ5' value='DJ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='DM5' value='DM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='DO5' value='DO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='EC5' value='EC' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='EG5' value='EG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SV5' value='SV' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GQ5' value='GQ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ER5' value='ER' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='EE5' value='EE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ET5' value='ET' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='FK5' value='FK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='FO5' value='FO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='FJ5' value='FJ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='FI5' value='FI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='FR5' value='FR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GF5' value='GF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PF5' value='PF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TF5' value='TF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GA5' value='GA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GM5' value='GM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GE5' value='GE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='DE5' value='DE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GH5' value='GH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GI5' value='GI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GR5' value='GR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GL5' value='GL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GD5' value='GD' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GP5' value='GP' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GU5' value='GU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GT5' value='GT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GG5' value='GG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GN5' value='GN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GW5' value='GW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GY5' value='GY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='HT5' value='HT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='HM5' value='HM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='VA5' value='VA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='HN5' value='HN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='HK5' value='HK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='HU5' value='HU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IS5' value='IS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IN5' value='IN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ID5' value='ID' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IR5' value='IR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IQ5' value='IQ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IE5' value='IE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IM5' value='IM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IL5' value='IL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='IT5' value='IT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='JM5' value='JM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='JP5' value='JP' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='JE5' value='JE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='JO5' value='JO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KZ5' value='KZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KE5' value='KE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KI5' value='KI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KP5' value='KP' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KR5' value='KR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KW5' value='KW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KG5' value='KG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LA5' value='LA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LV5' value='LV' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LB5' value='LB' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LS5' value='LS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LR5' value='LR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LY5' value='LY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LI5' value='LI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LT5' value='LT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LU5' value='LU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MO5' value='MO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MK5' value='MK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MG5' value='MG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MW5' value='MW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MY5' value='MY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MV5' value='MV' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ML5' value='ML' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MT5' value='MT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MH5' value='MH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MQ5' value='MQ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MR5' value='MR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MU5' value='MU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='YT5' value='YT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MX5' value='MX' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='FM5' value='FM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MD5' value='MD' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MC5' value='MC' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MN5' value='MN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ME5' value='ME' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MS5' value='MS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MA5' value='MA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MZ5' value='MZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MM5' value='MM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NA5' value='NA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NR5' value='NR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NP5' value='NP' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NL5' value='NL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NC5' value='NC' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NZ5' value='NZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NI5' value='NI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NE5' value='NE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NG5' value='NG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NU5' value='NU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NF5' value='NF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MP5' value='MP' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='NO5' value='NO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='OM5' value='OM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PK5' value='PK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PW5' value='PW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PS5' value='PS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PA5' value='PA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PG5' value='PG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PY5' value='PY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PE5' value='PE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PH5' value='PH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PN5' value='PN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PL5' value='PL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PT5' value='PT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PR5' value='PR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='QA5' value='QA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='RE5' value='RE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='RO5' value='RO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='RU5' value='RU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='RW5' value='RW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='BL5' value='BL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SH5' value='SH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='KN5' value='KN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LC5' value='LC' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='MF5' value='MF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='PM5' value='PM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='VC5' value='VC' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='WS5' value='WS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SM5' value='SM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ST5' value='ST' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SA5' value='SA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SN5' value='SN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='RS5' value='RS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SC5' value='SC' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SL5' value='SL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SG5' value='SG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SX5' value='SX' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SK5' value='SK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SI5' value='SI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SB5' value='SB' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SO5' value='SO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ZA5' value='ZA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GS5' value='GS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SS5' value='SS' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ES5' value='ES' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='LK5' value='LK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SD5' value='SD' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SR5' value='SR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SJ5' value='SJ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SZ5' value='SZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SE5' value='SE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='CH5' value='CH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='SY5' value='SY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TW5' value='TW' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TJ5' value='TJ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TZ5' value='TZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TH5' value='TH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TL5' value='TL' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TG5' value='TG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TK5' value='TK' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TO5' value='TO' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TT5' value='TT' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TN5' value='TN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TR5' value='TR' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TM5' value='TM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TC5' value='TC' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='TV5' value='TV' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='UG5' value='UG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='UA5' value='UA' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='AE5' value='AE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='GB5' value='GB' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='US5' value='US' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='UM5' value='UM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='UY5' value='UY' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='UZ5' value='UZ' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='VU5' value='VU' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='VE5' value='VE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='VN5' value='VN' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='VG5' value='VG' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='VI5' value='VI' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='WF5' value='WF' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='EH5' value='EH' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='YE5' value='YE' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ZM5' value='ZM' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='ZW5' value='ZW' style='display:none'>
+	<input type='checkbox' name='search[regions][]' id='AF5' value='AF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AX5' value='AX' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AL5' value='AL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='DZ5' value='DZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AS5' value='AS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AD5' value='AD' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AO5' value='AO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AI5' value='AI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AQ5' value='AQ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AG5' value='AG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AR5' value='AR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AM5' value='AM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AW5' value='AW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AU5' value='AU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AT5' value='AT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AZ5' value='AZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BS5' value='BS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BH5' value='BH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BD5' value='BD' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BB5' value='BB' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BY5' value='BY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BE5' value='BE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BZ5' value='BZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BJ5' value='BJ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BM5' value='BM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BT5' value='BT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BO5' value='BO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BQ5' value='BQ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BA5' value='BA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BW5' value='BW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BV5' value='BV' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BR5' value='BR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IO5' value='IO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BN5' value='BN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BG5' value='BG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BF5' value='BF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BI5' value='BI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KH5' value='KH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CM5' value='CM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CA5' value='CA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CV5' value='CV' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KY5' value='KY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CF5' value='CF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TD5' value='TD' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CL5' value='CL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CN5' value='CN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CX5' value='CX' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CC5' value='CC' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CO5' value='CO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KM5' value='KM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CG5' value='CG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CD5' value='CD' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CK5' value='CK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CR5' value='CR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CI5' value='CI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='HR5' value='HR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CU5' value='CU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CW5' value='CW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CY5' value='CY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CZ5' value='CZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='DK5' value='DK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='DJ5' value='DJ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='DM5' value='DM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='DO5' value='DO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='EC5' value='EC' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='EG5' value='EG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SV5' value='SV' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GQ5' value='GQ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ER5' value='ER' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='EE5' value='EE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ET5' value='ET' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='FK5' value='FK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='FO5' value='FO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='FJ5' value='FJ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='FI5' value='FI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='FR5' value='FR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GF5' value='GF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PF5' value='PF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TF5' value='TF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GA5' value='GA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GM5' value='GM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GE5' value='GE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='DE5' value='DE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GH5' value='GH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GI5' value='GI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GR5' value='GR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GL5' value='GL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GD5' value='GD' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GP5' value='GP' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GU5' value='GU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GT5' value='GT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GG5' value='GG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GN5' value='GN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GW5' value='GW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GY5' value='GY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='HT5' value='HT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='HM5' value='HM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='VA5' value='VA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='HN5' value='HN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='HK5' value='HK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='HU5' value='HU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IS5' value='IS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IN5' value='IN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ID5' value='ID' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IR5' value='IR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IQ5' value='IQ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IE5' value='IE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IM5' value='IM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IL5' value='IL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='IT5' value='IT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='JM5' value='JM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='JP5' value='JP' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='JE5' value='JE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='JO5' value='JO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KZ5' value='KZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KE5' value='KE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KI5' value='KI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KP5' value='KP' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KR5' value='KR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KW5' value='KW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KG5' value='KG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LA5' value='LA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LV5' value='LV' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LB5' value='LB' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LS5' value='LS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LR5' value='LR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LY5' value='LY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LI5' value='LI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LT5' value='LT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LU5' value='LU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MO5' value='MO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MK5' value='MK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MG5' value='MG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MW5' value='MW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MY5' value='MY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MV5' value='MV' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ML5' value='ML' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MT5' value='MT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MH5' value='MH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MQ5' value='MQ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MR5' value='MR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MU5' value='MU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='YT5' value='YT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MX5' value='MX' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='FM5' value='FM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MD5' value='MD' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MC5' value='MC' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MN5' value='MN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ME5' value='ME' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MS5' value='MS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MA5' value='MA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MZ5' value='MZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MM5' value='MM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NA5' value='NA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NR5' value='NR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NP5' value='NP' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NL5' value='NL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NC5' value='NC' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NZ5' value='NZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NI5' value='NI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NE5' value='NE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NG5' value='NG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NU5' value='NU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NF5' value='NF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MP5' value='MP' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='NO5' value='NO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='OM5' value='OM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PK5' value='PK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PW5' value='PW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PS5' value='PS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PA5' value='PA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PG5' value='PG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PY5' value='PY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PE5' value='PE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PH5' value='PH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PN5' value='PN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PL5' value='PL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PT5' value='PT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PR5' value='PR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='QA5' value='QA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='RE5' value='RE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='RO5' value='RO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='RU5' value='RU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='RW5' value='RW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='BL5' value='BL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SH5' value='SH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='KN5' value='KN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LC5' value='LC' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='MF5' value='MF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='PM5' value='PM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='VC5' value='VC' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='WS5' value='WS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SM5' value='SM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ST5' value='ST' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SA5' value='SA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SN5' value='SN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='RS5' value='RS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SC5' value='SC' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SL5' value='SL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SG5' value='SG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SX5' value='SX' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SK5' value='SK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SI5' value='SI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SB5' value='SB' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SO5' value='SO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ZA5' value='ZA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GS5' value='GS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SS5' value='SS' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ES5' value='ES' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='LK5' value='LK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SD5' value='SD' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SR5' value='SR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SJ5' value='SJ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SZ5' value='SZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SE5' value='SE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='CH5' value='CH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='SY5' value='SY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TW5' value='TW' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TJ5' value='TJ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TZ5' value='TZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TH5' value='TH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TL5' value='TL' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TG5' value='TG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TK5' value='TK' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TO5' value='TO' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TT5' value='TT' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TN5' value='TN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TR5' value='TR' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TM5' value='TM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TC5' value='TC' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='TV5' value='TV' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='UG5' value='UG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='UA5' value='UA' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='AE5' value='AE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='GB5' value='GB' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='US5' value='US' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='UM5' value='UM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='UY5' value='UY' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='UZ5' value='UZ' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='VU5' value='VU' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='VE5' value='VE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='VN5' value='VN' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='VG5' value='VG' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='VI5' value='VI' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='WF5' value='WF' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='EH5' value='EH' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='YE5' value='YE' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ZM5' value='ZM' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='ZW5' value='ZW' class="hiddenSearchFacet">
 	
-	<input type='checkbox' name='search[regions][]' id='anyAfrica5' value='Africa' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='anyEurope5' value='Europe' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='anyAmericas5' value='Americas' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='anyAsia5' value='Asia' style='display:none'>
-	<input type='checkbox' name='search[regions][]' id='anyOceania5' value='Oceania' style='display:none'>
+	<input type='checkbox' name='search[regions][]' id='anyAfrica5' value='Africa' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='anyEurope5' value='Europe' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='anyAmericas5' value='Americas' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='anyAsia5' value='Asia' class="hiddenSearchFacet">
+	<input type='checkbox' name='search[regions][]' id='anyOceania5' value='Oceania' class="hiddenSearchFacet">
 
 <!-- END COUNTRIES -->
 
 <!-- LENGTHS -->
-<input type="text" value= "0" id= "length_min_number5" name="search[length_min_number]" style="display:none"/>
-<input type="text" id= "length_min_param5" name="search[length_min_param]" style="display:none" value="weeks" />
+<input type="text" value= "0" id= "length_min_number5" name="search[length_min_number]" class="hiddenSearchFacet"/>
+<input type="text" id= "length_min_param5" name="search[length_min_param]" class="hiddenSearchFacet" value="weeks" />
 
-<input type="text" value= "2" id = "length_max_number5" name="search[length_max_number]" style="display:none"/>
-<input type="text" id= "length_max_param5" name="search[length_max_param]" style="display:none" value="years" />
+<input type="text" value= "2" id = "length_max_number5" name="search[length_max_number]" class="hiddenSearchFacet"/>
+<input type="text" id= "length_max_param5" name="search[length_max_param]" class="hiddenSearchFacet" value="years" />
 
 
 <!-- END LENGTHS -->
 
 <!-- SIZES -->
-<input type='checkbox' style='display:none' name='search[sizes][]' value='false' id='any13'>
+<input type='checkbox' class="hiddenSearchFacet" name='search[sizes][]' value='false' id='any13'>
 
-<input id='size15' type='checkbox' style='display:none' name='search[sizes][]' value='Individual'>
-<input id='size25' type='checkbox' style='display:none' name='search[sizes][]' value='Small Groups (2-3)'>
-<input id='size35' type='checkbox' style='display:none' name='search[sizes][]' value='Medium Groups (4-10)'>
-<input id='size45' type='checkbox' style='display:none' name='search[sizes][]' value='Large Groups (11+)'>
+<input id='size15' type='checkbox' class="hiddenSearchFacet" name='search[sizes][]' value='Individual'>
+<input id='size25' type='checkbox' class="hiddenSearchFacet" name='search[sizes][]' value='Small Groups (2-3)'>
+<input id='size35' type='checkbox' class="hiddenSearchFacet" name='search[sizes][]' value='Medium Groups (4-10)'>
+<input id='size45' type='checkbox' class="hiddenSearchFacet" name='search[sizes][]' value='Large Groups (11+)'>
 <!-- END SIZES -->
 	
 
 <!-- PRICE MIN -->
-<input id="price_min5" type="number" style="display:none" name="search[price_min]" >
+<input id="price_min5" type="number" class="hiddenSearchFacet" name="search[price_min]" >
 <!-- END PRICE MIN -->
 
 
 <!-- PRICE MAX -->
-<input id="price_max5" type="number" style="display:none" name="search[price_max]">
+<input id="price_max5" type="number" class="hiddenSearchFacet" name="search[price_max]">
 <!-- END PRICE MAX -->	
 
 </div>
 
+<style>
+#programs-contents {
+	margin-left:-10px; 
+	margin-top:60px;
+}
+#divProgram {
+	width:100%; 
+	border-top:1px solid #575758; 
+	border-left:1px solid #575758; 
+	border-right:1px solid #575758;
+}
+#noResultsOuterContainer {
+	border:1px solid #e67b5a; 
+	height:200px; 
+	background-color:white; 
+	margin-left:25px;
+}
+#noResultsInnerContainer {
+	margin:25px;
+}
+#noResultsBlurbContainer {
+	border-top:1px solid #68c2d8; 
+	height:150px; 
+	border-bottom:1px solid #68c2d8;
+}
+#noResultsBlurb {
+	text-align:center; 
+	margin-top:50px; 
+	font-family:architectsDaughterRegular;
+	font-size:2em; 
+	color: #68c2d8;
+}
+#tabsContainer {
+	overflow-x:hidden;
+}
+#programSubjects {
+	width:600px; 
+	height:125px; 
+	overflow-y:auto; 
+	padding-bottom:20px; 
+	color:#575758; 
+	overflow-x:hidden;
+}
+#subjectsLeftColumn, #subjectsRightColumn, #groupSizeLeftColumn, #groupSizeRightColumn {
+	width:45%;
+}
+.anyLabel {
+	font-size:1.2em; 
+	color:#575758;
+}
+.applyButtonDiv{
+	clear:all;
+	float:center;
+	width:70px;
+	margin:auto;
+}
+.applyButton {
+	width:70px; 
+	height:20px;
+}
+#lengthOfTrip {
+	width:400px; 
+	padding-bottom:20px; 
+	color:#575758; 
+	overflow-x:hidden;
+}
+#lengthMinNumberDiv {
+	position:absolute; 
+	left:40px; 
+	height:20px; 
+	width:58px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#length_min_number {
+	position:absolute; 
+	left:-5px; 
+	width:81px; 
+	height:20px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
+#lengthMinParamDiv {
+	position:absolute; 
+	left:90px; 
+	height:20px; 
+	width:88px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#length_min_param {
+	position:absolute; 
+	left:-5px; 
+	width:111px; 
+	height:20px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
+#lengthToContainer {
+	position:absolute; 
+	left:220px; 
+	font-size:1.1em;
+	color:#575758;
+}
+#lengthMaxNumberDiv {
+	position:absolute; 
+	left:230px; 
+	height:20px; 
+	width:58px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#length_max_number {
+	position:absolute; 
+	left:-5px; 
+	width:81px; 
+	height:20px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
+#lengthMaxParamDiv {
+	position:absolute; 
+	left:300px; 
+	height:20px; 
+	width:88px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758;
+}
+#length_max_param {
+	position:absolute; 
+	left:-5px; 
+	width:111px; 
+	height:20px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; 
+	border:1px solid #575758; 
+	background-color:white;
+}
+#groupSize {
+	width:350px; 
+	padding-bottom:20px; 
+	color:#575758; 
+	overflow-x:hidden;
+}
+#priceRange {
+	color:#575758; 
+	overflow-x:hidden; 
+	width:275px;
+}
+#price_min, #price_max {
+	background:white; 
+	width:50px; 
+	margin-left:2px;
+}
+#programCountries {
+	color:#575758; 
+	width:800px; 
+	height:150px; 
+	overflow-x:hidden; 
+	overflow-y:auto;
+}
+#programCountriesInnerContainer {
+	width:795px;
+}
+#programCountriesFirstCol, ##programCountriesSecondCol, #programCountriesThirdCol, #programCountriesFourthCol, #programCountriesFifthCol {
+	width:16%;
+}
+</style>
+
+
+
 <div class="container">
 	<div class="row">	
-<div class="eleven columns" style="margin-top:-50px">
-<div class="contents" id="programs-contents" style="margin-left:-10px; margin-top:60px;">
+<div class="eleven columns" id="resultsContentsContainer">
+<div class="contents" id="programs-contents">
 			<% if !(@the_results.empty?)%>	
-	<div id="divProgram" style="width:100%; border-top:1px solid #575758; border-left:1px solid #575758; border-right:1px solid #575758">
+	<div id="divProgram">
 		<% if (@search.showing == "Programs" || @search.showing.nil?)%>
 			<% @the_results.each do |f|%>	
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
@@ -966,10 +858,10 @@ $(document).ready(function() {
 </div>
 			
 		<% else %>
-		<div style="border:1px solid #e67b5a; height:200px; background-color:white; margin-left:25px;">
-		<div style="margin:25px">
-		<div style="border-top:1px solid #68c2d8; height:150px; border-bottom:1px solid #68c2d8">
-			<p style="text-align:center; margin-top:50px; font-family:architectsDaughterRegular;font-size:2em; color: #68c2d8">We've got nothin'</p>
+		<div id="noResultsOuterContainer">
+		<div id="noResultsInnerContainer">
+		<div id="noResultsBlurbContainer">
+			<p id="noResultsBlurb">We've got nothin'</p>
 		</div>
 		</div>
 		</div>
@@ -988,12 +880,12 @@ $(document).ready(function() {
 </div>
 </div>
 
-<body style="oveflow-x:hidden">
+<div id="tabsContainer">
 
-<div id="programSubjects" style="width:600px; height:125px; overflow-y:auto; padding-bottom:20px; color:#575758; overflow-x:hidden">
+<div id="programSubjects">
 	
-	<div class="six columns" style="width:45%">
-		            <input type="checkbox" name="seach[subjects]" onclick = 'toggleBoxes1(this)' value ="false" id ='any' onchange = "$('#any10').prop('checked', this.checked)" ><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
+	<div class="six columns" id="subjectsLeftColumn">
+		            <input type="checkbox" name="seach[subjects]" onclick = 'toggleBoxes1(this)' value ="false" id ='any' onchange = "$('#any10').prop('checked', this.checked)" ><span class="anyLabel">Any</span><br /><br />
 
 
 					<div id='Agriculture1'><input type='checkbox' onchange ="$('#Agriculture5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value ='Agriculture' id='Agriculture2'  >Agriculture</div>
@@ -1023,7 +915,7 @@ $(document).ready(function() {
 					<div id='TeachingChildren1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#TeachingChildren5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEducation(this)' value='Teaching Children' id='TeachingChildren2' >Teaching Children</div>
 					<div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#TeachingComputerLiteracy5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEducation(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' >Teaching Computer Literacy</div>
 					</div>
-					<div class="six columns" style="width:45%">
+					<div class="six columns" id="subjectsRightColumn">
 					<div id='EngineeringandInfrastructure1'><input type='checkbox' onchange ="$('#EngineeringandInfrastructure5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this)' value='Engineering and Infrastructure' id='EngineeringandInfrastructure2' >Engineering and Infrastructure</div>
 					<div id='Environmental1'><br /><input type='checkbox' onchange ="$('#Environmental5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Environmental' id='Environmental2' >Environmental</div>
 					<div id='EcologicalConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#EcologicalConservation5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Ecological Conservation' id='EcologicalConservation2' >Ecological Conservation</div>
@@ -1051,16 +943,16 @@ $(document).ready(function() {
 					<div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#EnvironmentalBiology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value='Environmental Biology' id='EnvironmentalBiology2' >Environmental Biology</div>
 					<div id='Technology1'><br /><input type='checkbox' onchange ="$('#Technology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' >Technology</div>
 					<div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#MediaMarketingandGraphicDesign5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' >Media Marketing and Graphic Design</div><br />
-		<div style="float:left; margin-left:-50px"><button onclick="$('#submit_form').click()" style="width:70px; height:20px">Apply</button></div>
+		<div class="applyButtonDiv"><button onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
 	
 </div>
 
 
-<div id="lengthOfTrip" style="width:400px; padding-bottom:20px; color:#575758; overflow-x:hidden">
+<div id="lengthOfTrip">
 
-					<div class="select-div three columns" style="position:absolute; left:40px; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+					<div class="select-div three columns" id="lengthMinNumberDiv">
 
-						<select id= "length_min_number" name="search[length_min_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;"  onchange="$(length_min_number5).val(this.value)">
+						<select id= "length_min_number" name="search[length_min_number]" onchange="$(length_min_number5).val(this.value)">
 							<option value="0">0</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -1089,19 +981,19 @@ $(document).ready(function() {
 						</select>
 				</div>
 
-				<div class="select-div three columns" style="position:absolute; left:90px; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				<div class="select-div three columns" id="lengthMinParamDiv">
 
-					<select id= "length_min_param" name="search[length_min_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="$(length_min_param5).val(this.value)">
+					<select id= "length_min_param" name="search[length_min_param]" onchange="$(length_min_param5).val(this.value)">
 						<option value="weeks">Weeks</option>
 						<option value="months">Months</option>
 						<option value="years">Years</option>	
 					</select>
 			</div>
-			<div style="position:absolute; left:220px; font-size:1.1em;color:#575758;">to</div>
+			<div id="lengthToContainer">to</div>
 
-					<div class="select-div three columns" style="position:absolute; left:230px; height:20px; width:58px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+					<div class="select-div three columns" id="lengthMaxNumberDiv">
 
-						<select id= "length_max_number" name="search[length_max_number]" style="position:absolute; left:-5px; width:81px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;"  onchange="$(length_max_number5).val(this.value)">
+						<select id= "length_max_number" name="search[length_max_number]" onchange="$(length_max_number5).val(this.value)">
 							<option value="0">0</option>
 							<option value="1">1</option>
 							<option value="2">2</option>
@@ -1130,55 +1022,55 @@ $(document).ready(function() {
 						</select>
 				</div>
 
-				<div class="select-div three columns" style="position:absolute; left:300px; height:20px; width:88px; overflow:hidden; border-right:1px solid #575758; border-left:1px solid #575758">
+				<div class="select-div three columns" id="lengthMaxParamDiv">
 
-					<select id= "length_max_param" name="search[length_max_param]" style="position:absolute; left:-5px; width:111px; height:20px; background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviewsGreenSmall.png) no-repeat right; border:1px solid #575758; background-color:white;" onchange="$(length_max_param5).val(this.value)">
+					<select id= "length_max_param" name="search[length_max_param]" onchange="$(length_max_param5).val(this.value)">
 						<option value="weeks">Weeks</option>
 						<option value="months">Months</option>
 						<option value="years">Years</option>	
 					</select>
 			</div>
 <br />
-					<div style="float:left; margin-left:150px; margin-top:20px;padding-bottom:0"><button onclick="$('#submit_form').click()" style="width:70px; height:20px;">Apply</button></div>
+					<div class="applyButtonContainer"><button onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
 
 </div>
 
 
-<div id="groupSize" style="width:350px; padding-bottom:20px; color:#575758; overflow-x:hidden">
-	<div class="six columns" style="width:45%">
+<div id="groupSize">
+	<div class="six columns" id="groupSizeLeftColumn">
 	 <input type="checkbox" name="search[sizes]" onclick='toggleBoxes3(this)' onchange="$('#any13').prop('checked', this.checked)" value = "false" id ='any3' >Any<br />
         	<input onchange="$('#size15').prop('checked', this.checked)" type="checkbox" name="search[sizes][]" onclick="toggleBoxes3(this)" value ="Individual" id="1_group"  >Individual<br />
 			<input onchange="$('#size25').prop('checked', this.checked)" type="checkbox" name="search[sizes][]" onclick="toggleBoxes3(this)" value ="Small Groups (2-3)" id="2_group"  >Small Groups (2-3)
 			</div>
-			<div class="six columns" style="width:45%">
+			<div class="six columns" id="groupSizeRightColumn">
 			<input onchange="$('#size35').prop('checked', this.checked)" type="checkbox" name="search[sizes][]" onclick="toggleBoxes3(this)" value ="Medium Groups (4-10)" id="3_group"  >Medium Groups (4-10)<br />
 			<input onchange="$('#size45').prop('checked', this.checked)" type="checkbox" name="search[sizes][]" onclick="toggleBoxes3(this)" value ="Large Groups (11+)" id="4_group"  >Large Groups (11+)</div>
-						<div style="float:left; margin-left:-35px; margin-top:20px;padding-bottom:0"><button onclick="$('#submit_form').click()" style="width:70px; height:20px">Apply</button></div>
+						<div class="applyButtonContainer"><button onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
 </div>
 
 
 
-<div id="priceRange" style="color:#575758; overflow-x:hidden; width:275px">
-    Min: <input type="number" name="search[price_min]" id = "price_min" style = "background:white; width:50px; margin-left:2px" onchange="$('#price_min5').val(this.value)">&nbsp;&nbsp;
-    Max: <input typw="number" name="search[price_max]" id = "price_max" style = "background:white; margin-top:5px; width:50px" onchange="$('#price_max5').val(this.value)">
-				&nbsp;&nbsp;<button onclick="$('#submit_form').click()" style="width:70px; height:20px">Apply</button>
+<div id="priceRange">
+    Min: <input type="number" name="search[price_min]" id = "price_min" onchange="$('#price_min5').val(this.value)">&nbsp;&nbsp;
+    Max: <input typw="number" name="search[price_max]" id = "price_max" onchange="$('#price_max5').val(this.value)">
+				&nbsp;&nbsp;<button onclick="$('#submit_form').click()" class="applyButton">Apply</button>
 
 </div>
 
 
 
-<div id="programCountries" style="color:#575758; width:800px; height:150px; overflow-x:hidden; overflow-y:auto;">
-	<div style="width:795px">
-	<div class="two columns" style="width:16%">
+<div id="programCountries">
+	<div id="programCountriesInnerContainer">
+	<div class="two columns" id="programCountriesFirstCol">
 	
-		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' onchange="$('#any11').prop('checked', this.checked)"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
+		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' onchange="$('#any11').prop('checked', this.checked)"><span class="anyLabel"> Any</span><br /><br /> 
 
 
 
 
 
 
-		<div id="AfricaDiv"><input type="checkbox" onchange="$('#anyAfrica5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='Africa' id='anyAfrica2'  ><font style="font-size:1.2em; color:#575758">Africa</font></div>
+		<div id="AfricaDiv"><input type="checkbox" onchange="$('#anyAfrica5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='Africa' id='anyAfrica2'  ><span class="anyLabel">Africa</span></div>
 		<div id="DZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#DZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="DZ" id="DZ2"  > Algeria</div>
 		<div id="EG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#EG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="EG" id="EG2"  > Egypt</div>
 		<div id="LY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LY5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="LY" id="LY2"  > Libya</div>
@@ -1243,8 +1135,8 @@ $(document).ready(function() {
 
 
 
-		<div class="two columns" style="width:16%">
-		<div id="EuropeDiv"><input type="checkbox" onchange="$('#anyEurope5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='Europe' id='anyEurope2'  ><font style="font-size:1.2em; color:#575758">Europe</font></div>
+		<div class="two columns" id="programCountriesSecondCol">
+		<div id="EuropeDiv"><input type="checkbox" onchange="$('#anyEurope5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='Europe' id='anyEurope2'  ><span class="anyLabel">Europe</span></div>
 		<div id="AX">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AX5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="AX" id="AX2"  > Åland Islands</div>
 		<div id="DK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#DK5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="DK" id="DK2"  > Denmark</div>
 		<div id="EE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#EE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="EE" id="EE2"  > Estonia</div>
@@ -1306,11 +1198,11 @@ $(document).ready(function() {
 
 
 		</div>
-		<div class="two columns" style="width:16%">
+		<div class="two columns" id="programCountriesThirdCol">
 
 
 
-			<div id="AmericasDiv"><input type="checkbox" onchange="$('#anyAmericas5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='Americas' id='anyAmericas2'  ><font style="font-size:1.2em; color:#575758">Americas</font></div>
+			<div id="AmericasDiv"><input type="checkbox" onchange="$('#anyAmericas5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='Americas' id='anyAmericas2'  ><span class="anyLabel">Americas</span></div>
 			<div id="BM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BM5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BM" id="BM2"  > Bermuda</div>
 			<div id="CA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('CA5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="CA" id="CA2"  > Canada</div>
 			<div id="GL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('GL5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="GL" id="GL2"  > Greenland</div>
@@ -1369,8 +1261,8 @@ $(document).ready(function() {
 
 
 
-			<div class="two columns" style="width:16%">
-				<div id="AsiaDiv"><input type="checkbox" onchange="$('#anyAsia5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='Asia' id='anyAsia2'  ><font style="font-size:1.2em; color:#575758">Asia</font></div>
+			<div class="two columns" id="programCountriesFourthCol">
+				<div id="AsiaDiv"><input type="checkbox" onchange="$('#anyAsia5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='Asia' id='anyAsia2'  ><span class="anyLabel">Asia</span></div>
 				<div id="KZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KZ" id="KZ2"  > Kazakhstan</div>
 				<div id="KG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KG" id="KG2"  > Kyrgyzstan</div>
 				<div id="TJ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TJ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="TJ" id="TJ2"  > Tajikistan</div>
@@ -1427,8 +1319,8 @@ $(document).ready(function() {
 
 
 
-		<div class="two columns" style="width:16%">
-			<div id="OceaniaDiv"><input type="checkbox" onchange="$('#anyOceania5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='Oceania' id='anyOceania2'  ><font style="font-size:1.2em; color:#575758">Oceania</font></div>
+		<div class="two columns" id="programCountriesFifthCol">
+			<div id="OceaniaDiv"><input type="checkbox" onchange="$('#anyOceania5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='Oceania' id='anyOceania2'  ><span class="anyLabel">Oceania</span></div>
 			<div id="AU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="AU" id="AU2"  > Australia</div>
 			<div id="NZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="NZ" id="NZ2"  > New Zealand</div>
 			<div id="NF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NF5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="NF" id="NF2"  > Norfolk Island</div>
@@ -1459,7 +1351,7 @@ $(document).ready(function() {
 		
 		
 		<div id="others">
-			<div style="display:none">Other:</div>
+			<div class="hiddenSearchFacet">Other:</div>
 			<div id="AQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AQ').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="AQ" id="AQ2"  > Antarctica</div>
 			<div id="BQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BQ').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="BQ" id="BQ2"  > Bonaire, Sint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eustatius<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Saba</div>
 			<div id="BV">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BV').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="BV" id="BV2"  > Bouvet Island</div>
@@ -1474,10 +1366,13 @@ $(document).ready(function() {
 			<div id="SS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SS').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="SS" id="SS2"  > South Sudan</div>
 			<div id="UM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#UM').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="UM" id="UM2"  > United States<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minor Outlying <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div><br /><br /></div>
 		</div></div><br />
-	<div style="width:795px; clear:both" align="center"><button onclick="$('#submit_form').click()" style="width:70px; height:20px;">Apply</button></div>
+	<div class="applyButtonContainer"><button onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
 </div>
 <%end%>
-</body>
+</div>
+
+
+
 <script type='text/javascript'>
 
 
@@ -2436,79 +2331,407 @@ function toggleOceania( el ) {
     }
 }
 
-</script>		
-		
-		
-		
-			<!--- POPUP PLUGIN -->
+</script>			
 			
+			
+			
+			<script type="text/javascript">
+			$(function() { 
 
-					<style type="text/css">
-				        #divProgram
-				        {
-				            margin: 10;
-				            font: verdana;
-				            font-size: 14px;
-				            background-color: White;
-				        }
-				        #divProgram > div
-				        {
-				            width: 98%;
-				            padding: 8px;
-				        }
-				        #divProgram > div p
-				        {
-				            width: 95%;
-				            padding: 8px;
-				        }
-						#divOrganization
-				        {
-				            margin: 10;
-				            font: verdana;
-				            font-size: 14px;
-				            background-color: White;
-				        }
-				        #divOrganization> div
-				        {
-				            width: 98%;
-				            padding: 8px;
-				        }
-				        #divOrganization > div p
-				        {
-				            width: 95%;
-				            padding: 8px;
-				        }
-			</style>
+			$('#programSubjects').pullOut({
+			  position: 'right',
+			  top: '200px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'subject',
+			  color: 'lightblue',
+			  buttonTitle: 'Subjects'
+			});
 
-			<style>
+			$('#programCountries').pullOut({
+			  position: 'right',
+			  top: '235px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'region',
+			  color: 'lightblue',
+			  buttonTitle: 'Countries'
+			});	
 
-				input::-webkit-outer-spin-button,
-				input::-webkit-inner-spin-button {
-				    /* display: none; <- Crashes Chrome on hover */
-				    -webkit-appearance: none;
-				    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-				}
-				
-				input[type="checkbox"] {
-					margin-right:4px;
-				}
+			$('#lengthOfTrip').pullOut({
+			  position: 'right',
+			  top: '270px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'length',
+			  color: 'lightblue',
+			  buttonTitle: 'Length of Trip'
+			});
 
-				
-				a.search_link:active{color:#68c2d8}
-				a.search_link:visited{color:#68c2d8}
-				a.search_link:link{color:#68c2d8}
-				a.search_link:hover{color:#9bce6c; background:none}
-				
-				a.search_link_prog:active{color:#e67b5a}
-				a.search_link_prog:visited{color:#e67b5a}
-				a.search_link_prog:link{color:#e67b5a}
-				a.search_link_prog:hover{color:#9bce6c; background:none}
-				
-				a.programLink:active{color:#e67b5a}
-				a.programLink:visited{color:#e67b5a}
-				a.programLink:link{color:#e67b5a}
-				a.programLink:hover{color:#68c2d8; background:none}
+			$('#groupSize').pullOut({
+			  position: 'right',
+			  top: '305px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'size',
+			  color: 'lightblue',
+			  buttonTitle: 'Group Sizes'
+			});
+
+			$('#priceRange').pullOut({
+			  position: 'right',
+			  top: '340px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'cost',
+			  color: 'lightblue',
+			  buttonTitle: 'Cost'
+			});
 
 
-			</style>			
+			});
+</script>	
+
+<script type="text/javascript">
+var theLocations = <%=array_or_string_for_javascript(@locations)%>;
+var search_regions = <%= array_or_string_for_javascript(@search_regions)%>;
+var search_subjects = <%= array_or_string_for_javascript(@search_subjects)%>;
+var search_sizes = <%= array_or_string_for_javascript(@search_sizes)%>;
+var allTheLocations = new Array("AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW");
+
+var allBigLocations = new Array("Africa", "Asia", "Oceania", "Americas", "Europe");
+
+var allTheSubjects = new Array('Agriculture', 
+'Organic Farming', 
+'Sustainable Development', 
+'Animal Care', 
+'Animal Rights', 
+'Wildlife Conservation', 
+'Caregiving', 
+'Elder Care', 
+'Child/Orphan Care', 
+'Disabled Care', 
+'Feed the Homeless', 
+'Community Development', 
+'Youth Development and Outreach', 
+'Construction', 
+'Culture and Community', 
+'Performing Arts', 
+'Fashion', 
+'Music', 
+'Sports &amp; Recreation', 
+'Journalism', 
+'Disaster Relief', 
+'Economics', 
+'Microfinance', 
+'Education', 
+'Teaching English', 
+'Teaching Buddhist Monks', 
+'Teaching Children', 
+'Teaching Computer Literacy', 
+'Engineering and Infrastructure', 
+'Environmental', 
+'Ecological Conservation', 
+'Habitat Restoration', 
+'Health and Medicine', 
+'HIV/AIDS', 
+'Nutrition', 
+'Family Planning', 
+'Veterinary Medicine', 
+'Clinical Work', 
+'Dental Work', 
+'Medical Research', 
+'Health Education', 
+'Public Health', 
+'Hospital Care-giving', 
+'Human Rights', 
+'Womens Initiatives', 
+'International Work Camp', 
+'Recreation', 
+'Adventure Travel', 
+'Scientific Research', 
+'Archaeology', 
+'Environmental Biology', 
+'Technology', 
+'Media Marketing and Graphic Design');
+
+var allTheSubjectsIds = new Array('Agriculture', 
+'OrganicFarming', 
+'SustainableDevelopment', 
+'AnimalCare', 
+'AnimalRights', 
+'WildlifeConservation', 
+'Caregiving', 
+'ElderCare', 
+'ChildOrphanCare', 
+'DisabledCare', 
+'FeedtheHomeless', 
+'CommunityDevelopment', 
+'YouthDevelopmentandOutreach', 
+'Construction', 
+'CultureandCommunity', 
+'PerformingArts', 
+'Fashion', 
+'Music', 
+'SportsRecreation', 
+'Journalism', 
+'DisasterRelief', 
+'Economics', 
+'Microfinance', 
+'Education', 
+'TeachingEnglish', 
+'TeachingBuddhistMonks', 
+'TeachingChildren', 
+'TeachingComputerLiteracy', 
+'EngineeringandInfrastructure', 
+'Environmental', 
+'EcologicalConservation', 
+'HabitatRestoration', 
+'HealthandMedicine', 
+'HIVAIDS', 
+'Nutrition', 
+'FamilyPlanning', 
+'VeterinaryMedicine', 
+'ClinicalWork', 
+'DentalWork', 
+'MedicalResearch', 
+'HealthEducation', 
+'PublicHealth', 
+'HospitalCaregiving', 
+'HumanRights', 
+'WomensInitiatives', 
+'InternationalWorkCamp', 
+'Recreation', 
+'AdventureTravel', 
+'ScientificResearch', 
+'Archaeology', 
+'EnvironmentalBiology', 
+'Technology', 
+'MediaMarketingandGraphicDesign');
+
+var allTheSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
+var isAllSizes = true;
+var isAllLocations = true;
+var isAllSubjects = true;
+
+$(document).ready(function() {
+	
+	
+    var count = 0;
+    for (count = 0; count < allTheLocations.length; count++)
+    {
+        $("#"+allTheLocations[count]).hide();
+        if (jQuery.inArray(allTheLocations[count], theLocations) != -1)
+         {
+			$("#"+allTheLocations[count]).show();
+		 }
+
+			if (jQuery.inArray(allTheLocations[count], search_regions) != -1)
+			{
+				$("#"+allTheLocations[count]+"2").prop('checked', true);
+				$("#"+allTheLocations[count]+"5").prop('checked', true);
+			}
+	
+    }
+	
+	var count = 0;
+	for (count = 0; count < allTheLocations.length; count++)
+	{
+		if ($("#"+allTheLocations[count]).is(":visible")) {
+			if (jQuery.inArray(allTheLocations[count], search_regions) == -1)
+			{
+				isAllLocations = false;
+			}
+		}
+	}
+	
+	if (isAllLocations) {
+		$("#any6").prop('checked', true);
+		$("#any11").prop('checked', true);
+	}
+	
+
+
+    for (count = 0; count < allBigLocations.length; count++)
+    {
+			if (jQuery.inArray(allBigLocations[count], search_regions) != -1)
+			{
+				$("#any"+allBigLocations[count]+"2").prop('checked', true);
+				$("#any"+allBigLocations[count]+"5").prop('checked', true);
+			}
+	
+    }
+
+
+	var count = 0;
+	for (count = 0; count < allTheSubjects.length; count++)
+	{
+		if (jQuery.inArray(allTheSubjects[count], search_subjects) == -1)
+		{
+			isAllSubjects = false;
+		}
+	}
+	
+	if (isAllSubjects) {
+		$("#any10").prop('checked', true);
+		$("#any").prop('checked', true);
+	}
+	
+	var count = 0;
+	for (count = 0; count < allTheSubjects.length; count++)
+    {
+			if (jQuery.inArray(allTheSubjects[count], search_subjects) != -1)
+			{
+				$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
+				$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
+			}
+	}
+	
+	var count = 0;
+	for (count = 0; count < allTheSizes.length; count++)
+	{
+		if (jQuery.inArray(allTheSizes[count], search_sizes) == -1)
+		{
+			isAllSizes = false;
+		}
+	}
+	
+	if (isAllSizes) {
+		$("#any3").prop("checked", true);
+		$("#any13").prop("checked", true);
+	}
+	
+	var count = 0;
+	for (count = 0; count < allTheSizes.length; count++)
+	{
+
+			if (jQuery.inArray(allTheSizes[count], search_sizes) != -1)
+			{
+				$("#"+(count+1)+"_group").prop('checked', true);
+				$("#size"+(count+1)+"5").prop('checked', true);
+			}
+
+	}
+	$("#length_min_number").val(<%=@search.length_min_number.to_i%>);
+	$("#length_max_number").val(<%=@search.length_max_number.to_i%>);
+	$("#length_min_param").val("<%=@search.length_min_param%>");
+	$("#length_max_param").val("<%=@search.length_max_param%>");
+	$("#length_min_number5").val(<%=@search.length_min_number.to_i%>);
+	$("#length_max_number5").val(<%=@search.length_max_number.to_i%>);
+	$("#length_min_param5").val("<%=@search.length_min_param%>");
+	$("#length_max_param5").val("<%=@search.length_max_param%>");
+	$("#price_max").val(<%=@search.price_max.to_i%>);
+	$("#price_max5").val(<%=@search.price_max.to_i%>);
+	$("#price_min").val(<%=@search.price_min.to_i%>);
+	$("#price_min5").val(<%=@search.price_min.to_i%>);
+});
+
+function toggleChecked(checkboxId) {
+	if ($("#"+checkboxId).checked) {
+		$("#"+checkboxId).checked = false;
+	} else {
+		$("#"+checkboxId).checked = true;
+	}
+}
+
+</script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	<% if @search.showing == "Organizations" %>
+	$("#display").val("Organizations");
+	<% else %>
+	$("#sort").append("<option value = 'pricelow'>Price - Low</option>");
+	$("#sort").append("<option value = 'pricehigh'>Price - High</option>");
+	<% end %>
+	<% if !(@search.sort_by.nil?)%>
+	$("#sort").val("<%=@search.sort_by%>");
+	<% end %>
+
+	
+	$('a.window').click(function() {
+
+                //Getting the variable's value from a link 
+		var box = $(this).attr('href');
+
+		//Fade in the Popup
+		$(box).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(box).height() + 24) / 2; 
+		var popMargLeft = ($(box).width() + 24) / 2; 
+
+		$(box).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask"></div>')
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+		$('a.country-window').click(function() {
+
+	                //Getting the variable's value from a link 
+			var box = $(this).attr('href');
+
+			//Fade in the Popup
+			$(box).fadeIn(300);
+
+			//Set the center alignment padding + border see css style
+			var popMargTop = ($(box).height() + 24) / 2; 
+			var popMargLeft = ($(box).width() + 24) / 2; 
+
+			$(box).css({ 
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			// Add the mask to body
+			$('body').append('<div id="mask"></div>')
+			$('#mask').fadeIn(300);
+
+			return false;
+		});
+
+		// When clicking on the button close or the mask layer the popup closed
+		$('a.close, #mask').live('click', function() { 
+		  $('#mask , .popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+		});
+});
+
+
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$('.program').smartpaginator({ totalrecords: <%=@the_results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
+
+	
+});
+
+</script>
+	
 				

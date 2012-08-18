@@ -204,6 +204,56 @@ class SearchesController < ApplicationController
               end
               @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
               
+              
+              
+
+                 @locations = [] 
+                 Program.all.each do |f| 
+                 @locations << f.location unless @locations.include?(f.location) 
+                 end 
+
+            	 if !(@search.regions.nil?) && !(@search.regions.include?(";"))
+            		 @search_regions = [] << @search.regions
+            	 else 
+            	 if @search.regions.nil? 
+            		 @search_regions = [] 
+            	 else 
+            		 @search_regions = @search.regions.split("; ")
+            	 end 
+            	 end 
+
+            	 if !(@search.subjects.nil?) && !(@search.subjects.include?(";"))
+            		 @search_subjects = [] << @search.subjects 
+            	 else 
+            	 if @search.subjects.nil? 
+            	 @search_subjects = [] 
+            		 else 
+            		 @search_subjects = @search.subjects.split("; ")
+            	 end 
+            	 end 
+
+            	 if !(@search.sizes.nil?) && !(@search.sizes.include?(";"))
+            		 @search_sizes = [] << @search.sizes 
+            	 else 
+
+            	 if @search.sizes.nil?
+            		 @search_sizes = []
+            	 else 
+
+            		 @search_sizes = @search.sizes.split("; ")
+            	 end 
+            	 end 
+
+
+            	 if @search.price_max.nil?
+            		 @search.price_max = 99999
+            	 end 
+            	 if @search.price_min.nil?
+            		 @search.price_min = 0
+            	 end 
+              
+              
+              
               respond_to do |format|
                 if @search.save
                   format.html { redirect_to @search, notice: 'Search was successfully created.' }
