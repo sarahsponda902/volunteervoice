@@ -112,6 +112,45 @@ a.close-delete-pop {
 </style>
 
 
+<style>
+.sentTable {
+	margin-left:175px; 
+	margin-top:-10px;
+}
+.sentMessageDate {
+	font-size:1.2em;
+	margin-left:20px; 
+	color:#575758;
+}
+.sentMessageSubject {
+	font-size:1.2em;
+	margin-left:20px; 
+	color:#575758;
+}
+.sentMessageDeleteX {
+	margin-right:25px;
+	margin-top:5px;
+}
+.sentPopupTo, .sentPopupSubject {
+	font-size:1.4em; 
+	color:#575758; 
+	line-height:2em;
+}
+.sentPopupBody {
+	color:#575758; 
+	line-height:1.1em;
+	font-size:1.1em;
+}
+.sentDeleteAreYouSure {
+	font-size:2em; 
+	color:#575758; 
+	text-align:center;
+}
+</style>
+
+
+
+
 <script>
   jQuery(document).ready(function($) {
       $('a').smoothScroll({
@@ -1194,7 +1233,7 @@ $(document).ready(function() {
 						if (isAndroid) {
 							$("#tabs").css("margin-left", "-30px");
 							$("#account-right-column").css("margin-top", "-295px");
-							$("#review-pannel").css("height", "50px")
+							$(".review-pannel").css("height", "50px")
 						}
 				});	
 
