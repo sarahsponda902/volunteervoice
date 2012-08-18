@@ -1691,6 +1691,71 @@ $(document).ready(function() {
 	//initialize pagination via smartpaginator on the "divProgram" div. the ".program" div will contain the "1-1 of 5"..etc pager
 	$('.program').smartpaginator({ totalrecords: <%=@the_results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
 	
+	/********************/
+	/** PULL OUT TABS **/
+	/******************/
+	
+	//initializing pull-out tabs
+			$(function() { 
+
+			$('#programSubjects').pullOut({
+			  position: 'right',
+			  top: '200px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'subject',
+			  color: 'lightblue',
+			  buttonTitle: 'Subjects'
+			});
+
+			$('#programCountries').pullOut({
+			  position: 'right',
+			  top: '235px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'region',
+			  color: 'lightblue',
+			  buttonTitle: 'Countries'
+			});	
+
+			$('#lengthOfTrip').pullOut({
+			  position: 'right',
+			  top: '270px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'length',
+			  color: 'lightblue',
+			  buttonTitle: 'Length of Trip'
+			});
+
+			$('#groupSize').pullOut({
+			  position: 'right',
+			  top: '305px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'size',
+			  color: 'lightblue',
+			  buttonTitle: 'Group Sizes'
+			});
+
+			$('#priceRange').pullOut({
+			  position: 'right',
+			  top: '340px',
+			  showOn: 'click',
+			  slideSpeed: 'normal',
+			  scrollWithContent: false,
+			  button: 'cost',
+			  color: 'lightblue',
+			  buttonTitle: 'Cost'
+			});
+
+
+			});
+	
 
 });
 
@@ -2652,74 +2717,6 @@ function toggleOceania( el ) {
 				}
     }
 }
-
-
-
-
-
-	//initializing pull-out tabs
-			$(function() { 
-
-			$('#programSubjects').pullOut({
-			  position: 'right',
-			  top: '200px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'subject',
-			  color: 'lightblue',
-			  buttonTitle: 'Subjects'
-			});
-
-			$('#programCountries').pullOut({
-			  position: 'right',
-			  top: '235px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'region',
-			  color: 'lightblue',
-			  buttonTitle: 'Countries'
-			});	
-
-			$('#lengthOfTrip').pullOut({
-			  position: 'right',
-			  top: '270px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'length',
-			  color: 'lightblue',
-			  buttonTitle: 'Length of Trip'
-			});
-
-			$('#groupSize').pullOut({
-			  position: 'right',
-			  top: '305px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'size',
-			  color: 'lightblue',
-			  buttonTitle: 'Group Sizes'
-			});
-
-			$('#priceRange').pullOut({
-			  position: 'right',
-			  top: '340px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'cost',
-			  color: 'lightblue',
-			  buttonTitle: 'Cost'
-			});
-
-
-			});
-
-
-
 
 
 </script>
