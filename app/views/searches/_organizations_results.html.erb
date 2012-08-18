@@ -3,7 +3,7 @@
 		<tr onclick="window.location.href = 'http://girlpowerproject.herokuapp.com/organizations/<%=f.id%>'">
 			<td width="7%"><p class="orgSquareImageContainer"><%=image_tag f.square_image.url, :class => "orgSquareImage" %></p></td>
 			<td><p class="orgSearchLinkContainer"><a id="org<%=f.id%>" class="search_link" href="/organizations/<%=f.id%>"><%= f.name%></a></p></td>
-			<td><p class="orgStarsContainer"><%=render :partial => 'star', :locals => {:star => f.overall}%></p><br><p class="orgStarsBasedOn">Based on <%=f.reviews_count%> reviews</p></td>
+			<td><p class="orgStarsContainer"><%=render :partial => 'star', :locals => {:star => f.overall}%></p><p class="orgStarsBasedOn">Based on <%=f.reviews_count%> reviews</p></td>
 		</tr>
 		<tr onclick="window.location.href = 'http://girlpowerproject.herokuapp.com/organizations/<%=f.id%>'">
 			<td></td>
