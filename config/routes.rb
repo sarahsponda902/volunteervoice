@@ -27,8 +27,6 @@ RMTest::Application.routes.draw do
   match "messages/:id/delete" => 'messages#destroy'
   
   match "/profile_messages_sent" => 'pages#profile_messages_sent'
- 
-  resources :messages
   
   match 'users/profile' => "users#profile"
     
@@ -57,6 +55,8 @@ RMTest::Application.routes.draw do
       get :send_new_invitation, :as => :send_new_invitation
     end
   end
+ 
+  resources :messages
 
   get "errors/error_404"
 
