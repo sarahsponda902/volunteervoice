@@ -698,7 +698,7 @@ a.search_link {
 	width:600px; 
 	height:125px; 
 	overflow-y:auto; 
-	padding-bottom:20px; 
+	padding-bottom:10px; 
 	color:#575758; 
 	overflow-x:hidden;
 }
@@ -709,11 +709,12 @@ a.search_link {
 	font-size:1.2em; 
 	color:#575758;
 }
-.applyButtonDiv{
-	clear:all;
+.applyButtonContainer{
+	clear:both;
 	float:center;
 	margin:auto;
 	width:95%;
+	text-align:center;
 }
 .applyButton {
 	float:center;
@@ -723,7 +724,7 @@ a.search_link {
 }
 #lengthOfTrip {
 	width:400px; 
-	padding-bottom:20px; 
+	padding-bottom:10px; 
 	color:#575758; 
 	overflow-x:hidden;
 }
@@ -736,7 +737,7 @@ a.search_link {
 	border-right:1px solid #575758; 
 	border-left:1px solid #575758;
 }
-#length_min_number {
+select#length_min_number {
 	position:absolute; 
 	left:-5px; 
 	width:81px; 
@@ -754,7 +755,7 @@ a.search_link {
 	border-right:1px solid #575758; 
 	border-left:1px solid #575758;
 }
-#length_min_param {
+select#length_min_param {
 	position:absolute; 
 	left:-5px; 
 	width:111px; 
@@ -778,7 +779,7 @@ a.search_link {
 	border-right:1px solid #575758; 
 	border-left:1px solid #575758;
 }
-#length_max_number {
+select#length_max_number {
 	position:absolute; 
 	left:-5px; 
 	width:81px; 
@@ -790,13 +791,13 @@ a.search_link {
 #lengthMaxParamDiv {
 	position:absolute; 
 	left:300px; 
-	height:20px; 
+	height:20px;
 	width:88px; 
 	overflow:hidden; 
 	border-right:1px solid #575758; 
 	border-left:1px solid #575758;
 }
-#length_max_param {
+select#length_max_param {
 	position:absolute; 
 	left:-5px; 
 	width:111px; 
@@ -807,7 +808,7 @@ a.search_link {
 }
 #groupSize {
 	width:350px; 
-	padding-bottom:20px; 
+	padding-bottom:10px; 
 	color:#575758; 
 	overflow-x:hidden;
 }
@@ -831,8 +832,13 @@ a.search_link {
 #programCountriesInnerContainer {
 	width:795px;
 }
-#programCountriesFirstCol, ##programCountriesSecondCol, #programCountriesThirdCol, #programCountriesFourthCol, #programCountriesFifthCol {
+#programCountriesFirstCol, #programCountriesSecondCol, #programCountriesThirdCol, #programCountriesFourthCol, #programCountriesFifthCol {
 	width:16%;
+	float:left;
+}
+
+#applySubject {
+	margin-left:-80px;
 }
 </style>
 
@@ -945,13 +951,13 @@ a.search_link {
 					<div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#EnvironmentalBiology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value='Environmental Biology' id='EnvironmentalBiology2' >Environmental Biology</div>
 					<div id='Technology1'><br /><input type='checkbox' onchange ="$('#Technology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' >Technology</div>
 					<div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#MediaMarketingandGraphicDesign5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' >Media Marketing and Graphic Design</div><br />
-		<div class="applyButtonDiv"><button onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
+		<div><button onclick="$('#submit_form').click()" class="applyButton" id="applySubject">Apply</button></div>
 	
 </div>
 
 
 <div id="lengthOfTrip">
-
+	<div id="lengthContainer">
 					<div class="select-div three columns" id="lengthMinNumberDiv">
 
 						<select id= "length_min_number" name="search[length_min_number]" onchange="$(length_min_number5).val(this.value)">
@@ -1032,8 +1038,10 @@ a.search_link {
 						<option value="years">Years</option>	
 					</select>
 			</div>
+		</div>
 <br />
-					<div class="applyButtonContainer"><button onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
+<br />
+					<div class="applyButtonContainer"><button id="applyLength" onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
 
 </div>
 
@@ -1047,7 +1055,9 @@ a.search_link {
 			<div class="six columns" id="groupSizeRightColumn">
 			<input onchange="$('#size35').prop('checked', this.checked)" type="checkbox" name="search[sizes][]" onclick="toggleBoxes3(this)" value ="Medium Groups (4-10)" id="3_group"  >Medium Groups (4-10)<br />
 			<input onchange="$('#size45').prop('checked', this.checked)" type="checkbox" name="search[sizes][]" onclick="toggleBoxes3(this)" value ="Large Groups (11+)" id="4_group"  >Large Groups (11+)</div>
-						<div class="applyButtonContainer"><button onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
+			<br />
+			<br />
+						<div class="applyButtonContainer"><button id="applySize" onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
 </div>
 
 
@@ -1353,7 +1363,7 @@ a.search_link {
 		
 		
 		<div id="others">
-			<div class="hiddenSearchFacet">Other:</div>
+			<div class="hiddenField">Other:</div>
 			<div id="AQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AQ').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="AQ" id="AQ2"  > Antarctica</div>
 			<div id="BQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BQ').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="BQ" id="BQ2"  > Bonaire, Sint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eustatius<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Saba</div>
 			<div id="BV">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BV').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="BV" id="BV2"  > Bouvet Island</div>
@@ -1368,10 +1378,11 @@ a.search_link {
 			<div id="SS">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#SS').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="SS" id="SS2"  > South Sudan</div>
 			<div id="UM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#UM').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="UM" id="UM2"  > United States<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Minor Outlying <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Islands</div><br /><br /></div>
 		</div></div><br />
-	<div class="applyButtonContainer"><button onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
+	<div class="applyButtonContainer"><button id="applyRegion" onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
 </div>
 <%end%>
 </div>
+
 
 
 
