@@ -569,12 +569,30 @@ select#sort {
 </div>
 </div>
 
+
+
+<style>
+#subjectsLeftColumn, #subjectsRightColumn, #lengthOfTripLeftColumn, #lengthOfTripRightColumn {
+	width:45%;
+}
+.applyButtonContainer {
+	float:right;
+}
+#lengthOfTrip {
+	width:300px; 
+	padding-bottom:20px; 
+	color:#575758; 
+	overflow-x:hidden;
+}
+</style>
+
+
 <div class="tabsContainer">
 
 <div id="programSubjects">
 	
-	<div class="six columns" style="width:45%">
-		            <input type="checkbox" name="seach[subjects]" onclick = 'toggleBoxes1(this)' value ="false" id ='any' checked = "checked" onchange = "$('#any10').prop('checked', this.checked)" ><font style="font-size:1.2em; color:#575758">Any</font><br /><br />
+	<div class="six columns" id="subjectsLeftColumn">
+		            <input type="checkbox" name="seach[subjects]" onclick = 'toggleBoxes1(this)' value ="false" id ='any' checked = "checked" onchange = "$('#any10').prop('checked', this.checked)" ><span class="anyLabel">Any</span><br /><br />
 
 
 					<div id='Agriculture1'><input type='checkbox' onchange ="$('#Agriculture5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleAgriculture(this)' value ='Agriculture' id='Agriculture2'  >Agriculture</div>
@@ -606,7 +624,7 @@ select#sort {
 					<div id='TeachingChildren1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#TeachingChildren5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEducation(this)' value='Teaching Children' id='TeachingChildren2' >Teaching Children</div>
 					<div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#TeachingComputerLiteracy5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEducation(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' >Teaching Computer Literacy</div>
 					</div>
-					<div class="six columns" style="width:45%">
+					<div class="six columns" id="subjectsRightColumn">
 					<div id='EngineeringandInfrastructure1'><input type='checkbox' onchange ="$('#EngineeringandInfrastructure5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this)' value='Engineering and Infrastructure' id='EngineeringandInfrastructure2' >Engineering and Infrastructure</div>
 					<div id='Environmental1'><br /><input type='checkbox' onchange ="$('#Environmental5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Environmental' id='Environmental2' >Environmental</div>
 					<div id='EcologicalConservation1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#EcologicalConservation5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleEnvironmental(this)' value='Ecological Conservation' id='EcologicalConservation2' >Ecological Conservation</div>
@@ -635,13 +653,13 @@ select#sort {
 					<div id='Technology1'><br /><input type='checkbox' onchange ="$('#Technology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' >Technology</div>
 					<div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#TeachingComputerLiteracy5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' >Teaching Computer Literacy</div>
 					<div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#MediaMarketingandGraphicDesign5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' >Media Marketing and Graphic Design</div><br />
-		<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
+		<div class="applyButtonContainer"><button onclick="$('#submit_form').click()">Apply</button></div>
 	
 </div>
 
 
-<div id="lengthOfTrip" style="width:300px; padding-bottom:20px; color:#575758; overflow-x:hidden">
-	<div class="six columns" style="width:45%">
+<div id="lengthOfTrip">
+	<div class="six columns" id="lengthOfTripLeftColumn">
 	<input type="checkbox" name="search[lengths]" onclick='toggleBoxes2(this)' value = "false" id ='any2' checked = "checked" onchange="$('#any12').prop('checked', this.checked)" >Any <br />
     <input onchange="$('#length15').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="1 week or less" id="1_length"  >1 week or less<br />
 	<input onchange="$('#length25').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="2-4 weeks" id="2_length"  >2-4 weeks<br />
@@ -649,12 +667,12 @@ select#sort {
 	<input onchange="$('#length45').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="9-12 weeks" id="4_length"  >9-12 weeks
 	</div>
 	
-	<div class="six columns" style="width:45%">
+	<div class="six columns" id="lengthOfTripRightColumn">
 	<input onchange="$('#length55').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="3-6 months" id="5_length"  >3-6 months<br />
 	<input onchange="$('#length65').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="6-12 months" id="6_length"  >6-12 months<br />
 	<input onchange="$('#length75').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="1-2 years" id="7_length"  >1-2 years<br />
 	<input onchange="$('#length85').prop('checked', this.checked)" type="checkbox" name="search[lengths][]" onclick="toggleBoxes2(this)" value ="2+ years" id="8_length"  >2+ years<br />
-			<div style="float:right"><button onclick="$('#submit_form').click()">Apply</button></div>
+			<div class="applyButtonContainer"><button onclick="$('#submit_form').click()">Apply</button></div>
 	</div>
 </div>
 
@@ -687,14 +705,14 @@ select#sort {
 <div id="programCountries" style="color:#575758; width:800px; height:400px; overflow-x:hidden; overflow-y:auto;">
 	<div class="two columns" style="width:16%">
 	
-		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' checked = "checked" onchange="$('#any11').prop('checked', this.checked)"><font style="font-size:1.2em; color:#575758"> Any</font><br /><br /> 
+		<input type="checkbox" name="search[regions][]" onclick='toggleBoxes(this)' value = "false" id ='any6' checked = "checked" onchange="$('#any11').prop('checked', this.checked)"><span class="anyLabel"> Any</span><br /><br /> 
 
 
 
 
 
 
-		<div id="AfricaDiv"><input type="checkbox" onchange="$('#anyAfrica5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='Africa' id='anyAfrica'  ><font style="font-size:1.2em; color:#575758">Africa</font></div>
+		<div id="AfricaDiv"><input type="checkbox" onchange="$('#anyAfrica5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAfrica(this)' value ='Africa' id='anyAfrica'  ><span class="anyLabel">Africa</span></div>
 		<div id="DZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#DZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="DZ" id="DZ2"  > Algeria</div>
 		<div id="EG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#EG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="EG" id="EG2"  > Egypt</div>
 		<div id="LY">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#LY5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAfrica(this)" value ="LY" id="LY2"  > Libya</div>
@@ -760,7 +778,7 @@ select#sort {
 
 
 		<div class="two columns" style="width:16%">
-		<div id="EuropeDiv"><input type="checkbox" onchange="$('#anyEurope5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='Europe' id='anyEurope'  ><font style="font-size:1.2em; color:#575758">Europe</font></div>
+		<div id="EuropeDiv"><input type="checkbox" onchange="$('#anyEurope5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleEurope(this)' value ='Europe' id='anyEurope'  ><span class="anyLabel">Europe</span></div>
 		<div id="AX">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AX5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="AX" id="AX2"  > Åland Islands</div>
 		<div id="DK">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#DK5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="DK" id="DK2"  > Denmark</div>
 		<div id="EE">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#EE5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleEurope(this)" value ="EE" id="EE2"  > Estonia</div>
@@ -826,7 +844,7 @@ select#sort {
 
 
 
-			<div id="AmericasDiv"><input type="checkbox" onchange="$('#anyAmericas5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='Americas' id='anyAmericas'  ><font style="font-size:1.2em; color:#575758">Americas</font></div>
+			<div id="AmericasDiv"><input type="checkbox" onchange="$('#anyAmericas5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAmericas(this)' value ='Americas' id='anyAmericas'  ><span class="anyLabel">Americas</span></div>
 			<div id="BM">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('BM5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="BM" id="BM2"  > Bermuda</div>
 			<div id="CA">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('CA5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="CA" id="CA2"  > Canada</div>
 			<div id="GL">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('GL5').prop('checked', this.checked) " name="search[regions][]" onclick="toggleBoxes(this);toggleAmericas(this)" value ="GL" id="GL2"  > Greenland</div>
@@ -885,7 +903,7 @@ select#sort {
 
 
 			<div class="two columns" style="width:16%">
-				<div id="AsiaDiv"><input type="checkbox" onchange="$('#anyAsia5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='Asia' id='anyAsia'  ><font style="font-size:1.2em; color:#575758">Asia</font></div>
+				<div id="AsiaDiv"><input type="checkbox" onchange="$('#anyAsia5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleAsia(this)' value ='Asia' id='anyAsia'  ><span class="anyLabel">Asia</span></div>
 				<div id="KZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KZ" id="KZ2"  > Kazakhstan</div>
 				<div id="KG">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#KG5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="KG" id="KG2"  > Kyrgyzstan</div>
 				<div id="TJ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#TJ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleAsia(this)" value ="TJ" id="TJ2"  > Tajikistan</div>
@@ -943,7 +961,7 @@ select#sort {
 
 
 		<div class="two columns" style="width:16%">
-			<div id="OceaniaDiv"><input type="checkbox" onchange="$('#anyOceania5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='Oceania' id='anyOceania'  ><font style="font-size:1.2em; color:#575758">Oceania</font></div>
+			<div id="OceaniaDiv"><input type="checkbox" onchange="$('#anyOceania5').prop('checked', this.checked)" name="search[regions][]" onclick='toggleBoxes(this);toggleOceania(this)' value ='Oceania' id='anyOceania'  ><span class="anyLabel">Oceania</span></div>
 			<div id="AU">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AU5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="AU" id="AU2"  > Australia</div>
 			<div id="NZ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NZ5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="NZ" id="NZ2"  > New Zealand</div>
 			<div id="NF">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#NF5').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this);toggleOceania(this)" value ="NF" id="NF2"  > Norfolk Island</div>

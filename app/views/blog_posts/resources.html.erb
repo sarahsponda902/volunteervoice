@@ -341,11 +341,11 @@ a.leftColumnTitleOfSource:hover {
 $(document).ready(function() {
 	//Initialize the "article posts" smartpaginator pagination on 'divarticles'
 		//article_pager will be contain "1-1 of 4", ">", etc.
-	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 3, datacontainer: 'divarticles', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 4, datacontainer: 'divarticles', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 	//Initialize the "our blog posts" smartpaginator pagination on 'divOurBlog'
 		//our_pager will be contain "1-1 of 4", ">", etc.
-    $('#our_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 4, datacontainer: 'divOurBlog', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+    $('#our_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 5, datacontainer: 'divOurBlog', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 
 
