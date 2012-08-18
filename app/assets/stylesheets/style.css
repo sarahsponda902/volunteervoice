@@ -456,18 +456,15 @@ margin-top:0px}
 		height:35px;
 		width:35px;
 	}
-	
-	/*Left Facebook Box*/
-	.facebookBox {
-		margin-top:10px; 
-		width:190px; 
-		overflow:hidden; 
+
+	/* Donate Right Column */
+	.fundCause {
+		text-align:center;
+		width:100%;
+		font-size:1.2em;
+		font-family:josefinSlabRegular;
 	}
-	.facebook-like-box {
-		background-color:none; 
-		margin-top:5px;
-	}
-	
+
 	/* Bottom Copyright*/
 	.copyright {
 		text-align:center; 

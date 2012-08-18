@@ -86,7 +86,10 @@ class UsersController < ApplicationController
   	    @favorites = @user.favorites
   	    @messages = ::Message.where(:recipient_id => current_user.id, :recipient_deleted => false).sort_by(&:created_at).reverse
   	    @sent_messages = ::Message.where(:sender_id => current_user.id, :sender_deleted => nil).sort_by(&:created_at).reverse
-  	  
+  	     @user_ids = []
+         User.all.each do |g|
+         @user_ids << g.id
+         end 
       else
         redirect_to :controller => "registrations", :action => "mustBe"
       end
