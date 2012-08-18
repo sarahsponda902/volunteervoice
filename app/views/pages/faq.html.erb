@@ -44,15 +44,23 @@
 	a.contactUsLink:hover {
 		color:white;
 	}
+	.faqBlurb {
+		float:right;
+		margin-right:50px;
+		width:auto;
+	}
 	
 	</style>
 	</head>
 
-	<body>
 		<div class="container">
 			<div class="row" align="center" id="titleContainer">
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/faq.png"%>
 			</div>
+			
+			<div class="faqBlurb"><img src="/assets/FAQblurb.png"></div>
+			
+			
 			<div class="row" id="bodyContainer">
 		<h3 class="mainSubTitle">For Users</h3>
 
@@ -198,8 +206,6 @@ Help us keep your information up to date, and refer your prospective and patron 
 	
 	</div>
 	</div>
-
-	</body>
 
 	<script>
 		$(document).ready(function(){
