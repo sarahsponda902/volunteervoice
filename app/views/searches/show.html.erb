@@ -214,7 +214,7 @@ a.search_link {
 	height:50px;
 	float:left;
 }
-#lisByLabel {
+#listByLabel {
 	font-size:1.5em; 
 	color:#575758; 
 	line-height:1.1em; 
@@ -712,10 +712,12 @@ a.search_link {
 .applyButtonDiv{
 	clear:all;
 	float:center;
-	width:70px;
 	margin:auto;
+	width:95%;
 }
 .applyButton {
+	float:center;
+	margin:auto;
 	width:70px; 
 	height:20px;
 }
@@ -1375,11 +1377,331 @@ a.search_link {
 
 <script type='text/javascript'>
 
+	//locations that have programs
+var theLocations = <%=array_or_string_for_javascript(@locations)%>; 
 
+	//locations that the user searched for
+var search_regions = <%= array_or_string_for_javascript(@search_regions)%>;
+
+	//subjects that the user searched for
+var search_subjects = <%= array_or_string_for_javascript(@search_subjects)%>;
+
+	//group sizes that the user searched for
+var search_sizes = <%= array_or_string_for_javascript(@search_sizes)%>;
+
+	//all possible locations
+var allTheLocations = new Array("AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW");
+
+	//search location categories
+var allBigLocations = new Array("Africa", "Asia", "Oceania", "Americas", "Europe");
+
+	//all possible subjects
+var allTheSubjects = new Array('Agriculture', 
+'Organic Farming', 
+'Sustainable Development', 
+'Animal Care', 
+'Animal Rights', 
+'Wildlife Conservation', 
+'Caregiving', 
+'Elder Care', 
+'Child/Orphan Care', 
+'Disabled Care', 
+'Feed the Homeless', 
+'Community Development', 
+'Youth Development and Outreach', 
+'Construction', 
+'Culture and Community', 
+'Performing Arts', 
+'Fashion', 
+'Music', 
+'Sports &amp; Recreation', 
+'Journalism', 
+'Disaster Relief', 
+'Economics', 
+'Microfinance', 
+'Education', 
+'Teaching English', 
+'Teaching Buddhist Monks', 
+'Teaching Children', 
+'Teaching Computer Literacy', 
+'Engineering and Infrastructure', 
+'Environmental', 
+'Ecological Conservation', 
+'Habitat Restoration', 
+'Health and Medicine', 
+'HIV/AIDS', 
+'Nutrition', 
+'Family Planning', 
+'Veterinary Medicine', 
+'Clinical Work', 
+'Dental Work', 
+'Medical Research', 
+'Health Education', 
+'Public Health', 
+'Hospital Care-giving', 
+'Human Rights', 
+'Womens Initiatives', 
+'International Work Camp', 
+'Recreation', 
+'Adventure Travel', 
+'Scientific Research', 
+'Archaeology', 
+'Environmental Biology', 
+'Technology', 
+'Media Marketing and Graphic Design');
+
+
+//all possible subjects' div names
+var allTheSubjectsIds = new Array('Agriculture', 
+'OrganicFarming', 
+'SustainableDevelopment', 
+'AnimalCare', 
+'AnimalRights', 
+'WildlifeConservation', 
+'Caregiving', 
+'ElderCare', 
+'ChildOrphanCare', 
+'DisabledCare', 
+'FeedtheHomeless', 
+'CommunityDevelopment', 
+'YouthDevelopmentandOutreach', 
+'Construction', 
+'CultureandCommunity', 
+'PerformingArts', 
+'Fashion', 
+'Music', 
+'SportsRecreation', 
+'Journalism', 
+'DisasterRelief', 
+'Economics', 
+'Microfinance', 
+'Education', 
+'TeachingEnglish', 
+'TeachingBuddhistMonks', 
+'TeachingChildren', 
+'TeachingComputerLiteracy', 
+'EngineeringandInfrastructure', 
+'Environmental', 
+'EcologicalConservation', 
+'HabitatRestoration', 
+'HealthandMedicine', 
+'HIVAIDS', 
+'Nutrition', 
+'FamilyPlanning', 
+'VeterinaryMedicine', 
+'ClinicalWork', 
+'DentalWork', 
+'MedicalResearch', 
+'HealthEducation', 
+'PublicHealth', 
+'HospitalCaregiving', 
+'HumanRights', 
+'WomensInitiatives', 
+'InternationalWorkCamp', 
+'Recreation', 
+'AdventureTravel', 
+'ScientificResearch', 
+'Archaeology', 
+'EnvironmentalBiology', 
+'Technology', 
+'MediaMarketingandGraphicDesign');
+
+
+//all possible group sizes
+var allTheSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
+
+
+$(document).ready(function() {
+	
+	//vars representing whether or not all the sub-categories are checked 
+	// (to determine whether major category should be checked or not)
+	//initialize vars to true
+	var isAllSizes = true;
+	var isAllLocations = true;
+	var isAllSubjects = true;
+	
+	/**********************/
+	/**  REGION FACETS  **/
+	/*********************/	
+    var count = 0;
+    for (count = 0; count < allTheLocations.length; count++)
+    {
+		//show the region in list of possible checkmarks if it has programs
+        $("#"+allTheLocations[count]).hide();
+        if (jQuery.inArray(allTheLocations[count], theLocations) != -1)
+         {
+			$("#"+allTheLocations[count]).show();
+		 }
+		
+		//if a region was searched for, check its checkbox in the pull-out menu and in the hidden facets
+		if (jQuery.inArray(allTheLocations[count], search_regions) != -1)
+		 {
+			$("#"+allTheLocations[count]+"2").prop('checked', true);
+			$("#"+allTheLocations[count]+"5").prop('checked', true);
+		 }
+	
+    }
+	
+	
+	var count = 0;
+	for (count = 0; count < allTheLocations.length; count++)
+	{
+		//if any visible checkbox is not checked, change "isAllLocations" to false and DON'T check "any" for regions
+		if ($("#"+allTheLocations[count]).is(":visible")) {
+			if (jQuery.inArray(allTheLocations[count], search_regions) == -1)
+			{
+				isAllLocations = false;
+			}
+		}
+	}
+	
+	//if all regions are checked, check both the hidden facet "any" and the pull-out menu "any" for regions
+	if (isAllLocations) {
+		$("#any6").prop('checked', true);
+		$("#any11").prop('checked', true);
+	}
+	
+	/**********************/
+	/** SUBJECTS FACETS **/
+	/*********************/
+
+    for (count = 0; count < allBigLocations.length; count++)
+    {
+		//if all sub-regions of a major region are checked, check that major region and it's corresponding hidden facet checkbox
+			if (jQuery.inArray(allBigLocations[count], search_regions) != -1)
+			{
+				$("#any"+allBigLocations[count]+"2").prop('checked', true);
+				$("#any"+allBigLocations[count]+"5").prop('checked', true);
+			}
+	
+    }
+
+		//if a subject was searched for, check its checkbox in the pull-out menu and in the hidden facets
+	var count = 0;
+	for (count = 0; count < allTheSubjects.length; count++)
+    {
+			if (jQuery.inArray(allTheSubjects[count], search_subjects) != -1)
+			{
+				$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
+				$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
+			}
+	}
+
+	var count = 0;
+	for (count = 0; count < allTheSubjects.length; count++)
+	{
+		//if any visible subject checkbox is not checked, change "isAllSubjects" to false and DON'T check "any" for subjects
+		if (jQuery.inArray(allTheSubjects[count], search_subjects) == -1)
+		{
+			isAllSubjects = false;
+		}
+	}
+	
+	//check "any" hidden facet and visible facet for subjects if all subjects are checked
+	if (isAllSubjects) {
+		$("#any10").prop('checked', true);
+		$("#any").prop('checked', true);
+	}
+	
+
+	/************************/
+	/** GROUP SIZE FACETS **/
+	/*********************/
+
+	//if a group size was searched for, check its checkbox in the pull-out menu and in the hidden facets
+	var count = 0;
+	for (count = 0; count < allTheSizes.length; count++)
+	{
+
+			if (jQuery.inArray(allTheSizes[count], search_sizes) != -1)
+			{
+				$("#"+(count+1)+"_group").prop('checked', true);
+				$("#size"+(count+1)+"5").prop('checked', true);
+			}
+
+	}
+
+	var count = 0;
+	for (count = 0; count < allTheSizes.length; count++)
+	{
+		//if any visible group size checkbox is not checked, change "isAllSizes" to false and DON'T check "any" for sizes
+		if (jQuery.inArray(allTheSizes[count], search_sizes) == -1)
+		{
+			isAllSizes = false;
+		}
+	}
+	
+	//check "any" hidden facet and visible facet for group-sizes if all group-sizes are checked
+	if (isAllSizes) {
+		$("#any3").prop("checked", true);
+		$("#any13").prop("checked", true);
+	}
+	
+	/****************************/
+	/** LENGTH OF TIME FACETS **/
+	/**************************/
+
+	//set all length of time drop-downs (both pull-out-tab's and hidden facet's) to searched value
+	$("#length_min_number").val(<%=@search.length_min_number.to_i%>);
+	$("#length_max_number").val(<%=@search.length_max_number.to_i%>);
+	$("#length_min_param").val("<%=@search.length_min_param%>");
+	$("#length_max_param").val("<%=@search.length_max_param%>");
+	$("#length_min_number5").val(<%=@search.length_min_number.to_i%>);
+	$("#length_max_number5").val(<%=@search.length_max_number.to_i%>);
+	$("#length_min_param5").val("<%=@search.length_min_param%>");
+	$("#length_max_param5").val("<%=@search.length_max_param%>");
+	
+	
+	
+	/*************************/
+	/** PRICE RANGE FACETS **/
+	/***********************/
+	
+	//set all price range drop-downs (both pull-out-tab's and hidden facet's) to searched value
+	$("#price_max").val(<%=@search.price_max.to_i%>);
+	$("#price_max5").val(<%=@search.price_max.to_i%>);
+	$("#price_min").val(<%=@search.price_min.to_i%>);
+	$("#price_min5").val(<%=@search.price_min.to_i%>);
+
+	
+	
+	/************************/
+	/** HEADER DROP DOWNS **/
+	/***********************/
+	
+	//set the drop down menus at top to appropriate value
+	<% if @search.showing == "Organizations" %>
+	$("#display").val("Organizations");
+	<% else %>
+		//if search is not for orgs, user can sort by price
+	$("#sort").append("<option value = 'pricelow'>Price - Low</option>");
+	$("#sort").append("<option value = 'pricehigh'>Price - High</option>");
+	<% end %>
+	//set sort-by drop down to appropriate value
+	<% if !(@search.sort_by.nil?)%>
+	$("#sort").val("<%=@search.sort_by%>");
+	<% end %>
+	
+	
+	
+	/********************************/
+	/** SEARCH RESULTS PAGINATION **/
+	/******************************/
+	
+	//initialize pagination via smartpaginator on the "divProgram" div. the ".program" div will contain the "1-1 of 5"..etc pager
+	$('.program').smartpaginator({ totalrecords: <%=@the_results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
+	
+
+});
+
+
+
+//all possible country checkbox divs
    var locations6 = <%= array_or_string_for_javascript(ALLCOUNTRIES)%>.concat('anyAfrica', 'anyEurope', 'anyAmericas', 'anyAsia', 'anyOceania');
 
-    var anyId6 = 'any6';
+    var anyId6 = 'any6'; //"ANY" for all countries
     
+//toggle all country checkmarks
     function toggleBoxes( el ) {
        	var i;
         if ( el.id == anyId6 ) {
@@ -1408,6 +1730,7 @@ a.search_link {
 
     }    
 
+//all possible subject checkbox divs
         var locations2 = new Array('Agriculture', 
 		'OrganicFarming', 
 		'SustainableDevelopment', 
@@ -1462,8 +1785,9 @@ a.search_link {
 		'Technology', 
 		'MediaMarketingandGraphicDesign');
 
-        var anyId2 = 'any';
+        var anyId2 = 'any'; //"ANY" for all subjects
 
+		//toggle all subject checkmarks
         function toggleBoxes1( el ) {
             var i;
             if ( el.id == anyId2 ) {
@@ -1491,15 +1815,14 @@ a.search_link {
 					}
 
         }    
-        </script>
 
 
-
-    <script type='text/javascript'>
+		//all group size checkmark div prefexes
         var locations4 = new Array('1', '2', '3', '4');
 
-        var anyId4 = 'any3';
+        var anyId4 = 'any3'; //any checkbox for group sizes
 
+		//toggle all group sizes checkmarks
         function toggleBoxes3( el ) {
             var i;
             if ( el.id == anyId4 ) {
@@ -1526,6 +1849,11 @@ a.search_link {
 						document.getElementById("any13").checked = false;
 					}
         }    
+
+
+///////////////////////////////
+//toggling specific subjects//
+//////////////////////////////
 
 var locationsAgriculture = new Array('OrganicFarming');
 
@@ -1927,9 +2255,10 @@ function toggleTechnology( el ) {
 	
 
 
-</script>
-	
-<script type="text/javascript">
+
+////////////////////////////////
+//toggling specific countries//
+//////////////////////////////
 
 var locationsAfrica = new Array('DZ', 
 'EG', 
@@ -2017,9 +2346,8 @@ function toggleAfrica( el ) {
 				}
     }
 }
-</script>
 
-<script type="text/javascript">
+
 var locationsEurope = new Array('AX', 
 'DK', 
 'EE', 
@@ -2101,9 +2429,7 @@ function toggleEurope( el ) {
     }
 }
 
-</script>
 
-<script type="text/javascript">
 
 var locationsAmericas = new Array('BM', 
 'CA', 
@@ -2187,9 +2513,7 @@ function toggleAmericas( el ) {
     }
 }
 
-</script>
 
-<script type="text/javascript">
 
 var locationsAsia = new Array('KZ', 
 'KG', 
@@ -2272,9 +2596,7 @@ function toggleAsia( el ) {
     }
 }
 
-</script>
 
-<script type="text/javascript">
 
 var locationsOceania = new Array('AU', 
 'NZ', 
@@ -2331,11 +2653,11 @@ function toggleOceania( el ) {
     }
 }
 
-</script>			
-			
-			
-			
-			<script type="text/javascript">
+
+
+
+
+	//initializing pull-out tabs
 			$(function() { 
 
 			$('#programSubjects').pullOut({
@@ -2395,343 +2717,11 @@ function toggleOceania( el ) {
 
 
 			});
-</script>	
-
-<script type="text/javascript">
-var theLocations = <%=array_or_string_for_javascript(@locations)%>;
-var search_regions = <%= array_or_string_for_javascript(@search_regions)%>;
-var search_subjects = <%= array_or_string_for_javascript(@search_subjects)%>;
-var search_sizes = <%= array_or_string_for_javascript(@search_sizes)%>;
-var allTheLocations = new Array("AF", "AX", "AL", "DZ", "AS", "AD", "AO", "AI", "AQ", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BJ", "BM", "BT", "BO", "BQ", "BA", "BW", "BV", "BR", "IO", "BN", "BG", "BF", "BI", "KH", "CM", "CA", "CV", "KY", "CF", "TD", "CL", "CN", "CX", "CC", "CO", "KM", "CG", "CD", "CK", "CR", "CI", "HR", "CU", "CW", "CY", "CZ", "DK", "DJ", "DM", "DO", "EC", "EG", "SV", "GQ", "ER", "EE", "ET", "FK", "FO", "FJ", "FI", "FR", "GF", "PF", "TF", "GA", "GM", "GE", "DE", "GH", "GI", "GR", "GL", "GD", "GP", "GU", "GT", "GG", "GN", "GW", "GY", "HT", "HM", "VA", "HN", "HK", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IM", "IL", "IT", "JM", "JP", "JE", "JO", "KZ", "KE", "KI", "KP", "KR", "KW", "KG", "LA", "LV", "LB", "LS", "LR", "LY", "LI", "LT", "LU", "MO", "MK", "MG", "MW", "MY", "MV", "ML", "MT", "MH", "MQ", "MR", "MU", "YT", "MX", "FM", "MD", "MC", "MN", "ME", "MS", "MA", "MZ", "MM", "NA", "NR", "NP", "NL", "NC", "NZ", "NI", "NE", "NG", "NU", "NF", "MP", "NO", "OM", "PK", "PW", "PS", "PA", "PG", "PY", "PE", "PH", "PN", "PL", "PT", "PR", "QA", "RE", "RO", "RU", "RW", "BL", "SH", "KN", "LC", "MF", "PM", "VC", "WS", "SM", "ST", "SA", "SN", "RS", "SC", "SL", "SG", "SX", "SK", "SI", "SB", "SO", "ZA", "GS", "SS", "ES", "LK", "SD", "SR", "SJ", "SZ", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TL", "TG", "TK", "TO", "TT", "TN", "TR", "TM", "TC", "TV", "UG", "UA", "AE", "GB", "US", "UM", "UY", "UZ", "VU", "VE", "VN", "VG", "VI", "WF", "EH", "YE", "ZM", "ZW");
-
-var allBigLocations = new Array("Africa", "Asia", "Oceania", "Americas", "Europe");
-
-var allTheSubjects = new Array('Agriculture', 
-'Organic Farming', 
-'Sustainable Development', 
-'Animal Care', 
-'Animal Rights', 
-'Wildlife Conservation', 
-'Caregiving', 
-'Elder Care', 
-'Child/Orphan Care', 
-'Disabled Care', 
-'Feed the Homeless', 
-'Community Development', 
-'Youth Development and Outreach', 
-'Construction', 
-'Culture and Community', 
-'Performing Arts', 
-'Fashion', 
-'Music', 
-'Sports &amp; Recreation', 
-'Journalism', 
-'Disaster Relief', 
-'Economics', 
-'Microfinance', 
-'Education', 
-'Teaching English', 
-'Teaching Buddhist Monks', 
-'Teaching Children', 
-'Teaching Computer Literacy', 
-'Engineering and Infrastructure', 
-'Environmental', 
-'Ecological Conservation', 
-'Habitat Restoration', 
-'Health and Medicine', 
-'HIV/AIDS', 
-'Nutrition', 
-'Family Planning', 
-'Veterinary Medicine', 
-'Clinical Work', 
-'Dental Work', 
-'Medical Research', 
-'Health Education', 
-'Public Health', 
-'Hospital Care-giving', 
-'Human Rights', 
-'Womens Initiatives', 
-'International Work Camp', 
-'Recreation', 
-'Adventure Travel', 
-'Scientific Research', 
-'Archaeology', 
-'Environmental Biology', 
-'Technology', 
-'Media Marketing and Graphic Design');
-
-var allTheSubjectsIds = new Array('Agriculture', 
-'OrganicFarming', 
-'SustainableDevelopment', 
-'AnimalCare', 
-'AnimalRights', 
-'WildlifeConservation', 
-'Caregiving', 
-'ElderCare', 
-'ChildOrphanCare', 
-'DisabledCare', 
-'FeedtheHomeless', 
-'CommunityDevelopment', 
-'YouthDevelopmentandOutreach', 
-'Construction', 
-'CultureandCommunity', 
-'PerformingArts', 
-'Fashion', 
-'Music', 
-'SportsRecreation', 
-'Journalism', 
-'DisasterRelief', 
-'Economics', 
-'Microfinance', 
-'Education', 
-'TeachingEnglish', 
-'TeachingBuddhistMonks', 
-'TeachingChildren', 
-'TeachingComputerLiteracy', 
-'EngineeringandInfrastructure', 
-'Environmental', 
-'EcologicalConservation', 
-'HabitatRestoration', 
-'HealthandMedicine', 
-'HIVAIDS', 
-'Nutrition', 
-'FamilyPlanning', 
-'VeterinaryMedicine', 
-'ClinicalWork', 
-'DentalWork', 
-'MedicalResearch', 
-'HealthEducation', 
-'PublicHealth', 
-'HospitalCaregiving', 
-'HumanRights', 
-'WomensInitiatives', 
-'InternationalWorkCamp', 
-'Recreation', 
-'AdventureTravel', 
-'ScientificResearch', 
-'Archaeology', 
-'EnvironmentalBiology', 
-'Technology', 
-'MediaMarketingandGraphicDesign');
-
-var allTheSizes = ["Individual", "Small Groups (2-3)", "Medium Groups (4-10)", "Large Groups (11+)"];
-var isAllSizes = true;
-var isAllLocations = true;
-var isAllSubjects = true;
-
-$(document).ready(function() {
-	
-	
-    var count = 0;
-    for (count = 0; count < allTheLocations.length; count++)
-    {
-        $("#"+allTheLocations[count]).hide();
-        if (jQuery.inArray(allTheLocations[count], theLocations) != -1)
-         {
-			$("#"+allTheLocations[count]).show();
-		 }
-
-			if (jQuery.inArray(allTheLocations[count], search_regions) != -1)
-			{
-				$("#"+allTheLocations[count]+"2").prop('checked', true);
-				$("#"+allTheLocations[count]+"5").prop('checked', true);
-			}
-	
-    }
-	
-	var count = 0;
-	for (count = 0; count < allTheLocations.length; count++)
-	{
-		if ($("#"+allTheLocations[count]).is(":visible")) {
-			if (jQuery.inArray(allTheLocations[count], search_regions) == -1)
-			{
-				isAllLocations = false;
-			}
-		}
-	}
-	
-	if (isAllLocations) {
-		$("#any6").prop('checked', true);
-		$("#any11").prop('checked', true);
-	}
-	
 
 
-    for (count = 0; count < allBigLocations.length; count++)
-    {
-			if (jQuery.inArray(allBigLocations[count], search_regions) != -1)
-			{
-				$("#any"+allBigLocations[count]+"2").prop('checked', true);
-				$("#any"+allBigLocations[count]+"5").prop('checked', true);
-			}
-	
-    }
 
-
-	var count = 0;
-	for (count = 0; count < allTheSubjects.length; count++)
-	{
-		if (jQuery.inArray(allTheSubjects[count], search_subjects) == -1)
-		{
-			isAllSubjects = false;
-		}
-	}
-	
-	if (isAllSubjects) {
-		$("#any10").prop('checked', true);
-		$("#any").prop('checked', true);
-	}
-	
-	var count = 0;
-	for (count = 0; count < allTheSubjects.length; count++)
-    {
-			if (jQuery.inArray(allTheSubjects[count], search_subjects) != -1)
-			{
-				$("#"+allTheSubjectsIds[count]+"2").prop('checked', true);
-				$("#"+allTheSubjectsIds[count]+"5").prop('checked', true);
-			}
-	}
-	
-	var count = 0;
-	for (count = 0; count < allTheSizes.length; count++)
-	{
-		if (jQuery.inArray(allTheSizes[count], search_sizes) == -1)
-		{
-			isAllSizes = false;
-		}
-	}
-	
-	if (isAllSizes) {
-		$("#any3").prop("checked", true);
-		$("#any13").prop("checked", true);
-	}
-	
-	var count = 0;
-	for (count = 0; count < allTheSizes.length; count++)
-	{
-
-			if (jQuery.inArray(allTheSizes[count], search_sizes) != -1)
-			{
-				$("#"+(count+1)+"_group").prop('checked', true);
-				$("#size"+(count+1)+"5").prop('checked', true);
-			}
-
-	}
-	$("#length_min_number").val(<%=@search.length_min_number.to_i%>);
-	$("#length_max_number").val(<%=@search.length_max_number.to_i%>);
-	$("#length_min_param").val("<%=@search.length_min_param%>");
-	$("#length_max_param").val("<%=@search.length_max_param%>");
-	$("#length_min_number5").val(<%=@search.length_min_number.to_i%>);
-	$("#length_max_number5").val(<%=@search.length_max_number.to_i%>);
-	$("#length_min_param5").val("<%=@search.length_min_param%>");
-	$("#length_max_param5").val("<%=@search.length_max_param%>");
-	$("#price_max").val(<%=@search.price_max.to_i%>);
-	$("#price_max5").val(<%=@search.price_max.to_i%>);
-	$("#price_min").val(<%=@search.price_min.to_i%>);
-	$("#price_min5").val(<%=@search.price_min.to_i%>);
-});
-
-function toggleChecked(checkboxId) {
-	if ($("#"+checkboxId).checked) {
-		$("#"+checkboxId).checked = false;
-	} else {
-		$("#"+checkboxId).checked = true;
-	}
-}
-
-</script>
-<script type="text/javascript">
-
-
-$(document).ready(function() {
-	<% if @search.showing == "Organizations" %>
-	$("#display").val("Organizations");
-	<% else %>
-	$("#sort").append("<option value = 'pricelow'>Price - Low</option>");
-	$("#sort").append("<option value = 'pricehigh'>Price - High</option>");
-	<% end %>
-	<% if !(@search.sort_by.nil?)%>
-	$("#sort").val("<%=@search.sort_by%>");
-	<% end %>
-
-	
-	$('a.window').click(function() {
-
-                //Getting the variable's value from a link 
-		var box = $(this).attr('href');
-
-		//Fade in the Popup
-		$(box).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(box).height() + 24) / 2; 
-		var popMargLeft = ($(box).width() + 24) / 2; 
-
-		$(box).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask"></div>')
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-		$('a.country-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var box = $(this).attr('href');
-
-			//Fade in the Popup
-			$(box).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(box).height() + 24) / 2; 
-			var popMargLeft = ($(box).width() + 24) / 2; 
-
-			$(box).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask"></div>')
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-});
 
 
 </script>
 
-<script type="text/javascript">
-
-$(document).ready(function() {
-	
-	$('.program').smartpaginator({ totalrecords: <%=@the_results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
-
-	
-});
-
-</script>
-	
 				
