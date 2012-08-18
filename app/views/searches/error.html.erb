@@ -75,7 +75,10 @@
 	left:21%;
 	top:-4px;
 }
-
+#listBySelectDiv {
+	left:19.2%;
+	top:-4px;
+}
 select#display{
 	position:absolute; 
 	left:-5px; 
@@ -85,37 +88,27 @@ select#display{
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
 	background-color:white;
 }
+#outerListByContainer {
+	margin-left:-250px;
+}
 #listByContainer {
 	height:50px;
-	float:left;
 }
-#listByLabel {
+#innerListByContainer {
+	margin-top:-22px;
+}
+.listByLabel {
 	font-size:1.5em; 
 	color:#575758; 
-	line-height:1.1em; 
-	margin-left:-20px;
+	line-height:1.1em;
 }
-#listBySelectDiv {
-	position:absolute; 
-	height:30px; 
-	width:228px; 
-	overflow:hidden; 
-	border-right:1px solid #575758; 
-	border-left:1px solid #575758; 
-	z-index:6;
-}
-#sort {
+select#sort {
 	position:relative; 
-	border: 1px solid #575758; 
 	left:-5px; 
 	width:255px; 
 	height:30px; 
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
 	background-color:white;
-}
-#listBySelectDivContainer {
-	margin-top:-26px; 
-	margin-left:450px;
 }
 #searchResultsContainer {
 	margin-top:-50px;
@@ -158,27 +151,35 @@ select#display{
 </div>
 
 
-<!-- This is the actual submit button. Clicking "apply" inside the pull outs did not work for some reason. So when they are clicked, this button is clicked and the form is submitted -->
+<!-- REAL submit form button. Hidden. Onclick of fake submit buttons, submit form-->
 <%= f.submit "Submit", :id => "submit_form", :style => "display:none"%>
-	</div>
-	
+
+
+
+<div class="container" id="outerListByContainer">
+	<div class="row">
 	<div class="two columns" id="listByContainer"></div>
-				<p id="listByLabel"> List By:</p>
-				<div id="listBySelectDivContainer">
+			<div class="five columns" id="innerListByContainer">
+				<p class="listByLabel"> List By:</p>
 		<div class="select-div" id="listBySelectDiv">
 		<select id ="sort" name="search[sort_by]" onchange="this.form.submit()">	
 			<option value = "">Select an Order</option>
 			<option value = "ratinghigh">Rating - High</option>
 			<option value = "ratinglow">Rating - Low</option>
 			<option value = "alphabetical">Alphabetical</option></select>
-			</div>
+
+										
+				</div>
+
 
 			</div>
-	</div>
-	<div id="searchResultsTabsBlurb"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/SearchResultsBlurb.png"></div>
+		</div>
 	</div>
 
 </div>
+<div id="searchResultsTabsBlurb"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/SearchResultsBlurb.png"></div>
+</div>
+
 
 <!-- Hidden search facets. For some reason, search facets within tabs would not save on form submit. So I hid a corresponding hidden search facet for each visible facet, and submitted those values -->
 <div id="realSearchFacets">
