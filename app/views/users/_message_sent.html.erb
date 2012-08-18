@@ -21,7 +21,7 @@
 	<tr><td>
 		<span class="sentPopupTo">To: 
 		<% if @user_ids.include?(m.recipient_id)%>	
-		<%= User.find(m.recipent_id).username%>
+		<%= User.find(m.recipient_id).username%>
 		<% else %>
 		<%= "???" %>
 		<% end %>
