@@ -1,15 +1,42 @@
+<style>
+.messageTable {
+	margin-left:175px; 
+	margin-top:-10px;
+}
+a.message-window {
+	margin-left:-5px; 
+	font-size:1.4em; 
+	font-family:josefinSlabRegular; 
+	color:#68c2d8;
+}
+a.message-window:hover {
+	color:#9bce6c;
+}
+.messageDateCreated {
+	font-size:1.2em;
+	margin-left:20px; 
+	color:#575758;
+}
+.messageSubject {
+	font-size:1.2em;
+	margin-left:20px; 
+	color:#575758;
+}
+</style>
+
+
 <div>
-<table style="margin-left:175px; margin-top:-10px" cellspacing="0" border="0" cellpadding="0" width="80%">
+<table class="messageTable" cellspacing="0" border="0" cellpadding="0" width="80%">
 	<tr>
 		<td width="25%"><b>
 			<% if User.where(:id => m.sender_id).empty? %>
-			<a style="margin-left:-5px; font-size:1.4em; font-family:chunkFiveRegular; color:#68c2d8" href= "#message-box<%=m.id%>" class="message-window">???</a>
+			<a href= "#message-box<%=m.id%>" class="message-window">???</a>
 			<% else %>
-			<a style="margin-left:-5px; font-size:1.4em; font-family:chunkFiveRegular; color:#68c2d8" href= "#message-box<%=m.id%>" class="message-window"> <%=User.find(m.sender_id).username%></a>
+			<a href= "#message-box<%=m.id%>" class="message-window"> <%=User.find(m.sender_id).username%></a>
 			<% end %>
 			</td>
-		<td width="12%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
-		<td width="43%"><p style="font-size:1.2em;margin-left:20px; color:#575758"><%=m.subject%></p></td>
+		<td width="12%"><p class="messageDateCreated"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
+		<td width="43%"><p class="messageSubject"><%=m.subject%></p></td>
 		<td width="9%"><p style="margin-right:25px;margin-top:5px" align="center">
 		<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/favoritesX.png"), "#delete-box#{m.id}", :class => "delete-window", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'delete-window'"%>
 		</p></td>

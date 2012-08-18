@@ -12,6 +12,37 @@
 <script src="/assets/jquery.smooth-scroll.min.js"></script>
 <script src="/assets/lightbox.js"></script>
 
+
+<style>
+.favoriteTable {
+	margin-left:10px;
+}
+.favoriteBullet {
+	margin-top:-10px;
+}
+a.favoriteOrg {
+	margin-left:-5px; 
+	font-size:2.5em; 
+	font-family:josefinSlabRegular; 
+	color:#68c2d8;
+}
+a.favoriteOrg:hover {
+	color:#9bce6c;
+}
+a.favoriteProg {
+	font-size:1.8em; 
+	color:gray;
+}
+a.favoriteProg:hover {
+	color:#9bce6c;
+}
+.deleteFavoriteContainer {
+	margin-right:25px;
+	margin-top:-5px;
+}
+</style>
+
+
 <script>
   jQuery(document).ready(function($) {
       $('a').smoothScroll({
