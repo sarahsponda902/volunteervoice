@@ -50,7 +50,7 @@ class SearchesController < ApplicationController
     else
       subjects = @search.subjects.split("; ")
     end
-    if @search.regions.nil?
+    if @search.regions.nil? || @search.regions == "false"
       regions = ""
     else
       regions = @search.regions.split("; ")
