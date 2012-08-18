@@ -1,53 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-
 	<link href="/assets/imgareaselect-default.css" rel="stylesheet" type="text/css" />
 
 	<script src="/assets/jquery.js"></script>
 	
 	
 	<script src="/assets/jquery.imgareaselect.min.js"></script>
-
 	
-	<script type="text/javascript">
-	$(function(){
-   
+	<style>
+	#top {
+		margin-top:30px; 
+		min-height:450px;
+	}
+	#cropMessage {
+		position:absolute; 
+		right:5%; 
+		top:300px; 
+		width:150px; 
+		background-color:white; 
+		border:2px solid #575758; 
+		color:#575758; 
+		padding:5px;
+	}
+	#cropFields {
+		position:absolute; 
+		right:5%; 
+		top:200px; 
+		width:150px;
+	}
+	</style>
 
 
-	    function updateVars (img, selection) {
-	        $("#user_crop_w").val(selection.width);
-	        $("#user_crop_h").val(selection.height);    
-	        $("#user_crop_x").val(selection.x1);
-			$("#user_crop_y").val(selection.y1);
-
-	    }         
-
-	    function init() {
-
-	        $('#crop_me').imgAreaSelect({
-	            hide:true,
-	            movable : true,
-	            autoHide : false,
-				aspectRatio: '1:1',
-	            onSelectEnd: updateVars
-	  			
-	        });
-
-
-	    }
-
-	    init();
-
-	});
-
-	
-
-	</script>
-
-</head>
-<body>
-	<div class="container" style="margin-top:30px; min-height:450px">
+	<div class="container" id="top">
 		<div class="row">
 			<div class="twelve columns">
 
@@ -57,9 +39,9 @@
 	</div>
 </div>
 
-<div style="position:absolute; right:5%; top:300px; width: 150px; background-color:white; border:2px solid #575758; color:#575758; padding:5px">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop".</div>
+<div id="cropMessage">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop".</div>
 
-<div style="position:absolute; right:5%; top:200px; width:150px">
+<div id="cropFields">
 	<%= form_for @user do |f|%>
 	<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	<%= f.hidden_field :crop_x %><br />
@@ -69,4 +51,39 @@
 	<%= f.hidden_field :crops, :value => false%>
 	<% end %>
 </div>	
-</html>
+
+
+<script type="text/javascript">
+$(function(){
+
+
+
+    function updateVars (img, selection) {
+        $("#user_crop_w").val(selection.width);
+        $("#user_crop_h").val(selection.height);    
+        $("#user_crop_x").val(selection.x1);
+		$("#user_crop_y").val(selection.y1);
+
+    }         
+
+    function init() {
+
+        $('#crop_me').imgAreaSelect({
+            hide:true,
+            movable : true,
+            autoHide : false,
+			aspectRatio: '1:1',
+            onSelectEnd: updateVars
+  			
+        });
+
+
+    }
+
+    init();
+
+});
+
+
+
+</script>
