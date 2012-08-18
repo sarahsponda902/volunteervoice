@@ -1522,6 +1522,69 @@ $(document).ready(function() {
 
 });
 
+/********************/
+/** PULL OUT TABS **/
+/******************/
+		$(function() { 
+
+		$('#programSubjects').pullOut({
+		  position: 'right',
+		  top: '200px',
+		  showOn: 'click',
+		  slideSpeed: 'normal',
+		  scrollWithContent: false,
+		  button: 'subject',
+		  color: 'lightblue',
+		  buttonTitle: 'Subjects'
+		});
+
+		$('#programCountries').pullOut({
+		  position: 'right',
+		  top: '235px',
+		  showOn: 'click',
+		  slideSpeed: 'normal',
+		  scrollWithContent: false,
+		  button: 'region',
+		  color: 'lightblue',
+		  buttonTitle: 'Countries'
+		});	
+
+		$('#lengthOfTrip').pullOut({
+		  position: 'right',
+		  top: '270px',
+		  showOn: 'click',
+		  slideSpeed: 'normal',
+		  scrollWithContent: false,
+		  button: 'length',
+		  color: 'lightblue',
+		  buttonTitle: 'Length of Trip'
+		});
+
+		$('#groupSize').pullOut({
+		  position: 'right',
+		  top: '305px',
+		  showOn: 'click',
+		  slideSpeed: 'normal',
+		  scrollWithContent: false,
+		  button: 'size',
+		  color: 'lightblue',
+		  buttonTitle: 'Group Sizes'
+		});
+
+		$('#priceRange').pullOut({
+		  position: 'right',
+		  top: '340px',
+		  showOn: 'click',
+		  slideSpeed: 'normal',
+		  scrollWithContent: false,
+		  button: 'cost',
+		  color: 'lightblue',
+		  buttonTitle: 'Cost'
+		});
+
+
+		});
+
 
 
 //all possible country checkbox divs
@@ -2480,73 +2543,6 @@ function toggleOceania( el ) {
 				}
     }
 }
-
-
-
-
-
-	//initializing pull-out tabs
-			$(function() { 
-
-			$('#programSubjects').pullOut({
-			  position: 'right',
-			  top: '200px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'subject',
-			  color: 'lightblue',
-			  buttonTitle: 'Subjects'
-			});
-
-			$('#programCountries').pullOut({
-			  position: 'right',
-			  top: '235px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'region',
-			  color: 'lightblue',
-			  buttonTitle: 'Countries'
-			});	
-
-			$('#lengthOfTrip').pullOut({
-			  position: 'right',
-			  top: '270px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'length',
-			  color: 'lightblue',
-			  buttonTitle: 'Length of Trip'
-			});
-
-			$('#groupSize').pullOut({
-			  position: 'right',
-			  top: '305px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'size',
-			  color: 'lightblue',
-			  buttonTitle: 'Group Sizes'
-			});
-
-			$('#priceRange').pullOut({
-			  position: 'right',
-			  top: '340px',
-			  showOn: 'click',
-			  slideSpeed: 'normal',
-			  scrollWithContent: false,
-			  button: 'cost',
-			  color: 'lightblue',
-			  buttonTitle: 'Cost'
-			});
-
-
-			});
-
-
 
 
 
