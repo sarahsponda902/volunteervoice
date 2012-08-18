@@ -28,7 +28,7 @@ RMTest::Application.routes.draw do
   
   match "/profile_messages_sent" => 'pages#profile_messages_sent'
   
-  match 'users/profile' => "users#profile"
+  match '/users/profile' => "users#profile"
     
   match 'users/:id/crop' => 'users#crop'
   
