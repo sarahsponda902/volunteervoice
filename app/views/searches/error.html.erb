@@ -678,8 +678,7 @@ select#sort {
 	width:795px;
 }
 #programCountriesFirstCol, #programCountriesSecondCol, #programCountriesThirdCol, #programCountriesFourthCol, #programCountriesFifthCol {
-	width:190px;
-	margin-left:5px;
+	width:16%;
 	float:left;
 }
 #applySubject {
@@ -687,13 +686,15 @@ select#sort {
 }
 #applyLength {
 	margin-top:40px;
-	margin-left:225px;
+	margin-left:175px;
 }
 #applySize {
 	margin-top:40px;
 	margin-left:-50px;
 }
-
+#lengthContainer {
+	margin-top:25px;
+}
 </style>
 <div class="container">
 	<div class="row">	
@@ -787,13 +788,13 @@ select#sort {
 					<div id='EnvironmentalBiology1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#EnvironmentalBiology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleScientificResearch(this)' value='Environmental Biology' id='EnvironmentalBiology2' >Environmental Biology</div>
 					<div id='Technology1'><br /><input type='checkbox' onchange ="$('#Technology5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' >Technology</div>
 					<div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' onchange ="$('#MediaMarketingandGraphicDesign5').prop('checked', this.checked)" name= 'search[subjects][]' onclick = 'toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' >Media Marketing and Graphic Design</div><br />
-		<div class="applyButtonDiv"><button onclick="$('#submit_form').click()" class="applyButton" id="applySubjects">Apply</button></div>
+		<div class="applyButtonDiv"><button onclick="$('#submit_form').click()" class="applyButton" id="applySubject">Apply</button></div>
 	
 </div>
 
 
 <div id="lengthOfTrip">
-
+	<div id="lengthContainer">
 					<div class="select-div three columns" id="lengthMinNumberDiv">
 
 						<select id= "length_min_number" name="search[length_min_number]" onchange="$(length_min_number5).val(this.value)">
@@ -874,6 +875,7 @@ select#sort {
 						<option value="years">Years</option>	
 					</select>
 			</div>
+		</div>
 <br />
 					<div class="applyButtonContainer"><button id="applyLength" onclick="$('#submit_form').click()" class="applyButton">Apply</button></div>
 
