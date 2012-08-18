@@ -1,5 +1,13 @@
 <style type="text/CSS">
 
+  .simple_captcha_image {
+	display:inline; 
+	margin-top:10px;
+  }
+  .simple_captcha_field {
+	margin-top:-35px; 
+	margin-left:120px;
+  }
   .simple_captcha_image img{
     width: 110px;
 	height: 35px;
@@ -13,11 +21,11 @@
 </style>
 
 
-  <div class='simple_captcha_image' style="display:inline; margin-top:10px">
+  <div class='simple_captcha_image'>
     <%= simple_captcha_options[:image] %>
 </div>
   
-  <div class='simple_captcha_field' style="margin-top:-35px; margin-left:120px">
+  <div class='simple_captcha_field'>
     <%= simple_captcha_options[:field] %>
   </div>
   
