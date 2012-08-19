@@ -34,7 +34,7 @@
 		<tr><td><span class="mPopupBody"><%= m.body.html_safe%></span ></td></tr>
 
 		<% if @user_ids.include?(m.sender_id)%>
-		<tr><td><p class="mPopupReplyButton"><a  onclick="$(setMessageRecipient(<%=m.sender_id%>));$(setMessageSender(<%=m.recipient_id%>));$(setMessageSubject('<%=m.subject%>'));$(openReplyBox(<%=m.id%>))"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reply.png"></a></p></td></tr>
+		<tr><td><p class="mPopupReplyButton"><a href="#" onclick="$(setMessageRecipient(<%=m.sender_id%>));$(setMessageSubject('<%=m.subject%>'));$(openReplyBox(<%=m.id%>))"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reply.png"></a></p></td></tr>
 		<% else %>
 		<tr><td><span class="userDeletedProfileMessage">This user has deleted their profile</span ></td></tr>
 		<% end %>
