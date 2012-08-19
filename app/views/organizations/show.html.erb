@@ -487,6 +487,10 @@
 		text-align:center; 
 		padding-top:15px;
 	}
+	#priceRangesTable {
+		max-height:280px;
+		overflow-y:auto;
+	}
 	</style>
 
 
@@ -561,7 +565,7 @@
 		<p class="infoNotDisclosedTitle">Information not disclosed</p>
 		<p class="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 		<% else %>	
-		<table>
+		<table id="priceRangesTable">
 			<thead>
 			<tr>
 				<th class="priceRangesColumn"># Weeks</th>
