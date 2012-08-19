@@ -581,7 +581,7 @@ class SearchesController < ApplicationController
       @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
     end
 
-    @hospital_caregiving.each do |f|
+    @hospital_care_giving.each do |f|
       @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
     end
 
