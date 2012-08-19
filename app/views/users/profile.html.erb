@@ -1051,7 +1051,7 @@ table.reviewBox tr, table.reviewBox td {
 	font-size:1.2em; 
 	color:#575758; 
 	margin-left:25px; 
-	line-height:2em;
+	line-height:1.2em;
 }
 #subjectField {
 	width:380px; 
@@ -1067,7 +1067,7 @@ table.reviewBox tr, table.reviewBox td {
 	overflow:auto;
 }
 #sendButtonContainer {
-	margin-top:30px; 
+	margin-top:10px; 
 	text-align:center;
 }
 #replyMessageTitle {
@@ -1098,14 +1098,13 @@ table.reviewBox tr, table.reviewBox td {
 	    <p id="replySubjectLabel">Subject:</p>
 	    <%= f.text_field :subject, :id => "subjectField" %>
 	  </div>
-	<br />
 	  <div class="field">
 	    <p id="replyBodyLabel">Body:</p>
 	    <%= f.text_area :body, :id => "replyTextBody" %>
 	  </div>
 
 	  <div class="actions" id="sendButtonContainer">
-	    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
+	    <%= image_submit_tag "/assets/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
 	  </div>
 	<% end %>
 
