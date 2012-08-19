@@ -7,7 +7,7 @@
 
 <tr><td><p class="blogPostBody blogPostBodyInteresting"><%= f.truncated125.html_safe%> </p><br /> </td></tr>
 
-<tr><td><p class="green sourceLinkContainer" ><span class="fromLabel">From: </font><a href="<%=f.source%>"> <%= f.source_title%></a>	<% if !(current_user.nil?) && current_user.admin?%>
+<tr><td><p class="green sourceLinkContainer" ><span class="fromLabel">From: </font><a href="<%=f.source%>" target="_blank"> <%= f.source_title%></a>	<% if !(current_user.nil?) && current_user.admin?%>
 	<%= link_to "<DELETE>", :controller => "blog_posts", :action => "destroy", :id => f.id%>
 	<% end %></p></td></tr>
 </table>
