@@ -1132,7 +1132,7 @@ table.reviewBox tr, table.reviewBox td {
 										<div id="accountDividingLine"></div>
 
 			</div>
-			<a href="#reply-box" id="reply-box-link" class="reply-window" onclick="">Click here</a>
+			<a href="#reply-box" id="reply-box-link" class="reply-window" onclick="closeMessageBox();">Click here</a>
 			<div id="reply-box" class="reply-popup">
 				<a href="#" class="close"><div class="close_image"></div></a>
 				<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
@@ -1590,7 +1590,7 @@ function setMessageSubject(subject) {
 }
 
 //close the message popup and open the reply popup
-function closeMessageBox(original_message_id) {
+function closeMessageBox() {
 	$('.m-popup').fadeOut(300);	
 	$("#mask").fadeOut(300);
 	$("#mask").remove();
