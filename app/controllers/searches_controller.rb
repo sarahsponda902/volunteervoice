@@ -164,10 +164,10 @@ class SearchesController < ApplicationController
           @search = Search.new
       
               if params[:subject] == "Agriculture"
-                @search.subjects = ["Agriculture", "Organic Farming", "Sustainable Development"]
+                @search.subjects = ["Agriculture", "Organic Farming"]
               end
               if params[:subject] == "Animal Care"
-                @search.subjects = ["Animal Care", "Animal Rights", "Wildlife Conservation"]
+                @search.subjects = ["Animal Care", "Animal Rights"]
               end
               if params[:subject] == "Caregiving"
                 @search.subjects = ["Caregiving", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless"]
@@ -476,22 +476,184 @@ class SearchesController < ApplicationController
       @environmental_biology = ProgramSubject.where(:subject => "Environmental Biology")
       @media_marketing_and_graphic_design = ProgramSubject.where(:subject => "Media, Marketing, and Graphic Design")
       
-      @agriculture = ProgramSubject.where(:subject => "Agriculture") + @organic_farming + @sustainable_development
-      @animal_care = ProgramSubject.where(:subject => "Animal Care") + @animal_rights + @wildlife_conservation
-      @caregiving = ProgramSubject.where(:subject => "Caregiving") + @elder_care + @child_orphan_care + @disabled_care + @feed_the_homeless
-      @community_development = ProgramSubject.where(:subject => "Community Development") + @youth_development_and_outreach
+      @agriculture = ProgramSubject.where(:subject => "Agriculture")
+      @animal_care = ProgramSubject.where(:subject => "Animal Care")
+      @caregiving = ProgramSubject.where(:subject => "Caregiving")
+      @community_development = ProgramSubject.where(:subject => "Community Development")
       @construction = ProgramSubject.where(:subject => "Construction")
-      @culture_and_community = ProgramSubject.where(:subject => "Culture & Community") + @performing_arts + @fashion + @music + @sports_and_recreation + @journalism
-      @disaster_relief = ProgramSubject.where(:subject => "Disaster Relief") + @economics + @microfinance
-      @education = ProgramSubject.where(:subject => "Education") + @teaching_english + @teaching_buddhist_monks + @teaching_children + @teaching_computer_literacy
+      @culture_and_community = ProgramSubject.where(:subject => "Culture & Community")
+      @disaster_relief = ProgramSubject.where(:subject => "Disaster Relief")
+      @education = ProgramSubject.where(:subject => "Education")
       @engineering_and_infrastructure = ProgramSubject.where(:subject => "Engineering and Infrastructure")
-      @environmental = ProgramSubject.where(:subject => "Environmental") + @ecological_conservation + @sustainable_development + @wildlife_conservation + @habitat_restoration
-      @health_and_medicine = ProgramSubject.where(:subject => "Health and Medicine") + @hiv_aids + @nutrition + @family_planning + @veterinary_medicine + @clinical_work + @dental_work + @medical_research + @health_education + @public_health + @hospital_care_giving
-      @human_rights = ProgramSubject.where(:subject => "Human Rights") + @womens_initiatives
+      @environmental = ProgramSubject.where(:subject => "Environmental")
+      @health_and_medicine = ProgramSubject.where(:subject => "Health and Medicine")
+      @human_rights = ProgramSubject.where(:subject => "Human Rights")
       @international_work_camp = ProgramSubject.where(:subject => "International Work Camp")
-      @recreation = ProgramSubject.where(:subject => "Recreation") + @adventure_travel
-      @scientific_research = ProgramSubject.where(:subject => "Scientific Research") + @archaeology + @environmental_biology
-      @technology = ProgramSubject.where(:subject => "Technology") + @teaching_computer_literacy + @media_marketing_and_graphic_design
+      @recreation = ProgramSubject.where(:subject => "Recreation")
+      @scientific_research = ProgramSubject.where(:subject => "Scientific Research")
+      @technology = ProgramSubject.where(:subject => "Technology")
+      
+      @agriculture_ids = @agriculture.map(&:program_id)
+       @animal_care_ids = @animal_care.map(&:program_id)
+       @caregiving_ids = @caregiving.map(&:program_id)
+       @community_development_ids = @community_development.map(&:program_id)
+       @construction_ids = @construction.map(&:program_id)
+       @culture_and_community_ids = @culture_and_community.map(&:program_id)
+       @disaster_relief_ids = @disaster_relief.map(&:program_id)
+       @education_ids = @education.map(&:program_id)
+       @engineering_and_infrastructure_ids = @engineering_and_infrastructure.map(&:program_id)
+       @environmental_ids = @environmental.map(&:program_id)
+       @health_and_medicine_ids = @health_and_medicine.map(&:program_id)
+       @human_rights_ids = @human_rights.map(&:program_id)
+       @international_work_camp_ids = @international_work_camp.map(&:program_id)
+       @recreation_ids = @recreation.map(&:program_id)
+       @scientific_research_ids = @scientific_research.map(&:program_id)
+       @technology_ids = @technology.map(&:program_id)
+
+      
+      @organic_farming.each do |f|
+        @agriculture << f unless @agriculture_ids.include?(f.program_id)
+      end
+      
+      @animal_rights.each do |f|
+        @animal_care << f unless @animal_care_ids.include?(f.program_id)
+      end
+      
+      @elder_care.each do |f|
+        @caregiving << f unless @caregiving_ids.include?(f.program_id)
+      end
+      
+      @child_orphan_care.each do |f|
+        @caregiving << f unless @caregiving_ids.include?(f.program_id)
+      end
+      
+      @disabled_care.each do |f|
+        @caregiving << f unless @caregiving_ids.include?(f.program_id)
+      end
+      
+      @feed_the_homeless.each do |f|
+        @caregiving << f unless @caregiving_ids.include?(f.program_id)
+      end
+      
+      @youth_development_and_outreach.each do |f|
+        @community_development << f unless @community_development_ids.include?(f.program_id)
+      end
+      
+      @performing_arts.each do |f|
+        @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      end
+      
+      @fashion.each do |f|
+        @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      end
+      
+      @music.each do |f|
+        @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      end
+      
+      @sports_and_recreation.each do |f|
+        @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      end
+      
+      @journalism.each do |f|
+        @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      end
+      
+      @economics.each do |f|
+        @disaster_relief << f unless @disaster_relief_ids.include?(f.program_id)
+      end
+      
+      @microfinance.each do |f|
+        @disaster_relief << f unless @disaster_relief_ids.include?(f.program_id)
+      end
+      
+      @teaching_english.each do |f|
+        @education << f unless @education_ids.include?(f.program_id)
+      end
+      
+      @teaching_buddhist_monks.each do |f|
+        @education << f unless @education_ids.include?(f.program_id)
+      end
+      
+      @teaching_children.each do |f|
+        @education << f unless @education_ids.include?(f.program_id)
+      end
+      
+      @teaching_computer_literacy.each do |f|
+        @education << f unless @education_ids.include?(f.program_id)
+      end
+      
+      @ecological_conservation.each do |f|
+        @environmental << f unless @environmental_ids.include?(f.program_id)
+      end
+           
+      @sustainable_development.each do |f|
+        @environmental << f unless @environmental_ids.include?(f.program_id)
+      end
+
+      @wildlife_conservation.each do |f|
+        @environmental << f unless @environmental_ids.include?(f.program_id)
+      end
+      
+      @habitat_restoration.each do |f|
+        @environmental << f unless @environmental_ids.include?(f.program_id)
+      end
+      
+      @hiv_aids.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @nutrition.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @family_planning.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @veterinary_medicine.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @dental_work.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @medical_research.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @health_education.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @public_health.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @hospital_caregiving.each do |f|
+        @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      end
+      
+      @womens_initiatives.each do |f|
+        @human_rights << f unless @human_rights_ids.include?(f.program_id)
+      end
+      
+      @adventure_travel.each do |f|
+        @recreation << f unless @recreation_ids.include?(f.program_id)
+      end
+      
+      @archaeology.each do |f|
+        @scientific_research << f unless @scientific_research_ids.include?(f.program_id)
+      end
+      
+      @environmental_biology.each do |f|
+        @scientific_research << f unless @scientific_research_ids.include?(f.program_id)
+      end
+      
+      @media_marketing_and_graphic_design.each do |f|
+        @technology << f unless @technology_ids.include?(f.program_id)
+      end
       
     end
   
