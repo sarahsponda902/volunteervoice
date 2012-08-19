@@ -177,9 +177,16 @@ class BlogPostsController < ApplicationController
   def update
     if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.find(params[:id]) 
+    if !@blog_post.image.nil? && @blog_post.image != params[:blog_post][:image]
+      @crops = true
+    end
       if @blog_post.update_attributes(params[:blog_post])
           flash[:notice] = 'BlogPost was successfully updated.'
-          redirect_to "/blog_posts/#{@blog_post.id}"
+          if @crops != true
+            redirect_to "/blog_posts/#{@blog_post.id}"
+          else
+            redirect_to "/blog_posts/#{@blog_post.id}/crop"
+          end
       else
         render :action => "edit"
       end
