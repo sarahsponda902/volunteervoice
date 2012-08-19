@@ -162,7 +162,8 @@ class SearchesController < ApplicationController
 
   def program_browse_search
     @search = Search.new
-
+    @search.subjects = [] << params[:subject]
+    
     if params[:subject] == "Agriculture"
       @search.subjects = ["Agriculture", "Organic Farming"]
     end
@@ -202,6 +203,7 @@ class SearchesController < ApplicationController
     if params[:subject] == "Technology"
       @search.subjects = ["Technology", "Media, Marketing, and Graphic Design"]
     end
+    
     @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
 
     respond_to do |format|
