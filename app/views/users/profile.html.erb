@@ -1080,7 +1080,35 @@ table.reviewBox tr, table.reviewBox td {
 	display:none;
 }*/
 
-</style>			
+</style>		
+
+<div id="reply-box" class="reply-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<p id="replyMessageTitle">Reply Message</p>
+
+	<%= form_for(@message) do |f| %>
+	<% if user_signed_in?%>
+	<%= f.hidden_field :sender_id, :value => current_user.id %>
+	<% end %>
+	<%= f.hidden_field :recipient_id, :id => "recipient_id_field" %>
+	  <div class="field">
+	    <p id="replySubjectLabel">Subject:</p>
+	    <%= f.text_field :subject, :id => "subjectField" %>
+	  </div>
+	<br />
+	  <div class="field">
+	    <p id="replyBodyLabel">Body:</p>
+	    <%= f.text_area :body, :id => "replyTextBody" %>
+	  </div>
+
+	  <div class="actions" id="sendButtonContainer">
+	    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
+	  </div>
+	<% end %>
+
+
+</div>
+	
 			
 			<div id="upload-box" class="upload-popup">
 				<a href="#" class="close"><div class="close_image"></div></a>
@@ -1146,33 +1174,7 @@ table.reviewBox tr, table.reviewBox td {
 
 			</div>
 
-			<div id="reply-box" class="reply-popup">
-				<a href="#" class="close"><div class="close_image"></div></a>
-				<p id="replyMessageTitle">Reply Message</p>
-
-				<%= form_for(@message) do |f| %>
-				<% if user_signed_in?%>
-				<%= f.hidden_field :sender_id, :value => current_user.id %>
-				<% end %>
-				<%= f.hidden_field :recipient_id, :id => "recipient_id_field" %>
-				  <div class="field">
-				    <p id="replySubjectLabel">Subject:</p>
-				    <%= f.text_field :subject, :id => "subjectField" %>
-				  </div>
-				<br />
-				  <div class="field">
-				    <p id="replyBodyLabel">Body:</p>
-				    <%= f.text_area :body, :id => "replyTextBody" %>
-				  </div>
-
-				  <div class="actions" id="sendButtonContainer">
-				    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
-				  </div>
-				<% end %>
-
-
-			</div>
-
+			
 
 
 <script type="text/javascript">
