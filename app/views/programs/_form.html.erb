@@ -207,10 +207,10 @@ a.createInput:hover {
 </div>
 <div class="seven columns" id="topFields">
   <div class="field">
-    <%= f.text_field :name, :value => @program.name, :id => "topTextFieldProgram" %><br /><br />
+    <%= f.text_field :name, :value => @program.name, :class => "textField", :id => "topTextFieldProgram" %><br /><br />
   </div>
   <div class="field">
-		<%= f.text_field :check_it_out, :value => @program.check_it_out, :id => "topTextFieldURL" %><br /><br />
+		<%= f.text_field :check_it_out, :value => @program.check_it_out, :class => "textField", :id => "topTextFieldURL" %><br /><br />
   </div>
   <div class="field">
     <%= f.text_area :description, :value => @program.description, :class => "topTextArea" %>
