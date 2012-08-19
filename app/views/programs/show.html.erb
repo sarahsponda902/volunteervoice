@@ -152,6 +152,7 @@
 			float: left;
 			color: black;
 			max-height:300px;
+			overflow:auto;
 			position: fixed;
 			top: 50%; left: 50%;
 			z-index: 99999;
@@ -436,10 +437,7 @@ th {
 	text-align:center; 
 	padding-top:15px;
 }
-#priceRangeTable {
-	max-height:280px;
-	overflow-y:auto;
-}
+
 </style>
 
 <% reviews_count = @results.count %>
@@ -606,7 +604,7 @@ th {
 		<p class="infoNotDisclosedTitle">Information not disclosed</p>
 		<p style="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 	<% else %>
-	  			<table id="priceRangeTable">
+	  			<table>
 					<thead>
 					<tr>
 						<th># Weeks</th>
