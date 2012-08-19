@@ -23,7 +23,7 @@
 		<td ><p align="right" class="reviewStars"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
 </tr>
 <tr>
-	<td colspan="3"><p class="review-pannel"><%= breaking_word_wrap(f.body.gsub("</p>", "<br />").gsub("<p>", "").html_safe, 200) %>
+	<td colspan="3"><p class="review-pannel"><%= breaking_word_wrap(f.body.gsub("</p>", "<br />").gsub("<p>", ""), 125).html_safe %>
 		<% if !(user_signed_in? && current_user.id == @user.id)%>
 		<a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#poster_id').val(<%=f.user_id%>); $('#review_id').val(<%=f.id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %></a>
 		<% end %>
