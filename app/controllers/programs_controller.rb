@@ -107,7 +107,9 @@ class ProgramsController < ApplicationController
     if !(current_organization_account.nil?)
       @org_id = current_organization_account.organization_id
     else
-      @org_id = Organization.where(:name => params[:program][:organization_name]).first.id
+      if !Organization.where(:name => params[:program][:organization_name]).empty?
+        @org_id = Organization.where(:name => params[:program][:organization_name]).first.id
+      end
     end
     
     @subjects = []
