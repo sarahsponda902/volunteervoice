@@ -97,7 +97,7 @@
 	</p>
 	<div id="messagesBox">
 		<% if user_signed_in? && (@user.messages_show == false)%>
-	<a href="#popup-box" style = "margin-top:10px; margin-left:0px" class = "popup-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendMessage.png"></a>
+	<a href="#popup-box" style = "margin-top:10px; margin-left:0px" class = "send-message-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendMessage.png"></a>
 		<% end %>
 	</div>
 	
@@ -420,7 +420,7 @@ function beforeCheck() {
 
 
 
-<div id="popup-box" class="popup-popup">
+<div id="popup-box" class="send-message-popup">
 	<a href="#" class="close"><div class="close_image"></div></a>
 	<% if @user.messages_show == false %>
 	<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
@@ -492,7 +492,7 @@ function beforeCheck() {
 }
 
 /* You can customize to your needs  */
-.popup-popup{
+.send-message-popup{
 	display:none;
 	background: #D9DEDA;
 	padding: 10px; 	
@@ -601,7 +601,7 @@ form.show_chart input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2
 $(document).ready(function() {
 	
 	
-	$('a.popup-window').click(function() {
+	$('a.send-message-window').click(function() {
 
                 //Getting the variable's value from a link 
 		var popupBox = $(this).attr('href');
@@ -627,7 +627,7 @@ $(document).ready(function() {
 
 	// When clicking on the button close or the mask layer the popup closed
 	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .popup-popup').fadeOut(300 , function() {
+	  $('#mask , .send-message-popup').fadeOut(300 , function() {
 		$('#mask').remove();  
 	}); 
 	return false;

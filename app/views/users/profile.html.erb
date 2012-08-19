@@ -275,6 +275,26 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -moz-border-radius: 3px; /* Firefox */
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
+		
+		.reply-popup{
+			display:none;
+			background: #D9DEDA;
+			padding: 10px; 	
+			border: 3px solid #6aaeba;
+			float: left;
+			color:#6aaeba;
+			font-size: 1.1em;
+			position: fixed;
+			top: 50%; left: 50%;
+			z-index: 99999;
+			box-shadow: 0px 0px 20px #999; /* CSS3 */
+		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+			border-radius:3px 3px 3px 3px;
+		        -moz-border-radius: 3px; /* Firefox */
+		        -webkit-border-radius: 3px; /* Safari, Chrome */
+		}
+
 
 
 		a.edit-window { color: #68c2d8 }
@@ -1020,6 +1040,30 @@ table.reviewBox tr, table.reviewBox td {
 	position:absolute; 
 	left:-20px;
 }
+#replySubjectLabel, #replyBodyLabel {
+	font-size:1.2em; 
+	color:#575758; 
+	margin-left:25px; 
+	line-height:2em;
+}
+#subjectField {
+	width:380px; 
+	height:25px; 
+	margin-left:20px; 
+	margin-right:20px;
+}
+#replyTextBody {
+	height:200px;
+	width:380px; 
+	margin-left:20px; 
+	margin-right:20px; 
+	overflow:auto;
+}
+#sendButtonContainer {
+	margin-top:30px; 
+	text-align:center;
+}
+
 </style>			
 			
 			<div id="upload-box" class="upload-popup">
@@ -1086,6 +1130,32 @@ table.reviewBox tr, table.reviewBox td {
 
 			</div>
 
+			<div id="reply-box" class="reply-popup">
+				<a href="#" class="close"><div class="close_image"></div></a>
+				<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
+
+				<%= form_for(@message) do |f| %>
+				<% if user_signed_in?%>
+				<%= f.hidden_field :sender_id, :value => current_user.id %>
+				<% end %>
+				<%= f.hidden_field :recipient_id, :id => "recipient_id_field" %>
+				  <div class="field">
+				    <p id="replySubjectLabel">Subject:</p>
+				    <%= f.text_field :subject, :id => "subjectField" %>
+				  </div>
+				<br />
+				  <div class="field">
+				    <p id="replyBodyLabel">Body:</p>
+				    <%= f.text_area :body, :id => "replyTextBody" %>
+				  </div>
+
+				  <div class="actions" id="sendButtonContainer">
+				    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
+				  </div>
+				<% end %>
+
+
+			</div>
 
 
 
@@ -1324,6 +1394,38 @@ $(document).ready(function() {
 				}); 
 				return false;
 				});
+				
+				$('a.reply-window').click(function() {
+
+			                //Getting the variable's value from a link 
+					var popupBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(popupBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(popupBox).height() + 24) / 2; 
+					var popMargLeft = ($(popupBox).width() + 24) / 2; 
+
+					$(popupBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="opacity:0.5"></div>');
+					$('#mask').fadeIn(300)
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('a.close, #mask').live('click', function() { 
+				  $('#mask , .reply-popup').fadeOut(300 , function() {
+					$('#mask').remove();  
+				}); 
+				return false;
+				});
 
 });
 
@@ -1474,11 +1576,6 @@ function setMessageRecipient(recipient) {
 	$("#recipient_id_field").val(recipient);
 }
 
-//set message sender in the popup window
-function setMessageSender(sender) {
-	$("#sender_id_field").val(sender);
-}
-
 
 //set message subject in the popup window when clicking "reply"
 function setMessageSubject(subject) {
@@ -1487,5 +1584,11 @@ function setMessageSubject(subject) {
 	} else {
 		$("#subject_field").val("Re: "+subject);
 	}
+}
+
+//close the message popup and open the reply popup
+function openReplyBox(original_message_id) {
+	$('.m-popup').fadeOut(300);
+	$('.reply-popup').fadeIn(300);	
 }
 </script>
