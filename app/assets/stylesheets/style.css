@@ -481,6 +481,7 @@ margin-top:0px}
 
 footerNav h4, .ourCommunity h4 { font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
 .spreadWord li { list-style:none; display:inline;}
+.spreadWord ul {margin-top:20px}
 /*** END FOOTER ***/
 
 
