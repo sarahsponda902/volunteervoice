@@ -1530,13 +1530,13 @@ $(document).ready(function() {
 			/****************/
 
 			//initialize smartpagintaor for each of the tabs
-			$('#reviews').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'reviews' });
+			$('#reviews').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-            $('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 1, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'favorites' });
+            $('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 1, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-            $('#messages').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'messages' });
+            $('#messages').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-			$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'messages' });
+			$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
         });
 
