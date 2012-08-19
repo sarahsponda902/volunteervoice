@@ -1,41 +1,7 @@
-	<%= javascript_include_tag "/assets/jquery.js"%>
+		<script type="text/javascript" src="jquery.js"></script>
 	
 
 <style>
-
-
-/* Mask for background, by default is not display */
-#mask {
-	display: none;
-	background: #000; 
-	position: fixed; left: 0; top: 0; 
-	z-index: 10;
-	width: 100%; height: 100%;
-	opacity: 0.8;
-	z-index: 999;
-}
-
-/* You can customize to your needs  */
-.contact-popup{
-	display:none;
-	background: #D9DEDA;
-	padding: 10px; 	
-	border: 3px solid #575758;
-	float: left;
-	color:#6aaeba;
-	font-size: 1.1em;
-	position: fixed;
-	height:330px;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
-
 input[name="commit"]{
 	margin-bottom:-15px;
 }
@@ -50,7 +16,7 @@ a.contact-window:hover{color:#9bce6c}
 	margin-top:50px;
 }
 .blurbsContainer {
-	font-family:JosefinSlabRegular; 
+	font-family:sans-serif; 
 	color:#575758; 
 	font-size:1.5em; 
 	line-height:1.5em;
@@ -64,33 +30,6 @@ a.contact-window:hover{color:#9bce6c}
 	margin-top:50px; 
 	padding-bottom:100px;
 }
-.popupTitle {
-	font-family:JosefinSlabRegular; 
-	font-size:2em; 
-	color:#68c2d8; 
-	line-height:1.5em;
-	text-align:center;
-}
-.popupFieldContainer {
-	margin-left:0px;
-}
-.popupField {
-	height:20px; 
-	width:232px;
-}
-.popupSubjectField {
-	height:20px; 
-	width:495px;
-}
-.popupFieldTextArea {
-	height:100px; 
-	width:500px; 
-	font-style:italic;
-}
-.submitContainer {
-	text-align:center;
-	color:#e67b5a;
-}
 </style>
 
 <div class="container">
@@ -99,7 +38,7 @@ a.contact-window:hover{color:#9bce6c}
 <img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/Error404.png"><br /><br />
   <div class="blurbsContainer">
     <p>The page you were looking for doesn't exist! Weird.</p>
-    <p class="secondBlurb">Please feel free to <a href="#contact-box" class="contact-window">contact us</a> if you are very confused.<br /><br />Or just try searching for something else!</p>
+    <p class="secondBlurb">Please feel free to <a href="/contacts/new" class="contact-window">contact us</a> if you are very confused.<br /><br />Or just try searching for something else!</p>
   </div>
 <div class="errorSearchContainer">
 	<form accept-charset="UTF-8" action="/searches/create" method="post">
@@ -112,105 +51,3 @@ a.contact-window:hover{color:#9bce6c}
 </div>
 </div>
 </div>
-
-<div id="contact-box" class="contact-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
-	<p class="popupTitle">Contact Us</p>
-	<% @contact = Contact.new %>
-		<%= form_for(@contact) do |f| %>
-		<%= f.hidden_field :to_whom, :value => "contact"%>
-		<% if user_signed_in?%>
-		<%= f.hidden_field :user_id, :value => current_user.id%>
-		<% end %>
-
-			<div class="six columns popupFieldContainer">
-		    <div class="field">
-		      Name<br />
-		      <%= f.text_field :name, :class => "popupField" %>
-		    </div>
-			</div>
-			<div class="six columns">
-		    <div class="field">
-		      Email<br />
-		      <%= f.text_field :email, :class => "popupField", :id => "email-contact", :onkeyup => "checkContactForSubmit();"  %>
-		    </div>
-			</div>
-		    <div class="field">
-		      Subject<br />
-		      <%= f.text_field :subject, :class => "popupSubjectField"  %>
-		    </div>
-
-		    <div class="field">
-		      <%= f.label :body %>
-		      <%= f.text_area :body, :class => "popupFieldTextArea", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onkeyup => "checkContactForSubmit();" %>
-		    </div>
-
-
-		  <div id="submit-contact">
-		    <p class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitShortLong.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
-		  </div>
-		
-		 <div id="nosubmit-contact">
-			<p class="submitContainer">Please include both an<br />email and a message<br />before submitting.</p>
-		</div>
-		<% end %>
-
-
-</div>
-
-
-	<script type="text/javascript">
-
-	//display submit button if all form fields are filled out in contact popup
-	function checkContactForSubmit() {
-		if ($("#email-contact").attr("value") != ""
-		 && $("#email-contact").attr("value").indexOf("@") > 0
-		 && $("#email-contact").attr("value").indexOf(".") > 0
-		 && $("#body-contact").attr("value") != "Must be at least 5 characters"
-		 && $("#body-contact").attr("value").length >= 5) {
-			$("#nosubmit-contact").hide();
-			$("#submit-contact").show();
-		}
-	}
-	
-	
-	////////////////////////////////////
-	// CONTACT POPUP
-	///////////////////////////////////
-	$(document).ready(function() {
-		$("#submit-contact").hide();
-		
-		$('a.contact-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var contactBox = $(this).attr('href');
-
-			//Fade in the Popup
-			$(contactBox).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(contactBox).height() + 24) / 2; 
-			var popMargLeft = ($(contactBox).width() + 24) / 2; 
-
-			$(contactBox).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask" style="opacity:.5"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .contact-popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-	});
-
-</script>
