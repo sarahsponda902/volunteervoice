@@ -704,19 +704,19 @@
 
 
 //jQuery for the organization's "Price Breakdown" popup
-			$('a.price-breakdown-window').click(function() {
+			$('a.price-ranges-window').click(function() {
 
 			            //Getting the variable's value from a link 
-				var priceBreakdownBox = $(this).attr('href');
+				var priceRangesBox = $(this).attr('href');
 
 				//Fade in the Popup
-				$(priceBreakdownBox).fadeIn(300);
+				$(priceRangesBox).fadeIn(300);
 
 				//Set the center alignment padding + border see css style
-				var popMargTop = ($(priceBreakdownBox).height() + 24) / 2; 
-				var popMargLeft = ($(priceBreakdownBox).width() + 24) / 2; 
+				var popMargTop = ($(priceRangesBox).height() + 24) / 2; 
+				var popMargLeft = ($(priceRangesBox).width() + 24) / 2; 
 
-				$(priceBreakdownBox).css({ 
+				$(priceRangesBox).css({ 
 					'margin-top' : -popMargTop,
 					'margin-left' : -popMargLeft
 				});
@@ -730,7 +730,7 @@
 
 			// When clicking on the button close or the mask layer the popup closed
 			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .price-breakdown-popup').fadeOut(300 , function() {
+			  $('#mask , .price-ranges-popup').fadeOut(300 , function() {
 				$('#mask').remove();  
 			}); 
 			return false;
