@@ -605,10 +605,16 @@ img.reviewPhoto {
 	margin-left:15px; 
 	margin-top:-20px; 
 	margin-bottom:0;
+}
+#tabs li {
 	font-family:architectsDaughterRegular; 
 	font-size:1.4em;
 }
-.myMessagesTabRed {
+#tabs li.myMessagesTab {
+	margin-left:-9px;
+}
+#tabs li.myMessagesTabRed {
+	margin-left:-9px;
 	color:#e67b5a;
 }
 #activeTabsContainer {
@@ -794,12 +800,12 @@ img.reviewPhoto {
     <div id="wrapper">
         <div id="tabsContainer">
             <div class="tab" id="tabs">
-				<div class="three columns" id="3">My Reviews</div>
-				<div class="three columns" id="2">My Favorites</div>
+				<li id="3">My Reviews</li>
+				<li id="2">My Favorites</li>
 				<% if current_user.unread_messages == 0 %>
-                	<div class="three columns" id="1">My Messages</div>
+                <li class="myMessagesTab" id="1">My Messages</li>
 				<% else %>
-					<div class="three columns myMessagesTabRed" id="1">My Messages</div>
+				<li class="myMessagesTabRed" id="1">My Messages</li>
 				<% end %>
             </ul>
         </div>
@@ -1511,7 +1517,7 @@ $(document).ready(function() {
 			<% end %>
 			
 	//function that handles jquery tab-switching
-            $('#tabs').click(function () {
+            $('ul li').click(function () {
 				if ($(this).attr('class') != 'navs') { //check if clicked header's global nav
                 $('#messages-contents').css('display', 'none');
                 $('#favorites-contents').css('display', 'none');
