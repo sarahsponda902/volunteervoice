@@ -442,6 +442,23 @@ class SearchesController < ApplicationController
     @recreation = ProgramSubject.where(:subject => "Recreation")
     @scientific_research = ProgramSubject.where(:subject => "Scientific Research")
     @technology = ProgramSubject.where(:subject => "Technology")
+    
+    @all_agriculture = @agriculture.map(&:subject)
+    @all_animal_care = @animal_care.map(&:subject)
+    @all_caregiving = @caregiving.map(&:subject)
+    @all_community_development = @community_development.map(&:subject)
+    @all_construction = @construction.map(&:subject)
+    @all_culture_and_community = @culture_and_community.map(&:subject)
+    @all_disaster_relief = @disaster_relief.map(&:subject)
+    @all_education = @education.map(&:subject)
+    @all_engineering_and_infrastructure = @engineering_and_infrastructure.map(&:subject)
+    @all_environmental = @environmental.map(&:subject)
+    @all_health_and_medicine = @health_and_medicine.map(&:subject)
+    @all_human_rights = @human_rights.map(&:subject)
+    @all_international_work_camp = @international_work_camp.map(&:subject)
+    @all_recreation = @recreation.map(&:subject)
+    @all_scientific_research = @scientific_research.map(&:subject)
+    @all_technology = @technology.map(&:subject)
 
     @agriculture_ids = @agriculture.map(&:program_id)
     @animal_care_ids = @animal_care.map(&:program_id)
@@ -462,147 +479,147 @@ class SearchesController < ApplicationController
 
 
     @organic_farming.each do |f|
-      @agriculture << f unless @agriculture_ids.include?(f.program_id)
+      @all_agriculture << f.subject unless @agriculture_ids.include?(f.program_id)
     end
 
     @animal_rights.each do |f|
-      @animal_care << f unless @animal_care_ids.include?(f.program_id)
+      @all_animal_care << f.subject unless @animal_care_ids.include?(f.program_id)
     end
 
     @elder_care.each do |f|
-      @caregiving << f unless @caregiving_ids.include?(f.program_id)
+      @all_caregiving << f.subject unless @caregiving_ids.include?(f.program_id)
     end
 
     @child_orphan_care.each do |f|
-      @caregiving << f unless @caregiving_ids.include?(f.program_id)
+      @all_caregiving << f.subject unless @caregiving_ids.include?(f.program_id)
     end
 
     @disabled_care.each do |f|
-      @caregiving << f unless @caregiving_ids.include?(f.program_id)
+      @all_caregiving << f.subject unless @caregiving_ids.include?(f.program_id)
     end
 
     @feed_the_homeless.each do |f|
-      @caregiving << f unless @caregiving_ids.include?(f.program_id)
+      @all_caregiving << f.subject unless @caregiving_ids.include?(f.program_id)
     end
 
     @youth_development_and_outreach.each do |f|
-      @community_development << f unless @community_development_ids.include?(f.program_id)
+      @all_community_development << f.subject unless @community_development_ids.include?(f.program_id)
     end
 
     @performing_arts.each do |f|
-      @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
     end
 
     @fashion.each do |f|
-      @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
     end
 
     @music.each do |f|
-      @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
     end
 
     @sports_and_recreation.each do |f|
-      @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
     end
 
     @journalism.each do |f|
-      @culture_and_community << f unless @culture_and_community_ids.include?(f.program_id)
+      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
     end
 
     @economics.each do |f|
-      @disaster_relief << f unless @disaster_relief_ids.include?(f.program_id)
+      @all_disaster_relief << f.subject unless @disaster_relief_ids.include?(f.program_id)
     end
 
     @microfinance.each do |f|
-      @disaster_relief << f unless @disaster_relief_ids.include?(f.program_id)
+      @all_disaster_relief << f.subject unless @disaster_relief_ids.include?(f.program_id)
     end
 
     @teaching_english.each do |f|
-      @education << f unless @education_ids.include?(f.program_id)
+      @all_education << f.subject unless @education_ids.include?(f.program_id)
     end
 
     @teaching_buddhist_monks.each do |f|
-      @education << f unless @education_ids.include?(f.program_id)
+      @all_education << f.subject unless @education_ids.include?(f.program_id)
     end
 
     @teaching_children.each do |f|
-      @education << f unless @education_ids.include?(f.program_id)
+      @all_education << f.subject unless @education_ids.include?(f.program_id)
     end
 
     @teaching_computer_literacy.each do |f|
-      @education << f unless @education_ids.include?(f.program_id)
+      @all_education << f.subject unless @education_ids.include?(f.program_id)
     end
 
     @ecological_conservation.each do |f|
-      @environmental << f unless @environmental_ids.include?(f.program_id)
+      @all_environmental << f.subject unless @environmental_ids.include?(f.program_id)
     end
 
     @sustainable_development.each do |f|
-      @environmental << f unless @environmental_ids.include?(f.program_id)
+      @all_environmental << f.subject unless @environmental_ids.include?(f.program_id)
     end
 
     @wildlife_conservation.each do |f|
-      @environmental << f unless @environmental_ids.include?(f.program_id)
+      @all_environmental << f.subject unless @environmental_ids.include?(f.program_id)
     end
 
     @habitat_restoration.each do |f|
-      @environmental << f unless @environmental_ids.include?(f.program_id)
+      @all_environmental << f.subject unless @environmental_ids.include?(f.program_id)
     end
 
     @hiv_aids.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @nutrition.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @family_planning.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @veterinary_medicine.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @dental_work.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @medical_research.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @health_education.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @public_health.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @hospital_care_giving.each do |f|
-      @health_and_medicine << f unless @health_and_medicine_ids.include?(f.program_id)
+      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
     end
 
     @womens_initiatives.each do |f|
-      @human_rights << f unless @human_rights_ids.include?(f.program_id)
+      @all_human_rights << f.subject unless @human_rights_ids.include?(f.program_id)
     end
 
     @adventure_travel.each do |f|
-      @recreation << f unless @recreation_ids.include?(f.program_id)
+      @all_recreation << f.subject unless @recreation_ids.include?(f.program_id)
     end
 
     @archaeology.each do |f|
-      @scientific_research << f unless @scientific_research_ids.include?(f.program_id)
+      @all_scientific_research << f.subject unless @scientific_research_ids.include?(f.program_id)
     end
 
     @environmental_biology.each do |f|
-      @scientific_research << f unless @scientific_research_ids.include?(f.program_id)
+      @all_scientific_research << f.subject unless @scientific_research_ids.include?(f.program_id)
     end
 
     @media_marketing_and_graphic_design.each do |f|
-      @technology << f unless @technology_ids.include?(f.program_id)
+      @all_technology << f.subject unless @technology_ids.include?(f.program_id)
     end
 
 
