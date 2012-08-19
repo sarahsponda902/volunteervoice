@@ -81,6 +81,7 @@ class UsersController < ApplicationController
   
   	def profile
   	  if (user_signed_in?)
+  	    @message = Message.new
   	    @user = User.find(current_user.id)
   	    @reviews = @user.reviews.order("created_at DESC")
   	    @favorites = @user.favorites
