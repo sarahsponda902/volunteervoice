@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   has_many :new_reviews, :dependent => :destroy
   validates_uniqueness_of :username
   validates_uniqueness_of :email, :message => "is already in use"
-  validates_presence_of :username, :dob
+  validates_presence_of :username
+  validates_presence_of :dob, :message => "Date of Birth can't be blank"
   validates_length_of :username, :maximum => 30
   before_save :square_image_crop 
   before_save :validate_photo_width 
