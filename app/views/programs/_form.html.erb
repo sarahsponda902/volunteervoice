@@ -458,13 +458,14 @@ $(document).ready(function(){
 	<% end %>
 	count = 0;
 	<% @count = 0 %>
+	<% if !(@costs.nil? || @costs.empty?) %>
 	<% @costs.each do |f| %>
 		$("#cost"+count.toString()).val("<%=f%>");
 		$("#length"+count.toString()).val("<%=@lengths[@count]%>");
 		count = count + 1;
 		<% @count = @count + 1 %>
 	<% end %>
-
+	<% end %>
 	//check the check boxes if the program has those attributes
 	$("#small").attr("checked", <%= @small %>);
 	$("#individual").attr("checked", <%= @individual %>);
