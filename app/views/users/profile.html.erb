@@ -126,29 +126,19 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
     }
 
-    ul.tab
-    {
-        list-style: none;
+
+	#tabs {
+		list-style: none;
         margin-bottom: 20px;
         padding-bottom: 0;
 		margin-left:15px; 
 		margin-top:-20px; 
 		margin-bottom:0;
-    }
-
-	#tabs li.myMessagesTab {
-		margin-left:-9px;
 	}
-	#tabs li.myMessagesTabRed {
-		margin-left:-9px;
-		color:#e67b5a;
-	}
-	
-    ul.tab li
-    {
-        display: inline;
+	#tabs li {
 		font-family:architectsDaughterRegular; 
 		font-size:1.4em;
+		display: inline;
 		padding-left:15px;
 		padding-right:25px;
 		padding-bottom:50px;
@@ -159,8 +149,14 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
         cursor: pointer;
 		width:200px;
 		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/inactiveTab.png) no-repeat;
-    }
-
+	}
+	#tabs li.myMessagesTab {
+		margin-left:-9px;
+	}
+	#tabs li.myMessagesTabRed {
+		margin-left:-9px;
+		color:#e67b5a;
+	}
 
 
 		/* Mask for background, by default is not display */
