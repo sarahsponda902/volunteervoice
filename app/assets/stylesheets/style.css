@@ -357,35 +357,35 @@ input[name="search[keywords]"] {
   box-shadow:         0px 8px 5px 0px #ccc;
 }
 
-nav {background:#575758; height: 45px;}
+#navBar {background:#575758; height: 45px;}
 
-nav li {list-style:none; display:inline-block; text-align:center; width: 24%;  padding-top: 15px; font-size: 1.8em; font-weight:0}
+#navBar li {list-style:none; display:inline-block; text-align:center; width: 24%;  padding-top: 15px; font-size: 1.8em; font-weight:0}
 
-nav #findProgramNav { height:50px; } /** To make sure drop-down doesn't disappear if mouse is less than 50px from top of "Find A Program" */
+#navBar #findProgramNav { height:50px; } /** To make sure drop-down doesn't disappear if mouse is less than 50px from top of "Find A Program" */
 
-nav .findProgramDropDown { margin:auto; }
+#navBar .findProgramDropDown { margin:auto; }
 
 /* Drop down menu at different heights depending if org-login image is there (pushing everything down)*/
 #drop_signed_in {position:absolute; top:165px;}
 #drop_signed_out {position:absolute; top:183px;}
 
-nav li a:visited{color: white;}
+#navBar li a:visited{color: white;}
 
-nav li a:active{color: white;}
+#navBar li a:active{color: white;}
 
-nav li a:link{color:white;}
+#navBar li a:link{color:white;}
 
-nav li a{color: white; margin-top:5px;}
+#navBar li a{color: white; margin-top:5px;}
 
-nav li a:hover {color:#c1dfdb;}
+#navBar li a:hover {color:#c1dfdb;}
 
-nav li:hover ul{visibility:visible;display:block; opacity:.9; filter: alpha(opacity=90); transition:opacity 0.2s linear; -moz-transition:opacity 0.2s linear; -webkit-transition:opacity 0.2s linear; -o-transition:opacity 0.2s linear; z-index:5; }
+#navBar li:hover ul{visibility:visible;display:block; opacity:.9; filter: alpha(opacity=90); transition:opacity 0.2s linear; -moz-transition:opacity 0.2s linear; -webkit-transition:opacity 0.2s linear; -o-transition:opacity 0.2s linear; z-index:5; }
 
-nav li ul{ display:block; position:absolute; top:183px; width:220px; text-align:center; visibility:hidden;opacity:0; z-index:5; padding:5px; padding-top:0px; padding-bottom:10px; font-size:.85em;
+#navBar li ul{ display:block; position:absolute; top:183px; width:220px; text-align:center; visibility:hidden;opacity:0; z-index:5; padding:5px; padding-top:0px; padding-bottom:10px; font-size:.85em;
  background-color:#575758; border-bottom:3px solid #575758; border-left:3px solid #575758; border-right:3px solid #575758; }
 
-nav li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
-nav li ul li a:hover{color:#c1dfdb;}
+#navBar li ul li{display:block; width: 100%; z-index: 5; font-size:1.0em;}
+#navBar li ul li a:hover{color:#c1dfdb;}
 
 /**** END HEADER ****/
 
