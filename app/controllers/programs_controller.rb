@@ -113,34 +113,42 @@ class ProgramsController < ApplicationController
     end
     
     @subjects = []
-    params[:program][:program_subjects].split(", ").each do |f|
+    if !params[:program][:program_subjects].nil?
+      params[:program][:program_subjects].split(", ").each do |f|
         @p = ProgramSubject.new(:program_id => params[:program][:id], :subject => f, :organization_id => @org_id)
         @subjects << @p
+      end
     end
     params[:program][:program_subjects] = @subjects
     
     @sizes = []
-    params[:program][:program_sizes].each do |f|
-      @p = ProgramSize.new(:program_id => params[:program][:id], :size => f, :organization_id => @org_id)
-      @sizes << @p
+    if !params[:program][:program_sizes].nil?
+      params[:program][:program_sizes].each do |f|
+        @p = ProgramSize.new(:program_id => params[:program][:id], :size => f, :organization_id => @org_id)
+        @sizes << @p
+      end
     end
     params[:program][:program_sizes] = @sizes
     
     @cost_lengths = []
-    params[:costs].each do |f|
-      @p = ProgramCostLengthMap.new(:program_id => params[:program][:id], :cost => f.to_f, :organization_id => @org_id)
-      @cost_lengths << @p
+    if !params[:costs].nil?
+      params[:costs].each do |f|
+        @p = ProgramCostLengthMap.new(:program_id => params[:program][:id], :cost => f.to_f, :organization_id => @org_id)
+        @cost_lengths << @p
+      end
     end
     
     count = 0
-    params[:lengths].each do |f|
-      @p = @cost_lengths[count]
-      @length = f.split(" ")
-      @p.length = @length[0].to_i.send(@length[1]).to_f
-      @p.length_name = @length[1]
-      @p.length_number = @length[0]
-      @cost_lengths[count] = @p
-      count = count + 1
+    if !params[:lengths].nil?
+      params[:lengths].each do |f|
+        @p = @cost_lengths[count]
+        @length = f.split(" ")
+        @p.length = @length[0].to_i.send(@length[1]).to_f
+        @p.length_name = @length[1]
+        @p.length_number = @length[0]
+        @cost_lengths[count] = @p
+        count = count + 1
+      end
     end
     
     params[:program][:program_cost_length_maps] = @cost_lengths
