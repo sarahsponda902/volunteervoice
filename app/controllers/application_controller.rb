@@ -36,7 +36,7 @@ include SimpleCaptcha::ControllerHelpers
      if status_code == :not_found
        render :template => "/errors/error_404"
      else
-       if staus_code == "500"
+       if status_code == "500"
          render :template => "/errors/error_500"
        else
          super
