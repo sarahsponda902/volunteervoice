@@ -605,6 +605,11 @@ class SearchesController < ApplicationController
       @technology << f unless @technology_ids.include?(f.program_id)
     end
 
+
+    respond_to do |format|
+      format.html
+      format.json 
+    end
   end
 
 
