@@ -56,76 +56,76 @@
 
 			<div class = "six columns" id="leftColSubjects">
 		<span class="majorTitle">
-		<%= link_to "Agriculture (#{@agriculture.count})", "/searches/Agriculture/program_browse_search"%><br /></span>
-		&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@organic_farming.count})", "/searches/OrganicFarming/program_browse_search"%><br />
+		<%= link_to "Agriculture (#{@all_agriculture.count})", "/searches/Agriculture/program_browse_search"%><br /></span>
+		&nbsp;&nbsp;&nbsp;<%= link_to "Organic Farming (#{@all_organic_farming.count})", "/searches/OrganicFarming/program_browse_search"%><br />
 	<br />	
-	<span class="majorTitle"><%= link_to "Animal Care (#{@animal_care.count})", "/searches/AnimalCare/program_browse_search"%><br /></span>
-		&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@animal_rights.count})", "/searches/AnimalRights/program_browse_search"%><br />
+	<span class="majorTitle"><%= link_to "Animal Care (#{@all_animal_care.count})", "/searches/AnimalCare/program_browse_search"%><br /></span>
+		&nbsp;&nbsp;&nbsp;<%= link_to "Animal Rights (#{@all_animal_rights.count})", "/searches/AnimalRights/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Caregiving (#{@caregiving.count})", "/searches/Caregiving/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Elder Care (#{@elder_care.count})", "/searches/ElderCare/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Child/Orphan Care (#{@child_orphan_care.count})", "/searches/ChildOrphanCare/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Disabled Care (#{@disabled_care.count})", "/searches/DisabledCare/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Feed the Homeless (#{@feed_the_homeless.count})", "/searches/FeedtheHomeless/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Caregiving (#{@all_caregiving.count})", "/searches/Caregiving/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Elder Care (#{@all_elder_care.count})", "/searches/ElderCare/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Child/Orphan Care (#{@all_child_orphan_care.count})", "/searches/ChildOrphanCare/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Disabled Care (#{@all_disabled_care.count})", "/searches/DisabledCare/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Feed the Homeless (#{@all_feed_the_homeless.count})", "/searches/FeedtheHomeless/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Community Development (#{@community_development.count})", "/searches/CommunityDevelopment/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Youth Development and Outreach (#{@youth_development_and_outreach.count})", "/searches/YouthDevelopmentandOutreach/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Construction (#{@construction.count})", "/searches/Construction/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Community Development (#{@all_community_development.count})", "/searches/CommunityDevelopment/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Youth Development and Outreach (#{@all_youth_development_and_outreach.count})", "/searches/YouthDevelopmentandOutreach/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Construction (#{@all_construction.count})", "/searches/Construction/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Culture and Community (#{@culture_and_community.count})", "/searches/CultureandCommunity/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Performing Arts (#{@performing_arts.count})", "/searches/PerformingArts/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Fashion (#{@fashion.count})", "/searches/Fashion/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Music (#{@music.count})", "/searches/Music/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Sports & Recreation (#{@sports_and_recreation.count})", "/searches/SportsRecreation/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Journalism (#{@journalism.count})", "/searches/Journalism/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Culture and Community (#{@all_culture_and_community.count})", "/searches/CultureandCommunity/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Performing Arts (#{@all_performing_arts.count})", "/searches/PerformingArts/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Fashion (#{@all_fashion.count})", "/searches/Fashion/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Music (#{@all_music.count})", "/searches/Music/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Sports & Recreation (#{@all_sports_and_recreation.count})", "/searches/SportsRecreation/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Journalism (#{@all_journalism.count})", "/searches/Journalism/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Disaster Relief (#{@disaster_relief.count})", "/searches/DisasterRelief/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Economics (#{@economics.count})", "/searches/Economics/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Microfinance (#{@microfinance.count})", "/searches/Microfinance/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Disaster Relief (#{@all_disaster_relief.count})", "/searches/DisasterRelief/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Economics (#{@all_economics.count})", "/searches/Economics/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Microfinance (#{@all_microfinance.count})", "/searches/Microfinance/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Education (#{@education.count})", "/searches/Education/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching English (#{@teaching_english.count})", "/searches/TeachingEnglish/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Buddhist Monks (#{@teaching_buddhist_monks.count})", "/searches/TeachingBuddhistMonks/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Children (#{@teaching_children.count})", "/searches/TeachingChildren/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Computer Literacy (#{@teaching_computer_literacy.count})", "/searches/TeachingComputerLiteracy/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Education (#{@all_education.count})", "/searches/Education/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching English (#{@all_teaching_english.count})", "/searches/TeachingEnglish/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Buddhist Monks (#{@all_teaching_buddhist_monks.count})", "/searches/TeachingBuddhistMonks/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Children (#{@all_teaching_children.count})", "/searches/TeachingChildren/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Teaching Computer Literacy (#{@all_teaching_computer_literacy.count})", "/searches/TeachingComputerLiteracy/program_browse_search"%><br />
 		</div>
 		
 		
 		<div class="four columns" id="rightColSubjects">	
-		<span class="majorTitle"><%= link_to "Engineering and Infrastructure (#{@engineering_and_infrastructure.count})", "/searches/EngineeringandInfrastructure/program_browse_search"%></span><br />
+		<span class="majorTitle"><%= link_to "Engineering and Infrastructure (#{@all_engineering_and_infrastructure.count})", "/searches/EngineeringandInfrastructure/program_browse_search"%></span><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Environmental (#{@environmental.count})", "/searches/Environmental/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Ecological Conservation (#{@ecological_conservation.count})", "/searches/EcologicalConservation/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@sustainable_development.count})", "/searches/SustainableDevelopment/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@wildlife_conservation.count})", "/searches/WildlifeConservation/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Habitat Restoration (#{@habitat_restoration.count})", "/searches/HabitatRestoration/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Environmental (#{@all_environmental.count})", "/searches/Environmental/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Ecological Conservation (#{@all_ecological_conservation.count})", "/searches/EcologicalConservation/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Sustainable Development (#{@all_sustainable_development.count})", "/searches/SustainableDevelopment/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Wildlife Conservation (#{@all_wildlife_conservation.count})", "/searches/WildlifeConservation/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Habitat Restoration (#{@all_habitat_restoration.count})", "/searches/HabitatRestoration/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Health and Medicine (#{@health_and_medicine.count})", "/searches/HealthandMedicine/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "HIV/AIDS (#{@hiv_aids.count})", "/searches/HIVAIDS/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Nutrition (#{@nutrition.count})", "/searches/Nutrition/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Family Planning (#{@family_planning.count})", "/searches/FamilyPlanning/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Veterinary Medicine (#{@veterinary_medicine.count})", "/searches/VeterinaryMedicine/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Clinical Work (#{@clinical_work.count})", "/searches/ClinicalWork/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Dental Work (#{@dental_work.count})", "/searches/DentalWork/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Medical Research (#{@medical_research.count})", "/searches/MedicalResearch/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Health Education (#{@health_education.count})", "/searches/HealthEducation/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Public Health (#{@public_health.count})", "/searches/PublicHealth/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Hospital Care-giving (#{@hospital_care_giving.count})", "/searches/HospitalCaregiving/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Health and Medicine (#{@all_health_and_medicine.count})", "/searches/HealthandMedicine/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "HIV/AIDS (#{@all_hiv_aids.count})", "/searches/HIVAIDS/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Nutrition (#{@all_nutrition.count})", "/searches/Nutrition/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Family Planning (#{@all_family_planning.count})", "/searches/FamilyPlanning/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Veterinary Medicine (#{@all_veterinary_medicine.count})", "/searches/VeterinaryMedicine/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Clinical Work (#{@all_clinical_work.count})", "/searches/ClinicalWork/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Dental Work (#{@all_dental_work.count})", "/searches/DentalWork/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Medical Research (#{@all_medical_research.count})", "/searches/MedicalResearch/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Health Education (#{@all_health_education.count})", "/searches/HealthEducation/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Public Health (#{@all_public_health.count})", "/searches/PublicHealth/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Hospital Care-giving (#{@all_hospital_care_giving.count})", "/searches/HospitalCaregiving/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Human Rights (#{@human_rights.count})", "/searches/HumanRights/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Women's Initiatives (#{@womens_initiatives.count})", "/searches/WomensInitiatives/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Human Rights (#{@all_human_rights.count})", "/searches/HumanRights/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Women's Initiatives (#{@all_womens_initiatives.count})", "/searches/WomensInitiatives/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "International Work Camp (#{@international_work_camp.count})", "/searches/InternationalWorkCamp/program_browse_search"%></span><br />
+		<span class="majorTitle"><%= link_to "International Work Camp (#{@all_international_work_camp.count})", "/searches/InternationalWorkCamp/program_browse_search"%></span><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Recreation (#{@recreation.count})", "/searches/Recreation/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Adventure Travel (#{@adventure_travel.count})", "/searches/AdventureTravel/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Recreation (#{@all_recreation.count})", "/searches/Recreation/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Adventure Travel (#{@all_adventure_travel.count})", "/searches/AdventureTravel/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Scientific Research (#{@scientific_research.count})", "/searches/ScientificResearch/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Archaeology (#{@archaeology.count})", "/searches/Archaeology/program_browse_search"%><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Environmental Biology (#{@environmental_biology.count})", "/searches/EnvironmentalBiology/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Scientific Research (#{@all_scientific_research.count})", "/searches/ScientificResearch/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Archaeology (#{@all_archaeology.count})", "/searches/Archaeology/program_browse_search"%><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Environmental Biology (#{@all_environmental_biology.count})", "/searches/EnvironmentalBiology/program_browse_search"%><br />
 		<br />	
-		<span class="majorTitle"><%= link_to "Technology (#{@technology.count})", "/searches/Technology/program_browse_search"%></span><br />
-		&nbsp;&nbsp;&nbsp;<%= link_to "Media Marketing and Graphic Design (#{@media_marketing_and_graphic_design.count})", "/searches/MediaMarketingandGraphicDesign/program_browse_search"%><br />
+		<span class="majorTitle"><%= link_to "Technology (#{@all_technology.count})", "/searches/Technology/program_browse_search"%></span><br />
+		&nbsp;&nbsp;&nbsp;<%= link_to "Media Marketing and Graphic Design (#{@all_media_marketing_and_graphic_design.count})", "/searches/MediaMarketingandGraphicDesign/program_browse_search"%><br />
 			</div>
 
 		</div>
