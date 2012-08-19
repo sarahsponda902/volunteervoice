@@ -144,7 +144,7 @@
 		}
 
 		/* You can customize to your needs  */
-		.popup-box{
+		.price-range-box{
 			display:none;
 			background: #D9DEDA;
 			padding: 10px; 	
@@ -225,10 +225,10 @@
 	#orgLink:link{color:#68c2d8}
 	#orgLink:hover{color:white; background:none}
 
-	a.popup-window:active{color:#68c2d8}
-	a.popup-window:visited{color:#68c2d8}
-	a.popup-window:link{color:#68c2d8}
-	a.popup-window:hover{color:#e67b5a; background:none}
+	a.price-range-window:active{color:#68c2d8}
+	a.price-range-window:visited{color:#68c2d8}
+	a.price-range-window:link{color:#68c2d8}
+	a.price-range-window:hover{color:#e67b5a; background:none}
 
 	a.review-window:active{color:#68c2d8}
 	a.review-window:visited{color:#68c2d8}
@@ -516,7 +516,7 @@ th {
 	</div>
 	
 	<div class="six columns" id="rightColumnContainer">
-		<span class="detailLabel">	Program Cost Chart: </span><a href="#popup" class="popup-window">Click here to view</a><br /><br /> 
+		<span class="detailLabel">	Program Cost Chart: </span><a href="#price-range-popup" class="price-range-window">Click here to view</a><br /><br /> 
 		<span class="detailLabel">Program Cost Breakdown: </span><%= @program.program_cost_breakdown.html_safe%><br />
 	<span class="detailLabel">	-Includes: </span><%= @program.cost_includes.html_safe%><br />
 	<span class="detailLabel">	-Doesn't Include: </span><%= @program.cost_doesnt_include.html_safe%><br />
@@ -601,7 +601,7 @@ th {
 <!--- POPUP PLUGIN -->
 
 
-  	<div id="popup" class="popup-box">
+  	<div id="price-range-popup" class="price-range-box">
 	<% if @program.program_cost_length_maps.empty?%>
 		<p class="infoNotDisclosedTitle">Information not disclosed</p>
 		<p style="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
@@ -681,7 +681,7 @@ function removePopup() {
 			$('#reviews_pager').smartpaginator({ totalrecords: <%=reviews_count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 			//jQuery for the "Price Ranges" popup
-		$('a.popup-window').click(function() {
+		$('a.price-range-window').click(function() {
 
 	                //Getting the variable's value from a link 
 			var popupBox = $(this).attr('href');
@@ -707,7 +707,7 @@ function removePopup() {
 
 		// When clicking on the button close or the mask layer the popup closed
 		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .popup-box').fadeOut(300 , function() {
+		  $('#mask , .price-range-box').fadeOut(300 , function() {
 			$('#mask').remove();  
 		}); 
 		return false;
