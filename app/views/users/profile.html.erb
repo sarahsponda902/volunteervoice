@@ -605,16 +605,10 @@ img.reviewPhoto {
 	margin-left:15px; 
 	margin-top:-20px; 
 	margin-bottom:0;
-}
-#tabs li {
 	font-family:architectsDaughterRegular; 
 	font-size:1.4em;
 }
-#tabs li.myMessagesTab {
-	margin-left:-9px;
-}
-#tabs li.myMessagesTabRed {
-	margin-left:-9px;
+.myMessagesTabRed {
 	color:#e67b5a;
 }
 #activeTabsContainer {
@@ -799,13 +793,13 @@ img.reviewPhoto {
 
     <div id="wrapper">
         <div id="tabsContainer">
-            <ul class="tab" id="tabs">
-				<li id="3">My Reviews</li>
-				<li id="2">My Favorites</li>
+            <div class="tab" id="tabs">
+				<div class="three columns" id="3">My Reviews</div>
+				<div class="three columns" id="2">My Favorites</div>
 				<% if current_user.unread_messages == 0 %>
-                <li class="myMessagesTab" id="1">My Messages</li>
+                	<div class="three columns" id="1">My Messages</div>
 				<% else %>
-				<li class="myMessagesTabRed" id="1">My Messages</li>
+					<div class="three columns myMessagesTabRed" id="1">My Messages</div>
 				<% end %>
             </ul>
         </div>
