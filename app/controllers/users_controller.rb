@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     else
     @message = Message.new
     @flag = Flag.new
+    @reviews = @user.reviews
     
     respond_to do |format|
       format.html # show.html.erb

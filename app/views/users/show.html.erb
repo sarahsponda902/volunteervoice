@@ -18,45 +18,123 @@
 <script src="/assets/jquery.smooth-scroll.min.js"></script>
 <script src="/assets/lightbox.js"></script>
 
-<script>
-  jQuery(document).ready(function($) {
-      $('a').smoothScroll({
-        speed: 1000,
-        easing: 'easeInOutCubic'
-      });
-  });
-
-</script>
-
 <%= stylesheet_link_tag "/assets/smartpaginator.css"%>
 
 <%= javascript_include_tag "/assets/smartpaginator.js"%>
 
-<head>
-   
-    <script type="text/javascript">
 
-        $(document).ready(function () {
-	
-			if (<%= (@user.profile_show).to_s %> == true)
-			{
-				$("#ageCountryBox").hide();
-			}
-			if (<%= (@user.messages_show).to_s %> == true)
-			{
-				$("#messagesBox").hide();
-			}
-			
-
-			$('#black').smartpaginator({ totalrecords: <%=@user.reviews.count%>, recordsperpage: 1, datacontainer: 'divs', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
-			
-			
-		});
-
- </script>
+<style>
+a.reviewOrgLink:link{color:#6aaeba}
+a.reviewOrgLink:active{color:#6aaeba}
+a.reviewOrgLink:visited{color:#6aaeba}
+a.reviewOrgLink:hover{color:#e67b5a}
+</style>
 
 
-</head>
+
+<style>
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	z-index: 10;
+	width: 100%; height: 100%;
+	opacity: 0.8;
+	z-index: 999;
+}
+
+/* You can customize to your needs  */
+.send-message-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 3px solid #6aaeba;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+/* You can customize to your needs  */
+.flag-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 2px solid #575758;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+        -moz-border-radius: 3px; /* Firefox */
+        -webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+
+</style>
+
+<style>
+.whosReview {
+	margin-left:50px; 
+	font-size:1.1em;
+}
+.reviewWrittenDate {
+	text-align:right; 
+	font-size:1.1em; 
+	margin-top:-15px;
+}
+table.reviewBox {
+	margin-left:20px; 
+	background-color:#E0EEEE; 
+	margin-top:5px;
+}
+table.reviewBox tr, table.reviewBox td {
+	background-color:#E0EEEE;
+}
+.reviewProgramName {
+	font-size:1.2em; 
+	margin-left:50px;
+}
+.reviewTripWas {
+	font-size:1.2em;
+}
+.reviewStars {
+	margin-top:-5px; 
+	margin-right:10px;
+}
+.review-pannel {
+	margin-left:10px; 
+	font-size:1.05em;
+	margin-top:-10px;
+	height:100px; 
+	width:96.5%; 
+	margin-left:2%; 
+	overflow:auto;
+}
+.single {
+	height:30px;
+}
+.reviewEditDeleteContainer {
+	float:right; 
+	text-align:right; 
+	margin-right:30px; 
+	margin-top:5px;
+}
+</style>
 
 
 
@@ -97,7 +175,7 @@
 	</p>
 	<div id="messagesBox">
 		<% if user_signed_in? && (@user.messages_show == false)%>
-	<a href="#popup-box" style = "margin-top:10px; margin-left:0px" class = "send-message-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendMessage.png"></a>
+	<a href="#send-message-box" style = "margin-top:10px; margin-left:0px" class = "send-message-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendMessage.png"></a>
 		<% end %>
 	</div>
 	
@@ -115,7 +193,7 @@
 
 
 
-<% @reviews = @user.reviews%>
+
     <div id="wrapper" style="width:100%;">
 		<p style="font-family:architectsDaughterRegular; color:#575758; margin-left:20px; font-size:2em">Reviews by <%=@user.username%></p>
 
@@ -145,282 +223,10 @@
 			</div>
 			</div>
 			</div>
-			
-
-	<style type="text/css">
-
-        .contents
-        {
-			height: 290px;
-            width: 98%; /*height: 150px;*/
-            margin: 0;
-
-        }
-        .contents > p
-        {
-            padding: 8px;
-        }
-
-		.table
-        {
-            width: 100%;
-            border-right: solid 1px #5f9000;
-        }
-        .table th, .table td
-        {
-            width: 16%;
-            height: 20px;
-            padding: 4px;
-            text-align: left;
-        }
-        .table th
-        {
-            border-left: solid 1px #5f9000;
-        }
-        .table td
-        {
-            border-left: solid 1px #5f9000;
-            border-bottom: solid 1px #5f9000;
-        }
-
-        #divs
-        {
-            margin: 10;
-            height: 100%;
-            font: verdana;
-            font-size: 14px;
-            background-color: White;
-        }
-        #divs > div
-        {
-            width: 98%;
-
-        }
-        #divs > div p
-        {
-            width: 95%;
-
-        }
-
-		#divvys
-        {
-            margin: 10;
-            height: 100%;
-            font: verdana;
-            font-size: 14px;
-            background-color: White;
-        }
-        #divvys > div
-        {
-            width: 98%;
-
-        }
-        #divvys > div p
-        {
-            width: 95%;
-
-        }
-
-		#divyeas
-        {
-            margin: 10;
-            height: 100%;
-            font: verdana;
-            font-size: 14px;
-            background-color: White;
-			position:relative;
-        }
-        #divyeas > div
-        {
-            width: 98%;
-
-        }
-        #divyeas > div p
-        {
-            width: 95%;
-
-        }
-
-		#divsents
-        {
-            margin: 10;
-            height: 100%;
-            font: verdana;
-            font-size: 14px;
-            background-color: White;
-			position:relative;
-        }
-        #divysents > div
-        {
-            width: 98%;
-
-        }
-        #divsents > div p
-        {
-            width: 95%;
-
-        }
-
-        ul.tab
-        {
-            list-style: none;
-            margin-bottom: 20px;
-            padding-bottom: 0;
-        }
-        ul.tab li
-        {
-            display: inline;
-			padding-left:15px;
-			padding-right:25px;
-			padding-bottom:50px;
-			padding-top:5px;
-			margin-left:6px;
-			margin-right:6px;
-            color: Black;
-            cursor: pointer;
-			width:200px;
-			background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/inactiveTab.png) no-repeat;
-        }
-
-	
-	
-	</style>
 
 
 
-<!-- UPLOAD PHOTO POPUP -->
-
-
-
-
-			<style>
-			/* Mask for background, by default is not display */
-			#mask {
-				display: none;
-				background: #000; 
-				position: fixed; left: 0; top: 0; 
-				width: 100%; height: 100%;
-				opacity: 0.8;
-				z-index: 999;
-			}
-
-			/* You can customize to your needs  */
-			.upload-popup{
-				display:none;
-				background: #D9DEDA;
-				padding: 10px; 	
-				border: 3px solid #68c2d8;
-				float: left;
-				font-size: 1.2em;
-				position: fixed;
-				top: 50%; left: 50%;
-				z-index: 99999;
-				box-shadow: 0px 0px 20px #999; /* CSS3 */
-			        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-			        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-				border-radius:3px 3px 3px 3px;
-			        -moz-border-radius: 3px; /* Firefox */
-			        -webkit-border-radius: 3px; /* Safari, Chrome */
-			}
-			.edit-popup{
-				display:none;
-				background: #E3E6D5;
-				padding: 10px; 
-				color:#575758;	
-				border: 3px solid #68c2d8;
-				float: left;
-				font-size: 1.2em;
-				position: fixed;
-				top: 50%; left: 50%;
-				z-index: 99999;
-				box-shadow: 0px 0px 20px #999; /* CSS3 */
-			        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-			        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-				border-radius:3px 3px 3px 3px;
-			        -moz-border-radius: 3px; /* Firefox */
-			        -webkit-border-radius: 3px; /* Safari, Chrome */
-			}
-
-			img.btn_close { Position the close button
-				float: right; 
-				margin: -28px -28px 0 0;
-			}
-
-			fieldset { 
-				border:none; 
-			}
-
-			form.sign_in .textbox label { 
-				display:block; 
-				padding-bottom:7px; 
-			}
-
-			form.sign_in .textbox span { 
-				display:block;
-			}
-
-			form.sign_in p, form.sign_in span { 
-				color:#999; 
-				font-size:11px; 
-				line-height:18px;
-			} 
-
-			form.sign_in .textbox input { 
-				background:#666666; 
-				border-bottom:1px solid #333;
-				border-left:1px solid #000;
-				border-right:1px solid #333;
-				border-top:1px solid #000;
-				color:#fff; 
-			        border-radius: 3px 3px 3px 3px;
-				-moz-border-radius: 3px;
-			        -webkit-border-radius: 3px;
-				font:13px Arial, Helvetica, sans-serif;
-				padding:6px 6px 4px;
-				width:200px;
-			}
-
-			form.sign_in input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
-			form.sign_in input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
-
-			.button { 
-				background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-				background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-				background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-			        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-				border-color:#000; 
-				border-width:1px;
-			        border-radius:4px 4px 4px 4px;
-				-moz-border-radius: 4px;
-			        -webkit-border-radius: 4px;
-				color:#333;
-				cursor:pointer;
-				display:inline-block;
-				padding:6px 6px 4px;
-				margin-top:10px;
-				font:12px; 
-				width:214px;
-			}
-			.button:hover { background:#ddd; }
-
-			</style>
-
-
-<script style="text/javascript">
-$("#btnPrev").click(function() { currentPage = parseInt(list.find('li a.active').text()) - 1; navigate(--currentPage); }).addClass('btn');
-
-$("#btnNext").click(function() { currentPage = parseInt(list.find('li a.active').text()); navigate(currentPage); }).addClass('btn');
-</script>
-
-<script type="text/javascript">
-function beforeCheck() {
-	$('#checkBefore').toggle();
-}
-</script>
-
-
-
-<div id="popup-box" class="send-message-popup">
+<div id="send-message-box" class="send-message-popup">
 	<a href="#" class="close"><div class="close_image"></div></a>
 	<% if @user.messages_show == false %>
 	<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
@@ -478,122 +284,17 @@ function beforeCheck() {
 	<% end %>
 
 </div>
+<script>
+  jQuery(document).ready(function($) {
+      $('a').smoothScroll({
+        speed: 1000,
+        easing: 'easeInOutCubic'
+      });
+  });
 
-<style>
-/* Mask for background, by default is not display */
-#mask {
-	display: none;
-	background: #000; 
-	position: fixed; left: 0; top: 0; 
-	z-index: 10;
-	width: 100%; height: 100%;
-	opacity: 0.8;
-	z-index: 999;
-}
+</script>
 
-/* You can customize to your needs  */
-.send-message-popup{
-	display:none;
-	background: #D9DEDA;
-	padding: 10px; 	
-	border: 3px solid #6aaeba;
-	float: left;
-	color:#6aaeba;
-	font-size: 1.1em;
-	position: fixed;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
 
-/* You can customize to your needs  */
-.flag-popup{
-	display:none;
-	background: #D9DEDA;
-	padding: 10px; 	
-	border: 2px solid #575758;
-	float: left;
-	color:#6aaeba;
-	font-size: 1.1em;
-	position: fixed;
-	top: 50%; left: 50%;
-	z-index: 99999;
-	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
-}
-
-img.btn_close { Position the close button
-	float: right; 
-	margin: -28px -28px 0 0;
-}
-
-fieldset { 
-	border:none; 
-}
-
-form.show_chart .textbox label { 
-	display:block; 
-	padding-bottom:7px; 
-}
-
-form.show_chart .textbox span { 
-	display:block;
-}
-
-form.show_chart p, form.show_chart span { 
-	color:#999; 
-	font-size:11px; 
-	line-height:18px;
-} 
-
-form.show_chart .textbox input { 
-	background:#666666; 
-	border-bottom:1px solid #333;
-	border-left:1px solid #000;
-	border-right:1px solid #333;
-	border-top:1px solid #000;
-	color:#fff; 
-        border-radius: 3px 3px 3px 3px;
-	-moz-border-radius: 3px;
-        -webkit-border-radius: 3px;
-	font:13px Arial, Helvetica, sans-serif;
-	padding:6px 6px 4px;
-	width:200px;
-}
-
-form.show_chart input:-moz-placeholder { color:#bbb; text-shadow:0 0 2px #000; }
-form.show_chart input::-webkit-input-placeholder { color:#bbb; text-shadow:0 0 2px #000;  }
-
-.button { 
-	background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
-	background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
-	background:  -o-linear-gradient(top, #f3f3f3, #dddddd);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
-	border-color:#000; 
-	border-width:1px;
-        border-radius:4px 4px 4px 4px;
-	-moz-border-radius: 4px;
-        -webkit-border-radius: 4px;
-	color:#333;
-	cursor:pointer;
-	display:inline-block;
-	padding:6px 6px 4px;
-	margin-top:10px;
-	font:12px; 
-	width:214px;
-}
-.button:hover { background:#ddd; }
-
-</style>
 
 <script type="text/javascript">
 
@@ -670,9 +371,35 @@ $(document).ready(function() {
 
 </script>
 
-<style>
-a.reviewOrgLink:link{color:#6aaeba}
-a.reviewOrgLink:active{color:#6aaeba}
-a.reviewOrgLink:visited{color:#6aaeba}
-a.reviewOrgLink:hover{color:#e67b5a}
-</style>
+   <script type="text/javascript">
+
+       $(document).ready(function () {
+	
+			if (<%= (@user.profile_show).to_s %> == true)
+			{
+				$("#ageCountryBox").hide();
+			}
+			if (<%= (@user.messages_show).to_s %> == true)
+			{
+				$("#messagesBox").hide();
+			}
+			
+
+			$('#black').smartpaginator({ totalrecords: <%=@user.reviews.count%>, recordsperpage: 1, datacontainer: 'divs', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+			
+			
+		});
+
+</script>
+
+<script style="text/javascript">
+$("#btnPrev").click(function() { currentPage = parseInt(list.find('li a.active').text()) - 1; navigate(--currentPage); }).addClass('btn');
+
+$("#btnNext").click(function() { currentPage = parseInt(list.find('li a.active').text()); navigate(currentPage); }).addClass('btn');
+</script>
+
+<script type="text/javascript">
+function beforeCheck() {
+	$('#checkBefore').toggle();
+}
+</script>
