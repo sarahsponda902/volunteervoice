@@ -34,10 +34,10 @@ include SimpleCaptcha::ControllerHelpers
    
    def render_optional_error_file(status_code)
      if status_code == :not_found
-       render :template => "/errors/error_404"
+       render :controller => "errors", :action => "error_404"
      else
        if status_code == "500"
-         render :template => "/errors/error_500"
+         render :controller => "errors", :action => "error_500"
        else
          super
        end
