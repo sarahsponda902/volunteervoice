@@ -738,7 +738,6 @@ table.reviewBox tr, table.reviewBox td {
 
 
 	<div class="container" id="top">
-			<a href="#reply-box" id="reply-box-link" class="reply-window">Click here</a>
 	        <div class="row">
 				<div class="eleven columns" id="editChangeTopLinksContainer">
 				<p id="editChangeTopLinks"><a href="#edit-box" class="edit-window">My account</a>	<a href="#upload-box" class="upload-window">Change Profile Image</a> </p>
@@ -1076,11 +1075,13 @@ table.reviewBox tr, table.reviewBox td {
 	padding-bottom:20px; 
 	text-align:center;
 }
-/*#reply-box-link {
+#reply-box-link {
 	display:none;
-}*/
+}
 
 </style>		
+<!-- This link is hidden. It is for "clicking" from within the show message popup -->
+<a href="#reply-box" id="reply-box-link" class="reply-window">Reply</a>
 
 <div id="reply-box" class="reply-popup">
 	<a href="#" class="close"><div class="close_image"></div></a>
