@@ -57,3 +57,9 @@ ActionMailer::Base.smtp_settings = {
 }
 ActionMailer::Base.delivery_method = :smtp
 GA.tracker = "UA-31745240-1"
+
+class ActionDispatch::Request
+ def local?
+   false
+ end
+end
