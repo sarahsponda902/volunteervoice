@@ -15,6 +15,7 @@
 
 
 <style>
+/*Most Links */
 a.reviewOrgLink:link{color:#6aaeba}
 a.reviewOrgLink:active{color:#6aaeba}
 a.reviewOrgLink:visited{color:#6aaeba}
@@ -25,18 +26,30 @@ a.cancel-account:active{color:#575758; font-size:0.7em}
 a.cancel-account:visited{color:#575758; font-size:0.7em}
 a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
-</style>
 
-<style type="text/css">
 
-    #wrapper
+a.edit-window { color: #68c2d8 }
+a.upload-window { color: #68c2d8 }
+
+a.edit-window:hover { color: #e67b5a }
+a.upload-window:hover { color: #e67b5a }
+
+
+
+/***********************/
+/*SmartPaginator Stuff */
+/**********************/
+
+
+    #wrapper /*Container for all Pagination stuff */
     {
 
-        width:100%;
+        width:100%; 
 
     }
+
 	
-    .contents
+    .contents /*Container for each of "reviews" "messages" "sent messages" and "favorites"*/
     {
 		height: 290px;
         width: 98%; /*height: 150px;*/
@@ -48,7 +61,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
         padding: 8px;
     }
 
-    #divreviews
+    #divreviews /*Container for "reviews" for pagination*/
     {
         margin: 10;
         height: 100%;
@@ -67,7 +80,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
     }
 
-	#divfavorites
+	#divfavorites /*Container for "favorites" for pagination*/
     {
         margin: 10;
         height: 100%;
@@ -86,7 +99,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
     }
 
-	#divmessages
+	#divmessages /*Container for "messages" for pagination*/
     {
         margin: 10;
         height: 100%;
@@ -106,7 +119,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
     }
 
-	#divsents
+	#divsents /*Container for "sent messages" for pagination*/
     {
         margin: 10;
         height: 100%;
@@ -127,7 +140,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
     }
 
 
-	#tabs {
+	#tabs { /* My Messages, My Reviews, My Favorites tabs container*/
 		list-style: none;
         margin-bottom: 20px;
         padding-bottom: 0;
@@ -135,7 +148,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		margin-top:-20px; 
 		margin-bottom:0;
 	}
-	#tabs li {
+	#tabs li { /* My Messages, My Reviews, My Favorites tabs */
 		font-family:architectsDaughterRegular; 
 		font-size:1.4em;
 		display: inline;
@@ -150,14 +163,21 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		width:200px;
 		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/inactiveTab.png) no-repeat;
 	}
-	#tabs li.myMessagesTab {
+	#tabs li.myMessagesTab { /* My Messages tabs needs to be farther left*/
 		margin-left:-9px;
 	}
-	#tabs li.myMessagesTabRed {
+	#tabs li.myMessagesTabRed { /* My Messages tabs needs to be red if user has unread messages*/
 		margin-left:-9px;
 		color:#e67b5a;
 	}
 
+
+
+
+
+	/******************/
+	/* POPUP WINDOWS */
+	/*****************/
 
 		/* Mask for background, by default is not display */
 		#mask {
@@ -169,7 +189,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 			z-index: 999;
 		}
 
-		/* You can customize to your needs  */
+		/* Upload a Photo Popup  */
 		.upload-popup{
 			display:none;
 			background: #D9DEDA;
@@ -189,6 +209,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
 		
+		/* Delete your favorite/message "are you sure" popup*/
 		.delete-popup{
 			display:none;
 			background: #E9ECE9;
@@ -208,6 +229,8 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
 		
+		
+		/* Sent message "full message view" popup */
 		.sent-popup{
 			display:none;
 			background: #D9DEDA;
@@ -226,6 +249,8 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -moz-border-radius: 3px; /* Firefox */
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
+		
+		/* edit your account popup */
 		.edit-popup{
 			display:none;
 			background: #E3E6D5;
@@ -245,26 +270,9 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 			width:570px;
 		}
-
-		.delete-popup{
-			display:none;
-			background: #E9ECE9;
-			padding: 10px; 	
-			border: 2px solid #6aaeba;
-			float: left;
-			color:#575758;
-			font-size: 1.1em;
-			position: fixed;
-			top: 50%; left: 50%;
-			z-index: 99999;
-			box-shadow: 0px 0px 20px #999; /* CSS3 */
-		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-			border-radius:3px 3px 3px 3px;
-		        -moz-border-radius: 3px; /* Firefox */
-		        -webkit-border-radius: 3px; /* Safari, Chrome */
-		}
 		
+		
+		/* Reply Message popup */
 		.reply-popup{
 			display:none;
 			background: #D9DEDA;
@@ -285,14 +293,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		}
 
 
-
-		a.edit-window { color: #68c2d8 }
-		a.upload-window { color: #68c2d8 }
-
-		a.edit-window:hover { color: #e67b5a }
-		a.upload-window:hover { color: #e67b5a }
-
-
+		/* view full message popup */
 		.m-popup{
 			display:none;
 			background: #D9DEDA;
@@ -311,17 +312,20 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -moz-border-radius: 3px; /* Firefox */
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
-		</style>
 
 
-<style>
-.favoriteTable {
+
+		/*********************/
+		/* MY FAVORITES BOX */
+		/********************/
+		
+.favoriteTable { /* each individual favorite in enclosed in it's own table */
 	margin-left:10px;
 }
-.favoriteBullet {
+.favoriteBullet { /* asterick for each favorite */
 	margin-top:-10px;
 }
-a.favoriteOrg {
+a.favoriteOrg { /*Favorite's organization name */
 	margin-left:-5px; 
 	font-size:2.5em; 
 	font-family:josefinSlabRegular; 
@@ -330,165 +334,169 @@ a.favoriteOrg {
 a.favoriteOrg:hover {
 	color:#9bce6c;
 }
-a.favoriteProg {
+a.favoriteProg { /* Favorite's program name */
 	font-size:1.8em; 
 	color:gray;
 }
 a.favoriteProg:hover {
 	color:#9bce6c;
 }
-.deleteFavoriteContainer {
+.deleteFavoriteContainer { /* "X" for deleting a favorite */
 	margin-right:25px;
 	margin-top:-5px;
 }
-</style>
 
-<style>
-.messageTable {
+
+/********************/
+/* MY MESSAGES BOX */
+/*******************/
+.messageTable { /* Each individual message is enclosed in a table */
 	margin-left:175px; 
 	margin-top:-10px;
 }
-a.message-window {
+a.message-window { /*Username link to open message */
 	margin-left:-5px; 
 	font-size:1.4em; 
 	font-family:josefinSlabRegular; 
 	color:#68c2d8;
 }
-a.message-window:hover {
+a.message-window:hover { 
 	color:#9bce6c;
 }
-.messageDateCreated {
+.messageDateCreated { /*Message's date Created in table */
 	font-size:1.2em;
 	margin-left:20px; 
 	color:#575758;
 }
-.messageSubject {
+.messageSubject { /*Message's Subject in table */
 	font-size:1.2em;
 	margin-left:20px; 
 	color:#575758;
 }
-.messageDeleteX {
+.messageDeleteX { /*Message's "X" to delete in table */
 	margin-right:25px;
 	margin-top:5px;
 }
-td a.close {
+td a.close { /* Full Message popup's "X" to close window */
 	margin-top:-40px;
 }
-table.m-popup tr, table.m-popup td {
+table.m-popup tr, table.m-popup td { /* Set background color of message popup */
 	background: #E9ECE9;
 }
-table.delete-popup tr, table.delete-popup td {
+table.delete-popup tr, table.delete-popup td { /* Set background color of delete popup */
 	background: #E9ECE9;
 }
-table.sent-popup tr, table.sent-popup td {
-	background: #E9ECE9;
-}
-.mPopupFrom, .mPopupSubject {
+.mPopupFrom, .mPopupSubject { /*Message popup's from and subject titles/labels */
 	font-size:1.4em; 
 	color:#575758; 
 	line-height:2em;
 }
-.mPopupBody {
+.mPopupBody { /* Message popup's body */
 	color:#575758; 
 	line-height:1.1em;
 	font-size:1.1em;
 	max-height:100px;
 	overflow-y:auto;
 }
-.mPopupReplyButton {
+.mPopupReplyButton { /*  Message popup's reply button */
 	text-align:right;
 	cursor:pointer;
 }
 .mPopupReplyButton a{
 	cursor:pointer;
 }
-.userDeletedProfileMessage {
+.userDeletedProfileMessage { /* Message that appears if a user deleted their profile */
 	color:#575758; 
 	line-height:2em; 
 	font-style:italic; 
 	text-align:center;
 }
-.deletePopupAreYouSure {
+.deletePopupAreYouSure { /* are you sure you want to delete this message/favorite popup title */
 	font-size:2em; 
 	color:#575758; 
 	text-align:center;
 }
-a.close-delete-pop {
+a.close-delete-pop { /* button to close the delete popup ("No, thanks") */
 	cursor:pointer;
 }
-</style>
 
 
-<style>
-.sentTable {
+/**********************/
+/* SENT MESSAGES BOX */
+/*********************/
+.sentTable { /*Each individual sent message is enclosed in a table */
 	margin-left:175px; 
 	margin-top:-10px;
 }
-.sentMessageDate {
+.sentMessageDate { /* date the message was sent */
 	font-size:1.2em;
 	margin-left:20px; 
 	color:#575758;
 }
-.sentMessageSubject {
+.sentMessageSubject { /* subject of sent message */
 	font-size:1.2em;
 	margin-left:20px; 
 	color:#575758;
 }
-.sentMessageDeleteX {
+.sentMessageDeleteX { /* "X" to delete the sent message */
 	margin-right:25px;
 	margin-top:5px;
 }
-.sentPopupTo, .sentPopupSubject {
+.sentPopupTo, .sentPopupSubject { /*sent message popup's "to" and "subject" labels */
 	font-size:1.4em; 
 	color:#575758; 
 	line-height:2em;
 }
-.sentPopupBody {
+.sentPopupBody { /* sent message popup's body */
 	color:#575758; 
 	line-height:1.1em;
 	font-size:1.1em;
 	max-height:100px;
 	overflow-y:auto;
 }
-.sentDeleteAreYouSure {
+.sentDeleteAreYouSure { /*are you sure you want to delete sent message popup title */
 	font-size:2em; 
 	color:#575758; 
 	text-align:center;
 }
-</style>
+
+table.sent-popup tr, table.sent-popup td { /* Set background color of sent message popup */
+	background: #E9ECE9;
+}
 
 
-
-<style>
-.whosReview {
+/*******************/
+/* MY REVIEWS BOX */
+/*****************/
+.whosReview { /* Username (user's username) */
 	margin-left:50px; 
 	font-size:1.1em;
 }
-.reviewWrittenDate {
+.reviewWrittenDate { /* Date review was written */
 	text-align:right; 
 	font-size:1.1em; 
 	margin-top:-15px;
 }
-table.reviewBox {
+table.reviewBox { /*table enclosing the review, stars, program, trip was, and photos */
 	margin-left:20px; 
 	background-color:#E0EEEE; 
 	margin-top:5px;
 }
-table.reviewBox tr, table.reviewBox td {
+table.reviewBox tr, table.reviewBox td { /* set background color of all rows */
 	background-color:#E0EEEE;
 }
-.reviewProgramName {
+.reviewProgramName { /* review's program name */
 	font-size:1.2em; 
 	margin-left:50px;
 }
-.reviewTripWas {
+.reviewTripWas { /* review's length of time */
 	font-size:1.2em;
 }
-.reviewStars {
+.reviewStars { /* review's stars */
 	margin-top:-5px; 
 	margin-right:10px;
 }
-.review-pannel {
+.review-pannel { /* review body */
 	margin-left:10px; 
 	font-size:1.05em;
 	margin-top:-10px;
@@ -497,22 +505,24 @@ table.reviewBox tr, table.reviewBox td {
 	margin-left:2%; 
 	overflow:auto;
 }
-.single {
+.single { /* review photos */
 	height:30px;
 }
-img.reviewPhoto {
+img.reviewPhoto { /* individual review photo */
 	height:30px;
 }
 
-.reviewEditDeleteContainer {
+.reviewEditDeleteContainer { /* container for review's edit/delete button */
 	float:right; 
 	text-align:right; 
 	margin-right:30px; 
 	margin-top:5px;
 }
-</style>
 
-<style>
+
+/*****************/
+/* MAIN CONTENT */
+/***************/
 #errorsContainer {
 	width:100%;
 }
@@ -791,9 +801,9 @@ img.reviewPhoto {
 				<li id="3">My Reviews</li>
 				<li id="2">My Favorites</li>
 				<% if current_user.unread_messages == 0 %>
-                <li class="myMessagesTab" id="1">My Messages</li>
+                	<li class="myMessagesTab" id="1">My Messages</li>
 				<% else %>
-				<li class="myMessagesTabRed" id="1">My Messages</li>
+					<li class="myMessagesTabRed" id="1">My Messages</li>
 				<% end %>
             </ul>
         </div>
