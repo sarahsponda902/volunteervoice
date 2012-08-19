@@ -605,7 +605,7 @@
 
 	    <%=g.hidden_field :review_id, :id => "review_id" %>
 
-	    <p class="flagSubmitContainer"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+	    <p class="flagSubmitContainer"><%= image_submit_tag ("/assets/submitToVVI.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
 		<% end %>
 	<% else %>
 	<p>You must be signed in to flag a review.</p>

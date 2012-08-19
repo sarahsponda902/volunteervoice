@@ -330,7 +330,7 @@ a.flag-window {
 }
 #flagPopupTitle {
 	text-align:center; 
-	font-size:1.2em; 
+	font-size:1.5em; 
 	font-family:cabinRegular; 
 	margin-bottom:20px; 
 	color:#575758;
@@ -479,7 +479,7 @@ a.flag-window {
 		</td></tr>
 
 		<tr><td colspan="2">
-	    <p id="submitFlagContainer"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
+	    <p id="submitFlagContainer"><%= image_submit_tag ("/assets/submitToVVI.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
 		<% end %>
 	<% else %>
 	<tr><td>You must be signed in to flag a review.</td></tr>
