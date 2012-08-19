@@ -1066,6 +1066,18 @@ table.reviewBox tr, table.reviewBox td {
 	margin-top:30px; 
 	text-align:center;
 }
+#replyMessageTitle {
+	font-family:josefinSlabRegular; 
+	font-size:3em;
+	padding:10px; 
+	padding-top:20px;
+	line-height:1.1em; 
+	padding-bottom:20px; 
+	text-align:center;
+}
+#reply-box-link {
+	display:none;
+}
 
 </style>			
 			
@@ -1135,7 +1147,7 @@ table.reviewBox tr, table.reviewBox td {
 			<a href="#reply-box" id="reply-box-link" class="reply-window" onclick="closeMessageBox();">Click here</a>
 			<div id="reply-box" class="reply-popup">
 				<a href="#" class="close"><div class="close_image"></div></a>
-				<p style="font-family:chunkFiveRegular; font-size:3em;padding:10px; line-height:1em; padding-top:20px; padding-bottom:20px; text-align:center">New Message</p>
+				<p id="replyMessageTitle">Reply Message</p>
 
 				<%= form_for(@message) do |f| %>
 				<% if user_signed_in?%>
