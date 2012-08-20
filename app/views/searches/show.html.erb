@@ -822,6 +822,9 @@ select#length_max_param {
 #applySubject {
 	margin-left:-80px;
 }
+.hiddenOther {
+	display:none;
+}
 </style>
 
 
@@ -1345,7 +1348,7 @@ select#length_max_param {
 		
 		
 		<div id="others">
-			<div class="hiddenField">Other:</div>
+			<div class="hiddenOther">Other:</div>
 			<div id="AQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#AQ').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="AQ" id="AQ2"  > Antarctica</div>
 			<div id="BQ">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BQ').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="BQ" id="BQ2"  > Bonaire, Sint<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eustatius<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and Saba</div>
 			<div id="BV">&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" onchange="$('#BV').prop('checked', this.checked)" name="search[regions][]" onclick="toggleBoxes(this)" value ="BV" id="BV2"  > Bouvet Island</div>
