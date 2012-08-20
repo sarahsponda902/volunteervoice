@@ -11,14 +11,11 @@
 		min-height:450px;
 	}
 	#cropMessage {
-		position:absolute; 
-		right:5%; 
-		top:300px; 
-		width:150px; 
-		background-color:white; 
-		border:2px solid #575758; 
+		width:450px;  
 		color:#575758; 
 		padding:5px;
+		float:right;
+		margin-bottom:20px;
 	}
 	#cropFields {
 		position:absolute; 
@@ -26,11 +23,24 @@
 		top:200px; 
 		width:150px;
 	}
+	#pageTitle {
+		margin:auto;
+		float:center;
+		font-family:architectsDaughterRegular;
+		color:#e67b5a;
+		font-size:3em;
+		margin-bottom:15px;
+		margin-top:20px;
+	}
 	</style>
 
 
 	<div class="container" id="top">
 		<div class="row">
+			<div class="twelve columns">
+				<div id="pageTitle">Crop Your Photo! (We need a square version)</div>
+				<div id="cropMessage">*To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop".</div>
+			</div>
 			<div class="twelve columns">
 
 	    <%= image_tag @user.photo.url, :id => "crop_me"%>
@@ -38,8 +48,6 @@
 		</div>
 	</div>
 </div>
-
-<div id="cropMessage">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop".</div>
 
 <div id="cropFields">
 	<%= form_for @user do |f|%>
