@@ -180,24 +180,24 @@ class SearchesController < ApplicationController
 
   def program_browse_search
     @search = Search.new
-    @search.subjects = [] << params[:subject]
+    @search.subjects = [] << params[:subject].humanize().gsub("and", " and")
     
     if params[:subject] == "Agriculture"
       @search.subjects = ["Agriculture", "Organic Farming"]
     end
-    if params[:subject] == "Animal Care"
+    if params[:subject] == "AnimalCare"
       @search.subjects = ["Animal Care", "Animal Rights"]
     end
     if params[:subject] == "Caregiving"
       @search.subjects = ["Caregiving", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless"]
     end
-    if params[:subject] == "Community Development"
+    if params[:subject] == "CommunityDevelopment"
       @search.subjects = ["Community Development", "Youth Development and Outreach"]
     end
-    if params[:subject] == "Culture and Community"
+    if params[:subject] == "CultureandCommunity"
       @search.subjects = ["Culture and Community", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism"]
     end
-    if params[:subject] == "Disaster Relief"
+    if params[:subject] == "DisasterRelief"
       @search.subjects = ["Disaster Relief", "Economics", "Microfinance"]
     end
     if params[:subject] == "Education"
@@ -206,16 +206,16 @@ class SearchesController < ApplicationController
     if params[:subject] == "Environmental"
       @search.subjects = ["Environmental", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration"]
     end
-    if params[:subject] == "Health and Medicine"
+    if params[:subject] == "HealthandMedicine"
       @search.subjects = ["Health and Medicine", "HIV/AIDS", "Family Planning", "Nutrition", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Caregiving"]
     end
-    if params[:subject] == "Human Rights"
+    if params[:subject] == "HumanRights"
       @search.subjects = ["Human Rights", "Women's Initiatives"]
     end
     if params[:subject] == "Recreation"
       @search.subjects = ["Recreation", "Adventure Travel"]
     end
-    if params[:subject] == "Scientific Research"
+    if params[:subject] == "ScientificResearch"
       @search.subjects = ["Scientific Research", "Archaeology", "Environmental Biology"]
     end
     if params[:subject] == "Technology"
