@@ -98,7 +98,9 @@ class SearchesController < ApplicationController
       @search_subjects = subjects
       @search_sizes = sizes
       
-      @search_sizes = @search_sizes.gobledygook
+      Program.all.for_some do |f|
+        @search_sizes << f
+      end
      
      
      
