@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
     else
       '/'
     end
+  end
 
 
 #render pretty error pages when 404 or 500 status code appear
