@@ -180,7 +180,7 @@ class SearchesController < ApplicationController
 
   def program_browse_search
     @search = Search.new
-    @search.subjects = [] << params[:subject].humanize().gsub("and", " and")
+    @search.subjects = [] << SUBJECTSHASH[params[:subject]]
     
     if params[:subject] == "Agriculture"
       @search.subjects = ["Agriculture", "Organic Farming"]
