@@ -13,12 +13,10 @@ class BlogCommentsController < ApplicationController
     @blog_comment = @blog_post.blog_comments.new(params[:blog_comment])
 		@blog_comment.user_id = current_user.id if current_user
 		@blog_comment.request = request
-		@blog_comment.body = RedCloth.new( ActionController::Base.helpers.sanitize( @blog_comment.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-
+    
 
     respond_to do |format|
       if @blog_comment.save
-        flash[:notice] = 'Your comment has been posted.'
         format.html { redirect_to(@blog_post) }
         format.xml  { render :xml => @blog_comment, :status => :created, :location => @blog_comment }
       else
@@ -36,7 +34,6 @@ class BlogCommentsController < ApplicationController
     @blog_comment = BlogComment.find(params[:id])
     @blog_comment.destroy
 
-		flash[:notice] = 'The comment has been deleted'
 
     respond_to do |format|
       format.html { redirect_to(blog_post_url(@blog_post)) }
