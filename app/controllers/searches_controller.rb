@@ -31,7 +31,7 @@ class SearchesController < ApplicationController
   def error
     @search = Search.new
     @locations = []
-    Program.for_each(:batch_size => 200) do |f|
+    Program.all.for_each(:batch_size => 200) do |f|
       @locations << f.location unless @locations.include?(f.location)
     end
     
