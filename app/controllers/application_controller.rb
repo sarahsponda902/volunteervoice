@@ -54,7 +54,8 @@ class ApplicationController < ActionController::Base
 
   def render_error(exception)
     Rails.logger.error("\nErrorPageRendered: #{exception.inspect}\n#{exception.backtrace.to_s}\n")
-    Rails.logger.fatal("\nErrorPageRendered: #{exception.inspect}\n#{exception.backtrace.to_s}\n")    notify_airbrake(exception)
+    Rails.logger.fatal("\nErrorPageRendered: #{exception.inspect}\n#{exception.backtrace.to_s}\n")    
+    notify_airbrake(exception)
     render :template => "errors/error_500", :status => 500
   end
 
