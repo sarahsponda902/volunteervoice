@@ -194,7 +194,9 @@ class ProgramsController < ApplicationController
         @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
         @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
         @program.accommodations = @program.accommodations.gsub(%r{</?[^>]+?>}, '')
-        @program.program_subjects = @program.program_subjects.map(&:subject).join(", ")
+        if @program.program_subjects.class.name != "String"
+          @program.program_subjects = @program.program_subjects.map(&:subject).join(", ")
+        end
         flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          render :action => "new" 
       end

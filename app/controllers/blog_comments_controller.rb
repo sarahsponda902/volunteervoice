@@ -1,8 +1,7 @@
 class BlogCommentsController < ApplicationController
-	unloadable
-
-	helper :blog
   include ActionView::Helpers::TextHelper
+	unloadable
+	helper :blog
   
 	layout(BlogKit.instance.settings['layout'] || 'application')
 
