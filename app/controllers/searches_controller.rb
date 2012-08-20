@@ -30,7 +30,11 @@ class SearchesController < ApplicationController
 
   def error
     @search = Search.new
-    @locations = Program.map(&:location)
+    @locations = []
+    Program.for_each(:batch_size => 200) do |f|
+      @locations << f.location unless @locations.include?(f.location)
+    end
+    
     @search_regions = regions
     @search_subjects = subjects
     @search_sizes = sizes
@@ -86,8 +90,10 @@ class SearchesController < ApplicationController
         length_max = @search.length_max_number.to_i.send(@search.length_max_param).to_f
       end
       
-     
-      @locations = Program.map(&:location)
+     @locations = []
+      Program.for_each(:batch_size => 200) do |f|
+        @locations << f.location unless @locations.include?(f.location)
+      end
       @search_regions = regions
       @search_subjects = subjects
       @search_sizes = sizes
