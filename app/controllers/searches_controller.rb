@@ -669,24 +669,19 @@ class SearchesController < ApplicationController
     @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
     @search.sizes = @search.sizes.join("; ") unless (@search.sizes.class.name == "String" || @search.sizes.nil?)
 
-    if @search.length_min_param.nil?
+
       @search.length_min_param = "weeks"
-    end
-    if @search.length_max_param.nil?
+
       @search.length_max_param = "years"
-    end
-    if @search.length_min_number.nil?
+
       @search.length_min_number = 0
-    end
-    if @search.length_max_number.nil?
+
       @search.length_max_number = 2
-    end
-    if @search.price_min.nil?
+
       @search.price_min = 0
-    end
-    if @search.price_max.nil?
+
       @search.price_max = 99999
-    end
+
 
     respond_to do |format|
       if @search.save
