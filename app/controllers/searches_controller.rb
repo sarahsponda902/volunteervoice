@@ -97,10 +97,6 @@ class SearchesController < ApplicationController
       @search_regions = regions
       @search_subjects = subjects
       @search_sizes = sizes
-      
-      Program.all.for_some do |f|
-        @search_sizes << f
-      end
      
      
      
