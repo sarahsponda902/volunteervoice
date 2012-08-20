@@ -46,15 +46,15 @@ class ApplicationController < ActionController::Base
   private
 
   def render_not_found(exception)
-    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
-    Rails.logger.fatal("\nErrorPageRendered: #{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
+    Rails.logger.error("\nErrorPageRendered: #{params[:controller]}##{params[:action]}: #{exception.inspect}\n#{exception.backtrace[0..max_range].to_s}\n")
+    Rails.logger.fatal("\nErrorPageRendered: #{params[:controller]}##{params[:action]}: #{exception.inspect}\n#{exception.backtrace[0..max_range].to_s}\n")
     notify_airbrake(exception)
     render :template => "errors/error_404", :status => 404
   end
 
   def render_error(exception)
-    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
-    Rails.logger.fatal("\nErrorPageRendered: #{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
+    Rails.logger.error("\nErrorPageRendered: #{params[:controller]}##{params[:action]}: #{exception.inspect}\n#{exception.backtrace[0..max_range].to_s}\n")
+    Rails.logger.fatal("\nErrorPageRendered: #{params[:controller]}##{params[:action]}: #{exception.inspect}\n#{exception.backtrace[0..max_range].to_s}\n")
     notify_airbrake(exception)
     render :template => "errors/error_500", :status => 500
   end
