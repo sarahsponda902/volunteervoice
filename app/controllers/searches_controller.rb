@@ -30,6 +30,10 @@ class SearchesController < ApplicationController
 
   def error
     @search = Search.new
+    @locations = Program.map(&:location)
+    @search_regions = regions
+    @search_subjects = subjects
+    @search_sizes = sizes
     respond_to do |format|
       format.html
     end
@@ -81,7 +85,15 @@ class SearchesController < ApplicationController
       else
         length_max = @search.length_max_number.to_i.send(@search.length_max_param).to_f
       end
-
+      
+     
+      @locations = Program.map(&:location)
+      @search_regions = regions
+      @search_subjects = subjects
+      @search_sizes = sizes
+     
+     
+     
 
 
       @the_search = Program.search do
