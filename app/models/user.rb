@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
  
   
-  # Paperclip
+  # Carrierwave
 mount_uploader :photo, ImageUploader
 mount_uploader :square_image, ImageUploader
   

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if user_signed_in?
       @user = current_user
     else
-      redirect_to "/pages/blogs"
+      redirect_to "/users/profile"
     end
   end
   
