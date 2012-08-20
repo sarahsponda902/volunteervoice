@@ -755,7 +755,6 @@ img.reviewPhoto { /* individual review photo */
 			</div>
 			<div class="row" id="userBoxContainer">
 				<div class="three columns" id="userImageContainer">
-					<%= current_user.id %>
 					<% if !(User.find(current_user.id).square_image.url.nil?)%>
 				<%= image_tag User.find(current_user.id).square_image.url, :id => "userImage" %>
 					<% else %>
