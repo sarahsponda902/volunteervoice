@@ -279,14 +279,14 @@ a.backToLink:hover {
 	width:100px;
 	height:100px;
 }
-#orgNameContainerOuter {
+#progNameContainerOuter {
 	width:53%; 
 	text-align:left; 
 	margin:0; 
 	padding:0; 
 	margin-top:20px;
 }
-#orgNameContainer {
+#progNameContainer {
 	font-size:3em; 
 	line-height:1em;
 }
@@ -312,12 +312,12 @@ a.organization_url {
 	color:#e67b5a; 
 	line-height:1.3em;
 }
-#programNameContainer {
+#orgNameContainer {
 	margin-bottom:25px;
 	margin-left:15px; 
 	margin-top:30px;
 }
-#programName {
+#orgName {
 	font-size:2.5em; 
 	color:#e67b5a; 
 	line-height:1em;
@@ -465,10 +465,9 @@ a.basedOnReviewsLink:hover {
 		<div class="two columns" id="progSquareImageContainer">
 			<%= image_tag @program.square_image.url, :id => "squareImage"%>
 		</div>
-		<div class="seven columns" id="orgNameContainerOuter">
+		<div class="seven columns" id="progNameContainerOuter">
 			<br />
-			<p id="orgNameContainer"> <a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
-			<a href="<%=Organization.find(@program.organization_id).url%>" class="organization_url" target="_blank"><u> <%=Organization.find(@program.organization_id).url%></u></a>
+			<p id="progNameContainer"> <%= @program.name%></p>
 
 		</div>
 		<div class="two columns"  id="progRatingContainer">
@@ -487,8 +486,8 @@ a.basedOnReviewsLink:hover {
 	</div>
 	<div class="row">
 
-	<div class="ten columns" id="programNameContainer">
-		<p id="programName"><%= @program.name%></p>
+	<div class="ten columns" id="orgNameContainer">
+		<p id="orgName"><a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
 	</div>
 	<div class="ten columns" class="detailsLabelContainer">
 		<p id="detailsLabel"><u>Details:</u></p>
