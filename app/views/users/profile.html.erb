@@ -755,8 +755,8 @@ img.reviewPhoto { /* individual review photo */
 			</div>
 			<div class="row" id="userBoxContainer">
 				<div class="three columns" id="userImageContainer">
-					<% if !(@user.square_image.url.nil?)%>
-				<%= image_tag @user.square_image.url, :id => "userImage" %>
+					<% if !(current_user.square_image.url.nil?)%>
+				<%= image_tag current_user.square_image.url, :id => "userImage" %>
 					<% else %>
 					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
 					<% end %>
