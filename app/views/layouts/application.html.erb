@@ -48,12 +48,12 @@
 	a.login-window:link{color:white}
 	a.login-window:active{color:white}
 	a.login-window:visited{color:white}
-	a.login-window:hover{color:#9bce6c}
+	a.login-window:hover{color:#d6a539}
 	
 	a.register:link{color:white}
 	a.register:active{color:white}
 	a.register:visited{color:white}
-	a.register:hover{color:#e67b5a}
+	a.register:hover{color:#9bce6c}
 	
 	a.logout:link{color:white}
 	a.logout:active{color:white}
@@ -268,12 +268,12 @@
 			</div>
 			
 <!-- LOGIN BOXES -->
-	<!-- IF USER NOT SIGNED IN: "Login or Join" -->
+	<!-- IF USER NOT SIGNED IN: "Login or Register" -->
 	<% if !(user_signed_in?) && !(organization_account_signed_in?) %>			
 			<div class="three columns loginContainer" id="loginOrJoinContainer">
 			<div class="row login">
 				<a href="#login-box" class="login-window">LOGIN</a>
-				or <a href= "/sign_up" class="register">JOIN</a>
+				or <a href= "/sign_up" class="register">REGISTER</a>
 			</div>
 			</div>
 	<% else %>
