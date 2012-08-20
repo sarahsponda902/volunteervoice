@@ -928,7 +928,7 @@ img.reviewPhoto { /* individual review photo */
 .fakeFileInputs {
 	display:block;
 }
-.uploadPhotoButton {
+#uploadPhotoButton {
 	height:40px;
 	margin-top:15px; 
 	margin-left:20px; 
@@ -1121,7 +1121,7 @@ img.reviewPhoto { /* individual review photo */
 				<a href="#" class="close"><div class="close_image"></div></a>
 				<p class="maxPhotoWidth">Max photo width: 700 pixels</p>
 			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
-				  <div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" class="uploadPhotoButton" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
+				  <div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" id="uploadPhotoButton" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
 					  <%= f.hidden_field :crops, :value => true%>
 					  <%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile())"%></div>
 				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :height => "40px", :id => "submitButtonUpload", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
