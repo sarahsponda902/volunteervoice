@@ -91,7 +91,7 @@ class SearchesController < ApplicationController
       end
       
      @locations = []
-      Program.for_each(:batch_size => 200) do |f|
+      Program.all.for_each(:batch_size => 200) do |f|
         @locations << f.location unless @locations.include?(f.location)
       end
       @search_regions = regions
