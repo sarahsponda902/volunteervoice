@@ -437,6 +437,12 @@ th {
 	text-align:center; 
 	padding-top:15px;
 }
+a.basedOnReviewsLink {
+	color:#e67b5a;
+}
+a.basedOnReviewsLink:hover {
+	color:#9bce6c;
+}
 
 </style>
 
@@ -471,7 +477,7 @@ th {
 			<%= render :partial => "bigStar", :locals => {:stars => (@program.roundup(@overall))}%>
 			<br />
 
-			<p class="basedOnReviewsContainer">Based on <%= @program.reviews.count%> reviews</p> 
+			<p class="basedOnReviewsContainer"><a class="basedOnReviewsLink" href="#results">Based on <%= @program.reviews.count%> reviews</a></p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{@program.id}/edit"%> <br /><br /><br />
