@@ -428,7 +428,7 @@ a.createInput:hover {
 $(document).ready(function(){
 	//set the program_subjects field to strings, rather than the program_subjects objects
 	<% if @program.program_subjects.present? %>
-	$("#subjects").val("<%=@program.program_subjects.map(&:subject).join(", ")%>");
+	$("#subjects").val("<%=@program.program_subjects.map(&:subject).join(', ')%>");
 	<% end %>
 	
 	//set the organization name if necessary and applicable
