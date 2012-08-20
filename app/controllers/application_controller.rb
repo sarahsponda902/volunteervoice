@@ -46,13 +46,13 @@ class ApplicationController < ActionController::Base
   private
 
   def render_not_found(exception)
-    log_error(exception)
+    Rails.logger.error("\n#{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
     notify_airbrake(exception)
     render :controller => "errors", :action => "error_404", :status => 404
   end
 
   def render_error(exception)
-    log_error(exception)
+    Rails.logger.error("\n#{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
     notify_airbrake(exception)
     render :controller => "errors", :action => "error_500", :status => 500
   end
