@@ -317,8 +317,11 @@ a.organization_url {
 	margin-left:15px; 
 	margin-top:30px;
 }
+#orgNameLabel {
+	color:#575758;
+}
 #orgName {
-	font-size:2.5em; 
+	font-size:1.6em; 
 	color:#e67b5a; 
 	line-height:1em;
 }
@@ -487,7 +490,7 @@ a.basedOnReviewsLink:hover {
 	<div class="row">
 
 	<div class="ten columns" id="orgNameContainer">
-		<p id="orgName"><a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
+		<p id="orgName"><span id="orgNameLabel"><u>Organization:</u> </span><a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
 	</div>
 	<div class="ten columns" class="detailsLabelContainer">
 		<p id="detailsLabel"><u>Details:</u></p>
