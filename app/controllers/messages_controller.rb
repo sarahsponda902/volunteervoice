@@ -60,7 +60,7 @@ include ActionView::Helpers::TextHelper
   
   def mark_sent_deleted
     @message = Message.find(params[:id])
-    if (user_signed_in?) && ((current_user.admin?) || (user_signed_in? && current_user.id == @message.sender_id))
+    if (user_signed_in?) && ((current_user.admin?) || (current_user.id == @message.sender_id))
       @message.sender_deleted = true
       @message.save
       redirect_to "/users/profile/sent_deleted"
@@ -71,7 +71,7 @@ include ActionView::Helpers::TextHelper
   
   def mark_deleted
     @message = Message.find(params[:id])
-        if (user_signed_in?) && ((current_user.admin?) || (user_signed_in? && current_user.id == @message.recipient_id))
+        if (user_signed_in?) && ((current_user.admin?) || (current_user.id == @message.recipient_id))
           @message.recipient_deleted = true
           @message.save
           redirect_to "/users/profile/message_deleted"
