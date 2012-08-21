@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   private
 
   def render_not_found(exception)
-    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
+    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
     notify_airbrake(exception)
     respond_to do |format|
       format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_error(exception)
-    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
+    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
     notify_airbrake(exception)
     respond_to do |format|
       format.html { render 'errors/error_500', layout: 'layouts/application', status: 500 }
