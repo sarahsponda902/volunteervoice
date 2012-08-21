@@ -36,7 +36,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :scale => [700, nil]
     
     def scale(max_width, max_height)
-      image = MiniMagick::Image.open(picture.path)
+      image = MiniMagick::Image.open(file.path)
       if image[:width] > max_width
         process :resize_to_fit => [max_width, max_height]
       end
