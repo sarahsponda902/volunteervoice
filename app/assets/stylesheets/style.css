@@ -250,7 +250,8 @@ html, body, div, span, applet, object, iframe,
 #headerLogoSignedOut {
 	height:95px;
 	cursor:pointer;
-	margin-top:10px;
+	margin-top:30px;
+	margin-bottom:-15px;
 }
 
 
@@ -300,7 +301,7 @@ input[name="search[keywords]"] {
 
 .login a{color: white;}
 
-.login a:hover {color:#c1dfdb;}
+.login a:hover {color:#68c2d8;}
 
 .login.unreadMessagesCount { color:#e67b5a; }
 
