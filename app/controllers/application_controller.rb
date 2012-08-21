@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     if request.referrer
       case URI(request.referrer).path 
-      when '/registrations/mustBe', '/reviews/new', '/users/profile' then
+      when '/registrations/mustBe', '/reviews/new', '/users/profile', '/contacts' then
         '/'
       else
         request.referrer
