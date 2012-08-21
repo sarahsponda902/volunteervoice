@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+require 'carrierwave/processing/mini_magick' 
 class ImageUploader < CarrierWave::Uploader::Base
   
   def cache_dir
