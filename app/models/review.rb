@@ -47,11 +47,11 @@ def resize_review_photos
   if !photo.blank?
     image = MiniMagick::Image.open(self.photo.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo = image
@@ -59,11 +59,11 @@ def resize_review_photos
   if !photo2.blank?
     image = MiniMagick::Image.open(self.photo2.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo2 = image
@@ -71,11 +71,11 @@ def resize_review_photos
   if !photo3.blank?
     image = MiniMagick::Image.open(self.photo3.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo3 = image
@@ -83,11 +83,11 @@ def resize_review_photos
   if !photo4.blank?
     image = MiniMagick::Image.open(self.photo4.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo4 = image
@@ -95,11 +95,11 @@ def resize_review_photos
   if !photo5.blank?
     image = MiniMagick::Image.open(self.photo5.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo5 = image
@@ -107,11 +107,11 @@ def resize_review_photos
   if !photo6.blank?
     image = MiniMagick::Image.open(self.photo6.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo6 = image
@@ -119,11 +119,11 @@ def resize_review_photos
   if !photo7.blank?
     image = MiniMagick::Image.open(self.photo7.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo7 = image
@@ -131,11 +131,11 @@ def resize_review_photos
   if !photo8.blank?
     image = MiniMagick::Image.open(self.photo8.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo8 = image
@@ -144,11 +144,11 @@ def resize_review_photos
   if !photo9.blank?
     image = MiniMagick::Image.open(self.photo9.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo9 = image
@@ -156,11 +156,11 @@ def resize_review_photos
   if !photo10.blank?
     image = MiniMagick::Image.open(self.photo10.url)
     if image[:width] > 600
-      scaling_width_percent = (image[:width] / 600)*100
+      scaling_width_percent = (600 / image[:width])*100
       image.sample(scaling_width_percent.to_s + "%")
     end  
     if image[:height] > 300
-      scaling_height_percent = (image[:height] / 300)*100
+      scaling_height_percent = (300 / image[:height])*100
       image.sample(scaling_height_percent.to_s + "%")
     end
     self.photo10 = image

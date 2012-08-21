@@ -61,7 +61,7 @@ def square_image_crop
    if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
      image = MiniMagick::Image.open(self.photo.url)
      if image[:width] > 700
-       resize_scale = 700/image[:width] * 100
+       resize_scale = (700/image[:width]) * 100
        image.sample(resize_scale.to_s + "%")
      end
      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
