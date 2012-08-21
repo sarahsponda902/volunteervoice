@@ -660,7 +660,7 @@ img.reviewPhoto { /* individual review photo */
 
 .sentInboxTabs {
 	margin-left:25px; 
-	margin-top:15px;
+	margin-top:-15px;
 }
 .sentInboxTabs li {
 	cursor:pointer; 
@@ -672,10 +672,10 @@ img.reviewPhoto { /* individual review photo */
 .noMessagesMessage {
 	color:#575758; 
 	margin-left:200px; 
-	margin-top:-90px;
+	margin-top:-120px;
 }
 .messagesContainer {
-	margin-top:-90px;
+	margin-top:-120px;
 }
 #messages {
 	margin-left:5px; 
@@ -743,7 +743,12 @@ a.usernameLink:hover {
 .message-window {
 	display:none;
 }
-.messagesContainer {
+#messagesContainer {
+	font-family:architectsDaughterRegular; 
+	color: #e67b5a; 
+	margin-right:65px;
+}
+#sentsContainer {
 	font-family:architectsDaughterRegular; 
 	color: #e67b5a; 
 	margin-right:65px;
@@ -845,7 +850,7 @@ a.usernameLink:hover {
 			</div>
 			
         <div id="messages-contents" class="contents">
-			<div align="right" id="messagesContainer">
+			<div align="right" id="sentsContainer">
 				<%= @messages.count%> Messages
 				</div>
 	<div id="divmessages">

@@ -44,7 +44,7 @@
 		
 <div class="buttonsContainer">
 	<div class="six columns leftButtonContainer">		
-<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/DontTerminateButton.png"), "/pages/profile", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/DontTerminateButton.png"), "/users/profile", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 	</div>
 	<div class="six columns rightButtonContainer">	
 <%= button_to " ", user_registration_path, :method => :delete, :id => "buttonToDeleteUser", :class => "hiddenButtonToDeleteUser"%>
