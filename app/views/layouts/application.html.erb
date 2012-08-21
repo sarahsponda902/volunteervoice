@@ -266,9 +266,9 @@
 			<div class="four columns headerLogoContainer">
 			<a href="/">
 				<% if !(current_user.nil? || current_organization_account.nil?)%>
-					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo">
+					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogoSignedOut">
 				<% else %>
-					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogoSignedIn">
+					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo">
 				<% end %>
 				</a>
 			</div>
