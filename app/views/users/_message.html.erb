@@ -1,7 +1,7 @@
 <table class="messageTable" cellspacing="0" border="0" cellpadding="0" width="80%">
 	<tr>
 		<td width="25%"><b>
-			<a href="#message-box<%=m.id%>" class="message-window" id="message"> </a>
+			<a href="#message-box<%=m.id%>" class="message-window" id="messageLinkToPopup<%=m.id%>"> </a>
 			<% if User.where(:id => m.sender_id).empty? %>
 			<span class="username">???</span>
 			<% else %>
@@ -51,3 +51,7 @@
 
 	</td></tr>
 </table>
+
+<script>
+	$(document).on("click", ".messageTable tr td", function(){ $("#messageLinkToPopup"+<%=m.id%>).click(); } )
+</script>

@@ -2,7 +2,7 @@
 <table class="sentTable" cellspacing="0" border="0" cellpadding="0" width="80%">
 	<tr>
 		<td width="25%"><b>
-			<a href= "#sent-box<%=m.id%>" class="message-window"> </a>
+			<a href= "#sent-box<%=m.id%>" class="message-window" id="sentLinkToPopup<%=m.id%>"> </a>
 			<% if User.where(:id => m.recipient_id).empty? %>
 			???
 			<% else %>
@@ -46,5 +46,9 @@
 
 	</td></tr>
 </table>
+
+<script>
+	$(document).on("click", ".messageTable tr td", function(){ $("#sentLinkToPopup"+<%=m.id%>).click(); } )
+</script>
 
 </div>
