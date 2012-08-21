@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+require 'carrierwave/processing/mini_magick' 
 class ImageUploader < CarrierWave::Uploader::Base
   
   def cache_dir
@@ -30,18 +30,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
-
-  # Process files as they are uploaded:
-  # process :scale => [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
   # end
 
   # Add a white list of extensions which are allowed to be uploaded.

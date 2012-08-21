@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     if request.referrer
       case URI(request.referrer).path 
-      when '/registrations/mustBe', '/reviews/new', '/users/profile' then
+      when '/registrations/mustBe', '/reviews/new', '/users/profile', '/contacts' then
         '/'
       else
         request.referrer
@@ -39,14 +39,14 @@ class ApplicationController < ActionController::Base
     rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
     rescue_from ActionController::RoutingError, :with => :render_not_found
     rescue_from ActionController::UnknownController, :with => :render_not_found
-    rescue_from ::AbstractController::ActionNotFound, :with => :render_not_found
+    rescue_from AbstractController::ActionNotFound, :with => :render_not_found
   end
 
 
   private
 
   def render_not_found(exception)
-    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
+    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
     notify_airbrake(exception)
     respond_to do |format|
       format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def render_error(exception)
-    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}):\n #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
+    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
     notify_airbrake(exception)
     respond_to do |format|
       format.html { render 'errors/error_500', layout: 'layouts/application', status: 500 }

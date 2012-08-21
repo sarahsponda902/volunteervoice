@@ -18,8 +18,8 @@ class User < ActiveRecord::Base
   validates_presence_of :dob, :message => "Date of Birth can't be blank"
   validates_length_of :username, :maximum => 30
   before_save :square_image_crop 
-  before_save :validate_photo_width 
   before_create :validate_email
+  validates :photo, :file_size => {:maximum => 1.megabytes.to_i}
 
 
   # Include default devise modules. Others available are:
@@ -37,16 +37,6 @@ mount_uploader :square_image, ImageUploader
       
       #Simple Private Messaging     
       has_private_messages
-      
-      def validate_photo_width
-        if !(photo.nil?) && !(photo.url.nil?)
-          @photo = MiniMagick::Image.open(photo.url)
-          if @photo['width'] > 700
-            errors.add(:photo, "must have a width of less than 700 pixels")
-            return false
-          end
-        end
-      end
 
       def validate_email
         if !(email == email_confirmation)
@@ -65,10 +55,15 @@ def self.find_first_by_auth_conditions(warden_conditions)
       end
 end
 
+
 def square_image_crop
   if (self.crops)
    if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
      image = MiniMagick::Image.open(self.photo.url)
+     if image[:width] > 700
+       resize_scale = (700/image[:width].to_f) * 100
+       image.sample(resize_scale.to_s + "%")
+     end
      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
      self.square_image = image

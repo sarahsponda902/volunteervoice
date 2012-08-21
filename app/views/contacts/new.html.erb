@@ -102,7 +102,14 @@ a.contact-window:hover, a.organizations-window:hover, a.questions-window:hover{
 }
 .submitButtonContainer {
 	text-align:center;
+}
+.graySubmitButtonContainer {
+	text-align:center;
+}
+.noSubmitButtonContainer {
+	text-align:center;
 	color:#E67B5A;
+	margin-top:-30px;
 }
 </style>
 
@@ -207,7 +214,8 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 			  </div>
 			
 			 <div id="nosubmit-contact">
-				<p class="submitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
+				<p class="graySubmitButtonContainer"><%= image_tag "/assets/smallSubmitGray.png"%></p>
+				<p class="noSubmitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
 			</div>
 			<% end %>	
 	</div>	<!-- END CONTACT POPUP -->
@@ -246,13 +254,14 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				    </div>
 
 
-				  <div id="submit-organizations">
-				    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
-				  </div>
+				  	<div id="submit-organizations">
+					    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
+					  </div>
 
-				 <div id="nosubmit-organizations">
-					<p class="submitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
-				</div>
+					 <div id="nosubmit-organizations">
+						<p class="graySubmitButtonContainer"><%= image_tag "/assets/smallSubmitGray.png"%></p>
+						<p class="noSubmitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
+					</div>
 				<% end %>
 	</div>	<!-- END ORGANIZATIONS POPUP -->
 
@@ -291,13 +300,14 @@ Hey! We would really love to hear from you.  If you love the site, if you hate t
 				    </div>
 
 
-				  <div id="submit-questions">
-				    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
-				  </div>
+				  	<div id="submit-questions">
+					    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
+					  </div>
 
-				 <div id="nosubmit-questions">
-					<p class="submitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
-				</div>
+					 <div id="nosubmit-questions">
+						<p class="graySubmitButtonContainer"><%= image_tag "/assets/smallSubmitGray.png"%></p>
+						<p class="noSubmitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
+					</div>
 				<% end %>
 	
 	

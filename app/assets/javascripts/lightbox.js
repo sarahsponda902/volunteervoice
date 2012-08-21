@@ -265,7 +265,7 @@ lightbox = new Lightbox options
       $lightbox = $('#lightbox');
       $lightbox.find('.lb-nav').show();
       if (this.currentImageIndex > 0) $lightbox.find('.lb-prev').show();
-      if (this.currentImageIndex < (this.album.length - 2) / 2) {
+      if (this.currentImageIndex < this.album.length - 1) {
         $lightbox.find('.lb-next').show();
       }
     };

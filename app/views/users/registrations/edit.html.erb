@@ -115,19 +115,29 @@ select {
 	float:center;
 }
 .myProfilePicLabel {
+	text-align:center;
 	width:225px; 
 	margin-left:95px; 
 	font-family:architectsDaughterRegular; 
 	font-size:1.3em; 
-	text-align:left; 
 	padding-right:0px;
+}
+#currentImageLabel {
+	font-family:Tahoma;
+	font-size:0.77em;
+}
+#tinyUserProfilePic {
+	margin-left:10px;
+	margin-top:15px;
+	height:30px;
 }
 #upload-box {
 	width:300px;
 }
 .uploadImageAndFieldContainer {
  	display:block; 
-	margin-left:-65px;
+	margin-left:-35px;
+	margin-top:15px;
 }
 .uploadPhotoImage {
 	height:40px;
@@ -190,7 +200,7 @@ select {
 									<% end %>
 							</select>
 						</div>
-						 <image class="checkMark firstMark" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck()); $('#user_profile_show').attr('checked', false)">
+						 <image class="checkMark firstMark" id="checkAgeCountry" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck()); $('#user_profile_show').attr('checked', false)">
 							<div class="checkBox firstBox" >
 							<%= f.check_box :profile_show, :onchange => "$(beforeCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel firstLabel"> Hide my age/country on my profile</div><br />
 
@@ -221,14 +231,18 @@ select {
 			</div>
 				<div class="row top">
 					<div class="six columns" id = "myProfilePicBoxContainer">
-					<div class="six columns myProfilePicLabel">My Profile Pic:</div>
+					<div class="six columns myProfilePicLabel">My Profile Pic:
+						<br />
+						<span id="currentImageLabel">Current Pic: </span>
+						<img id="tinyUserProfilePic" src="<%=current_user.square_image.url%>" />
+					</div>
 					<div id="upload-box" class="five columns">
-						  <div class="uploadImageAndFieldContainer"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" class="uploadPhotoImage" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" disabled="true" value="no file selected">
+						  <div class="uploadImageAndFieldContainer"><image src="/assets/changePhoto.png" class="uploadPhotoImage" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" disabled="true" value="no file selected">
 							
 				 <input id="user_crops" name="user[crops]" type="hidden" value="false" />
 				
 							  <%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile()); $('#user_crops').val('true');"%>
-							<p class="maxPhotoWidthBlurb">**Max photo width: 700 pixels</p></div>
+							<p class="maxPhotoWidthBlurb">**Max photo width: 1 MB</p></div>
 
 					</div>
 					</div>
@@ -242,10 +256,39 @@ select {
 
 			<script type="text/javascript">
 			function beforeCheck() {
-				$('#checkBefore').toggle();
+				$('#checkAgeCountry').toggle();
 			}
 
 			function messagesCheck() {
 				$('#checkMessages').toggle();
 			}
+			
+			//define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
+				var message = <%= current_user.messages_show.to_s %>;
+				var profile = <%= current_user.profile_show.to_s %>;
+				var country = <%= current_user.country.to_s %>;
+
+
+			$(document).ready(function() {
+
+
+				//set the user's country in the account-edit popup
+				$('#user_country').val(country.toString());
+
+
+				//hide/show message/profile checkmarks if appropriate
+					if (message) 
+					{
+						$("#checkMessages").show();
+					} else {
+						$("#checkMessages").hide();
+					}
+
+					if (profile) 
+					{
+						$("#checkAgeCountry").show();
+					} else {
+						$("#checkAgeCountry").hide();
+					}
+			});
 			</script>

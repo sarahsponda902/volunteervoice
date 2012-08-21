@@ -1132,7 +1132,7 @@ a.usernameLink:hover {
 			
 			<div id="upload-box" class="upload-popup">
 				<a href="#" class="close"><div class="close_image"></div></a>
-				<p class="maxPhotoWidth">Max photo width: 700 pixels</p>
+				<p class="maxPhotoWidth">Max photo width: 1 MB</p>
 			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
 				  <div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" id="uploadPhotoButton" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
 					  <%= f.hidden_field :crops, :value => true%>
@@ -1201,18 +1201,17 @@ a.usernameLink:hover {
 
 
 
-		//set the user's country in the account-edit popup
-		$('#user_country').val("<%=current_user.country%>");
-
-
 //define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
-	var message = <%= @user.messages_show.to_s %>
-	var profile = <%= @user.profile_show.to_s %>
+	var message = <%= @user.messages_show.to_s %>;
+	var profile = <%= @user.profile_show.to_s %>;
 
 
 
 $(document).ready(function() {
 	
+
+	//set the user's country in the account-edit popup
+	$('#user_country').val("<%=current_user.country%>");
 	
 
 	//hide/show message/profile checkmarks if appropriate
