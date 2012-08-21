@@ -238,7 +238,7 @@ html, body, div, span, applet, object, iframe,
 #header {
 	min-width:970px; 
 	color:#575758;
-	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/header.png);
 }
 .headerLogoContainer { 
 	margin-top:15px;
@@ -438,10 +438,10 @@ margin-top:0px}
 	}
 	/*Left More on Us Links*/
 	.moreOnUsTitle {
-		margin-bottom:12px;
+		margin-bottom:7px;
 	}
 	.footerMoreOnUsLinks {
-		font-size:16px; 
+		font-size:1.1em; 
 		line-height:2em;
 	}
 	
