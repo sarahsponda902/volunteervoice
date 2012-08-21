@@ -156,14 +156,11 @@
   line-height: 1em;
 }
 /* line 107, ../sass/lightbox.sass */
-.lb-data {
-  display: block;
+.lb-data .lb-number {
+  display: none;
   clear: left;
   padding-bottom: 1em;
   font-size: 11px;
-}
-.lb-number {
-	display:none;
 }
 /* line 112, ../sass/lightbox.sass */
 .lb-data .lb-close {
