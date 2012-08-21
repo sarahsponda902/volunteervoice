@@ -704,7 +704,7 @@ img.reviewPhoto { /* individual review photo */
 }
 #favorites {
 	margin-left:5px; 
-	margin-top:-12px;
+	margin-top:-18px;
 }
 #reviews-contents {
 	margin-top:50px;
@@ -1556,7 +1556,7 @@ $(document).ready(function() {
 			//initialize smartpagintaor for each of the tabs
 			$('#reviews').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-            $('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 1, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+            $('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 4, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
             $('#messages').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
