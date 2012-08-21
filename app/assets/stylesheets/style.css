@@ -248,9 +248,7 @@ html, body, div, span, applet, object, iframe,
 	cursor:pointer;
 }
 #headerLogoSignedOut {
-	height:95px;
-	cursor:pointer;
-	margin-top:10px;
+	margin-top:15px;
 }
 
 

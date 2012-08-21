@@ -263,15 +263,19 @@
 		<div class="row">
 		<header class="header">
 			
+			<% if !(current_user.nil? || current_organization_account.nil?)%>
 			<div class="four columns headerLogoContainer">
 			<a href="/">
-				<% if !(current_user.nil? || current_organization_account.nil?)%>
-					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogoSignedOut">
-				<% else %>
 					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo">
-				<% end %>
-				</a>
+			</a>
 			</div>
+			<% else %>
+			<div class="four columns headerLogoContainer" id="headerLogoSignedOut">
+			<a href="/">
+					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo">
+			</a>
+			</div>
+			<% end %>
 			
 <!-- LOGIN BOXES -->
 	<!-- IF USER NOT SIGNED IN: "Login or Register" -->
