@@ -22,7 +22,7 @@ validates :photo10, :file_size => {:maximum => 0.5.megabytes.to_i}
 belongs_to :program
 belongs_to :user
 has_many :flags, :dependent => :destroy
-before_save :resize_review_photos
+#before_save :resize_review_photos
 
 
 
