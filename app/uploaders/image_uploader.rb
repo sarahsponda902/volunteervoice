@@ -32,13 +32,21 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
+  def resize_to_fit(width, height)
+    manipulate! do |img|
+      img.resize "#{width}x#{height}"
+      img = yield(img) if block_given?
+      img
+    end
+  end
+
   # Process files as they are uploaded:
   process :resize_to_fit => [700, nil]
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :scale => [50, 50]
-  # end
+  version :review, :if => model.class.to_s == "Review" do
+    process :resize_to_fit => [600, 300]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
