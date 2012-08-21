@@ -222,8 +222,13 @@ class SearchesController < ApplicationController
       @search.subjects = ["Technology", "Media, Marketing, and Graphic Design"]
     end
     
-    @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
-
+      @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
+      @search.length_min_param = "weeks"
+      @search.length_max_param = "years"
+      @search.length_min_number = 0
+      @search.length_max_number = 2
+      @search.price_min = 0
+      @search.price_max = 99999
     respond_to do |format|
       if @search.save
         format.html { redirect_to @search, notice: 'Search was successfully created.' }
@@ -669,19 +674,24 @@ class SearchesController < ApplicationController
     @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
     @search.sizes = @search.sizes.join("; ") unless (@search.sizes.class.name == "String" || @search.sizes.nil?)
 
-
+    if @search.length_min_param.nil?
       @search.length_min_param = "weeks"
-
+    end
+    if @search.length_max_param.nil?
       @search.length_max_param = "years"
-
+    end
+    if @search.length_min_number.nil?
       @search.length_min_number = 0
-
+    end
+    if @search.length_max_number.nil?
       @search.length_max_number = 2
-
+    end
+    if @search.price_min.nil?
       @search.price_min = 0
-
+    end
+    if @search.price_max.nil?
       @search.price_max = 99999
-
+    end
 
     respond_to do |format|
       if @search.save
