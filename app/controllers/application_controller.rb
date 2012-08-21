@@ -33,6 +33,15 @@ class ApplicationController < ActionController::Base
   end
 
 
+  def method_missing(m, *args, &block)
+    Rails.logger.error(m)
+    notify_airbrake(m)
+    respond_to do |format|
+      format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
+      format.all { render nothing: true, status: 404 }
+    end
+  end
+
   #render pretty error pages when 404 or 500 status code appear
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_error
@@ -40,6 +49,7 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::RoutingError, :with => :render_not_found
     rescue_from ActionController::UnknownController, :with => :render_not_found
     rescue_from AbstractController::ActionNotFound, :with => :render_not_found
+    rescue_from ActionController::UnknownAction, :with => :render_not_found
   end
 
 
