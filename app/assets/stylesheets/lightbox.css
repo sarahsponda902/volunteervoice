@@ -113,6 +113,13 @@
   background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/next.png) right 48% no-repeat;
 }
 
+a.lb-next:hover {
+  background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/next.png) right 48% no-repeat;
+}
+a.lb-prev:hover {
+  background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/prev.png) left 48% no-repeat;
+}
+
 /* line 88, ../sass/lightbox.sass */
 .lb-dataContainer {
   margin: 0 auto;
