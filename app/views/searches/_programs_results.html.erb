@@ -9,7 +9,7 @@
 		<tr onclick="window.location.href = 'http://girlpowerproject.herokuapp.com/programs/<%=f.id%>'">
 			<td></td>
 			<td colspan="2"><p class="progCategoriesContainer">Category: <span class=" progSubjects">
-			<%=f.program_subjects[0..(f.program_subjects.count - 2)].map{|p| p.subject}.join(", ")%>
+			<%=f.program_subjects.map{|p| p.subject}.join(", ")%>
 				</span></p>
 				<p class="progDescription"><%= f.truncated_description100.html_safe%></p>
 			</td>

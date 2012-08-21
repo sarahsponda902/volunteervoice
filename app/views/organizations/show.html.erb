@@ -397,8 +397,9 @@
 
 	#canEditBlurb {
 		font-size:1.1em;
-		font-family:JosefinSlabRegular;
-		color:#575758; 
+		font-family:Tahoma;
+		color:#e67b5a;
+		font-weight:bold; 
 		margin-top:20px;
 	}
 	#show-contents { /* overarching container */
@@ -556,7 +557,8 @@
 	</div>
 	</div>	
 	<div class="price-ranges-popup" id="price-ranges-box" >
-		<a href="#" class="close"><div class="close_image"></div></a>
+		<a href="#" class="close"><div id="closePriceRanges" class="close_image"></div></a>
+		<div class="overflow">
 		<% if (ProgramCostLengthMap.where(:organization_id => @organization.id).empty?)%>	
 		<p class="infoNotDisclosedTitle">Information not disclosed</p>
 		<p class="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
@@ -605,7 +607,7 @@
 
 	    <%=g.hidden_field :review_id, :id => "review_id" %>
 
-	    <p class="flagSubmitContainer"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+	    <p class="flagSubmitContainer"><%= image_submit_tag ("/assets/submitToVVI.png"), :height => "50px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
 		<% end %>
 	<% else %>
 	<p>You must be signed in to flag a review.</p>
@@ -704,19 +706,19 @@
 
 
 //jQuery for the organization's "Price Breakdown" popup
-			$('a.price-breakdown-window').click(function() {
+			$('a.price-ranges-window').click(function() {
 
 			            //Getting the variable's value from a link 
-				var priceBreakdownBox = $(this).attr('href');
+				var priceRangesBox = $(this).attr('href');
 
 				//Fade in the Popup
-				$(priceBreakdownBox).fadeIn(300);
+				$(priceRangesBox).fadeIn(300);
 
 				//Set the center alignment padding + border see css style
-				var popMargTop = ($(priceBreakdownBox).height() + 24) / 2; 
-				var popMargLeft = ($(priceBreakdownBox).width() + 24) / 2; 
+				var popMargTop = ($(priceRangesBox).height() + 24) / 2; 
+				var popMargLeft = ($(priceRangesBox).width() + 24) / 2; 
 
-				$(priceBreakdownBox).css({ 
+				$(priceRangesBox).css({ 
 					'margin-top' : -popMargTop,
 					'margin-left' : -popMargLeft
 				});
@@ -730,7 +732,7 @@
 
 			// When clicking on the button close or the mask layer the popup closed
 			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .price-breakdown-popup').fadeOut(300 , function() {
+			  $('#mask , .price-ranges-popup').fadeOut(300 , function() {
 				$('#mask').remove();  
 			}); 
 			return false;

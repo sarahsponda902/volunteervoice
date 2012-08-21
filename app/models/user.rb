@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   has_many :new_reviews, :dependent => :destroy
   validates_uniqueness_of :username
   validates_uniqueness_of :email, :message => "is already in use"
-  validates_presence_of :username, :dob
+  validates_presence_of :username
+  validates_presence_of :dob, :message => "Date of Birth can't be blank"
   validates_length_of :username, :maximum => 30
   before_save :square_image_crop 
   before_save :validate_photo_width 
@@ -29,7 +30,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
  
   
-  # Paperclip
+  # Carrierwave
 mount_uploader :photo, ImageUploader
 mount_uploader :square_image, ImageUploader
   
@@ -65,12 +66,14 @@ def self.find_first_by_auth_conditions(warden_conditions)
 end
 
 def square_image_crop
+  if (self.crops)
    if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
      image = MiniMagick::Image.open(self.photo.url)
      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
      self.square_image = image
    end
+  end
  end
  
  def update_with_password(params, *options)

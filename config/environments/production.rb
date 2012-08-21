@@ -11,7 +11,7 @@ RMTest::Application.configure do
   config.whiny_nils = true
 
   # Show full error reports and disable caching
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
   config.action_controller.page_cache_directory = "#{Rails.root}/assets"
 
@@ -57,3 +57,9 @@ ActionMailer::Base.smtp_settings = {
 }
 ActionMailer::Base.delivery_method = :smtp
 GA.tracker = "UA-31745240-1"
+
+class ActionDispatch::Request
+ def local?
+   false
+ end
+end

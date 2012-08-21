@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if user_signed_in?
       @user = current_user
     else
-      redirect_to "/pages/blogs"
+      redirect_to "/users/profile"
     end
   end
   
@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     else
     @message = Message.new
     @flag = Flag.new
+    @reviews = @user.reviews
     
     respond_to do |format|
       format.html # show.html.erb
@@ -81,6 +82,7 @@ class UsersController < ApplicationController
   
   	def profile
   	  if (user_signed_in?)
+  	    @message = Message.new
   	    @user = User.find(current_user.id)
   	    @reviews = @user.reviews.order("created_at DESC")
   	    @favorites = @user.favorites

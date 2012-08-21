@@ -48,8 +48,8 @@ lightbox = new Lightbox options
   LightboxOptions = (function() {
 
     function LightboxOptions() {
-      this.fileLoadingImage = '/assets/loading.gif';
-      this.fileCloseImage = '/assets/close.png';
+      this.fileLoadingImage = 'https://s3-us-west-1.amazonaws.com/volunteervoice/images/loading.gif';
+      this.fileCloseImage = 'https://s3-us-west-1.amazonaws.com/volunteervoice/images/close.png';
       this.resizeDuration = 700;
       this.fadeDuration = 500;
       this.labelImage = "Image";
@@ -265,7 +265,7 @@ lightbox = new Lightbox options
       $lightbox = $('#lightbox');
       $lightbox.find('.lb-nav').show();
       if (this.currentImageIndex > 0) $lightbox.find('.lb-prev').show();
-      if (this.currentImageIndex < this.album.length - 1) {
+      if (this.currentImageIndex < (this.album.length - 2) / 2) {
         $lightbox.find('.lb-next').show();
       }
     };
@@ -277,11 +277,7 @@ lightbox = new Lightbox options
       if (typeof this.album[this.currentImageIndex].title !== 'undefined' && this.album[this.currentImageIndex].title !== "") {
         $lightbox.find('.lb-caption').html(this.album[this.currentImageIndex].title).fadeIn('fast');
       }
-      if (this.album.length > 1) {
-        $lightbox.find('.lb-number').html(this.options.labelImage + ' ' + (this.currentImageIndex + 1) + ' ' + this.options.labelOf + '  ' + this.album.length).fadeIn('fast');
-      } else {
-        $lightbox.find('.lb-number').hide();
-      }
+      $lightbox.find('.lb-number').hide();
       $lightbox.find('.lb-outerContainer').removeClass('animating');
       $lightbox.find('.lb-dataContainer').fadeIn(this.resizeDuration, function() {
         return _this.sizeOverlay();

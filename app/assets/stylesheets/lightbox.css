@@ -26,7 +26,7 @@
   width: auto;
   height: auto;
   max-width:600px;
-  max-height:500px;
+  max-height:300px;
 }
 /* line 27, ../sass/lightbox.sass */
 #lightbox a img {
@@ -36,6 +36,8 @@
 /* line 30, ../sass/lightbox.sass */
 .lb-outerContainer {
   position: relative;
+  max-width:620px;
+  max-height:320px;
   background-color: white;
   *zoom: 1;
   width: 250px;
@@ -103,22 +105,21 @@
 .lb-prev {
   left: 0;
   float: left;
+  background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/prev.png) left 48% no-repeat;
 }
 
 /* line 76, ../sass/lightbox.sass */
 .lb-next {
   right: 0;
   float: right;
+  background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/next.png) right 48% no-repeat;
 }
 
-/* line 81, ../sass/lightbox.sass */
-.lb-prev:hover {
-  background: url(/assets/prev.png) left 48% no-repeat;
+a.lb-next:hover {
+  background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/next.png) right 48% no-repeat;
 }
-
-/* line 85, ../sass/lightbox.sass */
-.lb-next:hover {
-  background: url(/assets/next.png) right 48% no-repeat;
+a.lb-prev:hover {
+  background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/prev.png) left 48% no-repeat;
 }
 
 /* line 88, ../sass/lightbox.sass */
@@ -165,7 +166,7 @@
 }
 /* line 107, ../sass/lightbox.sass */
 .lb-data .lb-number {
-  display: block;
+  display: none;
   clear: left;
   padding-bottom: 1em;
   font-size: 11px;

@@ -9,6 +9,7 @@ class BlogComment < ActiveRecord::Base
 	validates_presence_of :body
 
 	before_save :check_for_spam
+	before_save :redcloth_body
 
 	def validate
 		if !self.user
@@ -20,11 +21,8 @@ class BlogComment < ActiveRecord::Base
 		self.created_at.strftime(BlogKit.instance.settings['post_date_format'] || '%m/%d/%Y at %I:%M%p')
 	end
 
-	def parsed_body
-		# # Going to add markdown/html support later for comments
-		# self.code_highlight_and_markdown(self.body, {:escape_html => true})
-
-		self.body
+	def redcloth_body
+    self.body = RedCloth.new( ActionController::Base.helpers.sanitize( self.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 	end
 
 	def user_name

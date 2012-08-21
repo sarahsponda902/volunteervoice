@@ -247,7 +247,7 @@ input[type="number"]{
 	width:45%; 
 	padding:10px;
 }
-#countriesTitle {
+#searchMachineRightCol #countriesLeftCol #countriesTitle {
 	font-size:1.3em; 
 	font-weight:580; 
 	line-height:1.1em; 
@@ -337,6 +337,7 @@ input[type="number"]{
             <div id='TeachingEnglish1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching English' id='TeachingEnglish2' name='search[subjects][]' type='checkbox'>Teaching English</div>
             <div id='TeachingBuddhistMonks1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching Buddhist Monks' id='TeachingBuddhistMonks2' name='search[subjects][]' type='checkbox'>Teaching Buddhist Monks</div>
             <div id='TeachingChildren1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleEducation(this)' value='Teaching Children' id='TeachingChildren2' name='search[subjects][]' type='checkbox'>Teaching Children</div>
+            <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' name='search[subjects][]' type='checkbox'>Teaching Computer <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Literacy</div>
 
 
 
@@ -394,7 +395,6 @@ input[type="number"]{
 
 
             <div id='Technology1'><input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Technology' id='Technology2' name='search[subjects][]' type='checkbox'><span class="anyTitle">Technology</span></div>
-            <div id='TeachingComputerLiteracy1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Teaching Computer Literacy' id='TeachingComputerLiteracy2' name='search[subjects][]' type='checkbox'>Teaching Computer <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Literacy</div>
             <div id='MediaMarketingandGraphicDesign1'>&nbsp;&nbsp;&nbsp;&nbsp;<input onclick='toggleBoxes1(this);toggleTechnology(this)' value='Media Marketing and Graphic Design' id='MediaMarketingandGraphicDesign2' name='search[subjects][]' type='checkbox'>Media, Marketing, and <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Graphic Design</div>
 
 
@@ -525,7 +525,7 @@ input[type="number"]{
 
 <div class="six columns"  id="searchMachineRightCol">
 <div class="six columns" id="countriesLeftCol">
-<p id="countriesTitle "><b>Program Countries:</b></p>
+<p id="countriesTitle ">Program Countries:</p>
 <input onClick='toggleBoxes(this)'value="false" id='any6' name='search[regions][]' type='checkbox'><span class="anyTitle"> Any</span><br /><br /> 
 
 <div id="others">
@@ -1271,7 +1271,7 @@ function toggleDisasterRelief( el ) {
 
 
 
-var locationsEducation = new Array('TeachingEnglish', 'TeachingBuddhistMonks', 'TeachingChildren');
+var locationsEducation = new Array('TeachingEnglish', 'TeachingBuddhistMonks', 'TeachingChildren', 'TeachingComputerLiteracy');
 
 var anyEducation = 'Education2';
 
@@ -1458,7 +1458,7 @@ function toggleScientificResearch( el ) {
 
 
 
-var locationsTechnology = new Array('MediaMarketingandGraphicDesign', 'TeachingComputerLiteracy');
+var locationsTechnology = new Array('MediaMarketingandGraphicDesign');
 
 var anyTechnology = 'Technology2';
 

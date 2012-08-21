@@ -80,6 +80,7 @@
 
 <div id="cropButtons">
 	<%= form_for @blog_post do |f|%>
+	<%= hidden_field :crops, :value => false %>
 	x: <%= f.number_field :crop_x %><br />
 	y: <%= f.number_field :crop_y %><br />
 	w: <%= f.number_field :crop_w %><br />

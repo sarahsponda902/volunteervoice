@@ -1,22 +1,43 @@
 	<%= javascript_include_tag "/assets/jquery.js"%>
+	
+	<style>
+	#top {
+		font-size:2em; 
+		margin-top:50px; 
+		color:#575758;
+	}
+	#unsubscribedMessage {
+		font-size:1.4em;
+	}
+	#textArea {
+		height:100px; 
+		width:500px;
+	}
+	#submitButtonContainer {
+		text-align:center; 
+		margin-top:-20px;
+	}
+	</style>
+	
+	
 	<% @id = current_user.id unless current_user.nil?%>
 	<div class="container">
 		<div class="row">
-			<div class="twelve columns" align="center" style="font-size:2em; margin-top:50px; color:#575758">
+			<div class="twelve columns" align="center" id="top">
 	
-	<font style="font-size:1.4em">You are unsubscribed!</font><br /><br /><br />
+	<span id="unsubscribedMessage">You are unsubscribed!</span><br /><br /><br />
 	
 	Some feedback would be really helpful - <br /><br />
 	<% @contact = Contact.new(:subject => "Subscription Termination Feedback (user)", :to_whom => "contact", :user_id => @id, :email => "nothing@nothing.com")%>
 	<%= form_for(@contact) do |f| %>
 	    <div class="field">
-	      <%= f.text_area :body, :style => "height:100px; width:500px" %>
+	      <%= f.text_area :body, :id => "textArea" %>
 		  <%= f.hidden_field :email, :value => "nothing@nothing.com"%>
 		  <%= f.hidden_field :to_whom, :value => "contact"%>
 		  <%= f.hidden_field :subject, :value => "Subscription Termination Feedback (user)"%>
 	    </div><br /><br />
 
-	    <p style="text-align:center; margin-top:-20px"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
+	    <p id="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
 
 	<% end %>
 	

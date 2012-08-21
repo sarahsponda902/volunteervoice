@@ -3,7 +3,8 @@ CarrierWave.configure do |config|
     :provider               => 'AWS',       
     :aws_access_key_id      => ENV['AMAZON_ACCESS_KEY_ID'],      
     :aws_secret_access_key  => ENV['AMAZON_SECRET_ACCESS_KEY'],      
-    :region => 'us-east-1'
+    :region => 'us-east-1',
+    :persistent => false # This is required to prevent write timeouts from PUT requests to S3
   }
   config.fog_directory  = 'volunteervoiceuploads'                     
 end

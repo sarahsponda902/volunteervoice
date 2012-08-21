@@ -101,7 +101,7 @@
 				<% if @can_edit%>
 				&#9998; 
 				<% end %>
-				Run by:</p><%=best_in_place_if @can_edit, organization, :run_by, :type => :input, :nil => "Click to edit"%><br />
+				Run by:</p><%=best_in_place_if @can_edit, organization, :run_by, :type => :input, :nil => "Click to edit"%><br /><br />
 			<p class="detailsLabel">Full Time Staff: </p><%=best_in_place_if @can_edit, organization, :full_time_staff, :type => :input, :nil => "Click to edit"%><br /><br />
 			<p class="detailsLabel"> 
 				<% if @can_edit%>

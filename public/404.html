@@ -1,38 +1,53 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="stylesheet" href="/assets/style.css" />
-	<link rel="stylesheet" href="/assets/foundation.css" />
-  <title>Error (404)</title>
-</head>
-
-<body>
-  <!-- This file lives in public/404.html -->
-<img src="/assets/Error404.png">
-  <div class="ten columns" align="center">
-    <p style="font-family:museoSlab500Regular; color:#575758; font-size:3em;">The page you were looking for doesn't exist.</h1>
-    <p style="font-family:museoSlab500Regular; color:#575758; font-size:1.7em;">You may have mistyped the address or the page may have moved.</p>
-	<br /><br />
-	<form accept-charset="UTF-8" action="http://volunteervoice.herokuapp.com/searches/create" method="post">
-	  <input id="keywords" name="search[keywords]" type="text" />
-	  <input name="commit" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png"  />
-	</form>
-  </div>
-</body>
-</html>
+		<script type="text/javascript" src="jquery.js"></script>
+	
 
 <style>
-input[name="search[keywords]"]{
--moz-border-radius: 8px;
--webkit-border-radius: 8px;
-border-radius: 8px;
-border: 0;
-height:30px;
-width: 200px;
-margin-bottom: 15px;
-font-size:15px;}
-
 input[name="commit"]{
-	margin-bottom:-10px;
+	margin-bottom:-15px;
+}
+
+a.contact-window:active{color:#6aaeba}
+a.contact-window:link{color:#6aaeba}
+a.contact-window:visited{color:#6aaeba}
+a.contact-window:hover{color:#9bce6c}
+
+#top {
+	text-align:center; 
+	margin-top:50px;
+}
+.blurbsContainer {
+	font-family:sans-serif; 
+	color:#575758; 
+	font-size:1.5em; 
+	line-height:1.5em;
+}
+.secondBlurb {
+	line-height:0.85em;
+}
+.errorSearchContainer {
+	margin:auto;
+	float:center;
+	margin-top:50px; 
+	padding-bottom:100px;
 }
 </style>
+
+<div class="container">
+	<div class="row">
+		<div class="twelve columns" id="top">
+<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/Error404.png"><br /><br />
+  <div class="blurbsContainer">
+    <p>The page you were looking for doesn't exist! Weird.</p>
+    <p class="secondBlurb">Please feel free to <a href="/contacts/new" class="contact-window">contact us</a> if you are very confused.<br /><br />Or just try searching for something else!</p>
+  </div>
+<div class="errorSearchContainer">
+	<form accept-charset="UTF-8" action="/searches/create" method="post">
+	  <input id="keywords" name="search[keywords]" type="text" />
+	  <input name="commit" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/searchButton.png" />
+	</form>
+</div>
+	
+</div>
+</div>
+</div>
+</div>

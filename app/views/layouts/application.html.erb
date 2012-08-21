@@ -48,12 +48,12 @@
 	a.login-window:link{color:white}
 	a.login-window:active{color:white}
 	a.login-window:visited{color:white}
-	a.login-window:hover{color:#9bce6c}
+	a.login-window:hover{color:#68c2d8}
 	
 	a.register:link{color:white}
 	a.register:active{color:white}
 	a.register:visited{color:white}
-	a.register:hover{color:#e67b5a}
+	a.register:hover{color:#9bce6c}
 	
 	a.logout:link{color:white}
 	a.logout:active{color:white}
@@ -214,6 +214,7 @@
 		width:225px; 
 		height:30px; 
 		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right;
+		background-color:white;
 	}
 	.accountRequestURLLabelDiv {
 		margin-top:50px;
@@ -262,17 +263,27 @@
 		<div class="row">
 		<header class="header">
 			
+			<% if !(current_user.nil? || current_organization_account.nil?)%>
 			<div class="four columns headerLogoContainer">
-			<a href="/"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo"></a>
+			<a href="/">
+					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo">
+			</a>
 			</div>
+			<% else %>
+			<div class="four columns headerLogoContainer" id="headerLogoSignedOut">
+			<a href="/">
+					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo">
+			</a>
+			</div>
+			<% end %>
 			
 <!-- LOGIN BOXES -->
-	<!-- IF USER NOT SIGNED IN: "Login or Join" -->
+	<!-- IF USER NOT SIGNED IN: "Login or Register" -->
 	<% if !(user_signed_in?) && !(organization_account_signed_in?) %>			
-			<div class="three columns loginContainer" id="loginOrJoinContainer">
+			<div class="three columns loginContainer" id="loginOrRegisterContainer">
 			<div class="row login">
 				<a href="#login-box" class="login-window">LOGIN</a>
-				or <a href= "/sign_up" class="register">JOIN</a>
+				or <a href= "/sign_up" class="register">REGISTER</a>
 			</div>
 			</div>
 	<% else %>
@@ -373,7 +384,7 @@
 		
 		<div class="container" id="globalNav">
 		<div class="row">
-		<nav class="nav">
+		<nav class="nav" id="navBar">
 
 		<ul>
 		<li class="navs"><a href="/">home</a></li>
@@ -449,10 +460,12 @@
 <article class="spreadWord">
 <img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/spreadTheWord.png" alt="Help Spread The Word" width="300px">
 <ul>
-<li class="socialLinkFirst"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/facebook.png" class="socialLinkImage" alt="VolunteerVoice Facebook"></li>
-<li class="socialLink"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/twitter.png" class="socialLinkImage" alt="VolunteerVoice Twitter"></li>
-<li class="socialLink"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/google.png" class="socialLinkImage" alt="VolunteerVoice Google+"></li>
-<li class="socialLink"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/rss.png" class="socialLinkImage" alt="VolunteerVoice RSS"></li>
+<li class="socialLinkFirst"><img src="/assets/facebookicon.png" class="socialLinkImage" alt="VolunteerVoice Facebook"></li>
+<li class="socialLink"><img src="/assets/twittericon.png" class="socialLinkImage" alt="VolunteerVoice Twitter"></li>
+<li class="socialLink"><img src="/assets/googleicon.png" class="socialLinkImage" alt="VolunteerVoice Google+"></li>
+<li class="socialLink"><img src="/assets/linkedinicon.png" class="socialLinkImage" alt="VolunteerVoice LinkedIn"></li>
+<li class="socialLink"><img src="/assets/rssicon.png" class="socialLinkImage" alt="VolunteerVoice RSS"></li>
+<li class="socialLink"><img src="/assets/stumbleicon.png" class="socialLinkImage" alt="VolunteerVoice Stumbleupon"></li>
 </ul>
 
 </article></div>

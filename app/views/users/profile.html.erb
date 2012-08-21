@@ -15,6 +15,7 @@
 
 
 <style>
+/*Most Links */
 a.reviewOrgLink:link{color:#6aaeba}
 a.reviewOrgLink:active{color:#6aaeba}
 a.reviewOrgLink:visited{color:#6aaeba}
@@ -25,18 +26,30 @@ a.cancel-account:active{color:#575758; font-size:0.7em}
 a.cancel-account:visited{color:#575758; font-size:0.7em}
 a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
-</style>
 
-<style type="text/css">
 
-    #wrapper
+a.edit-window { color: #68c2d8 }
+a.upload-window { color: #68c2d8 }
+
+a.edit-window:hover { color: #e67b5a }
+a.upload-window:hover { color: #e67b5a }
+
+
+
+/***********************/
+/*SmartPaginator Stuff */
+/**********************/
+
+
+    #wrapper /*Container for all Pagination stuff */
     {
 
-        width:100%;
+        width:100%; 
 
     }
+
 	
-    .contents
+    .contents /*Container for each of "reviews" "messages" "sent messages" and "favorites"*/
     {
 		height: 290px;
         width: 98%; /*height: 150px;*/
@@ -48,28 +61,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
         padding: 8px;
     }
 
-	.table
-    {
-        width: 100%;
-        border-right: solid 1px #5f9000;
-    }
-    .table th, .table td
-    {
-        width: 16%;
-        height: 20px;
-        padding: 4px;
-        text-align: left;
-    }
-    .table th
-    {
-        border-left: solid 1px #5f9000;
-    }
-    .table td
-    {
-        border-left: solid 1px #5f9000;
-        border-bottom: solid 1px #5f9000;
-    }
-    #divreviews
+    #divreviews /*Container for "reviews" for pagination*/
     {
         margin: 10;
         height: 100%;
@@ -88,7 +80,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
     }
 
-	#divfavorites
+	#divfavorites /*Container for "favorites" for pagination*/
     {
         margin: 10;
         height: 100%;
@@ -107,7 +99,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
     }
 
-	#divmessages
+	#divmessages /*Container for "messages" for pagination*/
     {
         margin: 10;
         height: 100%;
@@ -127,7 +119,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
     }
 
-	#divsents
+	#divsents /*Container for "sent messages" for pagination*/
     {
         margin: 10;
         height: 100%;
@@ -147,15 +139,19 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 
     }
 
-    ul.tab
-    {
-        list-style: none;
+
+	#tabs { /* My Messages, My Reviews, My Favorites tabs container*/
+		list-style: none;
         margin-bottom: 20px;
         padding-bottom: 0;
-    }
-    ul.tab li
-    {
-        display: inline;
+		margin-left:15px; 
+		margin-top:-20px; 
+		margin-bottom:0;
+	}
+	#tabs li { /* My Messages, My Reviews, My Favorites tabs */
+		font-family:architectsDaughterRegular; 
+		font-size:1.4em;
+		display: inline;
 		padding-left:15px;
 		padding-right:25px;
 		padding-bottom:50px;
@@ -166,10 +162,22 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
         cursor: pointer;
 		width:200px;
 		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/inactiveTab.png) no-repeat;
-    }
+	}
+	#tabs li.myMessagesTab { /* My Messages tabs needs to be farther left*/
+		margin-left:-9px;
+	}
+	#tabs li.myMessagesTabRed { /* My Messages tabs needs to be red if user has unread messages*/
+		margin-left:-9px;
+		color:#e67b5a;
+	}
 
 
 
+
+
+	/******************/
+	/* POPUP WINDOWS */
+	/*****************/
 
 		/* Mask for background, by default is not display */
 		#mask {
@@ -181,7 +189,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 			z-index: 999;
 		}
 
-		/* You can customize to your needs  */
+		/* Upload a Photo Popup  */
 		.upload-popup{
 			display:none;
 			background: #D9DEDA;
@@ -201,6 +209,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
 		
+		/* Delete your favorite/message "are you sure" popup*/
 		.delete-popup{
 			display:none;
 			background: #E9ECE9;
@@ -220,11 +229,14 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
 		
+		
+		/* Sent message "full message view" popup */
 		.sent-popup{
 			display:none;
 			background: #D9DEDA;
 			padding: 10px; 	
 			border: 3px solid #68c2d8;
+			width:450px;
 			float: left;
 			font-size: 1.2em;
 			position: fixed;
@@ -237,6 +249,8 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -moz-border-radius: 3px; /* Firefox */
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
+		
+		/* edit your account popup */
 		.edit-popup{
 			display:none;
 			background: #E3E6D5;
@@ -256,10 +270,10 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 			width:570px;
 		}
-
-
-		/* You can customize to your needs  */
-		.popup-popup{
+		
+		
+		/* Reply Message popup */
+		.reply-popup{
 			display:none;
 			background: #D9DEDA;
 			padding: 10px; 	
@@ -279,33 +293,7 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		}
 
 
-		.delete-popup{
-			display:none;
-			background: #E9ECE9;
-			padding: 10px; 	
-			border: 2px solid #6aaeba;
-			float: left;
-			color:#575758;
-			font-size: 1.1em;
-			position: fixed;
-			top: 50%; left: 50%;
-			z-index: 99999;
-			box-shadow: 0px 0px 20px #999; /* CSS3 */
-		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-			border-radius:3px 3px 3px 3px;
-		        -moz-border-radius: 3px; /* Firefox */
-		        -webkit-border-radius: 3px; /* Safari, Chrome */
-		}
-
-
-		a.edit-window { color: #68c2d8 }
-		a.upload-window { color: #68c2d8 }
-
-		a.edit-window:hover { color: #e67b5a }
-		a.upload-window:hover { color: #e67b5a }
-
-
+		/* view full message popup */
 		.m-popup{
 			display:none;
 			background: #D9DEDA;
@@ -324,17 +312,20 @@ a.cancel-account:hover{color:#e67b5a; font-size:0.7em}
 		        -moz-border-radius: 3px; /* Firefox */
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 		}
-		</style>
 
 
-<style>
-.favoriteTable {
+
+		/*********************/
+		/* MY FAVORITES BOX */
+		/********************/
+		
+.favoriteTable { /* each individual favorite in enclosed in it's own table */
 	margin-left:10px;
 }
-.favoriteBullet {
+.favoriteBullet { /* asterick for each favorite */
 	margin-top:-10px;
 }
-a.favoriteOrg {
+a.favoriteOrg { /*Favorite's organization name */
 	margin-left:-5px; 
 	font-size:2.5em; 
 	font-family:josefinSlabRegular; 
@@ -343,157 +334,169 @@ a.favoriteOrg {
 a.favoriteOrg:hover {
 	color:#9bce6c;
 }
-a.favoriteProg {
+a.favoriteProg { /* Favorite's program name */
 	font-size:1.8em; 
 	color:gray;
 }
 a.favoriteProg:hover {
 	color:#9bce6c;
 }
-.deleteFavoriteContainer {
+.deleteFavoriteContainer { /* "X" for deleting a favorite */
 	margin-right:25px;
 	margin-top:-5px;
 }
-</style>
 
-<style>
-.messageTable {
+
+/********************/
+/* MY MESSAGES BOX */
+/*******************/
+.messageTable { /* Each individual message is enclosed in a table */
 	margin-left:175px; 
 	margin-top:-10px;
 }
-a.message-window {
+a.message-window { /*Username link to open message */
 	margin-left:-5px; 
 	font-size:1.4em; 
 	font-family:josefinSlabRegular; 
 	color:#68c2d8;
 }
-a.message-window:hover {
+a.message-window:hover { 
 	color:#9bce6c;
 }
-.messageDateCreated {
+.messageDateCreated { /*Message's date Created in table */
 	font-size:1.2em;
 	margin-left:20px; 
 	color:#575758;
 }
-.messageSubject {
+.messageSubject { /*Message's Subject in table */
 	font-size:1.2em;
 	margin-left:20px; 
 	color:#575758;
 }
-.messageDeleteX {
+.messageDeleteX { /*Message's "X" to delete in table */
 	margin-right:25px;
 	margin-top:5px;
 }
-td a.close {
+td a.close { /* Full Message popup's "X" to close window */
 	margin-top:-40px;
 }
-table.m-popup tr, table.m-popup td {
+table.m-popup tr, table.m-popup td { /* Set background color of message popup */
 	background: #E9ECE9;
 }
-table.delete-popup tr, table.delete-popup td {
+table.delete-popup tr, table.delete-popup td { /* Set background color of delete popup */
 	background: #E9ECE9;
 }
-table.sent-popup tr, table.sent-popup td {
-	background: #E9ECE9;
-}
-.mPopupFrom, .mPopupSubject {
+.mPopupFrom, .mPopupSubject { /*Message popup's from and subject titles/labels */
 	font-size:1.4em; 
 	color:#575758; 
 	line-height:2em;
 }
-.mPopupBody {
+.mPopupBody { /* Message popup's body */
 	color:#575758; 
 	line-height:1.1em;
 	font-size:1.1em;
+	max-height:100px;
+	overflow-y:auto;
 }
-.mPopupReplyButton {
+.mPopupReplyButton { /*  Message popup's reply button */
 	text-align:right;
+	cursor:pointer;
 }
-.userDeletedProfileMessage {
+.mPopupReplyButton a{
+	cursor:pointer;
+}
+.userDeletedProfileMessage { /* Message that appears if a user deleted their profile */
 	color:#575758; 
 	line-height:2em; 
 	font-style:italic; 
 	text-align:center;
 }
-.deletePopupAreYouSure {
+.deletePopupAreYouSure { /* are you sure you want to delete this message/favorite popup title */
 	font-size:2em; 
 	color:#575758; 
 	text-align:center;
 }
-a.close-delete-pop {
+a.close-delete-pop { /* button to close the delete popup ("No, thanks") */
 	cursor:pointer;
 }
-</style>
 
 
-<style>
-.sentTable {
+/**********************/
+/* SENT MESSAGES BOX */
+/*********************/
+.sentTable { /*Each individual sent message is enclosed in a table */
 	margin-left:175px; 
 	margin-top:-10px;
 }
-.sentMessageDate {
+.sentMessageDate { /* date the message was sent */
 	font-size:1.2em;
 	margin-left:20px; 
 	color:#575758;
 }
-.sentMessageSubject {
+.sentMessageSubject { /* subject of sent message */
 	font-size:1.2em;
 	margin-left:20px; 
 	color:#575758;
 }
-.sentMessageDeleteX {
+.sentMessageDeleteX { /* "X" to delete the sent message */
 	margin-right:25px;
 	margin-top:5px;
 }
-.sentPopupTo, .sentPopupSubject {
+.sentPopupTo, .sentPopupSubject { /*sent message popup's "to" and "subject" labels */
 	font-size:1.4em; 
 	color:#575758; 
 	line-height:2em;
 }
-.sentPopupBody {
+.sentPopupBody { /* sent message popup's body */
 	color:#575758; 
 	line-height:1.1em;
 	font-size:1.1em;
+	max-height:100px;
+	overflow-y:auto;
 }
-.sentDeleteAreYouSure {
+.sentDeleteAreYouSure { /*are you sure you want to delete sent message popup title */
 	font-size:2em; 
 	color:#575758; 
 	text-align:center;
 }
-</style>
+
+table.sent-popup tr, table.sent-popup td { /* Set background color of sent message popup */
+	background: #E9ECE9;
+}
 
 
-
-<style>
-.whosReview {
+/*******************/
+/* MY REVIEWS BOX */
+/*****************/
+.whosReview { /* Username (user's username) */
 	margin-left:50px; 
 	font-size:1.1em;
 }
-.reviewWrittenDate {
+.reviewWrittenDate { /* Date review was written */
 	text-align:right; 
 	font-size:1.1em; 
 	margin-top:-15px;
 }
-table.reviewBox {
+table.reviewBox { /*table enclosing the review, stars, program, trip was, and photos */
 	margin-left:20px; 
 	background-color:#E0EEEE; 
 	margin-top:5px;
 }
-table.reviewBox tr, table.reviewBox td {
+table.reviewBox tr, table.reviewBox td { /* set background color of all rows */
 	background-color:#E0EEEE;
 }
-.reviewProgramName {
+.reviewProgramName { /* review's program name */
 	font-size:1.2em; 
 	margin-left:50px;
 }
-.reviewTripWas {
+.reviewTripWas { /* review's length of time */
 	font-size:1.2em;
 }
-.reviewStars {
+.reviewStars { /* review's stars */
 	margin-top:-5px; 
 	margin-right:10px;
 }
-.review-pannel {
+.review-pannel { /* review body */
 	margin-left:10px; 
 	font-size:1.05em;
 	margin-top:-10px;
@@ -502,18 +505,24 @@ table.reviewBox tr, table.reviewBox td {
 	margin-left:2%; 
 	overflow:auto;
 }
-.single {
+.single { /* review photos */
 	height:30px;
 }
-.reviewEditDeleteContainer {
+img.reviewPhoto { /* individual review photo */
+	height:30px;
+}
+
+.reviewEditDeleteContainer { /* container for review's edit/delete button */
 	float:right; 
 	text-align:right; 
 	margin-right:30px; 
 	margin-top:5px;
 }
-</style>
 
-<style>
+
+/*****************/
+/* MAIN CONTENT */
+/***************/
 #errorsContainer {
 	width:100%;
 }
@@ -599,10 +608,10 @@ table.reviewBox tr, table.reviewBox td {
 	font-family:architectsDaughterRegular; 
 	font-size:1.4em;
 }
-.myMessagesTab {
+#tabs li.myMessagesTab {
 	margin-left:-9px;
 }
-.myMessagesTabRed {
+#tabs li.myMessagesTabRed {
 	margin-left:-9px;
 	color:#e67b5a;
 }
@@ -614,6 +623,7 @@ table.reviewBox tr, table.reviewBox td {
 #messagesTab {
 	margin-left:378px; 
 	margin-top:-55px;
+	display:none;
 }
 #myMessagesLabel {
 	margin-top:-66px; 
@@ -624,6 +634,7 @@ table.reviewBox tr, table.reviewBox td {
 #favoritesTab {
 	margin-left:197px; 
 	margin-top:-55px;
+	display:none;
 }
 #myFavoritesLabel {
 	margin-top:-66px; 
@@ -659,10 +670,10 @@ table.reviewBox tr, table.reviewBox td {
 .noMessagesMessage {
 	color:#575758; 
 	margin-left:200px; 
-	margin-top:-80px;
+	margin-top:-90px;
 }
 .messagesContainer {
-	margin-top:-80px;
+	margin-top:-90px;
 }
 #messages {
 	margin-left:5px; 
@@ -711,9 +722,23 @@ table.reviewBox tr, table.reviewBox td {
 	margin-left:5px; 
 	margin-top:-20px;
 }
+
 </style>
 
-
+<style>
+.username {
+	color:#68c2d8;
+}
+a.usernameLink {
+	color:#68c2d8;
+}
+a.usernameLink:hover {
+	color:#e67b5a;
+}
+.messageTable tr td {
+	cursor:pointer;
+}
+</style>
 
 <% @path = request.fullpath.split("/").last%>
 
@@ -736,7 +761,6 @@ table.reviewBox tr, table.reviewBox td {
 
 
 	<div class="container" id="top">
-
 	        <div class="row">
 				<div class="eleven columns" id="editChangeTopLinksContainer">
 				<p id="editChangeTopLinks"><a href="#edit-box" class="edit-window">My account</a>	<a href="#upload-box" class="upload-window">Change Profile Image</a> </p>
@@ -744,10 +768,9 @@ table.reviewBox tr, table.reviewBox td {
 			</div>
 			<div class="row" id="userBoxContainer">
 				<div class="three columns" id="userImageContainer">
-					<% if !(@user.photo.url.nil?)%>
-				<%=image_tag @user.square_image.url, :id => "userImage"%>
+					<% if !(User.find(current_user.id).square_image.url.nil?)%>
+				<%= image_tag User.find(current_user.id).square_image.url, :id => "userImage" %>
 					<% else %>
-					
 					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
 					<% end %>
 					
@@ -790,9 +813,9 @@ table.reviewBox tr, table.reviewBox td {
 				<li id="3">My Reviews</li>
 				<li id="2">My Favorites</li>
 				<% if current_user.unread_messages == 0 %>
-                <li class="myMessagesTab" id="1">My Messages</li>
+                	<li class="myMessagesTab" id="1">My Messages</li>
 				<% else %>
-				<li class="myMessagesTabRed" id="1">My Messages</li>
+					<li class="myMessagesTabRed" id="1">My Messages</li>
 				<% end %>
             </ul>
         </div>
@@ -804,7 +827,7 @@ table.reviewBox tr, table.reviewBox td {
 			</div>
 			<div id="favoritesTab">
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
-					<p style="myFavoritesLabel">My Favorites</p>
+					<p id="myFavoritesLabel">My Favorites</p>
 			</div>
 			<div id="reviewsTab">
 				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
@@ -918,7 +941,7 @@ table.reviewBox tr, table.reviewBox td {
 .fakeFileInputs {
 	display:block;
 }
-.uploadPhotoButton {
+#uploadPhotoButton {
 	height:40px;
 	margin-top:15px; 
 	margin-left:20px; 
@@ -978,16 +1001,143 @@ table.reviewBox tr, table.reviewBox td {
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
 	background-color:white;
 }
-</style>			
+#checkAgeCountry {
+	position:absolute; 
+	height:25px; 
+	top:170px; 
+	left:-2px;
+}
+.checkBox {
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
+	background-repeat:no-repeat; 
+	margin-top:55px; 
+	padding-bottom:5px;
+}
+#checkBoxMessages {
+	margin-top:0px;
+}
+.hiddenCheckBox {
+	display:block; 
+	opacity:0;
+	filter: alpha(opacity=0);
+	margin-left:0px; 
+	height:15px; 
+	width:15px;
+}
+.checkBoxLabel {
+	margin-left:33px; 
+	margin-top:-26px; 
+	font-size:.85em;
+}
+#checkMessagesLabel {
+	margin-top:-34px;
+}
+#checkMessages {
+	position:absolute; 
+	height:25px; 
+	top:203px; 
+	left:-2px;
+}
+#accountSubmitContainer {
+	margin-top:2px; 
+	margin-left:205px; 
+	margin-bottom:10px;
+}
+.cancelAccountLink {
+	margin-top:-30px;
+}
+#account-right-column {
+	margin-left:300px; 
+	margin-top:-290px; 
+	padding-left:30px; 
+	width:250px;
+}
+#myPasswordTitle {
+	margin:10px; 
+	font-family:architectsDaughterRegular; 
+	font-size:1.3em;
+}
+#accountDividingLine {
+	height:205px; 
+	width:1px; 
+	top:15px; 
+	background-color: #575758; 
+	position:absolute; 
+	left:-20px;
+}
+#replySubjectLabel, #replyBodyLabel {
+	font-size:1.2em; 
+	color:#575758; 
+	margin-left:25px; 
+	line-height:1.2em;
+}
+#subject_field {
+	width:380px; 
+	height:25px; 
+	margin-left:20px; 
+	margin-right:20px;
+}
+#replyTextBody {
+	height:100px;
+	width:380px; 
+	margin-left:20px; 
+	margin-right:25px; 
+	overflow:auto;
+}
+#sendButtonContainer {
+	margin-top:10px; 
+	text-align:center;
+}
+#replyMessageTitle {
+	font-family:josefinSlabRegular; 
+	font-size:2em;
+	padding:10px; 
+	line-height:1.1em; 
+	text-align:center;
+}
+#reply-box-link {
+	display:none;
+}
+
+</style>		
+<!-- This link is hidden. It is for "clicking" from within the show message popup -->
+<a href="#reply-box" id="reply-box-link" class="reply-window">Reply</a>
+
+<div id="reply-box" class="reply-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<p id="replyMessageTitle">Reply Message</p>
+
+	<%= form_for(@message) do |f| %>
+	<% if user_signed_in?%>
+	<%= f.hidden_field :sender_id, :value => current_user.id %>
+	<% end %>
+	<%= f.hidden_field :recipient_id, :id => "recipient_id_field" %>
+	  <div class="field">
+	    <p id="replySubjectLabel">Subject:</p>
+	    <%= f.text_field :subject, :id => "subject_field" %>
+	  </div>
+	  <div class="field">
+	    <p id="replyBodyLabel">Body:</p>
+	    <%= f.text_area :body, :id => "replyTextBody" %>
+	  </div>
+
+	  <div class="actions" id="sendButtonContainer">
+	    <%= image_submit_tag "/assets/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
+	  </div>
+	<% end %>
+
+
+</div>
+	
 			
 			<div id="upload-box" class="upload-popup">
 				<a href="#" class="close"><div class="close_image"></div></a>
 				<p class="maxPhotoWidth">Max photo width: 700 pixels</p>
 			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
-				  <div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" class="uploadPhotoButton" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
+				  <div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" id="uploadPhotoButton" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
 					  <%= f.hidden_field :crops, :value => true%>
 					  <%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile())"%></div>
-				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitfavorites.png", :height => "40px", :id => "submitButtonUpload", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :height => "40px", :id => "submitButtonUpload", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 				<% end %>
 
 			</div>
@@ -999,7 +1149,7 @@ table.reviewBox tr, table.reviewBox td {
 					
 					<p id="myInfoTitle">My Info</p>
 
-				  <div><%= f.label "Registemessages Email Address" %>
+				  <div><%= f.label "Registered Email Address" %>
 				  <%= f.email_field :email, :class => "accountTextField" %></div><br />
 				<div>
 <%= f.label :country %>
@@ -1010,92 +1160,103 @@ table.reviewBox tr, table.reviewBox td {
 							<% end %>
 					</select>
 				</div>
-				 <image style="position:absolute; height:25px; top:170px; left:-2px;" id="checkBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(beforeCheck()); $('#user_profile_show').attr('checked', false)">
-					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat; margin-top:55px; padding-bottom:5px;" >
-					<%= f.check_box :profile_show, :onchange => "$(beforeCheck())", :style => "display:block; opacity:0;filter: alpha(opacity=0);margin-left:0px; height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-26px; font-size:.85em"> Hide my age/country on my profile</div><br />
+				 <image id="checkAgeCountry" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(ageCountryCheck()); $('#user_profile_show').attr('checked', false)">
+					<div class="checkBox">
+					<%= f.check_box :profile_show, :onchange => "$(ageCountryCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel"> Hide my age/country on my profile</div><br />
 					
-					<image style="position:absolute; height:25px; top:203px; left:-2px;" id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(messagesCheck());$('#user_messages_show').attr('checked', false)">
-					<div style="background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); background-repeat:no-repeat;margin-top:0px; padding-bottom:5px;" >
-					<%= f.check_box :messages_show, :onchange => "$(messagesCheck())", :style => "display:block; opacity:0;filter: alpha(opacity=0);margin-left:0px; height:15px; width:15px"%></div><div style="margin-left:33px; margin-top:-34px; font-size:.85em"> Do not allow others to send me<br />messages</div><br />
+					<image id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(messagesCheck());$('#user_messages_show').attr('checked', false)">
+					<div class="checkBox" id="checkBoxMessages">
+					<%= f.check_box :messages_show, :onchange => "$(messagesCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel" id="checkMessagesLabel"> Do not allow others to send me<br />messages</div><br />
 				
 				</div>
 				
-				<div style="margin-top:2px; margin-left:205px; margin-bottom:10px"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitfavorites.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+				<div id="accountSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 				
 				
-								<p style="margin-top:-30px"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
+								<p class="cancelAccountLink"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
 				</div>
-				<div class="five columns" id="account-right-column" style="margin-left:300px; margin-top:-290px; padding-left:30px; width:250px">
+				<div class="five columns" id="account-right-column">
 					
-					<p style="margin:10px; font-family:architectsDaughterRegular; font-size:1.3em">My Password</p>
+					<p id="myPasswordTitle">My Password</p>
 
 				  <div><%= f.label :password %>
-				  <%= f.password_field :password, :autocomplete => "off", :style =>"height:20px; width:198px"%></div><br />
+				  <%= f.password_field :password, :autocomplete => "off", :class =>"accountTextField"%></div><br />
 
 				  <div><%= f.label :password_confirmation %>
-				  <%= f.password_field :password_confirmation, :style =>"height:20px; width:198px"%></div><br />
+				  <%= f.password_field :password_confirmation, :class =>"accountTextField"%></div><br />
 
 				  <div><%= f.label "Current Password (needed for change)"%>
-				  <%= f.password_field :current_password, :style =>"height:20px; width:198px" %></div>
+				  <%= f.password_field :current_password, :class =>"accountTextField" %></div>
 				
 				<% end %>
 				
-										<div style="height:205px; width:1px; top:15px; background-color: #575758; position:absolute; left:-20px"></div>
+										<div id="accountDividingLine"></div>
 
 			</div>
 
-
+			
 
 
 <script type="text/javascript">
-function beforeCheck() {
-	$('#checkBefore').toggle();
-}
 
-function messagesCheck() {
-	$('#checkMessages').toggle();
-}
-</script>
 
-<script type="text/javascript">
+
+		//set the user's country in the account-edit popup
+		$('#user_country').val("<%=current_user.country%>");
+
+
+//define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
+	var message = <%= @user.messages_show.to_s %>
+	var profile = <%= @user.profile_show.to_s %>
+
 
 
 $(document).ready(function() {
 	
 	
-	$('a.popup-window').click(function() {
 
-                //Getting the variable's value from a link 
-		var popupBox = $(this).attr('href');
+	//hide/show message/profile checkmarks if appropriate
+		if (message) 
+		{
+			$("#checkMessages").show();
+		} else {
+			$("#checkMessages").hide();
+		}
 
-		//Fade in the Popup
-		$(popupBox).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(popupBox).height() + 24) / 2; 
-		var popMargLeft = ($(popupBox).width() + 24) / 2; 
-
-		$(popupBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-		$('#mask').fadeIn(300)
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .popup-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
+		if (profile) 
+		{
+			$("#checkAgeCountry").show();
+		} else {
+			$("#checkAgeCountry").hide();
+		}
 	
 	
+	/*********************/
+	/**BROWSER TWEAKING**/
+	/*******************/
+	
+		//in firefox, right column of account edit popup is too low
+		if ( $.browser.mozilla == true ) {
+			$("#account-right-column").css("margin-top", "-295px");
+		}
+		
+		//in android, tabs ul is too far right, right column of account edit popup is too low, and user's review (pale blue box) is too tall
+			$(document).ready(function() {
+					var ua = navigator.userAgent.toLowerCase();
+					var isAndroid = ua.indexOf("android") > -1;
+					if (isAndroid) {
+						$("#tabs").css("margin-left", "-30px");
+						$("#account-right-column").css("margin-top", "-295px");
+						$(".review-pannel").css("height", "50px")
+					}
+			});
+	
+	
+			/********************/
+			/** POPUPS JQUERY **/
+			/*******************/	
+	
+	//"show full sent-message" jQuery
 	$('a.sent-window').click(function() {
 
                 //Getting the variable's value from a link 
@@ -1127,107 +1288,10 @@ $(document).ready(function() {
 	}); 
 	return false;
 	});
-			
-			if ( $.browser.mozilla == true ) {
-				$("#account-right-column").css("margin-top", "-295px");
-			}
-			
-				$(document).ready(function() {
-						var ua = navigator.userAgent.toLowerCase();
-						var isAndroid = ua.indexOf("android") > -1;
-						if (isAndroid) {
-							$("#tabs").css("margin-left", "-30px");
-							$("#account-right-column").css("margin-top", "-295px");
-							$(".review-pannel").css("height", "50px")
-						}
-				});	
-
-});
-
-
-</script>
-
- <script>
-  jQuery(document).ready(function($) {
-      $('a').smoothScroll({
-        speed: 1000,
-        easing: 'easeInOutCubic'
-      });
-  });
-
-</script>
-    <script type="text/javascript">
-
-	var message = <%= @user.messages_show.to_s %>
-	var profile = <%= @user.profile_show.to_s %>
-
-        $(document).ready(function () {
-			<% if @path == "message_deleted" %>
-			$('#favorites-contents').css('display', 'none');
-            $('#reviews-contents').css('display', 'none');
-			$('#sent-contents').css('display', 'none');
-			$('#favoritesTab').hide();
-			$('#reviewsTab').hide();
-			$('#messagesTab').show();
-			<% end %>
-			
-			<% if @path == "sent_deleted" %>
-			$('#favorites-contents').css('display', 'none');
-            $('#reviews-contents').css('display', 'none');
-			$('#messages-contents').css('display', 'none');
-			$('#favoritesTab').hide();
-			$('#reviewsTab').hide();
-			$('#messagesTab').show();
-			<% end %>
-			
-			<% if @path == "favorite_deleted" %>	
-            $('#reviews-contents').css('display', 'none');
-            $('#messages-contents').css('display', 'none');
-			$('#sent-contents').css('display', 'none');
-			$('#reviewsTab').hide();
-			$('#messagesTab').hide();
-			$('#favoritesTab').show();
-			<% end %>
-			
-			<% if @path == "profile" %>	
-            $('#favorites-contents').css('display', 'none');
-            $('#messages-contents').css('display', 'none');
-			$('#sent-contents').css('display', 'none');
-			$('#favoritesTab').hide();
-			$('#messagesTab').hide();
-			$('#reviewsTab').show();
-			<% end %>
+	
 			
 			
-            $('ul li').click(function () {
-				if ($(this).attr('class') != 'navs') {
-                $('#messages-contents').css('display', 'none');
-                $('#favorites-contents').css('display', 'none');
-                $('#reviews-contents').css('display', 'none');
-				$('#sent-contents').css('display', 'none');
-                if ($(this).attr('id') == '1') {$('#messages-contents').fadeIn(300); switchTabs('1'); messagesRead();}
-                if ($(this).attr('id') == '2') {$('#favorites-contents').fadeIn(300); switchTabs('2');}
-                if ($(this).attr('id') == '3') {$('#reviews-contents').fadeIn(300); switchTabs('3');}
-				if ($(this).attr('id') == '4') {$('#messages-contents').fadeIn(300); switchTabs('4'); messagesRead();}
-                if ($(this).attr('id') == '5') {$('#sent-contents').fadeIn(300); switchTabs('5');}
-				}
-				
-            });
-
-			$('#reviews').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'reviews' });
-
-            $('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 1, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'favorites' });
-
-            $('#messages').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'messages' });
-
-			$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'messages' });
-			
-			$('#user_country').val("<%=current_user.country%>");
-			
-			
-			
-			
-			
+			//jQuery for upload photo popup
 			$('a.upload-window').click(function() {
 
 		                //Getting the variable's value from a link 
@@ -1261,7 +1325,7 @@ $(document).ready(function() {
 			});
 			
 			
-			
+			//jQuery for edit photo popup
 				$('a.edit-window').click(function() {
 
 			                //Getting the variable's value from a link 
@@ -1300,6 +1364,8 @@ $(document).ready(function() {
 					$('#mask').remove();
 				});
 
+
+				//jQuery for all "are you sure" popups
 				$('a.delete-window').click(function() {
 
 			                //Getting the variable's value from a link 
@@ -1334,7 +1400,7 @@ $(document).ready(function() {
 				
 				
 
-
+				//jQuery for show full message popup
 				$('a.message-window').click(function() {
 
 			                //Getting the variable's value from a link 
@@ -1367,23 +1433,134 @@ $(document).ready(function() {
 				return false;
 				});
 				
-				
-			
-				if (message) 
-				{
-					$("#checkMessages").show();
-				} else {
-					$("#checkMessages").hide();
-				}
+				$('a.reply-window').click(function() {
 
-				if (profile) 
-				{
-					$("#checkBefore").show();
-				} else {
-					$("#checkBefore").hide();
+			                //Getting the variable's value from a link 
+					var popupBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(popupBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(popupBox).height() + 24) / 2; 
+					var popMargLeft = ($(popupBox).width() + 24) / 2; 
+
+					$(popupBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="opacity:0.5"></div>');
+					$('#mask').fadeIn(300)
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('a.close, #mask').live('click', function() { 
+				  $('#mask , .reply-popup').fadeOut(300 , function() {
+					$('#mask').remove();  
+				}); 
+				return false;
+				});
+
+});
+
+/***************************/
+/** LIGHTBOX 2 SCROLLING **/
+/*************************/
+
+
+//scrolling function for lightbox2 for review photos
+  jQuery(document).ready(function($) {
+      $('a').smoothScroll({
+        speed: 1000,
+        easing: 'easeInOutCubic'
+      });
+  });
+
+	/********************************/
+	/** TABS FUNCTIONS AND JQUERY **/
+	/******************************/
+
+
+        $(document).ready(function () {
+	//if a message was just deleted, put user on messages tab
+			<% if @path == "message_deleted" %>
+			$('#favorites-contents').css('display', 'none');
+            $('#reviews-contents').css('display', 'none');
+			$('#sent-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#reviewsTab').hide();
+			$('#messagesTab').show();
+			<% end %>
+			
+	//if a sent-message was just deleted, put user on sent-messages tab
+			<% if @path == "sent_deleted" %>
+			$('#favorites-contents').css('display', 'none');
+            $('#reviews-contents').css('display', 'none');
+			$('#messages-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#reviewsTab').hide();
+			$('#messagesTab').show();
+			<% end %>
+			
+	//if a favorite was just delted, put user on favorites tab		
+			<% if @path == "favorite_deleted" %>	
+            $('#reviews-contents').css('display', 'none');
+            $('#messages-contents').css('display', 'none');
+			$('#sent-contents').css('display', 'none');
+			$('#reviewsTab').hide();
+			$('#messagesTab').hide();
+			$('#favoritesTab').show();
+			<% end %>
+	
+	//else put user on reviews tab		
+			<% if @path == "profile" %>	
+            $('#favorites-contents').css('display', 'none');
+            $('#messages-contents').css('display', 'none');
+			$('#sent-contents').css('display', 'none');
+			$('#favoritesTab').hide();
+			$('#messagesTab').hide();
+			$('#reviewsTab').show();
+			<% end %>
+			
+	//function that handles jquery tab-switching
+            $('ul li').click(function () {
+				if ($(this).attr('class') != 'navs') { //check if clicked header's global nav
+                $('#messages-contents').css('display', 'none');
+                $('#favorites-contents').css('display', 'none');
+                $('#reviews-contents').css('display', 'none');
+				$('#sent-contents').css('display', 'none');
+                if ($(this).attr('id') == '1') {$('#messages-contents').fadeIn(300); switchTabs('1'); messagesRead();}
+                if ($(this).attr('id') == '2') {$('#favorites-contents').fadeIn(300); switchTabs('2');}
+                if ($(this).attr('id') == '3') {$('#reviews-contents').fadeIn(300); switchTabs('3');}
+				if ($(this).attr('id') == '4') {$('#messages-contents').fadeIn(300); switchTabs('4'); messagesRead();}
+                if ($(this).attr('id') == '5') {$('#sent-contents').fadeIn(300); switchTabs('5');}
 				}
+				
+            });
+
+			/****************/
+			/** PAGINATION **/
+			/****************/
+
+			//initialize smartpagintaor for each of the tabs
+			$('#reviews').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+            $('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 1, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+            $('#messages').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+			$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
         });
+
+
+		/****************/
+		/** FUNCTIONS **/
+		/***************/
 
 function switchTabs(id){
 	$('#favoritesTab').hide();
@@ -1400,40 +1577,57 @@ function switchTabs(id){
 	};
 }
 
+//toggle visibility of age/country show checkmark when checkbox is clicked
+function ageCountryCheck() {
+	$('#checkAgeCountry').toggle();
+}
+//toggle visibility of messages show checkmark when checkbox is clicked
+function messagesCheck() {
+	$('#checkMessages').toggle();
+}
 
+
+//////FAKE FILE INPUT STUFF////////
+
+//puts the uploaded-file name in the fake-file-input textbox
 function nameFile() {
 	var str="";
 	str= $("#user_photo").val();
 	document.getElementById('filename').value = str.substring(12, str.length);
 }
 
+//if the fake file input button is clicked, pull down the real file input menu
 function clickReviewPhoto() {
 	$("#user_photo").click();
 }
 
 
-function setReviewNum(num) {
-	$("#deleteReviewForm").action = "/reviews/"+num.toString();
-}
-
+//set # unread user messages to 0 and save user 
+	//called upon navigating to the user messages tab
 function messagesRead() {
 	<% @user.unread_messages = 0 %>
 	<% @user.save %>
 }
 
+//set message recipient in the popup window
 function setMessageRecipient(recipient) {
 	$("#recipient_id_field").val(recipient);
 }
 
-function setMessageSender(sender) {
-	$("#sender_id_field").val(sender);
-}
 
+//set message subject in the popup window when clicking "reply"
 function setMessageSubject(subject) {
 	if (subject.substring(0,3) == "Re:") {
 		$("#subject_field").val(subject);
 	} else {
 		$("#subject_field").val("Re: "+subject);
 	}
+}
+
+//close the message popup and open the reply popup
+function closeMessageBox() {
+	$('.m-popup').fadeOut(300);	
+	$("#mask").fadeOut(300);
+	$("#mask").remove();
 }
 </script>

@@ -27,6 +27,7 @@ class BlogPost < ActiveRecord::Base
 
 	validates_presence_of :title
 	validates_presence_of :body
+	before_save :validate_photo_presence_article
 	
 	
 
@@ -49,6 +50,15 @@ class BlogPost < ActiveRecord::Base
       @photo = MiniMagick::Image.open(image.url)
       if @photo['width'] > 700
         errors.add(:image, "must have a width of less than 700 pixels")
+        return false
+      end
+    end
+  end
+  
+  def validate_photo_presence_article 
+    if !is_our_blog
+      if image.nil? || image.url.nil?
+        errors.add(:image, "must be present for an article post")
         return false
       end
     end

@@ -144,7 +144,7 @@
 		}
 
 		/* You can customize to your needs  */
-		.popup-box{
+		.price-range-box{
 			display:none;
 			background: #D9DEDA;
 			padding: 10px; 	
@@ -152,6 +152,7 @@
 			float: left;
 			color: black;
 			max-height:300px;
+			width:auto;
 			position: fixed;
 			top: 50%; left: 50%;
 			z-index: 99999;
@@ -225,10 +226,10 @@
 	#orgLink:link{color:#68c2d8}
 	#orgLink:hover{color:white; background:none}
 
-	a.popup-window:active{color:#68c2d8}
-	a.popup-window:visited{color:#68c2d8}
-	a.popup-window:link{color:#68c2d8}
-	a.popup-window:hover{color:#e67b5a; background:none}
+	a.price-range-window:active{color:#68c2d8}
+	a.price-range-window:visited{color:#68c2d8}
+	a.price-range-window:link{color:#68c2d8}
+	a.price-range-window:hover{color:#e67b5a; background:none}
 
 	a.review-window:active{color:#68c2d8}
 	a.review-window:visited{color:#68c2d8}
@@ -278,16 +279,17 @@ a.backToLink:hover {
 	width:100px;
 	height:100px;
 }
-#orgNameContainerOuter {
+#progNameContainerOuter {
 	width:53%; 
 	text-align:left; 
 	margin:0; 
 	padding:0; 
 	margin-top:20px;
 }
-#orgNameContainer {
+#progNameContainer {
 	font-size:3em; 
 	line-height:1em;
+	color:#e67b5a;
 }
 a.organization_url {
 	font-size:1.2em;
@@ -311,13 +313,16 @@ a.organization_url {
 	color:#e67b5a; 
 	line-height:1.3em;
 }
-#programNameContainer {
+#orgNameContainer {
 	margin-bottom:25px;
-	margin-left:15px; 
+	margin-left:4%; 
 	margin-top:30px;
 }
-#programName {
-	font-size:2.5em; 
+#orgNameLabel {
+	color:#575758;
+}
+#orgName {
+	font-size:1.6em; 
 	color:#e67b5a; 
 	line-height:1em;
 }
@@ -436,6 +441,13 @@ th {
 	text-align:center; 
 	padding-top:15px;
 }
+a.basedOnReviewsLink {
+	color:#e67b5a;
+}
+a.basedOnReviewsLink:hover {
+	color:#9bce6c;
+}
+
 </style>
 
 <% reviews_count = @results.count %>
@@ -457,10 +469,9 @@ th {
 		<div class="two columns" id="progSquareImageContainer">
 			<%= image_tag @program.square_image.url, :id => "squareImage"%>
 		</div>
-		<div class="seven columns" id="orgNameContainerOuter">
+		<div class="seven columns" id="progNameContainerOuter">
 			<br />
-			<p id="orgNameContainer"> <a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
-			<a href="<%=Organization.find(@program.organization_id).url%>" class="organization_url" target="_blank"><u> <%=Organization.find(@program.organization_id).url%></u></a>
+			<p id="progNameContainer"> <%= @program.name%></p>
 
 		</div>
 		<div class="two columns"  id="progRatingContainer">
@@ -469,7 +480,7 @@ th {
 			<%= render :partial => "bigStar", :locals => {:stars => (@program.roundup(@overall))}%>
 			<br />
 
-			<p class="basedOnReviewsContainer">Based on <%= @program.reviews.count%> reviews</p> 
+			<p class="basedOnReviewsContainer"><a class="basedOnReviewsLink" href="#results">Based on <%= @program.reviews.count%> reviews</a></p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{@program.id}/edit"%> <br /><br /><br />
@@ -479,9 +490,19 @@ th {
 	</div>
 	<div class="row">
 
-	<div class="ten columns" id="programNameContainer">
-		<p id="programName"><%= @program.name%></p>
+	<div class="ten columns" id="orgNameContainer">
+		<p id="orgName"><span id="orgNameLabel"><u>Organization:</u> </span><a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
 	</div>
+	<div class="ten columns" id="descriptionLabelContainer">
+		<p id="programDescriptionLabel"><u>Description:</u></p>
+	</div>
+		<div class="eleven columns" id="programDescriptionContainer">
+
+		<div id="programDescription">	<%=@program.description.html_safe%></div>
+
+	</div>
+	
+	
 	<div class="ten columns" class="detailsLabelContainer">
 		<p id="detailsLabel"><u>Details:</u></p>
 	</div>
@@ -512,21 +533,13 @@ th {
 	</div>
 	
 	<div class="six columns" id="rightColumnContainer">
-		<span class="detailLabel">	Program Cost Chart: </span><a href="#popup" class="popup-window">Click here to view</a><br /><br /> 
+		<span class="detailLabel">	Program Cost Chart: </span><a href="#price-range-popup" class="price-range-window">Click here to view</a><br /><br /> 
 		<span class="detailLabel">Program Cost Breakdown: </span><%= @program.program_cost_breakdown.html_safe%><br />
 	<span class="detailLabel">	-Includes: </span><%= @program.cost_includes.html_safe%><br />
 	<span class="detailLabel">	-Doesn't Include: </span><%= @program.cost_doesnt_include.html_safe%><br />
 	</div>
 </div>
 
-<div class="ten columns" id="descriptionLabelContainer">
-	<p id="programDescriptionLabel"><u>Description:</u></p>
-</div>
-	<div class="eleven columns" id="programDescriptionContainer">
-
-	<div id="programDescription">	<%=@program.description.html_safe%></div>
-
-</div>
 	<div class="six columns" id="buttonsContainer">
 		<br />
 		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/LearnMore.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%> </a>
@@ -597,7 +610,9 @@ th {
 <!--- POPUP PLUGIN -->
 
 
-  	<div id="popup" class="popup-box">
+  	<div id="price-range-popup" class="price-range-box">
+		<a href="#" class="close"><div class="close_image"></div></a>
+		<div class="overflow">
 	<% if @program.program_cost_length_maps.empty?%>
 		<p class="infoNotDisclosedTitle">Information not disclosed</p>
 		<p style="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
@@ -620,6 +635,7 @@ th {
 				</table>
 	<% end %>
 	</div>
+	</div>
 	
 	
 	<div id="flag-box" class="flag-popup" align="center">
@@ -641,7 +657,7 @@ th {
 			</td></tr>
 
 			<tr><td colspan="2">
-		    <p class="flagSubmitContainer"><%= image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitFlag.png"), :height => "50px"%></p></td></tr>
+		    <p class="flagSubmitContainer"><%= image_submit_tag ("/assets/submitToVVI.png"), :height => "50px"%></p></td></tr>
 			<% end %>
 		<% else %>
 		<tr><td>You must be signed in to flag a review.</td></tr>
@@ -677,7 +693,7 @@ function removePopup() {
 			$('#reviews_pager').smartpaginator({ totalrecords: <%=reviews_count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 			//jQuery for the "Price Ranges" popup
-		$('a.popup-window').click(function() {
+		$('a.price-range-window').click(function() {
 
 	                //Getting the variable's value from a link 
 			var popupBox = $(this).attr('href');
@@ -703,7 +719,7 @@ function removePopup() {
 
 		// When clicking on the button close or the mask layer the popup closed
 		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .popup-box').fadeOut(300 , function() {
+		  $('#mask , .price-range-box').fadeOut(300 , function() {
 			$('#mask').remove();  
 		}); 
 		return false;

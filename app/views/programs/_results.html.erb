@@ -32,7 +32,7 @@
 			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
 			    <% end %> 
 			  	</td>
-				<td colspan="2" class="reviewSignature"><p class="usernameContainer"><a class="usernameLink" href="<%=User.find(f.user_id)%>"> --<%=User.find(f.user_id).username%></a></p><p class="flagContainer"><a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#review_id').val(<%=f.id%>); $('#poster_id').val(<%=f.user_id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a></p></td>
+				<td colspan="2" class="reviewSignature"><p class="usernameContainer"><a class="usernameLink" href="/users/<%=f.user_id%>"> --<%=User.find(f.user_id).username%></a></p><p class="flagContainer"><a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#review_id').val(<%=f.id%>); $('#poster_id').val(<%=f.user_id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a></p></td>
 			</tr>
 			<% end %>
 		</table>
@@ -46,10 +46,10 @@
 			<tr class="reviewPopupBackground">
 				<td></td>
 				<td></td>
-				<td colspan="3"><p class="reviewPopupUsername">-<%=User.find(f.user_id).username%>&nbsp;&nbsp;&nbsp;&nbsp;
+				<td colspan="3"><p class="reviewPopupUsername">-<a href="/users/<%=f.user_id%>" class="usernameLink"><%=User.find(f.user_id).username%></a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();", :style => "float:right", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
 			<tr class="reviewPopupBackground"><td colspan="5">	<% @photos.each do |photo| %>
-			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" class="reviewPopupPhotos"/></a>
+			  		  <a class="single" rel="lightbox[plants]"><img src="<%=photo.url%>" class="reviewPopupPhotos"/></a>
 			    <% end %></td></tr>
 			<tr class="reviewPopupFooter reviewPopupBackground">
 				<td><p class="reviewPopupStarLabel">Preparation/Orientation</p></td>

@@ -66,7 +66,7 @@ RMTest::Application.routes.draw do
   
   match "searches/places" => "searches#places"
   
-  match "searches/:subject/programs_browse" => "searches#programs_browse"
+  match "searches/:subject/program_browse_search" => "searches#program_browse_search"
   
   match "searches/error" => "searches#error"
   
