@@ -6,7 +6,7 @@
 			<% if User.where(:id => m.sender_id).empty? %>
 			<span class="username">???</span>
 			<% else %>
-			<a href= "/users/sender_id" class="usernameLink"> <%=User.find(m.sender_id).username%></a>
+			<a href= "/users/<%=m.sender_id%>" class="usernameLink"> <%=User.find(m.sender_id).username%></a>
 			<% end %>
 			</td>
 		<td width="12%"><p class="messageDateCreated"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>

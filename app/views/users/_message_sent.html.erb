@@ -2,10 +2,11 @@
 <table class="sentTable" cellspacing="0" border="0" cellpadding="0" width="80%">
 	<tr>
 		<td width="25%"><b>
+			<a href= "#sent-box<%=m.id%>" class="message-window"> </a>
 			<% if User.where(:id => m.recipient_id).empty? %>
-			<a href= "#sent-box<%=m.id%>" class="message-window">???</a>
+			???
 			<% else %>
-			<a href= "#sent-box<%=m.id%>" class="message-window"> <%=User.find(m.recipient_id).username%></a>
+			 <a href="/users/<%=m.recipient_id%>" class="usernameLink"><%=User.find(m.recipient_id).username%></a>
 			<% end %>
 			</td>
 		<td width="12%"><p class="sentMessageDate"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
