@@ -225,8 +225,16 @@ lightbox = new Lightbox options
       containerRightPadding = parseInt($container.css('padding-right'), 10);
       containerBottomPadding = parseInt($container.css('padding-bottom'), 10);
       containerLeftPadding = parseInt($container.css('padding-left'), 10);
-      newWidth = imageWidth + containerLeftPadding + containerRightPadding;
-      newHeight = imageHeight + containerTopPadding + containerBottomPadding;
+	  if (imageWidth > 600) {
+		newWidth = 600;
+	  } else {
+      	newWidth = imageWidth + containerLeftPadding + containerRightPadding;
+  	  }
+	  if (imageHeight > 300) {
+		newHeight = 300
+	  } else {
+      	newHeight = imageHeight + containerTopPadding + containerBottomPadding;
+	  }
       if (newWidth !== oldWidth && newHeight !== oldHeight) {
         $outerContainer.animate({
           width: newWidth,
