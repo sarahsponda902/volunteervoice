@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if request.referrer
       case URI(request.referrer).path
-      when '/users/sign_in', '/registrations/mustBe', '/sign_up', '/sign_in', '/users/sign_up' then
+      when '/users/sign_in', '/registrations/mustBe', '/sign_up', '/sign_in', '/users/sign_up', '/contacts' then
         '/'
       else
         request.referrer
