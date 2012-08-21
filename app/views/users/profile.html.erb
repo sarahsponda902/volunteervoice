@@ -835,23 +835,23 @@ a.usernameLink:hover {
 			</div>
 			
         <div id="messages-contents" class="contents">
-            <div id="divmessages">
 		        <ul class="sentInboxTabs">
 		            <li class="inbox" id="4">INBOX &nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
 		            <li class="Sent" id="5">SENT</li>
 		        </ul>
 		       
 		        
-
+			<div id="divmessages">
               <% if @messages.empty?%>
 			<p class="noMessagesMessage">
               You do not have any messages in your inbox.</p>
               <% else %>
 			<p class="messagesContainer">
               <% @messages.each do |m| %>
-
+				<div>
               <%= render :partial => "message", :locals => {:m => m} %>
-              <%end%>
+              	</div>
+			<%end%>
 			</p>
               <%end%>
 			
@@ -861,13 +861,12 @@ a.usernameLink:hover {
         </div>
 
 		 <div id="sent-contents" class="contents">
-	            <div id="divsents">
 		
 					<ul class="sentInboxTabs">
 			            <li class="inbox" id="4">INBOX</li>
 			            <li class="Sent" id="5">SENT &nbsp;&nbsp;&nbsp;&nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
 			        </ul>
-
+					<div id="divsents">
 	              <% if @sent_messages.empty?%>
 	              <p class="noMessagesMessage">
 	              You have not yet sent any messages.</p>
