@@ -44,11 +44,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   process :resize_to_fit => [700, nil]
 
   # Create different versions of your uploaded files:
-  version :review, :if => :is_review do
+  version :review, :if => :is_review? do
     process :resize_to_fit => [600, 300]
   end
   
-  def is_review
+  def is_review? picture
     model.class.to_s == "Review"
   end
 
