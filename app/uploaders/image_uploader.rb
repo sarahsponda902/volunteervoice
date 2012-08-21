@@ -33,7 +33,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  if MiniMagick::Image.open(file.path)[:width] > 700
+  image = MiniMagick::Image.open(file.path)
+  if image[:width] > 700
     process :resize_to_fit => [700, nil]
   end
 
