@@ -55,18 +55,11 @@ def self.find_first_by_auth_conditions(warden_conditions)
       end
 end
 
-def resize_to_fit(width, height)
-  manipulate! do |img|
-    img.resize "#{width}x#{height}"
-    img = yield(img) if block_given?
-    img
-  end
-end
 
 def square_image_crop
   if (self.crops)
    if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
-     image = MiniMagick::Image.open(self.photo.url).resize_to_fit(700, nil)
+     image = MiniMagick::Image.open(self.photo.url).scale.resize "700x#{nil}>"
      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
      self.square_image = image

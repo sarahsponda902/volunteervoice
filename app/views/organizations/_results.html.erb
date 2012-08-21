@@ -29,7 +29,7 @@
 			<tr class="reviewBackground reviewPhotos">
 				<td>
 				<% @photos.each do |photo| %>
-			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
+			  		  <a class="single" href="<%=photo.image_url(:review)%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
 			    <% end %> 
 			  	</td>
 				<td colspan="2" class="reviewSignature"><p class="usernameContainer"><a class="usernameLink" href="/users/<%=f.user_id%>"> --<%=User.find(f.user_id).username%></a></p><p class="flagContainer"><a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#review_id').val(<%=f.id%>); $('#poster_id').val(<%=f.user_id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a></p></td>
