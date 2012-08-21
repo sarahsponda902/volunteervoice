@@ -247,6 +247,11 @@ html, body, div, span, applet, object, iframe,
 	height:95px;
 	cursor:pointer;
 }
+#headerLogoSignedIn {
+	height:95px;
+	cursor:pointer;
+	margin-top:10px;
+}
 
 
 
