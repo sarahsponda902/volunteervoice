@@ -91,6 +91,14 @@ a.contact-window:hover{color:#9bce6c}
 	text-align:center;
 	color:#e67b5a;
 }
+.graySubmitButtonContainer {
+	text-align:center;
+}
+.noSubmitButtonContainer {
+	text-align:center;
+	color:#E67B5A;
+	margin-top:-30px;
+}
 </style>
 
 <div class="container">
@@ -146,13 +154,14 @@ a.contact-window:hover{color:#9bce6c}
 		    </div>
 
 
-		  <div id="submit-contact">
-		    <p class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitShortLong.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p>
-		  </div>
-		
-		 <div id="nosubmit-contact">
-			<p class="submitContainer">Please include both an<br />email and a message<br />before submitting.</p>
-		</div>
+		  	<div id="submit-contact">
+			    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
+			  </div>
+			
+			 <div id="nosubmit-contact">
+				<p class="graySubmitButtonContainer"><%= image_tag "/assets/smallSubmitGray.png"%></p>
+				<p class="noSubmitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
+			</div>
 		<% end %>
 
 
