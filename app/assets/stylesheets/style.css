@@ -286,9 +286,9 @@ input[name="search[keywords]"] {
 
 /** USERS **/
 
-.loginContainer { float:right; } /* contains entire login/join/username/signout box */
+.loginContainer { float:right; } /* contains entire login/register/username/signout box */
 
-#loginOrJoinContainer { width:17%; padding-left:0px; margin-left:0px} /* only for "Login or Join" -> make room for orgLoginTab */
+#loginOrRegisterContainer { width:auto; padding-left:0px; margin-left:0px} /* only for "Login or Join" -> make room for orgLoginTab */
 
 .login {background:#575758; padding:10px; color: white; font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif; text-align:right; font-size:1.2em; float:right; font-weight:600; width:auto} 
 
@@ -306,7 +306,7 @@ input[name="search[keywords]"] {
 
 /** ORGS **/
 
-#orgLogin {float:right;}
+#orgLogin {float:right; margin-right:20px}
 
 #orgLogin li {list-style:none; display:inline-block; text-align:center; font-family:Arial; margin-top:0px; color:white; float:right }
 
