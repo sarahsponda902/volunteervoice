@@ -122,6 +122,10 @@ select {
 	font-size:1.3em; 
 	padding-right:0px;
 }
+#tinyUserProfilePic {
+	margin-left:30px;
+	height:20px;
+}
 #upload-box {
 	width:300px;
 }
@@ -221,7 +225,9 @@ select {
 			</div>
 				<div class="row top">
 					<div class="six columns" id = "myProfilePicBoxContainer">
-					<div class="six columns myProfilePicLabel">My Profile Pic:</div>
+					<div class="six columns myProfilePicLabel">My Profile Pic:
+						<img id="tinyUserProfilePic" src="<%=current_user.square_photo.url%>" />
+					</div>
 					<div id="upload-box" class="five columns">
 						  <div class="uploadImageAndFieldContainer"><image src="/assets/changePhoto.png" class="uploadPhotoImage" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" disabled="true" value="no file selected">
 							
