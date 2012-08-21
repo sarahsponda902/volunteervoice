@@ -63,7 +63,7 @@ include ActionView::Helpers::TextHelper
     if (current_user.nil?) && ((current_user.admin?) || (current_user.id == @message.sender_id))
       @message.sender_deleted = true
       @message.save
-      redirect_to "/pages/profile/sent_deleted"
+      redirect_to "/users/profile/sent_deleted"
     else
       redirect_to "/users/profile"
     end
@@ -74,9 +74,9 @@ include ActionView::Helpers::TextHelper
         if (current_user.nil?) && ((current_user.admin?) || (current_user.id == @message.recipient_id))
           @message.recipient_deleted = true
           @message.save
-          redirect_to "/pages/profile/message_deleted"
+          redirect_to "/users/profile/message_deleted"
         else
-          redirect_to "pages/profile"
+          redirect_to "users/profile"
         end
        
   end
