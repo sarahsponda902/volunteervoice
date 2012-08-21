@@ -13,7 +13,7 @@
 
 
 	<br />
-	<p class="whosReview"><%=User.find(f.user_id).username%>'s Review of <a class="reviewOrgLink" href="/organizations/<%=Organization.find(Program.find(f.program_id).organization_id)%>"> <%=Organization.find(Program.find(f.program_id).organization_id).name%></a></p>
+	<p class="whosReview"><%=User.find(f.user_id).username%>'s Review of <a class="reviewOrgLink" href="/organizations/<%=Program.find(f.program_id).organization_id%>"> <%=Organization.find(Program.find(f.program_id).organization_id).name%></a></p>
 <p class="reviewWrittenDate"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
 	
 <table cellspacing="0" border="0" cellpadding="0" width="100%" class="reviewBox">		
@@ -32,7 +32,7 @@
 <tr>
 	<td colspan="3">
 		<% @photos.each do |photo| %>
-	  		  <a class="single" rel="lightbox[plants]"><img src="<%=photo.url%>" class="reviewPhoto"/></a>
+	  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" class="reviewPhoto"/></a>
 	    <% end %>
 	</td>
 </tr>
