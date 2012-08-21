@@ -9,7 +9,7 @@
 			<% end %>
 			</td>
 		<td width="12%"><p class="messageDateCreated"><%= m.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
-		<td width="43%"><p class="messageSubject"><%=m.subject%></p></td>
+		<td width="43%"><p class="messageSubject"><%=truncate m.subject, :length => 100%></p></td>
 		<td width="9%"><p class="messageDeleteX" align="center">
 		<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/favoritesX.png"), "#delete-box#{m.id}", :class => "delete-window", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'delete-window'"%>
 		</p></td>
