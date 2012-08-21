@@ -248,4 +248,33 @@ select {
 			function messagesCheck() {
 				$('#checkMessages').toggle();
 			}
+			
+			//define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
+				var message = <%= current_user.messages_show.to_s %>
+				var profile = <%= current_user.profile_show.to_s %>
+
+
+
+			$(document).ready(function() {
+
+
+				//set the user's country in the account-edit popup
+				$('#user_country').val("<%=current_user.country%>");
+
+
+				//hide/show message/profile checkmarks if appropriate
+					if (message) 
+					{
+						$("#checkMessages").show();
+					} else {
+						$("#checkMessages").hide();
+					}
+
+					if (profile) 
+					{
+						$("#checkAgeCountry").show();
+					} else {
+						$("#checkAgeCountry").hide();
+					}
+			}
 			</script>
