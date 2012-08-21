@@ -289,7 +289,7 @@ a.backToLink:hover {
 #progNameContainer {
 	font-size:3em; 
 	line-height:1em;
-	color:#68c2d8;
+	color:#e67b5a;
 }
 a.organization_url {
 	font-size:1.2em;
@@ -315,7 +315,7 @@ a.organization_url {
 }
 #orgNameContainer {
 	margin-bottom:25px;
-	margin-left:15px; 
+	margin-left:4%; 
 	margin-top:30px;
 }
 #orgNameLabel {
@@ -493,6 +493,16 @@ a.basedOnReviewsLink:hover {
 	<div class="ten columns" id="orgNameContainer">
 		<p id="orgName"><span id="orgNameLabel"><u>Organization:</u> </span><a href="/organizations/<%=@program.organization_id%>" id="orgLink"><%= Organization.find(@program.organization_id).name%></a></p>
 	</div>
+	<div class="ten columns" id="descriptionLabelContainer">
+		<p id="programDescriptionLabel"><u>Description:</u></p>
+	</div>
+		<div class="eleven columns" id="programDescriptionContainer">
+
+		<div id="programDescription">	<%=@program.description.html_safe%></div>
+
+	</div>
+	
+	
 	<div class="ten columns" class="detailsLabelContainer">
 		<p id="detailsLabel"><u>Details:</u></p>
 	</div>
@@ -530,14 +540,6 @@ a.basedOnReviewsLink:hover {
 	</div>
 </div>
 
-<div class="ten columns" id="descriptionLabelContainer">
-	<p id="programDescriptionLabel"><u>Description:</u></p>
-</div>
-	<div class="eleven columns" id="programDescriptionContainer">
-
-	<div id="programDescription">	<%=@program.description.html_safe%></div>
-
-</div>
 	<div class="six columns" id="buttonsContainer">
 		<br />
 		<a href="<%=@program.check_it_out%>" target = "_blank"> <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/LearnMore.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%> </a>
