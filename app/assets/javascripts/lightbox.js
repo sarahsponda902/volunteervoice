@@ -226,12 +226,12 @@ lightbox = new Lightbox options
       containerBottomPadding = parseInt($container.css('padding-bottom'), 10);
       containerLeftPadding = parseInt($container.css('padding-left'), 10);
 	  if (imageWidth > 600) {
-		newWidth = 600;
+		newWidth = 620;
 	  } else {
       	newWidth = imageWidth + containerLeftPadding + containerRightPadding;
   	  }
 	  if (imageHeight > 300) {
-		newHeight = 300
+		newHeight = 320
 	  } else {
       	newHeight = imageHeight + containerTopPadding + containerBottomPadding;
 	  }
