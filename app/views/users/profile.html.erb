@@ -743,7 +743,11 @@ a.usernameLink:hover {
 .message-window {
 	display:none;
 }
-
+.messagesContainer {
+	font-family:architectsDaughterRegular; 
+	color: #e67b5a; 
+	margin-right:65px;
+}
 </style>
 
 <% @path = request.fullpath.split("/").last%>
@@ -841,6 +845,9 @@ a.usernameLink:hover {
 			</div>
 			
         <div id="messages-contents" class="contents">
+			<div align="right" id="messagesContainer">
+				<%= @messages.count%> Messages
+				</div>
 	<div id="divmessages">
 		        <ul class="sentInboxTabs">
 		            <li class="inbox" id="4">INBOX &nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
@@ -868,6 +875,9 @@ a.usernameLink:hover {
         </div>
 
 		 <div id="sent-contents" class="contents">
+			<div align="right" id="messagesContainer">
+				<%= @sent_messages.count%> Sent Messages
+				</div>
 		<div id="divsents">
 					<ul class="sentInboxTabs">
 			            <li class="inbox" id="4">INBOX</li>
