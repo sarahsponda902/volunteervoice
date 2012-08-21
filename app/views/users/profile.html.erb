@@ -900,8 +900,10 @@ a.usernameLink:hover {
             <div id="divfavorites">
               <% if !((@favorites).empty?) %>
             <% (@favorites).each do |f|%>
+			<div>
                 <%= render :partial => "favorite", :locals => { :f => f }%>
-              <% end %>
+              </div>
+				<% end %>
               <% else %>
 				<p id="noFavoritesMessage">You have not yet added any favorites.</p>
 				<% end %>

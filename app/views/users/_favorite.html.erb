@@ -1,13 +1,22 @@
-	<div >
+
 	<table class="favoriteTable" cellspacing="0" border="0" cellpadding="0" width="100%">
 		<tr>
 			<td width="7%"><image class="favorteBullet" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/astrick.png"></td>
 			<td width="75%"><b><a class="favoriteOrg" href= "/organizations/<%=Organization.find(Program.find(f.program_id).organization_id)%>"> <%=(Organization.find((Program.find(f.program_id)).organization_id).name)%></a></b><a class="favoriteProg" href= "/programs/<%= Program.find(f.program_id)%>"> - <%=(Program.find(f.program_id)).name%></a></td>
 		<% if @user == current_user %>
-			<td><p class="deleteFavoriteContainer" align="center"><%= button_to "", "/favorites/#{f.id}", :method => :delete, :id => "deleteFavorite#{f.id}"%>
+			<td><p class="deleteFavoriteContainer" align="center">
+				
+				<form action="/favorites/<%=f.id%>" class="button_to" method="post">
+					<p style="display: none; ">
+						<input name="_method" type="hidden" value="delete">
+						<input id="deleteFavorite<%=f.id%>" type="submit" value="">
+						<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+					</p>
+				</form>
+					
+				
 			<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/favoritesX.png", :onclick => "$('#deleteFavorite#{f.id}').click();", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 			<%end%></p></td>
 	</tr>
 	<br />
 	</table>
-	</div>
