@@ -152,8 +152,7 @@
 			float: left;
 			color: black;
 			max-height:300px;
-			overflow-y:auto;
-			overflow-x:hidden;
+			width:auto;
 			position: fixed;
 			top: 50%; left: 50%;
 			z-index: 99999;
@@ -612,6 +611,8 @@ a.basedOnReviewsLink:hover {
 
 
   	<div id="price-range-popup" class="price-range-box">
+		<a href="#" class="close"><div class="close_image"></div></a>
+		<div class="overflow">
 	<% if @program.program_cost_length_maps.empty?%>
 		<p class="infoNotDisclosedTitle">Information not disclosed</p>
 		<p style="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
@@ -633,6 +634,7 @@ a.basedOnReviewsLink:hover {
 					</tbody>
 				</table>
 	<% end %>
+	</div>
 	</div>
 	
 	
