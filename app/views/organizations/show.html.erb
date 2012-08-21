@@ -328,9 +328,7 @@
 		display:none;
 		background: #E9ECE9;
 		padding: 10px;
-		max-height: 300px; 
-		overflow-y:auto;
-		overflow-x:hidden;	
+		max-height: 300px; 	
 		border: 2px solid #ddd;
 		float: left;
 		color: black;
@@ -490,10 +488,6 @@
 		text-align:center; 
 		padding-top:15px;
 	}
-	#closePriceRanges {
-		margin-top:-20px;
-		margin-left:-20px;
-	}
 	</style>
 
 
@@ -564,6 +558,7 @@
 	</div>	
 	<div class="price-ranges-popup" id="price-ranges-box" >
 		<a href="#" class="close"><div id="closePriceRanges" class="close_image"></div></a>
+		<div class="overflow">
 		<% if (ProgramCostLengthMap.where(:organization_id => @organization.id).empty?)%>	
 		<p class="infoNotDisclosedTitle">Information not disclosed</p>
 		<p class="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
