@@ -103,22 +103,14 @@
 .lb-prev {
   left: 0;
   float: left;
+  background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/prev.png) left 48% no-repeat;
 }
 
 /* line 76, ../sass/lightbox.sass */
 .lb-next {
   right: 0;
   float: right;
-}
-
-/* line 81, ../sass/lightbox.sass */
-.lb-prev:hover {
-  background: url(/assets/prev.png) left 48% no-repeat;
-}
-
-/* line 85, ../sass/lightbox.sass */
-.lb-next:hover {
-  background: url(/assets/next.png) right 48% no-repeat;
+  background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/next.png) right 48% no-repeat;
 }
 
 /* line 88, ../sass/lightbox.sass */
