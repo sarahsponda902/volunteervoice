@@ -238,7 +238,7 @@ html, body, div, span, applet, object, iframe,
 #header {
 	min-width:970px; 
 	color:#575758;
-	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/header.png);
+	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
 }
 .headerLogoContainer { 
 	margin-top:15px;
