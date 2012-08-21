@@ -33,6 +33,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
+  process :scale_image => [700, nil]
+  
+  def scale_image(max_width, max_height)
+    image = MiniMagick::Image.open(file.path)
+    if image[:width] > 700
+      process :resize_to_fit => [700, nil]
+    end
+  end
 
   # Create different versions of your uploaded files:
   # version :thumb do
