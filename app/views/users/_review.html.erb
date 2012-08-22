@@ -32,7 +32,7 @@
 <tr>
 	<td colspan="3">
 		<% @photos.each do |photo| %>
-	  		  <a class="single" href="<%=photo.url%>" rel="lightbox"><img src="<%=photo.url%>" class="reviewPhoto"/></a>
+	  		  <a class="single" href="<%=photo.url%>" rel="lightbox[review<%=f.id%>]"><img src="<%=photo.url%>" class="reviewPhoto"/></a>
 	    <% end %>
 	</td>
 </tr>
