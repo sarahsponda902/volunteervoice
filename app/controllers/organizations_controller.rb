@@ -6,6 +6,24 @@ class OrganizationsController < ApplicationController
   include ActionView::Helpers::TextHelper
   
   
+  def show_all
+    @sort_by = params[:sort_by]
+    if @sort_by.nil? || @sort_by == "rating_high"
+      @organizations = Organization.all.sort_by(&:overall).reverse
+    elsif @sort_by == "rating_low"
+      @organizations = Organization.all.sort_by(&:overall)
+    elsif @sort_by == "review_newest"
+      @organizations = Organization.all.sort_by(&:latest_review_time)
+    elsif @sort_by == "profiled_newest"
+      @organizations = Organization.all.sort_by(&:created_at)
+    elsif @sort_by == "alphabetical_az"
+      @organizations = Organization.all.sort_by(&:name)
+    else
+      @organizations = Organization.all.sort_by(&:name).reverse
+    end
+        
+  end
+  
   def index
     if user_signed_in? && current_user.admin?
       @organizations = Organization.all

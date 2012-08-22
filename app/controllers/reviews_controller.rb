@@ -1,6 +1,21 @@
 class ReviewsController < ApplicationController
 include ActionView::Helpers::TextHelper
   
+  def show_all
+    @sort_by = params[:sort_by]
+    if @sort_by.nil? || @sort_by == "rating_high"
+      @reviews = Review.all.sort_by(&:overall).reverse
+    elsif @sort_by == "rating_low"
+      @reviews = Review.all.sort_by(&:overall)
+    elsif @sort_by == "review_newest"
+      @reviews = Review.all.sort_by(&:created_at)
+    elsif @sort_by == "alphabetical_az"
+      @reviews = Review.all.sort_by(&:name)
+    else
+      @reviews = Review.all.sort_by(&:name).reverse
+    end
+  end
+  
    def create
      if user_signed_in?
       @review = Review.new(params[:review])

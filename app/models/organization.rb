@@ -74,6 +74,9 @@ def square_image_crop
    end
  end
  
+def latest_review_time
+  reviews.last.created_at
+end
  
 
 end

@@ -6,7 +6,10 @@ RMTest::Application.routes.draw do
   get "/searches/program_browse"
   match "/blog_posts/resources" => "blog_posts#resources"
   match "/searches/search_machine" => "searches#search_machine"
-  
+  match "/organizations/show_all" => "organizations#show_all"
+  match "/reviews/show_all" => "reviews#show_all"
+  match "/organizations/:sort_by/show_all" => "organizations#show_all"
+  match "/reviews/:sort_by/show_all" => "reviews#show_all"
   ##### UPDATE MESSAGES
   match "update_messages/:id/send_message" => "update_messages#send_message"
   match "update_messages/:id/send_message_preview" => "udate_messages#send_message_preview"
