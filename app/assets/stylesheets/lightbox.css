@@ -64,10 +64,10 @@
 /* line 42, ../sass/lightbox.sass */
 .lb-loader {
   position: absolute;
-  top: 40%;
+  top: 10%;
   left: 0%;
   height: 25%;
-  width: 100%;
+  width: 50%;
   text-align: center;
   line-height: 0;
 }
