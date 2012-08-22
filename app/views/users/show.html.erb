@@ -369,9 +369,9 @@ a.flag-window {
 	</div>
 		<div class="four columns" id="ageCountryBox">
 			<p id="userAgeCountry">
-<% if !(@user.profile_show)%>
-	Age: 
+<% if !(@user.profile_show)%> 
 	<%if @user.dob != nil%>
+	Age:
 	<% @now = Time.now.utc.to_date%>
 	<%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
 	<%end%>
