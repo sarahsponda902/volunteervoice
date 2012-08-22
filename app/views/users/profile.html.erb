@@ -807,11 +807,11 @@ a.usernameLink:hover {
 	</div>
 		<div class="four columns" id="dobContainer">
 			<p id="dob">
-	Age: 
 	<%if @user.dob != nil%>
+	Age: 
 	<% @now = Time.now.utc.to_date%>
 	<%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
-	<%end %>
+	<% end %>
 	<br />
 	Country: <%= THECOUNTRIES[@user.country] %><br />
 
