@@ -4,7 +4,13 @@
 		<tr onclick="window.location.href = 'http://girlpowerproject.herokuapp.com/programs/<%=f.id%>'">
 			<td width="12%"><p class="progSquareImageContainer"><%=image_tag f.square_image.url, :class => "progSquareImage" %></p></td>
 			<td><p class="progSearchLinkContainer"><a id = "prog<%=f.id%>" class="search_link_prog" href="/programs/<%=f.id%>"><%= f.name%></a></p></td>
-			<td><p class="progStarsContainer"><%=render :partial => 'star', :locals => {:star => f.overall}%></p><p class="progBasedOnContainer">Based on <%=f.reviews.count%> reviews</p></td>
+			<td><p class="progStarsContainer">
+				<% if f.reviews.count == 0 %>
+					<%=render :partial => 'star', :locals => {:star => 0}%>
+				<% else %>
+					<% render :partial => 'star', :locals => {:star => (f.reviews.sum / f.reviews.count).to_f}%>
+				<% end %>
+			</p><p class="progBasedOnContainer">Based on <%=f.reviews.count%> reviews</p></td>
 		</tr>
 		<tr onclick="window.location.href = 'http://girlpowerproject.herokuapp.com/programs/<%=f.id%>'">
 			<td></td>
