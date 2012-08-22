@@ -410,11 +410,11 @@ a.red-link:hover{color:white}
 	<div class="reviewsColOrgName">
 		on
 		<a href="/organizations/6" class="red-link"> "Fake Awesome Organization"</a>
-		<p class="reviewsColBody"><%= f.truncated100.html_safe %></p>
-		<p alt="Review Stars" class="right reviewsColStars"> 
-			<%= render :partial => "star", :locals => {:star => f.overall}%>
-		</p>
 	</div>
+	<p class="reviewsColBody"><%= f.truncated100.html_safe %></p>
+	<p alt="Review Stars" class="right reviewsColStars"> 
+		<%= render :partial => "star", :locals => {:star => f.overall}%>
+	</p>
 </div>
 
 
