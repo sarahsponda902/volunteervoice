@@ -796,7 +796,7 @@ a.usernameLink:hover {
 			<div class="row" id="userBoxContainer">
 				<div class="three columns" id="userImageContainer">
 					<% if !(current_user.square_image.url.nil?)%>
-				<img src="<%=current_user.square_image.url%>" id = "userImage" onerror = "$(this).attr('src', <%= current_user.photo.url %>)">
+				<img src="<%=current_user.square_image.url%>" id = "userImage" onerror = "$(this).attr('src', '<%= current_user.photo.url %>')">
 					<% else %>
 					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
 					<% end %>
