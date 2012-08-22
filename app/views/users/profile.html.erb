@@ -435,7 +435,7 @@ a.close-delete-pop { /* button to close the delete popup ("No, thanks") */
 	margin-top:-10px;
 }
 .sentTable tr:hover {
-	background-color:gray;
+	background-color:#C1C4C2;
 }
 .sentMessageDate { /* date the message was sent */
 	font-size:1.2em;
@@ -687,16 +687,14 @@ img.reviewPhoto { /* individual review photo */
 }
 #messages {
 	margin-left:5px; 
-	margin-top:-10px;
-	width:90%;
+	margin-top:-12px;
 }
 #divsents, #divfavorites, #divreviews, #divmessages {
 	overflow:hidden;
 }
 #sent {
 	margin-left:5px; 
-	margin-top:-10px;
-	width:90%;
+	margin-top:-12px;
 }
 #favorites-contents {
 	margin-top:40px; 
@@ -715,7 +713,6 @@ img.reviewPhoto { /* individual review photo */
 #favorites {
 	margin-left:5px; 
 	margin-top:-18px;
-	width:90%;
 }
 #reviews-contents {
 	margin-top:50px;
@@ -734,7 +731,6 @@ img.reviewPhoto { /* individual review photo */
 #reviews {
 	margin-left:5px; 
 	margin-top:-12px;
-	width:90%;
 }
 
 </style>
@@ -755,20 +751,14 @@ a.usernameLink:hover {
 .message-window {
 	display:none;
 }
-#messagesContainer {
+#messagesContainer, #sentsContainer {
 	font-family:architectsDaughterRegular; 
 	color: #e67b5a; 
 	margin-right:45px;
 	margin-top:-15px;
 	z-index:3;
 }
-#sentsContainer {
-	font-family:architectsDaughterRegular; 
-	color: #e67b5a; 
-	margin-right:45px;
-	margin-top:-7px;
-	z-index:3;
-}
+
 </style>
 
 <% @path = request.fullpath.split("/").last%>
