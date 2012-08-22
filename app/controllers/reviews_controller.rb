@@ -14,6 +14,7 @@ include ActionView::Helpers::TextHelper
     else
       @reviews = Review.all.sort_by(&:name).reverse
     end
+    @flag = Flag.new
   end
   
    def create
