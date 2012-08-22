@@ -991,6 +991,9 @@ a.usernameLink:hover {
 	background:none; 
 	border:none;
 }
+#cropBlurb {
+	clear:both;
+}
 #user_photo {
 	display:none;
 }
@@ -1174,7 +1177,7 @@ a.usernameLink:hover {
 					  <%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile())"%></div>
 				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :height => "40px", :id => "submitButtonUpload", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 				<% end %>
-
+				<div id="cropBlurb"> </div>
 			</div>
 			<div id="edit-box" class="edit-popup">
 				<a href="#" class="close"><div class="close_image"></div></a>
