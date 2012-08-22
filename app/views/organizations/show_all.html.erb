@@ -68,9 +68,6 @@ a.programLink:hover{color:#68c2d8; background:none}
 	margin-bottom:30px;
 	text-align:center;
 }
-#sortByAndBlurb {
-	
-}
 #listByLabel {
 	font-size:1.5em; 
 	color:#575758; 
@@ -96,6 +93,11 @@ a.programLink:hover{color:#68c2d8; background:none}
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
 	background-color:white;
 }
+#blurb {
+	max-width:300px;
+	font-family:architectsDaughterRegular;
+
+}
 #organizationContents {
 	width:100%;
 	margin-top:40px;
@@ -112,9 +114,9 @@ a.programLink:hover{color:#68c2d8; background:none}
 		<div class="twelve columns" id="pageTitle">
 			<img src="/assets/RegisteredOrganizations.png">
 		</div>
-		<div class="twelve columns" id="sortByAndBlurb">
+		<div class="twelve columns">
 			<div class="six columns" id="sortByContainer">
-				<%= form_tag "/organizations/show_all" do %>
+				<%= form_tag "/organizations/show_all", :id => "org_sort" do %>
 				<span id="listByLabel">List By: </span>
 				<div class="select-div" id="listBySelectDiv">
 					<select id="sort_by">
@@ -129,7 +131,9 @@ a.programLink:hover{color:#68c2d8; background:none}
 				<% end %>
 			</div>
 			<div class="six columns" id="blurbContainer">
+				<div id="blurb">
 				This is a nice little blurb. Blurbity blurb blurb blurb.
+				</div>
 			</div>
 		</div>
 		<div class="twelve columns">
@@ -148,7 +152,9 @@ a.programLink:hover{color:#68c2d8; background:none}
 <script>
 $(document).ready(function() {
 	$('#org_pager').smartpaginator({ totalrecords: <%=@organizations.count%>, recordsperpage: 20, datacontainer: 'divOrg', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
-	
+	$("#sort_by").change(function () {
+		$("#org_sort").submit();
+	});
 	
 });
 
