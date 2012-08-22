@@ -369,8 +369,7 @@ input[name="search[keywords]"] {
 #navBar .findProgramDropDown { margin:auto; }
 
 /* Drop down menu at different heights depending if org-login image is there (pushing everything down)*/
-#navBar li ul#drop_signed_in {position:absolute; top:165px;}
-#navBar li ul#drop_signed_out {position:absolute; top:183px;}
+#navBar li ul#program_drop_down {position:absolute; top:165px;}
 
 #navBar li a:visited{color: white;}
 

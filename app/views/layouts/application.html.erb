@@ -391,26 +391,12 @@
 		<!-- FIND A PROGRAM DROP DOWN -->
 		<li class="navs" id="findProgramNav"><a id="shower" onclick="show_menu();">find a program</a>
 			<div class="findProgramDropDown">
-				<% if user_signed_in? || organization_account_signed_in? %>
-				
-	<!-- NOTE: Different position of drop down if user signed in or out -->
-		<!-- because the ORG LOGIN image pushes the drop-down around -->
-		<!-- ALSO: see bottom for javascript to change position depending on browser -->
-		
-			<!-- DROP DOWN IF ORG LOGIN IMAGE DOES NOT APPEAR (user/org is signed in) -->
-			<ul id="drop_signed_in">
+			<ul id="program_drop_down">
 				<li class="navs"><a href="/searches/program_browse">browse things to do</a></li>
 				<li class="navs"><a href="/searches/places">browse places to go</a></li>
 				<li class="navs"><a href="/searches/search_machine">use advanced search</a></li>	
 			</ul>
-				<% else %>
-			<!-- DROP DOWN IF ORG LOGIN IMAGE APPEARS (user/org not signed in) -->
-				<ul id="drop_signed_out">
-					<li class="navs"><a href="/searches/program_browse">browse things to do</a></li>
-					<li class="navs"><a href="/searches/places">browse places to go</a></li>
-					<li class="navs"><a href="/searches/search_machine">use advanced search</a></li>	
-				</ul>
-				<% end %>
+			
 			</div>
 		</li>
 		<!-- END PROGRAM DROP-DOWN -->
@@ -763,15 +749,13 @@ And give a little <br>LOVE
 			var isAndroid = ua.indexOf("android") > -1;
 			if (isAndroid) {
 				$("#orgLogin-image").css("margin-top", "-15px");
-				$("#drop_signed_in").css("top", "223px");
-				$("#drop_signed_out").css("top", "230px");
+				$("#program_drop_down").css("top", "223px");
 			}
 			
 			//iOS - find a program dropDown is too high
 			var agentID = ua.match(/(iphone|ipod|ipad)/);
 			if (agentID) {
-				$("#drop_signed_in").css("top", "183px");
-				$("#drop_signed_out").css("top", "190px");
+				$("#program_drop_down").css("top", "183px");
 			}
 				
 		});
@@ -790,19 +774,11 @@ And give a little <br>LOVE
 	
 	//For touchscreens - show drop downs on click instead of hover
 	function show_menu() {
-		<% if user_signed_in? || organization_account_signed_in? %>
-		if ($("#drop_signed_in").css("display") == "block") {
-			$("#drop_signed_in").css("display", "none");
+		if ($("#program_drop_down").css("display") == "block") {
+			$("#program_drop_down").css("display", "none");
 		} else {
-			$("#drop_signed_in").css("display", "block");
+			$("#program_drop_down").css("display", "block");
 		}
-		<% else %>
-		if ($("#drop_signed_out").css("display") == "block") {
-			$("#drop_signed_out").css("display", "none");
-		} else {
-			$("#drop_signed_out").css("display", "block");
-		}
-		<% end %>
 	}
 	function show_org_drop() {
 		if ($("#drop_org").css("display") == "block") {
