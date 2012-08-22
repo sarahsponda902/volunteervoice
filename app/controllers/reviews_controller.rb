@@ -10,9 +10,9 @@ include ActionView::Helpers::TextHelper
     elsif @sort_by == "review_newest"
       @reviews = Review.all.sort_by(&:created_at)
     elsif @sort_by == "alphabetical_az"
-      @reviews = Review.all.sort_by(&:name)
+      @reviews = Review.all.sort_by(&:organization_name)
     else
-      @reviews = Review.all.sort_by(&:name).reverse
+      @reviews = Review.all.sort_by(&:organization_name).reverse
     end
     @flag = Flag.new
   end
