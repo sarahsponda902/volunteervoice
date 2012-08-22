@@ -294,6 +294,34 @@ tr, td {
 	</div>
 </div>
 
+
+<div id="flag-box" class="flag-popup" align="center">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<% if user_signed_in? %>
+  	<%= form_for @flag do |g| %>
+
+	<tr><td colspan="2">
+	    <p class="flagPopupTitle">Report this review for <br />inappropriate content</p></td></tr>
+
+		<tr><td colspan="2">
+	<%=g.text_area :body, :class => "flagBody", :onclick => "if (this.value == 'Please describe.') {this.value = ''}; this.style.fontStyle = ('normal');", :value => "Please describe."%>
+
+	    <%=g.hidden_field :flagger_id, :value => current_user.id %>
+
+	    <%=g.hidden_field :poster_id, :id => "poster_id" %>
+
+	    <%=g.hidden_field :review_id, :id => "review_id" %>
+		</td></tr>
+
+		<tr><td colspan="2">
+	    <p class="flagSubmitContainer"><%= image_submit_tag ("/assets/submitToVVI.png"), :height => "50px"%></p></td></tr>
+		<% end %>
+	<% else %>
+	<tr><td>You must be signed in to flag a review.</td></tr>
+	<% end %>
+</div>
+
+
 <script>
 $(document).ready(function() {
 	$('#review_pager').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 20, datacontainer: 'divReview', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
