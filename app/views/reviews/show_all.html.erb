@@ -168,6 +168,74 @@ tr, td {
 }
 </style>
 
+<style>
+	a.review-window:active{color:#68c2d8}
+	a.review-window:visited{color:#68c2d8}
+	a.review-window:link{color:#68c2d8}
+	a.review-window:hover{color:#e67b5a; background:none}
+	
+	a.organization_url:active{color:#68c2d8}
+	a.organization_url:visited{color:#68c2d8}
+	a.organization_url:link{color:#68c2d8}
+	a.organization_url:hover{color:white; background:none}
+
+	/* Mask for background, by default is not display */
+	#mask {
+		display: none;
+		background: #000; 
+		position: fixed; left: 0; top: 0; 
+		z-index: 10;
+		width: 100%; height: 100%;
+		opacity: 0.8;
+		z-index: 999;
+	}
+
+	/* You can customize to your needs  */
+	.flag-popup{
+		display:none;
+		background: #D9DEDA;
+		padding: 10px; 	
+		border: 2px solid #575758;
+		float: left;
+		color:#6aaeba;
+		font-size: 1.1em;
+		position: fixed;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		max-height:300px;
+	}
+
+
+	.review-popup{
+		display:none;
+		background: #E9ECE9;
+		padding: 10px; 	
+		border: 2px solid #ddd;
+		max-width:600px;
+		float: left;
+		color: black;
+		position: fixed;
+		width: 650px;
+		top: 50%; left: 50%;
+		z-index: 99999;
+		box-shadow: 0px 0px 20px #999; /* CSS3 */
+	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		border-radius:3px 3px 3px 3px;
+	        -moz-border-radius: 3px; /* Firefox */
+	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		max-height:300px;
+	}
+
+
+</style>
+
 <div class="container">
 	<div class="row" id="top">
 		<div class="twelve columns" id="pageTitle">
@@ -218,6 +286,73 @@ $(document).ready(function() {
 	<% if !@sort_by.nil? %>
 		$("#sort_by").val("<%= @sort_by %>");
 	<% end %>
+	
+	//jQuery for the "flag a review" popup
+	$('a.flag-window').click(function() {
+
+                //Getting the variable's value from a link 
+		var flagBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(flagBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(flagBox).height() + 24) / 2; 
+		var popMargLeft = ($(flagBox).width() + 24) / 2; 
+
+		$(flagBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .flag-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
+	
+	
+	//jQuery for the "see full review" popup
+	$('a.review-window').click(function() {
+
+	            //Getting the variable's value from a link 
+		var reviewBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(reviewBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(reviewBox).height() + 24) / 2; 
+		var popMargLeft = ($(reviewBox).width() + 24) / 2; 
+
+		$(reviewBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+	  $('#mask , .review-popup').fadeOut(300 , function() {
+		$('#mask').remove();  
+	}); 
+	return false;
+	});
 
 });
 
