@@ -191,15 +191,20 @@ h1.voicesHeardHeader {
 }
 .reviewTop {
 	margin-top:10px;
+	max-width: 200px;
+    float: left;
 }
 .reviewsColDateCreated {
 	float:right; 
-	margin-top:-5px; 
+	margin-top:1px; 
 	font-size:0.8em;
 }
 .reviewsColBody {
 	margin-bottom:10px; 
 	margin-top:15px;
+}
+.reviewsColStars {
+	margin-top:-5px;
 }
 .companyBox {
 	height:168px; 
@@ -381,7 +386,7 @@ a.red-link:hover{color:white}
 <% @show_reviews.each do |f|%>
 <div class="review">
 <div class="row" class="reviewTop">
-<h3 class="thin left"><a href="/users/<%=f.user_id%>" class="blue-link"> "<%=User.find(f.user_id).username%>"</a> on<br /> <a href= "/organizations/<%=f.organization_id%>" class="red-link"> "<%=Organization.find(f.organization_id).name%>"</a></h3>
+<h3 class="thin left"><a href="/users/<%=f.user_id%>" class="blue-link"> "<%=User.find(f.user_id).username%>"</a> on<br /> <a href= "/organizations/<%=f.organization_id%>" class="red-link"> "<%=truncate Organization.find(f.organization_id).name%>"</a></h3>
 <p alt="Review Stars" class="right"> 
 	<%= render :partial => "star", :locals => {:star => f.overall}%>
 	</p>
@@ -390,6 +395,30 @@ a.red-link:hover{color:white}
 
 <p class="reviewsColBody"><%= f.truncated100.html_safe %></p>
 </div>
+
+
+
+
+<div class="review">
+	<div class="row" class="reviewTop">
+		<h3 class="thin left"><a href="/users/<%=f.user_id%>" class="blue-link">"<%=User.find(f.user_id).username%>"</a>
+		</h3>
+	</div>
+	
+	<p class="reviewsColDateCreated"><%= f.created_at.to_date.strftime("%B %e, %Y").gsub(/^0/,'')%>
+	</p>
+	<div class="reviewsColOrgName">
+		on
+		<a href="/organizations/6" class="red-link"> "Fake Awesome Organization"</a>
+		<p class="reviewsColBody"><%= f.truncated100.html_safe %></p>
+		<p alt="Review Stars" class="right reviewsColStars"> 
+			<%= render :partial => "star", :locals => {:star => f.overall}%>
+		</p>
+	</div>
+</div>
+
+
+
 
 <% end %>
 <% end %>
