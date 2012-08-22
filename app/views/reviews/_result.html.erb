@@ -1,0 +1,73 @@
+
+<%@photos = [] %>
+  <%@photos << f.photo unless f.photo.blank?%>
+  <%@photos << f.photo2 unless f.photo2.blank?%>
+  <%@photos << f.photo3 unless f.photo3.blank?%>
+ <% @photos << f.photo4 unless f.photo4.blank?%>
+ <% @photos << f.photo5 unless f.photo5.blank?%>
+ <% @photos << f.photo6 unless f.photo6.blank?%>
+ <% @photos << f.photo7 unless f.photo7.blank?%>
+ <% @photos << f.photo8 unless f.photo8.blank?%>
+ <% @photos << f.photo9 unless f.photo9.blank?%>
+ <% @photos << f.photo10 unless f.photo10.blank?%>
+	
+	
+
+	<p align="right" class="dateWritten">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
+		<table cellspacing="0" class="reviewTable" cellpadding="0">
+			<% if f.flag_show == false%>
+			<tr><td>This review has been flagged for removal</td></tr>
+			<% else %>
+			<tr class="reviewBackground" height="30px">
+				<td class="programData"><p  class="reviewProgramLabel" >	Program: <span class="reviewProgram"> <%=Program.find(f.program_id).name%></span></p></td>
+				<td class="tripWasData"><p  class="tripWasLabel" >Trip Was: <font style="font-family:architectsDaughterRegular"> <%=f.time_frame%></font></p></td>
+				<td class="starData"><p align="right" class="reviewStarContainer"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
+			</tr>
+			<tr class="reviewBackground">
+				<td colspan="3"><p class="reviewBodyContainer"><%= f.truncated200.html_safe%> <a href="#review-box<%=f.id%>" class="review-window">See full review</a></p></td>
+			</tr>
+			<tr class="reviewBackground reviewPhotos">
+				<td>
+				<% @photos.each do |photo| %>
+			  		  <a class="single" href="<%=photo.url%>" rel="lightbox[plants]"><img src="<%=photo.url%>" style="height:30px"/></a>
+			    <% end %> 
+			  	</td>
+				<td colspan="2" class="reviewSignature"><p class="usernameContainer"><a class="usernameLink" href="/users/<%=f.user_id%>"> --<%=User.find(f.user_id).username%></a></p><p class="flagContainer"><a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#review_id').val(<%=f.id%>); $('#poster_id').val(<%=f.user_id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></a></p></td>
+			</tr>
+			<% end %>
+		</table>
+	
+	
+		<table id="review-box<%=f.id%>" class="review-popup">
+			<tr class="reviewPopupBackground"><td colspan="5"><span class="reviewPopupLabel">Program: </span><span class="reviewPopupProgram"><%=(Program.find(f.program_id)).name%></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="reviewPopupLabel">Length of Trip: </span><span class="reviewPopupTimeFrame"><%=f.time_frame%></span><p class="reviewPopupDateWritten">Written: <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
+	<span class="reviewPopupCloseButton"><a href="#" class="close"><img src="/assets/error.png" class="reviewPopupCloseImage"></a></span>
+			</td></tr>
+			<tr class="reviewPopupBackground"><td colspan="5"><%=f.body.html_safe%></td></tr>
+			<tr class="reviewPopupBackground">
+				<td></td>
+				<td></td>
+				<td colspan="3"><p class="reviewPopupUsername">-<a href="/users/<%=f.user_id%>" class="usernameLink"><%=User.find(f.user_id).username%></a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();", :style => "float:right", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
+			<tr class="reviewPopupBackground"><td colspan="5">	<% @photos.each do |photo| %>
+			  		  <a class="single" rel="lightbox[plants]"><img src="<%=photo.url%>" class="reviewPopupPhotos"/></a>
+			    <% end %></td></tr>
+			<tr class="reviewPopupFooter reviewPopupBackground">
+				<td><p class="reviewPopupStarLabel">Preparation/Orientation</p></td>
+				<td><p class="reviewPopupStarLabel">Support</p></td>
+				<td><p class="reviewPopupStarLabel">Project Impact</p></td>
+				<td><p class="reviewPopupStarLabel">Structure/Sustainability</p></td>
+				<td><p class="reviewPopupStarLabel">Overall</p></td>
+			</tr>
+			<tr class="reviewPopupBackground">
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.preparation}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.support}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.impact}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.structure}%></p></p></td>
+				<td><p class="reviewPopupStarContainer"><p class="reviewPopupStar"><%=render :partial => "star", :locals => {:star => f.overall}%></p></p></td>
+			</tr>
+				
+				
+			
+		</table>
+		<br />
+		<br />
