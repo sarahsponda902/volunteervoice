@@ -76,7 +76,11 @@ def square_image_crop
  end
  
 def latest_review_time
-  reviews.last.created_at
+  if !(reviews.empty? || reviews.last.nil?)
+    reviews.last.created_at
+  else
+    20.years.ago
+  end
 end
  
 
