@@ -1,0 +1,67 @@
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.orgResult {
+	padding:0; 
+	margin:0; 
+	width:100%;
+}
+table {
+	padding:0px;
+	margin:0px;
+	border-bottom:1px solid #575758; 
+	background-color:#E9ECE9; 
+	height:100px; 
+	cursor:pointer;
+}
+tr, td {
+	background-color:#E9ECE9; 
+	cursor:pointer;
+}
+.orgSquareImageContainer, .orgSearchLinkContainer {
+	margin-top:7px;
+}
+.orgSquareImage {
+	height:75px;
+	width:75px;
+}
+a.search_link {
+	font-size:2em;
+}
+p.orgStarsContainer {
+	text-align:right;
+	float:right;
+}
+.orgStarsBasedOn {
+	text-align:right; 
+	font-family:architectsDaughterRegular; 
+	color: #e67b5a; 
+	font-size:.8em;
+	clear:both;
+}
+.orgProgramsList {
+	font-size:1.3em;
+	color:#e67b5a;
+	margin-top:-55px;
+}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="twelve_columns">
+			<% @organizations.each do |org| %>
+				<%= render :partial => "organization_result", :locals => {:f => org}%>
+			<% end %>
+		</div>
+	</div>
+</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
