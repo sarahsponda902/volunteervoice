@@ -25,3 +25,9 @@
 
 
 </div>
+
+<script>
+<% if f.reviews.count == 3 %>
+var reviews = <%= (f.reviews.sum(:overall) / f.reviews.count).to_f.round %>;
+<% end %>
+</script>
