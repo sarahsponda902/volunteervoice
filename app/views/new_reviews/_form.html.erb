@@ -582,7 +582,9 @@
 	<section class="reviewSubmit"><!-- submit review button and FAQ link-->
 
 
-		<div id="submitButtonHidden"> <i>You cannot submit your review until<br /> all form fields are filled out <br />(except uploading photos, that's optional)</i></div>
+		<div id="submitButtonHidden"> 
+			<img src="/assets/submitGray.png"><br>
+			<i>You cannot submit your review until<br /> all form fields are filled out <br />(except uploading photos, that's optional)</i></div>
 		<div id="submitButtonDiv"><%=image_submit_tag ("https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png"), :id => "submitButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 
 		<div class="qMarkContainer">

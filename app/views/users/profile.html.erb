@@ -356,6 +356,10 @@ a.favoriteProg:hover {
 	margin-top:-10px;
 	padding-bottom:0px;
 }
+
+.messageTable tr:hover {
+	background-color:gray;
+}
 a.message-window { /*Username link to open message */
 	margin-left:-5px; 
 	font-size:1.4em; 
@@ -429,6 +433,9 @@ a.close-delete-pop { /* button to close the delete popup ("No, thanks") */
 .sentTable { /*Each individual sent message is enclosed in a table */
 	margin-left:175px; 
 	margin-top:-10px;
+}
+.sentTable tr:hover {
+	background-color:gray;
 }
 .sentMessageDate { /* date the message was sent */
 	font-size:1.2em;
@@ -1161,7 +1168,7 @@ a.usernameLink:hover {
 				<a href="#" class="close"><div class="close_image"></div></a>
 				<p class="maxPhotoWidth">Max photo width: 1 MB</p>
 			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
-				  <div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" id="uploadPhotoButton" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
+				  <div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" id="uploadPhotoButton" onclick = "$(clickUserPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
 					  <%= f.hidden_field :crops, :value => true%>
 					  <%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile())"%></div>
 				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :height => "40px", :id => "submitButtonUpload", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
@@ -1623,7 +1630,7 @@ function nameFile() {
 }
 
 //if the fake file input button is clicked, pull down the real file input menu
-function clickReviewPhoto() {
+function clickUserPhoto() {
 	$("#user_photo").click();
 }
 

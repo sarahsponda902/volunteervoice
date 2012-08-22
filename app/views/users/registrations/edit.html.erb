@@ -139,7 +139,7 @@ select {
 	margin-left:-35px;
 	margin-top:15px;
 }
-.uploadPhotoImage {
+#uploadPhotoImage {
 	height:40px;
 	margin-top:-10px; 
 	cursor:pointer;
@@ -237,7 +237,7 @@ select {
 						<img id="tinyUserProfilePic" src="<%=current_user.square_image.url%>" />
 					</div>
 					<div id="upload-box" class="five columns">
-						  <div class="uploadImageAndFieldContainer"><image src="/assets/changePhoto.png" class="uploadPhotoImage" onclick = "$(clickReviewPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" disabled="true" value="no file selected">
+						  <div class="uploadImageAndFieldContainer"><image src="/assets/changePhoto.png" id="uploadPhotoImage" onclick = "$(clickUserPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" disabled="true" value="no file selected">
 							
 				 <input id="user_crops" name="user[crops]" type="hidden" value="false" />
 				
@@ -261,6 +261,9 @@ select {
 
 			function messagesCheck() {
 				$('#checkMessages').toggle();
+			}
+			function clickUserPhoto() {
+				$("#user_photo").click();
 			}
 			
 			//define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
