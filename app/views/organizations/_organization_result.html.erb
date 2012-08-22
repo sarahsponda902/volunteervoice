@@ -7,7 +7,7 @@
 			<% if f.reviews.count == 0 %>
 				<%=render :partial => 'star', :locals => {:star => 0}%>
 			<% else %>
-				<% render :partial => 'star', :locals => {:star => (f.sum(&:reviews) / f.reviews.count).to_f}%>
+				<% render :partial => 'star', :locals => {:star => (Array(f.reviews).sum / f.reviews.count).to_f}%>
 			<% end %>
 			</p><p class="orgStarsBasedOn">Based on <%=f.reviews.count%> reviews</p></td>
 		</tr>
