@@ -123,16 +123,21 @@ tr, td {
 	margin-bottom:30px;
 	text-align:center;
 }
+#sortAndBlurbContainer {
+	width:100%;
+}
+#sortByContainer {
+	width:45%;
+}
 #listByLabel {
 	font-size:1.5em; 
 	color:#575758; 
 	line-height:1.1em; 
 	margin-left:-20px;
-	margin-top:35px;
+	margin-top:75px;
 }
 #listBySelectDiv {
 	margin-left:75px;
-	margin-top:-10px;
 	height:30px; 
 	width:228px; 
 	overflow:hidden; 
@@ -149,12 +154,15 @@ tr, td {
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
 	background-color:white;
 }
+#blurbContainer {
+	width:30%;
+}
 #blurb {
 	font-family:architectsDaughterRegular;
 	font-size:1.1em;
 	float:right;
-	margin-right:50px;
 	text-align:center;
+	margin-right:50px;
 	color:#6aaeba;
 }
 #reviewContents {
@@ -242,7 +250,7 @@ tr, td {
 		<div class="twelve columns" id="pageTitle">
 			<img src="/assets/AllReviews.png">
 		</div>
-		<div class="twelve columns">
+		<div class="twelve columns" id="sortAndBlurbContainer">
 			<div class="six columns" id="sortByContainer">
 				<%= form_tag "/reviews/show_all", :id => "review_sort" do %>
 				<span id="listByLabel">List By: </span>
