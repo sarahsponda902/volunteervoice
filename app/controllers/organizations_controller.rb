@@ -12,9 +12,9 @@ class OrganizationsController < ApplicationController
       @organizations = Organization.all.sort_by(&:overall).reverse
     elsif @sort_by == "rating_low"
       @organizations = Organization.all.sort_by(&:overall)
-    elsif @sort_by == "review_newest"
+    elsif @sort_by == "review_recent"
       @organizations = Organization.all.sort_by(&:latest_review_time)
-    elsif @sort_by == "profiled_newest"
+    elsif @sort_by == "profiled_recent"
       @organizations = Organization.all.sort_by(&:created_at)
     elsif @sort_by == "alphabetical_az"
       @organizations = Organization.all.sort_by(&:name)
