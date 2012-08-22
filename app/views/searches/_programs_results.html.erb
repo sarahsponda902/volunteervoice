@@ -8,7 +8,7 @@
 				<% if f.reviews.count == 0 %>
 					<%=render :partial => 'star', :locals => {:star => 0}%>
 				<% else %>
-					<% render :partial => 'star', :locals => {:star => (f.reviews.sum / f.reviews.count).to_f.round}%>
+					<%= render :partial => 'star', :locals => {:star => (f.reviews.sum / f.reviews.count).to_f.round}%>
 				<% end %>
 			</p><p class="progBasedOnContainer">Based on <%=f.reviews.count%> reviews</p></td>
 		</tr>
