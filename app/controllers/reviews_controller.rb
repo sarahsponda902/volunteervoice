@@ -47,7 +47,7 @@ include ActionView::Helpers::TextHelper
            @review.body = @review.body.gsub(%r{</?[^>]+?>}, '') unless @review.body.nil?
            flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
 
-             format.html { render action: "new", notice: 'Error! Please make sure to include both your email and a message.' }
+             format.html { render action: "new" }
              format.json { render json: @review.errors, status: :unprocessable_entity }
          end
        end
@@ -90,17 +90,6 @@ include ActionView::Helpers::TextHelper
        if user_signed_in?
        @review.organization_id = params[:organization_id]
        @review.program_id = params[:program_id]
-       
-        orgs_array = Organization.all.map { |org| org.name.to_s } 
-
-        @progs = []
-        @orgNames = []
-        @progNames = []
-        Program.all.each do |f|
-          @progs << f.id
-          @orgNames << Organization.find(f.organization_id).name
-          @progNames << f.name 
-        end 
 
        
        respond_to do |format|

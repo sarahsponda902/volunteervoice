@@ -1295,7 +1295,16 @@ a.privacyLink:hover, .mailToHelp:hover{
 	</div>
 	</div>
 	
-	
+	 	<%orgs_array = Organization.all.map { |org| org.name.to_s } %>
+
+<%@progs = []%>
+<%@orgNames = []%>
+<%@progNames = []%>
+<%Program.all.each do |f|%>
+ <% @progs << f.id%>
+ <% @orgNames << Organization.find(f.organization_id).name%>
+ <% @progNames << f.name %>
+<%end%>
 	<script>
 
 	//array of all program objects
