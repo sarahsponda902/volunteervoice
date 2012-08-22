@@ -124,6 +124,7 @@ tr, td {
 	color:#575758; 
 	line-height:1.1em; 
 	margin-left:-20px;
+	margin-top:-20px;
 }
 #listBySelectDiv {
 	margin-left:75px;
@@ -145,18 +146,18 @@ tr, td {
 	background-color:white;
 }
 #blurb {
-	max-width:300px;
+	max-width:320px;
 	font-family:josefinSlabRegular;
 	font-size:1.1em;
 	color:#575758;
 	float:right;
 	text-align:center;
 }
-#organizationContents {
+#reviewContents {
 	width:100%;
 	margin-top:40px;
 }
-#divOrg {
+#divreview {
 	width:100%;
 	border-top:1px solid #575758;
 	border-left:1px solid #575758;
@@ -167,18 +168,17 @@ tr, td {
 <div class="container">
 	<div class="row" id="top">
 		<div class="twelve columns" id="pageTitle">
-			<img src="/assets/RegisteredOrganizations.png">
+			<img src="/assets/AllReviews.png">
 		</div>
 		<div class="twelve columns">
 			<div class="six columns" id="sortByContainer">
-				<%= form_tag "/organizations/show_all", :id => "org_sort" do %>
+				<%= form_tag "/reviews/show_all", :id => "review_sort" do %>
 				<span id="listByLabel">List By: </span>
 				<div class="select-div" id="listBySelectDiv">
 					<select id="sort_by" name="sort_by">
 						<option value="rating_high">Highest Rated</option>
 						<option value="rating_low">Lowest Rated</option>
 						<option value="review_recent">Recently Reviewed</option>
-						<option value="profiled_recent">Recently Profiled</option>
 						<option value="alphabetical_az">Alphabetical A-Z</option>
 						<option value="alphabetical_za">Alphabetical Z-A</option>
 					</select>
@@ -192,7 +192,7 @@ tr, td {
 			</div>
 		</div>
 		<div class="twelve columns">
-			<div class="contents" id="organizationContents">
+			<div class="contents" id="reviewContents">
 				<div class="twelve_columns" id="divReview">
 					<% @reviews.each do |review| %>
 						<%= render :partial => "result", :locals => {:f => review}%>
@@ -206,9 +206,9 @@ tr, td {
 
 <script>
 $(document).ready(function() {
-	$('#review_pager').smartpaginator({ totalrecords: <%=@organizations.count%>, recordsperpage: 20, datacontainer: 'divReview', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	$('#review_pager').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 20, datacontainer: 'divReview', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 	$("#sort_by").change(function () {
-		$("#org_sort").submit();
+		$("#review_sort").submit();
 	});
 
 });
