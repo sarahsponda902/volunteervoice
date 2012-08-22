@@ -1684,8 +1684,8 @@ $(document).ready(function() {
 	/** SEARCH RESULTS PAGINATION **/
 	/******************************/
 	
-	//initialize pagination via smartpaginator on the "divProgram" div. the ".program" div will contain the "1-1 of 5"..etc pager
-	$('.program').smartpaginator({ totalrecords: <%=@the_results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
+	//initialize pagination via smartpaginator on the "divProgram" div. the "#program" div will contain the "1-1 of 5"..etc pager
+	$('#program').smartpaginator({ totalrecords: <%=@the_results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
 	
 	
 });

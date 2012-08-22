@@ -1,4 +1,6 @@
+<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
 <%= javascript_include_tag "/assets/jquery.js"%>
+<%= javascript_include_tag "/assets/smartpaginator.js"%>
 
 <style>
 .orgResult {
@@ -44,18 +46,61 @@ p.orgStarsContainer {
 	color:#e67b5a;
 	margin-top:-55px;
 }
+
+a.search_link:active{color:#68c2d8}
+a.search_link:visited{color:#68c2d8}
+a.search_link:link{color:#68c2d8}
+a.search_link:hover{color:#9bce6c; background:none}
+
+a.programLink:active{color:#e67b5a}
+a.programLink:visited{color:#e67b5a}
+a.programLink:link{color:#e67b5a}
+a.programLink:hover{color:#68c2d8; background:none}
+
+
+</style>
+
+<style>
+#top {
+	margin-top:50px;
+}
+#pageTitle {
+	margin-bottom:30px;
+	text-align:center;
+}
+#organizationContents {
+	width:100%;
+	border-top:1px solid #575758;
+	border-left:1px solid #575758;
+	border-right:1px solid #575758;
+}
 </style>
 <div class="container">
-	<div class="row">
+	<div class="row" id="top">
+		<div class="twelve_columns" id="pageTitle">
+			<img src="/assets/RegisteredOrganizations.png">
+		</div>
 		<div class="twelve_columns">
-			<% @organizations.each do |org| %>
-				<%= render :partial => "organization_result", :locals => {:f => org}%>
-			<% end %>
+			<div class="contents" id="organizationContents">
+				<div id="divOrg">
+				<% @organizations.each do |org| %>
+					<%= render :partial => "organization_result", :locals => {:f => org}%>
+				<% end %>
+				</div>
+				<div id="org_pager"></div>
+			</div>
 		</div>
 	</div>
 </div>
 				
-				
+<script>
+$(document).ready(function() {
+	$('#org_pager').smartpaginator({ totalrecords: <%=@organizations.count%>, recordsperpage: 20, datacontainer: 'divOrg', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	
+	
+});
+
+</script>				
 				
 				
 				
