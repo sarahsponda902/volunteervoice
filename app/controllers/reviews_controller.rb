@@ -7,12 +7,8 @@ include ActionView::Helpers::TextHelper
       @reviews = Review.all.sort_by(&:overall).reverse
     elsif @sort_by == "rating_low"
       @reviews = Review.all.sort_by(&:overall)
-    elsif @sort_by == "review_newest"
-      @reviews = Review.all.sort_by(&:created_at)
-    elsif @sort_by == "alphabetical_az"
-      @reviews = Review.all.sort_by(&:organization_name)
     else
-      @reviews = Review.all.sort_by(&:organization_name).reverse
+      @reviews = Review.all.sort_by(&:created_at)
     end
     @flag = Flag.new
   end
