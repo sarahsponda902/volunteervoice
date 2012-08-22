@@ -68,6 +68,12 @@ a.programLink:hover{color:#68c2d8; background:none}
 	margin-bottom:30px;
 	text-align:center;
 }
+#sortAndBlurbContainer {
+	width:100%;
+}
+#sortByContainer {
+	width:45%;
+}
 #listByLabel {
 	font-size:1.5em; 
 	color:#575758; 
@@ -94,6 +100,9 @@ a.programLink:hover{color:#68c2d8; background:none}
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
 	background-color:white;
 }
+#blurbContainer {
+	width:45%;
+}
 #blurb {
 	max-width:320px;
 	font-family:architectsDaughterRegular;
@@ -119,7 +128,7 @@ a.programLink:hover{color:#68c2d8; background:none}
 		<div class="twelve columns" id="pageTitle">
 			<img src="/assets/RegisteredOrganizations.png">
 		</div>
-		<div class="twelve columns">
+		<div class="twelve columns" id="sortAndBlurbContainer">
 			<div class="six columns" id="sortByContainer">
 				<%= form_tag "/organizations/show_all", :id => "org_sort" do %>
 				<span id="listByLabel">List By: </span>
@@ -161,6 +170,7 @@ $(document).ready(function() {
 	$("#sort_by").change(function () {
 		$("#org_sort").submit();
 	});
+	
 	<% if !@sort_by.nil? %>
 		$("#sort_by").val("<%= @sort_by %>");
 	<% end %>

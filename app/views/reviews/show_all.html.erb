@@ -1,4 +1,6 @@
+<%= stylesheet_link_tag "/assets/smartpaginator.css"%>
 <%= javascript_include_tag "/assets/jquery.js"%>
+<%= javascript_include_tag "/assets/smartpaginator.js"%>
 
 
 <style>
@@ -208,9 +210,14 @@ tr, td {
 <script>
 $(document).ready(function() {
 	$('#review_pager').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 20, datacontainer: 'divReview', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	
 	$("#sort_by").change(function () {
 		$("#review_sort").submit();
 	});
+	
+	<% if !@sort_by.nil? %>
+		$("#sort_by").val("<%= @sort_by %>");
+	<% end %>
 
 });
 
