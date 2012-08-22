@@ -157,9 +157,13 @@ a.programLink:hover{color:#68c2d8; background:none}
 <script>
 $(document).ready(function() {
 	$('#org_pager').smartpaginator({ totalrecords: <%=@organizations.count%>, recordsperpage: 20, datacontainer: 'divOrg', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	
 	$("#sort_by").change(function () {
 		$("#org_sort").submit();
 	});
+	<% if !@sort_by.nil? %>
+		$("#sort_by").val("<%= @sort_by %>");
+	<% end %>
 
 });
 
