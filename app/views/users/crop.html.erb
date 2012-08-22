@@ -60,20 +60,22 @@
 				</div>
 			</div>
 			
+			
 			<div id="cropFields">
 				<%= f.hidden_field :crop_x %><br />
 				<%= f.hidden_field :crop_y %><br />
 				<%= f.hidden_field :crop_w %><br />
 				<%= f.hidden_field :crop_h %><br />
 				<%= f.hidden_field :crops, :value => false%>
-				<% end %>
 			</div>
-			
-			<div class="twelve columns" id="photoContainer">
+		<% end %>
+		
+		
+				<div class="twelve columns" id="photoContainer">
 
-	    <%= image_tag @user.photo.url, :id => "crop_me"%>
+		    <%= image_tag @user.photo.url, :id => "crop_me"%>
 
-		</div>
+				</div>
 	</div>
 </div>	
 
