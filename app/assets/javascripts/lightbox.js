@@ -154,7 +154,7 @@ lightbox = new Lightbox options
     Lightbox.prototype.start = function($link) {
       var $lightbox, $window, a, i, imageNumber, left, top, _len, _ref;
       $(window).on("resize", this.sizeOverlay);
-      $('select, object, embed').css({
+      $('object, embed').css({
         visibility: "hidden"
       });
       $('#lightboxOverlay').width($(document).width()).height($(document).height()).fadeIn(this.options.fadeDuration);
