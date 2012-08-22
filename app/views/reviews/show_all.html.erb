@@ -110,15 +110,116 @@ tr, td {
 }
 </style>
 
+
+<style>
+#top {
+	margin-top:50px;
+}
+#pageTitle {
+	margin-bottom:30px;
+	text-align:center;
+}
+#listByLabel {
+	font-size:1.5em; 
+	color:#575758; 
+	line-height:1.1em; 
+	margin-left:-20px;
+}
+#listBySelectDiv {
+	margin-left:75px;
+	margin-top:-25px;
+	height:30px; 
+	width:228px; 
+	overflow:hidden; 
+	border-right:1px solid #575758; 
+	border-left:1px solid #575758; 
+	z-index:6;
+}
+#sort_by {
+	position:relative; 
+	border: 1px solid #575758; 
+	left:-5px; 
+	width:255px; 
+	height:30px; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+	background-color:white;
+}
+#blurb {
+	max-width:300px;
+	font-family:josefinSlabRegular;
+	font-size:1.1em;
+	color:#575758;
+	float:right;
+	text-align:center;
+}
+#organizationContents {
+	width:100%;
+	margin-top:40px;
+}
+#divOrg {
+	width:100%;
+	border-top:1px solid #575758;
+	border-left:1px solid #575758;
+	border-right:1px solid #575758;
+}
+</style>
+
 <div class="container">
-	<div class="row">
-		<div class="twelve_columns">
-			<% @reviews.each do |review| %>
-				<%= render :partial => "result", :locals => {:f => review}%>
-			<% end %>
+	<div class="row" id="top">
+		<div class="twelve columns" id="pageTitle">
+			<img src="/assets/RegisteredOrganizations.png">
+		</div>
+		<div class="twelve columns">
+			<div class="six columns" id="sortByContainer">
+				<%= form_tag "/organizations/show_all", :id => "org_sort" do %>
+				<span id="listByLabel">List By: </span>
+				<div class="select-div" id="listBySelectDiv">
+					<select id="sort_by" name="sort_by">
+						<option value="rating_high">Highest Rated</option>
+						<option value="rating_low">Lowest Rated</option>
+						<option value="review_recent">Recently Reviewed</option>
+						<option value="profiled_recent">Recently Profiled</option>
+						<option value="alphabetical_az">Alphabetical A-Z</option>
+						<option value="alphabetical_za">Alphabetical Z-A</option>
+					</select>
+				</div>
+				<% end %>
+			</div>
+			<div class="five columns" id="blurbContainer">
+				<div id="blurb">
+					This is a nice little blurb. Blurbity blurb blurb blurb. More blurb stuff. Isn't this a cool page?! Winnie is so cute!!!
+				</div>
+			</div>
+		</div>
+		<div class="twelve columns">
+			<div class="contents" id="organizationContents">
+				<div class="twelve_columns" id="divReview">
+					<% @reviews.each do |review| %>
+						<%= render :partial => "result", :locals => {:f => review}%>
+					<% end %>
+				</div>
+				<div id="review_pager"></div>
+			</div>
 		</div>
 	</div>
 </div>
+
+<script>
+$(document).ready(function() {
+	$('#review_pager').smartpaginator({ totalrecords: <%=@organizations.count%>, recordsperpage: 20, datacontainer: 'divReview', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+	$("#sort_by").change(function () {
+		$("#org_sort").submit();
+	});
+
+});
+
+</script>				
+
+
+
+
+
+
 
 
 
