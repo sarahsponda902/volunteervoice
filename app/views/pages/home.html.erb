@@ -121,7 +121,6 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
 }
 .reviewContentBox {
 	height:50px;
-	overflow:hidden;
 	width:100%;
 }
 
@@ -423,7 +422,10 @@ a.red-link:hover{color:white}
 		
 	<div class="reviewsColOrgName">
 		<span style="font-size:0.8em">on: </span>
-		<a href="/organizations/<%=f.organization_id%>" class="red-link"> "Fake Awesome Organization"</a>
+		<a href="/organizations/<%=f.organization_id%>" class="red-link"> "<%=Organization.find(f.organization_id).name%>"</a>
+	</div>
+	<div>
+		<%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 200).html_safe%>
 	</div>
 	
 	
