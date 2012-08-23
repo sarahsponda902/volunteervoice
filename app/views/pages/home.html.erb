@@ -381,24 +381,11 @@ a.red-link:hover{color:white}
 <div class="mainArticleHeader">
 	<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewsInsight.png" class="mainArticleHeaderImage">
 </div>
-<% @star_count = 35%>
+
+
+
 <% if !(@show_reviews.nil?)%>
 <% @show_reviews.each do |f|%>
-<div class="review">
-<div class="row" class="reviewTop">
-<h3 class="thin left"><a href="/users/<%=f.user_id%>" class="blue-link"> "<%=User.find(f.user_id).username%>"</a> on<br /> <a href= "/organizations/<%=f.organization_id%>" class="red-link"> "<%=truncate Organization.find(f.organization_id).name%>"</a></h3>
-<p alt="Review Stars" class="right"> 
-	<%= render :partial => "star", :locals => {:star => f.overall}%>
-	</p>
-</div>
-<p class="reviewsColDateCreated"><%= f.created_at.to_date.strftime("%B %e, %Y").gsub(/^0/,'')%></p>
-
-<p class="reviewsColBody"><%= f.truncated100.html_safe %></p>
-</div>
-
-
-
-
 <div class="review">
 	<div class="row" class="reviewTop">
 		<h3 class="thin left"><a href="/users/<%=f.user_id%>" class="blue-link">"<%=User.find(f.user_id).username%>"</a>
