@@ -18,7 +18,7 @@
 	
 <table cellspacing="0" border="0" cellpadding="0" width="100%" class="reviewBox">		
 	<tr>
-		<td width="40%"><p class="reviewProgramName">Program: <%= Program.find(f.program_id).name %></td>
+		<td width="40%"><p class="reviewProgramName">Program: <%= truncate Program.find(f.program_id).name, :length => 25 %></td>
 		<td width="30%"><p class="reviewTripWas">Trip Was: <%= f.time_frame %></td>
 		<td ><p align="right" class="reviewStars"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
 </tr>
