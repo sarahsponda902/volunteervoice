@@ -1437,8 +1437,7 @@ $(document).ready(function() {
 				
 
 				//jQuery for show full message popup
-				$('.messageTable, .sentTable').click(function() {
-
+				$('.sentTable').click(function() {
 			                //Getting the variable's value from a link 
 					var messageBox = $(this).attr('href');
 
@@ -1468,6 +1467,39 @@ $(document).ready(function() {
 				}); 
 				return false;
 				});
+				
+				$('.messageTable').click(function () {
+					<% current_user.unread_messages = 0 %>
+					<% current_user.save %>
+					        //Getting the variable's value from a link 
+					var messageBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(messageBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(messageBox).height() + 24) / 2; 
+					var popMargLeft = ($(messageBox).width() + 24) / 2; 
+
+					$(messageBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+					$('#mask').fadeIn(300);
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('#mask').live('click', function() { 
+				  $('#mask , .m-popup').fadeOut(300 , function() {
+					$('#mask').remove();  
+				}); 
+				return false;
+				})
 				
 				$('a.reply-window').click(function() {
 

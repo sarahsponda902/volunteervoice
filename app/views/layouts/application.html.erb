@@ -247,7 +247,7 @@
 		position:absolute; 
 		left:-10px;
 	}
-	.unreadMessagesCount {
+	#unreadMessagesCount {
 		color:#e67b5a;
 	}
 	</style>
@@ -291,7 +291,7 @@
 					<% if user_signed_in?%>
 						<a href="/users/profile"> <%=current_user.username%> 
 							<% if current_user.unread_messages > 0 %>
-								<span class="unreadMessagesCount">(<%=current_user.unread_messages%>)</span><% end %></a>&nbsp;&nbsp;
+								<span id="unreadMessagesCount">(<%=current_user.unread_messages%>)</span><% end %></a>&nbsp;&nbsp;
 						<a href= "/signout" class="logout">LOGOUT</a>
 					<% end %>
 					<% if organization_account_signed_in?%>
@@ -607,6 +607,11 @@ And give a little <br>LOVE
 
 		//Login Window Jquery
 		$(document).ready(function() {
+			
+			<% if user_signed_in? && current_user.sign_in_count == 1 && current_user.unread_message_count == 1%>
+			$("#unreadMessageCount").text("(1)");
+			<% end %>
+			
 
 			$('a.login-window').click(function() {
 
