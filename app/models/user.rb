@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   before_save :square_image_crop 
   before_create :validate_email
   after_create :send_message
+  before_create :set_unread_message_count
 
 
   # Include default devise modules. Others available are:
@@ -89,6 +90,10 @@ def square_image_crop
 
    clean_up_passwords
    result
+ end
+ 
+ def set_unread_message_count
+   self.unread_messages = 1
  end
 
  def send_message

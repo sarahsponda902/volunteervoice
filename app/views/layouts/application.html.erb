@@ -608,10 +608,6 @@ And give a little <br>LOVE
 		//Login Window Jquery
 		$(document).ready(function() {
 			
-			<% if user_signed_in? && current_user.sign_in_count == 1 && current_user.unread_message_count == 1%>
-			$("#unreadMessageCount").text("(1)");
-			<% end %>
-			
 
 			$('a.login-window').click(function() {
 
