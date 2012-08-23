@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   validates_length_of :username, :maximum => 30
   before_save :square_image_crop 
   before_create :validate_email
+  after_create :send_message
   validates :photo, :file_size => {:maximum => 1.megabytes.to_i}
 
 
@@ -91,5 +92,18 @@ def square_image_crop
    result
  end
 
- 
+ def send_message
+   if self.id != 1
+     admin_sender = User.find(1)
+     user_receiver = resource
+     message = Message.new
+     message.subject = "It's Official! You're in."
+     message.body = "As a member of the VVI community, you're now able to contact other volunteers directly, share your own experiences online, and stay active in our mission to make the world of international volunteering more transparent, more organized, and more excellent. 
+     p. We can't thank you enough for joining the cause!  And we're here if you need anything.
+     p. --VolunteerVoice Team"
+     message.recipient = user_receiver
+     message.sender = admin_sender
+     message.save
+   end
+ end
 end
