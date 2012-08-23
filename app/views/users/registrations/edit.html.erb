@@ -166,6 +166,9 @@ select {
 	text-align:center; 
 	margin-top:50px;
 }
+#submitButton {
+	margin-left:20px;
+}
 </style>
 
 <!-- ERROR MESSAGES -->
@@ -243,7 +246,7 @@ select {
 			</div>
 			<div class="row">
 			<div class="twelve columns submitContainer">
-				<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+				<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'", :id => "submitButton"%>
 			</div>
 			<% end %>
 			</div>
