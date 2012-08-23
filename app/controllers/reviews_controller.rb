@@ -48,7 +48,7 @@ include ActionView::Helpers::TextHelper
        end
        else
          @review_id = Review.where(:program_id => @review.program_id, :user_id => current_user.id).first.id
-         redirect_to "/reviews/#{@review_id}/edit", :edit_review_body => @review.body.gsub(%r{</?[^>]+?>}, '')
+         redirect_to(edit_review_path(:id => @review_id, :notice => ["You can only review a program once. Please add on to your review instead."], :edit_review_body => @review.body.gsub(%r{</?[^>]+?>}, '')))
        end
      else
        redirect_to "/registrations/mustBe"
