@@ -365,7 +365,7 @@
 	<% flash.each do |key, value| %>
 		<% if value.class.name != "String"%>
 		  <div class="flash <%=key%>">
-	<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+	<%= pluralize value.length, "errors"%> prevented your review from being created:<br />
 		<% value.each do |f|%>
 			* <%=f%><br />
 		<% end %>

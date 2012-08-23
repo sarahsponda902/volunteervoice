@@ -171,20 +171,10 @@ select {
 }
 </style>
 
-<!-- ERROR MESSAGES -->
-<div class="container">
-	<% flash.each do |key, value| %>
-	<div class="flash <%=key%>">
-		<%= pluralize value.length, "errors"%> prevented your program from being created:<br />
-		<% value.each do |f|%>
-		* <%=f%><br />
-		<% end %>
-	</div>
-	<% end %>
-</div>
 
 <div class="container">
 	<div class="row top">
+		<%= devise_error_messages! %>
 		<div id="edit-box" class="six columns">
 			<p class="title" align="center">My Account</p>
 			<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>

@@ -71,9 +71,7 @@ a.forgotPasswordLink:hover {
 </style>
 
 <div class="container" align="center">
-	<% flash.each do |key, value| %>
-	  <%= content_tag(:div, value, :class => "flash #{key}") %>
-	<% end %>
+	<%= devise_error_messages!%>
 	<div class="row">
 	<div class="six columns" id="loginBoxContainer">
 	<p class="title">Organization Login</p>

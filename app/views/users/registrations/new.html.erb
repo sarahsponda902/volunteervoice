@@ -180,17 +180,9 @@ a.question-window {
 </style>
 
 <div class="container" align="center" class="color:#575758">
-	
-	<!-- ERROR MESSAGES -->
-	<% flash.each do |key, value| %>
-	  <div class="flash <%=key%>">
-	<%= pluralize value.length, "errors"%> prevented your account from being created:<br />
-		<% value.each do |f|%>
-			* <%=f%><br />
-		<% end %>
-	  </div>
-	<% end %><!-- END ERROR MESSAGES -->
+
 	<div class="row">
+		<%= devise_error_messages!%>
 	<div class="six columns registerContainer">
 
 		<p class="title">Register</p>
