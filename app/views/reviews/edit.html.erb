@@ -52,7 +52,7 @@ fieldset {
 			<% end %>
 		</div>
 		<% else %>
-			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+			<%= content_tag :div, value, :id => "flash_#{key}" %>
 		<% end %>
 	<% end %>
 <% end %>
