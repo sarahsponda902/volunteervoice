@@ -551,6 +551,8 @@ article, aside, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 }
 
+textarea { resize:none }
+
 select{ padding-top:5px; padding-left:10px; -webkit-appearance: none}
 
 h2 {font-family:'JosefinSlabRegular', Georgia, "Times New Roman", serif;}
