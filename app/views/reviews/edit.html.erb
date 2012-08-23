@@ -42,24 +42,21 @@ fieldset {
 
 
 <!-- ERROR MESSAGES -->
-<% if flash.class.name != "String"%>
-<% flash.each do |key, value| %>
-	<% if value.class.name != "String"%>
-	  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your review from being saved:<br />
-	<% value.each do |f|%>
-		* <%=f%><br />
-	<% end %>
-  </div>
-<% end %>
-<% else %>
-	<% unless flash.empty? %>
-	  <% flash.each do |name, msg| %>
-	    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-	  <% end %>
+<% unless flash.empty? %>
+	<% flash.each do |key, value| %>
+		<% if value.class.name != "String"%>
+		<div class="flash <%=key%>">
+			<%= pluralize value.length, "errors"%> prevented your review from being saved:<br />
+			<% value.each do |f|%>
+				* <%=f%><br />
+			<% end %>
+		</div>
+		<% else %>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+		<% end %>
 	<% end %>
 <% end %>
-<% end %>
+
 
 <!-- END ERROR MESSAGES -->
 	
