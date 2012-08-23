@@ -71,7 +71,12 @@
 		<td><%= link_to user.username, user %></td>
 		<td><%= user.email %></td>
 		<td><% @now = Time.now.utc.to_date%>
-		<%= @now.year - user.dob.year - ((@now.month > user.dob.month || (@now.month == user.dob.month && @now.day >= user.dob.day)) ? 0 : 1) %></td>
+			<% if !(user.dob.nil?)%>
+				<%= @now.year - user.dob.year - ((@now.month > user.dob.month || (@now.month == user.dob.month && @now.day >= user.dob.day)) ? 0 : 1) %>
+			<% else %>
+				No DOB
+			<% end %>
+		</td>
 		<td><%= THECOUNTRIES[user.country] %></td>
 		<td><%= image_tag user.square_image.url, :style => "height:30px" %></td>
 		<td><% if user.confirmed? %>
