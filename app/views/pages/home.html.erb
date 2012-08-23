@@ -119,6 +119,11 @@ div.star-rating{background:transparent!important;overflow:hidden!important}
 .review:first child {
 	margin-top: 0px;
 }
+.reviewContentBox {
+	height:50px;
+	overflow:hidden;
+	width:100%;
+}
 
 .bubbleBlue{
 	background-image:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/darkBlueBubble.png); 
@@ -400,7 +405,9 @@ a.red-link:hover{color:white}
 		on
 		<a href="/organizations/<%=f.organization_id%>" class="red-link"> "Fake Awesome Organization"</a>
 	</div>
+	<div class="reviewContentBox">
 	<p class="reviewsColBody"><%= f.truncated100.html_safe %></p>
+	</div>
 	<p alt="Review Stars" class="right reviewsColStars"> 
 		<%= render :partial => "star", :locals => {:star => f.overall}%>
 	</p>
