@@ -99,8 +99,8 @@ def square_image_crop
      message = Message.new
      message.subject = "It's Official! You're in."
      message.body = "As a member of the VVI community, you're now able to contact other volunteers directly, share your own experiences online, and stay active in our mission to make the world of international volunteering more transparent, more organized, and more excellent. 
-     p. We can't thank you enough for joining the cause!  And we're here if you need anything.
-     p. --VolunteerVoice Team"
+     \n\nWe can't thank you enough for joining the cause!  And we're here if you need anything.
+     \n\n--VolunteerVoice Team"
      message.recipient = user_receiver
      message.sender = admin_sender
      message.save
