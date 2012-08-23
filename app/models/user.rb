@@ -19,7 +19,6 @@ class User < ActiveRecord::Base
   before_save :square_image_crop 
   before_create :validate_email
   after_create :send_message
-  validates :photo, :file_size => {:maximum => 1.megabytes.to_i}
 
 
   # Include default devise modules. Others available are:
