@@ -238,10 +238,9 @@ select {
 					</div>
 					<div id="upload-box" class="five columns">
 						  <div class="uploadImageAndFieldContainer"><image src="/assets/changePhoto.png" id="uploadPhotoImage" onclick = "$(clickUserPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" disabled="true" value="no file selected">
-							
-				 <input id="user_crops" name="user[crops]" type="hidden" value="false" />
 				
 							  <%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile()); $('#user_crops').val('true');"%>
+							  <%= f.hidden_field :crops, :value => false, :id => "user_crops" %>
 							<p class="maxPhotoWidthBlurb">**Max photo width: 1 MB</p></div>
 
 					</div>
@@ -264,6 +263,7 @@ select {
 			}
 			function clickUserPhoto() {
 				$("#user_photo").click();
+				$("#user_crops").val("true");
 			}
 			
 			//define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
