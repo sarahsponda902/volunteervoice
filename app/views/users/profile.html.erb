@@ -987,6 +987,10 @@ a.usernameLink:hover {
 }
 #cropBlurb {
 	clear:both;
+	text-align:center;
+	font-size:.75em;
+	font-family:ArchitectsDaugtherRegular;
+	
 }
 #user_photo {
 	display:none;
@@ -1171,7 +1175,7 @@ a.usernameLink:hover {
 					  <%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile())"%></div>
 				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :height => "40px", :id => "submitButtonUpload", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
 				<% end %>
-				<div id="cropBlurb"> </div>
+				<div id="cropBlurb">Crop your image after submitting so it doesn't look funky. </div>
 			</div>
 			<div id="edit-box" class="edit-popup">
 				<a href="#" class="close"><div class="close_image"></div></a>
