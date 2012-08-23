@@ -49,7 +49,8 @@ include ActionView::Helpers::TextHelper
          end
        end
        else
-         redirect_to "/reviews/already_reviewed"
+         @review_id = Review.where(:program_id => @review.program_id, :user_id => current_user.id).first.id
+         redirect_to :controller => "reivews", :action => "edit", :id => @review_id, :edit_review_body => @review.body.gsub(%r{</?[^>]+?>}, '')
        end
      else
        redirect_to "/registrations/mustBe"
