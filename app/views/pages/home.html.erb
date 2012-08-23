@@ -200,8 +200,7 @@ h1.voicesHeardHeader {
     float: left;
 }
 .reviewsColDateCreated {
-	float:left; 
-	margin-top:-15px; 
+	float:left;  
 	font-size:0.8em;
 }
 .reviewsColBody {
@@ -415,7 +414,7 @@ a.red-link:hover{color:white}
 	<%= render :partial => "star", :locals => {:star => f.overall}%>
 	</p>
 	
-	<div class="row" class="usernameBy">
+	<div class="usernameBy row">
 		<h3 class="thin left"><span style="font-size:0.8em">by: </span><a href="/users/<%=f.user_id%>" class="blue-link">"<%= User.find(f.user_id).username%>"</a>
 		</h3>
 	</div>
@@ -425,7 +424,7 @@ a.red-link:hover{color:white}
 		<a href="/organizations/<%=f.organization_id%>" class="red-link"> "<%=Organization.find(f.organization_id).name%>"</a>
 	</div>
 	<div>
-		<%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 200).html_safe%>
+		<%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 150).html_safe%>
 	</div>
 	
 	
