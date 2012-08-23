@@ -95,7 +95,7 @@ def square_image_crop
  def send_message
    if self.id != 1
      admin_sender = User.find(1)
-     user_receiver = resource
+     user_receiver = self
      message = Message.new
      message.subject = "It's Official! You're in."
      message.body = "As a member of the VVI community, you're now able to contact other volunteers directly, share your own experiences online, and stay active in our mission to make the world of international volunteering more transparent, more organized, and more excellent. 
