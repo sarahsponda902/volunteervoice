@@ -18,9 +18,7 @@
 		margin-bottom:20px;
 	}
 	#cropFields {
-		position:absolute; 
-		right:5%; 
-		top:200px; 
+		float:left;  
 		width:150px;
 	}
 	#pageTitle {
@@ -34,7 +32,13 @@
 		margin-top:20px;
 	}
 	#cropButton, #cropButtonGray {
-		margin-top:100px;
+		margin-left:100px;
+	}
+	#crop_me {
+		max-width:700px;
+	}
+	#photoContainer {
+		clear:both;
 	}
 	#submitButtonContainer {
 		display:none;
@@ -44,32 +48,35 @@
 
 	<div class="container" id="top">
 		<div class="row">
+			<%= form_for @organization do |f|%>
 			<div class="twelve columns">
 				<div id="pageTitle">Crop Your Photo! (We need a square version)</div>
 				<div id="cropMessage">*To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop".</div>
+				<div id="submitButtonGrayContainer">
+					<img src="/assets/cropGray.png" id="cropButtonGray">
+				</div>
+				<div id="submitButtonContainer">
+				<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'", :id => "cropButton"%>
+				</div>
 			</div>
-			<div class="twelve columns">
+			
+			
+			<div id="cropFields">
+				<%= f.hidden_field :crop_x %><br />
+				<%= f.hidden_field :crop_y %><br />
+				<%= f.hidden_field :crop_w %><br />
+				<%= f.hidden_field :crop_h %><br />
+				<%= f.hidden_field :crops, :value => false%>
+			</div>
+		<% end %>
+		
+		
+				<div class="twelve columns" id="photoContainer">
 
-	    <%= image_tag @organization.image.url, :id => "crop_me"%>
+		    <%= image_tag @organization.photo.url, :id => "crop_me"%>
 
-		</div>
+				</div>
 	</div>
-</div>
-
-<div id="cropFields">
-	<%= form_for @organization do |f|%>
-	<div id="submitButtonContainer">
-	<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'", :id => "cropButton"%>
-	</div>
-	<div id="submitButtonGrayContainer">
-		<img src="/assets/cropGray.png" id="cropButtonGray">
-	</div>
-	<%= f.hidden_field :crop_x %><br />
-	<%= f.hidden_field :crop_y %><br />
-	<%= f.hidden_field :crop_w %><br />
-	<%= f.hidden_field :crop_h %><br />
-	<%= #f.hidden_field :crops, :value => false%>
-	<% end %>
 </div>	
 
 
@@ -94,8 +101,7 @@ $(function(){
             movable : true,
             autoHide : false,
 			aspectRatio: '1:1',
-            onSelectEnd: updateVars,
-			persistent: true
+            onSelectEnd: updateVars
   			
         });
 
@@ -105,8 +111,6 @@ $(function(){
     init();
 
 });
-
-
 
 
 
