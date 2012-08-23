@@ -57,6 +57,12 @@ fieldset {
 	<% end %>
 <% end %>
 
+<%if request.referrer %>
+ 	<% @path = URI(request.referrer).path.split('/')%>
+	<%if @path[1] == 'reviews'%>
+		<%= content_tag :div, "Sorry, you can only review a program once. You can add on to your review below.", :class => "flash errors" %>
+	<% end %>
+<% end %>
 
 <!-- END ERROR MESSAGES -->
 	
