@@ -53,7 +53,16 @@ fieldset {
   </div>
 <% end %>
 <% end %>
-<% end %><!-- END ERROR MESSAGES -->
+<% else %>
+	<% unless flash.empty? %>
+	  <% flash.each do |name, msg| %>
+	    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	  <% end %>
+	<% end %>
+<% end %>
+
+
+<!-- END ERROR MESSAGES -->
 	
 <%= render "edit_review" %>
 
