@@ -80,7 +80,7 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 		<div class="ten columns" id="editReviewContainer">
 			<p id="pageTitle">Review Add-on:</p>
 			<%= form_for @review do |f|%>
-			<%= f.text_area :body, :value => "", :id => "addOnBody", :value => params[:edit_review_body]%>
+			<%= f.text_area :body, :id => "addOnBody", :value => (if params[:edit_review_body].nil?; ""; else; params[:edit_review_body]; end %>
 			<div id="currentReviewBody"><%= @review.body.html_safe%></div>
 		</div>
 		<div class="ten columns" id="outerStarsContainer">
