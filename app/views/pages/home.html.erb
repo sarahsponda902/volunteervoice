@@ -410,7 +410,7 @@ a.red-link:hover{color:white}
 
 
 <div class="review">
-	<p class="reviewsColDateCreated">August 23, 2012</p>
+	<p class="reviewsColDateCreated"><%= f.created_at.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
 	<p class="right reviewsColStars"> 
 	<%= render :partial => "star", :locals => {:star => f.overall}%>
 	</p>
