@@ -360,11 +360,11 @@ a.red-link:hover{color:white}
 
 <article class="homeOrgs">
 <div class="six columns">
-<h1><%=Organization.count%>&nbsp;&nbsp; Organizations&nbsp;&nbsp; So &nbsp;&nbsp;Far</h1>
+<h1><a href="/organizations/show_all"><%=Organization.count%>&nbsp;&nbsp; Organizations&nbsp;&nbsp; So &nbsp;&nbsp;Far</a></h1>
 </div>
 
 <div class="six columns">
-<h1 class="voicesHeardHeader"><%= Review.count%>&nbsp;&nbsp; Voices &nbsp;&nbsp;Heard</h1>
+<h1 class="voicesHeardHeader"><a href="/reviews/show_all"><%= Review.count%>&nbsp;&nbsp; Voices &nbsp;&nbsp;Heard</a></h1>
 </div>
 
 <!--end homeOrgs-->
