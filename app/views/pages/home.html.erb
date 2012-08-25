@@ -357,7 +357,7 @@ a.bannerLink {
 a.bannerLink:hover {
 	color:#575758;
 }
-a .mainArticleHeaderImage:hover {
+a.mainArticleHeaderImageContainer:hover {
 	opacity:0.5;
 	display:block;
 	filter:alpha(opacity = 0.5);	
@@ -411,7 +411,7 @@ a .mainArticleHeaderImage:hover {
 <!-- user blurb 1-->
 
 <div class="mainArticleHeader">
-	<a href="/reviews/show_all"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewsInsight.png" class="mainArticleHeaderImage"></a>
+	<a href="/reviews/show_all" class="mainArticleHeaderImageContainer"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewsInsight.png" class="mainArticleHeaderImage"></a>
 </div>
 
 
@@ -454,7 +454,7 @@ a .mainArticleHeaderImage:hover {
 <div class="four columns">
 <article class="homeOrgsCheckout">
 
-<div class="mainArticleHeader"><a href="/organizations/show_all"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/organizationsCheckOut.png" class="mainArticleHeaderImage"></a></div>
+<div class="mainArticleHeader"><a href="/organizations/show_all" class="mainArticleHeaderImageContainer"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/organizationsCheckOut.png" class="mainArticleHeaderImage"></a></div>
 
 
 <% if !(@show_organizations.nil?)%>
