@@ -357,6 +357,11 @@ a.bannerLink {
 a.bannerLink:hover {
 	color:#C1C4C2;
 }
+a .mainArticleHeaderImage:hover {
+	opacity:0.5;
+	display:block;
+	filter:alpha(opacity = 0.5);	
+}
 </style>
 
 <!-- Section One-->
@@ -389,7 +394,7 @@ a.bannerLink:hover {
 <article class="homeAbout">
 
 <div class="mainArticleHeader">
-	<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/whatAbout.png" class="mainArticleHeaderImage">
+	<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/whatAbout.png" class="mainArticleHeaderImage" id="whatAbout">
 </div>
 <p>VolunteerVoice Intl. is a nonprofit start-up headquartered in Oakland, California.  We think that people who are willing to donate their time and resources for a good cause are amazing.  We also think that volunteer organizations are a great way to connect those amazing people with amazing projects. </p><br />
 
@@ -406,7 +411,7 @@ a.bannerLink:hover {
 <!-- user blurb 1-->
 
 <div class="mainArticleHeader">
-	<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewsInsight.png" class="mainArticleHeaderImage">
+	<a href="/reviews/show_all"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reviewsInsight.png" class="mainArticleHeaderImage"></a>
 </div>
 
 
@@ -449,7 +454,7 @@ a.bannerLink:hover {
 <div class="four columns">
 <article class="homeOrgsCheckout">
 
-<div class="mainArticleHeader"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/organizationsCheckOut.png" class="mainArticleHeaderImage"></div>
+<div class="mainArticleHeader"><a href="/organizations/show_all"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/organizationsCheckOut.png" class="mainArticleHeaderImage"></a></div>
 
 
 <% if !(@show_organizations.nil?)%>
