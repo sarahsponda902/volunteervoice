@@ -359,7 +359,20 @@ a.bannerLink:hover {
 }
 
 </style>
-
+<%= devise_error_messages! %>
+<!-- ERROR MESSAGES -->
+<% if flash.class.name != "String"%>
+<% flash.each do |key, value| %>
+	<% if value.class.name != "String"%>
+	  <div class="flash <%=key%>">
+<%= pluralize value.length, "errors"%> prevented your review from being saved:<br />
+	<% value.each do |f|%>
+		* <%=f%><br />
+	<% end %>
+  </div>
+<% end %>
+<% end %>
+<% end %><!-- END ERROR MESSAGES -->
 <!-- Section One-->
 <div class="container">
 <div class="row">
