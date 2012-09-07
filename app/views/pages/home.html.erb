@@ -380,8 +380,12 @@ a.bannerLink:hover {
 <% end %>
 <br>
 <%= flash %><br>
-<%= flash[:notice]%><br>
-<%= flash[:error]%><br>
+<%= flash.keys %><br>
+<%= flash.values %><br>
+<% flash.each do |k, v|%>
+<%= k %><br>
+<%= v %><br>
+<% end %>
 
 <br>
 <!-- END ERROR MESSAGES -->
