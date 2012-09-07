@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_presence_of :username
   validates_length_of :username, :maximum => 30
   before_save :square_image_crop 
-  before_create :validate_email
+  validate :validate_email
   after_create :send_message
   before_create :set_unread_message_count
 
@@ -40,8 +40,7 @@ mount_uploader :square_image, ImageUploader
 
       def validate_email
         if !(email == email_confirmation)
-          errors.add(:email, "must match")
-          return false
+          errors.add(:email_confirmation, "must match")
         end
       end
       
