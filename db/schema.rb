@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120816201917) do
+ActiveRecord::Schema.define(:version => 20120907233849) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -490,7 +490,6 @@ ActiveRecord::Schema.define(:version => 20120816201917) do
     t.boolean  "crops"
     t.integer  "unread_messages"
     t.string   "return_link"
-    t.string   "email_confirmation"
     t.boolean  "admin_read",                :default => false
   end
 
