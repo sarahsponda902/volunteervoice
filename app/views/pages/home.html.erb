@@ -369,9 +369,19 @@ a.bannerLink:hover {
 		* <%=f%><br />
 	<% end %>
   </div>
+<% else %>
+<div class="flash <%=key%>">
+	<%= value %>
+</div>
 <% end %>
 <% end %>
-<% end %><!-- END ERROR MESSAGES -->
+<% else %>
+<%= flash %>
+<% end %>
+<br>
+<%= flash %>
+<br>
+<!-- END ERROR MESSAGES -->
 <!-- Section One-->
 <div class="container">
 <div class="row">
