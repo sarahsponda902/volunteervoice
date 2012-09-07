@@ -138,6 +138,9 @@ a.question-window {
 .bullet {
 	list-style-type:circle;
 }
+#passwordLabelWarning {
+	font-size:0.7em;
+}
 </style>
 
 <div class="container">
@@ -200,7 +203,7 @@ a.question-window {
 		<%= f.check_box :notify, :checked => "checked", :onclick => "$(notifyMeCheck())", :class => "hiddenCheckBox" %>
 		<label class="checkBoxLabel">Notify me of important updates and changes</label></div>
 		
-		  <div class="fieldContainer"><label class="label">New Password</label>
+		  <div class="fieldContainer"><label class="label">New Password <span id="passwordLabelWarning">(min. 6 characters)</span></label>
 		  <%=f.password_field :password, :class=>"textField" %></div>
 
 		  <div  style="margin-top:25px; margin-left:15%;margin-bottom:5px"><label class="label">Retype New Password</label>

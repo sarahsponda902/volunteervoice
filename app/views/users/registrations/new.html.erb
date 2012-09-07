@@ -177,6 +177,9 @@ a.question-window {
 	line-height:2em; 
 	text-align:center;
 }
+#passwordLabelWarning {
+	font-size:0.7em;
+}
 </style>
 
 <div class="container" align="center" class="color:#575758">
@@ -193,7 +196,7 @@ a.question-window {
 		  <div  class="firstLabelContainer"><label class="label">Username</label>
 				  <%=f.text_field :username, :class=>"field" %></div>
 
-				  <div class="labelContainer"><label class="label">Password</label>
+				  <div class="labelContainer"><label class="label">Password <span id="passwordLabelWarning">(min. 6 characters)</span></label>
 				  <%=f.password_field :password, :class=>"field" %></div>
 
 				  <div  class="labelContainer"><label class="label">Retype Password</label>

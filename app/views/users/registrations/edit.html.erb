@@ -169,6 +169,9 @@ select {
 #submitButton {
 	margin-left:20px;
 }
+#passwordLabelWarning {
+	font-size:0.7em;
+}
 </style>
 
 
@@ -217,7 +220,7 @@ select {
 
 						<p class="label">My Password</p>
 
-						<div><%= f.label :password %>
+						<div><%= f.label :password %><span id="passwordLabelWarning">(min. 6 characters)</span>
 							<%= f.password_field :password, :autocomplete => "off", :class =>"field"%>
 						</div><br />
 

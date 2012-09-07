@@ -135,6 +135,9 @@ a.question-window {
 .bullet {
 	list-style-type:circle;
 }
+#passwordLabelWarning {
+	font-size:0.7em;
+}
 </style>
 
 
@@ -177,7 +180,7 @@ a.question-window {
 				  <div  class="fieldContainer"><label class="label">Position in Organization</label>
 				  <%= f.text_field :position, :class=>"textField"%></div>
 
-				  <div class="fieldContainer"><label class="label">Password</label>
+				  <div class="fieldContainer"><label class="label">Password <span id="passwordLabelWarning">(min. 6 characters)</span></label>
 				  <%=f.password_field :password, :class=>"textField" %></div>
 
 				  <div  class="fieldContainer"><label class="label">Retype Password</label>

@@ -42,6 +42,9 @@
 .submitContainer {
 	 margin-top:140px;
 }
+#passwordLabelWarning {
+	font-size:0.7em;
+}
 </style>
 
 
@@ -59,7 +62,7 @@
 			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
 			  <%= f.hidden_field :reset_password_token %>
 
-			  <div class="ten columns"><div><p class="label"> New password: </p>
+			  <div class="ten columns"><div><p class="label"> New password <span id="passwordLabelWarning">(min. 6 characters)</span>: </p>
 			   <input id="user_password" class="field" name="user[password]" size="30" type="password" /></div><br />
 
 			  <div><p style="line-height:1.5em; font-size:1.3em; margin-bottom:5px">Confirm new password:</p>
