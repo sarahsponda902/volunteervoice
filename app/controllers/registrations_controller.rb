@@ -33,6 +33,7 @@ class RegistrationsController < Devise::RegistrationsController
            end
     else
       flash[:notice] = flash[:notice].to_a.concat resource.errors.full_messages
+      flash.now[:notice] = flash[:notice].to_a.concat resource.errors.full_messages
       clean_up_passwords resource
       respond_with resource
     end
