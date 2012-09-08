@@ -714,6 +714,18 @@ class SearchesController < ApplicationController
     params[:search][:subjects] = params[:search][:subjects].join("; ") unless (params[:search][:subjects].class.name == "String" || params[:search][:subjects].nil?)
     params[:search][:sizes] = params[:search][:sizes].join("; ") unless (params[:search][:sizes].class.name == "String" || params[:search][:sizes].nil?)
 
+    if params[:search][:regions].nil? 
+      params[:search][:regions] = []
+    end
+    
+    if params[:search][:subjects].nil?
+      params[:search][:regions] = []
+    end
+    
+    if params[:search][:sizes].nil?
+      params[:search][:sizes] = []
+    end
+    
     respond_to do |format|
       if @search.update_attributes(params[:search])
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
