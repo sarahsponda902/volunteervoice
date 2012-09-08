@@ -535,12 +535,12 @@ select#sort {
 	
 
 <!-- PRICE MIN -->
-<input id="price_min5" type="number" style="display:none" name="search[price_min]" value="0">
+<input id="price_min5" type="number" style="display:none" name="search[price_min]" value="0" step="0.01" min="0">
 <!-- END PRICE MIN -->
 
 
 <!-- PRICE MAX -->
-<input id="price_max5" type="number" style="display:none" name="search[price_max]" value="999">
+<input id="price_max5" type="number" style="display:none" name="search[price_max]" value="999" step="0.01" min="0">
 <!-- END PRICE MAX -->	
 
 </div>
@@ -936,8 +936,8 @@ select#length_max_param {
 
 
 <div id="priceRange">
-    Min: <input type="number" name="search[price_min]" id = "price_min" onchange="$('#price_min5').val(this.value)">&nbsp;&nbsp;
-    Max: <input typw="number" name="search[price_max]" id = "price_max" onchange="$('#price_max5').val(this.value)">
+    Min: <input type="number" name="search[price_min]" id = "price_min" onchange="$('#price_min5').val(this.value)" step="0.01" min="0">&nbsp;&nbsp;
+    Max: <input typw="number" name="search[price_max]" id = "price_max" onchange="$('#price_max5').val(this.value)" step="0.01" min="0">
 				&nbsp;&nbsp;<button onclick="$('#submit_form').click()" class="applyButton">Apply</button>
 
 </div>

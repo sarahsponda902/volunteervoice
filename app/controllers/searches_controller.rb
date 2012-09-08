@@ -97,22 +97,6 @@ class SearchesController < ApplicationController
       @search_regions = regions
       @search_subjects = subjects
       @search_sizes = sizes
-      
-      if @locations.empty? 
-        @locations = nil
-      end
-      
-      if @search_regions.empty?
-        @search_regions = nil
-      end
-      
-      if @search_subjects.empty?
-        @search_subjects = nil
-      end
-      
-      if @search_sizes.empty?
-        @search_sizes = nil
-      end
      
      
      
