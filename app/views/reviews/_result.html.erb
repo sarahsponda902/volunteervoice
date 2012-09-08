@@ -11,15 +11,15 @@
  <% @photos << f.photo9 unless f.photo9.blank?%>
  <% @photos << f.photo10 unless f.photo10.blank?%>
 	
-	
-	<p class="orgName">Organization: <%= Organization.find(f.organization_id).name %></p>
 	<p align="right" class="dateWritten">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
 		<table cellspacing="0" class="reviewTable" cellpadding="0">
 			<% if f.flag_show == false%>
 			<tr><td>This review has been flagged for removal</td></tr>
 			<% else %>
 			<tr class="reviewBackground" height="30px">
-				<td class="programData"><p  class="reviewProgramLabel" >	Program: <span class="reviewProgram"> <%=truncate Program.find(f.program_id).name, :length => 25%></span></p></td>
+				<td class="programData">
+					<p class="orgName">Organization: <%= Organization.find(f.organization_id).name %></p>
+					<p  class="reviewProgramLabel" >	Program: <span class="reviewProgram"> <%=truncate Program.find(f.program_id).name, :length => 25%></span></p></td>
 				<td class="tripWasData"><p  class="tripWasLabel" >Trip Was: <font style="font-family:architectsDaughterRegular"> <%=f.time_frame%></font></p></td>
 				<td class="starData"><p align="right" class="reviewStarContainer"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
 			</tr>
