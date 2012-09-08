@@ -715,15 +715,15 @@ class SearchesController < ApplicationController
     params[:search][:sizes] = params[:search][:sizes].join("; ") unless (params[:search][:sizes].class.name == "String" || params[:search][:sizes].nil?)
 
     if params[:search][:regions].nil? 
-      params[:search][:regions] = []
+      params[:search][:regions] = ""
     end
     
     if params[:search][:subjects].nil?
-      params[:search][:regions] = []
+      params[:search][:regions] = ""
     end
     
     if params[:search][:sizes].nil?
-      params[:search][:sizes] = []
+      params[:search][:sizes] = ""
     end
     
     respond_to do |format|
