@@ -49,7 +49,7 @@ class SearchesController < ApplicationController
     if Search.exists?(params[:id])
       @search = Search.find(params[:id])
       if @search.keywords.nil?
-        keys = []
+        keys = ""
       else
         keys = @search.keywords
       end
