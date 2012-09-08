@@ -98,7 +98,7 @@ class SearchesController < ApplicationController
       @search_subjects = subjects
       @search_sizes = sizes
      
-      if (subjects.empty? || location.empty? || program_sizes.empty?)
+      if !(subjects.empty? || regions.empty? || sizes.empty?)
         @the_search = Program.search do
           keywords keys unless keys.blank?
 
