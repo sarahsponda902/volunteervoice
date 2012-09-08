@@ -98,19 +98,18 @@ class SearchesController < ApplicationController
       @search_subjects = subjects
       @search_sizes = sizes
      
+        @the_search = Program.search do
+          keywords keys unless keys.blank?
 
-      @the_search = Program.search do
-        keywords keys
+          with(:program_subjects).any_of(subjects)
 
-        with(:program_subjects).any_of(subjects)
+          with(:location).any_of(regions)
 
-        with(:location).any_of(regions)
+          with(:program_sizes).any_of(sizes)
 
-        with(:program_sizes).any_of(sizes)
+        end
 
-      end
-
-      @results = @the_search.results
+        @results = @the_search.results
 
       if (price_max != 99999 || price_min != 0 || length_min != 0.weeks.to_f || length_max != 2.years.to_f )
 
