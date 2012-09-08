@@ -12,7 +12,7 @@
  <% @photos << f.photo10 unless f.photo10.blank?%>
 	
 	
-
+	<p class="orgName">Organization: <%= Organization.find(f.organization_id).name %></p>
 	<p align="right" class="dateWritten">Written <%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p>
 		<table cellspacing="0" class="reviewTable" cellpadding="0">
 			<% if f.flag_show == false%>
