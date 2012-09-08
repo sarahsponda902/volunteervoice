@@ -141,7 +141,9 @@ class SearchesController < ApplicationController
         @the_results = @results
       end
 
-
+      if @search.showing.nil?
+        @search.showing = "Organizations"
+      end
 
       if @search.showing == "Organizations"
         @organization_results = []

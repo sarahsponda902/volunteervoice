@@ -7,6 +7,10 @@ class ReviewsController < ApplicationController
       @reviews = Review.all.sort_by(&:overall).reverse
     elsif @sort_by == "rating_low"
       @reviews = Review.all.sort_by(&:overall)
+    elsif @sort_by == "organization_name_az"
+      @reviews = Review.all.sort{|a,b| Organization.find(a.organization_id).name.downcase <=> Organization.find(b.organization_id).name.downcase}
+    elsif @sort_by == "organization_name_za"
+      @reviews = Review.all.sort{|a,b| Organization.find(a.organization_id).name.downcase <=> Organization.find(b.organization_id).name.downcase}.reverse
     else
       @reviews = Review.all.sort_by(&:created_at)
     end
