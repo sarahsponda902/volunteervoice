@@ -359,35 +359,7 @@ a.bannerLink:hover {
 }
 
 </style>
-<!-- ERROR MESSAGES -->
-<% if flash.class.name != "String"%>
-<% flash.each do |key, value| %>
-	<% if value.class.name != "String"%>
-	  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your review from being saved:<br />
-	<% value.each do |f|%>
-		* <%=f%><br />
-	<% end %>
-  </div>
-<% else %>
-<div class="flash <%=key%>">
-	<%= value %>
-</div>
-<% end %>
-<% end %>
-<% else %>
-<%= flash %>
-<% end %>
-<br>
-<%= flash %><br>
-<%= flash.keys %>
-<% flash.each do |k, v|%>
-<%= k %><br>
-<%= v %><br>
-<% end %>
 
-<br>
-<!-- END ERROR MESSAGES -->
 <!-- Section One-->
 <div class="container">
 <div class="row">

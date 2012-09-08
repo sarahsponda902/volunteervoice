@@ -203,10 +203,10 @@ a.question-window {
 				  <%=f.password_field :password_confirmation, :class=>"field" %></div>
 
 				<div  class="labelContainer"><label class="label">Email</label>
-				  <%=f.text_field :email, :class=>"field" %></div>
+				  <%=f.email_field :email, :class=>"field" %></div>
 				
 				<div class="labelContainer"><label class="label">Retype Email</label>
-				  <%= f.text_field :email_confirmation, :class => "field" %></div>
+				  <%= f.email_field :email_confirmation, :class => "field" %></div>
 				
 		 			 <p  class="labelContainer"><label class="label" for="user_Date of Birth">Birthday<span id="optional">(optional)</span></label><div class="select-div first">
 					<select id="user_dob_2i" name="user[dob(2i)]">

@@ -20207,3 +20207,2313 @@ Migrating to RemoveEmailConfirmationFromUser (20120907233849)
   [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_email')
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_confirmation_token')[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_approved')
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2012-09-07 16:46:32 -0700
+Processing by RegistrationsController#new as HTML
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from block in _app_views_users_registrations_new_html_erb__3383061059400185728_70307603005160 at /Users/sarahadams/volunteervoice/app/views/users/registrations/new.html.erb:409)
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.2ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '144f4d95208a53818f4e3d13fdeadd213c6e1fce' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `key`
+  [1m[36mSQL (71.9ms)[0m  [1mINSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 07 Sep 2012 16:46:32 PDT -07:00], ["key", "144f4d95208a53818f4e3d13fdeadd213c6e1fce"], ["updated_at", Fri, 07 Sep 2012 16:46:32 PDT -07:00], ["value", "EWRFX"]]
+  [1m[35m (2.1ms)[0m  commit transaction
+  Rendered simple_captcha/_simple_captcha.erb (0.9ms)
+  Rendered users/registrations/new.html.erb within layouts/application (224.9ms)
+Compiled foundation.css  (0ms)  (pid 7959)
+Compiled lightbox.css  (0ms)  (pid 7959)
+Compiled mega-pull-out-menu-styles.css  (0ms)  (pid 7959)
+Compiled smartpaginator.css  (0ms)  (pid 7959)
+Compiled style.css  (0ms)  (pid 7959)
+Compiled jquery-ui-1.8.22.custom.css  (0ms)  (pid 7959)
+Compiled application.css  (42ms)  (pid 7959)
+Completed 200 OK in 1419ms (Views: 1282.9ms | ActiveRecord: 80.1ms | Solr: 0.0ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /blog_kit.css - 200 OK (4ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /errors.css - 200 OK (2ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /imgareaselect-default.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /jquery-ui-1.8.22.custom.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /jquery.lightbox-0.5.css - 200 OK (14ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /lightbox.css - 200 OK (2ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /mega-pull-out-menu-styles.css - 200 OK (2ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /organization_accounts.css - 200 OK (2ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /searches.css - 200 OK (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /sessions.css - 200 OK (2ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /smartpaginator.css - 200 OK (3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /application.css - 200 OK (21ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /foundation.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /jquery.js - 200 OK (137ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /style.css - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /application.js - 200 OK (2ms)
+
+
+Started GET "/simple_captcha?code=144f4d95208a53818f4e3d13fdeadd213c6e1fce&time=1347061592" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '144f4d95208a53818f4e3d13fdeadd213c6e1fce' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '144f4d95208a53818f4e3d13fdeadd213c6e1fce' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.2ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /DonateButton.png - 200 OK (17ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /Museo_Slab_500-webfont.woff - 200 OK (34ms)
+
+
+Started GET "/assets/JosefinSlab-Regular-webfont.woff" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /JosefinSlab-Regular-webfont.woff - 200 OK (15ms)
+
+
+Started GET "/assets/ArchitectsDaughter-webfont.woff" for 127.0.0.1 at 2012-09-07 16:46:34 -0700
+Served asset /ArchitectsDaughter-webfont.woff - 200 OK (15ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 16:46:53 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa", "email_confirmation"=>"sasa", "dob(2i)"=>"6", "dob(3i)"=>"8", "dob(1i)"=>"2008", "country"=>"DZ", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"144f4d95208a53818f4e3d13fdeadd213c6e1fce"}, "x"=>"87", "y"=>"33"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 202ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 16:46:53 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 16:46:53 -0700
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.1ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.1ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 252ms (Views: 86.7ms | ActiveRecord: 2.1ms | Solr: 0.0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:46:53 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:46:53 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-09-07 16:46:53 -0700
+Served asset /BEBAS___-webfont.woff - 200 OK (22ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2012-09-07 16:52:35 -0700
+Processing by RegistrationsController#new as HTML
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f8d7aa8d18f824f1b60adc071321de06b19722ed' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `key`
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 07 Sep 2012 16:52:36 PDT -07:00], ["key", "f8d7aa8d18f824f1b60adc071321de06b19722ed"], ["updated_at", Fri, 07 Sep 2012 16:52:36 PDT -07:00], ["value", "UGBVN"]]
+  [1m[35m (1.0ms)[0m  commit transaction
+  Rendered simple_captcha/_simple_captcha.erb (0.1ms)
+  Rendered users/registrations/new.html.erb within layouts/application (70.5ms)
+Completed 200 OK in 307ms (Views: 189.1ms | ActiveRecord: 3.4ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:52:36 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=f8d7aa8d18f824f1b60adc071321de06b19722ed&time=1347061956" for 127.0.0.1 at 2012-09-07 16:52:36 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f8d7aa8d18f824f1b60adc071321de06b19722ed' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f8d7aa8d18f824f1b60adc071321de06b19722ed' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.5ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.9ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:52:36 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=f8d7aa8d18f824f1b60adc071321de06b19722ed&time=1347061956" for 127.0.0.1 at 2012-09-07 16:52:36 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f8d7aa8d18f824f1b60adc071321de06b19722ed' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f8d7aa8d18f824f1b60adc071321de06b19722ed' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.5ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 16:52:47 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa", "email_confirmation"=>"sasa", "dob(2i)"=>"5", "dob(3i)"=>"5", "dob(1i)"=>"2009", "country"=>"DZ", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"f8d7aa8d18f824f1b60adc071321de06b19722ed"}, "x"=>"58", "y"=>"19"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 80ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 16:52:47 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 16:52:48 -0700
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.1ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.1ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 224ms (Views: 86.3ms | ActiveRecord: 2.0ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:52:48 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:52:48 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 16:53:25 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sarahsponda902", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa@sa.com", "email_confirmation"=>"sa@sa.com", "dob(2i)"=>"5", "dob(3i)"=>"5", "dob(1i)"=>"2009", "country"=>"DZ", "volunteered_before"=>"0", "notify"=>"1", "captcha"=>"", "captcha_key"=>"f8d7aa8d18f824f1b60adc071321de06b19722ed"}, "x"=>"84", "y"=>"27"}
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('sa@sa.com') LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT 1 FROM "users" WHERE "users"."username" = 'sarahsponda902' LIMIT 1
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f8d7aa8d18f824f1b60adc071321de06b19722ed' LIMIT 1[0m
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.2ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f7c71017de92b590eaab8d9ef0a4854943a4ad3e' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `key`
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)  [["created_at", Fri, 07 Sep 2012 16:53:25 PDT -07:00], ["key", "f7c71017de92b590eaab8d9ef0a4854943a4ad3e"], ["updated_at", Fri, 07 Sep 2012 16:53:25 PDT -07:00], ["value", "TYOYZ"]]
+  [1m[36m (1.9ms)[0m  [1mcommit transaction[0m
+  Rendered simple_captcha/_simple_captcha.erb (0.1ms)
+  Rendered users/registrations/new.html.erb within layouts/application (69.9ms)
+Completed 200 OK in 274ms (Views: 145.6ms | ActiveRecord: 2.8ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:53:25 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:53:25 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=f7c71017de92b590eaab8d9ef0a4854943a4ad3e&time=1347062005" for 127.0.0.1 at 2012-09-07 16:53:25 -0700
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.2ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f7c71017de92b590eaab8d9ef0a4854943a4ad3e' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f7c71017de92b590eaab8d9ef0a4854943a4ad3e' LIMIT 1[0m
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (7.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 16:54:46 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa@sa.com", "email_confirmation"=>"sa@sa.com", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"f7c71017de92b590eaab8d9ef0a4854943a4ad3e"}, "x"=>"86", "y"=>"17"}
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('sa@sa.com') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE "users"."username" = 'sa' LIMIT 1[0m
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'f7c71017de92b590eaab8d9ef0a4854943a4ad3e' LIMIT 1
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.2ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `key`
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 07 Sep 2012 16:54:47 PDT -07:00], ["key", "e1e947dd2e91d884ade9acd475844f2f3bc6f52e"], ["updated_at", Fri, 07 Sep 2012 16:54:47 PDT -07:00], ["value", "ZBFHB"]]
+  [1m[35m (2.1ms)[0m  commit transaction
+  Rendered simple_captcha/_simple_captcha.erb (0.1ms)
+  Rendered users/registrations/new.html.erb within layouts/application (68.1ms)
+Completed 200 OK in 382ms (Views: 185.1ms | ActiveRecord: 3.9ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:54:47 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=e1e947dd2e91d884ade9acd475844f2f3bc6f52e&time=1347062087" for 127.0.0.1 at 2012-09-07 16:54:48 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.6ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.6ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (23.0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:54:48 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=e1e947dd2e91d884ade9acd475844f2f3bc6f52e&time=1347062087" for 127.0.0.1 at 2012-09-07 16:54:48 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.8ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.8ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 16:55:00 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sas@sa.com", "email_confirmation"=>"sa@sa.com", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"AL", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"e1e947dd2e91d884ade9acd475844f2f3bc6f52e"}, "x"=>"80", "y"=>"33"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 78ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 16:55:00 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 16:55:00 -0700
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.1ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 227ms (Views: 86.0ms | ActiveRecord: 2.0ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:55:00 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:55:01 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:56:12 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:56:12 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=e1e947dd2e91d884ade9acd475844f2f3bc6f52e&time=1347062087" for 127.0.0.1 at 2012-09-07 16:56:12 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (9.2ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 16:56:21 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sas@sa.com", "email_confirmation"=>"sa@sa.com", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"AL", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"e1e947dd2e91d884ade9acd475844f2f3bc6f52e"}, "x"=>"65", "y"=>"46"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 241ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 16:56:21 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 16:56:21 -0700
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.1ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.1ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 278ms (Views: 136.3ms | ActiveRecord: 2.8ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:56:21 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:56:21 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:57:05 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:57:05 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=e1e947dd2e91d884ade9acd475844f2f3bc6f52e&time=1347062087" for 127.0.0.1 at 2012-09-07 16:57:05 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.5ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.7ms)
+
+
+Started GET "/simple_captcha?code=e1e947dd2e91d884ade9acd475844f2f3bc6f52e&time=1347062087" for 127.0.0.1 at 2012-09-07 16:57:05 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.4ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 16:57:18 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sas@sa.com", "email_confirmation"=>"sa@sa.com", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"AL", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"e1e947dd2e91d884ade9acd475844f2f3bc6f52e"}, "x"=>"52", "y"=>"36"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 234ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 16:57:18 -0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."notify" = 't'
+  Rendered users/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 150ms (Views: 147.4ms | ActiveRecord: 1.3ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:57:18 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:57:18 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:58:25 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:58:25 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=e1e947dd2e91d884ade9acd475844f2f3bc6f52e&time=1347062087" for 127.0.0.1 at 2012-09-07 16:58:25 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.9ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.9ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.6ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 16:58:31 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sas@sa.com", "email_confirmation"=>"sa@sa.com", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"AL", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"e1e947dd2e91d884ade9acd475844f2f3bc6f52e"}, "x"=>"113", "y"=>"32"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 245ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 16:58:31 -0700
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" [0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."notify" = 't'
+  Rendered users/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 149ms (Views: 145.8ms | ActiveRecord: 1.3ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:58:32 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:58:32 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 16:59:14 -0700
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.1ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (105.4ms)
+Completed 200 OK in 387ms (Views: 239.4ms | ActiveRecord: 2.9ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:59:15 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:59:15 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 16:59:47 -0700
+Processing by PagesController#home as HTML
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'[0m
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "organizations" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reviews" [0m
+  Rendered pages/home.html.erb within layouts/application (8.5ms)
+Completed 200 OK in 88ms (Views: 86.2ms | ActiveRecord: 0.7ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 16:59:47 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 16:59:47 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:05:00 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:05:00 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=e1e947dd2e91d884ade9acd475844f2f3bc6f52e&time=1347062087" for 127.0.0.1 at 2012-09-07 17:05:00 -0700
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e1e947dd2e91d884ade9acd475844f2f3bc6f52e' LIMIT 1[0m
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.1ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (20.4ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:05:02 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:05:02 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2012-09-07 17:05:05 -0700
+Processing by RegistrationsController#new as HTML
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.2ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '8d447053a3834068dd0b75be5d668b7b9a1250fa' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `key`
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)  [["created_at", Fri, 07 Sep 2012 17:05:05 PDT -07:00], ["key", "8d447053a3834068dd0b75be5d668b7b9a1250fa"], ["updated_at", Fri, 07 Sep 2012 17:05:05 PDT -07:00], ["value", "MBGFX"]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+  Rendered simple_captcha/_simple_captcha.erb (0.1ms)
+  Rendered users/registrations/new.html.erb within layouts/application (73.6ms)
+Completed 200 OK in 392ms (Views: 208.1ms | ActiveRecord: 3.4ms | Solr: 0.0ms)
+
+
+Started GET "/simple_captcha?code=8d447053a3834068dd0b75be5d668b7b9a1250fa&time=1347062705" for 127.0.0.1 at 2012-09-07 17:05:05 -0700
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '8d447053a3834068dd0b75be5d668b7b9a1250fa' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '8d447053a3834068dd0b75be5d668b7b9a1250fa' LIMIT 1[0m
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.0ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (33.6ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:05:05 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:05:05 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=8d447053a3834068dd0b75be5d668b7b9a1250fa&time=1347062705" for 127.0.0.1 at 2012-09-07 17:05:05 -0700
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.2ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '8d447053a3834068dd0b75be5d668b7b9a1250fa' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '8d447053a3834068dd0b75be5d668b7b9a1250fa' LIMIT 1[0m
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.0ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.9ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:05:16 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa", "email_confirmation"=>"sasa", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"DZ", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"8d447053a3834068dd0b75be5d668b7b9a1250fa"}, "x"=>"69", "y"=>"8"}
+Completed 500 Internal Server Error in 1ms
+
+ActiveModel::MassAssignmentSecurity::Error (Can't mass-assign protected attributes: email_confirmation):
+  app/controllers/registrations_controller.rb:16:in `create'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.9ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.1ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:05:38 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa", "email_confirmation"=>"sasa", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"DZ", "volunteered_before"=>"0", "notify"=>"1", "captcha"=>"", "captcha_key"=>"8d447053a3834068dd0b75be5d668b7b9a1250fa"}, "x"=>"96", "y"=>"41"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 244ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 17:05:39 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 17:05:39 -0700
+Processing by PagesController#home as HTML
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'[0m
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "organizations" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reviews" [0m
+  Rendered pages/home.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 339ms (Views: 195.7ms | ActiveRecord: 3.0ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:05:39 -0700
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:05:39 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-09-07 17:05:40 -0700
+Served asset /BEBAS___-webfont.woff - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:09:18 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa", "email_confirmation"=>"sasa", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"DZ", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"8d447053a3834068dd0b75be5d668b7b9a1250fa"}, "x"=>"108", "y"=>"13"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 78ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 17:09:18 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 17:09:18 -0700
+Processing by PagesController#home as HTML
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.1ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.1ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 86ms (Views: 84.2ms | ActiveRecord: 0.6ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:09:19 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:09:19 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2012-09-07 17:09:24 -0700
+Processing by RegistrationsController#new as HTML
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'a37516166647827009c9091e76cd1551c8875793' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `key`
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 07 Sep 2012 17:09:24 PDT -07:00], ["key", "a37516166647827009c9091e76cd1551c8875793"], ["updated_at", Fri, 07 Sep 2012 17:09:24 PDT -07:00], ["value", "ZOLCV"]]
+  [1m[35m (1.1ms)[0m  commit transaction
+  Rendered simple_captcha/_simple_captcha.erb (0.1ms)
+  Rendered users/registrations/new.html.erb within layouts/application (73.1ms)
+Completed 200 OK in 100ms (Views: 96.2ms | ActiveRecord: 2.1ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:09:25 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=a37516166647827009c9091e76cd1551c8875793&time=1347062964" for 127.0.0.1 at 2012-09-07 17:09:25 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'a37516166647827009c9091e76cd1551c8875793' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'a37516166647827009c9091e76cd1551c8875793' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.4ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.2ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:09:25 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:09:45 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa@sa.com", "email_confirmation"=>"sasa@sa.com", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"AL", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"a37516166647827009c9091e76cd1551c8875793"}, "x"=>"54", "y"=>"21"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 78ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 17:09:45 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 17:09:45 -0700
+Processing by PagesController#home as HTML
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'[0m
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "organizations" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reviews" [0m
+  Rendered pages/home.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 87ms (Views: 85.1ms | ActiveRecord: 0.6ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:09:45 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:09:45 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:11:02 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa@sa.com", "email_confirmation"=>"sasa@sa.com", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"AL", "volunteered_before"=>"0", "notify"=>"1", "captcha"=>"", "captcha_key"=>"a37516166647827009c9091e76cd1551c8875793"}, "x"=>"33", "y"=>"8"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 234ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 17:11:03 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 17:11:03 -0700
+Processing by PagesController#home as HTML
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'[0m
+  [1m[35mOrganization Load (0.1ms)[0m  SELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "organizations" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reviews" [0m
+  Rendered pages/home.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 276ms (Views: 136.7ms | ActiveRecord: 2.8ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:11:03 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:11:03 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:11:03 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:15:29 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa@sa.com", "email_confirmation"=>"sasa@sa.com", "dob(2i)"=>"", "dob(3i)"=>"", "dob(1i)"=>"", "country"=>"AL", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"a37516166647827009c9091e76cd1551c8875793"}, "x"=>"67", "y"=>"13"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 234ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 17:15:30 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 17:15:30 -0700
+Processing by PagesController#home as HTML
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'[0m
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "organizations" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reviews" [0m
+  Rendered pages/home.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 282ms (Views: 138.6ms | ActiveRecord: 3.0ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:15:30 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:15:30 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2012-09-07 17:16:59 -0700
+Processing by RegistrationsController#new as HTML
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e2fa7d27e46dc755b4d57b8603a5d4e90944437b' LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+Binary data inserted for `string` type on column `key`
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)  [["created_at", Fri, 07 Sep 2012 17:16:59 PDT -07:00], ["key", "e2fa7d27e46dc755b4d57b8603a5d4e90944437b"], ["updated_at", Fri, 07 Sep 2012 17:16:59 PDT -07:00], ["value", "MQATZ"]]
+  [1m[36m (1.6ms)[0m  [1mcommit transaction[0m
+  Rendered simple_captcha/_simple_captcha.erb (0.1ms)
+  Rendered users/registrations/new.html.erb within layouts/application (72.4ms)
+Completed 200 OK in 365ms (Views: 205.4ms | ActiveRecord: 4.1ms | Solr: 0.0ms)
+
+
+Started GET "/simple_captcha?code=e2fa7d27e46dc755b4d57b8603a5d4e90944437b&time=1347063419" for 127.0.0.1 at 2012-09-07 17:16:59 -0700
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e2fa7d27e46dc755b4d57b8603a5d4e90944437b' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e2fa7d27e46dc755b4d57b8603a5d4e90944437b' LIMIT 1[0m
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.6ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.7ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:16:59 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:16:59 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=e2fa7d27e46dc755b4d57b8603a5d4e90944437b&time=1347063419" for 127.0.0.1 at 2012-09-07 17:17:00 -0700
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e2fa7d27e46dc755b4d57b8603a5d4e90944437b' LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e2fa7d27e46dc755b4d57b8603a5d4e90944437b' LIMIT 1[0m
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.6ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:17:15 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa@sa.com", "email_confirmation"=>"sasa@sa.com", "dob(2i)"=>"4", "dob(3i)"=>"5", "dob(1i)"=>"2008", "country"=>"AL", "volunteered_before"=>"1", "notify"=>"1", "captcha"=>"", "captcha_key"=>"e2fa7d27e46dc755b4d57b8603a5d4e90944437b"}, "x"=>"76", "y"=>"12"}
+Redirected to http://localhost:3000/users
+Completed 302 Found in 78ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2012-09-07 17:17:15 -0700
+Processing by UsersController#index as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-09-07 17:17:15 -0700
+Processing by PagesController#home as HTML
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'[0m
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "organizations" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reviews" [0m
+  Rendered pages/home.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 231ms (Views: 86.6ms | ActiveRecord: 2.2ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:17:16 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:17:16 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:20:34 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa@sa.com", "email_confirmation"=>"sasa@sa.com", "dob(2i)"=>"4", "dob(3i)"=>"5", "dob(1i)"=>"2008", "country"=>"AL", "volunteered_before"=>"0", "notify"=>"1", "captcha"=>"", "captcha_key"=>"e2fa7d27e46dc755b4d57b8603a5d4e90944437b"}, "x"=>"30", "y"=>"29"}
+Completed 500 Internal Server Error in 3ms
+
+SyntaxError (/Users/sarahadams/volunteervoice/app/models/user.rb:25: syntax error, unexpected tSTRING_BEG, expecting tASSOC
+...ail, :on => :create, :message "did not match"
+...                               ^):
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:469:in `load'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:469:in `block in load_file'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:639:in `new_constants_in'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:468:in `load_file'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:353:in `require_or_load'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:502:in `load_missing_constant'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:192:in `block in const_missing'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:190:in `each'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:190:in `const_missing'
+  vendor/bundle/ruby/1.9.1/gems/aws-s3-0.6.3/lib/aws/s3/extensions.rb:212:in `const_missing_from_s3_library'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/inflector/methods.rb:229:in `block in constantize'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/inflector/methods.rb:228:in `each'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/inflector/methods.rb:228:in `constantize'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:554:in `get'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/dependencies.rb:588:in `constantize'
+  vendor/bundle/ruby/1.9.1/gems/devise-2.1.2/lib/devise.rb:256:in `get'
+  vendor/bundle/ruby/1.9.1/gems/devise-2.1.2/lib/devise/mapping.rb:77:in `to'
+  vendor/bundle/ruby/1.9.1/gems/devise-2.1.2/app/controllers/devise_controller.rb:28:in `resource_class'
+  vendor/bundle/ruby/1.9.1/gems/devise_invitable-1.0.2/lib/devise_invitable/controllers/registrations.rb:23:in `keep_invitation_info'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:214:in `_conditional_callback_around_6828'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:425:in `_run__3758458267066527398__process_action__1914863662474045394__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_process_action_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/abstract_controller/callbacks.rb:17:in `process_action'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_controller/metal/rescue.rb:29:in `process_action'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_controller/metal/instrumentation.rb:30:in `block in process_action'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/notifications.rb:123:in `block in instrument'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/notifications.rb:123:in `instrument'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_controller/metal/instrumentation.rb:29:in `process_action'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_controller/metal/params_wrapper.rb:205:in `process_action'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/abstract_controller/base.rb:121:in `process'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/abstract_controller/rendering.rb:45:in `process'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_controller/metal.rb:203:in `dispatch'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_controller/metal/rack_delegation.rb:14:in `dispatch'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_controller/metal.rb:246:in `block in action'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/routing/route_set.rb:67:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/routing/route_set.rb:67:in `dispatch'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/routing/route_set.rb:30:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/routing/mapper.rb:40:in `call'
+  vendor/bundle/ruby/1.9.1/gems/journey-1.0.4/lib/journey/router.rb:68:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/journey-1.0.4/lib/journey/router.rb:56:in `each'
+  vendor/bundle/ruby/1.9.1/gems/journey-1.0.4/lib/journey/router.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/routing/route_set.rb:595:in `call'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:20:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:35:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.8ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.2ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.8ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2012-09-07 17:20:53 -0700
+Processing by RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "user"=>{"return_link"=>"", "username"=>"sa", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "email"=>"sa@sa.com", "email_confirmation"=>"sasa@sa.com", "dob(2i)"=>"4", "dob(3i)"=>"5", "dob(1i)"=>"2008", "country"=>"AL", "volunteered_before"=>"0", "notify"=>"1", "captcha"=>"", "captcha_key"=>"e2fa7d27e46dc755b4d57b8603a5d4e90944437b"}, "x"=>"107", "y"=>"14"}
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 FROM "users" WHERE LOWER("users"."email") = LOWER('sa@sa.com') LIMIT 1
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT 1 FROM "users" WHERE "users"."username" = 'sa' LIMIT 1[0m
+  [1m[35mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'e2fa7d27e46dc755b4d57b8603a5d4e90944437b' LIMIT 1
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.2ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '7b4394501723eeb3cb05787e360d0d205e02595c' LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+Binary data inserted for `string` type on column `key`
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Fri, 07 Sep 2012 17:20:54 PDT -07:00], ["key", "7b4394501723eeb3cb05787e360d0d205e02595c"], ["updated_at", Fri, 07 Sep 2012 17:20:54 PDT -07:00], ["value", "RUKJH"]]
+  [1m[35m (28.5ms)[0m  commit transaction
+  Rendered simple_captcha/_simple_captcha.erb (0.1ms)
+  Rendered users/registrations/new.html.erb within layouts/application (42.5ms)
+Completed 200 OK in 487ms (Views: 210.9ms | ActiveRecord: 30.3ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:20:54 -0700
+Served asset /application.js - 304 Not Modified (3ms)
+
+
+Started GET "/simple_captcha?code=7b4394501723eeb3cb05787e360d0d205e02595c&time=1347063654" for 127.0.0.1 at 2012-09-07 17:20:54 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '7b4394501723eeb3cb05787e360d0d205e02595c' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '7b4394501723eeb3cb05787e360d0d205e02595c' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (10.7ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.6ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.7ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-09-07 17:20:54 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/simple_captcha?code=7b4394501723eeb3cb05787e360d0d205e02595c&time=1347063654" for 127.0.0.1 at 2012-09-07 17:20:54 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.2ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '7b4394501723eeb3cb05787e360d0d205e02595c' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = '7b4394501723eeb3cb05787e360d0d205e02595c' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__2676844338614244321__call__3500765563597192396__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (3.9ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.3ms)
+
+
+Started GET "/pages/search_macine" for 127.0.0.1 at 2012-09-07 17:37:20 -0700
+
+ActionController::RoutingError (No route matches [GET] "/pages/search_macine"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.7ms)
+
+
+Started GET "/pages/search_machine" for 127.0.0.1 at 2012-09-07 17:37:25 -0700
+
+ActionController::RoutingError (No route matches [GET] "/pages/search_machine"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/searches/search_machine" for 127.0.0.1 at 2012-09-07 17:37:29 -0700
+Processing by SearchesController#search_machine as HTML
+  [1m[36mProgram Load (0.1ms)[0m  [1mSELECT "programs".* FROM "programs" [0m
+  Rendered searches/search_machine.html.erb within layouts/application (12.1ms)
+Completed 200 OK in 355ms (Views: 230.1ms | ActiveRecord: 1.0ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-09-07 17:37:29 -0700
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2012-09-07 17:37:37 -0700
+Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DlnI7+C7sf+zGjrYJneSD2TiniEB3OsvJlSsxrcKqL0=", "search"=>{"length_min_number"=>"0", "length_min_param"=>"weeks", "length_max_number"=>"2", "length_max_param"=>"years", "price_min"=>"0.05", "price_max"=>"99999"}, "x"=>"55", "y"=>"27"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "searches" ("created_at", "keywords", "length_max_number", "length_max_param", "length_min_number", "length_min_param", "price_max", "price_min", "regions", "sent_from", "showing", "sizes", "sort_by", "subjects", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Fri, 07 Sep 2012 17:37:37 PDT -07:00], ["keywords", nil], ["length_max_number", 2], ["length_max_param", "years"], ["length_min_number", 0], ["length_min_param", "weeks"], ["price_max", 99999], ["price_min", 0], ["regions", nil], ["sent_from", nil], ["showing", nil], ["sizes", nil], ["sort_by", nil], ["subjects", nil], ["updated_at", Fri, 07 Sep 2012 17:37:37 PDT -07:00]]
+  [1m[35m (1.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/searches/1
+Completed 302 Found in 8ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/searches/1" for 127.0.0.1 at 2012-09-07 17:37:37 -0700
+Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSearch Exists (0.2ms)[0m  [1mSELECT 1 FROM "searches" WHERE "searches"."id" = 1 LIMIT 1[0m
+  [1m[35mSearch Load (0.1ms)[0m  SELECT "searches".* FROM "searches" WHERE "searches"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36mProgram Load (0.2ms)[0m  [1mSELECT "programs".* FROM "programs" WHERE ("programs"."id" >= 0) ORDER BY "programs"."id" ASC LIMIT 200[0m
+  [1m[32mSOLR Request (1.6ms)[0m  [ path=#<RSolr::Client:0x007fe3877d84e0> parameters={data: [1m[1mfq=type%3AProgram&start=0&rows=30&q=%2A%3A%2A[0m, method: [1m[1mpost[0m, params: [1m[1m{:wt=>:ruby}[0m, query: [1m[1mwt=ruby[0m, headers: [1m[1m{"Content-Type"=>"application/x-www-form-urlencoded; charset=UTF-8"}[0m, path: [1m[1mselect[0m, uri: [1m[1mhttp://localhost:8982/solr/select?wt=ruby[0m, open_timeout: [1m[1m[0m, read_timeout: [1m[1m[0m} ]
+Completed 500 Internal Server Error in 37ms
+
+Errno::ECONNREFUSED (Connection refused - connect(2)):
+  app/controllers/searches_controller.rb:105:in `show'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (60.1ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (68.7ms)
+
+
+Started GET "/searches/1/show" for 127.0.0.1 at 2012-09-07 17:39:05 -0700
+
+ActionController::RoutingError (No route matches [GET] "/searches/1/show"):
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)

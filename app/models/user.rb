@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_presence_of :username
   validates_length_of :username, :maximum => 30
-  validates_confirmation_of :email, :on => :create
+  validates_confirmation_of :email, :on => :create, :message => "did not match confirmation"
+  
   before_save :square_image_crop 
   after_create :send_message
   before_create :set_unread_message_count
@@ -43,12 +44,6 @@ mount_uploader :square_image, ImageUploader
       
       #Simple Private Messaging     
       has_private_messages
-
-      def validate_email
-        if !(email == email_confirmation)
-          errors.add(:email_confirmation, "must match")
-        end
-      end
       
       
 def self.find_first_by_auth_conditions(warden_conditions)
