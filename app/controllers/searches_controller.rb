@@ -53,7 +53,7 @@ class SearchesController < ApplicationController
       else
         keys = @search.keywords
       end
-      if @search.subjects.nil?
+      if @search.subjects.nil? || @search.subjects == "false"
         subjects = ""
       else
         subjects = @search.subjects.split("; ")
@@ -63,7 +63,7 @@ class SearchesController < ApplicationController
       else
         regions = @search.regions.split("; ")
       end
-      if @search.sizes.nil?
+      if @search.sizes.nil? || @search.sizes == "false"
         sizes = ""
       else
         sizes = @search.sizes.split("; ")
@@ -715,15 +715,15 @@ class SearchesController < ApplicationController
     params[:search][:sizes] = params[:search][:sizes].join("; ") unless (params[:search][:sizes].class.name == "String" || params[:search][:sizes].nil?)
 
     if params[:search][:regions].nil? 
-      params[:search][:regions] = ""
+      params[:search][:regions] = "false"
     end
     
     if params[:search][:subjects].nil?
-      params[:search][:regions] = ""
+      params[:search][:subjects] = "false"
     end
     
     if params[:search][:sizes].nil?
-      params[:search][:sizes] = ""
+      params[:search][:sizes] = "false"
     end
     
     respond_to do |format|
