@@ -98,6 +98,7 @@ class SearchesController < ApplicationController
       @search_subjects = subjects
       @search_sizes = sizes
      
+      if (subjects.empty? || location.empty? || program_sizes.empty?)
         @the_search = Program.search do
           keywords keys unless keys.blank?
 
@@ -110,7 +111,9 @@ class SearchesController < ApplicationController
         end
 
         @results = @the_search.results
-
+      else
+        @results = []
+      end
       if (price_max != 99999 || price_min != 0 || length_min != 0.weeks.to_f || length_max != 2.years.to_f )
 
         @cost_length_search = ProgramCostLengthMap.search do
