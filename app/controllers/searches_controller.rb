@@ -49,22 +49,22 @@ class SearchesController < ApplicationController
     if Search.exists?(params[:id])
       @search = Search.find(params[:id])
       if @search.keywords.nil?
-        keys = ""
+        keys = []
       else
         keys = @search.keywords
       end
       if @search.subjects.nil? || @search.subjects == "false"
-        subjects = ""
+        subjects = []
       else
         subjects = @search.subjects.split("; ")
       end
       if @search.regions.nil? || @search.regions == "false"
-        regions = ""
+        regions = []
       else
         regions = @search.regions.split("; ")
       end
       if @search.sizes.nil? || @search.sizes == "false"
-        sizes = ""
+        sizes = []
       else
         sizes = @search.sizes.split("; ")
       end
@@ -98,18 +98,15 @@ class SearchesController < ApplicationController
       @search_subjects = subjects
       @search_sizes = sizes
      
-     
-     
-
 
       @the_search = Program.search do
         keywords keys
 
-        with(:program_subjects).any_of(subjects) unless subjects.blank?
+        with(:program_subjects).any_of(subjects)
 
-        with(:location).any_of(regions) unless regions.blank?
+        with(:location).any_of(regions)
 
-        with(:program_sizes).any_of(sizes) unless sizes.blank?
+        with(:program_sizes).any_of(sizes)
 
       end
 
