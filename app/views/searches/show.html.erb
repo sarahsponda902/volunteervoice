@@ -1552,7 +1552,7 @@ $(document).ready(function() {
 	}
 	
 	//if all regions are checked, check both the hidden facet "any" and the pull-out menu "any" for regions
-	if (isAllLocations) {
+	if (isAllLocations && (search_regions.length > 1) ) {
 		$("#any6").prop('checked', true);
 		$("#any11").prop('checked', true);
 	}
