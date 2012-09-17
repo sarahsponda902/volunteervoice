@@ -44,6 +44,15 @@ searchable do
   location :program_cost_length_maps, :multiple => true do
     program_cost_length_maps.map{|p| Sunspot::Util::Coordinates.new(p.length.to_f, p.cost.to_f) }
   end
+  text :description
+  text :start_dates
+  text :program_structure
+  text :partnered_local_organizations
+  text :cost_includes 
+  text :accommodations
+  text :specific_location
+  text :food_situation
+  text :program_requirements
   
 end
 
