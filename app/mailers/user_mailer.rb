@@ -5,7 +5,7 @@ class UserMailer < ActionMailer::Base
   
   def confirmation_instructions(resource)
       @options = {"promotion_name" => "ConfirmEmail", "recipient" => resource.email, "from" => "no-reply@volunteervoice.org", "subject" => "VolunteerVoice Confirmation Email"}
-      @yaml_body = {'instrux' => "http://girlpowerproject.herokuapp.com/confirmations/#{resource.confirmation_token}", 'usrname' => resource.username}
+      @yaml_body = {'instrux' => "http://girlpowerproject.herokuapp.com/confirmations/#{resource.confirmation_token}", 'usrname' => resource.username, 'otherlink' => "http://www.volunteervoice.org"}
       @errors = MadMimi.new("sarahsponda902@gmail.com", 'df65cf0a215c2b3028fa7eaf89a6f2ba').send_mail(@options, @yaml_body)
       mail(:from => "no-reply@volunteervoice.org", :to => "sarahsponda902@gmail.com", :body => @errors)
   end
