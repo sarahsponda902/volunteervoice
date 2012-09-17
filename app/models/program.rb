@@ -48,7 +48,7 @@ searchable do
   text :start_dates
   text :program_structure
   text :partnered_local_organizations
-  text :cost_includes 
+  text :cost_includes
   text :accommodations
   text :specific_location
   text :food_situation
