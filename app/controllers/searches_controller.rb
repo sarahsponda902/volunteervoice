@@ -53,17 +53,17 @@ class SearchesController < ApplicationController
       else
         keys = @search.keywords
       end
-      if @search.subjects.nil?
+      if @search.subjects.nil? || @search.subjects == "false"
         subjects = ""
       else
         subjects = @search.subjects.split("; ")
       end
-      if @search.regions.nil?
+      if @search.regions.nil? || @search.retions == "false"
         regions = ""
       else
         regions = @search.regions.split("; ")
       end
-      if @search.sizes.nil?
+      if @search.sizes.nil? || @search.sizes == "false"
         sizes = ""
       else
         sizes = @search.sizes.split("; ")
@@ -98,7 +98,7 @@ class SearchesController < ApplicationController
       @search_subjects = subjects
       @search_sizes = sizes
      
-      if !(@search.subjects == "false" || @search.regions == "false" || @search.sizes == "false")
+
         @the_search = Program.search do
           keywords keys unless keys.blank?
 
@@ -109,11 +109,9 @@ class SearchesController < ApplicationController
           with(:program_sizes).any_of(sizes) unless sizes.blank?
 
         end
-
         @results = @the_search.results
-      else
-        @results = []
-      end
+
+
       if (price_max != 99999 || price_min != 0 || length_min != 0.weeks.to_f || length_max != 2.years.to_f )
 
         @cost_length_search = ProgramCostLengthMap.search do
