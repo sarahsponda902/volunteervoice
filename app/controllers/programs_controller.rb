@@ -8,8 +8,8 @@ class ProgramsController < ApplicationController
 	def search_results
 	  @search = Program.search do
 	    fulltext params[:search] if params[:search].present?
-	    facet(:program_subject)
-	    with(:program_subject, params[:subject]) if params[:subject].present?
+	    facet(:program_subjects)
+	    with(:program_subjects, params[:subject]) if params[:subject].present?
 	  end
 	  @programs = @search.results
 	end
