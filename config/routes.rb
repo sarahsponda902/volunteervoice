@@ -1,4 +1,5 @@
 RMTest::Application.routes.draw do
+  match "/programs/search_results" => "programs#search_results"
   get "/contacts/thank_you"
   get "/feedbacks/thank_you"
   get "/new_reviews/thank_you_new_review"
