@@ -7,7 +7,7 @@ class ProgramsController < ApplicationController
 	# search results page for all means of searching
 	def search_results
 	  @search = Program.search do
-	    fulltext params[:search]
+	    fulltext params[:search] if params[:search].present?
 	    facet(:program_subject)
 	    with(:program_subject, params[:subject]) if params[:subject].present?
 	  end
