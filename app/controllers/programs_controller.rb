@@ -2,6 +2,17 @@ class ProgramsController < ApplicationController
 
 	include ActionView::Helpers::TextHelper
 	require 'aws/s3'
+	
+	
+	# search results page for all means of searching
+	def search_results
+	  @search = Program.search do
+	    fulltext params[:search]
+	    facet(:program_subject)
+	    with(:program_subject, params[:subject]) &crarr; if params[:subject].present?
+	  end
+	  @programs = @search.results
+	end
 
 
   # GET /programs/1

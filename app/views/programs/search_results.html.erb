@@ -1,0 +1,42 @@
+<style>
+.top {
+	margin-top:30px;
+}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="twelve columns top" id="facets">
+			<h3>Program Subject</h3>
+			<ul>
+				<% for row in @search.facet(:program_subjects).rows %>
+				<li>
+					<% if params[:subject].blank? %>
+						<%= link_to row.value, :subject => row.value %> (<%= row.count %>)
+					<% else %>
+						<strong><%= row.value %></strong> (<%= link_to "remove", :subject => nil %>)
+					<% end %>
+				</li>
+			</ul>
+		</div>
+		<div class="twelve columns top">
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Subject</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @programs.each do |program| %>
+					<tr>
+						<td><%= program.id%></td>
+						<td><%= program.name%></td>
+						<td><%= program.program_subjects.map{|subj| subj.subject }.join(", ")%></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
