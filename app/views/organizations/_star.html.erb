@@ -1,4 +1,4 @@
-<% @program = Program.first%>
+<% @program = Program.new%>
 <% star = @program.roundup(star) %>
 	<% if star.to_f == 1%>
 	<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/small_stars_1.png", :height => "50%"%>
