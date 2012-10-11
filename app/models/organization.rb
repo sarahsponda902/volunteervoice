@@ -35,7 +35,11 @@ searchable do
 end
 
 def roundup(overall)
-    (overall*2).round / 2.0
+    if overall.nil?
+      0
+    else
+      (overall*2).round / 2.0
+    end
 end
 
 def textilize_misson
