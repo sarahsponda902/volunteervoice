@@ -50,7 +50,9 @@
 			<u><span class="programSubjectsLabel">Program Subjects:</span></u>
 		</div>
 		<div class="ten columns" id="programSubjectsBox">
+			<% if @programSubjects.present?%>
 <%= @programSubjects[0..(@programSubjects.count - 2)].join(", ")%>
+			<% end %>
 		</div>
 	</div>
 	<div class="three columns" id="hqInfoContainer">
