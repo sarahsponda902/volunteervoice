@@ -119,7 +119,10 @@
 			&#9998; 
 			<% end %>
 			Application Process: </p><%= best_in_place_if @can_edit, organization, :application_process, :type => :textarea, :display_as => :textilize_application_process, :nil => "Click to edit"%><br />
-			<p class="detailsLabel">Business Model: </p><%= organization.business_model.html_safe%><br /><br />
+			<p class="detailsLabel">Business Model: </p>
+			<% if organization.business_model.present? %>
+			<%= organization.business_model.html_safe%>
+			<% end %><br /><br />
 			
 			<p class="detailsLabel">ID number: </p><%=organization.id_number%><br /><br />
 			
@@ -147,13 +150,14 @@
 			<% end %>
 			Price Doesn't Include: </p><%= best_in_place_if @can_edit, organization, :program_costs_doesnt_include, :type => :textarea, :display_as => :textilize_program_costs_doesnt_include, :nil => "Click to edit"%><br />
 			<p><span class="detailsLabel">Additional Fees: </span><%= organization.additional_fees%></p><br />
-			<p><span class="detailsLabel">Price Breakdown: </span><%= organization.price_breakdown.html_safe %></p><br />
+			<p><span class="detailsLabel">Price Breakdown: </span>
+			<%= organization.price_breakdown.html_safe if organization.price_breakdown.present? %></p><br />
 			<p class="detailsLabel"> 
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
 			Preparation/Orientation: </p><%= best_in_place_if @can_edit, organization, :training_resources, :type => :textarea, :display_as => :textilize_training_resources, :nil => "Click to edit"%><br />
-			<p class="detailsLabel">Good to know: </p><%=organization.good_to_know.html_safe%><br />
+			<p class="detailsLabel">Good to know: </p><%=organization.good_to_know.html_safe if organization.good_to_know.present?%><br />
 		</div>
 	</div>
 

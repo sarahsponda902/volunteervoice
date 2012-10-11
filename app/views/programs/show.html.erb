@@ -500,7 +500,7 @@ a.basedOnReviewsLink:hover {
 	</div>
 		<div class="eleven columns" id="programDescriptionContainer">
 
-		<div id="programDescription">	<%=@program.description.html_safe%></div>
+		<div id="programDescription">	<%=@program.description.html_safe if @program.description.present?%></div>
 
 	</div>
 	
@@ -521,14 +521,14 @@ a.basedOnReviewsLink:hover {
 		<%= @program.lengths_of_program%><br /><br />
 		<span class="detailLabel">Start Dates: </span><%= @program.start_dates%><br /><br />
 		<span class="detailLabel">Program Requirements: </span><%= @program.program_requirements%><br /><br />
-		<span class="detailLabel">Program Structure: </span><%= @program.program_structure.html_safe%><br /><br />
+		<span class="detailLabel">Program Structure: </span><%= @program.program_structure.html_safe if @program.program_structure.present?%><br /><br />
 		<span class="detailLabel">Partnered Local Organizations: </span><%= @program.partnered_local_organizations%><br /><br />
 		<span class="detailLabel">Group Sizes: </span>
 		<% @program_sizes = @program.program_sizes.map{|prog| prog.size}%>
 		<%= @program_sizes[0..(@program.program_sizes.count - 2)].join(", ")%>
 		
 		<br /><br />
-	<span class="detailLabel">	Accommodations: </span><%= @program.accommodations.html_safe%><br />
+	<span class="detailLabel">	Accommodations: </span><%= @program.accommodations.html_safe if @program.accommodations.present?%><br />
 		
 	<span class="detailLabel">	Food Situation: </span><%= @program.food_situation%><br />
 		<br /><br /><br />
@@ -536,9 +536,9 @@ a.basedOnReviewsLink:hover {
 	
 	<div class="six columns" id="rightColumnContainer">
 		<span class="detailLabel">	Program Cost Chart: </span><a href="#price-range-popup" class="price-range-window">Click here to view</a><br /><br /> 
-		<span class="detailLabel">Program Cost Breakdown: </span><%= @program.program_cost_breakdown.html_safe%><br />
-	<span class="detailLabel">	-Includes: </span><%= @program.cost_includes.html_safe%><br />
-	<span class="detailLabel">	-Doesn't Include: </span><%= @program.cost_doesnt_include.html_safe%><br />
+		<span class="detailLabel">Program Cost Breakdown: </span><%= @program.program_cost_breakdown.html_safe if @program.program_cost_breakdown.present?%><br />
+	<span class="detailLabel">	-Includes: </span><%= @program.cost_includes.html_safe if @program.cost_includes.present?%><br />
+	<span class="detailLabel">	-Doesn't Include: </span><%= @program.cost_doesnt_include.html_safe if @program.cost_doesnt_include.present?%><br />
 	</div>
 </div>
 
