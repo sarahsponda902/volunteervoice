@@ -247,8 +247,13 @@ end
                @organization.url = "http://"+@organization.url
                @organization.save!
              end
-             format.html { redirect_to @organization }
-             format.json { respond_with_bip(@organization) }
+             if @organization.crops
+               format.html { redirect_to "/organizations/#{@organization.id}/crop" }
+               format.json { respond_with_bip(@organization) }
+             else
+               format.html { redirect_to @organization }
+               format.json { respond_with_bip(@organization) }
+             end
            else
              format.html { render :action => "show" }
              format.json { respond_with_bip(@organization) } 

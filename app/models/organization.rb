@@ -67,6 +67,7 @@ def textilize_training_resources
 end
 
 def square_image_crop
+  if (self.crops)
    if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
      image = MiniMagick::Image.open(self.image.url)
       if image[:width] > 700
@@ -77,6 +78,7 @@ def square_image_crop
      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
      self.square_image = image
    end
+  end
  end
  
 def latest_review_time
