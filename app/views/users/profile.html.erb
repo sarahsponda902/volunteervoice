@@ -562,12 +562,12 @@ img.reviewPhoto { /* individual review photo */
 #userBoxContainer {
 	margin-top:40px;
 }
-#userImageContainer {
+/* #userImageContainer {
 	float:left; 
 	height:180px; 
 	width:180px; 
 	overflow:hidden; 
-	margin-left:20px;
+	margin-left:20px;  */
 }
 #userImage {
 	height:168px; 
@@ -788,12 +788,12 @@ a.usernameLink:hover {
 				</div>
 			</div>
 			<div class="row" id="userBoxContainer">
-				<div class="three columns" id="userImageContainer">
-					<% if !(current_user.square_image.url.nil?)%>
+				<!--><div class="three columns" id="userImageContainer">
+					<%#if !(current_user.square_image.url.nil?)%>
 				<img src="<%=current_user.square_image.url%>" id = "userImage" onerror = "$(this).attr('src', '<%= current_user.photo.url %>')">
 					<% else %>
 					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
-					<% end %>
+					<% end %>-->
 					
 				</div>
 		<div class= "eight columns" id="usernameContainer">
