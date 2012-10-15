@@ -208,7 +208,7 @@ a.question-window {
 				<div class="labelContainer"><label class="label">Retype Email</label>
 				  <%= f.email_field :email_confirmation, :class => "field" %></div>
 				
-		 			 <p  class="labelContainer"><label class="label" for="user_Date of Birth">Birthday<span id="optional">(optional)</span></label><div class="select-div first">
+		 			 <!--<p  class="labelContainer"><label class="label" for="user_Date of Birth">Birthday<span id="optional">(optional)</span></label><div class="select-div first">
 					<select id="user_dob_2i" name="user[dob(2i)]">
 					<option value="">Month</option>
 					<option value="1">January</option>
@@ -388,11 +388,11 @@ a.question-window {
 								<div class="select-div selectCountryDiv" id="dropArrow">
 							 <select id="user_country" name="user[country]" class="selectCountry">
 								<option value=""> Select a Country</option>
-								<% THECOUNTRIES.keys.each do |f| %>
-								<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
-								<% end %>
+								<#% THECOUNTRIES.keys.each do |f| %>
+								<option value="<%=f%>"><%#= THECOUNTRIES[f]%></option>
+								<%# end %>
 								</select>
-							</div>
+							</div>-->
 		<br />
 				<image class="checkMark" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
 		<div class="checkBox">
