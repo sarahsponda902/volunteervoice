@@ -180,9 +180,9 @@ a.question-window {
 #passwordLabelWarning {
 	font-size:0.7em;
 }
-p #volunteeredBeforebox {
-	margin-top:10px;
-	margin-bottom:10px;
+div .volunteeredBeforebox {
+	margin-top:20px;
+	margin-bottom:20px;
 }
 
 </style>
@@ -399,8 +399,8 @@ p #volunteeredBeforebox {
 								</select>
 							</div>-->
 		<br />
-		<p id="volunteeredBeforebox">
-				<image class="checkMark" class="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
+		<div class="volunteeredBeforebox">
+				<image class="checkMark" id="volunteeredBefore" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(volunteeredCheck())">
 		<div class="checkBox">
 		<%= f.check_box :volunteered_before, :onclick => "$(volunteeredCheckNoToggle())", :class => "checkBoxHidden" %>
 		<label for="user_volunteered_before" class="volunteeredBeforeLabel">Click here if you've volunteered abroad before. We're just curious.</label></div>
@@ -409,7 +409,7 @@ p #volunteeredBeforebox {
 		<div class="checkBox secondBox">
 		<%= f.check_box :notify, :onclick => "$(beforeCheckNoToggle())", :class => "checkBoxHidden"%>
 		<label class="notifyLabel" for="user_notify">Yes, of course! Notify me of VolunteerVoice's awesome updates and changes.</label></div>
-		</p>
+		</div>
 
 		<br />
 		<br /> 	
