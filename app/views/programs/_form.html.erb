@@ -220,7 +220,7 @@ a.createInput:hover {
 <div class="six columns" id="leftSideColumn">
 	<label for="subjects">Subject Tags: &nbsp;&nbsp;&nbsp;<a href="#subjects-box" class="subjects-window"><u>View all possible subject tags</u></a></label>
 	
-		<input id="subjects" class="textField" name="program[program_subjects]" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects.map(&:subject).join(', '); end%>" onfocus="if (this.value == ' Start typing...') {this.value = '';};"/><p class="littleMessage"> &gt; Click to select applicable subjects for this program.</p><br />
+		<input id="subjects" class="textField" name="program[program_subjects]" type="text" value="<%= if @subjects.nil?; " Start typing..."; else; @subjects.join(', '); end%>" onfocus="if (this.value == ' Start typing...') {this.value = '';};"/><p class="littleMessage"> &gt; Click to select applicable subjects for this program.</p><br />
 <div class="field">
 	<label for="program_location">Country:</label>
 	<select id="program_location" name="program[location]">
