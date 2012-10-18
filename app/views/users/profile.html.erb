@@ -270,6 +270,7 @@ a.upload-window:hover { color: #e67b5a }
 		        -moz-border-radius: 3px; /* Firefox */
 		        -webkit-border-radius: 3px; /* Safari, Chrome */
 			width:570px;
+			height:325px;
 		}
 		
 		
@@ -560,33 +561,35 @@ img.reviewPhoto { /* individual review photo */
 	margin-top:5px;
 }
 #userBoxContainer {
-	margin-top:40px;
+	margin-top:50px;
 }
-#userImageContainer {
+/* #userImageContainer {
 	float:left; 
 	height:180px; 
 	width:180px; 
 	overflow:hidden; 
-	margin-left:20px;
+	margin-left:20px;  
 }
 #userImage {
 	height:168px; 
 	width:168px;
-}
+}  */
 #usernameContainer {
 	margin-left:15px; 
-	margin-top:-32px;
+	margin-top:-45px;
+	padding-left:204px;
 }
 #username {
 	font-size:3em; 
 	line-height:1.7em;
 }
-#dobContainer {
-	margin-top:10px;
+/* #dobContainer {
+	margin-top:20px;
+	margin-bottom:20px;
 	float:left; 
-	margin-left:15px; 
+	margin-left:-138px; 
 	padding:5px; 
-	padding-right:10px; 
+	padding-right:100px; 
 	padding-left:10px; 
 	border:1px solid #e67b5a;
 }
@@ -594,7 +597,7 @@ img.reviewPhoto { /* individual review photo */
 	font-size:1.7em; 
 	line-height:1.6em; 
 	padding-bottom:10px;
-}
+} */
 #middle {
 	margin-top:20px;
 }
@@ -738,6 +741,8 @@ img.reviewPhoto { /* individual review photo */
 <style>
 .username {
 	color:#68c2d8;
+	padding-left: 30px;
+	padding-top: 20px;
 }
 a.usernameLink {
 	color:#68c2d8;
@@ -788,31 +793,31 @@ a.usernameLink:hover {
 				</div>
 			</div>
 			<div class="row" id="userBoxContainer">
-				<div class="three columns" id="userImageContainer">
-					<% if !(current_user.square_image.url.nil?)%>
+				<!--<div class="three columns" id="userImageContainer">
+					<%#if !(current_user.square_image.url.nil?)%>
 				<img src="<%=current_user.square_image.url%>" id = "userImage" onerror = "$(this).attr('src', '<%= current_user.photo.url %>')">
-					<% else %>
-					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
-					<% end %>
+					<%# else %>
+					<%#= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
+					<%# end %>-->
 					
 				</div>
 		<div class= "eight columns" id="usernameContainer">
 	<p id="username"><%= @user.username %> </p>
 	</div>
-		<div class="four columns" id="dobContainer">
+		<!--<div class="four columns" id="dobContainer">
 			<p id="dob">
-	<%if @user.dob != nil%>
+	<%#if @user.dob != nil%>
 	Age: 
-	<% @now = Time.now.utc.to_date%>
-	<%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
-	<% end %>
+	<%# @now = Time.now.utc.to_date%>
+	<%#= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
+	<%# end %>
 	<br />
-	Country: <%= THECOUNTRIES[@user.country] %><br />
+	Country: <%#= THECOUNTRIES[@user.country] %><br />
 
 	<br />
 	<p align="right">
 	</p>
-	</p>
+	</p>-->
 	</div>
 	</div>
 	</div>
@@ -1076,7 +1081,7 @@ a.usernameLink:hover {
 	left:-2px;
 }
 #accountSubmitContainer {
-	margin-top:2px; 
+	margin-top:120px; 
 	margin-left:205px; 
 	margin-bottom:10px;
 }
@@ -1085,7 +1090,7 @@ a.usernameLink:hover {
 }
 #account-right-column {
 	margin-left:300px; 
-	margin-top:-290px; 
+	margin-top:-278px; 
 	padding-left:30px; 
 	width:250px;
 }
@@ -1189,21 +1194,21 @@ a.usernameLink:hover {
 				  <div><%= f.label "Registered Email Address" %>
 				  <%= f.email_field :email, :class => "accountTextField" %></div><br />
 				<div>
-<%= f.label :country %>
-				  <div class="select-div" id="selectCountryDiv">
+<%#= f.label :country %>
+				 <!--<div class="select-div" id="selectCountryDiv">
 					 <select id="user_country" name="user[country]">
 							<% THECOUNTRIES.keys.each do |f| %>
 							<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
 							<% end %>
 					</select>
 				</div>
-				 <image id="checkAgeCountry" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(ageCountryCheck()); $('#user_profile_show').attr('checked', false)">
+				<image id="checkAgeCountry" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(ageCountryCheck()); $('#user_profile_show').attr('checked', false)">
 					<div class="checkBox">
-					<%= f.check_box :profile_show, :onchange => "$(ageCountryCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel"> Hide my age/country on my profile</div><br />
+					<%#= f.check_box :profile_show, :onchange => "$(ageCountryCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel"> Hide my age/country on my profile</div><br />
 					
 					<image id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(messagesCheck());$('#user_messages_show').attr('checked', false)">
 					<div class="checkBox" id="checkBoxMessages">
-					<%= f.check_box :messages_show, :onchange => "$(messagesCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel" id="checkMessagesLabel"> Do not allow others to send me<br />messages</div><br />
+					<%#= f.check_box :messages_show, :onchange => "$(messagesCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel" id="checkMessagesLabel"> Do not allow others to send me<br />messages</div>--><br />
 				
 				</div>
 				
