@@ -43,6 +43,8 @@ gem 'thin'
 
 gem 'fog'
 
+gem 'seed_dump'
+
 gem 'mini_magick'
 
 gem 'google-analytics-rails'
