@@ -356,18 +356,18 @@ a.flag-window {
 				<p class="userLines">  </p>
 				</div>
 			</div>
-			<!--<div class="row" id="secondTop">
-				<div class="three columns" id="userSquareImageContainer">
+			  <div class="row" id="secondTop">
+				<!--<div class="three columns" id="userSquareImageContainer">
 					<% #if !(@user.square_image.url.nil?)%>
 				<img src="<%#=@user.square_image.url%>" id = "squareImage" onerror = "$(this).attr('src', '<%=# @user.photo.url %>')">
 					<%# else %>
 					<%#= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
 					<%# end %>
-				</div>
+				</div>-->
 		<div class= "eight columns" id="userInfoBox">
 	<p id="username"><%#= @user.username %> </p>
 	</div>
-		<div class="four columns" id="ageCountryBox">
+		<!--><div class="four columns" id="ageCountryBox">
 			<p id="userAgeCountry">
 <%# if !(@user.profile_show)%> 
 	<%#if @user.dob != nil%>
