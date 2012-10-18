@@ -69,7 +69,7 @@ class ProgramsController < ApplicationController
     @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
     @program.accommodations = @program.accommodations.gsub(%r{</?[^>]+?>}, '')
     
-    @subjects = @program.program_subjects.map(&:subject).join(", ")
+    @subjects = @program.program_subjects.map(&:subject)
     @sizes = @program.program_sizes.map(&:size)
     
     
