@@ -219,7 +219,7 @@ a.flag-window {
 #secondTop {
 	margin-top:25px;
 }
-/* #userSquareImageContainer {
+#userSquareImageContainer {
 	float:left; 
 	height:200px; 
 	width:200px; 
@@ -250,7 +250,7 @@ a.flag-window {
 	font-size:1.2em; 
 	line-height:1.6em; 
 	padding-bottom:5px;
-} */
+}
 .send-messages-window {
 	margin-top:10px; 
 	margin-left:0px;
@@ -356,34 +356,34 @@ a.flag-window {
 				<p class="userLines">  </p>
 				</div>
 			</div>
-			  <div class="row" id="secondTop">
-				<!--<div class="three columns" id="userSquareImageContainer">
-					<% #if !(@user.square_image.url.nil?)%>
-				<img src="<%#=@user.square_image.url%>" id = "squareImage" onerror = "$(this).attr('src', '<%=# @user.photo.url %>')">
-					<%# else %>
-					<%#= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
-					<%# end %>
-				</div>-->
+			<div class="row" id="secondTop">
+				<div class="three columns" id="userSquareImageContainer">
+					<% if !(@user.square_image.url.nil?)%>
+				<img src="<%=@user.square_image.url%>" id = "squareImage" onerror = "$(this).attr('src', '<%= @user.photo.url %>')">
+					<% else %>
+					<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
+					<% end %>
+				</div>
 		<div class= "eight columns" id="userInfoBox">
-	<p id="username"><%#= @user.username %> </p>
+	<p id="username"><%= @user.username %> </p>
 	</div>
-		<!--><div class="four columns" id="ageCountryBox">
+		<div class="four columns" id="ageCountryBox">
 			<p id="userAgeCountry">
-<%# if !(@user.profile_show)%> 
-	<%#if @user.dob != nil%>
+<% if !(@user.profile_show)%> 
+	<%if @user.dob != nil%>
 	Age:
-	<% #@now = Time.now.utc.to_date%>
-	<%=# @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
-	<%#end%>
+	<% @now = Time.now.utc.to_date%>
+	<%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
+	<%end%>
 	<br />
-	Country: <%#= THECOUNTRIES[@user.country] %>
+	Country: <%= THECOUNTRIES[@user.country] %>
 	
 	<br />
-<%# else%>
+<% else%>
 	This user has hidden<br />
 	their age and country
-<%# end %>
-	</p>-->
+<% end %>
+	</p>
 	<div id="messagesBox">
 		<% if user_signed_in? && (@user.messages_show == false)%>
 	<a href="#send-message-box" class = "send-message-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendMessage.png"></a>
