@@ -376,14 +376,14 @@ a.flag-window {
 	<%=# @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
 	<%#end%>
 	<br />
-	Country: <%#= THECOUNTRIES[@user.country] %>-->
+	Country: <%#= THECOUNTRIES[@user.country] %>
 	
 	<br />
-<% else%>
+<%# else%>
 	This user has hidden<br />
 	their age and country
-<% end %>
-	</p>
+<%# end %>
+	</p>-->
 	<div id="messagesBox">
 		<% if user_signed_in? && (@user.messages_show == false)%>
 	<a href="#send-message-box" class = "send-message-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/sendMessage.png"></a>
