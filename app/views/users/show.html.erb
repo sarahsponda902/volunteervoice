@@ -360,7 +360,7 @@ a.flag-window {
 				<div class="three columns" id="userSquareImageContainer">
 					<% #if !(@user.square_image.url.nil?)%>
 				<img src="<%#=@user.square_image.url%>" id = "squareImage" onerror = "$(this).attr('src', '<%=# @user.photo.url %>')">
-					<% else %>
+					<%# else %>
 					<%#= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
 					<%# end %>
 				</div>
