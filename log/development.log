@@ -22779,3 +22779,53 @@ Migrating to AddCropsToOrganizations (20121011220553)
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_confirmation_token')
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_approved')[0m
+Creating scope :already_read. Overwriting existing method Message.already_read.
+Creating scope :unread. Overwriting existing method Message.unread.
+  [1m[36mOrganization Load (13.1ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mAdmin Load (0.3ms)[0m  SELECT "admins".* FROM "admins" 
+  [1m[36mBlogComment Load (0.4ms)[0m  [1mSELECT "blog_comments".* FROM "blog_comments" [0m
+  [1m[35mBlogImage Load (0.3ms)[0m  SELECT "blog_images".* FROM "blog_images" 
+  [1m[36mBlogPost Load (0.4ms)[0m  [1mSELECT "blog_posts".* FROM "blog_posts" [0m
+  [1m[35mBlogTag Load (0.3ms)[0m  SELECT "blog_tags".* FROM "blog_tags" 
+  [1m[36mContact Load (0.3ms)[0m  [1mSELECT "contacts".* FROM "contacts" [0m
+  [1m[35mFavorite Load (0.3ms)[0m  SELECT "favorites".* FROM "favorites" 
+  [1m[36mFeedback Load (0.2ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" [0m
+  [1m[35mFlag Load (0.1ms)[0m  SELECT "flags".* FROM "flags" 
+  [1m[36mMadMimiEmail Load (0.1ms)[0m  [1mSELECT "mad_mimi_emails".* FROM "mad_mimi_emails" [0m
+  [1m[35mMessage Load (0.1ms)[0m  SELECT "messages".* FROM "messages" 
+  [1m[36mNewReview Load (0.4ms)[0m  [1mSELECT "new_reviews".* FROM "new_reviews" [0m
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT "organizations".* FROM "organizations" 
+  [1m[36mOrganizationAccount Load (0.4ms)[0m  [1mSELECT "organization_accounts".* FROM "organization_accounts" [0m
+  [1m[35mPage Load (0.4ms)[0m  SELECT "pages".* FROM "pages" 
+  [1m[36mProgram Load (0.4ms)[0m  [1mSELECT "programs".* FROM "programs" [0m
+  [1m[35mProgramCostLengthMap Load (0.4ms)[0m  SELECT "program_cost_length_maps".* FROM "program_cost_length_maps" 
+  [1m[36mProgramSize Load (0.4ms)[0m  [1mSELECT "program_sizes".* FROM "program_sizes" [0m
+  [1m[35mProgramSubject Load (0.5ms)[0m  SELECT "program_subjects".* FROM "program_subjects" 
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT "reviews".* FROM "reviews" [0m
+  [1m[35mSearch Load (0.4ms)[0m  SELECT "searches".* FROM "searches" 
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT "users".* FROM "users" [0m
+Creating scope :already_read. Overwriting existing method Message.already_read.
+Creating scope :unread. Overwriting existing method Message.unread.
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mAdmin Load (0.1ms)[0m  SELECT "admins".* FROM "admins" 
+  [1m[36mBlogComment Load (0.1ms)[0m  [1mSELECT "blog_comments".* FROM "blog_comments" [0m
+  [1m[35mBlogImage Load (0.1ms)[0m  SELECT "blog_images".* FROM "blog_images" 
+  [1m[36mBlogPost Load (0.1ms)[0m  [1mSELECT "blog_posts".* FROM "blog_posts" [0m
+  [1m[35mBlogTag Load (0.1ms)[0m  SELECT "blog_tags".* FROM "blog_tags" 
+  [1m[36mContact Load (0.1ms)[0m  [1mSELECT "contacts".* FROM "contacts" [0m
+  [1m[35mFavorite Load (0.1ms)[0m  SELECT "favorites".* FROM "favorites" 
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" [0m
+  [1m[35mFlag Load (0.1ms)[0m  SELECT "flags".* FROM "flags" 
+  [1m[36mMadMimiEmail Load (0.1ms)[0m  [1mSELECT "mad_mimi_emails".* FROM "mad_mimi_emails" [0m
+  [1m[35mMessage Load (0.1ms)[0m  SELECT "messages".* FROM "messages" 
+  [1m[36mNewReview Load (0.2ms)[0m  [1mSELECT "new_reviews".* FROM "new_reviews" [0m
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT "organizations".* FROM "organizations" 
+  [1m[36mOrganizationAccount Load (0.2ms)[0m  [1mSELECT "organization_accounts".* FROM "organization_accounts" [0m
+  [1m[35mPage Load (0.1ms)[0m  SELECT "pages".* FROM "pages" 
+  [1m[36mProgram Load (0.1ms)[0m  [1mSELECT "programs".* FROM "programs" [0m
+  [1m[35mProgramCostLengthMap Load (0.1ms)[0m  SELECT "program_cost_length_maps".* FROM "program_cost_length_maps" 
+  [1m[36mProgramSize Load (0.1ms)[0m  [1mSELECT "program_sizes".* FROM "program_sizes" [0m
+  [1m[35mProgramSubject Load (0.2ms)[0m  SELECT "program_subjects".* FROM "program_subjects" 
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" [0m
+  [1m[35mSearch Load (0.1ms)[0m  SELECT "searches".* FROM "searches" 
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
