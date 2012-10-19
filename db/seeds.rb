@@ -17,3 +17,14 @@ Organization.create([
 ], :without_protection => true )
 
 
+Program.create([
+  { :name => nil, :description => nil, :weekly_cost => nil, :location => nil, :organization_id => nil, :created_at => nil, :updated_at => nil, :review_id => nil, :subject => nil, :headquarters => nil, :overall => nil, :start_dates => nil, :program_structure => nil, :partnered_local_organizations => nil, :cost_includes => nil, :program_cost_breakdown => nil, :check_it_out => nil, :length => nil, :group_size => nil, :photo => nil, :organization_name => nil, :square_image => nil, :crop_x => nil, :crop_y => nil, :crop_w => nil, :crop_h => nil, :chart => nil, :truncated_description100 => nil, :program_started => nil, :cost_doesnt_include => nil, :url => nil, :specific_location => nil, :location_name => nil, :published_docs => nil, :lengths_of_program => nil, :food_situation => nil, :program_requirements => nil, :accommodations => nil }
+], :without_protection => true )
+
+
+
+ProgramSubject.create([
+  { :created_at => nil, :updated_at => nil, :program_id => nil, :subject => nil, :organization_id => nil }
+], :without_protection => true )
+
+
