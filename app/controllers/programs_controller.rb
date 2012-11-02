@@ -62,12 +62,12 @@ class ProgramsController < ApplicationController
   # GET /programs/1/edit
   def edit
     @program = Program.find(params[:id])
-    @program.description = @program.description.gsub(%r{</?[^>]+?>}, '')
-    @program.program_structure = @program.program_structure.gsub(%r{</?[^>]+?>}, '')
-    @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
-    @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
-    @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
-    @program.accommodations = @program.accommodations.gsub(%r{</?[^>]+?>}, '')
+    @program.description = Nokogiri::HTML.fragment(@program.description).text
+    @program.program_structure = Nokogiri::HTML.fragment(@program.program_structure).text
+    @program.program_cost_breakdown = Nokogiri::HTML.fragment(@program.program_cost_breakdown).text
+    @program.cost_includes = Nokogiri::HTML.fragment(@program.cost_includes).text
+    @program.cost_doesnt_include = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
+    @program.accommodations = Nokogiri::HTML.fragment(@program.accommodations).text
     
     @subjects = @program.program_subjects.map(&:subject)
     @sizes = @program.program_sizes.map(&:size)
@@ -200,11 +200,12 @@ class ProgramsController < ApplicationController
             end
           redirect_to @program
       else
-        @program.description = strip_tags(@program.description)
-        @program.program_cost_breakdown = strip_tags(@program.program_cost_breakdown)
-        @program.cost_includes = strip_tags(@program.cost_includes)
-        @program.cost_doesnt_include = strip_tags(@program.cost_doesnt_include)
-        @program.accommodations = strip_tags(@program.accommodations)
+        @program.description = Nokogiri::HTML.fragment(@program.description).text
+        @program.program_structure = Nokogiri::HTML.fragment(@program.program_structure).text
+        @program.program_cost_breakdown = Nokogiri::HTML.fragment(@program.program_cost_breakdown).text
+        @program.cost_includes = Nokogiri::HTML.fragment(@program.cost_includes).text
+        @program.cost_doesnt_include = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
+        @program.accommodations = Nokogiri::HTML.fragment(@program.accommodations).text
         flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          render :action => "new" 
       end
@@ -292,6 +293,12 @@ end
              end
       else
         @program.program_subjects = @program.program_subjects.map(&:subject).join(", ")
+        @program.description = Nokogiri::HTML.fragment(@program.description).text
+        @program.program_structure = Nokogiri::HTML.fragment(@program.program_structure).text
+        @program.program_cost_breakdown = Nokogiri::HTML.fragment(@program.program_cost_breakdown).text
+        @program.cost_includes = Nokogiri::HTML.fragment(@program.cost_includes).text
+        @program.cost_doesnt_include = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
+        @program.accommodations = Nokogiri::HTML.fragment(@program.accommodations).text
          flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          flash.now[:notice]
          respond_to do |format|
