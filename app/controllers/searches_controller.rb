@@ -156,7 +156,7 @@ class SearchesController < ApplicationController
        end
        
        unless @second_search.nil?
-       @second_search.each do |second_org|
+       @second_search.results.each do |second_org|
          if !(@the_results.include?(second_org))
            @the_results << second_org
          end
