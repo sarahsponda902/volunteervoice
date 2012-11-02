@@ -155,10 +155,12 @@ class SearchesController < ApplicationController
           keywords keys unless keys.blank?
        end
        
+       unless @second_search.nil?
        @second_search.each do |second_org|
          if !(@the_results.include?(second_org))
            @the_results << second_org
          end
+       end
        end
       
 
