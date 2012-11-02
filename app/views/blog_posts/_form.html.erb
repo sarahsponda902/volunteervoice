@@ -71,17 +71,17 @@ For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 			<% end %>
 			<p>
 				<p class="title">Title </p>
-				<%= f.text_field :title %>
+				<%= f.text_field :title, :value => @blog_post.title %>
 			</p>
 			<br />
 			<p>
 				<p class="title">Body </p>
-				<%= f.text_area :body, :value => "If this is an 'Interesting' blog, copy-paste about 10 sentences (or more) in this box.", :id => "body"%>
+				<%= f.text_area :body, :value => (if @blog_post.body.nil?; "If this is an 'Interesting' blog, copy-paste about 10 sentences (or more) in this box."; else; @blog_post.body), :id => "body"%>
 			</p>
 			<br />
 			<p>
 				<p class="title">Tags (comma separated) </p>
-				<%= f.text_field :tags %><font color="red">Alphanumeric ONLY.</font>
+				<%= f.text_field :tags, :value => @blog_post.tags %><font color="red">Alphanumeric ONLY.</font>
 			</p>
 			<br />	
 			
@@ -95,17 +95,17 @@ For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 
 				<p>
 				<p class="title">Link to Article </p>
-				<%= f.text_field :blog_link%>
+				<%= f.text_field :blog_link, :value => @blog_post.blog_link%>
 				</p>
 
 				<p>
 				<p class="title">Link to Source </p>
-				<%= f.text_field :source%>
+				<%= f.text_field :source, :value => @blog_post.source%>
 				</p>
 
 				<p>
 				<p class="title">Title of Source </p>
-				<%= f.text_field :source_title%>
+				<%= f.text_field :source_title, :value => @blog_post.source_title%>
 				</p>
 
 			
@@ -115,9 +115,7 @@ For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 				
 			
 				<p>
-					<p class="title">Status </p>
-					<%= f.radio_button :published, false, :checked => true %> Draft <br />
-					<%= f.radio_button :published, true %> Publish 
+					<%= f.hidden_field :published, true %>
 				</p>
 				<br />
 					<p> 
