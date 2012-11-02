@@ -151,7 +151,7 @@ class SearchesController < ApplicationController
         @the_results = @organization_results
       end
       
-       @second_search = Organizations.search do 
+       @second_search = Organization.search do 
           keywords keys unless keys.blank?
        end
        
