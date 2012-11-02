@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     end
     if !(@organizations.nil?)
     @show_organizations = @organizations.shuffle
-    @show_organizations = @show_organizations_all[0..1]
+    @show_organizations = @show_organizations[0..1]
     end
     if !(@feedbacks.nil?)
     @show_feedbacks_all = @feedbacks.shuffle
