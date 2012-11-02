@@ -78,7 +78,7 @@
 	</tr>
 	</thead>
 	<tdata>
-	<% Organization.where(:will_invite => nil).each do |o|%>
+	<% Organization.where(:will_invite => false).each do |o|%>
 	<tr>
 		<td><%= link_to o.name, o%></td>
 	</tr>
