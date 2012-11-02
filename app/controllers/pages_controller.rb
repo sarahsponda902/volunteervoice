@@ -9,7 +9,7 @@ class PagesController < ApplicationController
     @show_reviews = @show_reviews_all[0..2]
     end
     if !(@organizations.nil?)
-    @show_organizations_all = @organizations.sort_by(&:overall)
+    @show_organizations = @organizations.shuffle
     @show_organizations = @show_organizations_all[0..1]
     end
     if !(@feedbacks.nil?)
