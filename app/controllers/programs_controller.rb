@@ -232,28 +232,35 @@ end
         end
         
          @subjects = []
+         unless params[:program][:program_subjects].nil?
           params[:program][:program_subjects].split(", ").each do |f|
               @p = ProgramSubject.new(:program_id => params[:id], :subject => f, :organization_id => @program.organization_id)
               @subjects << @p
           end
+         end
           params[:program][:program_subjects] = @subjects
 
           @sizes = []
+          unless params[:program][:program_sizes].nil?
           params[:program][:program_sizes].each do |f|
             @p = ProgramSize.new(:program_id => params[:id], :size => f, :organization_id => @program.organization_id)
             @sizes << @p
           end
+          end
           params[:program][:program_sizes] = @sizes
           
           @cost_lengths = []
+          unless params[:costs].nil?
           params[:costs].each do |f|
             if !(f.nil? || f.empty?)
               @p = ProgramCostLengthMap.new(:program_id => params[:id], :cost => f.to_f, :organization_id => @program.organization_id)
               @cost_lengths << @p
             end
           end
+          end
 
           count = 0
+          unless params[:lengths].nil?
           params[:lengths].each do |f|
             @p = @cost_lengths[count]
             @length = f.split(" ")
@@ -263,7 +270,8 @@ end
             @cost_lengths[count] = @p
             count = count + 1
           end
-
+          end
+          
           params[:program][:program_cost_length_maps] = @cost_lengths
       
           params[:program][:description] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
