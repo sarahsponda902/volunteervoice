@@ -137,6 +137,7 @@ class SearchesController < ApplicationController
       else
         @the_results = @results
       end
+      
 
       if @search.showing.nil?
         @search.showing = "Organizations"
@@ -149,6 +150,17 @@ class SearchesController < ApplicationController
         end
         @the_results = @organization_results
       end
+      
+       @second_search = Organizations.search do 
+          keywords keys unless keys.blank?
+       end
+       
+       @second_search.each do |second_org|
+         if !(@the_results.include?(second_org))
+           @the_results << second_org
+         end
+       end
+      
 
       @the_results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinghigh"
       @the_results.sort_by!(&:overall) if @search.sort_by == "ratinglow"
