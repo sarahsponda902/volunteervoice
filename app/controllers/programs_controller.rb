@@ -200,11 +200,11 @@ class ProgramsController < ApplicationController
             end
           redirect_to @program
       else
-        @program.description = @program.description.gsub(%r{</?[^>]+?>}, '')
-        @program.program_cost_breakdown = @program.program_cost_breakdown.gsub(%r{</?[^>]+?>}, '')
-        @program.cost_includes = @program.cost_includes.gsub(%r{</?[^>]+?>}, '')
-        @program.cost_doesnt_include = @program.cost_doesnt_include.gsub(%r{</?[^>]+?>}, '')
-        @program.accommodations = @program.accommodations.gsub(%r{</?[^>]+?>}, '')
+        @program.description = strip_tags(@program.description)
+        @program.program_cost_breakdown = strip_tags(@program.program_cost_breakdown)
+        @program.cost_includes = strip_tags(@program.cost_includes)
+        @program.cost_doesnt_include = strip_tags(@program.cost_doesnt_include)
+        @program.accommodations = strip_tags(@program.accommodations)
         flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          render :action => "new" 
       end
@@ -264,6 +264,12 @@ end
           end
 
           params[:program][:program_cost_length_maps] = @cost_lengths
+      
+          @program.description = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+          @program.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          @program.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          @program.accommodations = RedCloth.new( ActionController::Base.helpers.sanitize( @program.accommodations ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
           
         
       if @program.update_attributes(params[:program])
