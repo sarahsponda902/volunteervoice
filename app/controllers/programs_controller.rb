@@ -266,11 +266,11 @@ end
 
           params[:program][:program_cost_length_maps] = @cost_lengths
       
-          @program.description = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-          @program.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
-          @program.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-          @program.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-          @program.accommodations = RedCloth.new( ActionController::Base.helpers.sanitize( @program.accommodations ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          params[:program][:description] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          params[:program][:program_cost_breakdown] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+          params[:program][:cost_includes] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          params[:program][:cost_doesnt_include] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          params[:program][:accommodations] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.accommodations ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
           
         
       if @program.update_attributes(params[:program])
@@ -292,13 +292,13 @@ end
                format.json { head :no_content }
              end
       else
-        @program.program_subjects = @program.program_subjects.map(&:subject).join(", ")
-        @program.description = Nokogiri::HTML.fragment(@program.description).text
-        @program.program_structure = Nokogiri::HTML.fragment(@program.program_structure).text
-        @program.program_cost_breakdown = Nokogiri::HTML.fragment(@program.program_cost_breakdown).text
-        @program.cost_includes = Nokogiri::HTML.fragment(@program.cost_includes).text
-        @program.cost_doesnt_include = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
-        @program.accommodations = Nokogiri::HTML.fragment(@program.accommodations).text
+        params[:program][:program_subjects] = @program.program_subjects.map(&:subject).join(", ")
+        params[:program][:description] = Nokogiri::HTML.fragment(@program.description).text
+        params[:program][:program_structure] = Nokogiri::HTML.fragment(@program.program_structure).text
+        params[:program][:program_cost_breakdown] = Nokogiri::HTML.fragment(@program.program_cost_breakdown).text
+        params[:program][:cost_includes] = Nokogiri::HTML.fragment(@program.cost_includes).text
+        params[:program][:cost_doesnt_include] = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
+        params[:program][:accommodations] = Nokogiri::HTML.fragment(@program.accommodations).text
          flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          flash.now[:notice]
          respond_to do |format|
