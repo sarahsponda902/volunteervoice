@@ -76,7 +76,7 @@ For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
 			<br />
 			<p>
 				<p class="title">Body </p>
-				<%= f.text_area :body, :value => (if @blog_post.body.nil?; "If this is an 'Interesting' blog, copy-paste about 10 sentences (or more) in this box."; else; @blog_post.body), :id => "body"%>
+				<%= f.text_area :body, :value => (if @blog_post.body.nil? "If this is an 'Interesting' blog, copy-paste about 10 sentences (or more) in this box."; else; @blog_post.body), :id => "body"%>
 			</p>
 			<br />
 			<p>
