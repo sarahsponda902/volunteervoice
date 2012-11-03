@@ -3,8 +3,8 @@ class OrganizationAccountsController < ApplicationController
   def resend_invitation
     if user_signed_in? && current_user.admin?
       @user = OrganizationAccount.find(params[:user_id])
-      @user.invite!
-      redirect_to root_path
+      @user.invite!(@user.email)
+      redirect_to "/organization_accounts"
     else
       redirect_to root_path
     end
