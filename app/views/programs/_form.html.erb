@@ -114,7 +114,7 @@ a.rules-window:hover {
 	font-size:1.3em;
 }
 .cost_lengths {
-	margin-top:20px; 
+	margin-top:5px; 
 	background:#A9EAEC; 
 	padding:10px; 
 	width:327px;
@@ -312,7 +312,8 @@ a.createInput:hover {
 	<%= f.text_area :program_cost_breakdown, :value => @program.program_cost_breakdown %>
 </div><br /><br />
 
-<span id="weeklyCostLabel">Weekly Costs:&nbsp;&nbsp;&nbsp;</span><a href="#rules-box" class="rules-window"><u>Click here for important pricing rules</u></a><br />
+<span id="weeklyCostLabel">Weekly Costs:&nbsp;&nbsp;&nbsp;</span><a href="#rules-box" class="rules-window"><u>Click here for important pricing rules</u></a><br /><br />
+<p class="littleMessage "> &gt; Note that you must have at least one cost/length pair.</p>
 <div class="cost_lengths">
 	<div class="costLengthsLine"></div>
 <ul id="fields">
@@ -439,7 +440,15 @@ a.createInput:hover {
 	large = false;
 <% end %>
 
+
+
 $(document).ready(function(){
+	
+	//blankErrorShown saves whether or not the error message for cost/lengths is showing
+	blankErrorShown = false;
+	
+	createInput();
+	
 	
 	//set the organization name if necessary and applicable
 	<% if user_signed_in? && current_user.admin? %>
@@ -452,7 +461,18 @@ $(document).ready(function(){
 		//one for the new length of time, one for the new total cost
 	$(".createInput").click(function(event) {
 		event.preventDefault();
-		createInput();
+		if (document.getElementById("cost"+(countFields - 1)).value != "") {
+			if (blankErrorShown) { //if the user tried to create an input when they hadn't finished the last,
+										//then error message is showing... we need to remove it!
+				document.getElementById("errorMessage").parentNode.removeChild(document.getElementById("errorMessage"));
+			}
+			createInput(); //create the input
+		} else {
+			if (!blankErrorShown) { //if the error message is not on the screen
+				showBlankError();  //show it
+				blankErrorShown = true; //set the var that remembers if it is showing to TRUE
+			}
+		}
 	});
 	
 	//since these dropdowns are not styled like the rest of ours, they appear without any indicator arrow (because of the -webkit-appearance:none), we put in some arrows just for chrome and safari
@@ -619,7 +639,9 @@ function createInput(){
 	//creating the "remove this field" link.
 		//removes both the "cost" and "length" fields
 	removalLink.onclick = function(){
-	    this.parentNode.parentNode.removeChild(this.parentNode);
+		if ($("#fields").children().length > 1) {
+	    	this.parentNode.parentNode.removeChild(this.parentNode);
+		}
 	}
 	removalText = document.createTextNode('Remove');
 	removalLink.style.color = "red";
@@ -641,6 +663,30 @@ function createInput(){
     field_area.appendChild(li);
     countFields = countFields + 1;
 };
+
+
+
+
+//creates two new input fields and appends them to the "fields" div
+function showBlankError(){
+    field_area = document.getElementById('fields'); //div to append new fields to
+	var li = document.createElement("li");
+	var br = document.createElement("br");
+	var removalLink = document.createElement("a");
+
+	//creating the "You must complete this field..." message
+	messageText = document.createTextNode("You must complete the current field\n  before adding another");	
+	
+	//append all items to the "fields" div
+	li.appendChild(messageText);
+	li.appendChild(br);
+	li.id = "errorMessage";
+    field_area.appendChild(li);
+};
+
+
+
+
 
 
 //Autocomplete for the organization-name 
