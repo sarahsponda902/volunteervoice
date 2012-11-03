@@ -444,11 +444,12 @@ a.createInput:hover {
 
 $(document).ready(function(){
 	
-	//blankErrorShown saves whether or not the error message for cost/lengths is showing
-	blankErrorShown = false;
 	
+	//create the array that keeps track of the "# weeks" that have already been used
+	numWeeksAlreadyUsed = [];
+	
+	//create the initial input for the user
 	createInput();
-	
 	
 	//set the organization name if necessary and applicable
 	<% if user_signed_in? && current_user.admin? %>
@@ -461,16 +462,18 @@ $(document).ready(function(){
 		//one for the new length of time, one for the new total cost
 	$(".createInput").click(function(event) {
 		event.preventDefault();
-		if (document.getElementById("cost"+(countFields - 1)).value != "") {
-			if (blankErrorShown) { //if the user tried to create an input when they hadn't finished the last,
-										//then error message is showing... we need to remove it!
+		if (document.getElementById("cost"+(countFields - 1)).value != "") { //if the cost field is not blank
+			if (document.getElementById("errorMessage") != null) { //if the error message is showing
+																		//we need to remove it!
 				document.getElementById("errorMessage").parentNode.removeChild(document.getElementById("errorMessage"));
+			}
+			if (countFields > 1) {
+				numWeeksAlreadyUsed = numWeeksAlreadyUsed + document.getElementById("length"+(countFields - 1)).value;
 			}
 			createInput(); //create the input
 		} else {
-			if (!blankErrorShown) { //if the error message is not on the screen
+			if (document.getElementById("errorMessage") == null) { //if the error message is not on the screen
 				showBlankError();  //show it
-				blankErrorShown = true; //set the var that remembers if it is showing to TRUE
 			}
 		}
 	});
@@ -628,7 +631,9 @@ function createInput(){
 		var opt = document.createElement("option");
 		opt.value = allTags[count].toString();
 		opt.text = allTags[count].toString();
-		input.options.add(opt);
+		if (jQuery.inArray(opt.value, numWeeksAlreadyUsed) == -1) {
+			input.options.add(opt);
+		}
 	};
 	
 	//creating the "total cost" number field
