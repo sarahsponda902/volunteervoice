@@ -22829,3 +22829,247 @@ Creating scope :unread. Overwriting existing method Message.unread.
   [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" [0m
   [1m[35mSearch Load (0.1ms)[0m  SELECT "searches".* FROM "searches" 
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" [0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-03 14:52:30 -0700
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (15.8ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mReview Load (0.5ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.3ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (46.6ms)
+Completed 200 OK in 866ms (Views: 670.7ms | ActiveRecord: 19.5ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:31 -0700
+Served asset /application.css - 200 OK (34ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:31 -0700
+Served asset /blog_kit.css - 200 OK (4ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:31 -0700
+Served asset /errors.css - 200 OK (2ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:31 -0700
+Served asset /foundation.css - 200 OK (4ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:31 -0700
+Served asset /imgareaselect-default.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:31 -0700
+Served asset /jquery-ui-1.8.22.custom.css - 200 OK (6ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /lightbox.css - 200 OK (2ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /mega-pull-out-menu-styles.css - 200 OK (9ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /jquery.lightbox-0.5.css - 200 OK (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /organization_accounts.css - 200 OK (3ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /searches.css - 200 OK (2ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /style.css - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /application.js - 200 OK (1ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /sessions.css - 200 OK (2ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /smartpaginator.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /jquery.js - 200 OK (103ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /DonateButton.png - 200 OK (16ms)
+
+
+Started GET "/assets/JosefinSlab-Regular-webfont.woff" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /JosefinSlab-Regular-webfont.woff - 200 OK (13ms)
+
+
+Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /BEBAS___-webfont.woff - 200 OK (21ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-11-03 14:52:32 -0700
+Served asset /Museo_Slab_500-webfont.woff - 200 OK (2ms)
+
+
+Started GET "/assets/error.png" for 127.0.0.1 at 2012-11-03 14:52:35 -0700
+Served asset /error.png - 200 OK (16ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-11-03 14:52:40 -0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"T9wiugobXLJWeDI9YO42usTbP+WKIYv80MGerkZ4W0I=", "user"=>{"login"=>"sarahsponda902@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "x"=>"58", "y"=>"18"}
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT "users".* FROM "users" WHERE (lower(username) = 'sarahsponda902@gmail.com' OR lower(email) = 'sarahsponda902@gmail.com') LIMIT 1[0m
+Completed 401 Unauthorized in 6ms
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"T9wiugobXLJWeDI9YO42usTbP+WKIYv80MGerkZ4W0I=", "user"=>{"login"=>"sarahsponda902@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "x"=>"58", "y"=>"18"}
+  Rendered users/sessions/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 216ms (Views: 92.7ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/assets/ArchitectsDaughter-webfont.woff" for 127.0.0.1 at 2012-11-03 14:52:41 -0700
+Served asset /ArchitectsDaughter-webfont.woff - 200 OK (22ms)
+Binary data inserted for `string` type on column `encrypted_password`
+
+Sent mail to sarahsponda902@gmail.com (255ms)
+Date: Sat, 03 Nov 2012 14:54:56 -0700
+From: no-reply@volunteervoice.org
+To: sarahsponda902@gmail.com
+Message-ID: <509592b04871d_6d873fce25035ad814622@Sarah-Adamss-MacBook-Pro.local.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+266108953501581866
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-11-03 14:55:14 -0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"T9wiugobXLJWeDI9YO42usTbP+WKIYv80MGerkZ4W0I=", "user"=>{"login"=>"sarahsponda902@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "x"=>"68", "y"=>"20"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE (lower(username) = 'sarahsponda902@gmail.com' OR lower(email) = 'sarahsponda902@gmail.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+Completed 401 Unauthorized in 232ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-11-03 14:55:15 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered users/sessions/new.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 207ms (Views: 149.1ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-11-03 14:55:24 -0700
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"T9wiugobXLJWeDI9YO42usTbP+WKIYv80MGerkZ4W0I=", "user"=>{"login"=>"sarahsponda902@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "x"=>"45", "y"=>"25"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE (lower(username) = 'sarahsponda902@gmail.com' OR lower(email) = 'sarahsponda902@gmail.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  commit transaction
+Completed 401 Unauthorized in 74ms
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2012-11-03 14:55:24 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendered users/sessions/new.html.erb within layouts/application (53.7ms)
+Completed 200 OK in 79ms (Views: 77.8ms | ActiveRecord: 0.0ms | Solr: 0.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2012-11-03 14:55:48 -0700
+Processing by Devise::RegistrationsController#new as HTML
+DEPRECATION WARNING: Calling set_table_name is deprecated. Please use `self.table_name = 'the_name'` instead. (called from block in _app_views_users_registrations_new_html_erb___236346122617445735_70319240891760 at /Users/sarahadams/volunteervoice/app/views/users/registrations/new.html.erb:415)
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'b990fbf88dd880d4f590212bdfba76c2b069a74c' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `key`
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "simple_captcha_data" ("created_at", "key", "updated_at", "value") VALUES (?, ?, ?, ?)[0m  [["created_at", Sat, 03 Nov 2012 14:55:48 PDT -07:00], ["key", "b990fbf88dd880d4f590212bdfba76c2b069a74c"], ["updated_at", Sat, 03 Nov 2012 14:55:48 PDT -07:00], ["value", "IJOCE"]]
+  [1m[35m (1.4ms)[0m  commit transaction
+  Rendered simple_captcha/_simple_captcha.erb (0.7ms)
+  Rendered users/registrations/new.html.erb within layouts/application (51.9ms)
+Completed 200 OK in 160ms (Views: 155.8ms | ActiveRecord: 2.6ms | Solr: 0.0ms)
+
+
+Started GET "/simple_captcha?code=b990fbf88dd880d4f590212bdfba76c2b069a74c&time=1351979748" for 127.0.0.1 at 2012-11-03 14:55:48 -0700
+  [1m[36mSimpleCaptcha::SimpleCaptchaData Load (0.1ms)[0m  [1mSELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'b990fbf88dd880d4f590212bdfba76c2b069a74c' LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "simple_captcha_data".* FROM "simple_captcha_data" WHERE "simple_captcha_data"."key" = 'b990fbf88dd880d4f590212bdfba76c2b069a74c' LIMIT 1
+
+StandardError (Error while running convert: sh: convert: command not found
+):
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/utils.rb:17:in `run'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/image.rb:76:in `generate_simple_captcha_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:36:in `make_image'
+  vendor/bundle/ruby/1.9.1/gems/galetahub-simple_captcha-0.1.3/lib/simple_captcha/middleware.rb:18:in `call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:35:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/warden-1.2.1/lib/warden/manager.rb:34:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/etag.rb:23:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/conditionalget.rb:25:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/head.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/flash.rb:242:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:205:in `context'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/session/abstract/id.rb:200:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/cookies.rb:338:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/query_cache.rb:64:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activerecord-3.2.2.rc1/lib/active_record/connection_adapters/abstract/connection_pool.rb:443:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `_run__3333969794527005743__call__2405204534465918177__callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:405:in `__run_callback'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/callbacks.rb:81:in `run_callbacks'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:26:in `call_app'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/logger.rb:16:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/methodoverride.rb:21:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/runtime.rb:17:in `call'
+  vendor/bundle/ruby/1.9.1/gems/activesupport-3.2.2.rc1/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/lock.rb:15:in `call'
+  vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/static.rb:61:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/rack.rb:42:in `call'
+  vendor/bundle/ruby/1.9.1/gems/airbrake-3.1.2/lib/airbrake/user_informer.rb:12:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/engine.rb:479:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/application.rb:220:in `call'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/content_length.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/rack/log_tailer.rb:14:in `call'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:80:in `block in pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `catch'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:78:in `pre_process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:53:in `process'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/connection.rb:38:in `receive_data'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run_machine'
+  vendor/bundle/ruby/1.9.1/gems/eventmachine-0.12.10/lib/eventmachine.rb:256:in `run'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/backends/base.rb:63:in `start'
+  vendor/bundle/ruby/1.9.1/gems/thin-1.4.1/lib/thin/server.rb:159:in `start'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/handler/thin.rb:13:in `run'
+  vendor/bundle/ruby/1.9.1/gems/rack-1.4.1/lib/rack/server.rb:265:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands/server.rb:70:in `start'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:55:in `block in <top (required)>'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `tap'
+  vendor/bundle/ruby/1.9.1/gems/railties-3.2.2.rc1/lib/rails/commands.rb:50:in `<top (required)>'
+  script/rails:6:in `require'
+  script/rails:6:in `<main>'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (5.0ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.3ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (25.5ms)

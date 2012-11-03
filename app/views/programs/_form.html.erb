@@ -275,13 +275,15 @@ a.createInput:hover {
 
 <div id="field">
 	<label>Group Sizes: <p class="littleMessage"> &gt; What size groups do volunteers work in? You can select more than one.</p></label>
-	<div class="six columns" style="width:50%">
-	<input type="checkbox" name="program[program_sizes][]" value= "Individual" id = "individual"> Individual <br />
-	<input type="checkbox" name="program[program_sizes][]" value="Small Groups (2-3)" id = "small"> Small Groups (2-3)</div>
-	<div class="six columns" style="width:43%; margin-top:-37px">
-	<input type="checkbox" name="program[program_sizes][]" value="Medium Groups (4-10)" id = "medium"> Medium Groups (4-10)<br/>
-	<input type="checkbox" name="program[program_sizes][]" value="Large Groups (11+)" id = "large"> Large Groups (11+)</div>
-  </div><br />
+	<% f.fields_for :program_size do |program_size_field| %>
+		<div class="six columns" style="width:50%">
+		<%= f.check_box :program_size_field, "Individual", :id => "individual"%> Individual <br />
+		<%= f.check_box :program_size_field, "Small Groups (2-3)", :id => "small"%> Small Groups (2-3)</div>
+		<div class="six columns" style="width:43%; margin-top:-37px">
+		<%= f.check_box :program_size_field, "Medium Groups (4-10)", :id => "medium"%> Medium Groups (4-10)<br/>
+		<%= f.check_box :program_size_field, "Large Groups (11+)", :id => "large"%> Large Groups (11+)</div>
+  		</div><br />
+	<% end %>
 </div>
 
 <div class="six columns" id="rightHandColumn">
