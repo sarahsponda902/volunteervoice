@@ -205,6 +205,7 @@ class ProgramsController < ApplicationController
         @program.cost_includes = Nokogiri::HTML.fragment(@program.cost_includes).text
         @program.cost_doesnt_include = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
         @program.accommodations = Nokogiri::HTML.fragment(@program.accommodations).text
+        params[:program][:program_sizes] = params[:program][:program_sizes].map{|s| s.size}
         flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          render :action => "new" 
       end

@@ -275,13 +275,13 @@ a.createInput:hover {
 
 <div id="field">
 	<label>Group Sizes: <p class="littleMessage"> &gt; What size groups do volunteers work in? You can select more than one.</p></label>
-	<% f.fields_for :program_size do |program_size_field| %>
+	<%= f.fields_for :program_sizes do |p| %>
 		<div class="six columns" style="width:50%">
-		<%= f.check_box :program_size_field, "Individual", :id => "individual"%> Individual <br />
-		<%= f.check_box :program_size_field, "Small Groups (2-3)", :id => "small"%> Small Groups (2-3)</div>
+		<%= p.check_box "individual", {:id => "individual"}, "Individual", 0 %> Individual <br />
+		<%= p.check_box "small", {:id => "small"}, "Small Groups (2-3)", 0 %> Small Groups (2-3)</div>
 		<div class="six columns" style="width:43%; margin-top:-37px">
-		<%= f.check_box :program_size_field, "Medium Groups (4-10)", :id => "medium"%> Medium Groups (4-10)<br/>
-		<%= f.check_box :program_size_field, "Large Groups (11+)", :id => "large"%> Large Groups (11+)</div>
+		<%= p.check_box "medium", {:id => "medium"}, "Medium Groups (4-10)", 0 %> Medium Groups (4-10)<br/>
+		<%= p.check_box "large", {:id => "large"}, "Large Groups (11+)", 0 %> Large Groups (11+)</div>
   		</div><br />
 	<% end %>
 </div>
@@ -427,11 +427,17 @@ a.createInput:hover {
 
 
 <script type="text/javascript">
-<% @small = false unless !@small.nil? %>
-<% @individual = false unless !@individual.nil? %>
-<% @medium = false unless !@medium.nil? %>
-<% @large = false unless !@large.nil? %>
-
+<% if !(@program.program_subjects.nil?) %>
+	small = <%= @program.program_sizes.map{|s| s.size}.include?(["individual","Individual"])%>;
+	individual = <%= @program.program_sizes.map{|s| s.size}.include?(["small","Small Groups (2-3)"]) %>;
+	medium = <%= @program.program_sizes.map{|s| s.size}.include?(["medium","Medium Groups (4-10)"]) %>;
+	large = <%= @program.program_sizes.map{|s| s.size}.include?(["large", "Large Groups (11+)"]) %>;
+<% else %>
+	small = false;
+	individual = false;
+	medium = false;
+	large = false;
+<% end %>
 
 $(document).ready(function(){
 	
@@ -475,10 +481,10 @@ $(document).ready(function(){
 	<% end %>
 	<% end %>
 	//check the check boxes if the program has those attributes
-	$("#small").attr("checked", <%= @small %>);
-	$("#individual").attr("checked", <%= @individual %>);
-	$("#medium").attr("checked", <%= @medium %>);
-	$("#large").attr("checked", <%= @large %>);
+	$("#small").attr("checked", small);
+	$("#individual").attr("checked", individual);
+	$("#medium").attr("checked", medium);
+	$("#large").attr("checked", large);
 	
 	//set the program's location select menu to the program's location
 	$("#program_location").val("<%=@program.location%>");
