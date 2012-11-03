@@ -23,6 +23,7 @@ class OrganizationAccount < ActiveRecord::Base
   
   def validate_presence_of_all_fields
     @return = true
+    unless invitation_accepted_at.nil?
     if first_name.nil?
       errors.add(:first_name, "must not be blank")
       @return = false
@@ -46,6 +47,7 @@ class OrganizationAccount < ActiveRecord::Base
     if country.nil?
       errors.add(:country, "must not be blank")
       @return = false
+    end
     end
     return @return
   end
