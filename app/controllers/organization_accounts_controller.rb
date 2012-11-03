@@ -4,7 +4,7 @@ class OrganizationAccountsController < ApplicationController
     if user_signed_in? && current_user.admin?
       @user = OrganizationAccount.find(params[:user_id])
       @user.invite!
-      redirect_to "/organization_accounts"
+      redirect_to root_path
     else
       redirect_to root_path
     end
