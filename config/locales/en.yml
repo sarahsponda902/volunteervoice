@@ -14,3 +14,5 @@ en:
       user:
         email: "E-mail address"
         username: "Username"
+      program:
+        location: "Country"
