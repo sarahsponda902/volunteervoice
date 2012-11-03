@@ -119,13 +119,25 @@ class OrganizationAccountsController < ApplicationController
     @organization_account.notify = !@organization_account.notify unless @organization_account.notify.nil?
     @organization_account.save
     respond_to do |format|
-      format.html {render :action => "successful_unsubscribe"}
-      format.json {head :no_content}
+      format.html { render :action => "successful_unsubscribe" }
+      format.json { head :no_content }
     end
   end
   
   
   def successful_unsubscribe
+  end
+  
+  def edit
+    if (user_signed_in? && current_user.admin?)
+      @organization_account = OrganizationAccount.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.json { head :no_content }
+      end
+    else
+      redirect_to root_path
+    end
   end
   
 end
