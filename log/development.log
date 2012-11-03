@@ -29937,3 +29937,173 @@ Served asset /arrowProgram.png - 304 Not Modified (0ms)
 
 Started GET "/assets/arrowProgram.png" for 127.0.0.1 at 2012-11-03 16:50:39 -0700
 Served asset /arrowProgram.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrowProgram.png" for 127.0.0.1 at 2012-11-03 16:50:56 -0700
+Served asset /arrowProgram.png - 304 Not Modified (0ms)
+
+
+Started GET "/programs/new" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Processing by ProgramsController#new as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" [0m
+  Rendered programs/_form.html.erb (47.8ms)
+  Rendered programs/new.html.erb within layouts/application (48.4ms)
+Completed 200 OK in 296ms (Views: 165.8ms | ActiveRecord: 3.0ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /blog_kit.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /errors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /foundation.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /imgareaselect-default.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /lightbox.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:30 -0700
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /organization_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /searches.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /smartpaginator.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrowProgram.png" for 127.0.0.1 at 2012-11-03 16:55:31 -0700
+Served asset /arrowProgram.png - 304 Not Modified (0ms)
+
+
+Started POST "/programs" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Processing by ProgramsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"T9wiugobXLJWeDI9YO42usTbP+WKIYv80MGerkZ4W0I=", "program"=>{"overall"=>"0", "name"=>"", "check_it_out"=>"", "description"=>"", "program_subjects"=>"Wildlife Conservation, Organic Farming, ", "location"=>"", "specific_location"=>"", "organization_name"=>"", "program_started"=>"", "lengths_of_program"=>"", "start_dates"=>"", "program_requirements"=>"", "partnered_local_organizations"=>"", "program_sizes"=>{"individual"=>"0", "small"=>"0", "medium"=>"0", "large"=>"0"}, "accommodations"=>"", "food_situation"=>"", "cost_includes"=>"", "cost_doesnt_include"=>"", "program_cost_breakdown"=>""}, "lengths"=>["1 week"], "costs"=>[""], "x"=>"41", "y"=>"3"}
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "organizations" WHERE "organizations"."name" = ''
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35mOrganization Load (0.3ms)[0m  SELECT "organizations".* FROM "organizations" 
+  Rendered programs/_form.html.erb (13.6ms)
+  Rendered programs/new.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 200ms (Views: 139.6ms | ActiveRecord: 1.8ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /application.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /blog_kit.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /errors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /foundation.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /imgareaselect-default.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /lightbox.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /organization_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /searches.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /smartpaginator.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/arrowProgram.png" for 127.0.0.1 at 2012-11-03 16:55:42 -0700
+Served asset /arrowProgram.png - 304 Not Modified (0ms)
