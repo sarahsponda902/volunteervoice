@@ -45,6 +45,7 @@ class ProgramsController < ApplicationController
   # GET /programs/new
   # GET /programs/new.json
   def new
+    if user_signed_in? && current_user.admin?
     @program = Program.new
     @costs = []
     
@@ -53,6 +54,9 @@ class ProgramsController < ApplicationController
       format.html # new.html.erb
       format.json { render :json => @program }
     end
+  else
+    redirect_to root_path
+  end
   end
 
   # GET /programs/1/edit
