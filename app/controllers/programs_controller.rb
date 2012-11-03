@@ -135,7 +135,7 @@ class ProgramsController < ApplicationController
     @sizes = []
     if !params[:program][:program_sizes].nil?
       params[:program][:program_sizes].each do |f|
-        @p = ProgramSize.new(:program_id => params[:program][:id], :size => f, :organization_id => @org_id)
+        @p = ProgramSize.new(:program_id => params[:program][:id], :size => f[1], :organization_id => @org_id)
         @sizes << @p
       end
     end
@@ -205,7 +205,6 @@ class ProgramsController < ApplicationController
         @program.cost_includes = Nokogiri::HTML.fragment(@program.cost_includes).text
         @program.cost_doesnt_include = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
         @program.accommodations = Nokogiri::HTML.fragment(@program.accommodations).text
-        params[:program][:program_sizes] = params[:program][:program_sizes].map{|s| s.size}
         flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          render :action => "new" 
       end
