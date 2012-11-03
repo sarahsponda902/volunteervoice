@@ -622,14 +622,26 @@ a.basedOnReviewsLink:hover {
 	  			<table>
 					<thead>
 					<tr>
-						<th># Weeks</th>
+						<th>Time</th>
 						<th>Cost</th>
 					</tr>
 					</thead>
 					<tbody>
 					<% @entries.each do |f|%>
 					<tr>
-						<td class="priceRangeNumWeeks"><%= f[0]%></td>
+						<td class="priceRangeNumWeeks">
+						
+						<% if f[0] > 12 %>
+							<% @months = ""+Math.floor(f[0] / 4)+"months"%>
+							<% if (f[0] % 4) != 0 %>
+								<% @months += (", "+(f[0]%4)+"weeks") %>
+							<% end %>
+							<%= @months %>
+						<% else %>
+							<%= "" + f[0] + "weeks"%>
+						<% end %>
+						
+						</td>
 						<td class="priceRangeCost"><%= "$#{number_with_precision(f[1].to_d, :precision => 2)}"%></td>
 					</tr>
 					<% end %>
