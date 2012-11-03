@@ -47,10 +47,10 @@ class ProgramsController < ApplicationController
   def new
     @program = Program.new
     @costs = []
-     @small = false unless !@small.nil? 
-     @individual = false unless !@individual.nil? 
-     @medium = false unless !@medium.nil? 
-     @large = false unless !@large.nil? 
+     @small = false
+     @individual = false 
+     @medium = false 
+     @large = false
     
     
     respond_to do |format|
