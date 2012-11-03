@@ -639,9 +639,11 @@ $(function() {
 		<% end %>
 		];
 	//initialize the jQuery UI autocomplete on the "tags" input
+	<% if user_signed_in? && current_user.admin? %>
 	$( "#tags" ).autocomplete({
 		source: availableTags
 	});
+	<% end %>
 });
 
 
@@ -701,7 +703,7 @@ $(function() {
 								var i = 0;
 								var terms = this.value.split( ", " );
 								var new_terms = [];
-								var string_terms = ""
+								var string_terms = "";
 								for (i = 0; i < terms.length; i++) {
 									if (availableSubjects.indexOf(terms[i]) != -1) {
 										new_terms.push(terms[i]);
