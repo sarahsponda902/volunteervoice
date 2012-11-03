@@ -274,11 +274,11 @@ end
           
           params[:program][:program_cost_length_maps] = @cost_lengths
       
-          params[:program][:description] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-          params[:program][:program_cost_breakdown] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
-          params[:program][:cost_includes] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-          params[:program][:cost_doesnt_include] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-          params[:program][:accommodations] = RedCloth.new( ActionController::Base.helpers.sanitize( @program.accommodations ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          params[:program][:description] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:description] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          params[:program][:program_cost_breakdown] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:program_cost_breakdown] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+          params[:program][:cost_includes] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:cost_includes] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          params[:program][:cost_doesnt_include] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:cost_doesnt_include] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+          params[:program][:accommodations] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:program][:accommodations] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
           
         
       if @program.update_attributes(params[:program])
