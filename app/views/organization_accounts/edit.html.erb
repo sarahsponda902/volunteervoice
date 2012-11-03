@@ -160,7 +160,7 @@ a.question-window {
 
 		<p class="pageTitle">Register Your Organization's Account</p>
 
-		<%= form_for @organization_account :id => "the_form" do |f| %>
+		<%= form_for @organization_account, :id => "the_form" do |f| %>
 
 		  <div  class="firstFieldContainer"><label class="label">Username</label>
 				  <%=f.text_field :username, :class=>"textField" %></div>
@@ -177,12 +177,9 @@ a.question-window {
 
 				  <div  class="fieldContainer"><label class="label">Position in Organization</label>
 				  <%= f.text_field :position, :class=>"textField"%></div>
-
-				  <div class="fieldContainer"><label class="label">Password <span id="passwordLabelWarning">(min. 6 characters)</span></label>
-				  <%=f.password_field :password, :class=>"textField" %></div>
-
-				  <div  class="fieldContainer"><label class="label">Retype Password</label>
-				  <%=f.password_field :password_confirmation, :class=>"textField" %></div>
+				
+				  <div class="fieldContainer"><label class="label">Nonprofit?</label>
+				  <%= f.check_box :nonprofit%></div>
 
 				
 							 <p class="firstFieldContainer"><label class="label" for="user_country">Country</label>
