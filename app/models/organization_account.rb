@@ -5,8 +5,7 @@ class OrganizationAccount < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable,
-         :recoverable, :rememberable, :trackable, :validatable, :invitable, :invite_for => 0, :authentication_keys => [:login],
-         :resend_invitation
+         :recoverable, :rememberable, :trackable, :validatable, :invitable, :invite_for => 0, :authentication_keys => [:login]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :email_confirmation, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, :username, :notify, :country, :organization_id, :organization_name, :admin_pass, :login
