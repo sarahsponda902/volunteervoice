@@ -425,6 +425,12 @@ a.createInput:hover {
 
 
 <script type="text/javascript">
+<% @small = false unless !@small.nil? %>
+<% @individual = false unless !@individual.nil? %>
+<% @medium = false unless !@medium.nil? %>
+<% @large = false unless !@large.nil? %>
+
+
 $(document).ready(function(){
 	
 	//set the organization name if necessary and applicable
