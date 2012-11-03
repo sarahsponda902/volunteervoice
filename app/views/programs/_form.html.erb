@@ -467,8 +467,8 @@ $(document).ready(function(){
 																		//we need to remove it!
 				document.getElementById("errorMessage").parentNode.removeChild(document.getElementById("errorMessage"));
 			}
-			if (countFields > 1) {
-				numWeeksAlreadyUsed = numWeeksAlreadyUsed + document.getElementById("length"+(countFields - 1)).value;
+			if (countFields > 0) {
+				numWeeksAlreadyUsed = numWeeksAlreadyUsed.concat(document.getElementById("length"+(countFields - 1)).value);
 			}
 			createInput(); //create the input
 		} else {
