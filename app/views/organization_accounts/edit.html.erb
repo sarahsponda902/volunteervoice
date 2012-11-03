@@ -254,7 +254,7 @@ a.question-window {
 	
 	$(document).ready(function() {
 		//Check if org-account already selected to be notified (note: shouldn't happen)
-		<% if resource.notify? %>
+		<% if @organization_account.notify? %>
 			$('#notifyMe').show();
 		<% else %>
 			$('#notifyMe').hide();
