@@ -144,6 +144,7 @@ class BlogPostsController < ApplicationController
 
   def edit
     @blog_post = BlogPost.find(params[:id])
+    @blog_post.body = Nokogiri::HTML.fragment(@blog_post.body).text
   end
 
   def create
@@ -180,6 +181,7 @@ class BlogPostsController < ApplicationController
     if !@blog_post.image.nil? && @blog_post.image != params[:blog_post][:image]
       @crops = true
     end
+    params[:blog_post][:body] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:blog_post][:body] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
       if @blog_post.update_attributes(params[:blog_post])
           flash[:notice] = 'BlogPost was successfully updated.'
           if @crops != true

@@ -201,7 +201,6 @@ class ProgramsController < ApplicationController
           redirect_to @program
       else
         @program.description = Nokogiri::HTML.fragment(@program.description).text
-        @program.program_structure = Nokogiri::HTML.fragment(@program.program_structure).text
         @program.program_cost_breakdown = Nokogiri::HTML.fragment(@program.program_cost_breakdown).text
         @program.cost_includes = Nokogiri::HTML.fragment(@program.cost_includes).text
         @program.cost_doesnt_include = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
@@ -301,12 +300,11 @@ end
              end
       else
         params[:program][:program_subjects] = @program.program_subjects.map(&:subject).join(", ")
-        params[:program][:description] = Nokogiri::HTML.fragment(@program.description).text
-        params[:program][:program_structure] = Nokogiri::HTML.fragment(@program.program_structure).text
-        params[:program][:program_cost_breakdown] = Nokogiri::HTML.fragment(@program.program_cost_breakdown).text
-        params[:program][:cost_includes] = Nokogiri::HTML.fragment(@program.cost_includes).text
-        params[:program][:cost_doesnt_include] = Nokogiri::HTML.fragment(@program.cost_doesnt_include).text
-        params[:program][:accommodations] = Nokogiri::HTML.fragment(@program.accommodations).text
+        params[:program][:description] = Nokogiri::HTML.fragment(params[:program][:description]).text
+        params[:program][:program_cost_breakdown] = Nokogiri::HTML.fragment(params[:program][:program_cost_breakdown]).text
+        params[:program][:cost_includes] = Nokogiri::HTML.fragment(params[:program][:cost_includes]).text
+        params[:program][:cost_doesnt_include] = Nokogiri::HTML.fragment(params[:program][:cost_doesnt_include]).text
+        params[:program][:accommodations] = Nokogiri::HTML.fragment(params[:program][:accommodations]).text
          flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
          flash.now[:notice]
          respond_to do |format|
