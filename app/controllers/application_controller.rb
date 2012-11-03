@@ -1,7 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
+  before_filter :set_cache_buster
   include SimpleCaptcha::ControllerHelpers
+
+
+  #to ensure user can't see profile by pushing back after logging out
+   def set_cache_buster
+     response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+     response.headers["Pragma"] = "no-cache"
+     response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+   end
 
   #devise path for "after signing in"
   def after_sign_in_path_for(resource)
