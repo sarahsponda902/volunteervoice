@@ -135,8 +135,10 @@ class ProgramsController < ApplicationController
     @sizes = []
     if !params[:program][:program_sizes].nil?
       params[:program][:program_sizes].each do |f|
-        @p = ProgramSize.new(:program_id => params[:program][:id], :size => f[1], :organization_id => @org_id)
-        @sizes << @p
+        if f[1] != 0
+          @p = ProgramSize.new(:program_id => params[:program][:id], :size => f[1], :organization_id => @org_id)
+          @sizes << @p
+        end
       end
     end
     params[:program][:program_sizes] = @sizes
