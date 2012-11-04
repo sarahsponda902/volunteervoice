@@ -37,7 +37,7 @@ class Organizations::ShowPresenter
 
   # return all organization's reviews ordered by created_at
   def reviews_of_organization
-    Review.where(:organization_id => @organization.id, :order => "created_at DESC")
+    Review.where(:organization_id => @organization.id).sort_by(&:created_at).reverse
   end
 
   #return overall = (total overall score) / (total # reviews)

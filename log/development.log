@@ -33601,3 +33601,186 @@ ActionController::RoutingError (No route matches [GET] "/doc/app"):
 
 
   Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/organizations/new" for 127.0.0.1 at 2012-11-04 11:31:00 -0800
+Processing by OrganizationsController#new as HTML
+  Rendered organizations/_form.html.erb (24.4ms)
+  Rendered organizations/new.html.erb within layouts/application (36.3ms)
+Completed 200 OK in 657ms (Views: 607.6ms | ActiveRecord: 1.5ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:00 -0800
+Served asset /application.css - 200 OK (53ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /blog_kit.css - 200 OK (2ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /errors.css - 200 OK (2ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /foundation.css - 200 OK (2ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /imgareaselect-default.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /jquery.lightbox-0.5.css - 200 OK (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /mega-pull-out-menu-styles.css - 200 OK (6ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /lightbox.css - 200 OK (5ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /searches.css - 200 OK (2ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /organization_accounts.css - 200 OK (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /sessions.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /jquery.js - 200 OK (31ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /smartpaginator.css - 200 OK (2ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /style.css - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /application.js - 200 OK (1ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /DonateButton.png - 200 OK (16ms)
+
+
+Started GET "/assets/JosefinSlab-Regular-webfont.woff" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /JosefinSlab-Regular-webfont.woff - 200 OK (20ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-11-04 11:31:01 -0800
+Served asset /Museo_Slab_500-webfont.woff - 200 OK (10ms)
+
+
+Started GET "/organizations/new" for 127.0.0.1 at 2012-11-04 11:31:29 -0800
+Processing by OrganizationsController#new as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :check_for_admin rendered or redirected
+Completed 302 Found in 99ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-04 11:31:29 -0800
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (11.8ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.3ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (8.6ms)
+Completed 200 OK in 285ms (Views: 136.8ms | ActiveRecord: 14.9ms | Solr: 0.0ms)
+
+
+Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-11-04 11:31:30 -0800
+Served asset /BEBAS___-webfont.woff - 200 OK (37ms)
+
+
+Started GET "/assets/error.png" for 127.0.0.1 at 2012-11-04 11:31:35 -0800
+Served asset /error.png - 200 OK (70ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2012-11-04 11:31:41 -0800
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p0Hsrndkw8RDmNGbGugAo6hNJwaFjLKvXL01tEgng2c=", "user"=>{"login"=>"sarahsponda902@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "x"=>"0", "y"=>"0"}
+  [1m[36mUser Load (10.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE (lower(username) = 'sarahsponda902@gmail.com' OR lower(email) = 'sarahsponda902@gmail.com') LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (0.5ms)[0m  [1mUPDATE "users" SET "current_sign_in_at" = '2012-11-04 19:31:41.334117', "sign_in_count" = 2, "updated_at" = '2012-11-04 19:31:41.334897' WHERE "users"."id" = 1[0m
+  [1m[35m (1.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/
+Completed 302 Found in 271ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-04 11:31:41 -0800
+Processing by PagesController#home as HTML
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'[0m
+  [1m[35mOrganization Load (0.1ms)[0m  SELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'
+  [1m[36mFeedback Load (0.1ms)[0m  [1mSELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "organizations" 
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "reviews" [0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered pages/home.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 88ms (Views: 85.3ms | ActiveRecord: 0.8ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-04 11:31:41 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-04 11:31:41 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/organizations/new" for 127.0.0.1 at 2012-11-04 11:31:46 -0800
+Processing by OrganizationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered organizations/_form.html.erb (10.7ms)
+  Rendered organizations/new.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 138ms (Views: 91.6ms | ActiveRecord: 0.2ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-04 11:31:47 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-04 11:31:47 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started POST "/organizations" for 127.0.0.1 at 2012-11-04 11:32:40 -0800
+Processing by OrganizationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p0Hsrndkw8RDmNGbGugAo6hNJwaFjLKvXL01tEgng2c=", "organization"=>{"show"=>"1", "name"=>"Sah", "description"=>"Sah", "image"=>#<ActionDispatch::Http::UploadedFile:0x007f9468c7c0a0 @original_filename="set-yourself-on-fire-band-photos-4-large.jpeg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"organization[image]\"; filename=\"set-yourself-on-fire-band-photos-4-large.jpeg\"\r\nContent-Type: image/jpeg\r\n", @tempfile=#<File:/var/folders/j_/88nxfjn956l3rp2m1s757t480000gn/T/RackMultipart20121104-1271-vudku9>>, "misson"=>"sa", "phone"=>"sa", "email"=>"sarahsponda902@gmail.com", "operating_since"=>"sa", "num_vols_date"=>"sa", "num_vols_yr"=>"sa", "application_process"=>"sa", "business_model"=>"Certified Nonprofit", "program_model_string"=>"sa", "types_of_programs"=>"sa", "run_by"=>"sa", "full_time_staff"=>"2", "id_number"=>"sa", "url"=>"sa.com", "price_breakdown"=>"sa", "good_to_know"=>"sa", "training_resources"=>"sa", "program_costs_includes"=>"sa", "program_costs_doesnt_include"=>"sa", "additional_fees"=>"sa", "headquarters_location"=>"sa", "will_invite"=>"0", "invite_email"=>""}, "x"=>"94", "y"=>"39"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+textilized
+  Rendered errors/error_404.html.erb within layouts/application (6.8ms)
+textilized
+Completed 500 Internal Server Error in 194ms
+
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  app/controllers/application_controller.rb:67:in `block (2 levels) in method_missing'
+  app/controllers/application_controller.rb:66:in `method_missing'
+  app/controllers/organizations_controller.rb:113:in `create'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.7ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.5ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.9ms)

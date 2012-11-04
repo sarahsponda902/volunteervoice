@@ -2,7 +2,7 @@ class OrganizationsController < ApplicationController
   require 'aws/s3'
   include ActionView::Helpers::TextHelper
 
-  before_filter :check_for_admin, :only => [:index, :crop, :edit, :create, :changeShow]
+  before_filter :check_for_admin, :only => [:index, :crop, :edit, :create, :changeShow, :new]
   before_filter :check_for_admin_or_org_account, :only => [:update]
 
 
