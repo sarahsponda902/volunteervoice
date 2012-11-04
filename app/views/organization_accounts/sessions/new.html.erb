@@ -71,7 +71,19 @@ a.forgotPasswordLink:hover {
 </style>
 
 <div class="container" align="center">
-	<%= devise_error_messages!%>
+	<!-- ERROR MESSAGES -->
+	<% if flash.class.name != "String"%>
+	<% flash.each do |key, value| %>
+		<% if value.class.name != "String"%>
+		  <div class="flash <%=key%>">
+	<%= pluralize value.length, "errors"%> prevented you from logging in:<br />
+		<% value.each do |f|%>
+			* <%=f%><br />
+		<% end %>
+	  </div>
+	<% end %>
+	<% end %>
+	<% end %><!-- END ERROR MESSAGES -->
 	<div class="row">
 	<div class="six columns" id="loginBoxContainer">
 	<p class="title">Organization Login</p>
