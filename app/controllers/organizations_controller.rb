@@ -108,17 +108,6 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(params[:organization])
 
-    # textilizing all text fields
-    @organization.description = textilized( @organization.description )
-    @organization.headquarters_location = textilized( @organization.headquarters_location )
-    @organization.good_to_know = textilized( @organization.good_to_know )
-    @organization.training_resources = textilized( @organization.training_resources )
-    @organization.misson = textilized( @organization.misson )
-    @organization.program_costs_includes = textilized( @organization.program_costs_includes )
-    @organization.program_costs_doesnt_include = textilized( @organization.program_costs_doesnt_include )
-    @organization.price_breakdown = textilized( @organization.price_breakdown )
-    @organization.application_process = textilized( @organization.application_process )
-
     if @organization.save
       # if admin opted to invite organization_account on create, then invite them
       if @organization.will_invite && @organization.invite_email.present?
@@ -127,17 +116,6 @@ class OrganizationsController < ApplicationController
       # crop the new image to be square
       redirect_to "/organizations/#{@organization.id}/crop"
     else
-      # untextilize all textarea text so that it appears normal in textarea boxes
-      @organization.description = untextilized(@organization.description)
-      @organization.headquarters_location = untextilized(@organization.headquarters_location)
-      @organization.good_to_know = untextilized(@organization.good_to_know)
-      @organization.training_resources = untextilized(@organization.training_resources)
-      @organization.misson = untextilized(@organization.misson)
-      @organization.program_costs_includes = untextilized(@organization.program_costs_includes)
-      @organization.program_costs_doesnt_include = untextilized(@organization.program_costs_doesnt_include)
-      @organization.price_breakdown = untextilized(@organization.price_breakdown)
-      @organization.application_process = untextilized(@organization.application_process)
-
       render :action => "new" 
     end
   end

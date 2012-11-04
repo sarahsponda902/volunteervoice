@@ -52,6 +52,7 @@
 class Organization < ActiveRecord::Base
   require 'file_size_validator'
   include CarrierWave::MiniMagick
+  include 
   
 has_many :program_cost_length_maps, :through => :programs
 has_many :program_sizes, :through => :programs
@@ -68,6 +69,7 @@ validates_uniqueness_of :name
 
 before_save :add_http_to_url
 before_save :square_image_crop
+before_save :textilize_textareas
 validates :image, :file_size => {:maximum => 0.5.megabytes.to_i}
 
 before_create :set_page_views_to_zero
@@ -85,6 +87,8 @@ searchable do
   string :business_model
   text :program_costs_includes
 end
+
+
 
 def roundup(overall)
     if overall.nil?
@@ -137,6 +141,28 @@ def latest_review_time
   else
     20.years.ago
   end
+end
+
+def untextilized(textile)
+  Nokogiri::HTML.fragment(textile).text
+end
+
+def textilized(text)
+  RedCloth.new( ActionController::Base.helpers.sanitize( text ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+end
+
+# textilize all textareas to retain newlines, formatting, etc.
+def textilize_textareas
+  self.description = textilized( self.description )
+  self.headquarters_location = textilized( self.headquarters_location )
+  self.good_to_know = textilized( self.good_to_know )
+  self.training_resources = textilized( self.training_resources )
+  self.misson = textilized( self.misson )
+  self.program_costs_includes = textilized( self.program_costs_includes )
+  self.program_costs_doesnt_include = textilized( self.program_costs_doesnt_include )
+  self.price_breakdown = textilized( self.price_breakdown )
+  self.application_process = textilized( self.application_process )
+  
 end
 
 

@@ -60,18 +60,13 @@ validates_presence_of :name, :description, :location, :organization_id, :program
 before_save :copy_organization_images_and_program_model
 before_save :square_image_crop
 before_save :validate_subjects_inclusions
-
+before_save :textilize_textareas
+before_save :set_location_name
+before_save :set_http
 # Paperclip
     mount_uploader :photo, ImageUploader
     mount_uploader :square_image, ImageUploader
 # Sunspot Search
-
-def copy_organization_images_and_program_model
-  self.photo = Organization.find(organization_id).image.file
-  self.square_image = Organization.find(organization_id).square_image.file
-  self.program_structure = Organization.find(organization_id).program_model_string
-end
-
 
 
 
@@ -100,6 +95,14 @@ searchable do
   text :food_situation
   text :program_requirements
   
+end
+
+
+
+def copy_organization_images_and_program_model
+  self.photo = Organization.find(organization_id).image.file
+  self.square_image = Organization.find(organization_id).square_image.file
+  self.program_structure = Organization.find(organization_id).program_model_string
 end
 
 
@@ -190,5 +193,25 @@ def square_image_crop
    end
    return @return
  end
+ 
+def textilize_textareas
+  self.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize(truncate self.description, :length => 100), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+  self.description = RedCloth.new( ActionController::Base.helpers.sanitize( self.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+  self.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( self.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+  self.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( self.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+  self.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( self.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+  self.accommodations = RedCloth.new( ActionController::Base.helpers.sanitize( self.accommodations ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+end
+
+def set_location_name
+  self.location_name = THECOUNTRIES[self.location]
+end
+
+def set_http
+  if self.check_it_out[0..3] != "http"
+    self.check_it_out = "http://"+self.check_it_out
+  end
+end
+
  
 end

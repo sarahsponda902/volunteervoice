@@ -52,6 +52,25 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+  
+  # devise path for "after signing up"
+  def after_sign_up_path_for(resource)
+         "/users/profile"
+  end
+  
+  # devise path for "after signing up but not confirmed"
+  def after_inactive_sign_up_path_for(resource)
+         "/registrations/email_confirm"
+  end
+  
+  # after updating profile, send to "crop" page if new image, else profile
+  def after_update_path_for(resource)
+    if resource.crops
+      "/users/#{resource.id}/crops"
+    else
+      "/users/profile"
+    end
+  end
 
 
 

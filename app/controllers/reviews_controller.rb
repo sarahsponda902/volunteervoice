@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   include ActionView::Helpers::TextHelper
+  
+  before_filter :authenticate_user!, :only => [:create, :new, :edit, :destroy]
+  before_filter :check_for_admin, :only => [:index, :changeShow, :changeFlagShow]
 
+  # page showing all reviews (sorted) published on vvi
+  # can access this page by clicking "# voices heard" on homepage
   def show_all
     @sort_by = params[:sort_by]
     if @sort_by.nil? || @sort_by == "rating_high"
@@ -17,91 +22,82 @@ class ReviewsController < ApplicationController
     @flag = Flag.new
   end
 
+  # User only create a new review
   def create
-    if user_signed_in?
       @review = Review.new(params[:review])
-
-      @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate @review.body, :length => 100) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-      @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate @review.body, :length => 200) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-      @review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+      @review.body = textilized( @review.body )
+      
+      # since the review's organization parameter only gives a name,
+      #  have to do a search for organization with that name
+      #  Note: each organization has a unique name, so this works fine.
       @review.organization_id = Organization.where(:name => @review.organization_name).first.id
-
-      @user_review_progs = []
-      current_user.reviews.each do |f|
-        @user_review_progs << f.program_id
-      end
+      
+      # @user_review_progs used for checking if a user has reviewed a program before
+      @user_review_progs = current_user.reviews.map{|rev| rev.program_id}
+ 
       if !(@user_review_progs.include?(@review.program_id))
         respond_to do |format|
           if @review.save
-            @prog = Program.find(@review.program_id)
-            @prog.overall = (((@prog.overall.to_f)*(@prog.reviews.count.to_f) + @review.overall.to_f)/(@prog.reviews.count.to_f + 1))
-            @prog.save
-            @org = Organization.find(@review.organization_id)
-            @org.overall = (((@org.overall.to_f)*(@org.reviews_count.to_f) + @review.overall.to_f)/(@org.reviews_count.to_f + 1))
-            @org.reviews_count = @org.reviews_count + 1
-            @org.save
             format.html { redirect_to "/reviews/thank_you_review" }
             format.json { render json: @review, status: :created, location: @review }
           else
-            @review.body = @review.body.gsub(%r{</?[^>]+?>}, '') unless @review.body.nil?
+            # un-textilize body so it looks normal in text area box if errors
+            @review.body = untextilized(@review.body)
             flash[:notice] = flash[:notice].to_a.concat @review.errors.full_messages
-
             format.html { render action: "new" }
             format.json { render json: @review.errors, status: :unprocessable_entity }
           end
         end
-      else
+      else # if user has already reviewed this program
+        # redirect to "edit review" page, where user can add on to their review, but can't change the old body
         @review_id = Review.where(:program_id => @review.program_id, :user_id => current_user.id).first.id
         flash[:notice] = flash[:notice].to_a.concat(@review.errors.full_messages).concat(["You can only review a program once. Please add on to your review instead!"])
-        redirect_to(edit_review_path(:id => @review_id, :edit_review_body => @review.body.gsub(%r{</?[^>]+?>}, '')))
+        redirect_to(edit_review_path(:id => @review_id, :edit_review_body => untextilized(@review.body)))
       end
-    else
-      redirect_to "/registrations/mustBe"
-    end
   end
 
+  # thank you page after a user reviews a program
   def thank_you_review
   end
 
+
+  # Admin only index page
   def index
-    if (user_signed_in? && current_user.admin?)
       @reviews = Review.all.reverse
 
       respond_to do |format|
         format.html # index.html.erb
         format.json { render :json => @reviews }
       end
-    else
-      redirect_to root_path
-    end
   end
 
-
+  # GET /reviews/1
   def show
     @review = Review.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @review}
+      format.json { render :json => @review }
     end
   end
 
+
+  # User only write-a-review page
   def new
     @review = Review.new
-    if user_signed_in?
+    
+    # get the program & org id params (though they may be null)
       @review.organization_id = params[:organization_id]
       @review.program_id = params[:program_id]
-
-
+      
       respond_to do |format|
         format.html # new.html.erb
         format.json { render :json => @review }
       end
-    else
-      redirect_to "/registrations/mustBe"
-    end
   end
 
+
+  # edit review page (user only)
   def edit
     @review = Review.find(params[:id])
     respond_to do |format|
@@ -110,18 +106,18 @@ class ReviewsController < ApplicationController
     end
   end
 
+  
   def update
     @review = Review.find(params[:id])
-    @review.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate params[:review][:body], :length => 100) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @review.truncated200 = RedCloth.new( ActionController::Base.helpers.sanitize( (truncate params[:review][:body], :length => 200) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    
+    # add review add-on to review body with "Update XX/XX/XXXX: \n"
+    params[:review][:body] = "Update #{Time.now.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')}: \n"+textilized(params[:review][:body]) + "<br />"+@review.body
 
-    params[:review][:body] = "<strong>Update #{Time.now.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')}:</strong> "+RedCloth.new( ActionController::Base.helpers.sanitize( params[:review][:body] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html + "<br />"+@review.body
-
-    if user_signed_in? && (current_user.admin? || current_user.id == @review.user_id)
+    # check if review belongs to user OR user is an admin
+    if (current_user.admin? || current_user.id == @review.user_id)
 
       respond_to do |format|
         if @review.update_attributes(params[:review])
-          @review.save
           format.html { redirect_to "/users/profile", :notice => 'Review Submitted' }
           format.json { head :no_content }
         else
@@ -131,34 +127,19 @@ class ReviewsController < ApplicationController
           format.json { render :json => @review.errors, :status => :unprocessable_entity }
         end
       end
-    else
+    else # if review does not belong to user AND user is not an admin
       redirect_to root_path
     end
   end
 
+
+  # Admin & User only destroy method
   def destroy
     @review = Review.find(params[:id])
-    if (user_signed_in? && (current_user.admin? || current_user.id == @review.user_id))
+    
+    # check if review belongs to user OR user is an admin
+    if (current_user.admin? || current_user.id == @review.user_id))
       @review_id = @review.program_id
-      @field = params[:field]
-      @location = params[:location]
-      @org = Organization.find(@review.organization_id)
-      @prog = Program.find(@review.program_id)
-
-      if @org.reviews_count != 1
-        @org.overall = (@org.overall * @org.reviews_count - @review.overall) / (@org.reviews_count - 1)
-      else
-        @org.overall = 0
-      end
-      @org.reviews_count = @org.reviews_count - 1
-      if @prog.reviews.count != 1
-        @prog.overall = (@prog.overall * @prog.reviews.count - @review.overall) / (@prog.reviews.count - 1)
-      else 
-        @prog.overall = 0
-      end
-      @org.save
-      @prog.save
-
       @review.destroy
 
       respond_to do |format|
@@ -169,57 +150,49 @@ class ReviewsController < ApplicationController
         end
         format.json { head :no_content }
       end
-    else
+    else # if review does not belong to user AND user is not an admin
       redirect_to root_path
-    end
+    end 
 
   end
 
-  def make
-    @review = Review.find(params[:id])
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @review }
-    end
-  end
 
+  # Admin only 
+  # change whether the review can be displayed on the home page or not
   def changeShow
-    if (user_signed_in? && current_user.admin?)
       @review = Review.find(params[:id])
       if @review.show
         @review.show = false
-        @review.save
       else
         @review.show = true
-        @review.save
       end
+        @review.save
       respond_to do |format|
         format.html {redirect_to reviews_path}
       end
-    else
-      redirect_to root_path
-    end
   end
 
+  # called by Admin or if a review is flagged for the first time
+  # change whether the review can be displayed at all 
   def changeFlagShow
-    if (user_signed_in? && current_user.admin?)
       @review = Review.find(params[:id])
       if @review.flag_show
         @review.flag_show = false
-        @review.save
       else
         @review.flag_show = true
-        @review.save
       end
+      @review.save
       respond_to do |format|
         format.html {redirect_to flags_path}
       end
-    else
+  end
+  
+  private
+  ## check_for_admin called by before_filter
+  def check_for_admin
+    unless user_signed_in? && current_user.admin?
       redirect_to root_path
     end
-  end
-
-  def already_reviewed
   end
 
 end

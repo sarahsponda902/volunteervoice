@@ -1,6 +1,6 @@
 class BlogPostsController < ApplicationController
   #######################################################################
-  ### Written (mostly) by Ryan Stout  ###################################
+  ### Written (mostly) by Ryan Stout                                #####
   ### in blog_kit plugin at:  https://github.com/ryanstout/blog_kit #####
   #######################################################################  
 

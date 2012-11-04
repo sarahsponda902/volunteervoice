@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011220553) do
+ActiveRecord::Schema.define(:version => 20121104220251) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -476,8 +476,8 @@ ActiveRecord::Schema.define(:version => 20121011220553) do
     t.boolean  "volunteered_before"
     t.string   "admin_pass"
     t.boolean  "admin_update"
-    t.boolean  "profile_show",              :default => true
-    t.boolean  "messages_show"
+    t.boolean  "profile_show",              :default => false
+    t.boolean  "messages_show",             :default => false
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -489,7 +489,7 @@ ActiveRecord::Schema.define(:version => 20121011220553) do
     t.string   "square_image"
     t.boolean  "cropping"
     t.boolean  "crops"
-    t.integer  "unread_messages"
+    t.integer  "unread_messages",           :default => 0
     t.string   "return_link"
     t.boolean  "admin_read",                :default => false
   end

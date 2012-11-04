@@ -1,19 +1,19 @@
 class SearchesController < ApplicationController
+  
+  before_filter :check_for_admin, :only => [:index, :destroy]
+  
   # GET /searches
   # GET /searches.json
+  # Shows history of searches for Admin only
   def index
-    if user_signed_in? && current_user.admin?
       @searches = Search.all.sort_by(&:updated_at).reverse
-
       respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @searches }
       end
-    else
-      redirect_to "/searches/search_machine"
-    end
   end
 
+  # erase old searches that nobody needs/uses anymore
   def erase_old
     if user_signed_in? && current_user.admin?
       @searches = Search.all
@@ -28,6 +28,7 @@ class SearchesController < ApplicationController
     end
   end
 
+  # if a search has been deleted, show this page
   def error
     @search = Search.new
     @locations = []
@@ -757,6 +758,14 @@ class SearchesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to searches_url }
       format.json { head :no_content }
+    end
+  end
+  
+  private
+  ## check_for_admin called by before_filter
+  def check_for_admin
+    unless user_signed_in? && current_user.admin?
+      redirect_to root_path
     end
   end
 end
