@@ -20,15 +20,17 @@ class Organizations::ShowPresenter
     # grouping cost-lengths by length
     @grouped = []
     @unique_cost_lengths.each do |u|
-      @grouped << ProgramCostLengthMap.where(:organization_id => @organization.id, :length => u)
+      @grouped << ProgramCostLengthMap.where(:organization_id => @organization.id, :length => u.length)
     end
 
     # sort each group by cost
     #  then add (length, lowest cost, highest cost) to table entries
     @entries = []
     @grouped.each do |g|
-      @sorted_group = g.sort_by(&:cost)
-      @entries << [(g.first.length / 604800).round, g.first.cost, g.last.cost]
+      unless g.empty?
+        @sorted_group = g.sort_by(&:cost)
+        @entries << [(g.first.length / 604800).round, g.first.cost, g.last.cost]
+      end
     end
 
     #return the table entries
