@@ -1,10 +1,10 @@
 class FeedbacksController < ApplicationController
   before_filter :check_for_admin, :except => [:new, :create, :thank_you]
   include ActionView::Helpers::TextHelper
-  
+
   # GET /feedbacks
   # GET /feedbacks.json
-  
+
   # Admin only index page
   def index
     @feedbacks = Feedback.all.sort_by(&:created_at).reverse
@@ -17,7 +17,7 @@ class FeedbacksController < ApplicationController
 
   # GET /feedbacks/1
   # GET /feedbacks/1.json
-  
+
   # Admin only show feedback page
   # (note - there is no link to actually get to this page, 
   #    but keeping it for possible future use)
@@ -74,15 +74,15 @@ class FeedbacksController < ApplicationController
   # DELETE /feedbacks/1.json
   # Admin only destroy feedback
   def destroy
-      @feedback = Feedback.find(params[:id])
-      @feedback.destroy
-      redirect_to feedbacks_path
+    @feedback = Feedback.find(params[:id])
+    @feedback.destroy
+    redirect_to feedbacks_path
   end
 
-# method called by admin on feedback index page
-# to change whether the feedback is shown on the home page
-# Admin only
-def changeShow
+  # method called by admin on feedback index page
+  # to change whether the feedback is shown on the home page
+  # Admin only
+  def changeShow
     @feedback = Feedback.find(params[:id])
     if @feedback.show
       @feedback.show = false
@@ -93,15 +93,15 @@ def changeShow
     respond_to do |format|
       format.html { redirect_to feedbacks_url }
     end
-end
-
-private
-
-## check_for_admin called by before_filter
-def check_for_admin
-  unless user_signed_in? && current_user.admin?
-    redirect_to root_path
   end
-end
+
+  private
+
+  ## check_for_admin called by before_filter
+  def check_for_admin
+    unless user_signed_in? && current_user.admin?
+      redirect_to root_path
+    end
+  end
 
 end
