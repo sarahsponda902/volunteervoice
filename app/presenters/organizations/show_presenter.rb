@@ -6,6 +6,11 @@ class Organizations::ShowPresenter
     @organization.page_views = (@organization.page_views + 1)
     @organization.save
   end
+  
+  # returns organization
+  def this_organization
+    @organization
+  end
 
   def cost_length_table_entries
     # getting sorted, unique cost-lengths for this organization

@@ -505,13 +505,13 @@
 	<div id="show-contents" class="contents">
 		<div id="tabContainer" class="three columns">
             <ul class="tab">
-				<li><a href="/organizations/<%= @organization.id%>"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProfileYes.png" id="leftTabImage"></a></li>
-				<li><a href="/organizations/<%= @organization.id%>/programs"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProgramsNo.png" id="rightTabImage"></a></li>
+				<li><a href="/organizations/<%= @presenter.this_organization.id%>"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProfileYes.png" id="leftTabImage"></a></li>
+				<li><a href="/organizations/<%= @presenter.this_organization.id%>/programs"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/tabProgramsNo.png" id="rightTabImage"></a></li>
             </ul>
         </div>
 			
 		
-	<%= render :partial => "show_contents", :locals => {:organization => @organization, :overall => @presenter.overall, :presenter => @presenter}%>
+	<%= render :partial => "show_contents", :locals => {:organization => @presenter.this_organization, :overall => @presenter.overall, :presenter => @presenter}%>
 	
 	<div class="row">
 			<div class="twelve columns" id="reviewsContainer">
@@ -547,8 +547,8 @@
 	</div>
 	<div id= "four columns" align="center" id="pageViews">
 		<% if !(current_user.nil?) && current_user.admin? %>
-		<%= link_to "edit", "/organizations/#{@organization.id}/edit"%>
-		  | Page views: <%= @organization.page_views%>
+		<%= link_to "edit", "/organizations/#{@presenter.this_organization.id}/edit"%>
+		  | Page views: <%= @presenter.this_organization.page_views%>
 		<% end %>
 	</div>
 </div>
@@ -562,7 +562,7 @@
 	<div class="price-ranges-popup" id="price-ranges-box" >
 		<a href="#" class="close"><div id="closePriceRanges" class="close_image"></div></a>
 		<div class="overflow">
-		<% if (ProgramCostLengthMap.where(:organization_id => @organization.id).empty?)%>	
+		<% if (ProgramCostLengthMap.where(:organization_id => @presenter.this_organization.id).empty?)%>	
 		<p class="infoNotDisclosedTitle">Information not disclosed</p>
 		<p class="infoNotDisclosedBlurb">If we don't have this info, we weren't able to obtain it yet from the organization.  But we are still trying!</p>
 		<% else %>	
