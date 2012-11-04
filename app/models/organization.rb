@@ -66,6 +66,7 @@ validates_presence_of :image
 scope :random, :order=>'RAND()', :limit=>1
 validates_uniqueness_of :name
 
+before_save :add_http_to_url
 before_save :square_image_crop
 validates :image, :file_size => {:maximum => 0.5.megabytes.to_i}
 
@@ -135,6 +136,15 @@ def latest_review_time
     reviews.last.created_at
   else
     20.years.ago
+  end
+end
+
+
+# add http:// to url if none exists
+#   for "open in new tab" functionality on page
+def add_http_to_url
+  if self.url[0..3] != "http"
+    self.url = "http://"+self.url
   end
 end
  

@@ -15,6 +15,15 @@ def breaking_word_wrap(text, *args)
    end * "\n"
 end
 
+    
+    def untextilized(textile)
+      Nokogiri::HTML.fragment(textile).text
+    end
+    
+    def textilized(text)
+      RedCloth.new( ActionController::Base.helpers.sanitize( text ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    end
+
 
 
 end

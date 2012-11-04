@@ -511,7 +511,7 @@
         </div>
 			
 		
-	<%= render :partial => "show_contents", :locals => {:organization => @organization, :overall => @overall}%>
+	<%= render :partial => "show_contents", :locals => {:organization => @organization, :overall => @presenter.overall, :presenter => @presenter}%>
 	
 	<div class="row">
 			<div class="twelve columns" id="reviewsContainer">
@@ -525,7 +525,7 @@
 	<div id="results">
 
 	
-				<% @results.each do |f| %>
+				<% @presenter.reviews_of_organization.each do |f| %>
 				<div>
 					<%= render :partial => "results", :locals => {:f => f}%>
 				</div>
@@ -575,7 +575,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<% @entries.each do |f|%>
+			<% @presenter.cost_length_table_entries.each do |f|%>
 			<tr>
 				<td class="priceRangesColumn">
 					
@@ -794,7 +794,7 @@
 //Initialize smartpaginator's jQuery paginator on a div called "results"
 	//the "reviews_pager" div is the "1-10 of 40 ----> 1 2 3 4 ..." pager
 			
-				$('#reviews_pager').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+				$('#reviews_pager').smartpaginator({ totalrecords: <%=@presenter.reviews_of_organization.count%>, recordsperpage: 10, datacontainer: 'results', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 		});
 </script>
