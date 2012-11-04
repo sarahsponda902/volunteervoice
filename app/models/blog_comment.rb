@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: blog_comments
+#
+#  id           :integer          not null, primary key
+#  blog_post_id :integer
+#  user_id      :integer
+#  user_ip      :string(255)
+#  user_agent   :string(255)
+#  referrer     :string(255)
+#  name         :string(255)
+#  site_url     :string(255)
+#  email        :string(255)
+#  body         :text
+#  created_at   :datetime
+#
+
 class BlogComment < ActiveRecord::Base
 	include BlogKitModelHelper
 

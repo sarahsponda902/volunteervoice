@@ -1,3 +1,37 @@
+# == Schema Information
+#
+# Table name: blog_posts
+#
+#  id                        :integer          not null, primary key
+#  title                     :string(255)
+#  body                      :text
+#  created_at                :datetime
+#  updated_at                :datetime
+#  published                 :boolean
+#  user_id                   :integer
+#  published_at              :datetime
+#  blog_link                 :string(255)
+#  crop_x                    :integer
+#  crop_y                    :integer
+#  crop_x2                   :integer
+#  crop_y2                   :integer
+#  square_image_file_name    :string(255)
+#  square_image_content_type :string(255)
+#  square_image_file_size    :integer
+#  square_image_updated_at   :datetime
+#  is_our_blog               :boolean
+#  blog_type                 :boolean
+#  crop_h                    :integer
+#  crop_w                    :integer
+#  thumbnail                 :boolean
+#  source_title              :string(255)
+#  source                    :string(255)
+#  image                     :string(255)
+#  square_image              :string(255)
+#  truncated125              :text
+#  truncated100              :text
+#
+
 class BlogPost < ActiveRecord::Base
 	include BlogKitModelHelper
 	require 'file_size_validator'

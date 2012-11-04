@@ -43,7 +43,11 @@ gem 'thin'
 
 gem 'fog'
 
+gem 'yard'
+
 gem 'seed_dump'
+
+gem 'annotate'
 
 gem 'mini_magick'
 

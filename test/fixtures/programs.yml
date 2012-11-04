@@ -1,3 +1,48 @@
+# == Schema Information
+#
+# Table name: programs
+#
+#  id                            :integer          not null, primary key
+#  name                          :string(255)
+#  description                   :text
+#  weekly_cost                   :integer
+#  location                      :string(255)
+#  organization_id               :integer
+#  created_at                    :datetime         not null
+#  updated_at                    :datetime         not null
+#  review_id                     :integer
+#  subject                       :string(255)
+#  headquarters                  :string(255)
+#  overall                       :decimal(, )
+#  start_dates                   :string(255)
+#  program_structure             :text
+#  partnered_local_organizations :string(255)
+#  cost_includes                 :text
+#  program_cost_breakdown        :text
+#  check_it_out                  :string(255)
+#  length                        :string(255)
+#  group_size                    :string(255)
+#  photo                         :string(255)
+#  organization_name             :string(255)
+#  square_image                  :string(255)
+#  crop_x                        :integer
+#  crop_y                        :integer
+#  crop_w                        :integer
+#  crop_h                        :integer
+#  chart                         :string(255)
+#  truncated_description100      :text
+#  program_started               :string(255)
+#  cost_doesnt_include           :text
+#  url                           :string(255)
+#  specific_location             :string(255)
+#  location_name                 :string(255)
+#  published_docs                :boolean
+#  lengths_of_program            :string(255)
+#  food_situation                :string(255)
+#  program_requirements          :string(255)
+#  accommodations                :text
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:

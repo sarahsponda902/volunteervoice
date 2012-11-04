@@ -10,7 +10,7 @@
 </span>
 
 <p class="postBody">
-<%= f.truncated100.html_safe %>
+<%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 100).html_safe %>
 </p>
 
 

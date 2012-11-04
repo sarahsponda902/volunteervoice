@@ -33,6 +33,8 @@ GEM
     airbrake (3.1.2)
       activesupport
       builder
+    annotate (2.5.0)
+      rake
     arel (3.0.2)
     aws-s3 (0.6.3)
       builder
@@ -196,6 +198,7 @@ GEM
       rack (>= 1.0)
     will_paginate (3.0.3)
     xml-simple (1.1.1)
+    yard (0.8.3)
 
 PLATFORMS
   ruby
@@ -203,6 +206,7 @@ PLATFORMS
 DEPENDENCIES
   RedCloth
   airbrake
+  annotate
   aws-s3
   bcrypt-ruby
   best_in_place
@@ -231,3 +235,4 @@ DEPENDENCIES
   thin
   uglifier (>= 1.0.3)
   will_paginate
+  yard

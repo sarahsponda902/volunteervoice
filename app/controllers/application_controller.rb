@@ -1,27 +1,39 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :set_cache_buster
+  
+  #for captcha/secret-code box when registering as a user
   include SimpleCaptcha::ControllerHelpers
+  
+  before_filter :set_cache_buster
 
 
-  #to ensure user can't see profile by pushing back after logging out
+  #to ensure user can't see profile by clicking back after logging out
    def set_cache_buster
      response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
      response.headers["Pragma"] = "no-cache"
      response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
    end
 
+
+
+
+   ###############
+   #### DEVISE ###
+   ###############
+
+
   #devise path for "after signing in"
   def after_sign_in_path_for(resource)
     if request.referrer && resource.is_a?(User)
+      #unless path is one of the following (which will trigger infinite loops), go to root path
       case URI(request.referrer).path
-      when '/users/sign_in', '/registrations/mustBe', '/sign_up', '/sign_in', '/users/sign_up', '/contacts' then
-        '/'
+      when '/users/sign_in', '/registrations/mustBe', '/sign_up', '/sign_in', '/users/sign_up', '/contacts' then 
+        root_path
       else
         request.referrer
       end
     else
-      '/'
+      root_path
     end
 
   end
@@ -29,21 +41,28 @@ class ApplicationController < ActionController::Base
   #devise path for "after signing out"
   def after_sign_out_path_for(resource)
     if request.referrer
+      #unless path is one of the following (which will trigger infinite loops), go to root path
       case URI(request.referrer).path 
       when '/registrations/mustBe', '/reviews/new', '/users/profile', '/contacts' then
-        '/'
+        root_path
       else
         request.referrer
       end
     else
-      '/'
+      root_path
     end
   end
 
 
+
+
+  ############################
+  #### CUSTOM ERROR PAGES ####
+  ############################
+
+  #for custom error page (404)
   def method_missing(m, *args, &block)
     Rails.logger.error(m)
-    notify_airbrake(m)
     respond_to do |format|
       format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
       format.all { render nothing: true, status: 404 }
@@ -62,18 +81,18 @@ class ApplicationController < ActionController::Base
 
   private
 
+  #write error to log & render 404 error page (in errors/error_404)
   def render_not_found(exception)
     Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
-    notify_airbrake(exception)
     respond_to do |format|
       format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
       format.all { render nothing: true, status: 404 }
     end
   end
 
+  #write error to log & render 500 error page (in errors/error_500)
   def render_error(exception)
     Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
-    notify_airbrake(exception)
     respond_to do |format|
       format.html { render 'errors/error_500', layout: 'layouts/application', status: 500 }
       format.all { render nothing: true, status: 500 }

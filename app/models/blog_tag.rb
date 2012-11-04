@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: blog_tags
+#
+#  id           :integer          not null, primary key
+#  blog_post_id :integer
+#  tag          :string(255)      not null
+#  is_our_blog  :boolean
+#
+
 class BlogTag < ActiveRecord::Base
 	unloadable
 

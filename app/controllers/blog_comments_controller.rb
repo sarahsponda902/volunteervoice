@@ -1,4 +1,10 @@
 class BlogCommentsController < ApplicationController
+  #######################################################################
+  ### Written (mostly) by Ryan Stout  ###################################
+  ### in blog_kit plugin at:  https://github.com/ryanstout/blog_kit #####
+  #######################################################################
+  
+  
   include ActionView::Helpers::TextHelper
 	unloadable
 	helper :blog
@@ -9,11 +15,11 @@ class BlogCommentsController < ApplicationController
 	before_filter :require_admin, :only => [:destroy]
 	before_filter :require_blog_post
 
+
   def create
     @blog_comment = @blog_post.blog_comments.new(params[:blog_comment])
 		@blog_comment.user_id = current_user.id if current_user
 		@blog_comment.request = request
-    
 
     respond_to do |format|
       if @blog_comment.save
@@ -33,8 +39,7 @@ class BlogCommentsController < ApplicationController
   def destroy
     @blog_comment = BlogComment.find(params[:id])
     @blog_comment.destroy
-
-
+    
     respond_to do |format|
       format.html { redirect_to(blog_post_url(@blog_post)) }
       format.xml  { head :ok }

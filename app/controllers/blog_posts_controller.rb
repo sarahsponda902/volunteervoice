@@ -1,66 +1,58 @@
 class BlogPostsController < ApplicationController
+  #######################################################################
+  ### Written (mostly) by Ryan Stout  ###################################
+  ### in blog_kit plugin at:  https://github.com/ryanstout/blog_kit #####
+  #######################################################################  
+  
 	unloadable
 	
+	# for image uploads to amazon s3
 	require 'aws/s3'
+	
+	# for converting textile back to regular text in 'create'
   include ActionView::Helpers::TextHelper
+  
+  
 	helper :blog
 
+  # choose_layout never used, but left in for possible future use
 	layout :choose_layout
 
 	before_filter :require_user, :except => [:index, :show, :tag, :resources, :resources_search]
 	before_filter :require_admin, :except => [:index, :show, :tag, :resources, :resources_search]
 	
 	
-	
-  
+  # called by the search bar at the top of '/resources'
+  # uses sunspot's search
   def resources_search
     @search_words = params[:search] 
     
-    @interesting_search = Sunspot.search(BlogPost) do
-      keywords params[:search]
-      with :is_our_blog, false
-    end
-    @our_blog_search = Sunspot.search(BlogPost) do
-      keywords params[:search]
-      with :is_our_blog, true 
-    end
-    @interesting_tags_search = Sunspot.search(BlogTag) do
-      with :tag, params[:search].gsub(/[^0-9A-Za-z]/, "").split(" ")
-      with :is_our_blog, false
-    end
-    @our_blog_tags_search = Sunspot.search(BlogTag) do
-      with :tag, params[:search].gsub(/[^0-9A-Za-z]/, "").split(" ")
-      with :is_our_blog, true
-    end
-    @interesting = []
-    @our_blog = []
-    @interesting_tags_search.results.each do |f|
-      @interesting << BlogPost.find(f.blog_post_id)
-    end
-    @interesting_search.results.each do |f|
-      @interesting << f unless @interesting.include?(f)
-    end
-    @interesting = @interesting.sort_by{|e| e[:published_at]}.reverse
     
-    @our_blog_tags_search.results.each do |f|
-      @our_blog << BlogPost.find(f.blog_post_id)
+    ## TWO types of blog posts that are searchable: interesting & our_blog
+    # interesting posts are articles
+    # our_blog are posts written by staff
+    
+    ## Search blog posts with keywords
+    @post_search = Sunspot.search(BlogPost) do
+      keywords params[:search]
     end
-    @our_blog_search.results.each do |f|
-      @our_blog << f unless @our_blog.include?(f)
+    
+    ## Search blog post tags with keywords
+    @tag_search = Sunspot.search(BlogTag) do
+      with :tag, params[:search].gsub(/[^0-9A-Za-z]/, "").split(" ")
     end
-    @our_blog = @our_blog.sort_by{|e| e[:published_at]}.reverse
-    @results = @interesting + @our_blog
-    @results = @results.sort_by{|e| e[:published_at]}.reverse
+    
+    ## Combine posts & tags searches, without duplicates (UNION)
+    @search_results = @post_search.results | @tag_search.results.map{|tag| tag.blog_post}
+    @search_results = @results.sort_by{|e| e[:published_at]}.reverse
   end
 
 
+  ## Resources (all blog posts) landing page
   def resources
-    @interesting = BlogPost.where(:is_our_blog => false).sort_by{|e| e[:published_at]}.reverse
-    
+    ## Two types of blog posts, interesting (articles) and our_blog (staff written)
+    @interesting = BlogPost.where(:is_our_blog => false).sort_by{|e| e[:published_at]}.reverse 
     @our_blog = BlogPost.where(:is_our_blog => true).sort_by{|e| e[:published_at]}.reverse
-
-    @boolA = true
-    @boolV = true
     
     respond_to do |format|
       format.html
@@ -68,6 +60,8 @@ class BlogPostsController < ApplicationController
     end
   end
 
+
+  ## Index page only for OUR_BLOG posts, written by staff
   def index
     @blog_posts = BlogPost.published.paginate(:page => params[:page], :order => 'updated_at DESC')
     @index_title = BlogKit.instance.settings['blog_name'] || 'Blog'
@@ -80,15 +74,12 @@ class BlogPostsController < ApplicationController
   end
   
   
+  ## Admin only crop page for cropping the blog images
   def crop
-    if user_signed_in? && current_user.admin?
       @blog_post = BlogPost.find(params[:id])
-    else
-      redirect_to "/pages/blogs"
-    end
-
   end
 
+  ## Admin only tag a blog post
 	def tag
 		@tag = params[:id]
 		@blog_tags = BlogTag.find_all_by_tag(params[:id])
@@ -105,19 +96,20 @@ class BlogPostsController < ApplicationController
     end		
 	end
 
+
+  # Admin only drafts, has yet to be used
+  ## Keeping for possible future use
   def drafts
-    if (user_signed_in? && current_user.admin?)
     @blog_posts = BlogPost.drafts.paginate(:page => params[:page], :order => 'updated_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @blog_posts }
     end
-  else
-    redirect_to "/pages/blogs"
-  end
   end
 
+
+  ## Show a single post
   def show
     @blog_post = BlogPost.find(params[:id])
 		@blog_comment = @blog_post.blog_comments.new
@@ -129,93 +121,99 @@ class BlogPostsController < ApplicationController
     end
   end
 
+
+  ## Admin only 'new' blog post page
   def new
-    if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.new
 
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @blog_post }
     end
-  else
-    redirect_to "/pages/blogs"
-  end
   end
 
+
+  ##Admin only edit blog post page
   def edit
     @blog_post = BlogPost.find(params[:id])
+    
+    # Convert RedCloth textile (now in html) back to normal text format
     @blog_post.body = Nokogiri::HTML.fragment(@blog_post.body).text
   end
 
+
+  ##Admin only create new blog post (interesting or our_blog)
   def create
-    if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.new(params[:blog_post])
 		@blog_post[:user_id] = current_user.id
-		@blog_post.truncated125 = RedCloth.new( ActionController::Base.helpers.sanitize( truncate @blog_post.body, :length => 125 ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    @blog_post.truncated100 = RedCloth.new( ActionController::Base.helpers.sanitize( truncate @blog_post.body, :length => 100), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+		
+		## Textilize the body (to leave in newlines, etc.)
 		@blog_post.body = RedCloth.new( ActionController::Base.helpers.sanitize( @blog_post.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
 
-		if params[:published_at].nil?
-      @blog_post.published_at = Time.now
-    end
+    ## Set the published_at date/time
+    @blog_post.published_at = Time.now
 
       if @blog_post.save
+          ## if there is no image attached to the post
           if params[:blog_post][:image].blank?
-            flash[:notice] = 'BlogPost was successfully created.'
+            flash[:notice] = 'BlogPost was successfully created.' ## don't send to crop page
             redirect_to @blog_post
+          ## otherwise send to crop image to make it 3:1 ratio (length:height)
           else
             redirect_to "/blog_posts/#{@blog_post.id}/crop"
           end
       else
-        @blog_post.body = @blog_post.body.gsub(%r{</?[^>]+?>}, '')
-         render :action => "new" 
-    end
-  else
-    redirect_to "/pages/blogs"
-  end
+        ## if save was unsuccessful, take out textilization so that <p>s, etc. are not in text box
+        @blog_post.body = Nokogiri::HTML.fragment(@blog_post.body).text
+        render :action => "new" 
+      end
   end
 
+
+  ## Admin only update a blog post
   def update
-    if (user_signed_in? && current_user.admin?)
-    @blog_post = BlogPost.find(params[:id]) 
+    @blog_post = BlogPost.find(params[:id])
+     
+    ## If blog post has image attached and it is NEW, set 'crops' to true
+       ### 'crops' will send admin to the 'crop' page so they can crop the new image
     if !@blog_post.image.nil? && @blog_post.image != params[:blog_post][:image]
       @crops = true
     end
+    
+    ## Textilize body before parameter update
     params[:blog_post][:body] = RedCloth.new( ActionController::Base.helpers.sanitize( params[:blog_post][:body] ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+      
       if @blog_post.update_attributes(params[:blog_post])
-          flash[:notice] = 'BlogPost was successfully updated.'
+          # if image is old (or non-existant), send to completed blog post page
           if @crops != true
-            redirect_to "/blog_posts/#{@blog_post.id}"
-          else
+            redirect_to @blog_post
+          else # if image is new and should be cropped
             redirect_to "/blog_posts/#{@blog_post.id}/crop"
           end
       else
+        ## if save was unsuccessful, take out textilization so that <p>s, etc. are not in text box
+        @blog_post.body = Nokogiri::HTML.fragment(@blog_post.body).text
         render :action => "edit"
       end
-    else
-      redirect_to "/pages/blogs"
-    end
   end
 
 
-
+  ## Admin only destroy blog post
   def destroy
-    if (user_signed_in? && current_user.admin?)
     @blog_post = BlogPost.find(params[:id])
     @blog_post.destroy
 
-		flash[:notice] = 'The blog post has been deleted'
-
     respond_to do |format|
-      format.html { redirect_to("/blog_posts") }
+      format.html { redirect_to blog_posts_path }
       format.xml  { head :ok }
     end
-  else
-    redirect_to "/pages/blogs"
-  end
   end
 
+
+
 	private
+	
+	## for before_filter call
 		def require_admin
 			if !current_user || !current_user.admin?
 				flash[:notice] = 'You must be an admin to view this page'
@@ -226,6 +224,8 @@ class BlogPostsController < ApplicationController
 			return true
 		end
 		
+		
+		## for before_filter call
 		def require_user
 		  if !current_user
 		    flash[:notice] = 'You must be logged in to view this page'
@@ -236,6 +236,7 @@ class BlogPostsController < ApplicationController
 	    return true
     end
 
+    ## unused, but might use in future
 		def choose_layout
 			if ['new', 'edit', 'create', 'update'].include?(params[:action])
 				BlogKit.instance.settings['admin_layout'] || 'application'
