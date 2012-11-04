@@ -460,7 +460,8 @@ a.bannerLink:hover {
 <p alt="Company Photo" class="companyPhotoContainer"><image src="<%=f.square_image.url%>" class="companyPhoto"></p>
 <p class="medium companyName"><a class="blue-link" href="/organizations/<%=f.id%>"><%=f.name %></a></p><br /><br />
 <div class="companyStarsContainer"><%= render :partial => "star", :locals => {:star => f.overall}%></div>
-<div class="companyDescriptionContainer"><p><%= f.truncated75.html_safe%></p></div></div>
+<div class="companyDescriptionContainer"><p><%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 75).html_safe%>
+	</p></div></div>
 <p class="companyProgramsList">Programs: <% @programs = Program.where(:organization_id => f.id).limit(3)%>
 <%if !(@programs.nil?)%>
 <% @count = 1%>

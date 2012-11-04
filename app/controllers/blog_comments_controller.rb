@@ -3,23 +3,23 @@ class BlogCommentsController < ApplicationController
   ### Written (mostly) by Ryan Stout  ###################################
   ### in blog_kit plugin at:  https://github.com/ryanstout/blog_kit #####
   #######################################################################
-  
-  
-  include ActionView::Helpers::TextHelper
-	unloadable
-	helper :blog
-  
-	layout(BlogKit.instance.settings['layout'] || 'application')
 
-	before_filter :require_user, :only => [:destroy]
-	before_filter :require_admin, :only => [:destroy]
-	before_filter :require_blog_post
+
+  include ActionView::Helpers::TextHelper
+  unloadable
+  helper :blog
+
+  layout(BlogKit.instance.settings['layout'] || 'application')
+
+  before_filter :require_user, :only => [:destroy]
+  before_filter :require_admin, :only => [:destroy]
+  before_filter :require_blog_post
 
 
   def create
     @blog_comment = @blog_post.blog_comments.new(params[:blog_comment])
-		@blog_comment.user_id = current_user.id if current_user
-		@blog_comment.request = request
+    @blog_comment.user_id = current_user.id if current_user
+    @blog_comment.request = request
 
     respond_to do |format|
       if @blog_comment.save
@@ -27,9 +27,9 @@ class BlogCommentsController < ApplicationController
         format.xml  { render :xml => @blog_comment, :status => :created, :location => @blog_comment }
       else
         format.html do
-					@blog_comments = @blog_post.blog_comments.paginate(:page => params[:page], :order => 'created_at DESC')
-					render :template => '../views/blog_posts/show.html.erb'
-				end
+          @blog_comments = @blog_post.blog_comments.paginate(:page => params[:page], :order => 'created_at DESC')
+          render :template => '../views/blog_posts/show.html.erb'
+        end
         format.xml  { render :xml => @blog_comment.errors, :status => :unprocessable_entity }
       end
     end
@@ -39,33 +39,33 @@ class BlogCommentsController < ApplicationController
   def destroy
     @blog_comment = BlogComment.find(params[:id])
     @blog_comment.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to(blog_post_url(@blog_post)) }
       format.xml  { head :ok }
     end
   end
 
-	private
-		def require_blog_post
-			@blog_post = BlogPost.find(params[:blog_post_id])
+  private
+  def require_blog_post
+    @blog_post = BlogPost.find(params[:blog_post_id])
 
-			unless @blog_post
-				flash[:notice] = 'The post you were looking for could not be found'
-				redirect_to :controller => 'blog_posts'
-				return false
-			end
+    unless @blog_post
+      flash[:notice] = 'The post you were looking for could not be found'
+      redirect_to :controller => 'blog_posts'
+      return false
+    end
 
-			return true
-		end
+    return true
+  end
 
-		def require_admin
-			if !current_user || !current_user.admin?
-				flash[:notice] = 'You must be an admin to view this page'
-				redirect_to blog_posts_path
-				return false
-			end
+  def require_admin
+    if !current_user || !current_user.admin?
+      flash[:notice] = 'You must be an admin to view this page'
+      redirect_to blog_posts_path
+      return false
+    end
 
-			return true
-		end
+    return true
+  end
 end

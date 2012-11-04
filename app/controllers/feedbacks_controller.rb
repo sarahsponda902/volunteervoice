@@ -1,23 +1,26 @@
 class FeedbacksController < ApplicationController
-  # GET /feedbacks
-  # GET /feedbacks.json
+  before_filter :check_for_admin, :except => [:new, :create, :thank_you]
   include ActionView::Helpers::TextHelper
   
+  # GET /feedbacks
+  # GET /feedbacks.json
+  
+  # Admin only index page
   def index
-    if (user_signed_in? && current_user.admin?)
-    @feedbacks = Feedback.all.reverse
+    @feedbacks = Feedback.all.sort_by(&:created_at).reverse
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @feedbacks }
     end
-  else 
-    redirect_to root_path
-  end
   end
 
   # GET /feedbacks/1
   # GET /feedbacks/1.json
+  
+  # Admin only show feedback page
+  # (note - there is no link to actually get to this page, 
+  #    but keeping it for possible future use)
   def show
     @feedback = Feedback.find(params[:id])
 
@@ -27,8 +30,12 @@ class FeedbacksController < ApplicationController
     end
   end
 
+
+
   # GET /feedbacks/new
   # GET /feedbacks/new.json
+  # new feedback page
+  #   note - only gets called when there is an error from popup
   def new
     @feedback = Feedback.new
 
@@ -38,11 +45,12 @@ class FeedbacksController < ApplicationController
     end
   end
 
+
+
   # POST /feedbacks
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(params[:feedback])
-    @feedback.truncated100 = (truncate @feedback.body, :length => 100)
     respond_to do |format|
       if @feedback.save
         format.html { redirect_to '/feedbacks/thank_you', notice: 'Feedback was successfully created.' }
@@ -55,35 +63,43 @@ class FeedbacksController < ApplicationController
     end
   end
 
+
+  # Thank you page
+  # Directed to thank you page after creating a feedback
   def thank_you
   end
 
+
   # DELETE /feedbacks/1
   # DELETE /feedbacks/1.json
+  # Admin only destroy feedback
   def destroy
-    if (user_signed_in? && current_user.admin?)
       @feedback = Feedback.find(params[:id])
       @feedback.destroy
-      redirect_to "/feedbacks"
-    else
-      redirect_to root_path
-    end
+      redirect_to feedbacks_path
   end
 
+# method called by admin on feedback index page
+# to change whether the feedback is shown on the home page
+# Admin only
 def changeShow
-  if (user_signed_in? && current_user.admin?)
     @feedback = Feedback.find(params[:id])
     if @feedback.show
       @feedback.show = false
-      @feedback.save
     else
       @feedback.show = true
-      @feedback.save
     end
+    @feedback.save
     respond_to do |format|
       format.html { redirect_to feedbacks_url }
     end
-  else
+end
+
+private
+
+## check_for_admin called by before_filter
+def check_for_admin
+  unless user_signed_in? && current_user.admin?
     redirect_to root_path
   end
 end

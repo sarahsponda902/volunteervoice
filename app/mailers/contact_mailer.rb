@@ -23,7 +23,7 @@ class ContactMailer < ActionMailer::Base
        mail(:subject => "Contact Us: #{message.subject}", :to => "questions@volunteervoice.org")
   end
    
-  def to_organizations(message)
+  def to_feedback(message)
      @message = message
      @user_path = "http://girlpowerproject.herokuapp.com/users/#{@message.user_id}"
      mail(:subject => "Unsubscribe: #{message.subject}", :to => "contact@volunteervoice.org")
