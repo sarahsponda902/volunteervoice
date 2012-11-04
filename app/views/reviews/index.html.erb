@@ -69,7 +69,7 @@
 	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), "/reviews/#{f.id}/changeShow" %>
 	<% end %></td>
     <td width="7%"><p style="margin-left:11px"><%= link_to 'Edit', edit_review_path(f) %></p></td>
-    <td width="7%"><%= button_to 'Delete', oa, method: :delete %></td>
+    <td width="7%"><%= button_to 'Delete', f, method: :delete %></td>
   </tr>
 <% end %>
 </tdata>
