@@ -73,16 +73,11 @@ a.forgotPasswordLink:hover {
 <div class="container" align="center">
 	<!-- ERROR MESSAGES -->
 	<% if flash.class.name != "String"%>
-	<% flash.each do |key, value| %>
-		<% if value.class.name != "String"%>
+		<% flash.each do |key, value| %>
 		  <div class="flash <%=key%>">
-	<%= pluralize value.length, "errors"%> prevented you from logging in:<br />
-		<% value.each do |f|%>
-			* <%=f%><br />
+			<%= value %>
+	  	  </div>
 		<% end %>
-	  </div>
-	<% end %>
-	<% end %>
 	<% end %><!-- END ERROR MESSAGES -->
 	<div class="row">
 
