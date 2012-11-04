@@ -4,8 +4,10 @@ class ProgramsController < ApplicationController
 	require 'aws/s3'
 	
 	
-	# search results page for all means of searching
+	# in-alpha search results page (TESTING ONLY)
+	# testing facets, can get here from pages/test
 	def search_results
+	  # Sunspot search
 	  @search = Program.search do
 	    fulltext params[:search] if params[:search].present?
 	    facet(:program_subjects)
