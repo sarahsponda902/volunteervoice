@@ -46,7 +46,7 @@ RMTest::Application.routes.draw do
   
   get 'organization_accounts/successful_unsubscribe'
   
-  devise_for :organization_accounts, :controllers => {:invitations => :invitations, :unlocks => :unlocks, :passwords => :passwords}
+  devise_for :organization_accounts, :controllers => {:invitations => :invitations, :unlocks => :unlocks, :passwords => :passwords, :sessions => :sessions}
   devise_scope :organization_account do
     match "/organization_accounts/sign_out" => "devise/sessions#destroy"
     match "/organization_accounts/profile" => "organization_accounts#profile"
@@ -103,7 +103,7 @@ RMTest::Application.routes.draw do
 
   devise_for :admins
   
-  devise_for :users, :controllers => {:registrations => :registrations}
+  devise_for :users, :controllers => {:registrations => :registrations, :sessions => :sessions}
 
   resources :favorites
   

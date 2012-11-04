@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_presence_of :username
   validates_length_of :username, :maximum => 30
+  validates_presence_of :email
   validates_confirmation_of :email, :on => :create, :message => "did not match confirmation"
   
   before_save :square_image_crop 
