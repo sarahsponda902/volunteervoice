@@ -152,11 +152,6 @@ class Searches::ShowPresenter
   end
 
 
-   @organic_farming.each do |f|
-      @all_agriculture << f.subject unless @agriculture_ids.include?(f.program_id)
-   end
-
-
 
   # start of main subject categories
   def agriculture 
