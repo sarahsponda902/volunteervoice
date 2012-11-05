@@ -187,7 +187,7 @@ class Searches::ProgramBrowsePresenter
   end
   
   def construction 
-    @subjects = ProgramSubject.where(:subject => "Construction")
+    ProgramSubject.where(:subject => "Construction")
   end
   
   def culture_and_community 
@@ -215,7 +215,7 @@ class Searches::ProgramBrowsePresenter
   end
   
   def engineering_and_infrastructure 
-    @subjects = ProgramSubject.where(:subject => "EngineeringandInfrastructure")
+    ProgramSubject.where(:subject => "EngineeringandInfrastructure")
   end
   
   def environmental 
@@ -243,11 +243,7 @@ class Searches::ProgramBrowsePresenter
   end
   
   def international_work_camp 
-    @subjects = []
-    HASH_OF_SUBJECT_GROUPS["InternationalWorkCamp"].each do |subj|
-      @subjects << ProgramSubject.where(:subject => subj)
-    end
-    @subjects.flatten
+    ProgramSubject.where(:subject => "InternationalWorkCamp"]
   end
   
   def recreation 

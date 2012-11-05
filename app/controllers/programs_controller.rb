@@ -174,12 +174,10 @@ class ProgramsController < ApplicationController
   end
 
   ## check_for_admin_or_org_account called by before_filter
-  def check_for_admin_or_org_account
-    if current_organization_account.nil? 
-      if (current_user.present? && !(current_user.admin?)) || current_user.nil?
-        redirect_to root_path
-      end
-    end
-  end
+   def check_for_admin_or_org_account
+     unless (user_signed_in? && current_user.admin?) || current_organization_account.present?
+       redirect_to root_path
+     end
+   end
 
 end
