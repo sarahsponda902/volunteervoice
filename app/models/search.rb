@@ -86,7 +86,7 @@ class Search < ActiveRecord::Base
     end
 
     # set @search.showing if nil to 'Organizations'
-    @search.showing ||= "Organizations"
+    @search.showing = "Organizations" unless @search.showing.present?
 
     # if showing organizations, switch results over to orgs (by mapping progs => orgs)
     if showing == "Organizations"
@@ -97,9 +97,6 @@ class Search < ActiveRecord::Base
     @second_search = Organization.search do 
       keywords keys unless keys.nil?
     end
-
-    #just in case second_search is nil
-    @second_search ||= []
 
     # add second_search results to final_results
     @final_results = @final_results | @second_search.results

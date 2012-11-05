@@ -827,26 +827,18 @@ select#length_max_param {
 }
 </style>
 
-<%= Rails.logger.info "\n end style"%>
-
 <div class="container">
 	<div class="row">	
 <div class="eleven columns" id="resultsContentsContainer">
 <div class="contents" id="programs-contents">
-	<%= Rails.logger.info "\n start if"%>
 			<% if !(@results.empty?)%>	
-			<%= Rails.logger.info "\n results are not empty"%>
 	<div id="divProgram">
 		<% if (@search.showing == "Programs")%>
-		<%= Rails.logger.info "\n showing is program"%>
 			<% @results.each do |f|%>	
-			<%= Rails.logger.info "\n ---showed a program"%>
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
 			<% end %>
 		<% else %>
-		<%= Rails.logger.info "\n showing is orgs"%>
 			<% @results.each do |f|%>
-				<%= Rails.logger.info "\n rendered org_result --\n"%>
 				<%= render :partial => "organizations_results", :locals => {:f => f}%>
 			<% end %>
 		<% end %>
