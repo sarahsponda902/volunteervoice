@@ -58,7 +58,7 @@ class OrganizationsController < ApplicationController
 
     # for the in-place editing (mainly for organization accounts)
     #  Only Admin & Org Accounts can edit
-    if (user_signed_in? && current_user.admin?) || (organization_account_signed_in? && current_organization_account.organization_id == @organization.id)
+    if (user_signed_in? && current_user.admin?) || (current_organization_account.present? && current_organization_account.organization_id == @presenter.this_organization.id)
       @can_edit = true
     else
       @can_edit = false
