@@ -111,7 +111,6 @@ class Search < ActiveRecord::Base
     @final_results = @final_results.sort_by(&:weekly_cost) if @search.sort_by == "pricelow"
     @final_results = @final_results.sort_by(&:weekly_cost).reverse! if @search.sort_by == "pricehigh"
 
-    Rails.logger.info "\n returning results"
     # return results... WE'RE DONE!!!
     @final_results
 
