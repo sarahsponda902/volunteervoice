@@ -40,14 +40,16 @@ class SearchesController < ApplicationController
     end
   end
 
+
   # GET /searches/1
   # GET /searches/1.json
   def show
     if Search.exists?(params[:id]) # if the search hasn't been deleted by admin
-
-      # presenter found in presenters/searches/show_presenter.rb
-      @presenter = Searches::ShowPresenter.new(params[:id])
-
+      @search = Search.find(params[:id])
+      # locations where there are programs to send to javascript on page
+       # only locations with programs will be available as facets
+       @locations = Program.all.map{|program| program.location}.uniq
+       @results = @search.search_results
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @search }

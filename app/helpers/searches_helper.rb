@@ -12,4 +12,7 @@ module SearchesHelper
     @continent_hash
   end
   
+  
+  
+  
 end

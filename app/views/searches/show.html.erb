@@ -234,7 +234,7 @@ p.orgStarsContainer {
 <div class="container">
 <div id ="programs-contents1">	
 <%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SearchResultsTitle.png"%><br /><br />
-	<p align="left" id="searchResultsCount"> Your search has <%= pluralize @presenter.results.count, "match"%>:</p>
+	<p align="left" id="searchResultsCount"> Your search has <%= pluralize @results.count, "match"%>:</p>
 
 	<br />
 	<br />
@@ -833,14 +833,14 @@ select#length_max_param {
 	<div class="row">	
 <div class="eleven columns" id="resultsContentsContainer">
 <div class="contents" id="programs-contents">
-			<% if !(@presenter.results.empty?)%>	
+			<% if !(@results.empty?)%>	
 	<div id="divProgram">
 		<% if (@search.showing == "Programs" || @search.showing.nil?)%>
-			<% @presenter.results.each do |f|%>	
+			<% @results.each do |f|%>	
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
 			<% end %>
 		<% else %>
-			<% @presenter.results.each do |f|%>
+			<% @results.each do |f|%>
 	
 				<%= render :partial => "organizations_results", :locals => {:f => f}%>
 			<% end %>
@@ -1685,7 +1685,7 @@ $(document).ready(function() {
 	/******************************/
 	
 	//initialize pagination via smartpaginator on the "divProgram" div. the "#program" div will contain the "1-1 of 5"..etc pager
-	$('#program').smartpaginator({ totalrecords: <%=@presenter.results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
+	$('#program').smartpaginator({ totalrecords: <%=@results.count%>, recordsperpage: 10, datacontainer: 'divProgram', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: '#575758' });
 	
 	
 });
