@@ -131,7 +131,7 @@ class SearchesController < ApplicationController
 
   def program_browse
     # presenter found in presenters/searches/program_browse_presenter.rb
-    @presenter = Searches::ProgramBrowsePresenter.new(params[:id])
+    @presenter = Searches::ProgramBrowsePresenter.new()
 
     respond_to do |format|
       format.html
