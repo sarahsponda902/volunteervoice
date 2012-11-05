@@ -36,7 +36,7 @@ class Searches::ShowPresenter
   def length_max
     @search.length_max_number ||= 2
     @search.length_max_param ||= "years"
-    @search.length_max_number.to_i.send(@search.length_max_param).to_f)
+    @search.length_max_number.to_i.send(@search.length_max_param).to_f
   end
 
   def locations
