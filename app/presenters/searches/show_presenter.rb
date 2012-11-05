@@ -5,35 +5,41 @@ class Searches::ShowPresenter
 
   # set the search parameters for sunspot to use
   def keys
-    @search.keywords
+    keys ||= @search.keywords
   end
 
   def subjects
-    @search.subjects.split("; ")
+    subjects ||= @search.subjects.split("; ")
   end
 
   def regions
-    @search.regions.split("; ")
+    regions ||= @search.regions.split("; ")
   end
 
   def sizes
-    @search.sizes.split("; ")
+    sizes ||= @search.sizes.split("; ")
   end
 
   def price_max
-    @search.price_max || 99999
+    @search.price_max ||= 99999
+    price_max ||= @search.price_max
   end
 
   def price_min
-    @search.price_min || 0
+    @search.price_min ||= 0
+    price_min ||= @search.price_min
   end
 
   def length_min
-    @search.length_min_number.to_i.send(@search.length_min_param).to_f || 0.weeks.to_f
+    @search.length_min_number ||= 0
+    @search.length_min_param ||= "weeks"
+    length_min ||= (@search.length_min_number.to_i.send(@search.length_min_param).to_f)
   end
 
   def length_max
-    @search.length_max_number.to_i.send(@search.length_max_param).to_f || 2.years.to_f
+    @search.length_max_number ||= 2
+    @search.length_max_param ||= "years"
+    length_max ||= (@search.length_max_number.to_i.send(@search.length_max_param).to_f)
   end
 
 
