@@ -50,7 +50,7 @@ class SearchesController < ApplicationController
       # locations where there are programs to send to javascript on page
        # only locations with programs will be available as facets
        @locations = []
-       Program.find_in_batches(:batch_size => 500) do |prog|
+       Program.find_each(:batch_size => 500) do |prog|
          @locations << prog.location unless @locations.include?(prog.location)
        end
        @results = @search.search_results(params[:id])
