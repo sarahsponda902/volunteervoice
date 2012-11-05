@@ -1,6 +1,6 @@
-class Organizations::ShowPresenter
-  def initialize(org_id)
-    @program = Program.find(params[:id])
+class Programs::ShowPresenter
+  def initialize(program_id)
+    @program = Program.find(program_id)
   end
   
   #returns the program

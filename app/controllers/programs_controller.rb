@@ -23,7 +23,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1.json
   def show
     # presenter found in presenters/programs/show_presenter.rb
-    @presenter = Organizations::ShowPresenter.new(params[:id])
+    @presenter = Programs::ShowPresenter.new(params[:id])
     @flag = Flag.new # for the flagging a review form
 
     respond_to do |format|
