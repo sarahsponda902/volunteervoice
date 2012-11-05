@@ -482,7 +482,7 @@ a.basedOnReviewsLink:hover {
 			<%= render :partial => "bigStar", :locals => {:stars => (@presenter.this_program.roundup(@presenter.overall))}%>
 			<br />
 
-			<p class="basedOnReviewsContainer"><a class="basedOnReviewsLink" href="#results">Based on <%= @presenter.this_program.reviews.count%> reviews</a></p> 
+			<p class="basedOnReviewsContainer"><a class="basedOnReviewsLink" href="#results">Based on <%= @presenter.results.count%> reviews</a></p> 
 			<br />
 			<% if !(current_user.nil?) && current_user.admin? %>
 			<%= link_to "edit", "/programs/#{@presenter.this_program.id}/edit"%> <br /><br /><br />
@@ -512,8 +512,8 @@ a.basedOnReviewsLink:hover {
 	<div class="eleven columns" id="leftColumnContainer">
 		<div class="six columns" id="innerLeftColumnContainer">
 		<span class="detailLabel">Subjects: </span>
-		<% @presenter.this_program_subjects = @presenter.this_program.program_subjects.map{|prog| prog.subject}%>
-		<%= @presenter.this_program_subjects[0..(@presenter.this_program.program_subjects.count - 1)].join(", ")%><br /><br />
+		<% @presenter.this_program.program_subjects = @presenter.this_program.program_subjects.map{|prog| prog.subject}%>
+		<%= @presenter.this_program.program_subjects[0..(@presenter.this_program.program_subjects.count - 1)].join(", ")%><br /><br />
 		<span class="detailLabel">Country: </span><%= THECOUNTRIES[@presenter.this_program.location]%><br /><br />
 		<span class="detailLabel">Location: </span><%= @presenter.this_program.specific_location%><br /><br />
 		<span class="detailLabel">Program Started: </span> <%=@presenter.this_program.program_started%><br /><br />
@@ -524,8 +524,8 @@ a.basedOnReviewsLink:hover {
 		<span class="detailLabel">Program Structure: </span><%= @presenter.this_program.program_structure.html_safe if @presenter.this_program.program_structure.present?%><br /><br />
 		<span class="detailLabel">Partnered Local Organizations: </span><%= @presenter.this_program.partnered_local_organizations%><br /><br />
 		<span class="detailLabel">Group Sizes: </span>
-		<% @presenter.this_program_sizes = @presenter.this_program.program_sizes.map{|prog| prog.size}%>
-		<%= @presenter.this_program_sizes[0..(@presenter.this_program.program_sizes.count - 2)].join(", ")%>
+		<% @presenter.this_program.program_sizes = @presenter.this_program.program_sizes.map{|prog| prog.size}%>
+		<%= @presenter.this_program.program_sizes[0..(@presenter.this_program.program_sizes.count - 2)].join(", ")%>
 		
 		<br /><br />
 	<span class="detailLabel">	Accommodations: </span><%= @presenter.this_program.accommodations.html_safe if @presenter.this_program.accommodations.present?%><br />

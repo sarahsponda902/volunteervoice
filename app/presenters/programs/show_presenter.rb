@@ -3,7 +3,7 @@ class Programs::ShowPresenter
     @program = Program.find(program_id)
   end
   
-  #returns the program
+  #returns the current program
   def this_program
     @program
   end
