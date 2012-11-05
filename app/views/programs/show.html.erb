@@ -512,8 +512,8 @@ a.basedOnReviewsLink:hover {
 	<div class="eleven columns" id="leftColumnContainer">
 		<div class="six columns" id="innerLeftColumnContainer">
 		<span class="detailLabel">Subjects: </span>
-		<% @presenter.this_program.program_subjects = @presenter.this_program.program_subjects.map{|prog| prog.subject}%>
-		<%= @presenter.this_program.program_subjects[0..(@presenter.this_program.program_subjects.count - 1)].join(", ")%><br /><br />
+		<% @all_program_subjects = @presenter.this_program.program_subjects.map{|prog| prog.subject}%>
+		<%= @all_program_subjects[0..(@presenter.this_program.program_subjects.count - 1)].join(", ")%><br /><br />
 		<span class="detailLabel">Country: </span><%= THECOUNTRIES[@presenter.this_program.location]%><br /><br />
 		<span class="detailLabel">Location: </span><%= @presenter.this_program.specific_location%><br /><br />
 		<span class="detailLabel">Program Started: </span> <%=@presenter.this_program.program_started%><br /><br />
