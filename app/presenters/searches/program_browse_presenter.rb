@@ -243,7 +243,7 @@ class Searches::ProgramBrowsePresenter
   end
   
   def international_work_camp 
-    ProgramSubject.where(:subject => "InternationalWorkCamp"]
+    ProgramSubject.where(:subject => "InternationalWorkCamp")
   end
   
   def recreation 
