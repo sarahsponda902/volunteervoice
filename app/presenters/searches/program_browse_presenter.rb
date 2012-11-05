@@ -1,4 +1,4 @@
-class Searches::ShowPresenter
+class Searches::ProgramBrowsePresenter
   
   def initialize()
   end
