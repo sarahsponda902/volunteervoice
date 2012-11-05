@@ -35343,3 +35343,148 @@ Served asset /Museo_Slab_500-webfont.woff - 304 Not Modified (2ms)
 
 Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-11-04 17:57:33 -0800
 Served asset /BEBAS___-webfont.woff - 304 Not Modified (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-04 21:10:26 -0800
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE ("organizations"."id" >= 0) ORDER BY "organizations"."id" ASC LIMIT 1000[0m
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.1ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  Rendered pages/home.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 365ms (Views: 220.4ms | ActiveRecord: 2.9ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /application.css - 304 Not Modified (74ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /blog_kit.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /errors.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /foundation.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /lightbox.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /organization_accounts.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /searches.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /smartpaginator.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /style.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /DonateButton.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/JosefinSlab-Regular-webfont.woff" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /JosefinSlab-Regular-webfont.woff - 304 Not Modified (39ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /Museo_Slab_500-webfont.woff - 304 Not Modified (2ms)
+
+
+Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-11-04 21:10:27 -0800
+Served asset /BEBAS___-webfont.woff - 304 Not Modified (2ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2012-11-04 21:10:30 -0800
+Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9ui1WrfurojRytaEGHYbss6n+kwsEPsOsUYQ5qCYwXU=", "x"=>"0", "y"=>"0", "search"=>{"keywords"=>"hello"}}
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (4.0ms)[0m  INSERT INTO "searches" ("created_at", "keywords", "length_max_number", "length_max_param", "length_min_number", "length_min_param", "price_max", "price_min", "regions", "sent_from", "showing", "sizes", "sort_by", "subjects", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["created_at", Sun, 04 Nov 2012 21:10:30 PST -08:00], ["keywords", "hello"], ["length_max_number", 2], ["length_max_param", "years"], ["length_min_number", 0], ["length_min_param", "weeks"], ["price_max", 99999], ["price_min", 0], ["regions", ""], ["sent_from", nil], ["showing", nil], ["sizes", nil], ["sort_by", nil], ["subjects", nil], ["updated_at", Sun, 04 Nov 2012 21:10:30 PST -08:00]]
+  [1m[36m (19.2ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/searches/2
+Completed 302 Found in 28ms (ActiveRecord: 23.3ms)
+
+
+Started GET "/searches/2" for 127.0.0.1 at 2012-11-04 21:10:30 -0800
+Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSearch Exists (0.2ms)[0m  SELECT 1 FROM "searches" WHERE "searches"."id" = 2 LIMIT 1
+  [1m[36mSearch Load (0.2ms)[0m  [1mSELECT "searches".* FROM "searches" WHERE "searches"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mProgram Load (0.1ms)[0m  SELECT "programs".* FROM "programs" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "searches".* FROM "searches" WHERE "searches"."id" = ? LIMIT 1[0m  [["id", "2"]]
+Completed 500 Internal Server Error in 145ms
+
+NoMethodError (undefined method `map' for :regions:Symbol):
+  app/models/search.rb:49:in `search_results'
+  app/controllers/searches_controller.rb:52:in `show'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.5ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.1ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (14.4ms)
+
+
+Started GET "/searches/2" for 127.0.0.1 at 2012-11-04 21:11:08 -0800
+Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mSearch Exists (0.2ms)[0m  SELECT 1 FROM "searches" WHERE "searches"."id" = 2 LIMIT 1
+  [1m[36mSearch Load (0.1ms)[0m  [1mSELECT "searches".* FROM "searches" WHERE "searches"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35mProgram Load (0.1ms)[0m  SELECT "programs".* FROM "programs" 
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "searches".* FROM "searches" WHERE "searches"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[32mSOLR Request (1.6ms)[0m  [ path=#<RSolr::Client:0x007fdcc1e49198> parameters={data: [1m[1mfq=type%3AProgram&fq=program_subjects_sm%3A%28%29&fq=location_s%3A%28%29&fq=program_sizes_sm%3A%28%29&q=hello&fl=%2A+score&qf=name_text+organization_name_text+location_name_text+description_text+start_dates_text+program_structure_text+partnered_local_organizations_text+cost_includes_text+accommodations_text+specific_location_text+food_situation_text+program_requirements_text&defType=dismax&start=0&rows=30[0m, method: [1m[1mpost[0m, params: [1m[1m{:wt=>:ruby}[0m, query: [1m[1mwt=ruby[0m, headers: [1m[1m{"Content-Type"=>"application/x-www-form-urlencoded; charset=UTF-8"}[0m, path: [1m[1mselect[0m, uri: [1m[1mhttp://localhost:8982/solr/select?wt=ruby[0m, open_timeout: [1m[1m[0m, read_timeout: [1m[1m[0m} ]
+Completed 500 Internal Server Error in 54ms
+
+Errno::ECONNREFUSED (Connection refused - connect(2)):
+  app/models/search.rb:49:in `search_results'
+  app/controllers/searches_controller.rb:52:in `show'
+
+
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (4.7ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered vendor/bundle/ruby/1.9.1/gems/actionpack-3.2.2.rc1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (12.6ms)

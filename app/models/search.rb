@@ -51,9 +51,9 @@ class Search < ActiveRecord::Base
 
       with(:program_subjects).any_of(subjects)
 
-      with(:location).any_of(:regions)
+      with(:location).any_of(regions)
 
-      with(:program_sizes).any_of(:sizes)
+      with(:program_sizes).any_of(sizes)
 
     end
     @program_results = @program_search.results
@@ -65,10 +65,10 @@ class Search < ActiveRecord::Base
       # Cost Length search
       @cost_length_search = ProgramCostLengthMap.search do
         all_of do
-          with(:length).greater_than(:length_min)
-          with(:length).less_than(:length_max)
-          with(:cost).greater_than(:price_min)
-          with(:cost).less_than(:price_max)
+          with(:length).greater_than(length_min)
+          with(:length).less_than(length_max)
+          with(:cost).greater_than(price_min)
+          with(:cost).less_than(price_max)
         end      
       end
 
@@ -91,7 +91,7 @@ class Search < ActiveRecord::Base
 
     # do a third search, to determine if there are organizations we missed because they have no programs
     @second_search = Organization.search do 
-      keywords :keys unless :keys.nil?
+      keywords keys unless keys.nil?
     end
 
     #just in case second_search is nil
