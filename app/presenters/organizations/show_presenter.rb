@@ -56,12 +56,12 @@ class Organizations::ShowPresenter
 
   # returns all program_subjects associated with that org
   def program_subjects
-    @organization.program_subjects.uniq
+    @organization.program_subjects.map(&:subject).uniq
   end
 
   # returns all group_sizes associated with that org
   def group_sizes
-    @organization.program_sizes.uniq
+    @organization.program_sizes.map(&:size).uniq
   end
 
   # returns all program_lengths associated with that org
@@ -71,7 +71,7 @@ class Organizations::ShowPresenter
   
   # returns all program_subjects associated with that org
   def types_of_programs
-    @organization.programs.map{|program| program.subject}.uniq
+    @organization.programs.map(&:subject).uniq
   end
 
 end
