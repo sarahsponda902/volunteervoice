@@ -524,8 +524,8 @@ a.basedOnReviewsLink:hover {
 		<span class="detailLabel">Program Structure: </span><%= @presenter.this_program.program_structure.html_safe if @presenter.this_program.program_structure.present?%><br /><br />
 		<span class="detailLabel">Partnered Local Organizations: </span><%= @presenter.this_program.partnered_local_organizations%><br /><br />
 		<span class="detailLabel">Group Sizes: </span>
-		<% @presenter.this_program.program_sizes = @presenter.this_program.program_sizes.map{|prog| prog.size}%>
-		<%= @presenter.this_program.program_sizes[0..(@presenter.this_program.program_sizes.count - 2)].join(", ")%>
+		<% @all_program_sizes = @presenter.this_program.program_sizes.map{|prog| prog.size}%>
+		<%= @all_program_sizes[0..(@presenter.this_program.program_sizes.count - 2)].join(", ")%>
 		
 		<br /><br />
 	<span class="detailLabel">	Accommodations: </span><%= @presenter.this_program.accommodations.html_safe if @presenter.this_program.accommodations.present?%><br />
