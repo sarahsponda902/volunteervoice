@@ -21,7 +21,8 @@
 #
 
 class Search < ActiveRecord::Base
-  # does all the searching and returns results based on the parameters above
+  
+  # search_results does all the searching and returns results based on the parameters above
   # searches through 3 models: programs, organizations, and cost-length-maps
   def search_results(id)
     @search = Search.find(id)

@@ -3,6 +3,10 @@ class Searches::ProgramBrowsePresenter
   def initialize()
   end
   
+  ########
+  # these methods return an array of program_subject objects corresponding to the method name
+  ########
+  
   def organic_farming 
     ProgramSubject.where(:subject => "Organic Farming")
   end
@@ -154,6 +158,8 @@ class Searches::ProgramBrowsePresenter
 
 
   # start of main subject categories
+  #  main subjects have other subjects associated with them,
+  #   so we have to get all the subjects for each main subject
   def agriculture 
     @subjects = []
     HASH_OF_SUBJECT_GROUPS["Agriculture"].each do |subj|

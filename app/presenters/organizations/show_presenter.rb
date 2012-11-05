@@ -12,6 +12,7 @@ class Organizations::ShowPresenter
     @organization
   end
 
+  # for cost chart table
   def cost_length_table_entries
     # getting sorted, unique cost-lengths for this organization
     @sorted = ProgramCostLengthMap.where(:organization_id => @organization.id).sort_by(&:length)

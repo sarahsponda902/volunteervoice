@@ -1,61 +1,69 @@
-<style>
-	.blogPost {
-		color:#575758;
-		float:right;
-		width:100%;
-	}
-	.blogPostImage {
-		float:right; 
-		margin-top:20px; 
-		padding-left:10px; 
-		height:100px
-	}
-	.blogPostTitle {
-		font-size:2.2em; 
-		line-height:1.2em;
-	}
-	a.blogPostUserLink {
-		color:#e67b5a;
-	}
-	a.blogPostUserLink:hover {
-		color:white;
-	}
-	.blogPostDate {
-		color:#68c2d8;
-	}
-	.blogPostBody {
-		font-size:1.1em; 
-		margin-top:10px;
-	}
-	.lineBeforeComments {
-		width:100%;
-		height:1px;
-		background-color:#575758;
-		margin-top:30px;
-	}
-</style>
-<%= javascript_include_tag "/assets/jquery.js"%>
-<div class="blogPost">
+<!-- this partial dictates the appearance of each blog_post on /blog_posts (the #index method) -->
 
-		<% if !(blog_post.image.url.nil?)%>
-		<%= image_tag blog_post.square_image.url, :class => "blogPostImage" %>
-		<% end %>
-	
+<%= javascript_include_tag "/assets/jquery.js"%>
+<style>
+
+.blogPost { /* container for entire blog post */
+	color:#575758;
+	float:right;
+	width:100%;
+}
+.blogPostImage { /* image attached to blog post */
+	float:right; 
+	margin-top:20px; 
+	padding-left:10px; 
+	height:100px
+}
+.blogPostTitle { /* blog post's title */
+font-size:2.2em; 
+line-height:1.2em;
+}
+a.blogPostUserLink { /* link to admin's profile who created the blog post */
+color:#e67b5a;
+}
+a.blogPostUserLink:hover { 
+	color:white;
+}
+.blogPostDate { /* date blog post was published */
+	color:#68c2d8;
+}
+.blogPostBody { /* actual text of blog post */
+	font-size:1.1em; 
+	margin-top:10px;
+}
+.lineBeforeComments { /* line separating each blog post from the next */
+	width:100%;
+	height:1px;
+	background-color:#575758;
+	margin-top:30px;
+}
+</style>
+
+<div class="blogPost">
+	<!-- blog post image (if it exists) -->
+	<% if blog_post.image.url.present?%>
+	<%= image_tag blog_post.square_image.url, :class => "blogPostImage" %>
+	<% end %><!-- end blog image -->
+
+	<!-- title of blog post -->
 	<p class="blogPostTitle">
 		<%= link_to(h(blog_post.title), blog_post) %>
 		<% if !blog_post.published? %>
-			[Draft]
+		[Draft]
 		<% end %>	
-	</p>
+	</p><!-- end blog post title -->
 
+	<!-- blog post date posted & admin who posted it -->
 	<p class="blogPostPostedAt">
 		Posted
-		<% if blog_post.show_user? %>
-			By <span class="blogPoster"><a class="blogPostUserLink" href="/users/<%=User.find(blog_post.user_id).id%>"><%= User.find(blog_post.user_id).username %></a></span>
-		<% end %>
+		By <span class="blogPoster">
+			<a class="blogPostUserLink" href="/users/<%=User.find(blog_post.user_id).id%>"><!-- username link>
+			<%= User.find(blog_post.user_id).username %><!-- username text -->
+			</a>
+			</span>
 		on 
 		<span class="blogPostDate"><%= blog_post.updated_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></span>
-	</p>
+	</p><!-- end date posted -->
 
 	<div class="blogPostBody">
 		<%= blog_post.body.html_safe %> 
@@ -68,11 +76,11 @@
 
 
 			<% if user_signed_in? && current_user.admin? %>
-				<li><%= link_to('Edit Post', edit_blog_post_path(blog_post))%></li>
-				<% @location = request.path%>
-				<% @location = @location.split("/")%>
-				<% @location = @location[2]%>
-				<li><%= link_to 'Delete', :controller => "blog_posts", :action => "destroy", :id => blog_post.id, :location => @location %></li>
+			<li><%= link_to('Edit Post', edit_blog_post_path(blog_post))%></li>
+			<% @location = request.path%>
+			<% @location = @location.split("/")%>
+			<% @location = @location[2]%>
+			<li><%= link_to 'Delete', :controller => "blog_posts", :action => "destroy", :id => blog_post.id, :location => @location %></li>
 			<% end %>
 		</ul>
 	</p>
@@ -81,8 +89,8 @@
 	<% end %>
 
 	<% if defined?(show_comments) %>
-		<%= render :partial => 'blog_posts/comments' %>
-		<%= render :partial => 'blog_comments/new_blog_comment', :locals => {:blog_comment => @blog_comment} %>
+	<%= render :partial => 'blog_posts/comments' %>
+	<%= render :partial => 'blog_comments/new_blog_comment', :locals => {:blog_comment => @blog_comment} %>
 	<% end %>
 
 

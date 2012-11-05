@@ -1,5 +1,6 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
 <style>
+/* textarea for comment's body */
 .blogPostCommentBody{
 	width:80%; 
 	height:75px;
@@ -7,34 +8,42 @@
 	float:center;
 	margin-bottom:15px;
 }
+
+/* little message requiring user to be logged in to comment */
 .mustBeMessage {
 	font-weight:600;
 }
 </style>
 <div class="blogNewComment">
 	<% if !user_signed_in?  %>
-		<p class="mustBeMessage">You must be logged in to post a comment.</p>
+	<!-- must be logged in message -->
+	<p class="mustBeMessage">You must be logged in to post a comment.</p>
+	<!-- end must be logged in -->
 	<% else %>
+	<!-- Error messages for blog comment (ie. if it is profane, etc)-->
 		<%= form_for([@blog_post, blog_comment]) do |f| %>
 			<% if blog_comment.errors.size > 0 %>
-				<div id="errorExplanation">
-					<h2>The comment could not be saved:</h2>
-					<ul>
-						<% blog_comment.errors.full_messages.each do |msg| %>
-							<li><%= msg %></li>
-						<% end %>
-					</ul>
-				</div>
+			<div id="errorExplanation">
+				<h2>The comment could not be saved:</h2>
+				<ul>
+				<% blog_comment.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+				</ul>
+			</div>
 			<% end %>
-
-			<p>
-
-				<%= f.text_area :body, :class =>"blogPostCommentBody", :value => "Post a comment...", :onclick => "if (this.value == 'Post a comment...') {this.value =''}" %>
-
-			</p>
-			<p style="text-align:center">
-				<%= image_submit_tag 'https://s3-us-west-1.amazonaws.com/volunteervoice/images/post.png' , :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
-			</p>
-		<% end %>
-	<% end %>
+	<!-- End error messages -->
+	
+	<!-- textarea comment box -->
+	<p>
+		<%= f.text_area :body, :class =>"blogPostCommentBody", :value => "Post a comment...", :onclick => "if (this.value == 'Post a comment...') {this.value =''}" %>
+	</p><!-- end comment box -->
+	
+	<!-- submit button -->
+	<p style="text-align:center">
+		<%= image_submit_tag 'https://s3-us-west-1.amazonaws.com/volunteervoice/images/post.png' , :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+	</p>
+	<!-- end submit button -->
+		<% end %><!-- end form for comment -->
+	<% end %><!-- end if signed in statement -->
 </div>
