@@ -138,7 +138,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     
     # check if review belongs to user OR user is an admin
-    if (current_user.admin? || current_user.id == @review.user_id))
+    if (current_user.admin? || current_user.id == @review.user_id)
       @review_id = @review.program_id
       @review.destroy
 
