@@ -26,7 +26,7 @@ class Programs::ShowPresenter
   def overall
     @overall = 0
     @results = @program.reviews
-    @results.reviews.each do |f|
+    @results.each do |f|
       @overall = @overall + f.overall
     end
     if @results.count != 0
