@@ -1,7 +1,8 @@
 class SearchesController < ApplicationController
 
   before_filter :check_for_admin, :only => [:index, :destroy, :erase_old]
-
+  include SearchesHelper
+  
   # GET /searches
   # GET /searches.json
   # Shows history of searches for Admin only

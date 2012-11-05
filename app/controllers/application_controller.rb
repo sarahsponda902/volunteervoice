@@ -79,14 +79,6 @@ class ApplicationController < ActionController::Base
   #### CUSTOM ERROR PAGES ####
   ############################
 
-  #for custom error page (404)
-  #def method_missing(m, *args, &block)
-   # Rails.logger.error(m)
-   # respond_to do |format|
-   #   format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
-   # end
-#  end
-
   #render pretty error pages when 404 or 500 status code appear
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_error
