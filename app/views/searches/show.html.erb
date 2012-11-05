@@ -248,7 +248,6 @@ p.orgStarsContainer {
 		<p id="displayByLabel"> 	Display:</p>
 		<div class="select-div" id="displaySelectDiv">
 					<%= form_for @search do |f|%>
-					<%= Rails.logger.info "\n display_what form"%>
 			<select id ="display" name="search[showing]" onchange="this.form.submit()">
 				<option value="Programs">Programs</option>
 				<option value="Organizations">Organizations</option></select>
@@ -277,7 +276,6 @@ p.orgStarsContainer {
 
 </div>
 
-<%= Rails.logger.info "\n list_by form"%>
 
 <!-- Hidden search facets. For some reason, search facets within tabs would not save on form submit. So I hid a corresponding hidden search facet for each visible facet, and submitted those values -->
 <div id="realSearchFacets">
@@ -829,20 +827,25 @@ select#length_max_param {
 }
 </style>
 
-
+<%= Rails.logger.info "\n end style"%>
 
 <div class="container">
 	<div class="row">	
 <div class="eleven columns" id="resultsContentsContainer">
 <div class="contents" id="programs-contents">
+	<%= Rails.logger.info "\n start if"%>
 			<% if !(@results.empty?)%>	
+			<%= Rails.logger.info "\n results are not empty"%>
 	<div id="divProgram">
-		<% if (@search.showing == "Programs" || @search.showing.nil?)%>
+		<% if (@search.showing == "Programs")%>
+		<%= Rails.logger.info "\n showing is program"%>
 			<% @results.each do |f|%>	
+			<%= Rails.logger.info "\n ---showed a program"%>
 				<%= render :partial => "programs_results", :locals => {:f => f}%>
 			<% end %>
 		<% else %>
-			<% @results.each do |f|%>
+		<%= Rails.logger.info "\n showing is orgs"%>
+			<% @results.find_each(:batch_size => 100) do |f|%>
 				<%= Rails.logger.info "\n rendered org_result --\n"%>
 				<%= render :partial => "organizations_results", :locals => {:f => f}%>
 			<% end %>
@@ -1369,8 +1372,6 @@ select#length_max_param {
 </div>
 <%end%>
 </div>
-
-<%= Rails.logger.info "\n end tabs"%>
 
 
 <script type='text/javascript'>
