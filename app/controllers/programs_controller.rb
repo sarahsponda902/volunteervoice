@@ -1,6 +1,7 @@
 class ProgramsController < ApplicationController
 
   include ActionView::Helpers::TextHelper
+  include ApplicationHelper
   require 'aws/s3'
 
   before_filter :check_for_admin_or_org_account, :only => [:new, :create, :edit, :update, :destroy]
