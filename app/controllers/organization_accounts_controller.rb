@@ -149,8 +149,10 @@ class OrganizationAccountsController < ApplicationController
 
   ## check_for_admin_or_org_account called by before_filter
   def check_for_admin_or_org_account
-    unless current_organization_account.present? || (user_signed_in? && current_user.admin?)
-      redirect_to root_path
+    if current_organization_account.nil? 
+      if (current_user.present? && !(current_user.admin?)) || current_user.nil?
+        redirect_to root_path
+      end
     end
   end
 
