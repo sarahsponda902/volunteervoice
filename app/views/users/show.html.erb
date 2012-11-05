@@ -581,17 +581,6 @@ $(document).ready(function() {
    <script type="text/javascript">
 
        $(document).ready(function() {
-			/*
-			if (<%=# (@user.profile_show).to_s %> == true)
-			{
-				$("#ageCountryBox").hide();
-			}
-			if (<%=# (@user.messages_show).to_s %> == true)
-			{
-				$("#messagesBox").hide();
-			} */
-			
-
 			$('#reviews').smartpaginator({ totalrecords: <%=@user.reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 			
 			
