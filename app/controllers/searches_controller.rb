@@ -56,9 +56,7 @@ class SearchesController < ApplicationController
        @results = @search.search_results(params[:id])
       respond_to do |format|
         format.html # show.html.erb
-        Rails.logger.info "\n showed html.erb"
         format.json { render json: @search }
-        Rails.logger.info "\n showed json"
       end
     else
       redirect_to "/searches/error"
