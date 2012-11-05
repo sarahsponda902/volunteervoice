@@ -845,7 +845,7 @@ select#length_max_param {
 			<% end %>
 		<% else %>
 		<%= Rails.logger.info "\n showing is orgs"%>
-			<% @results.find_each(:batch_size => 100) do |f|%>
+			<% @results.each do |f|%>
 				<%= Rails.logger.info "\n rendered org_result --\n"%>
 				<%= render :partial => "organizations_results", :locals => {:f => f}%>
 			<% end %>
