@@ -84,7 +84,6 @@ class ApplicationController < ActionController::Base
     Rails.logger.error(m)
     respond_to do |format|
       format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
-      format.all { render nothing: true, status: 404 }
     end
   end
 
