@@ -9,15 +9,15 @@ class Searches::ShowPresenter
   end
 
   def subjects
-    @search.subjects
+    @search.subjects.split("; ")
   end
 
   def regions
-    @search.regions
+    @search.regions.split("; ")
   end
 
   def sizes
-    @search.sizes
+    @search.sizes.split("; ")
   end
 
   def price_max
