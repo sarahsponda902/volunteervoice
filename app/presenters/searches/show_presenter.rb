@@ -1,47 +1,46 @@
 class Searches::ShowPresenter
   def initialize(search_id)
     @search = Search.find(search_id)
-  end
 
-  # set the search parameters for sunspot to use
-  def keys
-    keys ||= @search.keywords
-  end
+    # set the search parameters for sunspot to use
+    def keys
+      @search.keywords
+    end
 
-  def subjects
-    subjects ||= @search.subjects.split("; ")
-  end
+    def subjects
+      @search.subjects.split("; ")
+    end
 
-  def regions
-    regions ||= @search.regions.split("; ")
-  end
+    def regions
+      @search.regions.split("; ")
+    end
 
-  def sizes
-    sizes ||= @search.sizes.split("; ")
-  end
+    def sizes
+      @search.sizes.split("; ")
+    end
 
-  def price_max
-    @search.price_max ||= 99999
-    price_max ||= @search.price_max
-  end
+    def price_max
+      @search.price_max ||= 99999
+      @search.price_max
+    end
 
-  def price_min
-    @search.price_min ||= 0
-    price_min ||= @search.price_min
-  end
+    def price_min
+      @search.price_min ||= 0
+      @search.price_min
+    end
 
-  def length_min
-    @search.length_min_number ||= 0
-    @search.length_min_param ||= "weeks"
-    length_min ||= (@search.length_min_number.to_i.send(@search.length_min_param).to_f)
-  end
+    def length_min
+      @search.length_min_number ||= 0
+      @search.length_min_param ||= "weeks"
+      @search.length_min_number.to_i.send(@search.length_min_param).to_f
+    end
 
-  def length_max
-    @search.length_max_number ||= 2
-    @search.length_max_param ||= "years"
-    length_max ||= (@search.length_max_number.to_i.send(@search.length_max_param).to_f)
+    def length_max
+      @search.length_max_number ||= 2
+      @search.length_max_param ||= "years"
+      @search.length_max_number.to_i.send(@search.length_max_param).to_f
+    end
   end
-
 
   def locations
     # locations where there are programs to send to javascript on page
@@ -55,7 +54,7 @@ class Searches::ShowPresenter
     @program_search = Program.search do
       keywords keys unless keys.blank?
 
-      with(:program_subjects).any_of(subjects) unless subjects.nil?
+      with(:program_subjects).any_of(self.subjects) unless subjects.nil?
 
       with(:location).any_of(regions) unless regions.nil?
 
