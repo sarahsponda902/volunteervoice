@@ -632,13 +632,13 @@ a.basedOnReviewsLink:hover {
 						<td class="priceRangeNumWeeks">
 						
 						<% if f[0] > 12 %>
-							<% @months = ""+(f[0] / 4).floor+"months"%>
+							<% @months = ""+(f[0] / 4).floor.to_s+"months"%>
 							<% if (f[0] % 4) != 0 %>
-								<% @months += (", "+(f[0]%4)+"weeks") %>
+								<% @months += (", "+(f[0]%4).to_s+"weeks") %>
 							<% end %>
 							<%= @months %>
 						<% else %>
-							<%= "" + f[0] + "weeks"%>
+							<%= "" + f[0].to_s + "weeks"%>
 						<% end %>
 						
 						</td>
