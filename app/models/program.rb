@@ -127,12 +127,12 @@ class Program < ActiveRecord::Base
 
   # create a new textile/RedCloth object for the textarea text on create and update
   def textilize_textareas
-    self.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize(truncate self.description, :length => 100), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    self.description = RedCloth.new( ActionController::Base.helpers.sanitize( self.description ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    self.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( self.program_cost_breakdown ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
-    self.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( self.cost_includes ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    self.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( self.cost_doesnt_include ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-    self.accommodations = RedCloth.new( ActionController::Base.helpers.sanitize( self.accommodations ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+    self.truncated_description100 = RedCloth.new( ActionController::Base.helpers.sanitize(truncate untextilized(self.description), :length => 100), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    self.description = RedCloth.new( ActionController::Base.helpers.sanitize( untextilized(self.description) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    self.program_cost_breakdown = RedCloth.new( ActionController::Base.helpers.sanitize( untextilized(self.program_cost_breakdown) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
+    self.cost_includes = RedCloth.new( ActionController::Base.helpers.sanitize( untextilized(self.cost_includes) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    self.cost_doesnt_include = RedCloth.new( ActionController::Base.helpers.sanitize( untextilized(self.cost_doesnt_include) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+    self.accommodations = RedCloth.new( ActionController::Base.helpers.sanitize( untextilized(self.accommodations) ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html 
   end
 
   # location is just the location's abbreviation. So location_name is set by a lookup
@@ -159,5 +159,16 @@ class Program < ActiveRecord::Base
     end
   end
 
+  # for un-textilizing textile/html text
+  # so that it can be edited without the html tags in a textarea box
+  def untextilized(textile)
+    return Nokogiri::HTML.fragment(textile).text
+  end
+
+  # for textilizing plain text from a textarea box
+  # so that newlines and formatting are preserved
+  def textilized(text)
+    return RedCloth.new( ActionController::Base.helpers.sanitize( text ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+  end
 
 end

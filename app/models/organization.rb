@@ -124,15 +124,15 @@ class Organization < ActiveRecord::Base
   
   # textilize all textareas to retain newlines, formatting, etc.
   def textilize_textareas
-    self.description = textilized( self.description )
-    self.headquarters_location = textilized( self.headquarters_location )
-    self.good_to_know = textilized( self.good_to_know )
-    self.training_resources = textilized( self.training_resources )
-    self.misson = textilized( self.misson )
-    self.program_costs_includes = textilized( self.program_costs_includes )
-    self.program_costs_doesnt_include = textilized( self.program_costs_doesnt_include )
-    self.price_breakdown = textilized( self.price_breakdown )
-    self.application_process = textilized( self.application_process )
+    self.description = textilized( untextilized(self.description) )
+    self.headquarters_location = textilized( untextilized(self.headquarters_location) )
+    self.good_to_know = textilized( untextilized(self.good_to_know) )
+    self.training_resources = textilized( untextilized(self.training_resources) )
+    self.misson = textilized( untextilized(self.misson) )
+    self.program_costs_includes = textilized( untextilized(self.program_costs_includes) )
+    self.program_costs_doesnt_include = textilized( untextilized(self.program_costs_doesnt_include) )
+    self.price_breakdown = textilized( untextilized(self.price_breakdown) )
+    self.application_process = textilized( untextilized(self.application_process) )
   end
   
   
