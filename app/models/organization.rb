@@ -139,6 +139,18 @@ class Organization < ActiveRecord::Base
   
   ###### Other methods ######
   
+  # for un-textilizing textile/html text
+  # so that it can be edited without the html tags in a textarea box
+  def untextilized(textile)
+    return Nokogiri::HTML.fragment(textile).text
+  end
+
+  # for textilizing plain text from a textarea box
+  # so that newlines and formatting are preserved
+  def textilized(text)
+    return RedCloth.new( ActionController::Base.helpers.sanitize( text ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+  end
+  
   # textilize methods for best_in_place in-place editing on organization's profile
   # (in-place editing of organization profile is only for org accounts and admins)
   def textilize_misson
