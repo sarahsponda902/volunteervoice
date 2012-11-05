@@ -600,7 +600,7 @@ $(document).ready(function() {
 </script>
 
 <script type="text/javascript">
-$("#btnPrev").click(function() { currentPage = parseInt(list.find('li a.active').text()) - 1; navigate(--currentPage); }).addClass('btn');
+$("#btnPrev").click(function() { currentPage = parseInt(list.find('li a.active').text()) - 1; navigate(currentPage); }).addClass('btn');
 
 $("#btnNext").click(function() { currentPage = parseInt(list.find('li a.active').text()); navigate(currentPage); }).addClass('btn');
 </script>
