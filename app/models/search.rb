@@ -23,25 +23,27 @@
 class Search < ActiveRecord::Base
   # does all the searching and returns results based on the parameters above
   # searches through 3 models: programs, organizations, and cost-length-maps
-  def self.search_results
+  def search_results(id)
+    @search = Search.find(id)
+    
     
     # set the search parameters for sunspot to use
-    keys = self.keywords
-    subjects = self.subjects.nil? ? [] : self.subjects.split("; ")
-    regions = self.regions.nil? ? [] : self.regions.split("; ")
-    sizes = self.sizes.nil? ? [] : self.sizes.split("; ")
-    price_max = self.price_max.nil? ? 0 : self.price_max
-    price_min = self.price_min.nil? ? 99999 : self.price_min
+    keys = @search.keywords
+    subjects = @search.subjects.nil? ? [] : @search.subjects.split("; ")
+    regions = @search.regions.nil? ? [] : @search.regions.split("; ")
+    sizes = @search.sizes.nil? ? [] : @search.sizes.split("; ")
+    price_max = @search.price_max.nil? ? 0 : @search.price_max
+    price_min = @search.price_min.nil? ? 99999 : @search.price_min
     
       # set the minimum length
-    self.length_min_number ||= 0
-    self.length_min_param ||= "weeks"
-    length_min = self.length_min_number.to_i.send(self.length_min_param).to_f
+    @search.length_min_number ||= 0
+    @search.length_min_param ||= "weeks"
+    length_min = @search.length_min_number.to_i.send(@search.length_min_param).to_f
     
       # set the maximum length
-    self.length_max_number ||= 2
-    self.length_max_param ||= "years"
-    length_max = self.length_max_number.to_i.send(self.length_max_param).to_f
+    @search.length_max_number ||= 2
+    @search.length_max_param ||= "years"
+    length_max = @search.length_max_number.to_i.send(@search.length_max_param).to_f
 
     # search for programs with the given params
     @program_search = Program.search do
@@ -79,8 +81,8 @@ class Search < ActiveRecord::Base
       @final_results = @program_results
     end
 
-    # set self.showing if nil to 'Organizations'
-    self.showing ||= "Organizations"
+    # set @search.showing if nil to 'Organizations'
+    @search.showing ||= "Organizations"
 
     # if showing organizations, switch results over to orgs (by mapping progs => orgs)
     if showing == "Organizations"
@@ -98,12 +100,12 @@ class Search < ActiveRecord::Base
     # add second_search results to final_results
     @final_results = @final_results | @second_search.results
 
-    #sort results given self.sort_by   
-    @final_results.sort_by!(&:overall).reverse! if self.sort_by == "ratinghigh"
-    @final_results.sort_by!(&:overall) if self.sort_by == "ratinglow"
-    @final_results.sort_by!(&:name) if self.sort_by == "alphabetical"
-    @final_results.sort_by!(&:weekly_cost) if self.sort_by == "pricelow"
-    @final_results.sort_by!(&:weekly_cost).reverse! if self.sort_by == "pricehigh"
+    #sort results given @search.sort_by   
+    @final_results.sort_by!(&:overall).reverse! if @search.sort_by == "ratinghigh"
+    @final_results.sort_by!(&:overall) if @search.sort_by == "ratinglow"
+    @final_results.sort_by!(&:name) if @search.sort_by == "alphabetical"
+    @final_results.sort_by!(&:weekly_cost) if @search.sort_by == "pricelow"
+    @final_results.sort_by!(&:weekly_cost).reverse! if @search.sort_by == "pricehigh"
 
     # return results... WE'RE DONE!!!
     @final_results
