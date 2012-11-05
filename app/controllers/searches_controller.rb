@@ -45,7 +45,7 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    if Search.exists?(@id = params[:id]) # if the search hasn't been deleted by admin
+    if Search.exists?(params[:id]) # if the search hasn't been deleted by admin
       @search = Search.find(params[:id])
       # locations where there are programs to send to javascript on page
        # only locations with programs will be available as facets

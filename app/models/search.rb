@@ -86,21 +86,22 @@ class Search < ActiveRecord::Base
     end
 
     # set @search.showing if nil to 'Organizations'
-    @search.showing = "Organizations" unless @search.showing.present?
+    if @search.showing.nil?
+      @search.showing = "Organizations"
+    end
 
     # if showing organizations, switch results over to orgs (by mapping progs => orgs)
-    if showing == "Organizations"
+    if @search.showing == "Organizations"
       @final_results = results.map{|res| Organization.find(p.organization_id)}.uniq
+
+      # do a third search, to determine if there are organizations we missed because they have no programs
+      @second_search = Organization.search do 
+        keywords keys unless keys.nil?
+      end
+
+      # add second_search results to final_results
+      @final_results = @final_results | @second_search.results
     end
-
-    # do a third search, to determine if there are organizations we missed because they have no programs
-    @second_search = Organization.search do 
-      keywords keys unless keys.nil?
-    end
-
-    # add second_search results to final_results
-    @final_results = @final_results | @second_search.results
-
     #sort results given @search.sort_by   
     @final_results = @final_results.sort_by(&:overall).reverse! if @search.sort_by == "ratinghigh"
     @final_results = @final_results.sort_by(&:overall) if @search.sort_by == "ratinglow"
