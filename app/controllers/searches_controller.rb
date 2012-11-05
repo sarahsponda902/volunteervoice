@@ -49,7 +49,10 @@ class SearchesController < ApplicationController
       @search = Search.find(params[:id])
       # locations where there are programs to send to javascript on page
        # only locations with programs will be available as facets
-       @locations = Program.all.map{|program| program.location}.uniq
+       @locations = []
+       Program.find_in_batches(:batch_size => 500) do |prog|
+         @locations << prog.location unless @locations.include?(prog.location)
+       end
        @results = @search.search_results(params[:id])
       respond_to do |format|
         format.html # show.html.erb
@@ -78,7 +81,8 @@ class SearchesController < ApplicationController
     # get the group (array) of subjects that the selected subject corresponds to, 
     #  if the subject is not a main/super category, then set @search.subjects to
     #    an array containing the selected subject.
-    @search.subjects = HASH_OF_SUBJECTS_GROUPS[params[:subject]] || ([] << params[:subject])
+    @search.subjects = []
+    @search.subjects = HASH_OF_SUBJECTS_GROUPS[params[:subject]] unless params[:subject].nil?
 
     # join the subjects by a semicolon to pass & save in the "subjects" parameter of @search
     @search.subjects = @search.subjects.join("; ")
