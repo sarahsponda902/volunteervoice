@@ -24,7 +24,7 @@ class Search < ActiveRecord::Base
   # does all the searching and returns results based on the parameters above
   # searches through 3 models: programs, organizations, and cost-length-maps
   def search_results(id)
-    logger.info "got to search results"
+    Rails.logger.info "got to search results"
     @search = Search.find(id)
     
     
