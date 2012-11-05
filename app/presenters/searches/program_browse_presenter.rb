@@ -215,11 +215,7 @@ class Searches::ProgramBrowsePresenter
   end
   
   def engineering_and_infrastructure 
-    @subjects = []
-    HASH_OF_SUBJECT_GROUPS["EngineeringandInfrastructure"].each do |subj|
-      @subjects << ProgramSubject.where(:subject => subj)
-    end
-    @subjects.flatten
+    @subjects = ProgramSubject.where(:subject => "EngineeringandInfrastructure")
   end
   
   def environmental 
