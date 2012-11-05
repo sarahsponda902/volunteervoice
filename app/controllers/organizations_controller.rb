@@ -126,7 +126,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
 
     # if current org account is owner of the organization they are viewing
-    if (!current_organization_account.nil? && @organization.id == current_organization_account.organization_id)
+    if (current_organization_account.present? && @organization.id == current_organization_account.organization_id) || (user_signed_in? && current_user.admin?)
       respond_to do |format|
         if @organization.update_attributes(params[:organization])
           if @organization.crops
