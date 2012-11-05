@@ -1704,4 +1704,12 @@ function closeMessageBox() {
 	$("#mask").fadeOut(300);
 	$("#mask").remove();
 }
+
+//when message reply button is clicked, 
+$("#messageReplyButton").live("click", function() {
+	$(setMessageRecipient($(this).data("sender")));
+	$(setMessageSubject($(this).data("subject")));
+	$(closeMessageBox()); 
+	$('.reply-window').click();
+})
 </script>

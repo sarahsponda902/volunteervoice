@@ -34,7 +34,7 @@
 
 		<% if @user_ids.include?(m.sender_id)%>
 		<tr><td><p class="mPopupReplyButton">
-<image onclick="$(setMessageRecipient(<%=m.sender_id%>));$(setMessageSubject('<%=m.subject%>'));$(closeMessageBox()); $('.reply-window').click();" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reply.png"></p></td></tr>
+<image id="messageReplyButton" data-sender = "<%= m.sender_id%>" data-subject = "<%= m.subject%>" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reply.png"> </p></td></tr>
 		<% else %>
 		<tr><td><span class="userDeletedProfileMessage">This user has deleted their profile</span ></td></tr>
 		<% end %>
