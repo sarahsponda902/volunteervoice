@@ -49,7 +49,7 @@ class SearchesController < ApplicationController
       # locations where there are programs to send to javascript on page
        # only locations with programs will be available as facets
        @locations = Program.all.map{|program| program.location}.uniq
-       @results = Search.search_results(params[:id])
+       @results = @search.search_results(params[:id])
       respond_to do |format|
         format.html # show.html.erb
         format.json { render json: @search }
