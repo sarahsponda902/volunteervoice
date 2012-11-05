@@ -1,10 +1,19 @@
 module DeviseHelper
+  #######################################################################
+  ### Originally written by Platformatec                         ########
+  ### in Devise gem at:  https://github.com/plataformatec/devise ########
+  ### EDITED (style) by VolunteerVoice staff                     ########
+  #######################################################################
+  
+  
   # A simple way to show error messages for the current devise resource. If you need
   # to customize this method, you can either overwrite it in your application helpers or
   # copy the views to your application.
   #
   # This method is intended to stay simple and it is unlikely that we are going to change
   # it to add more behavior or options.
+  
+  
   def devise_error_messages! 
      html = ""
 
@@ -12,6 +21,7 @@ module DeviseHelper
 
      errors_number = 0 
 
+     # VolunteerVoice error messages styling
      html << "<ul class=\"#{resource_name}_errors_list\", style='text-align:center; 
      width:100%; 
      padding: 10px 0 10px 0;

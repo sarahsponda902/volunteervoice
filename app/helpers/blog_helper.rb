@@ -1,4 +1,9 @@
 module BlogHelper
+  #######################################################################
+  ### Written by Ryan Stout                                         #####
+  ### in blog_kit plugin at:  https://github.com/ryanstout/blog_kit #####
+  #######################################################################
+  
 	def blog_tags_list(limit=nil)
 		html = []
 

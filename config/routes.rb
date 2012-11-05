@@ -100,8 +100,6 @@ RMTest::Application.routes.draw do
   root :to => 'pages#home'
 
   resources :feedbacks
-
-  devise_for :admins
   
   devise_for :users, :controllers => {:registrations => :registrations}
 
@@ -190,13 +188,6 @@ RMTest::Application.routes.draw do
   match "registrations/crop" => 'registrations#crop'
   
   match "users/:user_id/make_admin" => "users#make_admin"
-  
-  
-  devise_scope :admin do
-    match 'admins/new' => 'admins/registrations#new'
-    match 'admin_login' => 'devise/sessions#new'
-    match 'signout' => 'devise/sessions#destroy'
-  end
 
   ##### MAD MIMI
   

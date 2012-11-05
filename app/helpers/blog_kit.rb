@@ -1,3 +1,8 @@
+#######################################################################
+### Written by Ryan Stout                                         #####
+### in blog_kit plugin at:  https://github.com/ryanstout/blog_kit #####
+#######################################################################
+
 # BlogKit Setup - handles settings
 
 # require 'tm_syntax_highlighting'
