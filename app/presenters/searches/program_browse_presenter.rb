@@ -187,11 +187,7 @@ class Searches::ProgramBrowsePresenter
   end
   
   def construction 
-    @subjects = []
-    HASH_OF_SUBJECT_GROUPS["Construction"].each do |subj|
-      @subjects << ProgramSubject.where(:subject => subj)
-    end
-    @subjects.flatten
+    @subjects = ProgramSubject.where(:subject => "Construction")
   end
   
   def culture_and_community 
