@@ -81,8 +81,7 @@ class SearchesController < ApplicationController
     # get the group (array) of subjects that the selected subject corresponds to, 
     #  if the subject is not a main/super category, then set @search.subjects to
     #    an array containing the selected subject.
-    @search.subjects = []
-    @search.subjects = HASH_OF_SUBJECT_GROUPS[params[:subject]] unless params[:subject].nil?
+    @search.subjects = HASH_OF_SUBJECT_GROUPS[params[:subject]] || []
 
     # join the subjects by a semicolon to pass & save in the "subjects" parameter of @search
     @search.subjects = @search.subjects.join("; ")
