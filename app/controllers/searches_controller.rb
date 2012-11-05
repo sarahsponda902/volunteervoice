@@ -150,7 +150,7 @@ class SearchesController < ApplicationController
     @search.subjects = [] << SUBJECTSHASH[params[:subject]] unless params[:subject].nil?
     
     # for POSTs directed from places_browse (map) page
-    @search.regions = [] << params[:location]
+    @search.regions = [] << params[:location] unless params[:location].nil?
 
     # join all parameters into one string to save to database
     @search.regions = @search.regions.join("; ") unless (@search.regions.class.name == "String" || @search.regions.nil?)
