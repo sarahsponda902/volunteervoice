@@ -1,21 +1,20 @@
 class SearchesController < ApplicationController
-  
-  before_filter :check_for_admin, :only => [:index, :destroy]
-  
+
+  before_filter :check_for_admin, :only => [:index, :destroy, :erase_old]
+
   # GET /searches
   # GET /searches.json
   # Shows history of searches for Admin only
   def index
-      @searches = Search.all.sort_by(&:updated_at).reverse
-      respond_to do |format|
-        format.html # index.html.erb
-        format.json { render json: @searches }
-      end
+    @searches = Search.all.sort_by(&:updated_at).reverse
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @searches }
+    end
   end
 
   # erase old searches that nobody needs/uses anymore
   def erase_old
-    if user_signed_in? && current_user.admin?
       @searches = Search.all
       @searches.each do |search|
         if search.updated_at < 24.hours.ago
@@ -23,9 +22,6 @@ class SearchesController < ApplicationController
         end
       end
       redirect_to "/searches"
-    else
-      redirect_to "/searches/search_machine"
-    end
   end
 
   # if a search has been deleted, show this page
@@ -35,7 +31,7 @@ class SearchesController < ApplicationController
     Program.find_each(:batch_size => 200) do |f|
       @locations << f.location unless @locations.include?(f.location)
     end
-    
+
     @search_regions = regions
     @search_subjects = subjects
     @search_sizes = sizes
@@ -48,7 +44,7 @@ class SearchesController < ApplicationController
   # GET /searches/1.json
   def show
     if Search.exists?(params[:id]) # if the search hasn't been deleted by admin
-      
+
       # presenter found in presenters/searches/show_presenter.rb
       @presenter = Searches::ShowPresenter.new(params[:id])
 
@@ -72,58 +68,18 @@ class SearchesController < ApplicationController
     end
   end
 
-
+  # the program browse page (select a subject)
   def program_browse_search
     @search = Search.new
-    @search.subjects = [] << SUBJECTSHASH[params[:subject]]
-    
-    if params[:subject] == "Agriculture"
-      @search.subjects = ["Agriculture", "Organic Farming"]
-    end
-    if params[:subject] == "AnimalCare"
-      @search.subjects = ["Animal Care", "Animal Rights"]
-    end
-    if params[:subject] == "Caregiving"
-      @search.subjects = ["Caregiving", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless"]
-    end
-    if params[:subject] == "CommunityDevelopment"
-      @search.subjects = ["Community Development", "Youth Development and Outreach"]
-    end
-    if params[:subject] == "CultureandCommunity"
-      @search.subjects = ["Culture and Community", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism"]
-    end
-    if params[:subject] == "DisasterRelief"
-      @search.subjects = ["Disaster Relief", "Economics", "Microfinance"]
-    end
-    if params[:subject] == "Education"
-      @search.subjects = ["Teaching English", "Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy"]
-    end
-    if params[:subject] == "Environmental"
-      @search.subjects = ["Environmental", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration"]
-    end
-    if params[:subject] == "HealthandMedicine"
-      @search.subjects = ["Health and Medicine", "HIV/AIDS", "Family Planning", "Nutrition", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Caregiving"]
-    end
-    if params[:subject] == "HumanRights"
-      @search.subjects = ["Human Rights", "Women's Initiatives"]
-    end
-    if params[:subject] == "Recreation"
-      @search.subjects = ["Recreation", "Adventure Travel"]
-    end
-    if params[:subject] == "ScientificResearch"
-      @search.subjects = ["Scientific Research", "Archaeology", "Environmental Biology"]
-    end
-    if params[:subject] == "Technology"
-      @search.subjects = ["Technology", "Media, Marketing, and Graphic Design"]
-    end
-    
-      @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
-      @search.length_min_param = "weeks"
-      @search.length_max_param = "years"
-      @search.length_min_number = 0
-      @search.length_max_number = 2
-      @search.price_min = 0
-      @search.price_max = 99999
+
+    # get the group (array) of subjects that the selected subject corresponds to, 
+    #  if the subject is not a main/super category, then set @search.subjects to
+    #    an array containing the selected subject.
+    @search.subjects = HASH_OF_SUBJECTS_GROUPS[params[:subject]] || ([] << params[:subject])
+
+    # join the subjects by a semicolon to pass & save in the "subjects" parameter of @search
+    @search.subjects = @search.subjects.join("; ")
+
     respond_to do |format|
       if @search.save
         format.html { redirect_to @search, notice: 'Search was successfully created.' }
@@ -135,168 +91,31 @@ class SearchesController < ApplicationController
     end
   end
 
+  # the advanced search / search machine page
   def search_machine
     @search = Search.new
-    @locations = [] 
-    Program.all.each do |f| 
-      @locations << f.location unless @locations.include?(f.location) 
-    end 
+    @locations = Program.all.map{|prog| prog.location}.uniq 
   end
 
 
   def places
     @programs = Program.all  
-    @countries_with_programs = []
-    @programs.each do |f|
-      @countries_with_programs << f.location unless @countries_with_programs.include?(f.location)
-    end
 
-    @nums = Array.new
-    @progNums = Array.new
-    @countries_with_programs.each do |f|
-      @progNums << Program.where(:location => f).count unless f == ""
-      @nums << ALLCOUNTRIES.index(f) unless (ALLCOUNTRIES.index(f).nil?)
-    end 
+    # array of all countries that have programs
+    @countries_with_programs = @programs.map {|prog| prog.location}.uniq
 
+    # indicies of names of all countries-with-programs in ALLCOUNTRIES
+    @nums = @countries_with_programs.map {|country| ALLCOUNTRIES.index(country)}
 
-    @americas = Hash.new
-    THEREGIONS[10].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @americas[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[11].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @americas[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[12].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @americas[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[13].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @americas[f] = THECOUNTRIES[f]
-      end 
-    end 
+    # counts of how many programs are in each country
+    @progNums = @countries_with_programs.map {|country| Program.where(:location => country).count}
 
-
-
-    @europe = Hash.new 
-    THEREGIONS[6].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @europe[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[7].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @europe[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[8].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @europe[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[9].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @europe[f] = THECOUNTRIES[f]
-      end 
-    end 
-
-
-
-
-    @africa = Hash.new 
-    THEREGIONS[1].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @africa[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[2].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @africa[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[3].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @africa[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[4].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @africa[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[5].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @africa[f] = THECOUNTRIES[f]
-      end 
-    end 
-
-
-
-
-    @asia = Hash.new 
-    THEREGIONS[14].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @asia[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[15].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @asia[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[16].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @asia[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[17].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @asia[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[18].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @asia[f] = THECOUNTRIES[f]
-      end 
-    end 
-
-
-
-
-    @oceania = Hash.new 
-    THEREGIONS[19].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @oceania[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[20].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @oceania[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[21].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @oceania[f] = THECOUNTRIES[f]
-      end 
-    end 
-    THEREGIONS[22].each do |f|
-      if !(Program.where(:location => f).empty?) 
-        @oceania[f] = THECOUNTRIES[f]
-      end 
-    end 
-
-
-
-    @americas = @americas.sort_by { |country| country[1] } 
-    @europe = @europe.sort_by { |country| country[1] } 
-    @africa = @africa.sort_by { |country| country[1] } 
-    @asia = @asia.sort_by { |country| country[1] } 
-    @oceania = @oceania.sort_by { |country| country[1] } 
+    # create the hashes of countries/programs
+    @americas = make_program_country_hash([10, 11, 12, 13]).sort_by { |country| country[1] } 
+    @europe = make_program_country_hash([6, 7, 8, 9]).sort_by { |country| country[1] }
+    @africa = make_program_country_hash([1, 2, 3, 4, 5]).sort_by { |country| country[1] } 
+    @asia = make_program_country_hash([14, 15, 16, 17, 18]).sort_by { |country| country[1] } 
+    @oceania = make_program_country_hash([19, 20, 21, 22]).sort_by { |country| country[1] } 
 
 
     respond_to do |format|
@@ -308,240 +127,8 @@ class SearchesController < ApplicationController
 
 
   def program_browse
-    @organic_farming = ProgramSubject.where(:subject => "Organic Farming")
-    @sustainable_development = ProgramSubject.where(:subject => "Sustainable Development")
-    @animal_rights = ProgramSubject.where(:subject => "Animal Rights")
-    @wildlife_conservation = ProgramSubject.where(:subject => "Wildlife Conservation")
-    @elder_care = ProgramSubject.where(:subject => "Elder Care")
-    @child_orphan_care = ProgramSubject.where(:subject => "Child/Orphan Care")
-    @disabled_care = ProgramSubject.where(:subject => "Disabled Care")
-    @feed_the_homeless = ProgramSubject.where(:subject => "Feed the Homeless")
-    @youth_development_and_outreach = ProgramSubject.where(:subject => "Youth Development and Outreach")
-    @performing_arts = ProgramSubject.where(:subject => "Performing Arts")
-    @fashion = ProgramSubject.where(:subject => "Fashion")
-    @music = ProgramSubject.where(:subject => "Music")
-    @sports_and_recreation = ProgramSubject.where(:subject => "Sports & Recreation")
-    @journalism = ProgramSubject.where(:subject => "Journalism")
-    @economics = ProgramSubject.where(:subject => "Economics")
-    @microfinance = ProgramSubject.where(:subject => "Microfinance")
-    @teaching_english = ProgramSubject.where(:subject => "Teaching English")
-    @teaching_buddhist_monks = ProgramSubject.where(:subject => "Teaching Buddhist Monks")
-    @teaching_children = ProgramSubject.where(:subject => "Teaching Children")
-    @teaching_computer_literacy = ProgramSubject.where(:subject => "Teaching Computer Literacy")
-    @ecological_conservation = ProgramSubject.where(:subject => "Ecological Conservation")
-    @habitat_restoration = ProgramSubject.where(:subject => "Habitat Resotration")
-    @hiv_aids = ProgramSubject.where(:subject => "HIV/AIDS")
-    @nutrition = ProgramSubject.where(:subject => "Nutrition")
-    @family_planning = ProgramSubject.where(:subject => "Family Planning")
-    @veterinary_medicine = ProgramSubject.where(:subject => "Veterinary Medicine")
-    @clinical_work = ProgramSubject.where(:subject => "Clinical Work")
-    @dental_work = ProgramSubject.where(:subject => "Dental Work")
-    @medical_research = ProgramSubject.where(:subject => "Medical Research")
-    @health_education = ProgramSubject.where(:subject => "Health Education")
-    @public_health = ProgramSubject.where(:subject => "Public Health")
-    @hospital_care_giving = ProgramSubject.where(:subject => "Hospital Care-giving")
-    @womens_initiatives = ProgramSubject.where(:subject => "Women's Initiatives")
-    @adventure_travel = ProgramSubject.where(:subject => "Adventure Travel")
-    @archaeology = ProgramSubject.where(:subject => "Archaeology")
-    @environmental_biology = ProgramSubject.where(:subject => "Environmental Biology")
-    @media_marketing_and_graphic_design = ProgramSubject.where(:subject => "Media, Marketing, and Graphic Design")
-
-    @agriculture = ProgramSubject.where(:subject => "Agriculture")
-    @animal_care = ProgramSubject.where(:subject => "Animal Care")
-    @caregiving = ProgramSubject.where(:subject => "Caregiving")
-    @community_development = ProgramSubject.where(:subject => "Community Development")
-    @construction = ProgramSubject.where(:subject => "Construction")
-    @culture_and_community = ProgramSubject.where(:subject => "Culture & Community")
-    @disaster_relief = ProgramSubject.where(:subject => "Disaster Relief")
-    @education = ProgramSubject.where(:subject => "Education")
-    @engineering_and_infrastructure = ProgramSubject.where(:subject => "Engineering and Infrastructure")
-    @environmental = ProgramSubject.where(:subject => "Environmental")
-    @health_and_medicine = ProgramSubject.where(:subject => "Health and Medicine")
-    @human_rights = ProgramSubject.where(:subject => "Human Rights")
-    @international_work_camp = ProgramSubject.where(:subject => "International Work Camp")
-    @recreation = ProgramSubject.where(:subject => "Recreation")
-    @scientific_research = ProgramSubject.where(:subject => "Scientific Research")
-    @technology = ProgramSubject.where(:subject => "Technology")
-    
-    @all_agriculture = @agriculture.map(&:subject)
-    @all_animal_care = @animal_care.map(&:subject)
-    @all_caregiving = @caregiving.map(&:subject)
-    @all_community_development = @community_development.map(&:subject)
-    @all_construction = @construction.map(&:subject)
-    @all_culture_and_community = @culture_and_community.map(&:subject)
-    @all_disaster_relief = @disaster_relief.map(&:subject)
-    @all_education = @education.map(&:subject)
-    @all_engineering_and_infrastructure = @engineering_and_infrastructure.map(&:subject)
-    @all_environmental = @environmental.map(&:subject)
-    @all_health_and_medicine = @health_and_medicine.map(&:subject)
-    @all_human_rights = @human_rights.map(&:subject)
-    @all_international_work_camp = @international_work_camp.map(&:subject)
-    @all_recreation = @recreation.map(&:subject)
-    @all_scientific_research = @scientific_research.map(&:subject)
-    @all_technology = @technology.map(&:subject)
-
-    @agriculture_ids = @agriculture.map(&:program_id)
-    @animal_care_ids = @animal_care.map(&:program_id)
-    @caregiving_ids = @caregiving.map(&:program_id)
-    @community_development_ids = @community_development.map(&:program_id)
-    @construction_ids = @construction.map(&:program_id)
-    @culture_and_community_ids = @culture_and_community.map(&:program_id)
-    @disaster_relief_ids = @disaster_relief.map(&:program_id)
-    @education_ids = @education.map(&:program_id)
-    @engineering_and_infrastructure_ids = @engineering_and_infrastructure.map(&:program_id)
-    @environmental_ids = @environmental.map(&:program_id)
-    @health_and_medicine_ids = @health_and_medicine.map(&:program_id)
-    @human_rights_ids = @human_rights.map(&:program_id)
-    @international_work_camp_ids = @international_work_camp.map(&:program_id)
-    @recreation_ids = @recreation.map(&:program_id)
-    @scientific_research_ids = @scientific_research.map(&:program_id)
-    @technology_ids = @technology.map(&:program_id)
-
-
-    @organic_farming.each do |f|
-      @all_agriculture << f.subject unless @agriculture_ids.include?(f.program_id)
-    end
-
-    @animal_rights.each do |f|
-      @all_animal_care << f.subject unless @animal_care_ids.include?(f.program_id)
-    end
-
-    @elder_care.each do |f|
-      @all_caregiving << f.subject unless @caregiving_ids.include?(f.program_id)
-    end
-
-    @child_orphan_care.each do |f|
-      @all_caregiving << f.subject unless @caregiving_ids.include?(f.program_id)
-    end
-
-    @disabled_care.each do |f|
-      @all_caregiving << f.subject unless @caregiving_ids.include?(f.program_id)
-    end
-
-    @feed_the_homeless.each do |f|
-      @all_caregiving << f.subject unless @caregiving_ids.include?(f.program_id)
-    end
-
-    @youth_development_and_outreach.each do |f|
-      @all_community_development << f.subject unless @community_development_ids.include?(f.program_id)
-    end
-
-    @performing_arts.each do |f|
-      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
-    end
-
-    @fashion.each do |f|
-      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
-    end
-
-    @music.each do |f|
-      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
-    end
-
-    @sports_and_recreation.each do |f|
-      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
-    end
-
-    @journalism.each do |f|
-      @all_culture_and_community << f.subject unless @culture_and_community_ids.include?(f.program_id)
-    end
-
-    @economics.each do |f|
-      @all_disaster_relief << f.subject unless @disaster_relief_ids.include?(f.program_id)
-    end
-
-    @microfinance.each do |f|
-      @all_disaster_relief << f.subject unless @disaster_relief_ids.include?(f.program_id)
-    end
-
-    @teaching_english.each do |f|
-      @all_education << f.subject unless @education_ids.include?(f.program_id)
-    end
-
-    @teaching_buddhist_monks.each do |f|
-      @all_education << f.subject unless @education_ids.include?(f.program_id)
-    end
-
-    @teaching_children.each do |f|
-      @all_education << f.subject unless @education_ids.include?(f.program_id)
-    end
-
-    @teaching_computer_literacy.each do |f|
-      @all_education << f.subject unless @education_ids.include?(f.program_id)
-    end
-
-    @ecological_conservation.each do |f|
-      @all_environmental << f.subject unless @environmental_ids.include?(f.program_id)
-    end
-
-    @sustainable_development.each do |f|
-      @all_environmental << f.subject unless @environmental_ids.include?(f.program_id)
-    end
-
-    @wildlife_conservation.each do |f|
-      @all_environmental << f.subject unless @environmental_ids.include?(f.program_id)
-    end
-
-    @habitat_restoration.each do |f|
-      @all_environmental << f.subject unless @environmental_ids.include?(f.program_id)
-    end
-
-    @hiv_aids.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @nutrition.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @family_planning.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @veterinary_medicine.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @dental_work.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @medical_research.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @health_education.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @public_health.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @hospital_care_giving.each do |f|
-      @all_health_and_medicine << f.subject unless @health_and_medicine_ids.include?(f.program_id)
-    end
-
-    @womens_initiatives.each do |f|
-      @all_human_rights << f.subject unless @human_rights_ids.include?(f.program_id)
-    end
-
-    @adventure_travel.each do |f|
-      @all_recreation << f.subject unless @recreation_ids.include?(f.program_id)
-    end
-
-    @archaeology.each do |f|
-      @all_scientific_research << f.subject unless @scientific_research_ids.include?(f.program_id)
-    end
-
-    @environmental_biology.each do |f|
-      @all_scientific_research << f.subject unless @scientific_research_ids.include?(f.program_id)
-    end
-
-    @media_marketing_and_graphic_design.each do |f|
-      @all_technology << f.subject unless @technology_ids.include?(f.program_id)
-    end
-
+    # presenter found in presenters/searches/program_browse_presenter.rb
+    @presenter = Searches::ProgramBrowsePresenter.new(params[:id])
 
     respond_to do |format|
       format.html
@@ -555,38 +142,27 @@ class SearchesController < ApplicationController
   # POST /searches
   # POST /searches.json
   def create
-
     @search = Search.new(params[:search])
-    if !(params[:subject].nil?)
-      @search.subjects = [] << SUBJECTSHASH[params[:subject]]
-    end
-    if !(params[:location].nil?)
-      @search.regions = [] << params[:location]
-    end
+    
+    # for POSTs directed from program_browse (subject) page
+    @search.subjects = [] << SUBJECTSHASH[params[:subject]] unless params[:subject].nil?
+    
+    # for POSTs directed from places_browse (map) page
+    @search.regions = [] << params[:location]
 
-
+    # join all parameters into one string to save to database
     @search.regions = @search.regions.join("; ") unless (@search.regions.class.name == "String" || @search.regions.nil?)
     @search.subjects = @search.subjects.join("; ") unless (@search.subjects.class.name == "String" || @search.subjects.nil?)
     @search.sizes = @search.sizes.join("; ") unless (@search.sizes.class.name == "String" || @search.sizes.nil?)
 
-    if @search.length_min_param.nil?
-      @search.length_min_param = "weeks"
-    end
-    if @search.length_max_param.nil?
-      @search.length_max_param = "years"
-    end
-    if @search.length_min_number.nil?
-      @search.length_min_number = 0
-    end
-    if @search.length_max_number.nil?
-      @search.length_max_number = 2
-    end
-    if @search.price_min.nil?
-      @search.price_min = 0
-    end
-    if @search.price_max.nil?
-      @search.price_max = 99999
-    end
+    # set params if nil
+    @search.length_min_param ||= "weeks"
+    @search.length_max_param ||= "years"
+    @search.length_min_number ||= 0
+    @search.length_max_number ||= 2
+    @search.price_min ||= 0
+    @search.price_max ||= 99999
+
 
     respond_to do |format|
       if @search.save
@@ -603,22 +179,17 @@ class SearchesController < ApplicationController
   # PUT /searches/1.json
   def update
     @search = Search.find(params[:id])
+    
+    # join array params to strings to write to database
     params[:search][:regions] = params[:search][:regions].join("; ") unless (params[:search][:regions].class.name == "String" || params[:search][:regions].nil?)
     params[:search][:subjects] = params[:search][:subjects].join("; ") unless (params[:search][:subjects].class.name == "String" || params[:search][:subjects].nil?)
     params[:search][:sizes] = params[:search][:sizes].join("; ") unless (params[:search][:sizes].class.name == "String" || params[:search][:sizes].nil?)
+ 
+    # set params if they are nil
+    params[:search][:regions] ||= "false"
+    params[:search][:subjects] ||= "false"
+    params[:search][:sizes] ||= "false"
 
-    if params[:search][:regions].nil? 
-      params[:search][:regions] = "false"
-    end
-    
-    if params[:search][:subjects].nil?
-      params[:search][:subjects] = "false"
-    end
-    
-    if params[:search][:sizes].nil?
-      params[:search][:sizes] = "false"
-    end
-    
     respond_to do |format|
       if @search.update_attributes(params[:search])
         format.html { redirect_to @search, notice: 'Search was successfully updated.' }
@@ -632,6 +203,7 @@ class SearchesController < ApplicationController
 
   # DELETE /searches/1
   # DELETE /searches/1.json
+  # Admin only destroy
   def destroy
     @search = Search.find(params[:id])
     @search.destroy
@@ -641,7 +213,7 @@ class SearchesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
   ## check_for_admin called by before_filter
   def check_for_admin

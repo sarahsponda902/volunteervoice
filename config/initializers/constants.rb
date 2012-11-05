@@ -1372,3 +1372,20 @@ SUBJECTSHASH = Hash['Agriculture' => 'Agriculture' ,
           'Technology' =>       'Technology' , 
           'TeachingComputerLiteracy' =>       'Teaching Computer Literacy' , 
           'MediaMarketingandGraphicDesign' =>       'Media Marketing and Graphic Design']
+          
+          
+HASH_OF_SUBJECT_GROUPS = Hash["Agriculture" => ["Agriculture", "Organic Farming"],
+                              "AnimalCare" => ["Animal Care", "Animal Rights"],
+                              "Caregiving" => ["Caregiving", "Elder Care", "Child/Orphan Care", "Disabled Care", "Feed the Homeless"],
+                              "CommunityDevelopment" => ["Community Development", "Youth Development and Outreach"],
+                              "CultureandCommunity" => ["Culture and Community", "Performing Arts", "Fashion", "Music", "Sports & Recreation", "Journalism"],
+                              "DisasterRelief" => ["Disaster Relief", "Economics", "Microfinance"],
+                              "Education" => ["Teaching English", "Teaching Buddhist Monks", "Teaching Children", "Teaching Computer Literacy"],
+                              "Environmental" => ["Environmental", "Ecological Conservation", "Sustainable Development", "Wildlife Conservation", "Habitat Restoration"],
+                              "HealthandMedicine" => ["Health and Medicine", "HIV/AIDS", "Family Planning", "Nutrition", "Veterinary Medicine", "Clinical Work", "Dental Work", "Medical Research", "Health Education", "Public Health", "Hospital Caregiving"],
+                              "HumanRights" => ["Human Rights", "Women's Initiatives"],
+                              "Recreation" => ["Recreation", "Adventure Travel"],
+                              "ScientificResearch" => ["Scientific Research", "Archaeology", "Environmental Biology"],
+                              "Technology" => ["Technology", "Media, Marketing, and Graphic Design"]
+                            ]
+
