@@ -92,7 +92,7 @@ class Search < ActiveRecord::Base
 
     # if showing organizations, switch results over to orgs (by mapping progs => orgs)
     if @search.showing == "Organizations"
-      @final_results = results.map{|res| Organization.find(p.organization_id)}.uniq
+      @final_results = @final_results.map{|res| Organization.find(p.organization_id)}.uniq
 
       # do a third search, to determine if there are organizations we missed because they have no programs
       @second_search = Organization.search do 
