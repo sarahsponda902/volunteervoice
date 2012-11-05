@@ -105,7 +105,6 @@ class ApplicationController < ActionController::Base
     Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
     respond_to do |format|
       format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
-      format.all { render nothing: true, status: 404 }
     end
   end
 
@@ -114,7 +113,6 @@ class ApplicationController < ActionController::Base
     Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
     respond_to do |format|
       format.html { render 'errors/error_500', layout: 'layouts/application', status: 500 }
-      format.all { render nothing: true, status: 500 }
     end
   end
 
