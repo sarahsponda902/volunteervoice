@@ -47,7 +47,6 @@ class Search < ActiveRecord::Base
     length_max = @search.length_max_number.to_i.send(@search.length_max_param).to_f
 
     # search for programs with the given params
-    logger.info "searching for programs..."
     @program_search = Program.search do
       keywords keys unless keys.blank?
 
@@ -65,7 +64,6 @@ class Search < ActiveRecord::Base
     if (price_max != 99999 || price_min != 0 || length_min != 0.weeks.to_f || length_max != 2.years.to_f )
 
       # Cost Length search
-      logger.info "searching for cost-lengths..."
       @cost_length_search = ProgramCostLengthMap.search do
         all_of do
           with(:length).greater_than(length_min)
@@ -93,7 +91,6 @@ class Search < ActiveRecord::Base
     end
 
     # do a third search, to determine if there are organizations we missed because they have no programs
-    logger.info "searching for Organizations..."
     @second_search = Organization.search do 
       keywords keys unless keys.nil?
     end

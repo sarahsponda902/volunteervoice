@@ -25,7 +25,8 @@ class Programs::ShowPresenter
   # overall review average for program
   def overall
     @overall = 0
-    @results.each do |f|
+    @results = @program.reviews
+    @results.reviews.each do |f|
       @overall = @overall + f.overall
     end
     if @results.count != 0
