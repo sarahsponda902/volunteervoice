@@ -8,14 +8,16 @@
 <% @spot = f.keys.index("name")%>
 <% @proms << f.values[@spot]%>
 <% end %>
-Promotion Name: <%= f.select :promotion_name, @proms, :id => "promotions"%><br />
+Promotion Name: <%= f.select :promotion_name, @proms%><br />
 Email Subject:<%= f.text_field :subject%><br />
 From (must be of this format): <%= f.text_field :from, :value => "Alyssa Ely <aely@volunteervoice.org>", :id => "fromEmail"%><br />
 Recipients: <%= f.select :list_names, [["Users", "users"], ["Admins", "admins"], ["Organizations", "organizations"]]%><br />
 <%= f.hidden_field :username, :value => "sarahsponda902@gmail.com"%><br />
 <%= f.hidden_field :api_key, :value => "df65cf0a215c2b3028fa7eaf89a6f2ba"%><br />
 BCC: <%= f.text_field :bcc, :id => "bcc"%><br />
+<div id="submit_div">
 <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :id => "submitButton"%>
+</div>
 <% end %>
 </div>
 </div>
@@ -25,13 +27,13 @@ BCC: <%= f.text_field :bcc, :id => "bcc"%><br />
 $(document).ready(function() {
 	//if webkit, add a dropdown arrow to the select box, since we took it out with "-webkit-appearance:none" in /assets/style.css
 	if ($.browser.webkit) {
-		input = document.getElementById("promotions");
+		input = document.getElementById("mad_mimi_email_promotion_name");
 		input.style.background = "url('/assets/arrowProgram.png') no-repeat right";
 		input.style.height = "25px";
 		input.style.backgroundColor = "white";
 		input.style.width = "150px";
 		
-		input2 = document.getElementById("list_names");
+		input2 = document.getElementById("mad_mimi_email_list_names");
 		input2.style.background = "url('/assets/arrowProgram.png') no-repeat right";
 		input2.style.height = "25px";
 		input2.style.backgroundColor = "white";
