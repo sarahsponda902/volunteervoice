@@ -49,7 +49,7 @@
 	<% end %>
 	</td>
 	
-	<td width ="50%"><%= f.truncated100.html_safe %></td>
+	<td width ="50%"><%= textilized(truncate untextilized(f.body), :length => 100).html_safe %></td>
     <td width="7%"><p class="linkToGo"><%= link_to 'Go', f %></p></td>
 	<td width="7%">
 	<% if f.show %>
