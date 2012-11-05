@@ -60,6 +60,9 @@ class UsersController < ApplicationController
     # setup for a "reply" message to another user
     @message = Message.new
     
+    # to see if a message can be replied to, check if user_id is in the list of all user ids
+    @user_ids = User.all.map(&:id)
+    
     # to show 'my reviews', 'my favorites', 'my messages', and 'my sent messages'
     @reviews = @user.reviews.order("created_at DESC")
     @favorites = @user.favorites
