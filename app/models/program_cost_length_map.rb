@@ -13,9 +13,14 @@
 #  length          :float
 #
 
+## a cost_length_map is an object that hold the cost of a program and it's associated length of time
 class ProgramCostLengthMap < ActiveRecord::Base
   unloadable
+  
+  #associations
   belongs_to :program
+  
+  #sunspot search block
   searchable do 
     integer :length
     integer :cost

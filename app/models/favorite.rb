@@ -8,5 +8,8 @@
 #
 
 class Favorite < ActiveRecord::Base
+  
+  # associations
   belongs_to :user
+  
 end

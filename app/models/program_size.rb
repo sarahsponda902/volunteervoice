@@ -10,7 +10,11 @@
 #  organization_id :integer
 #
 
+# a program_size is an object that holds a program's group size
+# a program can have multiple program_sizes
 class ProgramSize < ActiveRecord::Base
   unloadable
+  
+  # associations
   belongs_to :program
 end

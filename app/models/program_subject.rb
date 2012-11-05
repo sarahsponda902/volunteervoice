@@ -10,6 +10,8 @@
 #  organization_id :integer
 #
 
+# a program_subject is an object that holds a program's subject tag
+# a program can have multiple program_subjects (limited to 4)
 class ProgramSubject < ActiveRecord::Base
   unloadable
   belongs_to :program

@@ -14,6 +14,9 @@
 #
 
 class Flag < ActiveRecord::Base
+  # attributes
   attr_accessible :review_id, :poster_id, :flagger_id, :body, :category
+  
+  # associations
   belongs_to :review
 end

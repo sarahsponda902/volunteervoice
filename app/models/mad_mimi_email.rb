@@ -14,8 +14,5 @@
 #  list_names     :text
 #
 
-class MadMimiEmail < ActiveRecord::Base
-  
-  
-  
+class MadMimiEmail < ActiveRecord::Base  
 end

@@ -33,11 +33,13 @@
 
 class NewReview < ActiveRecord::Base
   require 'file_size_validator'
-  validates :terms, :acceptance => {:accept => true}
-  validates_length_of :body, :minimum => 200, :message => "Must contain at least 30 
-  characters."
 
+  # associations
   belongs_to :user
+
+  # callbacks
+  validates :terms, :acceptance => {:accept => true}
+  validates_length_of :body, :minimum => 200, :message => "Must contain at least 30 characters."
   validates :photo, :file_size => {:maximum => 0.5.megabytes.to_i}
   validates :photo2, :file_size => {:maximum => 0.5.megabytes.to_i}
   validates :photo3, :file_size => {:maximum => 0.5.megabytes.to_i}
@@ -48,10 +50,12 @@ class NewReview < ActiveRecord::Base
   validates :photo8, :file_size => {:maximum => 0.5.megabytes.to_i}
   validates :photo9, :file_size => {:maximum => 0.5.megabytes.to_i}
   validates :photo10, :file_size => {:maximum => 0.5.megabytes.to_i}
+
+  # attributes
   attr_accessible :body, :rating, :photo, :show, :time_frame, :before, :terms, :preparation, :support, :impact, :structure, :overall, :user_id, :organization, :program, :photo2, :photo3, :photo4, :photo5, :photo6, :photo7, :photo8, :photo9, :photo10
 
 
-  # Paperclip
+  # Carrierwave uploaders
   mount_uploader :photo, ImageUploader
   mount_uploader :photo2, ImageUploader
   mount_uploader :photo3, ImageUploader
@@ -64,9 +68,10 @@ class NewReview < ActiveRecord::Base
   mount_uploader :photo10, ImageUploader
 
 
-      def roundup(overall)
-          (overall*2).round / 2.0
-      end
-     
-      
+  ### Other methods ###
+  def roundup(overall)
+    (overall*2).round / 2.0
+  end
+
+
 end
