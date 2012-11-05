@@ -580,7 +580,7 @@
 				<td class="priceRangesColumn">
 					
 					<% if f[0] > 12 %>
-						<% @months = ""+Math.floor(f[0] / 4).to_s+"months"%>
+						<% @months = ""+(f[0] / 4).floor.to_s+"months"%>
 						<% if (f[0] % 4) != 0 %>
 							<% @months += (", "+(f[0]%4).to_s+"weeks") %>
 						<% end %>
