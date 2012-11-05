@@ -67,10 +67,10 @@ class Searches::ShowPresenter
       # Cost Length search
       @cost_length_search = ProgramCostLengthMap.search do
         all_of do
-          with(:length).greater_than(length_min)
-          with(:length).less_than(length_max)
-          with(:cost).greater_than(price_min)
-          with(:cost).less_than(price_max)
+          with(:length).greater_than(:length_min)
+          with(:length).less_than(:length_max)
+          with(:cost).greater_than(:price_min)
+          with(:cost).less_than(:price_max)
         end      
       end
 
@@ -93,7 +93,7 @@ class Searches::ShowPresenter
 
     # do a third search, to determine if there are organizations we missed because they have no programs
     @second_search = Organization.search do 
-      keywords keys unless keys.nil?
+      keywords :keys unless :keys.nil?
     end
 
     #just in case second_search is nil
