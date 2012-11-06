@@ -1,21 +1,20 @@
-
+<!-- This is the blog_post search results page. It houses a search bar, 
+		and results from both vvi's posts and article posts -->
 <%= stylesheet_link_tag "/assets/smartpaginator.css"%>
-
 <%= javascript_include_tag "/assets/jquery.js"%>
-
 <%= javascript_include_tag "/assets/smartpaginatorRight.js"%>
 
 <style>
-.top {
+.top { /* gives space at the top of an object */
 	margin-top:25px;
 }
-#blogSearchBox {
+#blogSearchBox { /* blue box containing blog search bar and blurb */
 	width:90%; 
 	float:center;
 	margin:auto; 
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/resourcesTexture.png);
 }
-#blogSearchBoxBlurb {
+#blogSearchBoxBlurb { /* blurb to the left of the blog search bar */
 	margin-left:15px; 
 	padding-top:15px; 
 	padding-bottom:15px; 
@@ -25,21 +24,21 @@
 	line-height:1.8em; 
 	width:50%;
 }
-#blogSearchBarContainer {
+#blogSearchBarContainer { /* contains the actual search bar (text field) */
 	margin-top: 51px; 
 	margin-right:-8px; 
 	width:44%; 
 	padding-left:0;
 }
-.blogSearchButtonContainer {
+.blogSearchButtonContainer { /* contains the mag-glass search submit button */
 	float:right; 
 	margin-right:20px; 
 	margin-left:10px;
 }
-.blogSearchButtonContainer input {
+.blogSearchButtonContainer input { /* the actual mag-glass search button */
 	height:28px;
 }
-.blogSearchBar {
+.blogSearchBar { /* the actual search bar (text field) */
 	width:80%;
 	float:right;
 	-moz-border-radius: 8px;
@@ -48,7 +47,7 @@
  	border: 0;
 	height:30px;
 }
-#blogSearchResultsCounterContainer {
+#blogSearchResultsCounterContainer { /* contains the search resutls count */
 	margin-left:5%; 
 	width:95%;
 	margin-top:15px; 
@@ -56,27 +55,27 @@
 	color:#e67b5a; 
 	font-size:1.2em;
 }
-#showWhichTypeCheckboxContainer {
+#showWhichTypeCheckboxContainer { /* contains the checkboxes that indicate which type of blog post is showing */
 	z-index: 999;
 }
-#showWhichTypeCheckboxContainerInner {
+#showWhichTypeCheckboxContainerInner { /* an inner container for the checkboxes */
 	margin-top:10px; 
 	margin-bottom:10px; 
 	margin-left:5%;
 	width:90%; 
 	color:#575758;
 }
-#blogSearchResultsContainer {
+#blogSearchResultsContainer { /* contains all the search results from the user's search */
 	width:90%; 
 	float:center; 
 	margin:auto;
 }
-#article, #ours, #both {
+#article, #ours, #both { /* each contains a all their respective blog posts and their pager */
 	margin-top:0;
 	width:100%;
 	margin-bottom:50px;
 }
-#divarticles, #divours, #divboths {
+#divarticles, #divours, #divboths { /* contains all their respective blog posts */
 	border:1px solid #e67b5a; 
 	width:100%;
 	margin: 10;
@@ -84,13 +83,13 @@
     font-size: 14px;
     background-color: white;
 }
-#article_pager, #our_pager, #both_pager {
+#article_pager, #our_pager, #both_pager { /* pager for respective type of blog post search result */
 	margin-top:-40px;
 	width:100px;
 	float:right;
 	margin-right:5%;
 }
-.noSearchResultsContainer {
+.noSearchResultsContainer { /* container for "no search results" message and box */
 	border:1px solid #e67b5a; 
 	height:200px; 
 	background-color:white; 
@@ -101,12 +100,12 @@
 .noSearchResultsInnerContainer {
 	margin:25px;
 }
-.weveGotNothinContainer {
+.weveGotNothinContainer { /* blue lines surrounding "we've got nothin" message */
 	border-top:1px solid #68c2d8; 
 	height:150px; 
 	border-bottom:1px solid #68c2d8;
 }
-p.weveGotNothinBlurb {
+p.weveGotNothinBlurb { /* actual "we've got nothin" message inside box */
 	text-align:center; 
 	margin-top:50px; 
 	font-family:architectsDaughterRegular;
@@ -114,12 +113,15 @@ p.weveGotNothinBlurb {
 	color: #68c2d8;
 }
 
-.pager {
+/* smartpaginator's pager class */
+.pager { 
 	margin-left:65%;
 }
-.pager span {
+.pager span { 
 	float:right;
 }
+
+/* class for container of all three types of search results */
 .contents
 {
     width: 91%; 
