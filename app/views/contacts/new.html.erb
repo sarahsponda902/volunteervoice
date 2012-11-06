@@ -1,10 +1,13 @@
+<!-- This is VVIs contact_us page. It houses 3 different ways to contact us, 
+"contact us", "for organizations", and "for questions". -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 
 <style>
 
 
-/* Mask for background, by default is not display */
+/* Mask background for popup, by default is not display */
 #mask {
 	display: none;
 	background: #000; 
@@ -29,54 +32,56 @@
 	top: 50%; left: 50%;
 	z-index: 99999;
 	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
 	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari, Chrome */
 }
 
-.container {
-	color:#575758;
-}
-
-.title {
+.title { /* page title */
 	font-size:3em;
 	margin:40px;
 }
-.leftHandImage {
+.leftHandImage { /* image to the left: drawing of Alyssa, Sajad and Sarah */
 	width:47%;
 	margin:0; 
 	padding:0; 
 	margin-top:10px;
 }
-.rightHandBlurbs {
-	width:47%;
-	margin:0; 
-	padding:0;
+.rightHandBlurbs { /* each of the blurbs above the buttons that open "contact us" popups */
+width:47%;
+margin:0; 
+padding:0;
 }
-.box {
+.box { /* main box that surrouds all three contact_us buttons and blurbs */
 	border: 1px solid #575758;
 }
-.subBox {
+.subBox { /* sub box that surrounds just one contact_us button and blurb */
 	margin:10px; 
 	border-bottom:1px solid #575758;
 }
-.lastBox {
+.lastBox { /* last sub box - should not have a bottom border */
 	margin:10px;
 	margin-bottom:0;
 }
-.popupLinkContainer {
+.popupLinkContainer { /* container for actual button that opens contact us popup */
 	text-align:center;
 }
-a.contact-window, a.organizations-window, a.questions-window {
+
+a.popup-window { /* actual link (button) that opens popup */
 	text-align:center; 
 	color:blue;
 }
-a.contact-window:hover, a.organizations-window:hover, a.questions-window:hover{
+a.popup-window:hover {
 	color:white;
 }
-.popupTitle {
+
+/*****************************/
+/* Style Inside Popup Boxes */
+/****************************/
+
+.popupTitle { /* title at the top of each popup contact us box */
 	font-family:JosefinSlabRegular; 
 	font-size:2em; 
 	color:#68c2d8; 
@@ -84,29 +89,29 @@ a.contact-window:hover, a.organizations-window:hover, a.questions-window:hover{
 	text-align:center;
 }
 
-.popupFieldContainer {
+.popupFieldContainer { /* contains a text field in the contact us popup */
 	margin-left:0px;
 }
-.popupField {
+.popupField { /* actual text field in the contact us popup */
 	height:20px; 
 	width:232px;
 }
-.popupSubjectField {
+.popupSubjectField { /* actual subject field in the contact us popup */
 	height:20px; 
 	width:495px;
 }
-.popupBodyField {
+.popupBodyField { /* actual textarea for body in the contact us popup */
 	height:100px; 
 	width:500px; 
 	font-style:italic;
 }
-.submitButtonContainer {
-	text-align:center;
+.submitButtonContainer { /* contains the active "send" button in each popup */
+text-align:center;
 }
-.graySubmitButtonContainer {
-	text-align:center;
+.graySubmitButtonContainer { /* contains the inactive "send" button in each popup */
+text-align:center;
 }
-.noSubmitButtonContainer {
+.noSubmitButtonContainer { /* contains the blurb that describes why the contact cannot be submitted yet */
 	text-align:center;
 	color:#E67B5A;
 	margin-top:-50px;
@@ -118,13 +123,13 @@ a.contact-window:hover, a.organizations-window:hover, a.questions-window:hover{
 <!-- ERROR MESSAGES -->
 <% if flash.class.name != "String"%>
 <% flash.each do |key, value| %>
-	<% if value.class.name != "String"%>
-	  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+<% if value.class.name != "String"%>
+<div class="flash <%=key%>">
+	<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
 	<% value.each do |f|%>
-		* <%=f%><br />
+	* <%=f%><br />
 	<% end %>
-  </div>
+</div>
 <% end %>
 <% end %>
 <% end %><!-- END ERROR MESSAGES -->
@@ -135,209 +140,122 @@ a.contact-window:hover, a.organizations-window:hover, a.questions-window:hover{
 
 <div class="container">
 	<div class="row">
+		<!-- Page title -->
 		<div class="twelve columns title" align="center">
 			<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayItToOurFace.png"%>
-		</div>
+		</div><!-- end page title -->
+
+		<!-- computer-drawn image to left of Alyssa, Sajad, and Sarah -->
 		<div class="six columns leftHandImage">
-			<image style="margin-top:25px;" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/theTeam2.jpeg">
-		</div>
+			<image style="margin-top:25px;" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/theTeam2.jpeg" />
+		</div><!-- end silly image -->
+
+		<!-- right hand side blurbs and buttons -->
 		<div class="six columns rightHandBlurbs">
 			<div class="box">
+				<!-- first blurb & button: contact us -->
 				<div class="subBox">
-Hey! We would really love to hear from you.  If you love the site, if you hate the site, if you have some ideas for the site, if you are in possession of an adorable baby animal pic that you think we really need to see--Whatever your reason is, you can reach us here: 
+					Hey! We would really love to hear from you.  If you love the site, if you hate the site, if you have some ideas for the site, if you are in possession of an adorable baby animal pic that you think we really need to see--Whatever your reason is, you can reach us here:
 					<br />
 					<br />
-				<p class="popupLinkContainer">	<a href="#contact-box" class="contact-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/general.png"></a></p>
-						<br />
-						<br />
-				</div>
+
+					<!-- contact us button -->
+					<p class="popupLinkContainer">	
+						<a href="#contact-box" class="popup-window">
+							<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/general.png" />
+						</a>
+					</p><!-- end contact us button -->
+					<br />
+					<br />
+				</div><!-- end first blurb & button: contact us -->
+
+				<!-- second blurb & button: for organizations -->
 				<div class="subBox">
 					If you are an international volunteer organization, we definitely want to hear from you as well.  If you want us to build a profile for you, or have questions/input about the one that we’ve already built, you can get in contact with us here: 
-					
 					<br />
 					<br />
-					<p class="popupLinkContainer"><a href="#organizations-box" class="organizations-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/organizations.png"></a></p>
-						<br />
-						<br />
-				</div>
+
+					<!-- for organizations button -->
+					<p class="popupLinkContainer">
+						<a href="#organizations-box" class="popup-window">
+							<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/organizations.png" />
+						</a>
+					</p><!-- end for organizations button -->
+					<br />
+					<br />
+				</div><!-- end second blurb & button: for organizations -->
+
+
+				<!-- third blurb & button: for questions -->
 				<div class="lastBox">
 					If you need any help navigating the site or understanding something that we’ve posted, we’d be happy to help.  As we are a brand new site, we also expect there may be some bugs that need catching, so we would really love your help on that front.  Questions go here: 
-					
 					<br />
 					<br />
-				<p class="popupLinkContainer">	<a href="#questions-box" class="questions-window"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/questions.png"></a></p>
-						<br />
-						<br />
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+
+					<!-- for organizations button -->
+					<p class="popupLinkContainer">	
+						<a href="#questions-box" class="popup-window">
+							<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/questions.png" />
+						</a>
+					</p><!-- end for organizations button -->
+					<br />
+					<br />
+				</div><!-- end third blurb & button: for questions -->
+			</div><!-- end box -->
+		</div><!-- end rightHandBlurbs -->
+	</div><!-- end row -->
+</div><!-- end container -->
 
 
-<!-- POPUPS BEGIN HERE -->
-	<!-- CONTACT POPUP -->
+<!-- BEGIN POPUPS -->
 
-  	<div id="contact-box" class="contact-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
-		<p class="popupTitle">Contact Us</p>
-			<%= form_for(@contact) do |f| %>
-			<%= f.hidden_field :to_whom, :value => "contact"%>
-			<% if user_signed_in?%>
-			<%= f.hidden_field :user_id, :value => current_user.id%>
-			<% end %>
-
-				<div class="six columns popupFieldContainer">
-			    <div class="field">
-			      Name<br />
-			      <%= f.text_field :name, :class => "popupField" %>
-			    </div>
-				</div>
-				<div class="six columns">
-			    <div class="field">
-			      Email<br />
-			      <%= f.text_field :email, :class => "popupField", :id => "email-contact", :onkeyup => "checkContactForSubmit();"  %>
-			    </div>
-				</div>
-			    <div class="field">
-			      Subject<br />
-			      <%= f.text_field :subject, :class => "popupSubjectField"  %>
-			    </div>
-
-			    <div class="field">
-			      <%= f.label :body %>
-			      <%= f.text_area :body, :class => "popupBodyField", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-contact", :onkeyup => "checkContactForSubmit();" %>
-			    </div>
+<!-- CONTACT US POPUP -->
+<div id="contact-box" class="contact-popup">
+	<%= render :partial => "form_popup", :locals => {:contact => @contact, :type => "contact"}%>
+</div>	<!-- END CONTACT POPUP -->
 
 
-			  <div id="submit-contact">
-			    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
-			  </div>
-			
-			 <div id="nosubmit-contact">
-				<p class="graySubmitButtonContainer"><%= image_tag "/assets/smallSubmitGray.png"%></p>
-				<p class="noSubmitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
-			</div>
-			<% end %>	
-	</div>	<!-- END CONTACT POPUP -->
-	
-
-		<!-- ORGANIZATIONS POPUP -->
-  	<div id="organizations-box" class="organizations-popup">
-		<a href="#" class="close"><div class="close_image"></div></a>
-			<p class="popupTitle">Organizations</p>
-				<%= form_for(@contact) do |f| %>
-				<%= f.hidden_field :to_whom, :value => "organizations"%>
-				<% if user_signed_in?%>
-				<%= f.hidden_field :user_id, :value => current_user.id%>
-				<% end %>
-
-					<div class="six columns popupFieldContainer">
-				    <div class="field">
-				      Name<br />
-				      <%= f.text_field :name, :class => "popupField" %>
-				    </div>
-					</div>
-					<div class="six columns">
-				    <div class="field">
-				      Email<br />
-				      <%= f.text_field :email, :class => "popupField", :id => "email-organizations", :onkeyup => "checkOrganizationsForSubmit();"  %>
-				    </div>
-					</div>
-				    <div class="field">
-				      Subject<br />
-				      <%= f.text_field :subject, :class => "popupSubjectField"  %>
-				    </div>
-
-				    <div class="field">
-				      <%= f.label :body %>
-				      <%= f.text_area :body, :class => "popupBodyField", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-organizations", :onkeyup => "checkOrganizationsForSubmit();" %>
-				    </div>
-
-
-				  	<div id="submit-organizations">
-					    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
-					  </div>
-
-					 <div id="nosubmit-organizations">
-						<p class="graySubmitButtonContainer"><%= image_tag "/assets/smallSubmitGray.png"%></p>
-						<p class="noSubmitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
-					</div>
-				<% end %>
-	</div>	<!-- END ORGANIZATIONS POPUP -->
+<!-- ORGANIZATIONS POPUP -->
+<div id="organizations-box" class="organizations-popup">
+	<%= render :partial => "form_popup", :locals => {:contact => @contact, :type => "organizations"}%>
+</div>	<!-- END ORGANIZATIONS POPUP -->
 
 
 
-	<!-- QUESTIONS POPUP -->
-  	<div id="questions-box" class="questions-popup">
-		<a href="#" class="close"><div class="close_image"></div></a>
-			<p class="popupTitle">Questions</p>
-				<%= form_for(@contact) do |f| %>
-				<%= f.hidden_field :to_whom, :value => "questions"%>
-				<% if user_signed_in?%>
-				<%= f.hidden_field :user_id, :value => current_user.id%>
-				<% end %>
+<!-- QUESTIONS POPUP -->
+<div id="questions-box" class="questions-popup">
+	<%= render :partial => "form_popup", :locals => {:contact => @contact, :type => "questions"}%>
+</div>	<!-- END QUESTIONS POPUP -->
 
-					<div class="six columns popupFieldContainer">
-				    <div class="field">
-				      Name<br />
-				      <%= f.text_field :name, :class => "popupField" %>
-				    </div>
-					</div>
-					<div class="six columns">
-				    <div class="field">
-				      Email<br />
-				      <%= f.text_field :email, :class => "popupField", :id => "email-questions", :onkeyup => "checkQuestionsForSubmit();"  %>
-				    </div>
-					</div>
-				    <div class="field">
-				      Subject<br />
-				      <%= f.text_field :subject, :class => "popupSubjectField"  %>
-				    </div>
+<!-- END POPUPS -->
 
-				    <div class="field">
-				      <%= f.label :body %>
-				      <%= f.text_area :body, :class => "popupBodyField", :value => "Must be at least 5 characters", :onfocus => "if (this.value == 'Must be at least 5 characters') {this.value = ''}; this.style.fontStyle = 'normal'", :id => "body-questions", :onkeyup => "checkQuestionsForSubmit();" %>
-				    </div>
-
-
-				  	<div id="submit-questions">
-					    <p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
-					  </div>
-
-					 <div id="nosubmit-questions">
-						<p class="graySubmitButtonContainer"><%= image_tag "/assets/smallSubmitGray.png"%></p>
-						<p class="noSubmitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
-					</div>
-				<% end %>
-	
-	
-	</div>	<!-- END QUESTIONS POPUP -->
 
 <script type="text/javascript">
+
 $(document).ready(function () {
-	
+
 	//Hide submit buttons until all required form fields are filled out
 	$("#submit-questions").hide();
 	$("#submit-organizations").hide();
 	$("#submit-contact").hide();
-	
-	//////////////////////////////////////
-	//Organization's Contact Popup JQuery
-	/////////////////////////////////////
-	$('a.organizations-window').click(function() {
 
-                //Getting the variable's value from a link 
-		var organizationsBox = $(this).attr('href');
+
+	////////////////////////////////
+	// All Contact Popups' JQuery //
+	///////////////////////////////
+	$('a.popup-window').click(function() {
+
+		//Getting the variable's value from a link 
+		var popupBox = $(this).attr('href');
 
 		//Fade in the Popup
-		$(organizationsBox).fadeIn(300);
+		$(popupBox).fadeIn(300);
 
 		//Set the center alignment padding + border see css style
-		var popMargTop = ($(organizationsBox).height() + 24) / 2; 
-		var popMargLeft = ($(organizationsBox).width() + 24) / 2; 
+		var popMargTop = ($(popupBox).height() + 24) / 2; 
+		var popMargLeft = ($(popupBox).width() + 24) / 2; 
 
-		$(organizationsBox).css({ 
+		$(popupBox).css({ 
 			'margin-top' : -popMargTop,
 			'margin-left' : -popMargLeft
 		});
@@ -351,123 +269,35 @@ $(document).ready(function () {
 
 	// When clicking on the button close or the mask layer the popup closed
 	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .organizations-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-	
-	
-	//////////////////////////////////////
-	//Questions Contact Popup JQuery
-	/////////////////////////////////////
-	$('a.questions-window').click(function() {
-
-	                //Getting the variable's value from a link 
-			var questionsBox = $(this).attr('href');
-
-			//Fade in the Popup
-			$(questionsBox).fadeIn(300);
-
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(questionsBox).height() + 24) / 2; 
-			var popMargLeft = ($(questionsBox).width() + 24) / 2; 
-
-			$(questionsBox).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
-
-			// Add the mask to body
-			$('body').append('<div id="mask" style="opacity:.5"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
-		});
-
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .questions-popup').fadeOut(300 , function() {
+		$('#mask , .contact-popup, .organizations-popup, .questions-popup').fadeOut(300 , function() {
 			$('#mask').remove();  
 		}); 
 		return false;
-	});
+	}); // end contact's JQuery
 	
-	
-	
-	//////////////////////////////////////
-	//Regular Contact Popup JQuery
-	/////////////////////////////////////
-	$('a.contact-window').click(function() {
+}); //end $(document).ready
 
-                //Getting the variable's value from a link 
-		var contactBox = $(this).attr('href');
 
-		//Fade in the Popup
-		$(contactBox).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(contactBox).height() + 24) / 2; 
-		var popMargLeft = ($(contactBox).width() + 24) / 2; 
-
-		$(contactBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask" style="opacity:.5"></div>');
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .contact-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-});
-
-//Check if the regular "Contact" form has all form fields filled out that are required
-function checkContactForSubmit() {
-	if ($("#email-contact").attr("value") != ""
-	 && $("#email-contact").attr("value").indexOf("@") > 0
-	 && $("#email-contact").attr("value").indexOf(".") > 0
-	 && $("#body-contact").attr("value") != "Must be at least 5 characters"
-	 && $("#body-contact").attr("value").length >= 5) {
-		$("#nosubmit-contact").hide();
-		$("#submit-contact").show();
+// sets the popup's body field to blank when it is first clicked
+function setBodyFieldBlank(bodyField) {
+	if (bodyField.value == 'Must be at least 5 characters') 
+	{
+		bodyField.value = '';
+		bodyField.style.fontStyle = 'normal';
 	}
 }
 
-//Check if the regular "Organization" form has all form fields filled out that are required
-function checkOrganizationsForSubmit() {
-	if ($("#email-organizations").attr("value") != ""
-	 && $("#email-organizations").attr("value").indexOf("@") > 0
-	 && $("#email-organizations").attr("value").indexOf(".") > 0
-	 && $("#body-organizations").attr("value") != "Must be at least 5 characters"
-	 && $("#body-organizations").attr("value").length >= 5) {
-		$("#nosubmit-organizations").hide();
-		$("#submit-organizations").show();
+//Check if the contact_us form has all form fields filled out that are required
+function checkFormForSubmit(type) {
+	if ($("#email-"+type).attr("value") != ""
+		&& $("#email-"+type).attr("value").indexOf("@") > 0
+		&& $("#email-"+type).attr("value").indexOf(".") > 0
+		&& $("#body-"+type).attr("value") != "Must be at least 5 characters"
+		&& $("#body-"+type).attr("value").length >= 5) 
+	{
+		$("#nosubmit-"+type).hide();
+		$("#submit-"+type).show();
 	}
-	
 }
 
-//Check if the regular "Question" form has all form fields filled out that are required
-function checkQuestionsForSubmit() {
-	if ($("#email-questions").attr("value") != ""
-	 && $("#email-questions").attr("value").indexOf("@") > 0
-	 && $("#email-questions").attr("value").indexOf(".") > 0
-	 && $("#body-questions").attr("value") != "Must be at least 5 characters"
-	 && $("#body-questions").attr("value").length >= 5) {
-		$("#nosubmit-questions").hide();
-		$("#submit-questions").show();
-	}
-	
-}
 </script>
