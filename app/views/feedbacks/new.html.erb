@@ -1,7 +1,10 @@
+<!-- a user is sent to this page if there is a validation error with saving their feedback 
+		and they need to edit/change it -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-.title {
+.title { /* page title */
 	text-align:center; 
 	margin-top:50px; 
 	margin-bottom:20px; 
@@ -9,68 +12,83 @@
 	font-size:3em; 
 	color:#575758;
 }
-.label {
+.label { /* form field label */
 	color:#575758;
 	text-align:center;
 }
-.textField {
+.textField { /* form field (name/email) */
 	width:246px; 
 	height:18px;
 }
-.textArea {
+.textArea { /* form field (body) */
 	height:150px; 
 	width:250px; 
 	border:1px solid gray;
 }
-.field {
+.field { /* encapsulates an entire form field */
 	margin-bottom:15px;
 }
-.submitContainer {
+.submitContainer { /* contains the submit button */
 	text-align:center;
 }
-#submitButton {
+#submitButton { /* actual submit button */
 	height:30px;
 }
 </style>
 
 <!-- ERROR MESSAGES -->
 <% if flash.class.name != "String"%>
-<% flash.each do |key, value| %>
-	<% if value.class.name != "String"%>
-	  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your feedback from being sent:<br />
-	<% value.each do |f|%>
-		* <%=f%><br />
+	<% flash.each do |key, value| %>
+		<% if value.class.name != "String"%>
+			<div class="flash <%=key%>">
+				<%= pluralize value.length, "errors"%> prevented your feedback from being sent:<br />
+				<% value.each do |f|%>
+					* <%=f%><br />
+					<% end %>
+			</div>
+		<% end %>
 	<% end %>
-  </div>
-<% end %>
-<% end %>
 <% end %><!-- END ERROR MESSAGES -->
+
 
 
 <div class="container">
 	<div class="row">
 		<div class="twelve columns" align="center">
-<p class="title">Feedback</p>
-<%= form_for(@feedback) do |f| %>
-  <div class="field">
-	<%if user_signed_in?%>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    <% else %>
-    <p class= "label">Email </p>
-	<%= f.text_field :email, :class => "textField"%>
-    
-    <% end %>
-  </div>
-  <div class="field">
-    <p class= "label">Message </p>
-    <%= f.text_area :body, :class=>"textArea" %>
-  </div>
+			
+			<!-- page title -->
+			<p class="title">Feedback</p><!-- end page title -->
+			
+			<!-- feedback form -->
+			<%= form_for(@feedback) do |f| %>
+			
+			<!-- user identification field
+				 user_id (hidden, only if user is signed in) OR email (if user is not signed in) -->
+			<div class="field">
+				<%if user_signed_in?%>
+					<%= f.hidden_field :user_id, :value => current_user.id %>
+				<% else %>
+					<p class= "label">Email </p>
+					<%= f.text_field :email, :class => "textField"%>
+				<% end %>
+			</div>
+			
+			<!-- body of feedback -->
+			<div class="field">
+				<p class= "label">Message </p>
+				<%= f.text_area :body, :class=>"textArea" %>
+			</div><!-- end body -->
 
-  <div class="actions">
-    <p class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'", :id => "submitButton"%></p>
-  </div>
-<% end %>
-</div>
-</div>
-</div>
+			<!-- submit button -->
+			<div class="actions">
+				<p class="submitContainer">
+					<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/sayIt.png",
+						:onmousedown => "this.className = 'shadowed'", 
+						:onmouseup => "this.className = 'nothing'", 
+						:id => "submitButton"%>
+				</p>
+			</div><!-- end submit button -->
+			<% end %><!-- end feedback form -->
+		</div>
+	</div><!-- end row -->
+</div><!-- end container -->

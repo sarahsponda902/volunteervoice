@@ -1,36 +1,52 @@
-		<%= javascript_include_tag "/assets/jquery.js"%>
-		<style>
-		.top {
-			margin-top:20px; 
-			padding-bottom:75px;
-		}
-		.errorBoxContainer {
-			font-family:JosefinSlabRegular; 
-			color:#575758; 
-			font-size:1.5em; 
-			margin-top:20px; 
-			margin-bottom:30px; 
-			line-height:1.3em;
-		}
-		.errorMessageContainer {
-			text-align:center;
-		}
-		.vviLogoContainer {
-			margin-top:30px;
-		}
-		.logoSubscript {
-			font-size:.7em;
-		}
-		</style>
-	<div class="container">
-		<div class="row top">
-<div class="twelve columns errorBoxContainer" align="center">
-	<p class="errorMessageContainer"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/oops.png"></p><br />
-	Sorry.  Our team of sloths are moving a little slower than usual.<br /> 
-	Please be patient, it's not their fault.</div><br /><br />
-<div align="center" class="vviLogoContainer"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/slothHand.jpg" class="height:400px">
-	<p class="logoSubscript">Image courtesy of burkemuseum.org</p>
-</div>
-</div>
-</div>
-</div>
+<!-- A user is directed to this page if they get an error 500 -->
+
+<%= javascript_include_tag "/assets/jquery.js"%>
+
+<style>
+.top { /* gives container space at the top and bottom */
+	margin-top:20px; 
+	padding-bottom:75px;
+}
+.errorBoxContainer { /* contains the entire error message */
+	font-family:JosefinSlabRegular; 
+	color:#575758; 
+	font-size:1.5em; 
+	margin-top:20px; 
+	margin-bottom:30px; 
+	line-height:1.3em;
+}
+.errorMessageContainer { /* contains just the text error message */
+	text-align:center;
+}
+.vviLogoContainer { /* contains the logo -> link to home page */
+	margin-top:30px;
+}
+.logoSubscript { /* contains the 'Image courtesy of...' message */
+	font-size:.7em;
+}
+</style>
+
+
+<div class="container">
+	<div class="row top">
+		<div class="twelve columns errorBoxContainer" align="center">
+			<p class="errorMessageContainer">
+				<!-- Page title: "Oops!" -->
+				<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/oops.png" />
+				<!-- end page title -->
+			</p>
+			<br />
+			<!-- error/apology message -->
+			Sorry.  Our team of sloths are moving a little slower than usual.<br /> 
+			Please be patient, it's not their fault.</div><!-- end error/apology message -->	
+			<br /><br />
+			
+			<!-- logo: link to homepage -->
+			<div align="center" class="vviLogoContainer">
+				<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/slothHand.jpg" class="height:400px" />
+				<!-- logo subscript -->
+				<p class="logoSubscript">Image courtesy of burkemuseum.org</p><!-- end logo subscript -->
+			</div><!-- end logo -->
+		</div><!-- end errorBoxContainer -->
+	</div><!-- end row -->
+</div><!-- end container -->

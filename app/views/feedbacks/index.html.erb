@@ -1,69 +1,116 @@
+<!-- This is an ADMIN-ONLY page that displays all feedbacks given via popup on homepage -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-.pageTitle {
+.pageTitle { /* title at top of page */
 	font-size:3em; 
 	line-height:2em; 
 	margin-top:20px;
 	padding-bottom:20px;
 	text-align:center; 
 }
-.linkToGo {
+.linkToGo { /* link to view a certain feedback */
 	margin-left:11px;
 }
-.dateTime {
+.dateTime { /* date & time */
 	color:blue;
 }
-.editFeedback {
+.editFeedback { /* link to edit feedback */
 	margin-left:11px;
 }
 </style>
 
-<% if user_signed_in? && current_user.admin?%>
+
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-<p class="pageTitle">Listing feedbacks</h1>
+			<!-- Page title -->
+			<p class="pageTitle">Listing feedbacks</p><!-- end page title -->
 
-<table>
-	<thead>
-  <tr>
-	<th>Date Created</th>
-    <th>Username/Email</th>
-    <th>Body</th>
-    <th>Go to?</th>
-    <th>Homepage?</th>
-	<th>Edit?</th>
-	<th>Delete?</th>
-  </tr>
-	</thead>
-<tdata>
-<% @feedbacks.each do |f| %>
-  <tr>
-	<td width="10%"><p class="dateTime"><%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
-	<td width="12%">
-	<% if f.user_id.nil?%>
-	<%= f.email%>
-	<% else %>
-	<%= link_to User.find(f.user_id).username, User.find(f.user_id)%>
-	<% end %>
-	</td>
-	
-	<td width ="50%"><%= textilized(truncate untextilized(f.body), :length => 100).html_safe %></td>
-    <td width="7%"><p class="linkToGo"><%= link_to 'Go', f %></p></td>
-	<td width="7%">
-	<% if f.show %>
-	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), "/feedbacks/#{f.id}/changeShow" %>
-	<% else %>
-	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), "/feedbacks/#{f.id}/changeShow" %>
-	<% end %>
-    <td width="7%"><p class="editFeedback"><%= link_to 'Edit', edit_feedback_path(f) %></p></td>
-    <td width="7%"><%= button_to "Delete", feedback_path(f.id), :method => :delete, :confirm => "Are you sure?" %></td>
-  </tr>
-<% end %>
-</tdata>
-</table>
+			<table>
+				<!-- Table headers -->
+				<thead>
+					<tr>
+						<th>Date Created</th>
+						<th>Username/Email</th>
+						<th>Body</th>
+						<th>Go to?</th>
+						<th>Homepage?</th>
+						<th>Edit?</th>
+						<th>Delete?</th>
+					</tr>
+				</thead>
+				<tdata>
+					<!-- iterate through all feedbacks and display attributes -->
+					<% @feedbacks.each do |f| %>
+					<tr>
+						<!-- date created (formatted mm/dd/YYYY)-->
+						<td width="10%">
+							<p class="dateTime">
+								<%= f.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+							</p>
+						</td><!-- end date created -->
 
-<br />
-</div>
-<% end %>
+						<!-- username or email -->
+						<td width="12%">
+							<!-- display email if user was not logged in, else
+							username: link to user's profile -->
+							<% if f.user_id.nil?%>
+							<%= f.email%>
+							<% else %>
+							<%= link_to User.find(f.user_id).username, User.find(f.user_id)%>
+							<% end %>
+						</td><!-- end username or email -->
+
+						<!-- body of feedback (truncated to 100 chars) -->
+						<td width ="50%">
+							<%= textilized(truncate untextilized(f.body), :length => 100).html_safe %>
+						</td><!-- end body -->
+
+						<!-- link to view feedback in full -->
+						<td width="7%">
+							<p class="linkToGo">
+								<%= link_to 'Go', f %>
+							</p>
+						</td><!-- end link to feedback -->
+
+						<!-- button to show feedback on homepage -->
+						<td width="7%">
+							<% if f.show %><!-- if feedback is in showing pool,
+							then show button to hide -->
+							<%= link_to (image_tag 
+							"https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), 	
+							"/feedbacks/#{f.id}/changeShow" %>
+							<% else %> <!-- otherwise, show button to 
+							add to homepage showing pool-->
+							<%= link_to (image_tag 
+							"https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), 
+							"/feedbacks/#{f.id}/changeShow" %>
+							<% end %>
+						</td><!-- end button to show on homepage -->
+
+						<!-- link to edit feedback -->
+						<td width="7%">
+							<p class="editFeedback">
+								<%= link_to 'Edit', edit_feedback_path(f) %>
+							</p>
+						</td><!-- end link to edit -->
+
+						<!-- button to delete feedback -->
+						<td width="7%">
+							<%= button_to "Delete", 
+							feedback_path(f.id), 
+							:method => :delete, 
+							:confirm => "Are you sure?" %>
+						</td><!-- end button to delete -->
+					</tr>
+					<% end %>
+				</tdata>
+			</table>
+
+			<br />
+		</div>
+	</div><!-- end row -->
+</div><!-- end container -->
+

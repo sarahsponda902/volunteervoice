@@ -1,59 +1,110 @@
+<!-- Admin only page that shows all flags (reviews that have been flagged for removal) -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-.title {
+.title { /* page title */
 	font-size:3em; 
 	line-height:2em; 
 	margin-top:20px; 
 	margin-bottom:20px;
 }
 </style>
+<div class ="container">
+	<div class="row">
+		<div class="twelve columns">
+		<!-- page title -->
+		<p align="center" class="title">Listing flags</p><!-- end page title -->
 
-<p align="center" class="title">Listing flags</p>
+		<table>
+			<!-- table headers -->
+			<thead>
+				<tr>
+					<th>Org Name</th>
+					<th>Poster</th>
+					<th>Flagger</th>
+					<th>Body</th>
+					<th>View Review?</th>
+					<th>View Flag?</th>
+					<th>Destroy?</th>
+					<th>Show Review Anyway?</th>
+				</tr>
+			</thead><!-- end table headers -->
 
-<table>
-	<thead>
-  <tr>
-	<th>Org Name</th>
-	<th>Poster</th>
-    <th>Flagger</th>
-    <th>Body</th>
-	<th>View Review?</th>
-    <th>View Flag?</th>
-    <th>Destroy?</th>
-	<th>Show Review Anyway?</th>
-  </tr>
-	</thead>
-	<tdata>
-<% @flags.each do |flag| %>
-  <tr>
-	<td width="13%"><%= link_to Organization.find(Review.find(flag.review_id).organization_id).name, Organization.find(Review.find(flag.review_id).organization_id)%></td>
-	<td width="5%">
-	<% if !(User.where(:id => flag.poster_id).empty?)%>
-	<%= User.find(flag.poster_id).username%>
-	<% else %>
-	<%= "???"%>
-	<% end %>
-	</td>
-	<td width="12%">
-	<% if !(User.where(:id => flag.flagger_id).empty?)%>
-	<%= User.find(flag.flagger_id).username%>
-	<% else %>
-	<%= "???"%>
-	<% end %></td>
-	<td width="45%"><%= flag.body.html_safe%></td>
-	<td width="10%"><%= link_to 'Review', Review.find(flag.review_id)%></td>
-    <td width="7%"><%= link_to 'Flag', flag %></td>
-    <td width="7%"><%= link_to 'Destroy', flag, confirm: 'Are you sure?', method: :delete %></td>
-	<td width="7%"><% if Review.find(flag.review_id).flag_show %>
-	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), "/reviews/#{flag.review_id}/changeFlagShow" %>
-	<% else %>
-	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), "/reviews/#{flag.review_id}/changeFlagShow" %>
-	<% end %>
-  </tr>
-<% end %>
-	</tdata>
-</table>
+			<!-- table data -->
+			<tdata>
+				<!-- iterate through flags and display attributes of each -->
+				<% @flags.each do |flag| %>
+				<tr>
+					<!-- organization -->
+					<td width="13%">
+						<%= link_to flag.review.organization.name, flag.review.organization%>
+					</td><!-- end organization -->
 
-<br />
+					<!-- poster (user who wrote the review) -->
+					<td width="5%">
+						<!-- display username of user that created review
+						IF user has not deleted their account 
+						OTHERWISE display "???" -->
+
+						<% if User.where(:id => flag.poster_id).present?%>
+						<%= User.find(flag.poster_id).username%>
+						<% else %>
+						<%= "???"%>
+						<% end %>
+					</td><!-- end poster -->
+
+					<!-- flagger (user who flagged the review) -->
+					<td width="12%">
+						<!-- display username of user that flagged review
+						IF user has not deleted their account 
+						OTHERWISE display "???" -->
+						<% if !(User.where(:id => flag.flagger_id).empty?)%>
+						<%= User.find(flag.flagger_id).username%>
+						<% else %>
+						<%= "???"%>
+						<% end %>
+					</td><!-- end flagger -->
+
+					<!-- body (truncated to 100 characters) -->
+					<td width="45%">
+						<%= (truncate untextilize(flag.body), :length => 100).html_safe%>
+					</td><!-- end body -->
+
+					<!-- link to review -->
+					<td width="10%">
+						<%= link_to 'Review', Review.find(flag.review_id)%>
+					</td><!-- end link to review -->
+
+					<!-- link to view full flag -->
+					<td width="7%">
+						<%= link_to 'Flag', flag %>
+					</td><!-- end link to flag -->
+
+					<!-- button to destroy flag -->
+					<td width="7%">
+						<%= button_to 'Destroy', flag, method: :delete %>
+					</td><!-- end button to destroy -->
+
+					<!-- button to hide/show review -->
+					<td width="7%">
+						<!-- if review is showing, put 'hide' button 
+						else if review is hiding, put 'show' button -->
+						<% if Review.find(flag.review_id).flag_show %>
+						<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"),
+						"/reviews/#{flag.review_id}/changeFlagShow" %>
+						<% else %>
+						<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"),
+						"/reviews/#{flag.review_id}/changeFlagShow" %>
+						<% end %>
+					</td><!-- end button to hide/show review -->
+				</tr>
+				<% end %>
+				</tdata>
+			</table><!-- end table -->
+
+			<br />
+		</div>
+	</div><!-- end row -->
+</div><!-- end container -->
 

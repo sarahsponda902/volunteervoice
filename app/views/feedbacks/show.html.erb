@@ -1,16 +1,55 @@
+<!-- Admin-only page for viewing the full feedback -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
-<p>
-  <b>Body:</b>
-  <%= @feedback.body.html_safe %>
-</p>
+<style>
+.top { /* to give space from top of page */
+	margin-top:30px;
+}
+.pageTitle { /* title of page */
+	font-size:2.5em;
+	text-align:center;
+	float:center;
+	margin-bottom:20px;
+}
+.label { /* label of feedback attribute */
+	font-size:1.3em;
+	font-weight:bold;
+}
+</style>
 
-<p>
-  <b>User id:</b>
-  <%= @feedback.user_id %>
-</p>
+<div class="container">
+	<div class="row">
+		<div class="twelve columns top">
+			<!-- Page title -->
+			<div class="pageTitle">
+				Showing Feedback #<%=@feedback.id%>
+			</div><!-- end page title -->
+			
+			<!-- Feedback body -->
+			<p>
+  				<p class="label">Body: </p>
+  				<%= @feedback.body.html_safe %>
+			</p>
 
+			<!-- User/email that wrote the feedback -->
+			<p>
+  				<p class="label">User:</p>
+				<% if @feedback.user_id.nil? %>
+					<%= @feedback.email%>
+				<% else %>
+					<% @user = User.find(@feedback.user_id)%>
+  					<%= link_to @user.username, @user %>
+				<% end %>
+				
+			</p><!-- end user/email -->
 
-<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
-<%= link_to 'Back', feedbacks_path %>
-<%= link_to 'Delete', :controller => "feedbacks", :action => "destroy", :id => @feedback.id %>
+			<!-- Admin links -->
+			<%= link_to 'Edit', edit_feedback_path(@feedback) %> |
+			<%= link_to 'Delete', 
+						:controller => "feedbacks", 
+						:action => "destroy", 
+						:id => @feedback.id %><!-- end admin links -->
+		</div>
+	</div>
+</div>

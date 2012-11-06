@@ -1,22 +1,24 @@
+<!-- Page that user is redirected to after they submit a feedback -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-#top {
+#top { /* to give space at the top */
 	margin-top:30px;
 }
-#innerContainer {
+#innerContainer { /* contains all content */
 	text-align:center;
 }
-.thanksInTouchImage {
-	width:650px;
+.thanksInTouchImage { /* page title: "Thanks for getting in touch!" */
+width:650px;
 }
-.lowerBlurb {
+.lowerBlurb { /* blurb below the page title */
 	margin-top:50px;
 	font-family:JosefinSlabRegular; 
 	color:#9bce6c; 
 	font-size:2em;
 }
-.logoContainer {
+.logoContainer { /* contains the logo -> link to homepage */
 	text-align:center; 
 	margin-top:75px;
 }
@@ -26,15 +28,17 @@
 <div class="container" id="top">
 	<div class="row">
 		<div class="twelve columns" id="innerContainer">
+			<!-- page title -->
+			<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/thanksInTouch.png", :class => "thanksInTouchImage"%><!-- end page title -->
 
-		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/thanksInTouch.png", :class => "thanksInTouchImage"%>
-		
-		<p class="lowerBlurb">We appreciate your insight. </p>
-		
-		
-<div class="logoContainer">		
-<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png"), root_path, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
-</div>
-</div>
-</div>
-</div>
+			<!-- blurb -->
+			<p class="lowerBlurb">We appreciate your insight. </p>
+			<!-- end blurb -->
+
+			<!-- logo: link to home page -->
+			<div class="logoContainer">		
+				<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png"), root_path, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+			</div><!-- end logo -->
+		</div>
+	</div><!-- end row -->
+</div><!-- end container -->

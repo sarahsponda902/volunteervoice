@@ -1,18 +1,20 @@
+<!-- user is redirected to this page after they flag a review -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-.top {
+.top { /* container gets space from top of page */
 	margin-top:30px;
 	text-align:center;
 }
-.blurb {
+.blurb { /* blurb below the page title */
 	margin-top:50px;
 	font-family:JosefinSlabRegular; 
 	color:#9bce6c; 
 	font-size:2em; 
 	line-height:1.2em;
 }
-.logoContainer {
+.logoContainer { /* logo: link to home page */
 	margin-top:75px;
 }
 </style>
@@ -21,14 +23,21 @@
 	<div class="row">
 		<div class="twelve columns">
 
-		<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ThanksFlag.png"%>
-		
-		<p class="blurb">Thanks for bringing it to our attention.  We will assess this review to see if it is appropriate or not, and move on from there.</p>
-		 
-		
-<div class="logoContainer">		
-<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png"), root_path, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
-</div>
-</div>
-</div>
-</div>
+			<!-- page title -->
+			<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/ThanksFlag.png"%>
+			<!-- end page title -->
+			
+			<!-- blurb below title -->
+			<p class="blurb">Thanks for bringing it to our attention.  We will assess this review to see if it is appropriate or not, and move on from there.</p>
+			<!-- end blurb -->
+
+			<!-- logo: link to home page -->
+			<div class="logoContainer">		
+				<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png"),
+				 	root_path, 
+					:onmousedown => "this.className = 'shadowed'", 
+					:onmouseup => "this.className = 'nothing'"%>
+			</div><!-- end logo -->
+		</div>
+	</div><!-- end row -->
+</div><!-- end container -->

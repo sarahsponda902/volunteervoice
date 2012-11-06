@@ -1,30 +1,63 @@
+<!-- admin-only page to view full flag -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
-<p>
-  <b>Body:</b>
-  <%= @flag.body.html_safe %>
-</p>
+<style>
+.top { /* container gets space at the top */
+	margin-top:30px;
+}
+.pageTitle { /* title of page */
+	font-size:2.5em;
+	margin-bottom:20px;
+	text-align:center;
+	float:center;
+}
+.label { /* label for flag's parameters */
+	font-size:1.3em;
+	font-weight:bold;
+}
+</style>
+<div class="container">
+	<div class="row">
+		<div class="twelve columns top">
+			<!-- page title -->
+			<p class="pageTitle"> Showing Flag #<%=@flag.id%></p><!-- end page title -->
+			
+			<!-- flag body -->
+			<p>
+				<p class="label">Body:</p>
+				<%= @flag.body.html_safe %>
+			</p><!-- end flag body -->
 
-<p>
-  <b>Flagger:</b>
-  <%= link_to User.find(@flag.flagger_id).username, User.find(@flag.flagger_id) %>
-</p>
+			<!-- link to flagger -->
+			<p>
+				<p class="label">Flagger:</p>
+				<%= link_to User.find(@flag.flagger_id).username, User.find(@flag.flagger_id) %>
+			</p><!-- end flagger -->
 
-<p>
-  <b>Poster:</b>
-  <%= link_to User.find(@flag.poster_id).username, User.find(@flag.poster_id) %>
-</p>
+			<!-- link to user that posted the review being flagged -->
+			<p>
+				<p class="label">Poster:</p>
+				<%= link_to User.find(@flag.poster_id).username, User.find(@flag.poster_id) %>
+			</p><!-- end user that posted -->
 
-<p>
-  <b>Category:</b>
-  <%= @flag.category %>
-</p>
+			<!-- link to type of flag selected by flagger in drop-down menu on popup -->
+			<p>
+				<p class="label">Category:</p>
+				<%= @flag.category %>
+			</p><!-- end type of flag -->
 
-<p>
-  <b>Review:</b>
-  <%= link_to @flag.review_id, Review.find(@flag.review_id) %>
-</p>
+			<!-- link to review being flagged -->
+			<p>
+				<p class="label">Review:</p>
+				<%= link_to @flag.review_id, @flag.review %>
+			</p><!-- end link to review -->
 
 
-<%= link_to 'Edit', edit_flag_path(@flag) %> |
-<%= link_to 'Back', flags_path %>
+			<!-- Admin links -->
+			<%= link_to 'Edit', edit_flag_path(@flag) %> |
+			<%= button_to 'Destroy', flag, method: :delete %>
+			<!-- end admin links -->
+		</div>
+	</div><!-- end row -->
+</div><!-- end container -->
