@@ -1,50 +1,79 @@
+<!-- Admin only page that shows all messages' senders and recipients, but no message content -->
+<!-- for debugging and validating if messages were sent -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-.title {
+.title { /* page title */
 	font-size:3em; 
 	line-height:2em; 
 	margin-top:20px;
 	padding-bottom:20px;
 	text-align:center;
 }
-.userLink {
-	color:red;
+.red { /* link to user's profile */
+color:red;
 }
 </style>
 
 <div class="container">
-<p class="title">Listing Messages</h1>
+	<div class="row">
+		<div class="twelve columns">
+			<!-- page title -->
+			<p class="title">Listing Messages</p>
 
-<table>
-	<thead>
-  <tr>
-    <th>Sender</th>
-	<th>Recipient</th>
-	<th>Message #</th>
-  </tr>
-	</thead>
-<% @messages.each do |f| %>
-<tdata>
-  <tr>
-	<td><% if !(f.sender_deleted)%>
-	<%=link_to User.find(f.sender_id).username, User.find(f.sender_id)%>
-	<% else %>
-	<a class="userLink" href="/users/<%=f.sender_id%>"><%= User.find(f.sender_id).username%></a>
-	<% end %></td>
-	
-	
-	<td>
-	<% if !(f.recipient_deleted)%>
-	<%=link_to User.find(f.recipient_id).username, User.find(f.recipient_id)%>
-	<% else %>
-	<a class="userLink" href="/users/<%=f.recipient_id%>"><%= User.find(f.recipient_id).username%></a>
-	<% end %>
-	</td>
-	<td><%=f.id%></td>
-  </tr>
+			<!-- BEGIN TABLE OF MESSAGES -->
+			<table>
+				<!-- table headers -->
+				<thead>
+					<tr>
+						<th>Sender</th>
+						<th>Recipient</th>
+						<th>Message #</th>
+					</tr>
+				</thead><!-- end table headers -->
+				<tdata>
+				<!-- iterate through messages and display parameters -->
+				<% @messages.each do |f| %>
+					<tr>
+						<td><!-- Sender, red if sender deleted message, 
+								"???" if sender deleted their profile -->
+							<% if User.exists?(f.sender_id)%>
+								<% if !(f.sender_deleted)%>
+									<%=link_to User.find(f.sender_id).username, User.find(f.sender_id)%>
+								<% else %>
+									<a class="red" href="/users/<%=f.sender_id%>">
+										<%= User.find(f.sender_id).username%>
+									</a>
+								<% end %> 
+							<% else %><!-- if sender no longer exists -->
+								<span class="red">"???"</span>
+							<% end %>
+						</td><!-- end sender -->
 
-<% end %>
-</tdata>
-</table>
-</div>
+
+						<td><!-- Recipient, red if recipient deleted message, 
+								"???" if recipient deleted their profile -->
+							<% if User.exists?(f.recipient_id)%>
+								<% if !(f.recipient_deleted)%>
+									<%=link_to User.find(f.recipient_id).username, User.find(f.recipient_id)%>
+								<% else %>
+									<a class="red" href="/users/<%=f.recipient_id%>">
+										<%= User.find(f.recipient_id).username%>
+									</a>
+								<% end %>
+							<% else %><!-- if recipient no longer exists -->
+								<span class="red">"???"</span>
+							<% end %>
+						</td><!-- end recipient -->
+						
+						<!-- Message ID -->
+						<td><%=f.id%></td>
+					</tr>
+
+					<% end %><!-- end iterating through messages -->
+				</tdata>
+			</table><!-- end table of messages -->
+		</div><!-- end twelve columns -->
+	</div><!-- end row -->
+</div><!-- end container -->

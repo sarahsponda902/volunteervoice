@@ -10,6 +10,10 @@
 	</noscript>
 	<!-- end enable_js -->
 
+	<!-- Google analytics -->
+	<%= analytics_init if Rails.env.production? %>
+	<!-- end google analytics -->
+	
 	<!-- facebook box plugin root -->
 	<div id="fb-root"></div>
 	<!-- end facebook root -->

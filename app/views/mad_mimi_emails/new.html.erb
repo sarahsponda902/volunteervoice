@@ -1,35 +1,39 @@
+<!-- Admin only page for sending a newsletter email -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 
 <style>
-.top {
+.top { /* gives container space at the top */
 	padding:30px;
 }
-#pageTitle { 
+#pageTitle { /* page title */
 	font-size: 2.5em; 
 	text-align:center; 
 	margin-top:20px; 
 	margin-bottom:10px; 
 	color:#575758; 
 }
-#bcc {
+#bcc { /* bcc text field */
 	margin-bottom:30px;
 }
-input[type="text"] {
+input[type="text"] { /* all text inputs */
 	margin-bottom: 10px;
 	height: 25px;
 	width: 500px;
 	padding-left: 5px;
 	margin-left: 5px;
 }
-#submitButton {
+#submitButton { /* submit/send button */
 	margin:auto;
 	float:center;
 }
-#submit_div {
+#submit_div { /* contains the submit button */
 	text-align:center;
 }
 </style>
+
+
 
 <p id="pageTitle">New mad_mimi_email</p>
 
@@ -37,26 +41,39 @@ input[type="text"] {
 	<div class="row">
 		<div class="twelve columns">
 
-<%= form_for @mad_mimi_email do |f| %>
-<% @proms = []%>
-<% MadMimi.new('sarahsponda902@gmail.com', "df65cf0a215c2b3028fa7eaf89a6f2ba").promotions.values.first.values.first.each do |f|%>
-<% @spot = f.keys.index("name")%>
-<% @proms << f.values[@spot]%>
-<% end %>
-Promotion Name: <%= f.select :promotion_name, @proms%><br />
-Email Subject:<%= f.text_field :subject%><br />
-From (must be of this format): <%= f.text_field :from, :value => "Alyssa Ely <aely@volunteervoice.org>", :id => "fromEmail"%><br />
-Recipients: <%= f.select :list_names, [["Users", "users"], ["Admins", "admins"], ["Organizations", "organizations"]]%><br />
-<%= f.hidden_field :username, :value => "sarahsponda902@gmail.com"%><br />
-<%= f.hidden_field :api_key, :value => "df65cf0a215c2b3028fa7eaf89a6f2ba"%><br />
-BCC: <%= f.text_field :bcc, :id => "bcc"%><br />
-<div id="submit_div">
-<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :id => "submitButton"%>
-</div>
-<% end %>
-</div>
-</div>
-</div>
+		<!-- form for a new mad_mimi_email (newsletter) -->
+		<%= form_for @mad_mimi_email do |f| %>
+			<!-- list of available promotions (email templates created on madmimi.com) -->
+			<% @proms = []%>
+			
+			<!-- get promotions hash from madmimi.com, and collect names -->
+			<% MadMimi.new('sarahsponda902@gmail.com', "df65cf0a215c2b3028fa7eaf89a6f2ba").promotions.values.first.values.first.each do |f|%>
+				<% @spot = f.keys.index("name")%>
+				<% @proms << f.values[@spot]%>
+			<% end %>
+			
+			<!-- form fields -->
+			Promotion Name: <%= f.select :promotion_name, @proms%><br />
+			Email Subject:<%= f.text_field :subject%><br />
+			From (must be of this format): <%= f.text_field :from, :value => "Alyssa Ely <aely@volunteervoice.org>", :id => "fromEmail"%><br />				
+			Recipients: <%= f.select :list_names, [["Users", "users"], ["Admins", "admins"], ["Organizations", "organizations"]]%><br />
+			BCC: <%= f.text_field :bcc, :id => "bcc"%><br />
+			
+			<!-- hidden fields: madmimi username and api key -->
+			<%= f.hidden_field :username, :value => "sarahsponda902@gmail.com"%><br />
+			<%= f.hidden_field :api_key, :value => "df65cf0a215c2b3028fa7eaf89a6f2ba"%><br />
+			<!-- end hidden fields -->
+			
+			<!-- end form fields -->
+			
+			<!-- button to submit mad mimi email form -->
+			<div id="submit_div">
+				<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :id => "submitButton"%>
+			</div><!-- end submit button -->
+			<% end %>
+		</div><!-- end twelve columns -->
+	</div><!-- end row -->
+</div><!-- end container top -->
 
 <script>
 $(document).ready(function() {
@@ -67,7 +84,7 @@ $(document).ready(function() {
 		input.style.height = "25px";
 		input.style.backgroundColor = "white";
 		input.style.width = "150px";
-		
+
 		input2 = document.getElementById("mad_mimi_email_list_names");
 		input2.style.background = "url('/assets/arrowProgram.png') no-repeat right";
 		input2.style.height = "25px";
