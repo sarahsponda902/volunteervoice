@@ -1,125 +1,137 @@
+<!-- This is the resources landing page. It houses a search bar and three columns, 
+each column a different type of blog post -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
-
 <%= stylesheet_link_tag "/assets/smartpaginator.css"%>
-
 <%= javascript_include_tag "/assets/smartpaginator.js"%>
 
 <style>
-table {
+/********************************/
+/* Individual Post Styles       */
+/*   both article and VVI posts */
+/********************************/
+
+table { /* container for each individual blog post (whether article or VVI post) */
 	width:100%;
 	background-color:#E3E6D5; 
 	margin-bottom:15px;
 }
-tr, td {
+tr, td { /* row and datum for blog posts. Need to set individual background colors */
 	background-color:#E3E6D5;
 }
-.squareImageContainer {
-	margin-top:-10px;
+.squareImageContainer { /* Container for blog post image. 
+Note: image is 3:1 ratio, not square. Square is a naming convention */
+margin-top:-10px;
 }
-.squareImage {
+.squareImage { /* actual blog post image */
 	height:100px; 
 	width:300px;
 }
-.datePostedContainer {
+.datePostedContainer { /* container for date posted for both types of blog posts */
 	margin-left:3%; 
 	margin-right:3%; 
 }
-.datePostedContainerInteresting {
+.datePostedContainerInteresting { /* container for date posted for article (interesting) blog posts */
 	margin-top:-20px;
 }
-.datePostedContainerOurBlog {
+.datePostedContainerOurBlog { /* container for date posted for VVI (our_blog) blog posts */
 	margin-top:-10px;
 }
-.articleTitleContainer {
+.postTitleContainer { /* title container for both types of blog posts */
 	margin-left:3%; 
 	margin-top:-10px; 
 	margin right:3%; 
 	font-size:2em; 
 	line-height:1.1em;
 }
-a.article-title{
+a.article-title, a.article-title:link, a.article-title:visited, 
+a.article-title:active{ /* title that links to article on another site */
 	color:#62acbd;
 }
-a.article-title:link{
-	color:#62acbd;
-}
-a.article-title:visited{
-	color:#62acbd;
-}
-a.article-title:active{
-	color:#62acbd;
-}
-a.article-title:hover{
+a.article-title:hover{ 
 	color:white;
 }
-.blogPostBody { 
+.blogPostBody { /* actual text of both blog posts */
 	margin-top:-5px; 
 	margin-right:3%;
 }
-.blogPostBodyOurBlog {
+.blogPostBodyOurBlog { /* actual text for only VVI blog posts */
 	margin-left:3%;
 }
-.blogPostBodyInteresting {
+.blogPostBodyInteresting { /* actual text for only article posts */
 	margin-left:1%;
 }
-.sourceLinkContainer {
+.sourceLinkContainer { /* link to source for article posts */
 	margin-left:10%; 
 	margin-right:6%; 
 	color: #575758; 
 	margin-top:-30px;
 }
-.fromLabel {
+.fromLabel { /* label for link to source for article posts */
 	font-weight:600;
 }
-</style>
 
-<style type="text/css">
-    .contents 
-    {
-        width: 33%; /*height: 150px;*/
-        margin: 0;
-    }
-	#divOurBlog
-    {
-        margin: 10;
-        font: verdana;
-        font-size: 14px;
-        background-color: White;
-    }
-	#divarticles
-    {
-        margin: 10;
-        font: verdana;
-        font-size: 14px;
-        background-color: White;
-    }
-</style>
 
-<style>
-.blogTitleImage {
-	display:block;
-	margin-bottom:-8px;
-	height:30px; 
-	margin-top:25px;
+
+/*************************/
+/* Pagination Containers */
+/*************************/
+.contents { /* container for each column */
+	width: 33%; 
+	margin: 0;
 }
-.ourBlogImage {
-	height:28px; 
-	margin-top:28px;
+#divOurBlog { /* div containing all of the VVI blog posts */
+	margin: 10;
+	font: verdana;
+	font-size: 14px;
+	background-color: white;
+	height:100%;
+	background-color:#E3E6D5; 
+	border-top: 1px solid #e67b5a; 
+	padding-top:10px;
 }
-.ourBlogImage:hover {
-	opacity:0.5;
-	filter: alpha(opacity=50);
+#divarticles { /* div containing all of the article posts */
+	margin: 10;
+	font: verdana;
+	font-size: 14px;
+	background-color: white;
+	height:100%;
+	background-color:#E3E6D5; 
+	border-top: 1px solid #e67b5a; 
+	padding-top:10px;
 }
-.top {
-	padding-top:30px;
+#interesting_table { /* contains individual article posts */
+	float:left; 
+	width:30%;
 }
-#blogSearchContainer {
+#our_blog_table { /* contains individual VVI blog posts */
+	float:left; 
+	width:30%;
+}
+#article_pager { /* pagination pager (ie. < 1 2 3 4 >) for articles */
+	position:relative; 
+	width: 85%;
+	top:10px;
+}
+#our_pager { /* pagination pager (ie. < 1 2 3 4 >) for VVI posts */
+	position:relative; 
+	width: 85%;
+	top:10px;
+}
+
+
+
+
+/********************/
+/* Blog Search Bar */
+/*******************/
+#blogSearchContainer { /* contains the entire blue search bar box */
 	width:90%; 
 	float:center; 
 	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/resourcestextureblue.png);
 	margin:auto;
 }
-#blogSearchBlurbContainer {
+#blogSearchBlurbContainer { /* contains the right hand side blurb describing blog search */
 	margin-left:15px; 
 	padding-top:15px; 
 	padding-bottom:15px; 
@@ -129,231 +141,339 @@ a.article-title:hover{
 	line-height:1.8em; 
 	width:50%;
 }
-#blogSearchFieldContainer {
+#blogSearchFieldContainer { /* contains the blog search bar */
 	margin-top: 51px; 
 	margin-right:-8px; 
 	width:44%; 
 	padding-left:0;
 }
-.blogSearchMagGlassContainer {
+.blogSearchField { /* actual blog search bar */
+	width:80%;
+	float:right;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	border: 0;
+	height:30px;
+}
+.blogSearchMagGlassContainer { /* contains the magnifying-glass submit button */
 	float:right; 
 	margin-right:20px; 
 	margin-left:10px;
 }
-#blogSearchMagGlassButton {
+#blogSearchMagGlassButton { /* actual magnifying-glass submit button */
 	height:28px;
 }
-.blogSearchField {
-	width:80%;
-	float:right;
-	-moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
- 	border: 0;
-	height:30px;
-}
-#blogColumnsContainer {
-	float:center;
-	margin:auto;
-}
-#practical_table {
-	float:left; 
-	width:30%;
-}
-.blogTitleImage {
+
+
+
+
+/***********************/
+/* General Page Styles */
+/***********************/
+.blogTitleImage { /* title for each of the three columns */
+	display:block;
+	margin-bottom:-8px;
 	height:30px; 
 	margin-top:25px;
 }
-.leftColumnSubTitleContainer {
+.ourBlogImage { /* title for VVI blog posts column */
+	height:28px; 
+	margin-top:28px;
+}
+.ourBlogImage:hover { /* title for VVI posts column flashes on hover. It is a link */
+	opacity:0.5;
+	filter: alpha(opacity=50);
+}
+.top { /* for providing extra space at the top of a container */
+	padding-top:30px;
+}
+
+#blogColumnsContainer { /* contains all three blog columns */
+	float:center;
+	margin:auto;
+}
+
+
+
+
+
+/***************************/
+/* Practical (left) Column */
+/**************************/
+
+#practical_table { /* contains the "practical" (static) blog posts */
+float:left; 
+width:30%;
+}
+
+.leftColumnSubTitleContainer { /* contains each subtitle for practical posts */
 	border-top: 1px solid #e67b5a; 
 	padding-top:10px;
 }
-.leftColumnSubTitleInnerContainer {
+.leftColumnSubTitleInnerContainer { /* contains each subtitle for practical posts */
 	font-family: BebasRegular;
 	font-size:2.0em; 
 	line-height:1.1em; 
 	color:#575758; 
 	width:85%;
 }
-.leftColumnSubTitleRed {
+.leftColumnSubTitleRed { /* red subtitles for practical posts */
 	color:#e67b5a;
 }
-.articleList {
+.articleList { /* contains all articles for each subtitle */
 	margin-left:5%;
 	margin-right:5%;
 }
-a.leftColumnTitleOfSource { 
+a.leftColumnTitleOfSource { /* link to source for practical posts */
 	font-size:1.2em;
 	color:#6aaeba;
 }
-a.leftColumnTitleOfSource:hover {
+a.leftColumnTitleOfSource:hover { 
 	color:white
 }
-.leftColumnArticleBody {
 
-}
-#interesting_table {
-	float:left; 
-	width:30%;
-}
-#divarticles {
-	height:100%;
-	background-color:#E3E6D5; 
-	border-top: 1px solid #e67b5a; 
-	padding-top:10px;
-}
-#article_pager {
-	position:relative; 
-	width: 85%;
-	top:10px;
-}
-#our_blog_table {
-	float:left; 
-	width:30%;
-}
-#divOurBlog {
-	height:100%;
-	background-color:#E3E6D5; 
-	border-top: 1px solid #e67b5a; 
-	padding-top:10px;
-}
-#our_pager {
-	position:relative; 
-	width: 85%;
-	top:10px;
-}
 </style>
 
 
 
 <div class="container top">
+	<!-- Begin BLOG SEARCH -->
 	<div class="row" id="blogSearchContainer">
-        <div class="six columns" id="blogSearchBlurbContainer">
-				A little research can go a long way in helping you make the most of your volunteer experience.  Use this section to find websites, articles, and blog posts on cool, useful stuff.
 
-		</div>
+		<!-- blog search blurb -->
+		<div class="six columns" id="blogSearchBlurbContainer">
+			A little research can go a long way in helping you make the most of your volunteer experience.  Use this section to find websites, articles, and blog posts on cool, useful stuff.
+
+		</div><!-- end blog search blurb -->
+
+		<!-- blog search form (search bar) -->
 		<div class="six columns" id="blogSearchFieldContainer">
 			<form accept-charset="UTF-8" action="/blog_posts/blog_search" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+				<!-- blog search button (mag glass) -->
 				<div class="blogSearchMagGlassContainer">
 					<input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlassSmaller.png" id="blogSearchMagGlassButton" alt="Search Button" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'">
-				</div>
+				</div><!-- end blog search button (mag glass) -->
+
+				<!-- blog search bar -->
 				<input id="searchfield" name="search" type="text" class="blogSearchField" />
-			</form>
+				<!-- end blog search bar -->
+
+			</form><!-- end blog search form -->
 		</div>
-	</div>
+	</div><!-- END BLOG SEARCH -->
+
+
+	<!-- BEGIN BLOG POST COLUMNS -->
 	<div class="row" id="blogColumnsContainer">
+
+		<!-- BEGIN LEFTMOST (PRACTICAL) COLUMN -->
 		<div class="four columns" id="practical_table">
+			<!-- practical column title -->
 			<div align="center">
-				<image class="blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/practical.png"><br />
-			</div>
+				<image class="blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/practical.png" />
+				<br />
+			</div><!-- end practical title -->
 
-			<div align="center" class="leftColumnSubTitleContainer"><p class="leftColumnSubTitleInnerContainer"><span class="leftColumnSubTitleRed">RESEARCH </span> WHERE YOU'RE GOING</p></div><br />
+
+			<!-- first subtitle -->
+			<div align="center" class="leftColumnSubTitleContainer">
+				<p class="leftColumnSubTitleInnerContainer">
+					<span class="leftColumnSubTitleRed">RESEARCH </span> 
+					WHERE YOU'RE GOING
+				</p>
+			</div><!-- end first subtitle -->
+			<br />
+			
+			<!-- list of articles for FIRST subtitle -->
 			<div class="articleList">
-<a class="leftColumnTitleOfSource" href= "https://www.cia.gov/library/publications/the-world-factbook/index.html" target="_blank">The CIA World Factbook</a>
-<p class="leftColumnArticleBody">An excellent, simple, and straight-forward website with a lot of potent info on all of the world’s countries. Learn! </p><br /><br />
-</div>
-
-<div align="center"><p class="leftColumnSubTitleInnerContainer">LEARN THE <span class="leftColumnSubTitleRed">LANGUAGE </span></p></div><br />
-<div class="articleList">
-<a class="leftColumnTitleOfSource" href= "http://www.livemocha.com" target="_blank">LiveMocha --Free Language Courses.</a>
-<p class="leftColumnArticleBody">So many languages here. You can also chat with native speakers through this site for practice. Excellent for beginners.</p><br />
-<a class="leftColumnTitleOfSource" href= "http://www.busuu.com/enc/" target="_blank">Busuu --Free Language Courses.</a>
-<p class="leftColumnArticleBody">More free online courses. Some stuff you must pay for.  Different style curriculum that may/may not suit you better.</p><br />
-<a class="leftColumnTitleOfSource" href= "http://www.openculture.com/freelanguagelessons" target="_blank">Open Culture --Free Language Course Directory.</a>
-<p class="leftColumnArticleBody">More free online courses. Some stuff you must pay for.  Different style curriculum that may/may not suit you better.</p><br /><br />
-
-</div>
-
-
-
-<div align="center"><p class="leftColumnSubTitleInnerContainer">GET A <span class="leftColumnSubTitleRed">VISA </span></p></div><br />
-<div class="articleList">
-<a class="leftColumnTitleOfSource" href= "http://www.delta.com/planning_reservations/plan_flight/international_travel_information/visa_passport_information/index.jsp" target="_blank">Delta Visa Search Engine</a>
-
-<p class="leftColumnArticleBody">Enter your country of citizenship and destination country to find out visa requirements. Good idea.</p><br />
-<a class="leftColumnTitleOfSource" href= "http://www.embassyworld.com/embassy/directory.htm" target="_blank">Embassy World</a>
-<p class="leftColumnArticleBody">All visas must go through an embassy or two.  You can find whichever ones you need here.</p><br /><br />
-</div>
-
-
-<div align="center"><p class="leftColumnSubTitleInnerContainer">HEALTH AND <span class="leftColumnSubTitleRed">SAFETY </span></p></div><br />
-<div class="articleList">
-<a class="leftColumnTitleOfSource" href= "http://wwwnc.cdc.gov/travel/destinations/list.htm" target="_blank">Center for Disease Control and Prevention</a>
-<p class="leftColumnArticleBody">An easy to use map list of all the worlds countries, and all of the immunizations, pills, and precautions that you need to take before you get there.</p><br />
-<a class="leftColumnTitleOfSource" href= "http://www.travelinsurancereview.net/" target="_blank">Travel Insurance Review</a>
-<p class="leftColumnArticleBody">Boring but important.  This site can help you compare travel insurance plans before committing to one.</p><br /><br />
-</div>
+				<!-- first sub-article -->
+				<a class="leftColumnTitleOfSource" href= "https://www.cia.gov/library/publications/the-world-factbook/index.html" target="_blank">The CIA World Factbook</a>
+				<p class="leftColumnArticleBody">An excellent, simple, and straight-forward website with a lot of potent info on all of the world’s countries. Learn! </p><!-- end first sub-article -->
+				<br />
+			</div><!-- end list of articles -->
+			<br />
+			
+			
+			<!-- second subtitle -->
+			<div align="center">
+				<p class="leftColumnSubTitleInnerContainer">LEARN THE 
+					<span class="leftColumnSubTitleRed">LANGUAGE </span>
+				</p>
+			</div><!-- end second subtitle -->
+			<br />
+			
+			<!-- list of articles for SECOND subtitle -->
+			<div class="articleList">
+				<!-- first sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.livemocha.com" target="_blank">LiveMocha --Free Language Courses.</a>
+				<p class="leftColumnArticleBody">So many languages here. You can also chat with native speakers through this site for practice. Excellent for beginners.</p><br /><!-- end first sub-article -->
+				
+				<!-- second sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.busuu.com/enc/" target="_blank">Busuu --Free Language Courses.</a>
+				<p class="leftColumnArticleBody">More free online courses. Some stuff you must pay for.  Different style curriculum that may/may not suit you better.</p><br /><!-- end second sub-article -->
+				
+				<!-- third sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.openculture.com/freelanguagelessons" target="_blank">Open Culture --Free Language Course Directory.</a>
+				<p class="leftColumnArticleBody">More free online courses. Some stuff you must pay for.  Different style curriculum that may/may not suit you better.</p><br /><!-- end third sub-article -->
+				
+			</div><!-- end list of articles -->
+			<br />
 
 
-
-<div align="center"><p class="leftColumnSubTitleInnerContainer"> <span class="leftColumnSubTitleRed">FLIGHT  </span> &nbsp; INFO</p></div><br />
-<div class="articleList">
-<a class="leftColumnTitleOfSource" href= "http://www.flyforgood.com" target="_blank">Fly For Good</a>
-<p class="leftColumnArticleBody">International volunteers can get discounted plane tickets here.</p><br />
-<a class="leftColumnTitleOfSource" href= "http://www.statravel.com" target="_blank">STA Travel</a>
-
-<p class="leftColumnArticleBody">Just being a student can also get you discounted airfare for you trip, so check this site out if you apply.</p><br /><br />
-</div>
-
-
-<div align="center"><p class="leftColumnSubTitleInnerContainer"><span class="leftColumnSubTitleRed">FUNDING </span> YOUR TRIP</p></div><br />
-<div class="articleList">
-<a class="leftColumnTitleOfSource" href= "http://www.gofundme.com" target="_blank">GoFundMe</a>
-<p class="leftColumnArticleBody">A free online fundraising platform (they take a small % of of what you raise) where you can post a profile for your trip.</p><br />
-
-
-<a class="leftColumnTitleOfSource" href= "http://www.microgiving.com" target="_blank">Microgiving</a>
-<p class="leftColumnArticleBody">Another online platform.  Post a profile for your cause and send out the link like crazy.</p><br /><br />
-</div>
-</div>
+			<!-- third subtitle -->
+			<div align="center">
+				<p class="leftColumnSubTitleInnerContainer">GET A 
+					<span class="leftColumnSubTitleRed">VISA </span>
+				</p>
+			</div><!-- end third subtitle -->
+			<br />
+			
+			<!-- list of articles for THIRD subtitle -->
+			<div class="articleList">
+				<!-- first sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.delta.com/planning_reservations/plan_flight/international_travel_information/visa_passport_information/index.jsp" target="_blank">Delta Visa Search Engine</a>
+				<p class="leftColumnArticleBody">Enter your country of citizenship and destination country to find out visa requirements. Good idea.</p><br /><!-- end first sub-article -->
+				
+				<!-- second sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.embassyworld.com/embassy/directory.htm" target="_blank">Embassy World</a>
+				<p class="leftColumnArticleBody">All visas must go through an embassy or two.  You can find whichever ones you need here.</p><br /><!-- end second sub-article -->
+			</div><!-- end list of articles -->			
+			<br />
 
 
+			<!-- fourth subtitle -->
+			<div align="center">
+				<p class="leftColumnSubTitleInnerContainer">HEALTH AND 
+					<span class="leftColumnSubTitleRed">SAFETY </span>
+				</p>
+			</div><!-- end fourth subtitle -->
+			<br />
+			
+			<!-- list of articles for FOURTH subtitle -->
+			<div class="articleList">
+				<!-- first sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://wwwnc.cdc.gov/travel/destinations/list.htm" target="_blank">Center for Disease Control and Prevention</a>
+				<p class="leftColumnArticleBody">An easy to use map list of all the worlds countries, and all of the immunizations, pills, and precautions that you need to take before you get there.</p><br /><!-- end first sub-article-->
+				
+				<!-- second sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.travelinsurancereview.net/" target="_blank">Travel Insurance Review</a>
+				<p class="leftColumnArticleBody">Boring but important.  This site can help you compare travel insurance plans before committing to one.</p><br /><!-- end second sub-article -->
+			</div>
+			<br />
 
 
-<div class="four columns" id="interesting_table">
-	<div align="center">
-<image class="blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/interesting.png"><br /></div>
-	<div id="divarticles">
-	<% @interesting.each do |f| %>
-	<%= render :partial => "interesting", :locals => {:blog_post => f}%>
-	<% end %>
-	</div>
-	<div id="article_pager"></div>
+			<!-- fifth subtitle -->
+			<div align="center">
+				<p class="leftColumnSubTitleInnerContainer"> 
+					<span class="leftColumnSubTitleRed">FLIGHT  </span> 
+					&nbsp; INFO
+				</p>
+			</div><!-- end fifth subtitle -->
+			<br />
+			
+			<!-- list of articles for FIFTH subtitle -->
+			<div class="articleList">
+				<!-- first sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.flyforgood.com" target="_blank">Fly For Good</a>
+				<p class="leftColumnArticleBody">International volunteers can get discounted plane tickets here.</p><br /><!-- end first sub-article -->
+				
+				<!-- second sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.statravel.com" target="_blank">STA Travel</a>
 
-</div>
+				<p class="leftColumnArticleBody">Just being a student can also get you discounted airfare for you trip, so check this site out if you apply.</p><br /><!-- end second sub-article -->
+			</div>
+			<br />
+
+			<!-- sixth subtitle -->
+			<div align="center">
+				<p class="leftColumnSubTitleInnerContainer">
+					<span class="leftColumnSubTitleRed">FUNDING </span> 
+					YOUR TRIP
+				</p>
+			</div><!-- end sixth subtitle -->
+			<br />
+			
+			<!-- list of articles for SIXTH subtitle -->
+			<div class="articleList">
+				<!-- first sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.gofundme.com" target="_blank">GoFundMe</a>
+				<p class="leftColumnArticleBody">A free online fundraising platform (they take a small % of of what you raise) where you can post a profile for your trip.</p><br /><!-- end first sub-article -->
+
+				<!-- second sub-article -->
+				<a class="leftColumnTitleOfSource" href= "http://www.microgiving.com" target="_blank">Microgiving</a>
+				<p class="leftColumnArticleBody">Another online platform.  Post a profile for your cause and send out the link like crazy.</p><br /><!-- end second sub-article -->
+			</div>
+			<br />
+		</div><!-- end leftmost (practical) column -->
 
 
-<% @our_blog = @our_blog.sort_by(&:created_at).reverse%>
-<div class="four columns" id="our_blog_table">
-	<div align="center" class="ourBlogTitleContainer">
-<a href="/blog_posts" class="ourBlogImageLink"><image class="ourBlogImage blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/ourBlog.png" href="/blog_posts"></a><br /></div>
-	<div id="divOurBlog">
-	<% @our_blog.each do |f| %>
-	<%= render :partial => "our_blog", :locals => {:blog_post => f}%>
-	<% end %>
-	</div>
-	<div id="our_pager"></div>
-</div>
-</div>
+
+		<!-- BEGIN MIDDLE (INTERESTING) COLUMN -->
+		<div class="four columns" id="interesting_table">
+			<!-- "interesting" column title -->
+			<div align="center">
+				<image class="blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/interesting.png"/><br />
+			</div><!-- end column title -->
+			
+			<!-- article posts -->
+			<div id="divarticles">
+				<% @interesting.each do |post| %>
+					<%= render :partial => "interesting", :locals => {:blog_post => post}%>
+				<% end %>
+			</div><!-- end article posts -->
+			
+			<!-- pager for article posts -->
+			<div id="article_pager"></div>
+			<!-- end pager -->
+
+		</div><!-- END MIDDLE (INTERESTING) COLUMN -->
 
 
-<script type="text/javascript">
-$(document).ready(function() {
-	//Initialize the "article posts" smartpaginator pagination on 'divarticles'
+
+		<!-- BEGIN RIGHTMOST (VVI POST) COLUMN -->
+		<div class="four columns" id="our_blog_table">
+			
+			<!-- "our blog" column title -->
+			<div align="center" class="ourBlogTitleContainer">
+				<a href="/blog_posts" class="ourBlogImageLink">
+					<image class="ourBlogImage blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/ourBlog.png" href="/blog_posts"/>
+				</a>
+				<br />
+			</div><!-- end column title -->
+			
+			<!-- vvi blog posts -->
+			<div id="divOurBlog">
+				<% @our_blog.each do |f| %>
+					<%= render :partial => "our_blog", :locals => {:blog_post => f}%>
+				<% end %>
+			</div><!-- end vvi blog posts -->
+			
+			<!-- pager for our blog posts -->
+			<div id="our_pager"></div>
+			<!-- end pager -->
+			
+		</div><!-- END RIGHTMOST (VVI POST) COLUMN -->
+	</div><!-- END BLOG POST COLUMNS -->
+
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+		//Initialize the "article posts" smartpaginator pagination on 'divarticles'
 		//article_pager will be contain "1-1 of 4", ">", etc.
-	$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 4, datacontainer: 'divarticles', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+		$('#article_pager').smartpaginator({ totalrecords: <%=@interesting.count%>, recordsperpage: 4, datacontainer: 'divarticles', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-	//Initialize the "our blog posts" smartpaginator pagination on 'divOurBlog'
+		//Initialize the "our blog posts" smartpaginator pagination on 'divOurBlog'
 		//our_pager will be contain "1-1 of 4", ">", etc.
-    $('#our_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 5, datacontainer: 'divOurBlog', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+		$('#our_pager').smartpaginator({ totalrecords: <%=@our_blog.count%>, recordsperpage: 5, datacontainer: 'divOurBlog', dataelement: 'table', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 
 
-//Opera does not center blog posts within columns. This code is to center them in opera
-	if ($.browser.opera) {
-		$(".interesting_blog_post").css("marginLeft", "-13px");
-		$(".our_blog_post").css("marginLeft", "-13px");
-	}
-	
-});
-</script>
+		//Opera does not center blog posts within columns. This code is to center them in opera
+		if ($.browser.opera) {
+			$(".interesting_blog_post").css("marginLeft", "-13px");
+			$(".our_blog_post").css("marginLeft", "-13px");
+		}
+
+	});
+	</script>

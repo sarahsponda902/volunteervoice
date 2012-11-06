@@ -97,18 +97,6 @@ class BlogPostsController < ApplicationController
   end
 
 
-  # Admin only drafts, has yet to be used
-  ## Keeping for possible future use
-  def drafts
-    @blog_posts = BlogPost.drafts.paginate(:page => params[:page], :order => 'updated_at DESC')
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @blog_posts }
-    end
-  end
-
-
   ## Show a single post
   def show
     @blog_post = BlogPost.find(params[:id])

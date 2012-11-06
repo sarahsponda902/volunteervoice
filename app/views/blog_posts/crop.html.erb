@@ -1,91 +1,124 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-	<link href="/assets/imgareaselect-default.css" rel="stylesheet" type="text/css" />
-
-	<script src="/assets/jquery.js"></script>
-	
-	
-	<script src="/assets/jquery.imgareaselect.min.js"></script>
-
-	
-	<script type="text/javascript">
-	$(function(){
-   
-
-
-	    function updateVars (img, selection) {
-	        $("#blog_post_crop_w").val(selection.width);
-	        $("#blog_post_crop_h").val(selection.height);    
-	        $("#blog_post_crop_x").val(selection.x1);
-			$("#blog_post_crop_y").val(selection.y1);
-
-	    }         
-
-	    function init() {
-
-	        $('#crop_me').imgAreaSelect({
-	            hide:true,
-	            movable : true,
-	            autoHide : false,
-				aspectRatio: '3:1',
-				minHeight:150,
-	            onSelectEnd: updateVars
-	  			
-	        });
-
-
-	    }
-
-	    init();
-
-	});
-
-	
-
-	</script>
+<!-- imageareaselect is the plugin that allows for a user to crop an image by dragging -->
+<link href="/assets/imgareaselect-default.css" rel="stylesheet" type="text/css" />
+<script src="/assets/jquery.js"></script>	
+<script src="/assets/jquery.imgareaselect.min.js"></script>
 
 
 <style>
-	.top{
-		margin-top:30px;
-	}
-	#cropMessage {
-		position:absolute;
-		right:5%;
-		top:300px;
-		width: 150px;
-	}
-	#cropButtons {
-		position:absolute;
-		right:5%;
-		top:200px;
-		width:150px
-	}
+#top { /* gives space at the top of a container */
+	margin-top:30px; 
+	min-height:450px;
+}
+#cropMessage { /* message instructing the user how to crop */
+	width:450px;  
+	color:#575758; 
+	padding:5px;
+	float:left;
+	margin-bottom:20px;
+}
+#cropFields { /* submit button & hidden fields containing crop dimensions */
+	float:left;  
+	width:150px;
+}
+#pageTitle { /* page title */
+	margin:auto;
+	float:center;
+	text-align:center;
+	font-family:architectsDaughterRegular;
+	color:#e67b5a;
+	font-size:2.5em;
+	margin-bottom:30px;
+	margin-top:20px;
+}
+#cropButton, #cropButtonGray { /* crop buttons, both active and inactive */
+	margin-left:100px;
+}
+#crop_me { /* the image to be cropped */
+	max-width:700px;
+}
+#imageContainer { /* container for image to be cropped */
+	clear:both;
+}
+#submitButtonContainer { /* container for submit button */
+	display:none;
+}
 </style>
-</head>
-<body>
-	<div class="container" class="top">
-		<div class="row">
-			<div class="ten columns">
 
-	    <%= image_tag @blog_post.image.url, :id => "crop_me"%>
 
-		</div>
-	</div>
-</div>
+<div class="container" id="top">
+	<div class="row">
+		<%= form_for @blog_post do |f|%>
+		<div class="twelve columns">
+			<!-- Page title -->
+			<div id="pageTitle">
+				Crop Your image! (We need a square version)
+			</div><!-- end page title -->
+			
+			<!-- Crop message -->
+			<div id="cropMessage">
+				*To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop".
+			</div><!-- end crop message -->
+			
+			<!-- inactive (gray) submit button. Shows until the user crops the image -->
+			<div id="submitButtonGrayContainer">
+				<img src="/assets/cropGray.png" id="cropButtonGray">
+			</div><!-- end inactive submit button -->
+			
+			<!-- active submit button. Shows once image has been cropped -->
+			<div id="submitButtonContainer">
+				<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/crop.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'", :id => "cropButton"%>
+			</div><!-- end inactive submit button-->
+		</div><!-- end top part -->
 
-<div id="cropMessage">To crop, click and drag your mouse on the picture. A crop-box will appear on top of the image. You can move by dragging it, or make it bigger by dragging the corners. When you are finished, please push "Crop". <br /> <br /> Please note that the original box is the minimum allowed width for a blog post image. It will not get any smaller</div>
+		<!-- fields that control how/where the image is actually cropped when it is processed -->
+		<!-- these fields are set by imageareaselect when the user drags their mouse across the image -->
+		<div id="cropFields">
+			<%= f.hidden_field :crop_x %><br />
+			<%= f.hidden_field :crop_y %><br />
+			<%= f.hidden_field :crop_w %><br />
+			<%= f.hidden_field :crop_h %><br />
+		</div><!-- end crop fields -->
+		<% end %><!-- end form fields -->
 
-<div id="cropButtons">
-	<%= form_for @blog_post do |f|%>
-	<%= hidden_field :crops, :value => false %>
-	x: <%= f.number_field :crop_x %><br />
-	y: <%= f.number_field :crop_y %><br />
-	w: <%= f.number_field :crop_w %><br />
-	h: <%= f.number_field :crop_h %><br />
-	<%= f.submit "Crop"%>
-	<% end %>
-</div>	
-</html>
+
+		<!-- image to be cropped -->
+		<div class="twelve columns" id="imageContainer">
+			<%= image_tag @blog_post.image.url, :id => "crop_me"%>
+
+		</div><!-- end image -->
+	</div><!-- end row -->
+</div><!-- end container -->	
+
+
+<script type="text/javascript">
+$(function(){
+
+
+	/* updates the dimension form fields when user selects part of the image */
+	function updateVars (img, selection) {
+		$("#blog_post_crop_w").val(selection.width);
+		$("#blog_post_crop_h").val(selection.height);    
+		$("#blog_post_crop_x").val(selection.x1);
+		$("#blog_post_crop_y").val(selection.y1);
+		$("#submitButtonGrayContainer").hide();
+		$("#submitButtonContainer").show();
+	}         
+
+	/* initialize the imageareaselect with the given parameters */
+	function init() {
+		$('#crop_me').imgAreaSelect({
+			hide:true,
+			movable : true,
+			autoHide : false,
+			aspectRatio: '1:1',
+			onSelectEnd: updateVars
+
+		});
+	}
+	
+	
+	init();
+
+});
+
+</script>

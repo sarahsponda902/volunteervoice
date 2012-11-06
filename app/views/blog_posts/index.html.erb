@@ -1,56 +1,59 @@
+<!-- This page shows all VVI blog posts (VVI Blog) -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 
 <style>
-	#blogTitleImage {
-		text-align:center;
-		margin-top:40px;
-	}
-	.spacer {
-		height:20px;
-	}
-	.container {
-		color:#575758;
-	}
-	.title {
-		font-size:1.5em;
-	}
-	.message {
-		font-size:1.2em;
-	}
+#blogTitleImage { /*VolunteerVoice Blog image page title*/
+	text-align:center;
+	margin-top:40px;
+}
+.spacer { /* gives space between the page title and the blog posts */
+	height:20px;
+}
+.title { /* Title reads "No Blog Posts" */
+font-size:1.5em;
+}
+.message { /* message for no blog posts */
+	font-size:1.2em;
+}
 </style>
+
 <div class="container">
 	<div class="row">
-<p id = "blogTitleImage"><%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteervoiceBlog.png"%></p>
 
-<%= render :partial => 'admin_links' %>
-<div class="spacer"> </div>
-</div>
-</div>
+		<!-- Page title -->
+		<p id = "blogTitleImage">
+			<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/volunteervoiceBlog.png"%>
+		</p><!-- end page title -->
+
+		<%= render :partial => 'admin_links' %><!-- renders admin links IF admin signed in -->
+		<div class="spacer"> </div>
+		
+	</div><!-- end row 1 -->
+</div><!-- end container 1 -->
+
+
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
 
-<% self.respond_to?(:title) && title(@index_title) -%>
-<% @show_title = false -%>
-<%= stylesheet_link_tag 'blog_kit' %>
-<%= stylesheet_link_tag 'syntax/' + (BlogKit.instance.settings['theme'] || 'mac_classic') %>
-<%= auto_discovery_link_tag :atom, blog_posts_path(:format => :atom) %>
+			<!-- if there are no blog posts, display "no blog posts" message -->
+			<% if @blog_posts.size == 0 && !params[:page] %>
+			<div class="blogPost">
+				<p class="title">No Blog Posts</p>
+				<p class="message">There are currently no blog posts, please check back shortly.</p>
+			</div><!-- end no blog posts message -->
+		
+			<!-- get blog posts -->
+			<% else %>
+				<%= render :collection => @blog_posts, :partial => 'blog_post' %>
+			<% end %><!-- end get blog posts -->
 
-<% if @blog_posts.size == 0 && !params[:page] %>
-	<div class="blogPost">
-		<p class="title">No Blog Posts</p>
-		<p class="message">There are currently no blog posts, please check back shortly.</p>
-	</div>
-<% else %>
-	<% if @tag %>
-		<h1>Tag: <%= @tag %></h1>
-	<% end %>
-	<%= render :collection => @blog_posts, :partial => 'blog_post' %>
-<% end %>
-
-<div class="blogPages">
-	<%= will_paginate @blog_posts %>
-</div>
-</div>
-</div>
-</div>
+			<!-- display and paginate blog posts -->
+			<div class="blogPages">
+				<%= will_paginate @blog_posts %>
+			</div><!-- end display and paginate -->
+			
+		</div><!-- end twelve columns -->		
+	</div><!-- end row 2 -->	
+</div><!-- end container 2 -->

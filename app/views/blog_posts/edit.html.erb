@@ -1,7 +1,15 @@
+<!-- This page is for an admin to edit a blog post, either a VVI post or an article -->
 <%= javascript_include_tag "/assets/jquery.js"%>
-<% self.respond_to?(:title) && title('Edit Post') %>
-<% @show_title = false -%>
-<%= stylesheet_link_tag 'blog_kit' %>
-<h1>Edit Blog Post</h1>
+<style>
+.editPageTitle{
+	font-size:2.5em;
+	color:#575758;
+	margin-top:20px;
+	margin-bottom:20px;
+	text-align:center;
+	float:center;
+}
+</style>
+<p class="editPageTitle">Edit Blog Post</p>
 
 <%= render :partial => 'form' %>
