@@ -1,8 +1,48 @@
+<!-- this partial dictates the appearance of VVI blog posts on the resources page -->
+
+<!-- used tables for formatting because smartpaginator plugin only allows outermost container to be a div -->
+<!-- NOTE: all style/css rules are in /blog_posts/resources -->
 <table class="our_blog_post">
+	<!-- blog post image (if it exists)-->
 	<%if !(f.square_image.url.nil?)%>
-	<tr><td> <div align="center"><p class="squareImageContainer"><%= image_tag f.square_image.url, :class => "squareImage"%></p></div></td></tr>
-	<% end %>
-<tr><td><p class="green articleTitleContainer"><a href="/blog_posts/<%=f.id%>"> <%=f.title%></a></p></td></tr>
-<tr><td><p class="datePostedContainer datePostedContainerOurBlog">Posted <%= f.published_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></p></td></tr>
-<tr><td><p class="blogPostBody"><%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 600).html_safe %> </p><br /> </td></tr>
+	<tr>
+		<td> 
+			<p align="center">
+				<p class="squareImageContainer">
+					<%= image_tag f.square_image.url, :class => "squareImage"%>
+				</p>
+			</p>
+		</td>
+	</tr>
+	<% end %><!-- end blog post image -->
+	
+	<!-- blog post title (link)-->
+	<tr>
+		<td>
+			<p class="green articleTitleContainer">
+				<a href="/blog_posts/<%=f.id%>"> 
+					<%=f.title%>
+				</a>
+			</p>
+		</td>
+	</tr><!-- end blog post title -->
+	
+	<!-- date blog post was posted -->
+	<tr>
+		<td>
+			<p class="datePostedContainer datePostedContainerOurBlog">
+				Posted <%= f.published_at.strftime("%m/%e/%Y").gsub(/^0/,'')%>
+			</p>
+		</td>
+	</tr><!-- end blog post posted date -->
+	
+	<!-- blog post body/text -->
+	<tr>
+		<td>
+			<p class="blogPostBody">
+			<%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 600).html_safe %> 
+			</p>
+			<br /> 
+		</td>
+	</tr><!-- end blog post body/text -->
 </table>
