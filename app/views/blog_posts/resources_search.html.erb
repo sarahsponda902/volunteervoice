@@ -8,13 +8,16 @@
 .top { /* gives space at the top of an object */
 	margin-top:25px;
 }
-#blogSearchBox { /* blue box containing blog search bar and blurb */
+/********************/
+/* Blog Search Bar */
+/*******************/
+#blogSearchContainer { /* contains the entire blue search bar box */
 	width:90%; 
-	float:center;
-	margin:auto; 
-	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/resourcesTexture.png);
+	float:center; 
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/resourcestextureblue.png);
+	margin:auto;
 }
-#blogSearchBoxBlurb { /* blurb to the left of the blog search bar */
+#blogSearchBlurbContainer { /* contains the right hand side blurb describing blog search */
 	margin-left:15px; 
 	padding-top:15px; 
 	padding-bottom:15px; 
@@ -24,29 +27,35 @@
 	line-height:1.8em; 
 	width:50%;
 }
-#blogSearchBarContainer { /* contains the actual search bar (text field) */
+#blogSearchFieldContainer { /* contains the blog search bar */
 	margin-top: 51px; 
 	margin-right:-8px; 
 	width:44%; 
 	padding-left:0;
 }
-.blogSearchButtonContainer { /* contains the mag-glass search submit button */
+.blogSearchField { /* actual blog search bar */
+	width:80%;
+	float:right;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	border: 0;
+	height:30px;
+}
+.blogSearchMagGlassContainer { /* contains the magnifying-glass submit button */
 	float:right; 
 	margin-right:20px; 
 	margin-left:10px;
 }
-.blogSearchButtonContainer input { /* the actual mag-glass search button */
+#blogSearchMagGlassButton { /* actual magnifying-glass submit button */
 	height:28px;
 }
-.blogSearchBar { /* the actual search bar (text field) */
-	width:80%;
-	float:right;
-	-moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    border-radius: 8px;
- 	border: 0;
-	height:30px;
-}
+
+
+
+/***********************/
+/* Blog Search Results */
+/***********************/
 #blogSearchResultsCounterContainer { /* contains the search resutls count */
 	margin-left:5%; 
 	width:95%;
@@ -89,6 +98,13 @@
 	float:right;
 	margin-right:5%;
 }
+
+
+
+
+/*********************/
+/* No Search Results */
+/********************/
 .noSearchResultsContainer { /* container for "no search results" message and box */
 	border:1px solid #e67b5a; 
 	height:200px; 
@@ -113,6 +129,10 @@ p.weveGotNothinBlurb { /* actual "we've got nothin" message inside box */
 	color: #68c2d8;
 }
 
+
+/********************/
+/* Smart Paginator */
+/*******************/
 /* smartpaginator's pager class */
 .pager { 
 	margin-left:65%;
@@ -132,102 +152,133 @@ p.weveGotNothinBlurb { /* actual "we've got nothin" message inside box */
 
 
 <div class="container top">
-	<div class="row" id="blogSearchBox">
-		<div class="six columns" id="blogSearchBoxBlurb">
-					Here there will be a paragraph. It will probably have something to do with the blog. Here there will be a paragraph. Yay for the blog. More text about the blog. I wonder what this will say
+	<!-- Begin BLOG SEARCH -->
+	<div class="row" id="blogSearchContainer">
 
+		<!-- blog search blurb -->
+		<div class="six columns" id="blogSearchBlurbContainer">
+			A little research can go a long way in helping you make the most of your volunteer experience.  Use this section to find websites, articles, and blog posts on cool, useful stuff.
+
+		</div><!-- end blog search blurb -->
+
+		<!-- blog search form (search bar) -->
+		<div class="six columns" id="blogSearchFieldContainer">
+			<form accept-charset="UTF-8" action="/blog_posts/blog_search" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+				<!-- blog search button (mag glass) -->
+				<div class="blogSearchMagGlassContainer">
+					<input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlassSmaller.png" id="blogSearchMagGlassButton" alt="Search Button" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'">
+				</div><!-- end blog search button (mag glass) -->
+
+				<!-- blog search bar -->
+				<input id="searchfield" name="search" type="text" class="blogSearchField" />
+				<!-- end blog search bar -->
+
+			</form><!-- end blog search form -->
 		</div>
-		<div class="six columns" id="blogSearchBarContainer">
-			<form accept-charset="UTF-8" action="/blog_posts/blog_search" method="get">
-				<input name="utf8" type="hidden" value="&#x2713;" />
-				<div class="blogSearchButtonContainer">
-					<input id="searchbutton" value="search" type="image" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlassSmaller.png" alt="Search Button" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'">
-				</div>
-				<input id="searchfield" name="search" class="blogSearchBar" type="text" />
-			</form>
-		</div>
-	</div>
+	</div><!-- END BLOG SEARCH -->
 	<br />
+	
+	<!-- blog search results counter -->
 	<div class="row">
 		<div class=" twelve columns" id="blogSearchResultsCounterContainer">
 			You've got <%=pluralize @results.count, "search result"%> :
 		</div>
-	</div>
+	</div><!-- end blog search results counter -->
 	<br />
 
+
+	<!-- checkboxes that indicate which type of blog search result is showing -->
 	<div class="row" id="showWhichTypeCheckboxContainer">
 		<div class="twelve columns" id="showWhichTypeCheckboxContainerInner">
-			<input checked="checked" id="both-check" name="both-check" type="checkbox" value="check" onclick='$(hideAll()); $("#both").fadeIn(300); $(this).attr("checked", true );'  /> Show All (<%= @results.count %>)&nbsp;&nbsp;
-			<input id="article-check" name="article-check" type="checkbox" value="check" onclick='$(hideAll()); $("#article").fadeIn(300);  $(this).attr("checked", true );'  /> Only Articles (<%= @interesting.count %>) &nbsp;&nbsp;
+			
+			<!-- "show all" -->
+			<input checked="checked" id="both-check" name="both-check" type="checkbox" value="check" onclick='$(hideAll()); $("#both").fadeIn(300); $(this).attr("checked", true );'  /> Show All (<%= @results.count %>)&nbsp;&nbsp;<!-- end "show all" -->
+			
+			<!-- "show articles" -->
+			<input id="article-check" name="article-check" type="checkbox" value="check" onclick='$(hideAll()); $("#article").fadeIn(300);  $(this).attr("checked", true );'  /> Only Articles (<%= @interesting.count %>) &nbsp;&nbsp;<!-- end "show articles" -->
+			
+			<!-- "show VVI posts" -->
 			<input id="vv-check" name="vv-check" type="checkbox" value="check" onclick='$(hideAll()); $("#ours").fadeToggle(300);  $(this).attr("checked", true );'  /> Only VolunteerVoice Blog (<%= @our_blog.count %>)
+			<!-- end "show VVI posts" -->
 		</div>
-	</div>
+	</div><!-- end showWhichTypeCheckboxContainer -->
 
 
 
+	<!-- BEGIN BLOG SEARCH RESULTS -->
 	<div class="row" id="blogSearchResultsContainer">
+		<!-- article search results -->
 		<div id = "article" class="contents">
 			<% if !(@interesting.empty?)%>
-				<div id="article_pager"></div>
+				<!-- pager for article results -->
+				<div id="article_pager"></div><!-- end pager -->
 				<div id="divarticles">
 					<% @interesting.each do |f|%>
+						<!-- render a result -->
 						<%= render :partial => "blog_post_result", :locals => { :f => f }%>
 					<% end %>
 				</div>
-			<%else%>
+			<%else%><!-- if there are no article posts that match the search -->
 				<div class="noSearchResultsContainer">
 					<div class="noSearchResultsInnerContainer">
 						<div class="weveGotNothinContainer">
 							<p class="weveGotNothinBlurb">We've got nothin'</p>
 						</div>
 					</div>
-				</div>
+				</div><!-- end noSearchResultsContainer -->
 			<% end %>
-		</div>
+		</div><!-- end article search results -->
 
+
+		<!-- vvi posts search results -->
 		<div id = "ours" class="contents">
 			<% if !(@our_blog.empty?)%>
-				<div id="our_pager"></div>
+				<!-- pager for vvi post results -->
+				<div id="our_pager"></div><!-- end pager -->
 				<div id="divours">
 					<% @our_blog.each do |f|%>
+						<!-- render a result -->
 						<%= render :partial => "blog_post_result", :locals => { :f => f }%>
 					<% end %>
 					<br />
 				</div>
-			<%else%>
+			<%else%><!-- if there are no vvi posts that match the search -->
 				<div class="noSearchResultsContainer">
 					<div class="noSearchResultsInnerContainer">
 						<div class="weveGotNothinContainer">
 							<p class="weveGotNothinBlurb">We've got nothin'</p>								
 						</div>
 					</div>
-				</div>
+				</div><!-- end noSearchResultsContainer -->
 			<% end %>
-		</div>
+		</div><!-- end vvi post search results -->
 
 
+		<!-- both posts search results -->
 		<div id = "both" class="contents">
 			<% if !(@results.empty?)%>
-				<div id="both_pager"></div>
+				<!-- pager for vvi post results -->
+				<div id="both_pager"></div><!-- end pager -->
 				<div id="divboths">
 					<% @results.each do |f|%>
+						<!-- render a result -->
 						<%= render :partial => "blog_post_result", :locals => { :f => f }%>
 					<% end %>
 					<br />
 				</div>
-			<%else%>
+			<%else%><!-- if there are no posts of either type that match the search -->
 				<div class="noSearchResultsContainer">
 					<div class="noSearchResultsInnerContainer">
 						<div class="weveGotNothinContainer">
 							<p class="weveGotNothinBlurb">We've got nothin'</p>								
 						</div>
 					</div>
-				</div>
+				</div><!-- end noSearchResultsContainer -->
 			<% end %>
-		</div>
+		</div><!-- end both post search results -->
 
-	</div>
-</div>
+	</div><!-- END BLOG SEARCH RESULTS -->
+</div><!-- end container -->
 
 
 

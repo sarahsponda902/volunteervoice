@@ -1,13 +1,13 @@
+<!-- This is the blog_post show page. It shows one blog post, 
+		whether it be a VVI post or an article post -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
-<% self.respond_to?(:title) && title(@blog_post.title) %>
-<% @show_title = false -%>
-<%= stylesheet_link_tag 'blog_kit' %>
 
 <style>
-	#headding {
+	#headding { /* container for "< Back to Blog" message at top */
 		margin-top:10px;
 	}
-	#link {
+	#link { /* container for link that returns user to VVI blog */
 		float:left;
 	}
 </style>
@@ -15,10 +15,13 @@
 <div class="container">
 	<div class="row">
 		<div class="twelve columns" id="headding">
-		<p id="link">	<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/backToBlog.png"), "/blog_posts" %></p>
+			<!-- "< Back to Blog" link -->
+			<p id="link">	
+				<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/backToBlog.png"), "/blog_posts" %>
+			</p><!-- end Back to Blog link -->
 		</div>
 		<div class="twelve columns">
-<%= render :object => @blog_post, :partial => 'blog_posts/blog_post', :locals => {:show_comments => true} %>
+			<%= render :object => @blog_post, :partial => 'blog_posts/blog_post', :locals => {:show_comments => true} %>
 		</div>
 	</div>
 </div>
