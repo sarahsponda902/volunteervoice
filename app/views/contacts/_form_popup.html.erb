@@ -1,0 +1,71 @@
+<!-- This partial serves as the template for a popup on contacts/new -->
+<!-- for all three types: contact us, for organizations, and for questions -->
+
+<!-- little close-popup icon in upper right hand corner -->
+<a href="#" class="close">
+	<div class="close_image"></div>
+</a><!-- end close-popup icon -->
+
+<!-- popup title -->
+<p class="popupTitle"><%= type.capitalize%></p><!-- end popup title -->
+
+<!-- BEGIN FORM FOR CONTACT EMAIL -->
+<%= form_for(contact) do |f| %>
+	<!-- hidden form field that tells controller to which mailer method 
+			it should send completed form -->
+	<%= f.hidden_field :to_whom, :value => "#{type}"%><!-- end hidden field -->
+	
+	<!-- send user_id in email if user is signed in -->
+	<% if user_signed_in?%>
+		<%= f.hidden_field :user_id, :value => current_user.id%>
+	<% end %>
+
+	<!-- BEGIN POPUP'S TEXT FIELDS -->
+	<div class="six columns popupFieldContainer">
+		<div class="field"><!-- name field is not required -->
+			Name
+			<br />
+			<%= f.text_field :name, :class => "popupField" %>
+		</div>
+	</div>
+	
+	<div class="six columns"><!-- email is a required field -->
+		<div class="field">
+			Email
+			<br />
+			<%= f.text_field :email, 
+							 :class => "popupField", 
+							 :id => "email-#{type}", 
+							 :onkeyup => "checkFormForSubmit(#{type});"  %>
+		</div>
+	</div>
+	
+	<div class="field"><!-- subject field is not required -->
+		Subject
+		<br />
+		<%= f.text_field :subject, :class => "popupSubjectField"  %>
+	</div>
+
+	<div class="field"><!-- body is a required field and must be 5 characters long at least -->
+		<%= f.label :body %>
+		<%= f.text_area :body, 
+						:class => "popupBodyField", 
+						:value => "Must be at least 5 characters", 
+						:onfocus => "setBodyFieldBlank(this)", 
+						:id => "body-#{type}", 
+						:onkeyup => "checkFormForSubmit(#{type});" %>
+	</div>
+
+	<!-- active submit button (send) -->
+	<div id="submit-<%=type%>">
+		<p class="submitButtonContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/SmallSubmit.png"%></p>
+	</div><!-- end submit button -->
+
+	<!-- inactive submit button & blurb -->
+	<div id="nosubmit-<%=type%>">
+		<p class="graySubmitButtonContainer"><%= image_tag "/assets/smallSubmitGray.png"%></p>
+		<p class="noSubmitButtonContainer">Please include both an<br />email and a message<br />before submitting.</p>
+	</div><!-- end inactive submit button -->
+	
+	
+<% end %><!-- end contact_us form -->
