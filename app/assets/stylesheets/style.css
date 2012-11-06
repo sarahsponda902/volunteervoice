@@ -284,6 +284,10 @@ input[name="search[keywords]"] {
 
 /** USERS **/
 
+#unreadMessagesCount { /* count of unread messages. Appears by user's username at the top */
+	color:#e67b5a;
+}
+
 .loginContainer { float:right; } /* contains entire login/register/username/signout box */
 
 #loginOrRegisterContainer { width:auto; padding-left:0px; margin-left:0px} /* only for "Login or Join" -> make room for orgLoginTab */
@@ -421,14 +425,34 @@ margin-top:0px}
 /*********** FOOTER ***********/
 /******************************/
 /******************************/
-
+	
+	/** push -- for sticky footer **/
+	.push {
+		height: 246px;
+	}
+	
+	/** pagewrap -- for sticky footer **/
+	.pageWrap {
+		min-height: 100%;
+		height: auto !important;
+		height: 100%;
+		margin: 0 auto -246px; /* the bottom margin is the negative value of the footer's height */
+	}
+	* {
+		margin: 0;
+	}
+	html, body {
+		height: 100%;
+	}
+	
 	/**FOOTER**/
 	#footer {
 		margin-top:75px; 
 		min-width:970px; 
 		color:#575758; 
 		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/headerFooter.png);
-		margin-bottom:0px
+		margin-bottom:0px;
+		height: 246px;
 	}
 	.footerNav {
 		margin-top:20px; 

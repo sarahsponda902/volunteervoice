@@ -3,63 +3,65 @@
 <html lang="en">
 
 <head>
+	
+	<!-- if user does not have javascript enabled, send to enable_js page -->
 	<noscript>
 		<meta http-equiv="refresh" content="0; url=https://s3-us-west-1.amazonaws.com/volunteervoice/error/enable_js.html">
 	</noscript>
-<div id="fb-root"></div>
-<script>
-  (function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+	<!-- end enable_js -->
 
+	<!-- facebook box plugin root -->
+	<div id="fb-root"></div>
+	<!-- end facebook root -->
 
-<meta charset="utf-8">
-
-<script><!--for HTML5 syntax in IE-->
-	document.createElement('header');
-	document.createElement('footer');
-	document.createElement('nav');
-	document.createElement('article');
-	document.createElement('aside');
-	document.createElement('section');
-</script>		
-		
+	<meta charset="utf-8">		
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-
+	
 	<%= csrf_meta_tag %>
+	
+	<!-- include all stylesheets & javascripts -->
 	<%= stylesheet_link_tag "application", :media => :all%>
 	<%= javascript_include_tag "application"%>
-	
-	
+
+
 	<style>
 	/** LINKS **/
-	a.forgotPassword:link{color:white}
-	a.forgotPassword:active{color:white}
-	a.forgotPassword:visited{color:white}
-	a.forgotPassword:hover{color:#e67b5a}
+	a.forgotPassword:link, 
+	a.forgotPassword:active, 
+	a.forgotPassword:visited,
 	
-	a.login-window:link{color:white}
-	a.login-window:active{color:white}
-	a.login-window:visited{color:white}
-	a.login-window:hover{color:#68c2d8}
+	a.login-window:link,
+	a.login-window:active,
+	a.login-window:visited,
 	
-	a.register:link{color:white}
-	a.register:active{color:white}
-	a.register:visited{color:white}
-	a.register:hover{color:#9bce6c}
+	a.register:link, 
+	a.register:active, 
+	a.register:visited,
 	
-	a.logout:link{color:white}
-	a.logout:active{color:white}
-	a.logout:visited{color:white}
-	a.logout:hover{color:#e67b5a}
+	a.logout:link, 
+	a.logout:active, 
+	a.logout:visited 
+	{ 
+		color:white
+	}
 	
+	a.forgotPassword:hover,
+	a.logout:hover {
+		color:#e67b5a
+	}
+	a.login-window:hover{
+		color:#68c2d8
+	}
+	a.register:hover{
+		color:#9bce6c
+	}
+
+	
+	
+	/*****************/
 	/** POPUP BOXES **/
-	
+	/*****************/
+
 	/* Mask for background, by default is not display */
 	#mask {
 		display: none;
@@ -71,7 +73,7 @@
 		-moz-opacity: 0.50;
 	}
 
-	/* LOGIN  */
+	/** USER LOGIN **/
 	.login-popup{
 		display:none;
 		background: #D9DEDA;
@@ -84,13 +86,13 @@
 		position: fixed;
 		top: 50%; left: 50%;
 		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+		-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
 		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		-moz-border-radius: 3px; /* Firefox */
+		-webkit-border-radius: 3px; /* Safari, Chrome */
 	}
-	
+
 	/** ORG REQUEST ACCOUNT **/
 	.request-popup{
 		display:none;
@@ -105,13 +107,13 @@
 		position: fixed;
 		top: 50%; left: 50%;
 		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+		-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
 		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		-moz-border-radius: 3px; /* Firefox */
+		-webkit-border-radius: 3px; /* Safari, Chrome */
 	}
-	
+
 	/** ORG LOGIN **/
 	.org-login-popup{
 		display:none;
@@ -125,78 +127,87 @@
 		position: fixed;
 		top: 50%; left: 50%;
 		box-shadow: 0px 0px 20px #999; /* CSS3 */
-	        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-	        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+		-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+		-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
 		border-radius:3px 3px 3px 3px;
-	        -moz-border-radius: 3px; /* Firefox */
-	        -webkit-border-radius: 3px; /* Safari, Chrome */
+		-moz-border-radius: 3px; /* Firefox */
+		-webkit-border-radius: 3px; /* Safari, Chrome */
 	}
 
 
-	 /****************************/
-	/** POPUPS ACTUAL CONTENT **/
-   /**************************/
 
-	/**Login Popups (both)**/
-	.popupFieldLabel {
+	/***************************/
+	/** POPUPS ACTUAL CONTENT **/
+	/**************************/
+
+	/**Login Popups (both user and org_account)**/
+	.popupFieldLabel { /* label for text field (login & password fields) */
 		line-height:1.5em;
 	}
-	.popupTextField {
+	.popupTextField { /* actual text fields (login * password fields) */
 		height:15px;
 	}
-	.rememberMeCheckMark {
+	.rememberMeCheckMark { /* check mark image for 'remember me' */
 		position:absolute; 
 		height:25px; 
 		top:113px; 
 		left:13px; 
 		display:none;
 	}
-	.rememberMeCheckBox {
+	.rememberMeCheckBox { /* check box image for 'remember me' */
 		background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
 		background-repeat:no-repeat; 
 		margin-left:5px; 
 		margin-top:10px; 
 		padding-bottom:5px;
 	}
-	.hiddenPopupCheckbox {
+	.hiddenPopupCheckbox { /* actual checkbox that is hidden behind check box image */
 		display:block; 
-		opacity:0;filter: alpha(opacity=0); 
+		opacity:0;
+		filter: alpha(opacity=0); 
 		height:15px; 
 		width:15px;
 	}
-	#rememberMeLabel {
+	#rememberMeLabel { /* label for 'remember me' check box */
 		margin-left:33px; 
 		margin-top:-20px; 
 		font-size:.85em;
 	}
-	#userLoginButton {
+	#userLoginButton { /* login/submit button */
 		height:35px; 
 	}
-	.forgotPasswordLink {
+	.forgotPasswordLink { /* link to passwords/new -> send password reset instructions */
 		font-size:.85em;
 	}
-	
-	
+
+
 	/** Org Account Request Popup **/
-	.accountRequestTitle {
+	.accountRequestTitle { /* title of popup */
 		font-size:2em; 
 		font-family:JosefinSlabRegular; 
 		line-height:1.2em; 
 		margin:10px;
 	}
-	.accountRequestBlurb {
+	.accountRequestBlurb { /* blurb describing popup */
 		font-family:JosefinSlabRegular; 
 		line-height:1.1em; 
 		color:#68c2d8;
 	}
-	.accountRequestLeftColumnContainer {
+	.accountRequestLeftColumnContainer { /* contains the left column of the popup */
 		width:300px;
 	}
-	.accountRequestTextField {
+	#request-right-column { /* contains the right column of the account request popup content */
+		margin-left:300px; 
+		margin-top:-317px; 
+		padding-left:30px; 
+		width:250px;
+	}
+	.accountRequestTextField { /* text fields for the account request */
 		height:20px; 
 		width:198px;
 	}
-	.accountRequestSelectDiv {
+	.accountRequestSelectDiv { /* div containing the select menu for country 
+								NOTE: div is smaller on left/right sides to hide features of original select */
 		position:absolute;
 		top:92px; 
 		height:30px; 
@@ -205,7 +216,7 @@
 		border-right:1px solid #575758; 
 		border-left:1px solid #575758;
 	}
-	select.accountRequestSelect {
+	select.accountRequestSelect { /* actual select box */
 		position:absolute; 
 		border:1px solid #575758; 
 		left:-5px; 
@@ -214,32 +225,26 @@
 		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right;
 		background-color:white;
 	}
-	.accountRequestURLLabelDiv {
+	.accountRequestURLLabelDiv { /* label for url of organization's site */
 		margin-top:50px;
 	}
-	.accountRequestRadioButtonsContainer {
+	.accountRequestRadioButtonsContainer { /* type of organization (VPO or CBO) radio buttons */
 		margin-top:5px;
 	}
-	.accountRequestSubmitContainer {
+	.accountRequestSubmitContainer { /* contains the submit button */
 		margin-top:25px; 
 		margin-left:205px;
 	}
-	.accountRequestSubmit {
+	.accountRequestSubmit { /* actual submit button */
 		height:40px;
 	}
-	#request-right-column {
-		margin-left:300px; 
-		margin-top:-317px; 
-		padding-left:30px; 
-		width:250px;
-	}
-	.accountRequestSelectOneBlurb {
+	.accountRequestSelectOneBlurb { /* blurb indicating the org to select VPO or CBO for their type */
 		float:right; 
 		margin-right:50px; 
 		margin-top:25px; 
 		font-family:JosefinSlabRegular;
 	}
-	.accountRequestDividingLine {
+	.accountRequestDividingLine { /* line dividing the left column and the right column of the popup */
 		height:180px; 
 		width:1px; 
 		top:15px; 
@@ -247,242 +252,374 @@
 		position:absolute; 
 		left:-10px;
 	}
-	#unreadMessagesCount {
-		color:#e67b5a;
-	}
+
 	</style>
-	
+
 </head>
 
-	<body>
-		<div id="pageWrap">
-		<!-- Header-->
+<body>
+	<div class="pageWrap">	<!-- page wrapper for sticky footer -->
+		
+		<!-- BEGIN HEADER -->
 		<div class="container" id="header">
-		<div class="row">
-		<header class="header">
-			
-			<% if !(current_user.nil? || current_organization_account.nil?)%>
-			<div class="four columns headerLogoContainer">
-			<a href="/">
-					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo">
-			</a>
-			</div>
-			<% else %>
-			<div class="four columns headerLogoContainer" id="headerLogoSignedOut">
-			<a href="/">
-					<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" alt="VolunteerVoice International logo" name="logo" id="headerLogo">
-			</a>
-			</div>
-			<% end %>
-			
-<!-- LOGIN BOXES -->
-	<!-- IF USER NOT SIGNED IN: "Login or Register" -->
-	<% if !(user_signed_in?) && !(organization_account_signed_in?) %>			
-			<div class="three columns loginContainer" id="loginOrRegisterContainer">
-			<div class="row login">
-				<a href="#login-box" class="login-window">LOGIN</a>
-				or <a href= "/sign_up" class="register">REGISTER</a>
-			</div>
-			</div>
-	<% else %>
-	<!-- IF USER IS SIGNED IN: username:{link to profile} or Logout -->
-			<div class="four columns loginContainer">
-			<div class="row login">
-					<% if user_signed_in?%>
-						<a href="/users/profile"> <%=current_user.username%> 
-							<% if current_user.unread_messages > 0 %>
-								<span id="unreadMessagesCount">(<%=current_user.unread_messages%>)</span><% end %></a>&nbsp;&nbsp;
-						<a href= "/signout" class="logout">LOGOUT</a>
+			<div class="row">
+				<header class="header">
+					
+					<!--**********************************************************-->
+					<!--*********************************************** FIRST ROW -->
+					<!--**********************************************************-->
+					
+					<!--*********************************************** LEFT HEADER-->
+					
+					<!-- LOGO -->
+					<!-- different spacing for logo if orange 'organizations' tab is present -->
+					<% if !(current_user.nil? || current_organization_account.nil?)%>
+					<div class="four columns headerLogoContainer">
+						<a href="/">
+							<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png" 
+								 alt="VolunteerVoice International logo" name="logo" id="headerLogo">
+						</a>
+					</div>
+					<% else %>
+					<div class="four columns headerLogoContainer" id="headerLogoSignedOut">
+						<a href="/">
+							<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/logo.png"
+							 	 alt="VolunteerVoice International logo" name="logo" id="headerLogo">
+						</a>
+					</div>
 					<% end %>
-					<% if organization_account_signed_in?%>
-						<a href="/organization_accounts/profile"> <%= Organization.find(current_organization_account.organization_id).name%></a>&nbsp;&nbsp;
-						<a href="/signout" class="logout">LOGOUT</a>
+					<!-- END LOGO -->
+					
+					
+					
+					
+					
+					<!--*********************************************** RIGHT HEADER-->
+
+					<!-- TOP RIGHT-HAND BOXES: LOGIN & REGISTER or USERNAME & LOGOUT -->
+					<!-- IF USER NOT SIGNED IN: "Login or Register" -->
+					<% if !(user_signed_in?) && !(organization_account_signed_in?) %>			
+					<div class="three columns loginContainer" id="loginOrRegisterContainer">
+						<div class="row login">
+
+							<!-- link to open login popup -->
+							<a href="#login-box" class="login-window">LOGIN</a>
+							<!-- end popup link -->
+
+							or <a href= "/sign_up" class="register">REGISTER</a>
+						</div><!-- end row login -->
+					</div><!-- end loginContainer -->
+					<% else %>
+
+					<!-- IF USER IS SIGNED IN: username:{link to profile} or Logout -->
+					<!-- IF ORG IS SIGNED IN: org name:{link to profile} or Logout -->
+					<div class="four columns loginContainer">
+						<div class="row login">
+							<!-- if user is logged in, display username & logout -->
+							<% if user_signed_in?%>
+							<!-- username link -->
+							<a href="/users/profile"> 
+								<!-- username -->
+								<%=current_user.username%>
+								
+								<!-- unread messages count -->
+								<% if current_user.unread_messages > 0 %>
+								<span id="unreadMessagesCount">(<%=current_user.unread_messages%>)</span>
+								<% end %><!-- end unread messages count -->
+							</a><!-- end username link -->
+							&nbsp;&nbsp;
+							<!-- log out link -->
+							<a href= "/signout" class="logout">LOGOUT</a>
+							<!-- end log out link -->
+							<% end %><!-- end if user_signed_in? -->
+							
+							
+							<!-- if organization is logged in, display org name & logout -->
+							<% if organization_account_signed_in?%>
+							<!-- link to organization_account's profile page -->
+							<a href="/organization_accounts/profile"> 
+								<%= current_organization_account.organization.name %>
+							</a><!-- end link to org_account profile -->
+							&nbsp;&nbsp;
+							<!-- link to log out -->
+							<a href="/signout" class="logout">LOGOUT</a>
+							<!-- end link to log out -->
+							<% end %><!-- end if organization logged in -->
+
+						</div><!-- end row login -->
+					</div><!-- end loginContainer -->
 					<% end %>
-				
-			</div>
-			</div>
-	<% end %>
-<!-- END LOGIN BOXES -->			
+					
+					<!-- END TOP RIGHT-HAND BOXES -->			
+
+
+					
+					
+					
+					
+					
+					<!--*********************************************** MIDDLE HEADER-->
+						
+					<!-- RED/ORANGE ORGANIZATION ACCOUNT LOGIN/REQUEST BOX (image) -->			
+					<% if !(user_signed_in?) && !(organization_account_signed_in?)%>
+					<div class="four columns loginContainer" id="orgLogin">
+						<div class="row orgLogin" align="right">
+							<ul>
+								<li>
+									<p id="orgLogin-image">
+										<!-- red/orange org account image -->
+										<img 
+src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();">
+										<!-- end org account image -->
+									</p> 
+									
+									<!-- org account drop down menu -->
+									<div>
+										<ul id="orgLoginBox">
+											<li><a href="#org-login-box" class="org-login-window">Login</a></li>
+											<li><a href="#request-box" class="request-window">Make a Profile</a></li>
+										</ul>
+									</div><!-- end drop down menu -->
+								</li>
+							</ul>
+						</div><!-- end row orgLogin -->
+					</div><!-- end loginContainer -->
+					<% end %>
+					<!-- END ORGANIZATION ACCOUNT LOGIN BOX -->
+					
+					
+					
+					
+					
+					<!--*********************************************** MIDDLE (ADMIN) HEADER-->
+
+					<!-- ADMIN NAVIGATION DROP-DOWN MENU -->			
+					<% if user_signed_in? && current_user.admin?%>
+
+					<div class="four columns adminContainer" id="adminNav">
+						<div class="row adminLinks">
+							<ul>
+								<li>
+									<!-- Title of drop down -->
+									<p class="adminLinksTitle">Admin Links</p>
+									
+									<!-- drop down menu content -->
+									<div>
+										<ul>
+											<li><a href="/blog_posts/new">New Blog Post</a></li>
+											<li><a href="/organizations/new">New Organization</a></li>
+											<li><a href="/programs/new">New Program</a></li>
+											<li><a href="/organizations">All Organizations</a></li>
+											<li><a href="/feedbacks">All Feedbacks</a></li>
+											<li><a href="/flags">All Flags</a></li>
+											<li><a href="/messages">All Messages</a></li>
+											<li><a href="/reviews">All Reviews</a></li>
+											<li><a href="/new_reviews">All New Reviews</a></li>
+											<li><a href="/users">All Users</a></li>
+											<li><a href="/searches">All Searches</a></li>
+											<li><a href="/organization_accounts">All Org Accounts</a></li>
+										</ul>
+									</div><!-- end drop down menu content -->
+								</li>
+							</ul>
+
+						</div><!-- end row adminLinks -->
+					</div><!-- end row adminContainer -->		
+					<% end %><!-- end admin logged in check -->
+					<!-- END ADMIN NAVIGATION DROP-DOWN MENU -->
+					
+					
+					
+					<!--***********************************************************-->
+					<!--*********************************************** SECOND ROW -->
+					<!--***********************************************************-->
+					
+					
+					<!--*********************************************** RIGHT SECOND ROW-->
+
+					<!-- SEARCH BOX -->			
+					<div class="six columns searchContainer">
+						<!-- search form -->
+						<% @search = Search.new%>
+						<%= form_for @search do |f|%>
+						
+						<!-- magnifying glass search/submit button -->
+						<div class="magGlassSearchButton">
+							<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png", :style => "margin-bottom:-57px", :id =>"searchbutton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+						</div><!-- end mag glass button -->
+						
+						<!-- search bar -->
+						<div id="searchDiv">
+							<input type="text" name="search[keywords]" id="searchfield">
+						</div><!-- end search bar -->
+						
+						<% end %><!-- end search form -->
+
+					</div><!-- END SEARCH BOX -->
+					
+				</header>
+			</div>						
+		</div><!-- END HEADER -->
 			
 
 
-<!-- ORGANIZATION ACCOUNT LOGIN BOX (image) -->			
-			<% if !(user_signed_in?) && !(organization_account_signed_in?)%>
-			<div class="four columns loginContainer" id="orgLogin">
-			<div class="row orgLogin" align="right">
+		<!--**********************************************************-->
+		<!--*********************************************** THIRD ROW -->
+		<!--**********************************************************-->
+
+
+		<!--*********************************************** GLOBAL NAV-->
+
+
+		<!-- GLOBAL NAVIGATION -->
+
+		<div class="container" id="globalNav">
+			<div class="row">
+				<!-- gray horizontal navigation bar -->
+				<nav class="nav" id="navBar">
 					<ul>
-						<li><p id="orgLogin-image"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.png" onclick="show_org_drop();"></p> 
-							<div>
-								<ul id="orgLoginBox">
-									<li><a href="#org-login-box" class="org-login-window">Login</a></li>
-									<li><a href="#request-box" class="request-window">Make a Profile</a></li>
+						<!-- navigation bar items -->
+						
+						<!-- HOME -->
+						<li class="navs">
+							<a href="/">home</a>
+						</li>
+						
+						<!-- FIND A PROJECT (& DROP DOWN) -->
+						<li class="navs" id="findProgramNav">
+							<a id="shower" onclick="show_menu();">find a project</a>
+							<!-- drop down menu -->
+							<div class="findProgramDropDown">
+								<ul id="program_drop_down">
+									<!-- drop down menu items: -->
+									<li class="navs"><a href="/searches/program_browse">projects by subject</a></li>
+									<li class="navs"><a href="/searches/places">projects by location</a></li>
+									<li class="navs"><a href="/searches/search_machine">use advanced search</a></li>	
 								</ul>
 							</div>
 						</li>
-					</ul>
-			</div>
-			</div>
-			<% end %>
-<!-- END ORGANIZATION ACCOUNT LOGIN BOX -->	
+						<!-- END FIND A PROJECT -->
+						
+						<!-- WRITE A REVIEW -->
+						<li class="navs">
+							<a href="/reviews/new">write a review</a>
+						</li>
+						
+						<!-- RESOURCES -->
+						<li class="navs">
+							<a href= "/blog_posts/resources">resources</a>
+						</li>
+					</ul><!-- end navigation bar items -->
 
+					<!-- div that holds the gray background color for navigation bar -->
+					<div class="dropdown_background"></div>
 
-			
-<!-- ADMIN NAVIGATION DROP-DOWN MENU -->			
-			<% if user_signed_in? && current_user.admin?%>
-			
-			<div class="four columns adminContainer" id="adminNav">
-			<div class="row adminLinks">
-				<ul>
-					<li><p class="adminLinksTitle">Admin Links</p>
-						<div>
-						<ul>
-							<li><a href="/blog_posts/new">New Blog Post</a></li>
-							<li><a href="/organizations/new">New Organization</a></li>
-							<li><a href="/programs/new">New Program</a></li>
-							<li><a href="/organizations">All Organizations</a></li>
-							<li><a href="/feedbacks">All Feedbacks</a></li>
-							<li><a href="/flags">All Flags</a></li>
-							<li><a href="/messages">All Messages</a></li>
-							<li><a href="/reviews">All Reviews</a></li>
-							<li><a href="/new_reviews">All New Reviews</a></li>
-							<li><a href="/users">All Users</a></li>
-							<li><a href="/searches">All Searches</a></li>
-							<li><a href="/organization_accounts">All Org Accounts</a></li>
-						</ul>
-						</div>
-					</li>
-				</ul>
-				
-			</div>
-			</div>			
-			<% end %>
-<!-- END ADMIN NAVIGATION DROP-DOWN MENU -->
-
-
-
-<!-- SEARCH BOX: RIGHT HAND CORNER -->			
-			<div class="six columns searchContainer">
-				<% @search = Search.new%>
-			<%= form_for @search do |f|%>
-				<div class="magGlassSearchButton">
-			    <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/magGlass.png", :style => "margin-bottom:-57px", :id =>"searchbutton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
-				<div id="searchDiv">
-				<input type="text" name="search[keywords]" id="searchfield"></div>
-			<% end %>
-
-		</div>
-		</div>
-		</header>
-		</div>
-		
-<!-- END SEARCH BOX -->		
-
-
-<!-- GLOBAL NAVIGATION -->
-		
-		<div class="container" id="globalNav">
-		<div class="row">
-		<nav class="nav" id="navBar">
-
-		<ul>
-		<li class="navs"><a href="/">home</a></li>
-		<!-- FIND A PROGRAM DROP DOWN -->
-		<li class="navs" id="findProgramNav"><a id="shower" onclick="show_menu();">find a project</a>
-			<div class="findProgramDropDown">
-			<ul id="program_drop_down">
-				<li class="navs"><a href="/searches/program_browse">projects by subject</a></li>
-				<li class="navs"><a href="/searches/places">projects by location</a></li>
-				<li class="navs"><a href="/searches/search_machine">use advanced search</a></li>	
-			</ul>
-			
-			</div>
-		</li>
-		<!-- END PROGRAM DROP-DOWN -->
-		
-		<li class="navs"><a href="/reviews/new">write a review</a></li>
-		<li class="navs"><a href= "/blog_posts/resources">resources</a></li>
-		</ul>
-		
-		<div class="dropdown_background"></div>
-
-		</nav></div>
+				</nav>
+			</div><!-- END ROW -->
 		</div><!--END GLOBAL NAVIGATION-->	
 
 
-<!-- YEILD CURRENT PAGE DATA/STUFF -->
-<%= yield%>
-<!-- END YEILD -->
+		<!-- ******************************* -->
+		<!-- YEILD CURRENT PAGE DATA/STUFF -->
+		<%= yield%>
+		<!-- END YEILD -->
+		<!-- ******************************* -->
+
+		<div class="push"></div> <!-- for sticky footer -->
+		
+	</div><!-- END PAGEWRAP -->
 
 
-</div>
-</div><!-- End PageWrap -->
-</div>
-</div>
 
 
+	<!-- FOOTER -->
+	<div class="container" id="footer">
+		<div class="row">
+			<footer class="footer">
+				
+				<!-- LEFT MOST COLUMN (More On Us) -->
+				<div class="three columns">
+					<article class="footerNav">
+						<h4 class="moreOnUsTitle">More on us...</h4>
+						<ul class="footerMoreOnUsLinks">
+							<li><%= link_to "About Us", "/pages/about"%></li>
+							<li><%= link_to "Contact Us", "/contacts/new"%></li>
+							<li><%= link_to "Terms of Use", "/pages/terms"%></li>
+							<li><%= link_to "Privacy Policy", "/pages/privacy"%></li>
+							<li><a href="/pages/faq">FAQ</a></li>
+						</ul>
+					</article>
+				</div>
+				<!-- END LEFT MOST COLUMN -->
 
-<!-- FOOTER -->
-<div class="container" id="footer">
-<div class="row">
-<footer class="footer">
-	<!-- LEFT MOST COLUMN (More On Us) -->
-<div class="three columns">
-<article class="footerNav">
-<h4 class="moreOnUsTitle">More on us...</h4>
-<ul class="footerMoreOnUsLinks">
-<li><%= link_to "About Us", "/pages/about"%></li>
-<li><%= link_to "Contact Us", "/contacts/new"%></li>
-<li><%= link_to "Terms of Use", "/pages/terms"%></li>
-<li><%= link_to "Privacy Policy", "/pages/privacy"%></li>
-<li><a href="/pages/faq">FAQ</a></li>
-</ul>
-</article></div>
-	<!-- END LEFT MOST COLUMN -->
-	
-	<!-- MIDDLE COLUMN (Social Icons/Links) -->
-<div class="six columns" align="center">
-<article class="spreadWord">
-<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/spreadTheWord.png" alt="Help Spread The Word" width="300px">
-<ul>
-<li class="socialLinkFirst"><a href="http://www.facebook.com/pages/VolunteerVoice-International/309769649039582" target="blank"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/facebook.png" class="socialLinkImage" alt="VolunteerVoice Facebook"></li>
-<li class="socialLink"><a href="https://twitter.com/VolunteerVIntl" target="_blank"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/twitter.png" class="socialLinkImage" alt="VolunteerVoice Twitter"></a></li>
-<li class="socialLink"><a href="https://plus.google.com/b/107473193115458585770/107473193115458585770/posts" target="_blank"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/google.png" class="socialLinkImage" alt="VolunteerVoice Google+"></a></li>
-<li class="socialLink"><img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/rss.png" class="socialLinkImage" alt="VolunteerVoice RSS"></li>
-</ul>
+				<!-- MIDDLE COLUMN (Social Icons/Links) -->
+				<div class="six columns" align="center">
+					<article class="spreadWord">
+						<!-- "spread the word" text -->
+						<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/spreadTheWord.png" alt="Help Spread The Word" width="300px"><!-- end spread word text -->
+						
+						<!-- begin social links list of icons/links -->
+						<ul>
+							<!-- FACEBOOK -->
+							<li class="socialLinkFirst">
+								<a href="http://www.facebook.com/pages/VolunteerVoice-International/309769649039582" target="_blank">
+									<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/facebook.png" class="socialLinkImage" alt="VolunteerVoice Facebook">
+							</li><!-- END FACEBOOK -->
+							
+							<!-- TWITTER -->
+							<li class="socialLink">
+								<a href="https://twitter.com/VolunteerVIntl" target="_blank">
+									<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/twitter.png" class="socialLinkImage" alt="VolunteerVoice Twitter">
+								</a>
+							</li><!-- END TWITTER -->
+							
+							<!-- GOOGLE+-->
+							<li class="socialLink">
+								<a href="https://plus.google.com/b/107473193115458585770/107473193115458585770/posts" target="_blank">
+									<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/google.png" class="socialLinkImage" alt="VolunteerVoice Google+">
+								</a>
+							</li><!-- END GOOGLE+-->
+							
+							<!-- RSS -->
+							<li class="socialLink">
+								<img src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/rss.png" class="socialLinkImage" alt="VolunteerVoice RSS">
+							</li><!-- END RSS -->
+						</ul><!-- end list of icons -->
 
-</article></div>
-<!-- END MIDDLE COLUMN -->
+					</article><!-- end spreadWord -->
+				</div><!-- end six columns -->
+				<!-- END MIDDLE COLUMN -->
 
-<!-- RIGHT MOST COLUMN (Donate box) -->
-<div class="three columns">
-<article class="ourCommunity" align="right">
-<div class="fundCause">
-    Fund the cause!
-<br>
-<img src="/assets/DonateButton.png" id="donateButton">
-<br>
-And give a little <br>LOVE
-</div>
-</article></div>
-<!-- END RIGHT MOST COLUMN -->
-
-
-<!-- ANNA's COPYRIGHT MESSAGE -->
-<div class="row">
-<div class="twelve columns">
-<article class="copyright">
-
-<p><small>Copyright 2012 by VolunteerVoice International. All rights reserved. Site design by Anna Smith from <a href="www.secretsnacking.com">Secret Snacking Media</a>.</small></p>
-
-</article></div></div>
-<!-- END ANNA -->
+				<!-- RIGHT MOST COLUMN (Donate box) -->
+				<div class="three columns">
+					<article class="ourCommunity" align="right">
+						<div class="fundCause">
+							Fund the cause!
+							<br>
+							<img src="/assets/DonateButton.png" id="donateButton">
+							<br>
+							And give a little <br>LOVE
+						</div>
+					</article>
+				</div>
+				<!-- END RIGHT MOST COLUMN -->
 
 
-</footer></div>
+				<!-- ANNA's COPYRIGHT MESSAGE -->
+				<div class="row">
+					<div class="twelve columns">
+						<article class="copyright">
 
-<!-- END FOOTER -->
+							<p><small>Copyright 2012 by VolunteerVoice International. All rights reserved. Site design by Anna Smith from <a href="www.secretsnacking.com">Secret Snacking Media</a>.</small></p>
 
-</div>
+						</article>
+					</div>
+				</div>
+				<!-- END ANNA -->
+
+			</footer>
+		</div>
+	</div><!-- END FOOTER -->
 
 </body>
 
@@ -498,291 +635,312 @@ And give a little <br>LOVE
 
 
 <!-- User Login Popup -->
-  	<div id="login-box" class="login-popup">
-	<a href="#" class="close"><div class="close_image"></div></a><!-- Close button -->
-	  	<%= form_for("user", :url => user_session_path) do |f| %>
-		  <div class="popupFieldLabel">Email or Username:<br />
-		  <%= f.text_field :login, :class => "popupTextField"%></div><br />
-
-		  <div class="popupFieldLabel">Password:<br />
-		  <%= f.password_field :password, :class => "popupTextField"%></div>
-
-		    <image id="checkBefore2" class="rememberMeCheckMark" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck2()">
-			<div class="rememberMeCheckBox" >
-			<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMeLabel"> Remember me</div><br />
+<div id="login-box" class="login-popup">
+	<!-- Close button -->
+	<a href="#" class="close">
+		<div class="close_image"></div>
+	</a><!-- end close button -->
 	
+	<!-- form for user session -->
+	<%= form_for("user", :url => user_session_path) do |f| %>
+	<div class="popupFieldLabel">Email or Username:<br />
+		<%= f.text_field :login, :class => "popupTextField"%></div><br />
 
-		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :id => "userLoginButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
+		<div class="popupFieldLabel">Password:<br />
+			<%= f.password_field :password, :class => "popupTextField"%></div>
 
-		<a class="forgotPasswordLink" href="/users/password/new">Forgot your password?</a>
-		<%end%>	
-	</div><!-- End User Login Popup -->
-	
-	
+			<image id="checkBefore2" class="rememberMeCheckMark" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck2()">
+				<div class="rememberMeCheckBox" >
+					<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMeLabel"> Remember me</div><br />
+
+
+					<div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :id => "userLoginButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
+
+					<a class="forgotPasswordLink" href="/users/password/new">Forgot your password?</a>
+					<%end%>	
+				</div><!-- End User Login Popup -->
+
+
 <!-- Org Login Popup -->	
-	<div id="org-login-box" class="org-login-popup">
-		<a href="#" class="close"><div class="close_image"></div></a>
-	  	<%= form_for("organization_account", :url => organization_account_session_path) do |f| %>
-		  <div class="popupFieldLabel">Email or Username:<br />
-		  <%= f.text_field :login, :class => "popupTextField"%></div><br />
+<div id="org-login-box" class="org-login-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<%= form_for("organization_account", :url => organization_account_session_path) do |f| %>
+	<div class="popupFieldLabel">Email or Username:<br />
+		<%= f.text_field :login, :class => "popupTextField"%></div><br />
 
-		  <div class="popupFieldLabel">Password:<br />
-		  <%= f.password_field :password, :class => "popupTextField"%></div>
+		<div class="popupFieldLabel">Password:<br />
+			<%= f.password_field :password, :class => "popupTextField"%></div>
 
-		    <image class="rememberMeCheckMark" id="checkBefore3" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck3()">
-			<div class="rememberMeCheckBox">
-			<%= f.check_box :remember_me, :onclick => "$(beforeCheck3())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMeLabel"> Remember me</div><br />
-	
+			<image class="rememberMeCheckMark" id="checkBefore3" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck3()">
+				<div class="rememberMeCheckBox">
+					<%= f.check_box :remember_me, :onclick => "$(beforeCheck3())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMeLabel"> Remember me</div><br />
 
-		  <div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
 
-		<a class="forgotPassword" class="forgotPasswordLink" href="/organization_accounts/password/new">Forgot your password?</a>
-		<%end%>
-	</div>
-	<!-- End Org Login Popup -->
-	
-	
-	
+					<div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
+
+					<a class="forgotPassword" class="forgotPasswordLink" href="/organization_accounts/password/new">Forgot your password?</a>
+					<%end%>
+				</div>
+				<!-- End Org Login Popup -->
+
+
+
 <!-- Org Request an Account Popup -->	
-		<div id="request-box" class="request-popup">
-			<a href="#" class="close"><div class="close_image"></div></a>
-			<% @contact = Contact.new %>
-			<p class="accountRequestTitle" align="center">Account Request</p>
-			<p class="accountRequestBlurb">Please complete all fields</p>
-			<%= form_for @contact do |f| %>
-			<div class="five columns" class="accountRequestLeftColumnContainer">
+<div id="request-box" class="request-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<% @contact = Contact.new %>
+	<p class="accountRequestTitle" align="center">Account Request</p>
+	<p class="accountRequestBlurb">Please complete all fields</p>
+	<%= form_for @contact do |f| %>
+	<div class="five columns" class="accountRequestLeftColumnContainer">
 
-			  <div><%= f.label "Organization Name" %>
-			  <%= f.text_field :organization_name, :class => "accountRequestTextField" %></div><br />
+		<div><%= f.label "Organization Name" %>
+			<%= f.text_field :organization_name, :class => "accountRequestTextField" %></div><br />
 			<div>
-<%= f.label :country %>
-			  <div class="select-div accountRequestSelectDiv">
-				 <select class="accountRequestSelect" id="contact_country" name="contact[country]">
-					<option value=""> Select a Country</option>
-					<% THECOUNTRIES.keys.each do |f| %>
-					<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
-					<% end %>
+				<%= f.label :country %>
+				<div class="select-div accountRequestSelectDiv">
+					<select class="accountRequestSelect" id="contact_country" name="contact[country]">
+						<option value=""> Select a Country</option>
+						<% THECOUNTRIES.keys.each do |f| %>
+						<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+						<% end %>
 					</select>
-			</div>
-			<div class="accountRequestURLLabelDiv"><%= f.label "Website URL" %>
-			  <%= f.text_field :organization_url, :class => "accountRequestTextField" %></div><br />
-			<div class="accountRequestRadioButtonsContainer">
-			 <%= f.radio_button :has_profile, :value => "Has profile needs access."%> I have a profile already, but need access. <br />
-			<%= f.radio_button :has_profile, :value => "Needs profile and access."%> I don't have a profile, please make me one! <br /></div>
-			
-			
-			</div>
-			
-			<div class="accountRequestSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :class =>"accountRequestSubmit", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
-
-			</div>
-			<div class="five columns" id="request-right-column">
-
-			  <div><%= f.label "Main Contact (First and Last Name)" %>
-			  <%= f.text_field :main_contact, :class =>"accountRequestTextField"%></div><br />
-
-			  <div><%= f.label "Contact's Position at Company" %>
-			  <%= f.text_field :position_of_contact, :class =>"accountRequestTextField"%></div><br />
-
-			  <div><%= f.label "Contact Email"%>
-			  <%= f.text_field :contact_email, :class =>"accountRequestTextField" %></div>
-			
-			
-			<div class="accountRequestSelectOneBlurb">&lt;&lt;&nbsp;&nbsp; Select one of these</div>
-			
-			<div class="accountRequestDividingLine"></div>
-									
-			<%= f.hidden_field :to_whom, :value => "request"%>
-			<% end %>
-		</div>
-	</div>
-<!-- End Org Request an Account Popup -->
+				</div>
+				<div class="accountRequestURLLabelDiv"><%= f.label "Website URL" %>
+					<%= f.text_field :organization_url, :class => "accountRequestTextField" %></div><br />
+					<div class="accountRequestRadioButtonsContainer">
+						<%= f.radio_button :has_profile, :value => "Has profile needs access."%> I have a profile already, but need access. <br />
+						<%= f.radio_button :has_profile, :value => "Needs profile and access."%> I don't have a profile, please make me one! <br /></div>
 
 
-	
-	
-		<script type="text/javascript">
+					</div>
 
-		//Login Window Jquery
-		$(document).ready(function() {
-			
+					<div class="accountRequestSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :class =>"accountRequestSubmit", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
 
-			$('a.login-window').click(function() {
+				</div>
+				<div class="five columns" id="request-right-column">
 
-		                //Getting the variable's value from a link 
-				var termsBox = $(this).attr('href');
+					<div><%= f.label "Main Contact (First and Last Name)" %>
+						<%= f.text_field :main_contact, :class =>"accountRequestTextField"%></div><br />
 
-				//Fade in the Popup
-				$(termsBox).fadeIn(300);
+						<div><%= f.label "Contact's Position at Company" %>
+							<%= f.text_field :position_of_contact, :class =>"accountRequestTextField"%></div><br />
 
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(termsBox).height() + 24) / 2; 
-				var popMargLeft = ($(termsBox).width() + 24) / 2; 
+							<div><%= f.label "Contact Email"%>
+								<%= f.text_field :contact_email, :class =>"accountRequestTextField" %></div>
 
-				$(termsBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
 
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
+								<div class="accountRequestSelectOneBlurb">&lt;&lt;&nbsp;&nbsp; Select one of these</div>
 
-				return false;
-			});
+								<div class="accountRequestDividingLine"></div>
 
-			// When clicking on the button close or the mask layer the popup closed
-			$('#mask').live('click', function() { 
-			  $('#mask').fadeOut(300);
-			  $('#login-box').fadeOut(300);
-			  $('#mask').remove();
-			  return false;
-			});
-			$('a.close').live('click', function() { 
-			  $('#mask').fadeOut(300);
-			  $('#login-box').fadeOut(300);
-			  $('#mask').remove(); 
-			  return false;
-			});
-			
-			
-			//Account Request JQuery
-			$('a.request-window').click(function() {
+								<%= f.hidden_field :to_whom, :value => "request"%>
+								<% end %>
+							</div>
+						</div>
+						<!-- End Org Request an Account Popup -->
 
-		                //Getting the variable's value from a link 
-				var termsBox = $(this).attr('href');
 
-				//Fade in the Popup
-				$(termsBox).fadeIn(300);
+						<!--for HTML5 syntax in IE-->
+						<script>
+						document.createElement('header');
+						document.createElement('footer');
+						document.createElement('nav');
+						document.createElement('article');
+						document.createElement('aside');
+						document.createElement('section');
+						</script>
 
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(termsBox).height() + 24) / 2; 
-				var popMargLeft = ($(termsBox).width() + 24) / 2; 
+						<script type="text/javascript">
+						(function(d, s, id) {
+							var js, fjs = d.getElementsByTagName(s)[0];
+							if (d.getElementById(id)) return;
+							js = d.createElement(s); js.id = id;
+							js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+							fjs.parentNode.insertBefore(js, fjs);
+							}(document, 'script', 'facebook-jssdk'));
 
-				$(termsBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
 
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
+							//Login Window Jquery
+							$(document).ready(function() {
 
-				return false;
-			});
 
-			// When clicking on the button close or the mask layer the popup closed
-			$('#mask').live('click', function() { 
-			  $('#mask').fadeOut(300);
-			  $('#request-box').fadeOut(300);
-			  $('#mask').remove();
-			  return false;
-			});
-			$('a.close').live('click', function() { 
-			  $('#mask').fadeOut(300);
-			  $('#request-box').fadeOut(300);
-			  $('#mask').remove(); 
-			  return false;
-			});
-			
-			
-			//Org Login Window Jquery
-			$('a.org-login-window').click(function() {
+								$('a.login-window').click(function() {
 
-		                //Getting the variable's value from a link 
-				var termsBox = $(this).attr('href');
+									//Getting the variable's value from a link 
+									var termsBox = $(this).attr('href');
 
-				//Fade in the Popup
-				$(termsBox).fadeIn(300);
+									//Fade in the Popup
+									$(termsBox).fadeIn(300);
 
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(termsBox).height() + 24) / 2; 
-				var popMargLeft = ($(termsBox).width() + 24) / 2; 
+									//Set the center alignment padding + border see css style
+									var popMargTop = ($(termsBox).height() + 24) / 2; 
+									var popMargLeft = ($(termsBox).width() + 24) / 2; 
 
-				$(termsBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
-				});
+									$(termsBox).css({ 
+										'margin-top' : -popMargTop,
+										'margin-left' : -popMargLeft
+									});
 
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
+									// Add the mask to body
+									$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
+									$('#mask').fadeIn(300);
 
-				return false;
-			});
+									return false;
+								});
 
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close', '#mask').live('click', function() { 
-			  $('#mask').fadeOut(300);
-			  $('#org-login-box').fadeOut(300);
-			  $('#mask').remove();  
-			  return false;
-			});
-			$('a.close').live('click', function() { 
-			  $('#mask').fadeOut(300);
-			  $('#org-login-box').fadeOut(300);
-			  $('#mask').remove(); 
-			  return false;
-			});
-			
-			
-			
-			////BROWSER SNIFFING!!! AAHH!!!!
-			////// some things looked funky in different browsers
-			
-			//Firefox - account request's right column is too low
-			if ( $.browser.mozilla == true ) {
-				$("#request-right-column").css("margin-top", "-333px");
-			}
-			
-			//Opera - select box would not render formatting, so took it out
-			if ($.browser.opera) {
-				$(".select-div").css("border", "none");
-				$(".select-div").css("overflow", "visible");				
-			}
-			
-			//Android - org's login image is too low & find a program dropDown is too high
-			var ua = navigator.userAgent.toLowerCase();
-			var isAndroid = ua.indexOf("android") > -1;
-			if (isAndroid) {
-				$("#orgLogin-image").css("margin-top", "-15px");
-				$("#program_drop_down").css("top", "223px");
-			}
-			
-			//iOS - find a program dropDown is too high
-			var agentID = ua.match(/(iphone|ipod|ipad)/);
-			if (agentID) {
-				$("#program_drop_down").css("top", "183px");
-			}
-				
-		});
-	</script>
+								// When clicking on the button close or the mask layer the popup closed
+								$('#mask').live('click', function() { 
+									$('#mask').fadeOut(300);
+									$('#login-box').fadeOut(300);
+									$('#mask').remove();
+									return false;
+								});
+								$('a.close').live('click', function() { 
+									$('#mask').fadeOut(300);
+									$('#login-box').fadeOut(300);
+									$('#mask').remove(); 
+									return false;
+								});
 
-	<script type="text/javascript">
-	//User Login Remember me checkbox toggle if image is clicked
-	function beforeCheck2() {
-		$('#checkBefore2').toggle();
-	}
-	
-	//Org Account Login Remember me checkbox toggle if image is clicked
-	function beforeCheck3() {
-		$('#checkBefore3').toggle();
-	}
-	
-	//For touchscreens - show drop downs on click instead of hover
-	function show_menu() {
-		if ($("#program_drop_down").css("display") == "block") {
-			$("#program_drop_down").css("display", "none");
-		} else {
-			$("#program_drop_down").css("display", "block");
-		}
-	}
-	function show_org_drop() {
-		if ($("#drop_org").css("display") == "block") {
-			$("#drop_org").css("display", "none");
-		} else {
-			$("#drop_org").css("display", "block");
-		}
-	}
-	</script>
+
+								//Account Request JQuery
+								$('a.request-window').click(function() {
+
+									//Getting the variable's value from a link 
+									var termsBox = $(this).attr('href');
+
+									//Fade in the Popup
+									$(termsBox).fadeIn(300);
+
+									//Set the center alignment padding + border see css style
+									var popMargTop = ($(termsBox).height() + 24) / 2; 
+									var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+									$(termsBox).css({ 
+										'margin-top' : -popMargTop,
+										'margin-left' : -popMargLeft
+									});
+
+									// Add the mask to body
+									$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
+									$('#mask').fadeIn(300);
+
+									return false;
+								});
+
+								// When clicking on the button close or the mask layer the popup closed
+								$('#mask').live('click', function() { 
+									$('#mask').fadeOut(300);
+									$('#request-box').fadeOut(300);
+									$('#mask').remove();
+									return false;
+								});
+								$('a.close').live('click', function() { 
+									$('#mask').fadeOut(300);
+									$('#request-box').fadeOut(300);
+									$('#mask').remove(); 
+									return false;
+								});
+
+
+								//Org Login Window Jquery
+								$('a.org-login-window').click(function() {
+
+									//Getting the variable's value from a link 
+									var termsBox = $(this).attr('href');
+
+									//Fade in the Popup
+									$(termsBox).fadeIn(300);
+
+									//Set the center alignment padding + border see css style
+									var popMargTop = ($(termsBox).height() + 24) / 2; 
+									var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+									$(termsBox).css({ 
+										'margin-top' : -popMargTop,
+										'margin-left' : -popMargLeft
+									});
+
+									// Add the mask to body
+									$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
+									$('#mask').fadeIn(300);
+
+									return false;
+								});
+
+								// When clicking on the button close or the mask layer the popup closed
+								$('a.close', '#mask').live('click', function() { 
+									$('#mask').fadeOut(300);
+									$('#org-login-box').fadeOut(300);
+									$('#mask').remove();  
+									return false;
+								});
+								$('a.close').live('click', function() { 
+									$('#mask').fadeOut(300);
+									$('#org-login-box').fadeOut(300);
+									$('#mask').remove(); 
+									return false;
+								});
+
+
+
+								////BROWSER SNIFFING!!! AAHH!!!!
+								////// some things looked funky in different browsers
+
+								//Firefox - account request's right column is too low
+								if ( $.browser.mozilla == true ) {
+									$("#request-right-column").css("margin-top", "-333px");
+								}
+
+								//Opera - select box would not render formatting, so took it out
+								if ($.browser.opera) {
+									$(".select-div").css("border", "none");
+									$(".select-div").css("overflow", "visible");				
+								}
+
+								//Android - org's login image is too low & find a program dropDown is too high
+								var ua = navigator.userAgent.toLowerCase();
+								var isAndroid = ua.indexOf("android") > -1;
+								if (isAndroid) {
+									$("#orgLogin-image").css("margin-top", "-15px");
+									$("#program_drop_down").css("top", "223px");
+								}
+
+								//iOS - find a program dropDown is too high
+								var agentID = ua.match(/(iphone|ipod|ipad)/);
+								if (agentID) {
+									$("#program_drop_down").css("top", "183px");
+								}
+
+							});
+							</script>
+
+							<script type="text/javascript">
+							//User Login Remember me checkbox toggle if image is clicked
+							function beforeCheck2() {
+								$('#checkBefore2').toggle();
+							}
+
+							//Org Account Login Remember me checkbox toggle if image is clicked
+							function beforeCheck3() {
+								$('#checkBefore3').toggle();
+							}
+
+							//For touchscreens - show drop downs on click instead of hover
+							function show_menu() {
+								if ($("#program_drop_down").css("display") == "block") {
+									$("#program_drop_down").css("display", "none");
+								} else {
+									$("#program_drop_down").css("display", "block");
+								}
+							}
+							function show_org_drop() {
+								if ($("#drop_org").css("display") == "block") {
+									$("#drop_org").css("display", "none");
+								} else {
+									$("#drop_org").css("display", "block");
+								}
+							}
+							</script>
 

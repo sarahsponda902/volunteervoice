@@ -41,311 +41,311 @@ a.upload-window:hover { color: #e67b5a }
 /**********************/
 
 
-    #wrapper /*Container for all Pagination stuff */
-    {
+#wrapper /*Container for all Pagination stuff */
+{
 
-        width:100%; 
+	width:100%; 
 
-    }
-
-	
-    .contents /*Container for each of "reviews" "messages" "sent messages" and "favorites"*/
-    {
-		height: 290px;
-        width: 98%; /*height: 150px;*/
-        margin: 0;
-
-    }
-    .contents > p
-    {
-        padding: 8px;
-    }
-
-    #divreviews /*Container for "reviews" for pagination*/
-    {
-        margin: 10;
-        height: 100%;
-        font: verdana;
-        font-size: 14px;
-        background-color: White;
-    }
-    #divreviews > div
-    {
-        width: 98%;
-
-    }
-    #divreviews > div p
-    {
-        width: 95%;
-
-    }
-
-	#divfavorites /*Container for "favorites" for pagination*/
-    {
-        margin: 10;
-        height: 100%;
-        font: verdana;
-        font-size: 14px;
-        background-color: White;
-    }
-    #divfavorites > div
-    {
-        width: 98%;
-
-    }
-    #divfavorites > div p
-    {
-        width: 95%;
-
-    }
-
-	#divmessages /*Container for "messages" for pagination*/
-    {
-        margin-top: 3px;
-        height: 100%;
-        font: verdana;
-        font-size: 14px;
-        background-color: White;
-		position:relative;
-    }
-    #divmessages > div
-    {
-        width: 98%;
-
-    }
-    #divmessages > div p
-    {
-        width: 95%;
-
-    }
-
-	#divsents /*Container for "sent messages" for pagination*/
-    {
-        margin-top: 3px;
-        height: 100%;
-        font: verdana;
-        font-size: 14px;
-        background-color: White;
-		position:relative;
-    }
-    #divysents > div
-    {
-        width: 98%;
-
-    }
-    #divsents > div p
-    {
-        width: 95%;
-
-    }
+}
 
 
-	#tabs { /* My Messages, My Reviews, My Favorites tabs container*/
-		list-style: none;
-        margin-bottom: 20px;
-        padding-bottom: 0;
-		margin-left:15px; 
-		margin-top:-20px; 
-		margin-bottom:0;
-	}
-	#tabs li { /* My Messages, My Reviews, My Favorites tabs */
-		font-family:architectsDaughterRegular; 
-		font-size:1.4em;
-		display: inline;
-		padding-left:15px;
-		padding-right:25px;
-		padding-bottom:50px;
-		padding-top:5px;
-		margin-left:6px;
-		margin-right:6px;
-        color: reviews;
-        cursor: pointer;
-		width:200px;
-		background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/inactiveTab.png) no-repeat;
-	}
-	#tabs li.myMessagesTab { /* My Messages tabs needs to be farther left*/
-		margin-left:-9px;
-	}
-	#tabs li.myMessagesTabRed { /* My Messages tabs needs to be red if user has unread messages*/
-		margin-left:-9px;
-		color:#e67b5a;
-	}
+.contents /*Container for each of "reviews" "messages" "sent messages" and "favorites"*/
+{
+	height: 290px;
+	width: 98%; /*height: 150px;*/
+	margin: 0;
+
+}
+.contents > p
+{
+	padding: 8px;
+}
+
+#divreviews /*Container for "reviews" for pagination*/
+{
+	margin: 10;
+	height: 100%;
+	font: verdana;
+	font-size: 14px;
+	background-color: White;
+}
+#divreviews > div
+{
+	width: 98%;
+
+}
+#divreviews > div p
+{
+	width: 95%;
+
+}
+
+#divfavorites /*Container for "favorites" for pagination*/
+{
+	margin: 10;
+	height: 100%;
+	font: verdana;
+	font-size: 14px;
+	background-color: White;
+}
+#divfavorites > div
+{
+	width: 98%;
+
+}
+#divfavorites > div p
+{
+	width: 95%;
+
+}
+
+#divmessages /*Container for "messages" for pagination*/
+{
+	margin-top: 3px;
+	height: 100%;
+	font: verdana;
+	font-size: 14px;
+	background-color: White;
+	position:relative;
+}
+#divmessages > div
+{
+	width: 98%;
+
+}
+#divmessages > div p
+{
+	width: 95%;
+
+}
+
+#divsents /*Container for "sent messages" for pagination*/
+{
+	margin-top: 3px;
+	height: 100%;
+	font: verdana;
+	font-size: 14px;
+	background-color: White;
+	position:relative;
+}
+#divysents > div
+{
+	width: 98%;
+
+}
+#divsents > div p
+{
+	width: 95%;
+
+}
 
 
+#tabs { /* My Messages, My Reviews, My Favorites tabs container*/
+	list-style: none;
+	margin-bottom: 20px;
+	padding-bottom: 0;
+	margin-left:15px; 
+	margin-top:-20px; 
+	margin-bottom:0;
+}
+#tabs li { /* My Messages, My Reviews, My Favorites tabs */
+	font-family:architectsDaughterRegular; 
+	font-size:1.4em;
+	display: inline;
+	padding-left:15px;
+	padding-right:25px;
+	padding-bottom:50px;
+	padding-top:5px;
+	margin-left:6px;
+	margin-right:6px;
+	color: reviews;
+	cursor: pointer;
+	width:200px;
+	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/inactiveTab.png) no-repeat;
+}
+#tabs li.myMessagesTab { /* My Messages tabs needs to be farther left*/
+	margin-left:-9px;
+}
+#tabs li.myMessagesTabRed { /* My Messages tabs needs to be red if user has unread messages*/
+	margin-left:-9px;
+	color:#e67b5a;
+}
 
 
 
-	/******************/
-	/* POPUP WINDOWS */
-	/*****************/
-
-		/* Mask for background, by default is not display */
-		#mask {
-			display: none;
-			background: #000; 
-			position: fixed; left: 0; top: 0; 
-			width: 100%; height: 100%;
-			opacity: 0.5;
-			filter:alpha(opacity=0.5);
-			z-index: 999;
-		}
-
-		/* Upload a Photo Popup  */
-		.upload-popup{
-			display:none;
-			background: #D9DEDA;
-			width:450px;
-			padding: 10px; 	
-			border: 3px solid #68c2d8;
-			float: left;
-			font-size: 1.2em;
-			position: fixed;
-			top: 50%; left: 50%;
-			z-index: 99999;
-			box-shadow: 0px 0px 20px #999; /* CSS3 */
-		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-			border-radius:3px 3px 3px 3px;
-		        -moz-border-radius: 3px; /* Firefox */
-		        -webkit-border-radius: 3px; /* Safari, Chrome */
-		}
-		
-		/* Delete your favorite/message "are you sure" popup*/
-		.delete-popup{
-			display:none;
-			background: #E9ECE9;
-			padding: 10px; 	
-			border: 2px solid #6aaeba;
-			float: left;
-			color:#575758;
-			font-size: 1.1em;
-			position: fixed;
-			top: 50%; left: 50%;
-			z-index: 99999;
-			box-shadow: 0px 0px 20px #999; /* CSS3 */
-		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-			border-radius:3px 3px 3px 3px;
-		        -moz-border-radius: 3px; /* Firefox */
-		        -webkit-border-radius: 3px; /* Safari, Chrome */
-		}
-		
-		
-		/* Sent message "full message view" popup */
-		.sent-popup{
-			display:none;
-			background: #D9DEDA;
-			padding: 10px; 	
-			border: 3px solid #68c2d8;
-			width:450px;
-			float: left;
-			font-size: 1.2em;
-			position: fixed;
-			top: 50%; left: 50%;
-			z-index: 99999;
-			box-shadow: 0px 0px 20px #999; /* CSS3 */
-		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-			border-radius:3px 3px 3px 3px;
-		        -moz-border-radius: 3px; /* Firefox */
-		        -webkit-border-radius: 3px; /* Safari, Chrome */
-		}
-		
-		/* edit your account popup */
-		.edit-popup{
-			display:none;
-			background: #E3E6D5;
-			padding: 10px; 
-			color:#575758;	
-			border: 3px solid #68c2d8;
-			float: left;
-			font-size: 1.2em;
-			position: fixed;
-			top: 50%; left: 50%;
-			z-index: 99999;
-			box-shadow: 0px 0px 20px #999; /* CSS3 */
-		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-			border-radius:3px 3px 3px 3px;
-		        -moz-border-radius: 3px; /* Firefox */
-		        -webkit-border-radius: 3px; /* Safari, Chrome */
-			width:570px;
-			height:325px;
-		}
-		
-		
-		/* Reply Message popup */
-		.reply-popup{
-			display:none;
-			background: #D9DEDA;
-			padding: 10px; 	
-			border: 3px solid #6aaeba;
-			float: left;
-			color:#6aaeba;
-			font-size: 1.1em;
-			position: fixed;
-			top: 50%; left: 50%;
-			z-index: 99999;
-			box-shadow: 0px 0px 20px #999; /* CSS3 */
-		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-			border-radius:3px 3px 3px 3px;
-		        -moz-border-radius: 3px; /* Firefox */
-		        -webkit-border-radius: 3px; /* Safari, Chrome */
-		}
 
 
-		/* view full message popup */
-		.m-popup{
-			display:none;
-			background: #D9DEDA;
-			padding: 10px; 	
-			border: 3px solid #68c2d8;
-			float: left;
-			font-size: 1.2em;
-			position: fixed;
-			top: 50%; left: 50%;
-			z-index: 99999;
-			width:450px;
-			box-shadow: 0px 0px 20px #999; /* CSS3 */
-		        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-		        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
-			border-radius:3px 3px 3px 3px;
-		        -moz-border-radius: 3px; /* Firefox */
-		        -webkit-border-radius: 3px; /* Safari, Chrome */
-		}
+/******************/
+/* POPUP WINDOWS */
+/*****************/
+
+/* Mask for background, by default is not display */
+#mask {
+	display: none;
+	background: #000; 
+	position: fixed; left: 0; top: 0; 
+	width: 100%; height: 100%;
+	opacity: 0.5;
+	filter:alpha(opacity=0.5);
+	z-index: 999;
+}
+
+/* Upload a Photo Popup  */
+.upload-popup{
+	display:none;
+	background: #D9DEDA;
+	width:450px;
+	padding: 10px; 	
+	border: 3px solid #68c2d8;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+/* Delete your favorite/message "are you sure" popup*/
+.delete-popup{
+	display:none;
+	background: #E9ECE9;
+	padding: 10px; 	
+	border: 2px solid #6aaeba;
+	float: left;
+	color:#575758;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+
+/* Sent message "full message view" popup */
+.sent-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 3px solid #68c2d8;
+	width:450px;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+/* edit your account popup */
+.edit-popup{
+	display:none;
+	background: #E3E6D5;
+	padding: 10px; 
+	color:#575758;	
+	border: 3px solid #68c2d8;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari, Chrome */
+	width:570px;
+	height:325px;
+}
+
+
+/* Reply Message popup */
+.reply-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 3px solid #6aaeba;
+	float: left;
+	color:#6aaeba;
+	font-size: 1.1em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari, Chrome */
+}
+
+
+/* view full message popup */
+.m-popup{
+	display:none;
+	background: #D9DEDA;
+	padding: 10px; 	
+	border: 3px solid #68c2d8;
+	float: left;
+	font-size: 1.2em;
+	position: fixed;
+	top: 50%; left: 50%;
+	z-index: 99999;
+	width:450px;
+	box-shadow: 0px 0px 20px #999; /* CSS3 */
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	border-radius:3px 3px 3px 3px;
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari, Chrome */
+}
 
 
 
-		/*********************/
-		/* MY FAVORITES BOX */
-		/********************/
-		
+/*********************/
+/* MY FAVORITES BOX */
+/********************/
+
 .favoriteTable { /* each individual favorite in enclosed in it's own table */
-	margin-left:10px;
+margin-left:10px;
 }
 img.favoriteBullet { /* asterick for each favorite */
 	margin-top:-10px;
 }
 a.favoriteOrg { /*Favorite's organization name */
-	margin-left:-5px; 
-	font-size:2em; 
-	font-family:josefinSlabRegular; 
-	color:#68c2d8;
+margin-left:-5px; 
+font-size:2em; 
+font-family:josefinSlabRegular; 
+color:#68c2d8;
 }
 a.favoriteOrg:hover {
 	color:#9bce6c;
 }
 a.favoriteProg { /* Favorite's program name */
-	font-size:1.4em; 
-	color:gray;
+font-size:1.4em; 
+color:gray;
 }
 a.favoriteProg:hover {
 	color:#9bce6c;
 }
 .deleteFavoriteContainer { /* "X" for deleting a favorite */
-	margin-right:15px;
-	float:right;
+margin-right:15px;
+float:right;
 }
 
 
@@ -371,21 +371,21 @@ a.message-window:hover {
 	color:#9bce6c;
 }
 .messageDateCreated { /*Message's date Created in table */
-	font-size:1.2em;
-	margin-left:20px; 
-	color:#575758;
+font-size:1.2em;
+margin-left:20px; 
+color:#575758;
 }
 .messageSubject { /*Message's Subject in table */
-	font-size:1.2em;
-	margin-left:20px; 
-	color:#575758;
+font-size:1.2em;
+margin-left:20px; 
+color:#575758;
 }
 .messageDeleteX { /*Message's "X" to delete in table */
-	margin-right:25px;
-	margin-top:5px;
+margin-right:25px;
+margin-top:5px;
 }
 td a.close { /* Full Message popup's "X" to close window */
-	margin-top:-40px;
+margin-top:-40px;
 }
 table.m-popup tr, table.m-popup td { /* Set background color of message popup */
 	background: #E9ECE9;
@@ -394,20 +394,20 @@ table.delete-popup tr, table.delete-popup td { /* Set background color of delete
 	background: #E9ECE9;
 }
 .mPopupFrom, .mPopupSubject { /*Message popup's from and subject titles/labels */
-	font-size:1.4em; 
-	color:#575758; 
-	line-height:2em;
+font-size:1.4em; 
+color:#575758; 
+line-height:2em;
 }
 .mPopupBody { /* Message popup's body */
-	color:#575758; 
-	line-height:1.1em;
-	font-size:1.1em;
-	max-height:100px;
-	overflow-y:auto;
+color:#575758; 
+line-height:1.1em;
+font-size:1.1em;
+max-height:100px;
+overflow-y:auto;
 }
 .mPopupReplyButton { /*  Message popup's reply button */
-	text-align:right;
-	cursor:pointer;
+text-align:right;
+cursor:pointer;
 }
 .mPopupReplyButton a{
 	cursor:pointer;
@@ -424,7 +424,7 @@ table.delete-popup tr, table.delete-popup td { /* Set background color of delete
 	text-align:center;
 }
 a.close-delete-pop { /* button to close the delete popup ("No, thanks") */
-	cursor:pointer;
+cursor:pointer;
 }
 
 
@@ -449,20 +449,20 @@ a.close-delete-pop { /* button to close the delete popup ("No, thanks") */
 	color:#575758;
 }
 .sentMessageDeleteX { /* "X" to delete the sent message */
-	margin-right:25px;
-	margin-top:5px;
+margin-right:25px;
+margin-top:5px;
 }
 .sentPopupTo, .sentPopupSubject { /*sent message popup's "to" and "subject" labels */
-	font-size:1.4em; 
-	color:#575758; 
-	line-height:2em;
+font-size:1.4em; 
+color:#575758; 
+line-height:2em;
 }
 .sentPopupBody { /* sent message popup's body */
-	color:#575758; 
-	line-height:1.1em;
-	font-size:1.1em;
-	max-height:100px;
-	overflow-y:auto;
+color:#575758; 
+line-height:1.1em;
+font-size:1.1em;
+max-height:100px;
+overflow-y:auto;
 }
 .sentDeleteAreYouSure { /*are you sure you want to delete sent message popup title */
 	font-size:2em; 
@@ -479,8 +479,8 @@ table.sent-popup tr, table.sent-popup td { /* Set background color of sent messa
 /* MY REVIEWS BOX */
 /*****************/
 .whosReview { /* Username (user's username) */
-	margin-left:50px; 
-	font-size:1.1em;
+margin-left:50px; 
+font-size:1.1em;
 }
 .reviewWrittenDate { /* Date review was written */
 	text-align:right; 
@@ -496,15 +496,15 @@ table.reviewBox tr, table.reviewBox td { /* set background color of all rows */
 	background-color:#E0EEEE;
 }
 .reviewProgramName { /* review's program name */
-	font-size:1.2em; 
-	margin-left:50px;
+font-size:1.2em; 
+margin-left:50px;
 }
 .reviewTripWas { /* review's length of time */
-	font-size:1.2em;
+font-size:1.2em;
 }
 .reviewStars { /* review's stars */
-	margin-top:-5px; 
-	margin-right:10px;
+margin-top:-5px; 
+margin-right:10px;
 }
 .review-pannel { /* review body */
 	margin-left:10px; 
@@ -523,10 +523,10 @@ img.reviewPhoto { /* individual review photo */
 }
 
 .reviewEditDeleteContainer { /* container for review's edit/delete button */
-	float:right; 
-	text-align:right; 
-	margin-right:30px; 
-	margin-top:5px;
+float:right; 
+text-align:right; 
+margin-right:30px; 
+margin-top:5px;
 }
 
 
@@ -564,15 +564,15 @@ img.reviewPhoto { /* individual review photo */
 	margin-top:70px;
 }
 /* #userImageContainer {
-	float:left; 
-	height:180px; 
-	width:180px; 
-	overflow:hidden; 
-	margin-left:20px;  
+float:left; 
+height:180px; 
+width:180px; 
+overflow:hidden; 
+margin-left:20px;  
 }
 #userImage {
-	height:168px; 
-	width:168px;
+height:168px; 
+width:168px;
 }  */
 #usernameContainer {
 	margin-left:15px; 
@@ -585,19 +585,19 @@ img.reviewPhoto { /* individual review photo */
 	margin-left: 30px;
 }
 /* #dobContainer {
-	margin-top:20px;
-	margin-bottom:20px;
-	float:left; 
-	margin-left:-138px; 
-	padding:5px; 
-	padding-right:100px; 
-	padding-left:10px; 
-	border:1px solid #e67b5a;
+margin-top:20px;
+margin-bottom:20px;
+float:left; 
+margin-left:-138px; 
+padding:5px; 
+padding-right:100px; 
+padding-left:10px; 
+border:1px solid #e67b5a;
 }
 #dob {
-	font-size:1.7em; 
-	line-height:1.6em; 
-	padding-bottom:10px;
+font-size:1.7em; 
+line-height:1.6em; 
+padding-bottom:10px;
 } */
 #middle {
 	margin-top:20px;
@@ -774,39 +774,39 @@ a.usernameLink:hover {
 	<!-- ERROR MESSAGES -->
 	<% if flash.class.name != "String"%>
 	<% flash.each do |key, value| %>
-		<% if value.class.name != "String"%>
-		  <div class="flash <%=key%>">
-	<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
+	<% if value.class.name != "String"%>
+	<div class="flash <%=key%>">
+		<%= pluralize value.length, "errors"%> prevented your message from being sent:<br />
 		<% value.each do |f|%>
-			* <%=f%><br />
+		* <%=f%><br />
 		<% end %>
-	  </div>
+	</div>
 	<% end %>
 	<% end %>
 	<% end %><!-- END ERROR MESSAGES -->
 </div>
 
 
-	<div class="container" id="top">
-	        <div class="row">
-				<div class="eleven columns" id="editChangeTopLinksContainer">
-				<p id="editChangeTopLinks"><a href="#edit-box" class="edit-window">My account</a>	<!--<a href="#upload-box" class="upload-window">Change Profile Image</a> --></p>
-				</div>
-			</div>
-			<div class="row" id="userBoxContainer">
-				<!--<div class="three columns" id="userImageContainer">
-					<%#if !(current_user.square_image.url.nil?)%>
-				<img src="<%=current_user.square_image.url%>" id = "userImage" onerror = "$(this).attr('src', '<%= current_user.photo.url %>')">
-					<%# else %>
-					<%#= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
-					<%# end %>-->
-					
-				</div>
-		<div class= "eight columns" id="usernameContainer">
-	<p id="username"><%= @user.username %> </p>
+<div class="container" id="top">
+	<div class="row">
+		<div class="eleven columns" id="editChangeTopLinksContainer">
+			<p id="editChangeTopLinks"><a href="#edit-box" class="edit-window">My account</a>	<!--<a href="#upload-box" class="upload-window">Change Profile Image</a> --></p>
+		</div>
 	</div>
-		<!--<div class="four columns" id="dobContainer">
-			<p id="dob">
+	<div class="row" id="userBoxContainer">
+		<!--<div class="three columns" id="userImageContainer">
+		<%#if !(current_user.square_image.url.nil?)%>
+		<img src="<%=current_user.square_image.url%>" id = "userImage" onerror = "$(this).attr('src', '<%= current_user.photo.url %>')">
+		<%# else %>
+		<%#= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
+		<%# end %>-->
+
+	</div>
+	<div class= "eight columns" id="usernameContainer">
+		<p id="username"><%= @user.username %> </p>
+	</div>
+	<!--<div class="four columns" id="dobContainer">
+	<p id="dob">
 	<%#if @user.dob != nil%>
 	Age: 
 	<%# @now = Time.now.utc.to_date%>
@@ -815,475 +815,470 @@ a.usernameLink:hover {
 	<br />
 	Country: <%#= THECOUNTRIES[@user.country] %><br />
 
-	<br />
-	<p align="right">
-	</p>
-	</p>-->
-	</div>
-	</div>
-	</div>
+<br />
+<p align="right">
+</p>
+</p>-->
+</div>
 
 
 
-	<div class= "container" id="middle">
-		<div class="row">
-			<div class="eleven columns" id="reviewsFavoritesMessagesContainer">
-
+<div class= "container" id="middle">
+	<div class="row">
+		<div class="eleven columns" id="reviewsFavoritesMessagesContainer">
 
 
 
 
 
-    <div id="wrapper">
-        <div id="tabsContainer">
-            <ul class="tab" id="tabs">
-				<li id="3">My Reviews</li>
-				<li id="2">My Favorites</li>
-				<% if current_user.unread_messages == 0 %>
-                	<li class="myMessagesTab" id="1">My Messages</li>
-				<% else %>
-					<li class="myMessagesTabRed" id="1">My Messages</li>
-				<% end %>
-            </ul>
-        </div>
 
-		<div id="activeTabsContainer">
-			<div id="messagesTab">
-				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
-				<p id="myMessagesLabel">My Messages</p>
-			</div>
-			<div id="favoritesTab">
-				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
-					<p id="myFavoritesLabel">My Favorites</p>
-			</div>
-			<div id="reviewsTab">
-				<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
-					<p id="myReviewsLabel">My Reviews</p>
-			</div>
-			
-        <div id="messages-contents" class="contents">
-			<div align="right" id="sentsContainer">
-				<%= @messages.count%> Messages
+			<div id="wrapper">
+				<div id="tabsContainer">
+					<ul class="tab" id="tabs">
+						<li id="3">My Reviews</li>
+						<li id="2">My Favorites</li>
+						<% if current_user.unread_messages == 0 %>
+						<li class="myMessagesTab" id="1">My Messages</li>
+						<% else %>
+						<li class="myMessagesTabRed" id="1">My Messages</li>
+						<% end %>
+					</ul>
 				</div>
-	<div id="divmessages">
-		        <ul class="sentInboxTabs">
-		            <li class="inbox" id="4">INBOX &nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
-		            <li class="Sent" id="5">SENT</li>
-		        </ul>
-		       
-		        
-			
-              <% if @messages.empty?%>
-			<p class="noMessagesMessage">
-              You do not have any messages in your inbox.</p>
-              <% else %>
-			<p class="messagesContainer">
-              <% @messages.each do |m| %>
-				<div>
-              <%= render :partial => "message", :locals => {:m => m} %>
-              	</div>
-			<%end%>
-			</p>
-              <%end%>
-			
-            </div>
-            <div id="messages">
-            </div>
-        </div>
 
-		 <div id="sent-contents" class="contents">
-			<div align="right" id="messagesContainer">
-				<%= @sent_messages.count%> Sent Messages
+				<div id="activeTabsContainer">
+					<div id="messagesTab">
+						<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
+						<p id="myMessagesLabel">My Messages</p>
+					</div>
+					<div id="favoritesTab">
+						<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
+						<p id="myFavoritesLabel">My Favorites</p>
+					</div>
+					<div id="reviewsTab">
+						<%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/activeTab.png"%>
+						<p id="myReviewsLabel">My Reviews</p>
+					</div>
+
+					<div id="messages-contents" class="contents">
+						<div align="right" id="sentsContainer">
+							<%= @messages.count%> Messages
+						</div>
+						<div id="divmessages">
+							<ul class="sentInboxTabs">
+								<li class="inbox" id="4">INBOX &nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
+									<li class="Sent" id="5">SENT</li>
+								</ul>
+
+
+
+								<% if @messages.empty?%>
+								<p class="noMessagesMessage">
+									You do not have any messages in your inbox.</p>
+									<% else %>
+									<p class="messagesContainer">
+										<% @messages.each do |m| %>
+										<div>
+											<%= render :partial => "message", :locals => {:m => m} %>
+										</div>
+										<%end%>
+									</p>
+									<%end%>
+
+								</div>
+								<div id="messages">
+								</div>
+							</div>
+
+							<div id="sent-contents" class="contents">
+								<div align="right" id="messagesContainer">
+									<%= @sent_messages.count%> Sent Messages
+								</div>
+								<div id="divsents">
+									<ul class="sentInboxTabs">
+										<li class="inbox" id="4">INBOX</li>
+										<li class="Sent" id="5">SENT &nbsp;&nbsp;&nbsp;&nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
+										</ul>
+
+										<% if @sent_messages.empty?%>
+										<p class="noMessagesMessage">
+											You have not yet sent any messages.</p>
+											<% else %>
+											<p class="messagesContainer">
+												<% @sent_messages.each do |m| %>
+
+												<%= render :partial => "message_sent", :locals => {:m => m} %>
+												<%end%>
+											</p>
+											<%end%>
+
+										</div>
+										<div id="sent">
+										</div>
+									</div>
+
+
+
+
+									<div id="favorites-contents" class="contents">
+										<div align="right" id="favoritesContainer">
+											<%= @favorites.count%> Favorites
+										</div>
+										<div id="divfavorites">
+											<% if !((@favorites).empty?) %>
+											<% (@favorites).each do |f|%>
+											<div>
+												<%= render :partial => "favorite", :locals => { :f => f }%>
+											</div>
+											<% end %>
+											<% else %>
+											<p id="noFavoritesMessage">You have not yet added any favorites.</p>
+											<% end %>
+										</div>
+										<div id="favorites">
+										</div>
+									</div>
+
+
+
+									<div id="reviews-contents" class="contents">
+										<div align="right" id="reviewsContainer">
+											<%= pluralize(@reviews.count, "Review")%>
+										</div>
+										<div id="divreviews">
+											<% if @reviews.count != 0 %>
+											<% @reviews.each do |f|%>
+
+											<%= render :partial => "review", :locals => { :f => f } %>
+
+											<% end %>
+											<% else %>
+											<p id="noReviewsMessage">You have not yet written any reviews.</p>
+											<% end %>
+
+										</div>
+										<div id="reviews"></div>
+									</div>
+								</div>
+
+							</div>
+
+				<style>
+				.maxPhotoWidth {
+					text-align:center; 
+					font-family:architectsDaughterRegular; 
+					color:#575758;
+				}
+				.fakeFileInputs {
+					display:block;
+				}
+				#uploadPhotoButton {
+					height:40px;
+					margin-top:15px; 
+					margin-left:20px; 
+					cursor:pointer;
+				}
+				.fileName {
+					height:25px; 
+					width:150px; 
+					position:relative; 
+					top:-15px; 
+					left:25px; 
+					background:none; 
+					border:none;
+				}
+				#cropBlurb {
+					clear:both;
+					text-align:center;
+					font-size:.6em;
+					font-family:ArchitectsDaughterRegular;
+					color:#575758;
+
+				}
+				#user_photo {
+					display:none;
+				}
+				#submitButtonUpload {
+					border-radius:10px; 
+					float:right; 
+					margin-right:20px; 
+					margin-top:-50px; 
+					z-index:9999999;
+				}
+				#myAccountTitle {
+					font-size:2em; 
+					font-family:josefinSlabRegular; 
+					line-height:1.5em;
+				}
+				#myAccountLeftCol {
+					width:300px;
+				}
+				#myInfoTitle {
+					margin:10px; 
+					font-size:1.3em; 
+					font-family:architectsDaughterRegular;
+				}
+				.accountTextField {
+					height:20px; 
+					width:198px;
+				}
+				#selectCountryDiv {
+					position:absolute;
+					top:127px; 
+					height:30px; 
+					width:198px; 
+					overflow:hidden; 
+					border-right:1px solid #575758; 
+					border-left:1px solid #575758;
+				}
+				#user_country {
+					position:absolute; 
+					border:1px solid #575758; 
+					left:-5px; 
+					width:225px; 
+					height:30px; 
+					background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
+					background-color:white;
+				}
+				#checkAgeCountry {
+					position:absolute; 
+					height:25px; 
+					top:170px; 
+					left:-2px;
+				}
+				.checkBox {
+					background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
+					background-repeat:no-repeat; 
+					margin-top:55px; 
+					padding-bottom:5px;
+				}
+				#checkBoxMessages {
+					margin-top:0px;
+				}
+				.hiddenCheckBox {
+					display:block; 
+					opacity:0;
+					filter: alpha(opacity=0);
+					margin-left:0px; 
+					height:15px; 
+					width:15px;
+				}
+				.checkBoxLabel {
+					margin-left:33px; 
+					margin-top:-26px; 
+					font-size:.85em;
+				}
+				#checkMessagesLabel {
+					margin-top:-34px;
+				}
+				#checkMessages {
+					position:absolute; 
+					height:25px; 
+					top:203px; 
+					left:-2px;
+				}
+				#accountSubmitContainer {
+					margin-top:120px; 
+					margin-left:205px; 
+					margin-bottom:10px;
+				}
+				.cancelAccountLink {
+					margin-top:-30px;
+				}
+				#account-right-column {
+					margin-left:300px; 
+					margin-top:-278px; 
+					padding-left:30px; 
+					width:250px;
+				}
+				#myPasswordTitle {
+					margin:10px; 
+					font-family:architectsDaughterRegular; 
+					font-size:1.3em;
+				}
+				#accountDividingLine {
+					height:205px; 
+					width:1px; 
+					top:15px; 
+					background-color: #575758; 
+					position:absolute; 
+					left:-20px;
+				}
+				#replySubjectLabel, #replyBodyLabel {
+					font-size:1.2em; 
+					color:#575758; 
+					margin-left:25px; 
+					line-height:1.2em;
+				}
+				#subject_field {
+					width:380px; 
+					height:25px; 
+					margin-left:20px; 
+					margin-right:20px;
+				}
+				#replyTextBody {
+					height:100px;
+					width:380px; 
+					margin-left:20px; 
+					margin-right:25px; 
+					overflow:auto;
+				}
+				#sendButtonContainer {
+					margin-top:10px; 
+					text-align:center;
+				}
+				#replyMessageTitle {
+					font-family:josefinSlabRegular; 
+					font-size:2em;
+					padding:10px; 
+					line-height:1.1em; 
+					text-align:center;
+				}
+				#reply-box-link {
+					display:none;
+				}
+
+				</style>		
+				<!-- This link is hidden. It is for "clicking" from within the show message popup -->
+				<a href="#reply-box" id="reply-box-link" class="reply-window">Reply</a>
+
+				<div id="reply-box" class="reply-popup">
+					<a href="#" class="close"><div class="close_image"></div></a>
+					<p id="replyMessageTitle">Reply Message</p>
+
+					<%= form_for(@message) do |f| %>
+					<% if user_signed_in?%>
+					<%= f.hidden_field :sender_id, :value => current_user.id %>
+					<% end %>
+					<%= f.hidden_field :recipient_id, :id => "recipient_id_field" %>
+					<div class="field">
+						<p id="replySubjectLabel">Subject:</p>
+						<%= f.text_field :subject, :id => "subject_field" %>
+					</div>
+					<div class="field">
+						<p id="replyBodyLabel">Body:</p>
+						<%= f.text_area :body, :id => "replyTextBody" %>
+					</div>
+
+					<div class="actions" id="sendButtonContainer">
+						<%= image_submit_tag "/assets/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
+					</div>
+					<% end %>
+
+
 				</div>
-		<div id="divsents">
-					<ul class="sentInboxTabs">
-			            <li class="inbox" id="4">INBOX</li>
-			            <li class="Sent" id="5">SENT &nbsp;&nbsp;&nbsp;&nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
-			        </ul>
-					
-	              <% if @sent_messages.empty?%>
-	              <p class="noMessagesMessage">
-	              You have not yet sent any messages.</p>
-	              <% else %>
-				  <p class="messagesContainer">
-	              <% @sent_messages.each do |m| %>
-
-	              <%= render :partial => "message_sent", :locals => {:m => m} %>
-	              <%end%>
-				  </p>
-	              <%end%>
-
-	            </div>
-	            <div id="sent">
-	            </div>
-	        </div>
-	
-	
-	
-	
-        <div id="favorites-contents" class="contents">
-		<div align="right" id="favoritesContainer">
-			<%= @favorites.count%> Favorites
-			</div>
-            <div id="divfavorites">
-              <% if !((@favorites).empty?) %>
-            <% (@favorites).each do |f|%>
-			<div>
-                <%= render :partial => "favorite", :locals => { :f => f }%>
-              </div>
-				<% end %>
-              <% else %>
-				<p id="noFavoritesMessage">You have not yet added any favorites.</p>
-				<% end %>
-            </div>
-            <div id="favorites">
-            </div>
-        </div>
 
 
+				<div id="upload-box" class="upload-popup">
+					<a href="#" class="close"><div class="close_image"></div></a>
+					<p class="maxPhotoWidth">Max photo width: 1 MB</p>
+					<%= form_for @user, :html => {:multipart => true} do |f| %>
+					<div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" id="uploadPhotoButton" onclick = "$(clickUserPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
+						<%= f.hidden_field :crops, :value => true%>
+						<%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile())"%></div>
+						<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :height => "40px", :id => "submitButtonUpload", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+						<% end %>
+						<div id="cropBlurb">**Crop your image after submitting so it doesn't look funky. </div>
+					</div>
+					<div id="edit-box" class="edit-popup">
+						<a href="#" class="close"><div class="close_image"></div></a>
+						<p id="myAccountTitle" align="center">My Account</p>
+						<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
+						<div class="six columns" id="myAccountLeftCol">
 
-        <div id="reviews-contents" class="contents">
-	<div align="right" id="reviewsContainer">
-		<%= pluralize(@reviews.count, "Review")%>
-		</div>
-            <div id="divreviews">
-                <% if @reviews.count != 0 %>
-                <% @reviews.each do |f|%>
+							<p id="myInfoTitle">My Info</p>
 
-                  <%= render :partial => "review", :locals => { :f => f } %>
+							<div><%= f.label "Registered Email Address" %>
+								<%= f.email_field :email, :class => "accountTextField" %></div><br />
+								<div>
+								<%#= f.label :country %>
+								<!--<div class="select-div" id="selectCountryDiv">
+								<select id="user_country" name="user[country]">
+								<% THECOUNTRIES.keys.each do |f| %>
+								<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+								<% end %>
+								</select>
+								</div>
+								<image id="checkAgeCountry" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(ageCountryCheck()); $('#user_profile_show').attr('checked', false)">
+								<div class="checkBox">
+								<%#= f.check_box :profile_show, :onchange => "$(ageCountryCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel"> Hide my age/country on my profile</div><br />
 
-                  <% end %>
-                  <% else %>
-				<p id="noReviewsMessage">You have not yet written any reviews.</p>
-				<% end %>
-                
-            </div>
-            <div id="reviews"></div>
-            </div>
-			</div>
-
-			</div>
-			</div>
-			</div>
-			</div>
-			
-<style>
-.maxPhotoWidth {
-	text-align:center; 
-	font-family:architectsDaughterRegular; 
-	color:#575758;
-}
-.fakeFileInputs {
-	display:block;
-}
-#uploadPhotoButton {
-	height:40px;
-	margin-top:15px; 
-	margin-left:20px; 
-	cursor:pointer;
-}
-.fileName {
-	height:25px; 
-	width:150px; 
-	position:relative; 
-	top:-15px; 
-	left:25px; 
-	background:none; 
-	border:none;
-}
-#cropBlurb {
-	clear:both;
-	text-align:center;
-	font-size:.6em;
-	font-family:ArchitectsDaughterRegular;
-	color:#575758;
-	
-}
-#user_photo {
-	display:none;
-}
-#submitButtonUpload {
-	border-radius:10px; 
-	float:right; 
-	margin-right:20px; 
-	margin-top:-50px; 
-	z-index:9999999;
-}
-#myAccountTitle {
-	font-size:2em; 
-	font-family:josefinSlabRegular; 
-	line-height:1.5em;
-}
-#myAccountLeftCol {
-	width:300px;
-}
-#myInfoTitle {
-	margin:10px; 
-	font-size:1.3em; 
-	font-family:architectsDaughterRegular;
-}
-.accountTextField {
-	height:20px; 
-	width:198px;
-}
-#selectCountryDiv {
-	position:absolute;
-	top:127px; 
-	height:30px; 
-	width:198px; 
-	overflow:hidden; 
-	border-right:1px solid #575758; 
-	border-left:1px solid #575758;
-}
-#user_country {
-	position:absolute; 
-	border:1px solid #575758; 
-	left:-5px; 
-	width:225px; 
-	height:30px; 
-	background: url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/arrowReviews.png) no-repeat right; 
-	background-color:white;
-}
-#checkAgeCountry {
-	position:absolute; 
-	height:25px; 
-	top:170px; 
-	left:-2px;
-}
-.checkBox {
-	background:url(https://s3-us-west-1.amazonaws.com/volunteervoice/images/box.png); 
-	background-repeat:no-repeat; 
-	margin-top:55px; 
-	padding-bottom:5px;
-}
-#checkBoxMessages {
-	margin-top:0px;
-}
-.hiddenCheckBox {
-	display:block; 
-	opacity:0;
-	filter: alpha(opacity=0);
-	margin-left:0px; 
-	height:15px; 
-	width:15px;
-}
-.checkBoxLabel {
-	margin-left:33px; 
-	margin-top:-26px; 
-	font-size:.85em;
-}
-#checkMessagesLabel {
-	margin-top:-34px;
-}
-#checkMessages {
-	position:absolute; 
-	height:25px; 
-	top:203px; 
-	left:-2px;
-}
-#accountSubmitContainer {
-	margin-top:120px; 
-	margin-left:205px; 
-	margin-bottom:10px;
-}
-.cancelAccountLink {
-	margin-top:-30px;
-}
-#account-right-column {
-	margin-left:300px; 
-	margin-top:-278px; 
-	padding-left:30px; 
-	width:250px;
-}
-#myPasswordTitle {
-	margin:10px; 
-	font-family:architectsDaughterRegular; 
-	font-size:1.3em;
-}
-#accountDividingLine {
-	height:205px; 
-	width:1px; 
-	top:15px; 
-	background-color: #575758; 
-	position:absolute; 
-	left:-20px;
-}
-#replySubjectLabel, #replyBodyLabel {
-	font-size:1.2em; 
-	color:#575758; 
-	margin-left:25px; 
-	line-height:1.2em;
-}
-#subject_field {
-	width:380px; 
-	height:25px; 
-	margin-left:20px; 
-	margin-right:20px;
-}
-#replyTextBody {
-	height:100px;
-	width:380px; 
-	margin-left:20px; 
-	margin-right:25px; 
-	overflow:auto;
-}
-#sendButtonContainer {
-	margin-top:10px; 
-	text-align:center;
-}
-#replyMessageTitle {
-	font-family:josefinSlabRegular; 
-	font-size:2em;
-	padding:10px; 
-	line-height:1.1em; 
-	text-align:center;
-}
-#reply-box-link {
-	display:none;
-}
-
-</style>		
-<!-- This link is hidden. It is for "clicking" from within the show message popup -->
-<a href="#reply-box" id="reply-box-link" class="reply-window">Reply</a>
-
-<div id="reply-box" class="reply-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
-	<p id="replyMessageTitle">Reply Message</p>
-
-	<%= form_for(@message) do |f| %>
-	<% if user_signed_in?%>
-	<%= f.hidden_field :sender_id, :value => current_user.id %>
-	<% end %>
-	<%= f.hidden_field :recipient_id, :id => "recipient_id_field" %>
-	  <div class="field">
-	    <p id="replySubjectLabel">Subject:</p>
-	    <%= f.text_field :subject, :id => "subject_field" %>
-	  </div>
-	  <div class="field">
-	    <p id="replyBodyLabel">Body:</p>
-	    <%= f.text_area :body, :id => "replyTextBody" %>
-	  </div>
-
-	  <div class="actions" id="sendButtonContainer">
-	    <%= image_submit_tag "/assets/sendTheMessage.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %>
-	  </div>
-	<% end %>
-
+<image id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(messagesCheck());$('#user_messages_show').attr('checked', false)">
+<div class="checkBox" id="checkBoxMessages">
+<%#= f.check_box :messages_show, :onchange => "$(messagesCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel" id="checkMessagesLabel"> Do not allow others to send me<br />messages</div>--><br />
 
 </div>
-	
-			
-			<div id="upload-box" class="upload-popup">
-				<a href="#" class="close"><div class="close_image"></div></a>
-				<p class="maxPhotoWidth">Max photo width: 1 MB</p>
-			  	<%= form_for @user, :html => {:multipart => true} do |f| %>
-				  <div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" id="uploadPhotoButton" onclick = "$(clickUserPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
-					  <%= f.hidden_field :crops, :value => true%>
-					  <%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile())"%></div>
-				  <%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :height => "40px", :id => "submitButtonUpload", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+
+<div id="accountSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+
+
+<p class="cancelAccountLink"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
+</div>
+<div class="five columns" id="account-right-column">
+
+	<p id="myPasswordTitle">My Password</p>
+
+	<div><%= f.label :password %>
+		<%= f.password_field :password, :autocomplete => "off", :class =>"accountTextField"%></div><br />
+
+		<div><%= f.label :password_confirmation %>
+			<%= f.password_field :password_confirmation, :class =>"accountTextField"%></div><br />
+
+			<div><%= f.label "Current Password (needed for change)"%>
+				<%= f.password_field :current_password, :class =>"accountTextField" %></div>
+
 				<% end %>
-				<div id="cropBlurb">**Crop your image after submitting so it doesn't look funky. </div>
-			</div>
-			<div id="edit-box" class="edit-popup">
-				<a href="#" class="close"><div class="close_image"></div></a>
-				<p id="myAccountTitle" align="center">My Account</p>
-				<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
-				<div class="six columns" id="myAccountLeftCol">
-					
-					<p id="myInfoTitle">My Info</p>
 
-				  <div><%= f.label "Registered Email Address" %>
-				  <%= f.email_field :email, :class => "accountTextField" %></div><br />
-				<div>
-<%#= f.label :country %>
-				 <!--<div class="select-div" id="selectCountryDiv">
-					 <select id="user_country" name="user[country]">
-							<% THECOUNTRIES.keys.each do |f| %>
-							<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
-							<% end %>
-					</select>
-				</div>
-				<image id="checkAgeCountry" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(ageCountryCheck()); $('#user_profile_show').attr('checked', false)">
-					<div class="checkBox">
-					<%#= f.check_box :profile_show, :onchange => "$(ageCountryCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel"> Hide my age/country on my profile</div><br />
-					
-					<image id="checkMessages" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(messagesCheck());$('#user_messages_show').attr('checked', false)">
-					<div class="checkBox" id="checkBoxMessages">
-					<%#= f.check_box :messages_show, :onchange => "$(messagesCheck())", :class => "hiddenCheckBox"%></div><div class="checkBoxLabel" id="checkMessagesLabel"> Do not allow others to send me<br />messages</div>--><br />
-				
-				</div>
-				
-				<div id="accountSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :style =>"height:40px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
-				
-				
-								<p class="cancelAccountLink"><%= link_to "Cancel my account, I hate everyone.", "/registrations/are_you_sure", :class => "cancel-account" %></p>
-				</div>
-				<div class="five columns" id="account-right-column">
-					
-					<p id="myPasswordTitle">My Password</p>
-
-				  <div><%= f.label :password %>
-				  <%= f.password_field :password, :autocomplete => "off", :class =>"accountTextField"%></div><br />
-
-				  <div><%= f.label :password_confirmation %>
-				  <%= f.password_field :password_confirmation, :class =>"accountTextField"%></div><br />
-
-				  <div><%= f.label "Current Password (needed for change)"%>
-				  <%= f.password_field :current_password, :class =>"accountTextField" %></div>
-				
-				<% end %>
-				
-										<div id="accountDividingLine"></div>
+				<div id="accountDividingLine"></div>
 
 			</div>
 
-			
-
-
-<script type="text/javascript">
 
 
 
-//define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
-	var message = <%= @user.messages_show.to_s %>;
-	var profile = <%= @user.profile_show.to_s %>;
+			<script type="text/javascript">
 
 
 
-$(document).ready(function() {
-	
+			//define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
+			var message = <%= @user.messages_show.to_s %>;
+			var profile = <%= @user.profile_show.to_s %>;
 
-	//set the user's country in the account-edit popup
-	$('#user_country').val("<%=current_user.country%>");
-	
 
-	//hide/show message/profile checkmarks if appropriate
-		if (message) 
-		{
-			$("#checkMessages").show();
-		} else {
-			$("#checkMessages").hide();
-		}
 
-		if (profile) 
-		{
-			$("#checkAgeCountry").show();
-		} else {
-			$("#checkAgeCountry").hide();
-		}
-	
-	
-	/*********************/
-	/**BROWSER TWEAKING**/
-	/*******************/
-	
-		//in firefox, right column of account edit popup is too low
-		if ( $.browser.mozilla == true ) {
-			$("#account-right-column").css("margin-top", "-295px");
-		}
-		
-		//in android, tabs ul is too far right, right column of account edit popup is too low, and user's review (pale blue box) is too tall
 			$(document).ready(function() {
+
+
+				//set the user's country in the account-edit popup
+				$('#user_country').val("<%=current_user.country%>");
+
+
+				//hide/show message/profile checkmarks if appropriate
+				if (message) 
+				{
+					$("#checkMessages").show();
+				} else {
+					$("#checkMessages").hide();
+				}
+
+				if (profile) 
+				{
+					$("#checkAgeCountry").show();
+				} else {
+					$("#checkAgeCountry").hide();
+				}
+
+
+				/*********************/
+				/**BROWSER TWEAKING**/
+				/*******************/
+
+				//in firefox, right column of account edit popup is too low
+				if ( $.browser.mozilla == true ) {
+					$("#account-right-column").css("margin-top", "-295px");
+				}
+
+				//in android, tabs ul is too far right, right column of account edit popup is too low, and user's review (pale blue box) is too tall
+				$(document).ready(function() {
 					var ua = navigator.userAgent.toLowerCase();
 					var isAndroid = ua.indexOf("android") > -1;
 					if (isAndroid) {
@@ -1291,86 +1286,86 @@ $(document).ready(function() {
 						$("#account-right-column").css("margin-top", "-295px");
 						$(".review-pannel").css("height", "50px")
 					}
-			});
-	
-	
-			/********************/
-			/** POPUPS JQUERY **/
-			/*******************/	
-	
-	//"show full sent-message" jQuery
-	$('a.sent-window').click(function() {
-
-                //Getting the variable's value from a link 
-		var sentBox = $(this).attr('href');
-
-		//Fade in the Popup
-		$(sentBox).fadeIn(300);
-
-		//Set the center alignment padding + border see css style
-		var popMargTop = ($(sentBox).height() + 24) / 2; 
-		var popMargLeft = ($(sentBox).width() + 24) / 2; 
-
-		$(sentBox).css({ 
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-
-		// Add the mask to body
-		$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-		$('#mask').fadeIn(300);
-
-		return false;
-	});
-
-	// When clicking on the button close or the mask layer the popup closed
-	$('a.close, #mask').live('click', function() { 
-	  $('#mask , .sent-popup').fadeOut(300 , function() {
-		$('#mask').remove();  
-	}); 
-	return false;
-	});
-	
-			
-			
-			//jQuery for upload photo popup
-			$('a.upload-window').click(function() {
-
-		                //Getting the variable's value from a link 
-				var uploadBox = $(this).attr('href');
-
-				//Fade in the Popup
-				$(uploadBox).fadeIn(300);
-
-				//Set the center alignment padding + border see css style
-				var popMargTop = ($(uploadBox).height() + 24) / 2; 
-				var popMargLeft = ($(uploadBox).width() + 24) / 2; 
-
-				$(uploadBox).css({ 
-					'margin-top' : -popMargTop,
-					'margin-left' : -popMargLeft
 				});
 
-				// Add the mask to body
-				$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
-				$('#mask').fadeIn(300);
 
-				return false;
-			});
+				/********************/
+				/** POPUPS JQUERY **/
+				/*******************/	
 
-			// When clicking on the button close or the mask layer the popup closed
-			$('a.close, #mask').live('click', function() { 
-			  $('#mask , .upload-popup').fadeOut(300 , function() {
-				$('#mask').remove();  
-			}); 
-			return false;
-			});
-			
-			
-			//jQuery for edit photo popup
+				//"show full sent-message" jQuery
+				$('a.sent-window').click(function() {
+
+					//Getting the variable's value from a link 
+					var sentBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(sentBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(sentBox).height() + 24) / 2; 
+					var popMargLeft = ($(sentBox).width() + 24) / 2; 
+
+					$(sentBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+					$('#mask').fadeIn(300);
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('a.close, #mask').live('click', function() { 
+					$('#mask , .sent-popup').fadeOut(300 , function() {
+						$('#mask').remove();  
+					}); 
+					return false;
+				});
+
+
+
+				//jQuery for upload photo popup
+				$('a.upload-window').click(function() {
+
+					//Getting the variable's value from a link 
+					var uploadBox = $(this).attr('href');
+
+					//Fade in the Popup
+					$(uploadBox).fadeIn(300);
+
+					//Set the center alignment padding + border see css style
+					var popMargTop = ($(uploadBox).height() + 24) / 2; 
+					var popMargLeft = ($(uploadBox).width() + 24) / 2; 
+
+					$(uploadBox).css({ 
+						'margin-top' : -popMargTop,
+						'margin-left' : -popMargLeft
+					});
+
+					// Add the mask to body
+					$('body').append('<div id="mask" style="display:block; opacity:.5;filter: alpha(opacity=50);"></div>');
+					$('#mask').fadeIn(300);
+
+					return false;
+				});
+
+				// When clicking on the button close or the mask layer the popup closed
+				$('a.close, #mask').live('click', function() { 
+					$('#mask , .upload-popup').fadeOut(300 , function() {
+						$('#mask').remove();  
+					}); 
+					return false;
+				});
+
+
+				//jQuery for edit photo popup
 				$('a.edit-window').click(function() {
 
-			                //Getting the variable's value from a link 
+					//Getting the variable's value from a link 
 					var editBox = $(this).attr('href');
 
 					//Fade in the Popup
@@ -1394,12 +1389,12 @@ $(document).ready(function() {
 
 				// When clicking on the button close or the mask layer the popup closed
 				$('a.close, #mask').live('click', function() { 
-				  $('#mask , .edit-popup').fadeOut(300 , function() {
-					$('#mask').remove();  
-				}); 
-				return false;
+					$('#mask , .edit-popup').fadeOut(300 , function() {
+						$('#mask').remove();  
+					}); 
+					return false;
 				});
-				
+
 				$('.close-delete-pop').click(function () {
 					$('#mask').fadeOut(300);
 					$('.delete-popup').fadeOut(300);
@@ -1410,7 +1405,7 @@ $(document).ready(function() {
 				//jQuery for all "are you sure" popups
 				$('a.delete-window').click(function() {
 
-			                //Getting the variable's value from a link 
+					//Getting the variable's value from a link 
 					var deleteBox = $(this).attr('href');
 
 					//Fade in the Popup
@@ -1434,17 +1429,17 @@ $(document).ready(function() {
 
 				// When clicking on the button close or the mask layer the popup closed
 				$('a.close, #mask').live('click', function() { 
-				  $('#mask , .delete-popup').fadeOut(300 , function() {
-					$('#mask').remove();  
-				}); 
-				return false;
+					$('#mask , .delete-popup').fadeOut(300 , function() {
+						$('#mask').remove();  
+					}); 
+					return false;
 				});
-				
-				
+
+
 
 				//jQuery for show full message popup
 				$('.sentTable').click(function() {
-			                //Getting the variable's value from a link 
+					//Getting the variable's value from a link 
 					var messageBox = $(this).attr('href');
 
 					//Fade in the Popup
@@ -1468,16 +1463,16 @@ $(document).ready(function() {
 
 				// When clicking on the button close or the mask layer the popup closed
 				$('#mask').live('click', function() { 
-				  $('#mask , .m-popup').fadeOut(300 , function() {
-					$('#mask').remove();  
-				}); 
-				return false;
+					$('#mask , .m-popup').fadeOut(300 , function() {
+						$('#mask').remove();  
+					}); 
+					return false;
 				});
-				
+
 				$('.messageTable').click(function () {
 					<% current_user.unread_messages = 0 %>
 					<% current_user.save %>
-					        //Getting the variable's value from a link 
+					//Getting the variable's value from a link 
 					var messageBox = $(this).attr('href');
 
 					//Fade in the Popup
@@ -1501,15 +1496,15 @@ $(document).ready(function() {
 
 				// When clicking on the button close or the mask layer the popup closed
 				$('#mask').live('click', function() { 
-				  $('#mask , .m-popup').fadeOut(300 , function() {
-					$('#mask').remove();  
-				}); 
-				return false;
+					$('#mask , .m-popup').fadeOut(300 , function() {
+						$('#mask').remove();  
+					}); 
+					return false;
 				})
-				
+
 				$('a.reply-window').click(function() {
 
-			                //Getting the variable's value from a link 
+					//Getting the variable's value from a link 
 					var popupBox = $(this).attr('href');
 
 					//Fade in the Popup
@@ -1533,13 +1528,13 @@ $(document).ready(function() {
 
 				// When clicking on the button close or the mask layer the popup closed
 				$('a.close, #mask').live('click', function() { 
-				  $('#mask , .reply-popup').fadeOut(300 , function() {
-					$('#mask').remove();  
-				}); 
-				return false;
+					$('#mask , .reply-popup').fadeOut(300 , function() {
+						$('#mask').remove();  
+					}); 
+					return false;
 				});
 
-});
+			});
 
 /***************************/
 /** LIGHTBOX 2 SCROLLING **/
@@ -1547,94 +1542,94 @@ $(document).ready(function() {
 
 
 //scrolling function for lightbox2 for review photos
-  jQuery(document).ready(function($) {
-      $('a').smoothScroll({
-        speed: 1000,
-        easing: 'easeInOutCubic'
-      });
-  });
+jQuery(document).ready(function($) {
+	$('a').smoothScroll({
+		speed: 1000,
+		easing: 'easeInOutCubic'
+	});
+});
 
-	/********************************/
-	/** TABS FUNCTIONS AND JQUERY **/
-	/******************************/
+/********************************/
+/** TABS FUNCTIONS AND JQUERY **/
+/******************************/
 
 
-        $(document).ready(function () {
+$(document).ready(function () {
 	//if a message was just deleted, put user on messages tab
-			<% if @path == "message_deleted" %>
-			$('#favorites-contents').css('display', 'none');
-            $('#reviews-contents').css('display', 'none');
-			$('#sent-contents').css('display', 'none');
-			$('#favoritesTab').hide();
-			$('#reviewsTab').hide();
-			$('#messagesTab').show();
-			<% end %>
-			
+	<% if @path == "message_deleted" %>
+	$('#favorites-contents').css('display', 'none');
+	$('#reviews-contents').css('display', 'none');
+	$('#sent-contents').css('display', 'none');
+	$('#favoritesTab').hide();
+	$('#reviewsTab').hide();
+	$('#messagesTab').show();
+	<% end %>
+
 	//if a sent-message was just deleted, put user on sent-messages tab
-			<% if @path == "sent_deleted" %>
-			$('#favorites-contents').css('display', 'none');
-            $('#reviews-contents').css('display', 'none');
-			$('#messages-contents').css('display', 'none');
-			$('#favoritesTab').hide();
-			$('#reviewsTab').hide();
-			$('#messagesTab').show();
-			<% end %>
-			
+	<% if @path == "sent_deleted" %>
+	$('#favorites-contents').css('display', 'none');
+	$('#reviews-contents').css('display', 'none');
+	$('#messages-contents').css('display', 'none');
+	$('#favoritesTab').hide();
+	$('#reviewsTab').hide();
+	$('#messagesTab').show();
+	<% end %>
+
 	//if a favorite was just delted, put user on favorites tab		
-			<% if @path == "favorite_deleted" %>	
-            $('#reviews-contents').css('display', 'none');
-            $('#messages-contents').css('display', 'none');
-			$('#sent-contents').css('display', 'none');
-			$('#reviewsTab').hide();
-			$('#messagesTab').hide();
-			$('#favoritesTab').show();
-			<% end %>
-	
+	<% if @path == "favorite_deleted" %>	
+	$('#reviews-contents').css('display', 'none');
+	$('#messages-contents').css('display', 'none');
+	$('#sent-contents').css('display', 'none');
+	$('#reviewsTab').hide();
+	$('#messagesTab').hide();
+	$('#favoritesTab').show();
+	<% end %>
+
 	//else put user on reviews tab		
-			<% if @path == "profile" %>	
-            $('#favorites-contents').css('display', 'none');
-            $('#messages-contents').css('display', 'none');
-			$('#sent-contents').css('display', 'none');
-			$('#favoritesTab').hide();
-			$('#messagesTab').hide();
-			$('#reviewsTab').show();
-			<% end %>
-			
+	<% if @path == "profile" %>	
+	$('#favorites-contents').css('display', 'none');
+	$('#messages-contents').css('display', 'none');
+	$('#sent-contents').css('display', 'none');
+	$('#favoritesTab').hide();
+	$('#messagesTab').hide();
+	$('#reviewsTab').show();
+	<% end %>
+
 	//function that handles jquery tab-switching
-            $('ul li').click(function () {
-				if ($(this).attr('class') != 'navs') { //check if clicked header's global nav
-                $('#messages-contents').css('display', 'none');
-                $('#favorites-contents').css('display', 'none');
-                $('#reviews-contents').css('display', 'none');
-				$('#sent-contents').css('display', 'none');
-                if ($(this).attr('id') == '1') {$('#messages-contents').fadeIn(300); switchTabs('1'); messagesRead();}
-                if ($(this).attr('id') == '2') {$('#favorites-contents').fadeIn(300); switchTabs('2');}
-                if ($(this).attr('id') == '3') {$('#reviews-contents').fadeIn(300); switchTabs('3');}
-				if ($(this).attr('id') == '4') {$('#messages-contents').fadeIn(300); switchTabs('4'); messagesRead();}
-                if ($(this).attr('id') == '5') {$('#sent-contents').fadeIn(300); switchTabs('5');}
-				}
-				
-            });
+	$('ul li').click(function () {
+		if ($(this).attr('class') != 'navs') { //check if clicked header's global nav
+		$('#messages-contents').css('display', 'none');
+		$('#favorites-contents').css('display', 'none');
+		$('#reviews-contents').css('display', 'none');
+		$('#sent-contents').css('display', 'none');
+		if ($(this).attr('id') == '1') {$('#messages-contents').fadeIn(300); switchTabs('1'); messagesRead();}
+		if ($(this).attr('id') == '2') {$('#favorites-contents').fadeIn(300); switchTabs('2');}
+		if ($(this).attr('id') == '3') {$('#reviews-contents').fadeIn(300); switchTabs('3');}
+		if ($(this).attr('id') == '4') {$('#messages-contents').fadeIn(300); switchTabs('4'); messagesRead();}
+		if ($(this).attr('id') == '5') {$('#sent-contents').fadeIn(300); switchTabs('5');}
+	}
 
-			/****************/
-			/** PAGINATION **/
-			/****************/
+});
 
-			//initialize smartpagintaor for each of the tabs
-			$('#reviews').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+/****************/
+/** PAGINATION **/
+/****************/
 
-            $('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 4, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+//initialize smartpagintaor for each of the tabs
+$('#reviews').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-            $('#messages').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+$('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 4, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-			$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+$('#messages').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-        });
+$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+
+});
 
 
-		/****************/
-		/** FUNCTIONS **/
-		/***************/
+/****************/
+/** FUNCTIONS **/
+/***************/
 
 function switchTabs(id){
 	$('#favoritesTab').hide();
@@ -1677,7 +1672,7 @@ function clickUserPhoto() {
 
 
 //set # unread user messages to 0 and save user 
-	//called upon navigating to the user messages tab
+//called upon navigating to the user messages tab
 function messagesRead() {
 	<% @user.unread_messages = 0 %>
 	<% @user.save %>
