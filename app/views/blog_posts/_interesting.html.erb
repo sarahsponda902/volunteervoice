@@ -1,14 +1,67 @@
+<!-- this partial dictates the appearance of articles on the resources page -->
+
+<!-- used tables for formatting because smartpaginator plugin only allows outermost container to be a div -->
+<!-- NOTE: all style/css rules are in /blog_posts/resources -->
 <table class="interesting_blog_post">
-	<%if !(f.square_image.url.nil?)%>
-	<tr><td> <div align="center"><p class="squareImageContainer"><%= image_tag f.square_image.url, :class => "squareImage"%></p></div></td></tr>
-	<% end %>
-	<tr><td><p class="datePostedContainer datePostedContainerInteresting">Posted <%= f.published_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></p></td></tr>
-<tr><td><p class="green articleTitleContainer"><a class="article-title" href="<%=f.blog_link%>" target="_blank"><%= f.title %></p></td></tr>
+	<!-- blog post image (if it exists) -->
+	<%if blog_post.square_image.url.present?)%>
+	<tr>
+		<td> 
+			<p align="center">
+				<p class="squareImageContainer">
+					<%= image_tag blog_post.square_image.url, :class => "squareImage"%>
+				</p>
+			</p>
+		</td>
+	</tr>
+	<% end %><!-- end blog post image -->
+	
+	<!-- date posted -->
+	<tr>
+		<td>
+			<p class="datePostedContainer datePostedContainerInteresting">
+				Posted <%= blog_post.published_at.strftime("%m/%e/%Y").gsub(/^0/,'')%>
+			</p>
+		</td>
+	</tr><!-- end date posted -->
 
-<tr><td><p class="blogPostBody blogPostBodyInteresting"><%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 125).html_safe%> </p><br /> </td></tr>
+	<!-- article/post title (link) -->
+	<tr>
+		<td>
+			<p class="green articleTitleContainer">
+				<a class="article-title" href="<%=blog_post.blog_link%>" target="_blank">
+					<%= blog_post.title %>
+				</a>
+			</p>
+		</td>
+	</tr><!-- end article/post title -->
 
-<tr><td><p class="green sourceLinkContainer" ><span class="fromLabel">From: </font><a href="<%=f.source%>" target="_blank"> <%= f.source_title%></a>	<% if !(current_user.nil?) && current_user.admin?%>
-	<%= link_to "<DELETE>", :controller => "blog_posts", :action => "destroy", :id => f.id%>
-	<% end %></p></td></tr>
+	<!-- blog post text/body -->
+	<tr>
+		<td>
+			<p class="blogPostBody blogPostBodyInteresting">
+			<%= (truncate blog_post.body.gsub(%r{</?[^>]+?>}, ''), :length => 125).html_safe%> 
+			</p>
+			<br /> 
+		</td>
+	</tr><!-- end blog post text/body -->
+	
+	<!-- article source link & delete post link (for admins) -->
+	<tr>
+		<td>
+			<p class="green sourceLinkContainer" >
+				<span class="fromLabel"> From: </span>
+				<!-- article source link -->
+				<a href="<%=blog_post.source%>" target="_blank"> 
+					<%= blog_post.source_title%>
+				</a><!-- end article source link -->
+				
+				<!-- delete post link (admin only) -->
+				<% if !(current_user.nil?) && current_user.admin?%>
+					<%= link_to "<DELETE>", :controller => "blog_posts", :action => "destroy", :id => blog_post.id%>
+				<% end %><!-- end delete post link -->
+			</p>
+		</td>
+	</tr>
 </table>
 

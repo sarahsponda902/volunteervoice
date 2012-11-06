@@ -18,6 +18,9 @@
 font-size:2.2em; 
 line-height:1.2em;
 }
+.blogPoster { /* name of user who posted */
+	font-style: italic;
+}
 a.blogPostUserLink { /* link to admin's profile who created the blog post */
 color:#e67b5a;
 }
@@ -31,12 +34,30 @@ a.blogPostUserLink:hover {
 	font-size:1.1em; 
 	margin-top:10px;
 }
+.blogFooter a { /* comment count & admin links */
+	margin-right: 5px;
+}
+ul.blogList { /* list, includes: comment count, edit (admin), delete (admin) */
+	list-style: none;
+	padding: 5px 10px;
+	margin: 0;
+}
+ul.blogList li { /* list item (comment count, edit, or delete) */
+	display: inline;
+	padding: 0px 10px;
+	border-left: 1px solid #777;
+	margin: 0px 0px;
+}
+ul.blogList li.blogListFirst { /* first list item, has no left border */
+	border-left: none;
+}
 .lineBeforeComments { /* line separating each blog post from the comments */
 	width:100%;
 	height:1px;
 	background-color:#575758;
 	margin-top:30px;
 }
+
 </style>
 
 <div class="blogPost">

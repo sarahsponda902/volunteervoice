@@ -1,7 +1,13 @@
+<!-- this partial dictates the appearance of the 'new comment' form/fields -->
+
 <%= javascript_include_tag "/assets/jquery.js"%>
 <style>
-/* textarea for comment's body */
-.blogPostCommentBody{
+.blogNewComment { /* encapsulates all of new_comment */
+	margin-top: 5px;
+	clear: both;
+}
+
+.blogPostCommentBody{ /* textarea for comment's body */
 	width:80%; 
 	height:75px;
 	margin:auto;
@@ -9,8 +15,7 @@
 	margin-bottom:15px;
 }
 
-/* little message requiring user to be logged in to comment */
-.mustBeMessage {
+.mustBeMessage { /* little message requiring user to be logged in to comment */
 	font-weight:600;
 }
 </style>

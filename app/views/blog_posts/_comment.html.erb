@@ -1,26 +1,61 @@
+<!-- this partial dictates the appearance of each blog comment attached to a blog post -->
 <style>
-	.blogComment {
+	.blogComment { /* contains the entire blog comment */
 		color:#575758;
 		background:none;
 		width:80%;
 		float:center;
 		margin:auto;
+		padding: 10px;
+		border-top: 1px solid #ccc;
+		clear: both;
+	}
+	.blogCommentAdmin { /* if admin was the commenter */
+		background-color: #EBE0BF;
+	}
+	.deleteButton { /* admin only button to delete comment */
+		margin-top:15px; 
+		float:right;
 	}
 </style>
 
-<div class="blogComment<% if comment.user && comment.user.respond_to?(:admin?) && comment.user.admin? %> blogCommentAdmin<% end %>">
+<!-- the following div has 2 classes 'blogComment blogCommentAdmin' if admin signed in -->
+<!--    otherwise, it has one class 'blogComment' -->
+<div class="blogComment
+	<% if comment.user && comment.user.respond_to?(:admin?) && comment.user.admin? %> blogCommentAdmin<% end %>">
 
-	<p class="blogCommentPostedAt">
-		By <span class="blogPoster"><a href="/users/<%=User.find(comment.user_id).id%>"><%= User.find(comment.user_id).username %></a></span>
-		on 
-		<span class="blogPostDate"><%= comment.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></span>
-	</p>
+	<!-- date/time blog comment was posted & poster of comment -->
+	<p class="blogCommentPostedAtAndPoster">
+		<!-- comment poster -->
+		By <span class="blogPoster">
+			<a href="/users/<%=User.find(comment.user_id).id%>">
+				<%= User.find(comment.user_id).username %>
+			</a>
+		</span><!-- end comment poster -->
+			
+		<!-- post date -->
+		on <span class="blogPostDate">
+			<%= comment.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+			</span><!-- end post date -->
+	</p><!-- end date/time & poster -->
 
-	<%= h(comment.body.html_safe) %>
+	<!-- blog comment text/body -->
+	<%= h(comment.body.html_safe) %><!-- end comment text/body -->
 
+	<!-- If admin is signed in, they may delete the comment -->
 	<% if user_signed_in? && current_user.admin? %>
 	
-		<p style="margin-top:15px; float:right"><%= link_to((image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/deleteComment.png"), blog_post_blog_comment_path(@blog_post, comment), :method => :delete, :confirm => 'Are you sure you want to delete this comment?') %></p>
+		<p class="deleteButton"><!-- delete comment button -->
+		<%= button_to(
+			"Delete Comment", 
+			blog_post_blog_comment_path(@blog_post, comment), 
+			:method => :delete, 
+			:confirm => 'Are you sure you want to delete this comment?') 
+		%>
+		</p><!-- end delete button -->
 	<% end %>
-	<br style="clear: both;" />
+	<br style="clear: both;" /><!-- so that next comment appears on a new line -->
 </div>
+
+
+

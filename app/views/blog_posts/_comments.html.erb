@@ -1,3 +1,4 @@
+<!-- this partial iterates through the comments and displays each one via the blog_posts/comment partial -->
 <div class="blogComments">
 	<% @blog_comments.each do |comment| %>
 		<%= render :partial => 'blog_posts/comment', :locals => {:comment => comment} %>

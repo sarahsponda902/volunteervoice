@@ -1,140 +1,114 @@
-<head>
+<!-- this partial dictates the form/fields for creating/editing a blog post (admin only) -->
 
-  <script type="text/javascript" src="/assets/jquery.js"></script>
-
-<script type="text/javascript">
-  // Some simple jQuery to remove the default search value when the user clicks the box
-  $(document).ready(function() {
-        $search_box = $("#body");
-
-        // If the user clicks the input box and the text is "search here!",
-        //    set it to blank
-        $search_box.click(function() {
-            if( $search_box.attr("value") == "If this is an 'Interesting' blog, copy-paste as much of the article as you like. It will be truncated anyway." ) {
-
-                // Set it to an empty string
-                $search_box.attr("value", "");
-            }
-        });
-		$search_box.focus(function() {
-            if( $search_box.attr("value") == "If this is an 'Interesting' blog, copy-paste as much of the article as you like. It will be truncated anyway." ) {
-
-                // Set it to an empty string
-                $search_box.attr("value", "");
-            }
-        });
-
-  });
-</script>
+<script type="text/javascript" src="/assets/jquery.js"></script>
 
 <style>
-	.title {
-		font-size:1.2em;
-	}
-	.warning {
-		color: red;
-	}
+.label { /* labels for the form fields */
+	font-size:1.2em;
+}
+.warning { /* The message that reads: "This section below is only for articles" */
+color: red;
+}
+.smaller { /* something wrong with padding, so making the two columns a little smaller */
+	width:45%;
+}
+.paddingBreak { /* padding between the "articles only" section and the submit button */	
+margin-top:400px;
+width:100%;
+}
 </style>
-</head>
 
-<body>
+
+
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-HELPERS:<br />
 
-* -> bullet point<br />
-# -> numbered bullet point<br />
-_word_ -> italic word<br />
-*word* -> bolded word<br />
-+word+ -> underlined word<br />
-"link text":url -> link to url<br />
-!image url! -> embedded image at url<br />
-p{color:#color-code} paragraph -> paragraph in #color-code color. To exit color, hit 'enter' twice<br /><br />
-
-For more formatting go to: http://redcloth.org/textile/<br /><br /><br />
-
-
-
-
-<%= form_for(@blog_post, :html => {:multipart => true }) do |f| %>
-		<div class="five columns">
+			<%= form_for(@blog_post, :html => {:multipart => true }) do |f| %>
+			<!-- Blog post error messages (if save is unsuccessful) -->
 			<% if @blog_post.errors.size > 0 %>
-				<div id="errorExplanation">
-					<h2>The blog post could not be saved:</h2>
-					<ul>
-						<% @blog_post.errors.full_messages.each do |msg| %>
-							<li><%= msg %></li>
-						<% end %>
-					</ul>
-				</div>
-			<% end %>
-			<p>
-				<p class="title">Title </p>
-				<%= f.text_field :title, :value => @blog_post.title %>
-			</p>
-			<br />
-			<p>
-				<p class="title">Body </p>
-				<%= f.text_area :body, :value => @blog_post.body, :id => "body"%>
-			</p>
-			<br />
-			<p>
-				<p class="title">Tags (comma separated) </p>
-				<%= f.text_field :tags, :value => @blog_post.tags %><font color="red">Alphanumeric ONLY.</font>
-			</p>
-			<br />	
-			
-			<p class="title">Image  (crop on next page)</p><br />
-			  <%= f.file_field :image %>
-			<br />
-			</div>	
-		<div class="five columns">
+			<div id="errorExplanation">
+				<h2>The blog post could not be saved:</h2>
+				<ul>
+					<% @blog_post.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %><!-- end error messages -->
 
-				<p class="title warning">THE SECTION BELOW IS ONLY FOR ARTICLES:</p><br />
+			<!-- Begin FORM FIELDS -->
 
+			<!-- Left column -->
+			<div class="six columns smaller">
 				<p>
-				<p class="title">Link to Article </p>
-				<%= f.text_field :blog_link, :value => @blog_post.blog_link%>
-				</p>
-
-				<p>
-				<p class="title">Link to Source </p>
-				<%= f.text_field :source, :value => @blog_post.source%>
-				</p>
-
-				<p>
-				<p class="title">Title of Source </p>
-				<%= f.text_field :source_title, :value => @blog_post.source_title%>
-				</p>
-
-			
-
-				
-				<br /><br /><br /><br /><br /><br /><br /><br /><br />
-				
-			
-				<p>
-					<%= f.hidden_field :published, :value => true %>
+					<p class="label">Title </p>
+					<%= f.text_field :label, :value => @blog_post.title %>
 				</p>
 				<br />
-					<p> 
-						<p class="title">Type </p>
-					<%= f.radio_button :is_our_blog, true, :checked => true %> VV Blog Post ("Our Blog" column)<br />
+				<p>
+					<p class="label">Body </p>
+					<%= f.text_area :body, :value => @blog_post.body, :id => "body"%>
+				</p>
+				<br />
+				<p>
+					<p class="label">Tags (comma separated) </p>
+					<%= f.text_field :tags, :value => @blog_post.tags %><font color="red">Alphanumeric ONLY.</font>
+				</p>
+				<br />	
+
+				<p class="label">Image  (crop on next page)</p><br />
+				<%= f.file_field :image %>
+				<br />
+			</div>
+
+			<!-- Right column -->	
+			<div class="six columns smaller">
+
+				<p class="label warning">THE SECTION BELOW IS ONLY FOR ARTICLES:</p><br />
+
+				<p>
+					<p class="label">Link to Article </p>
+					<%= f.text_field :blog_link, :value => @blog_post.blog_link%>
+				</p>
+
+				<p>
+					<p class="label">Link to Source </p>
+					<%= f.text_field :source, :value => @blog_post.source%>
+				</p>
+
+				<p>
+					<p class="label">label of Source </p>
+					<%= f.text_field :source_label, :value => @blog_post.source_label%>
+				</p>
+
+				<!-- padding between 'articles only' section and fields below-->
+				<div class="paddingBreak"> </div>
+				<!-- end padding -->
+
+				<!-- since we aren't doing draft, automatically publish all blog posts -->
+				<%= f.hidden_field :published, :value => true %>
+				<!-- end automatic publish -->
+
+				<p> 
+					<p class="label">Type </p>
+					<%= f.radio_button :is_our_blog, true, :checked => true %> VV Blog Post ("Our Blog" column)
+					<br />
 					<%= f.radio_button :is_our_blog, false%> Article ("Interesting" column)
-					</p>
-			
-				<br />
-				
-				<p>
-					<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png" , :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
-
 				</p>
-			
 
-<% end %>
-</div>
-</div>
-</div>
+				<br />
+				<!-- End FORM FIELDS -->
+			</div>	<!-- End right column -->
 
-</body>
+
+			<!-- SUBMIT button -->
+			<p>
+				<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png" , :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+
+			</p><!-- end submit button -->
+
+
+			<% end %><!-- end form -->
+		</div><!-- end row -->
+	</div><!-- end container -->

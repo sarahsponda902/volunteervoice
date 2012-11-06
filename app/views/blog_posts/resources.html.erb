@@ -315,7 +315,7 @@ a.leftColumnTitleOfSource:hover {
 <image class="blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/interesting.png"><br /></div>
 	<div id="divarticles">
 	<% @interesting.each do |f| %>
-	<%= render :partial => "interesting", :locals => {:f => f}%>
+	<%= render :partial => "interesting", :locals => {:blog_post => f}%>
 	<% end %>
 	</div>
 	<div id="article_pager"></div>
@@ -329,7 +329,7 @@ a.leftColumnTitleOfSource:hover {
 <a href="/blog_posts" class="ourBlogImageLink"><image class="ourBlogImage blogTitleImage" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/ourBlog.png" href="/blog_posts"></a><br /></div>
 	<div id="divOurBlog">
 	<% @our_blog.each do |f| %>
-	<%= render :partial => "our_blog", :locals => {:f => f}%>
+	<%= render :partial => "our_blog", :locals => {:blog_post => f}%>
 	<% end %>
 	</div>
 	<div id="our_pager"></div>
