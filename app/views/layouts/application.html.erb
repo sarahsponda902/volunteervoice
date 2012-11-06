@@ -643,304 +643,447 @@ src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/OrgLoginTabRedzz.p
 	
 	<!-- form for user session -->
 	<%= form_for("user", :url => user_session_path) do |f| %>
+	
+	<!-- Login (email/username) field -->
 	<div class="popupFieldLabel">Email or Username:<br />
-		<%= f.text_field :login, :class => "popupTextField"%></div><br />
+		<%= f.text_field :login, :class => "popupTextField"%>
+	</div><!-- end login field -->
+	
+	<br />
 
-		<div class="popupFieldLabel">Password:<br />
-			<%= f.password_field :password, :class => "popupTextField"%></div>
+	<!-- Password field -->
+	<div class="popupFieldLabel">Password:<br />
+		<%= f.password_field :password, :class => "popupTextField"%>
+	</div><!-- end password field -->
 
-			<image id="checkBefore2" class="rememberMeCheckMark" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck2()">
-				<div class="rememberMeCheckBox" >
-					<%= f.check_box :remember_me, :onclick => "$(beforeCheck2())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMeLabel"> Remember me</div><br />
+	<!-- BEGIN CHECK BOX/REMEMBER ME -->
+	
+	<!-- check mark image -->
+	<image id="checkBefore2" 
+		   class="rememberMeCheckMark" 
+		   src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" 
+		   onclick="beforeCheck2()" />
+	<!-- end check mark image -->
+	
+	<!-- check box (actual check box is hidden. div background is image of a check box)-->
+	<div class="rememberMeCheckBox" >
+		<%= f.check_box :remember_me, 
+						:onclick => "$(beforeCheck2())", 
+						:class =>"hiddenPopupCheckbox"%>
+	</div><!-- end check box -->
+	
+	<!-- remember me label -->
+	<div id="rememberMeLabel"> Remember me</div>
+	
+	<!-- END CHECK BOX/REMEMBER ME -->
+	
+	<br />
+
+	<!-- login/submit button -->
+	<div align="center">
+	<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", 
+		:id => "userLoginButton", 
+		:onmousedown => "this.className = 'shadowed'", 
+		:onmouseup => "this.className = 'nothing'"%>
+	</div><!-- end login/submit button -->
+	
+	<br />
+
+	<!-- "forgot your password?" link -->
+	<a class="forgotPasswordLink" href="/users/password/new">Forgot your password?</a>
+	<%end%>	<!-- end form -->
+				
+				
+</div><!-- End User Login Popup -->
 
 
-					<div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :id => "userLoginButton", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
-
-					<a class="forgotPasswordLink" href="/users/password/new">Forgot your password?</a>
-					<%end%>	
-				</div><!-- End User Login Popup -->
 
 
 <!-- Org Login Popup -->	
 <div id="org-login-box" class="org-login-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
+	<!-- Close button -->
+	<a href="#" class="close">
+		<div class="close_image"></div>
+	</a><!-- end close button -->
+	
+	<!-- form for organization account session -->
 	<%= form_for("organization_account", :url => organization_account_session_path) do |f| %>
+	
+	<!-- Login (email/username) field -->
 	<div class="popupFieldLabel">Email or Username:<br />
-		<%= f.text_field :login, :class => "popupTextField"%></div><br />
+		<%= f.text_field :login, :class => "popupTextField"%>
+	</div><!-- end login field -->
+	
+	<br />
 
-		<div class="popupFieldLabel">Password:<br />
-			<%= f.password_field :password, :class => "popupTextField"%></div>
+	<!-- Password field -->
+	<div class="popupFieldLabel">Password:<br />
+		<%= f.password_field :password, :class => "popupTextField"%>
+	</div><!-- end password field -->
 
-			<image class="rememberMeCheckMark" id="checkBefore3" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="beforeCheck3()">
-				<div class="rememberMeCheckBox">
-					<%= f.check_box :remember_me, :onclick => "$(beforeCheck3())", :class =>"hiddenPopupCheckbox"%></div><div id="rememberMeLabel"> Remember me</div><br />
+	<!-- BEGIN CHECK BOX/REMEMBER ME -->
+	
+	<!-- check mark image -->
+	<image class="rememberMeCheckMark" 
+		   id="checkBefore3" 
+		   src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" 
+		   onclick="beforeCheck3()" /><!-- end check mark image -->
+		
+	<!-- check box (actual check box is hidden. div background is image of a check box)-->
+	<div class="rememberMeCheckBox">
+		<%= f.check_box :remember_me, 
+						:onclick => "$(beforeCheck3())", 
+						:class =>"hiddenPopupCheckbox"%>
+	</div><!-- end check box -->
+	
+	<!-- remember me label -->
+	<div id="rememberMeLabel"> Remember me</div>
+	
+	<br />
+	<!-- END CHECK BOX/REMEMBER ME -->
+
+	<!-- login/submit button -->			
+	<div align="center">
+		<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", 
+			:style => "height:35px; border-radius:10px", 
+			:onmousedown => "this.className = 'shadowed'", 
+			:onmouseup => "this.className = 'nothing'"%>
+	</div><!-- end login/submit button -->
+	
+	<br />
+
+	<!-- "forgot your password?" link -->
+	<a class="forgotPassword forgotPasswordLink" href="/organization_accounts/password/new">
+		Forgot your password?
+	</a>
+	<%end%><!-- end form -->
+	
+	
+</div><!-- End Org Login Popup -->
 
 
-					<div align="center"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/login.png", :style => "height:35px; border-radius:10px", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div><br />
-
-					<a class="forgotPassword" class="forgotPasswordLink" href="/organization_accounts/password/new">Forgot your password?</a>
-					<%end%>
-				</div>
-				<!-- End Org Login Popup -->
 
 
 
 <!-- Org Request an Account Popup -->	
 <div id="request-box" class="request-popup">
-	<a href="#" class="close"><div class="close_image"></div></a>
+	<!-- Close button -->
+	<a href="#" class="close">
+		<div class="close_image"></div>
+	</a><!-- end close button -->
+	
+	<!-- preparing for account request form -->
 	<% @contact = Contact.new %>
+	
+	<!-- popup title -->
 	<p class="accountRequestTitle" align="center">Account Request</p>
+	
+	<!-- popup blurb -->
 	<p class="accountRequestBlurb">Please complete all fields</p>
+	
+	<!-- form for account request 
+		Note: form sends a "contact_us" email to admin with request information -->
 	<%= form_for @contact do |f| %>
+	
+	<!-- popup left hand column -->
 	<div class="five columns" class="accountRequestLeftColumnContainer">
+		
+		<!-- organization's name field -->
+		<div>
+			<%= f.label :organization_name, "Organization Name" %>
+			<%= f.text_field :organization_name, :class => "accountRequestTextField" %>
+		</div><!-- end organization name field -->
+		
+		<br />
+		
+		<!-- country select field -->
+		<div>
+			<%= f.label :country %>
+			<div class="select-div accountRequestSelectDiv">
+				
+				<!-- actual select country box -->
+				<select class="accountRequestSelect" id="contact_country" name="contact[country]">
+					<option value=""> Select a Country</option>
+					<% THECOUNTRIES.keys.each do |f| %>
+					<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+					<% end %>
+				</select><!-- end select box -->
+				
+			</div><!-- end select-div -->
+		</div><!-- end country select field -->
+			
+		<!--url of organization's site field -->
+		<div class="accountRequestURLLabelDiv">
+			<%= f.label "Website URL" %>
+			<%= f.text_field :organization_url, :class => "accountRequestTextField" %>
+		</div><!-- end url field -->
+		
+		<br />
+		
+		<!-- is the organization already in our database field -->
+		<div class="accountRequestRadioButtonsContainer">
+			<%= f.radio_button :has_profile, :value => "Has profile needs access."%> I have a profile already, but need access. <br />
+			<%= f.radio_button :has_profile, :value => "Needs profile and access."%> I don't have a profile, please make me one! <br />
+		</div><!-- end already field -->
 
-		<div><%= f.label "Organization Name" %>
-			<%= f.text_field :organization_name, :class => "accountRequestTextField" %></div><br />
-			<div>
-				<%= f.label :country %>
-				<div class="select-div accountRequestSelectDiv">
-					<select class="accountRequestSelect" id="contact_country" name="contact[country]">
-						<option value=""> Select a Country</option>
-						<% THECOUNTRIES.keys.each do |f| %>
-						<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
-						<% end %>
-					</select>
-				</div>
-				<div class="accountRequestURLLabelDiv"><%= f.label "Website URL" %>
-					<%= f.text_field :organization_url, :class => "accountRequestTextField" %></div><br />
-					<div class="accountRequestRadioButtonsContainer">
-						<%= f.radio_button :has_profile, :value => "Has profile needs access."%> I have a profile already, but need access. <br />
-						<%= f.radio_button :has_profile, :value => "Needs profile and access."%> I don't have a profile, please make me one! <br /></div>
+		<!-- submit account request button -->
+		<div class="accountRequestSubmitContainer">
+			<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", 
+				:class =>"accountRequestSubmit", 
+				:onmousedown => "this.className = 'shadowed'", 
+				:onmouseup => "this.className = 'nothing'"%>
+		</div><!-- end submit button -->
 
+	</div><!-- end left column -->
+	
+	
+	<!-- popup right hand column -->
+	<div class="five columns" id="request-right-column">
+		
+		<!-- main contact's name field -->
+		<div>
+			<%= f.label "Main Contact (First and Last Name)" %>
+			<%= f.text_field :main_contact, :class =>"accountRequestTextField"%>
+		</div><!--end main contact's name field -->
+		
+		<br />
 
-					</div>
+		<!-- main contact's position with company/organization -->
+		<div>
+			<%= f.label "Contact's Position at Company" %>
+			<%= f.text_field :position_of_contact, :class =>"accountRequestTextField"%>
+		</div><!-- end main contact's position -->
+		
+		<br />
 
-					<div class="accountRequestSubmitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :class =>"accountRequestSubmit", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+		<!-- main contact's email -->
+		<div>
+			<%= f.label "Contact Email"%>
+			<%= f.text_field :contact_email, :class =>"accountRequestTextField" %>
+		</div><!-- end main contact's email -->
 
-				</div>
-				<div class="five columns" id="request-right-column">
+		<!-- label for radio buttons for whether your org 
+					already has a profile in our database -->
+		<div class="accountRequestSelectOneBlurb">
+			<!-- << arrow -->
+			&lt;&lt;&nbsp;&nbsp; 
+			
+			Select one of these
+		</div><!-- end label for radio buttons -->
 
-					<div><%= f.label "Main Contact (First and Last Name)" %>
-						<%= f.text_field :main_contact, :class =>"accountRequestTextField"%></div><br />
+		<!-- line dividing left column and right column in popup -->
+		<div class="accountRequestDividingLine"></div>
 
-						<div><%= f.label "Contact's Position at Company" %>
-							<%= f.text_field :position_of_contact, :class =>"accountRequestTextField"%></div><br />
-
-							<div><%= f.label "Contact Email"%>
-								<%= f.text_field :contact_email, :class =>"accountRequestTextField" %></div>
-
-
-								<div class="accountRequestSelectOneBlurb">&lt;&lt;&nbsp;&nbsp; Select one of these</div>
-
-								<div class="accountRequestDividingLine"></div>
-
-								<%= f.hidden_field :to_whom, :value => "request"%>
-								<% end %>
-							</div>
-						</div>
-						<!-- End Org Request an Account Popup -->
-
-
-						<!--for HTML5 syntax in IE-->
-						<script>
-						document.createElement('header');
-						document.createElement('footer');
-						document.createElement('nav');
-						document.createElement('article');
-						document.createElement('aside');
-						document.createElement('section');
-						</script>
-
-						<script type="text/javascript">
-						(function(d, s, id) {
-							var js, fjs = d.getElementsByTagName(s)[0];
-							if (d.getElementById(id)) return;
-							js = d.createElement(s); js.id = id;
-							js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-							fjs.parentNode.insertBefore(js, fjs);
-							}(document, 'script', 'facebook-jssdk'));
-
-
-							//Login Window Jquery
-							$(document).ready(function() {
-
-
-								$('a.login-window').click(function() {
-
-									//Getting the variable's value from a link 
-									var termsBox = $(this).attr('href');
-
-									//Fade in the Popup
-									$(termsBox).fadeIn(300);
-
-									//Set the center alignment padding + border see css style
-									var popMargTop = ($(termsBox).height() + 24) / 2; 
-									var popMargLeft = ($(termsBox).width() + 24) / 2; 
-
-									$(termsBox).css({ 
-										'margin-top' : -popMargTop,
-										'margin-left' : -popMargLeft
-									});
-
-									// Add the mask to body
-									$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
-									$('#mask').fadeIn(300);
-
-									return false;
-								});
-
-								// When clicking on the button close or the mask layer the popup closed
-								$('#mask').live('click', function() { 
-									$('#mask').fadeOut(300);
-									$('#login-box').fadeOut(300);
-									$('#mask').remove();
-									return false;
-								});
-								$('a.close').live('click', function() { 
-									$('#mask').fadeOut(300);
-									$('#login-box').fadeOut(300);
-									$('#mask').remove(); 
-									return false;
-								});
+		<!-- hidden field determining what VVI email to send the contact to -->
+		<%= f.hidden_field :to_whom, :value => "request"%>
+		<% end %><!-- end form -->
+	</div><!-- end right column -->
+	
+</div><!-- End Org Request an Account Popup -->
 
 
-								//Account Request JQuery
-								$('a.request-window').click(function() {
+<!--for HTML5 syntax in IE-->
+<script>
+document.createElement('header');
+document.createElement('footer');
+document.createElement('nav');
+document.createElement('article');
+document.createElement('aside');
+document.createElement('section');
+</script>
 
-									//Getting the variable's value from a link 
-									var termsBox = $(this).attr('href');
-
-									//Fade in the Popup
-									$(termsBox).fadeIn(300);
-
-									//Set the center alignment padding + border see css style
-									var popMargTop = ($(termsBox).height() + 24) / 2; 
-									var popMargLeft = ($(termsBox).width() + 24) / 2; 
-
-									$(termsBox).css({ 
-										'margin-top' : -popMargTop,
-										'margin-left' : -popMargLeft
-									});
-
-									// Add the mask to body
-									$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
-									$('#mask').fadeIn(300);
-
-									return false;
-								});
-
-								// When clicking on the button close or the mask layer the popup closed
-								$('#mask').live('click', function() { 
-									$('#mask').fadeOut(300);
-									$('#request-box').fadeOut(300);
-									$('#mask').remove();
-									return false;
-								});
-								$('a.close').live('click', function() { 
-									$('#mask').fadeOut(300);
-									$('#request-box').fadeOut(300);
-									$('#mask').remove(); 
-									return false;
-								});
+<script type="text/javascript">
+// facebook box plugin
+(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk')
+);
 
 
-								//Org Login Window Jquery
-								$('a.org-login-window').click(function() {
-
-									//Getting the variable's value from a link 
-									var termsBox = $(this).attr('href');
-
-									//Fade in the Popup
-									$(termsBox).fadeIn(300);
-
-									//Set the center alignment padding + border see css style
-									var popMargTop = ($(termsBox).height() + 24) / 2; 
-									var popMargLeft = ($(termsBox).width() + 24) / 2; 
-
-									$(termsBox).css({ 
-										'margin-top' : -popMargTop,
-										'margin-left' : -popMargLeft
-									});
-
-									// Add the mask to body
-									$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
-									$('#mask').fadeIn(300);
-
-									return false;
-								});
-
-								// When clicking on the button close or the mask layer the popup closed
-								$('a.close', '#mask').live('click', function() { 
-									$('#mask').fadeOut(300);
-									$('#org-login-box').fadeOut(300);
-									$('#mask').remove();  
-									return false;
-								});
-								$('a.close').live('click', function() { 
-									$('#mask').fadeOut(300);
-									$('#org-login-box').fadeOut(300);
-									$('#mask').remove(); 
-									return false;
-								});
+//Login Window Jquery
+$(document).ready(function() {
 
 
+	$('a.login-window').click(function() {
 
-								////BROWSER SNIFFING!!! AAHH!!!!
-								////// some things looked funky in different browsers
+		//Getting the variable's value from a link 
+		var termsBox = $(this).attr('href');
 
-								//Firefox - account request's right column is too low
-								if ( $.browser.mozilla == true ) {
-									$("#request-right-column").css("margin-top", "-333px");
-								}
+		//Fade in the Popup
+		$(termsBox).fadeIn(300);
 
-								//Opera - select box would not render formatting, so took it out
-								if ($.browser.opera) {
-									$(".select-div").css("border", "none");
-									$(".select-div").css("overflow", "visible");				
-								}
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(termsBox).height() + 24) / 2; 
+		var popMargLeft = ($(termsBox).width() + 24) / 2; 
 
-								//Android - org's login image is too low & find a program dropDown is too high
-								var ua = navigator.userAgent.toLowerCase();
-								var isAndroid = ua.indexOf("android") > -1;
-								if (isAndroid) {
-									$("#orgLogin-image").css("margin-top", "-15px");
-									$("#program_drop_down").css("top", "223px");
-								}
+		$(termsBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
 
-								//iOS - find a program dropDown is too high
-								var agentID = ua.match(/(iphone|ipod|ipad)/);
-								if (agentID) {
-									$("#program_drop_down").css("top", "183px");
-								}
+		// Add the mask to body
+		$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
+		$('#mask').fadeIn(300);
 
-							});
-							</script>
+		return false;
+	});
 
-							<script type="text/javascript">
-							//User Login Remember me checkbox toggle if image is clicked
-							function beforeCheck2() {
-								$('#checkBefore2').toggle();
-							}
+	// When clicking on the button close or the mask layer the popup closed
+	$('#mask').live('click', function() { 
+		$('#mask').fadeOut(300);
+		$('#login-box').fadeOut(300);
+		$('#mask').remove();
+		return false;
+	});
+	$('a.close').live('click', function() { 
+		$('#mask').fadeOut(300);
+		$('#login-box').fadeOut(300);
+		$('#mask').remove(); 
+		return false;
+	});
 
-							//Org Account Login Remember me checkbox toggle if image is clicked
-							function beforeCheck3() {
-								$('#checkBefore3').toggle();
-							}
 
-							//For touchscreens - show drop downs on click instead of hover
-							function show_menu() {
-								if ($("#program_drop_down").css("display") == "block") {
-									$("#program_drop_down").css("display", "none");
-								} else {
-									$("#program_drop_down").css("display", "block");
-								}
-							}
-							function show_org_drop() {
-								if ($("#drop_org").css("display") == "block") {
-									$("#drop_org").css("display", "none");
-								} else {
-									$("#drop_org").css("display", "block");
-								}
-							}
-							</script>
+	//Account Request JQuery
+	$('a.request-window').click(function() {
+
+		//Getting the variable's value from a link 
+		var termsBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(termsBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(termsBox).height() + 24) / 2; 
+		var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+		$(termsBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('#mask').live('click', function() { 
+		$('#mask').fadeOut(300);
+		$('#request-box').fadeOut(300);
+		$('#mask').remove();
+		return false;
+	});
+	$('a.close').live('click', function() { 
+		$('#mask').fadeOut(300);
+		$('#request-box').fadeOut(300);
+		$('#mask').remove(); 
+		return false;
+	});
+
+
+	//Org Login Window Jquery
+	$('a.org-login-window').click(function() {
+
+		//Getting the variable's value from a link 
+		var termsBox = $(this).attr('href');
+
+		//Fade in the Popup
+		$(termsBox).fadeIn(300);
+
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(termsBox).height() + 24) / 2; 
+		var popMargLeft = ($(termsBox).width() + 24) / 2; 
+
+		$(termsBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+
+		// Add the mask to body
+		$('body').append('<div id="mask" style="display:block; opacity:.5; filter: alpha(opacity=50);"></div>');
+		$('#mask').fadeIn(300);
+
+		return false;
+	});
+
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close', '#mask').live('click', function() { 
+		$('#mask').fadeOut(300);
+		$('#org-login-box').fadeOut(300);
+		$('#mask').remove();  
+		return false;
+	});
+	$('a.close').live('click', function() { 
+		$('#mask').fadeOut(300);
+		$('#org-login-box').fadeOut(300);
+		$('#mask').remove(); 
+		return false;
+	});
+
+
+
+	////BROWSER SNIFFING!!! AAHH!!!!
+	////// some things looked funky in different browsers
+
+	//Firefox - account request's right column is too low
+	if ( $.browser.mozilla == true ) {
+		$("#request-right-column").css("margin-top", "-333px");
+	}
+
+	//Opera - select box would not render formatting, so took it out
+	if ($.browser.opera) {
+		$(".select-div").css("border", "none");
+		$(".select-div").css("overflow", "visible");				
+	}
+
+	//Android - org's login image is too low & find a program dropDown is too high
+	var ua = navigator.userAgent.toLowerCase();
+	var isAndroid = ua.indexOf("android") > -1;
+	if (isAndroid) {
+		$("#orgLogin-image").css("margin-top", "-15px");
+		$("#program_drop_down").css("top", "223px");
+	}
+
+	//iOS - find a program dropDown is too high
+	var agentID = ua.match(/(iphone|ipod|ipad)/);
+	if (agentID) {
+		$("#program_drop_down").css("top", "183px");
+	}
+
+});
+
+//User Login Remember me checkbox toggle if image is clicked
+function beforeCheck2() {
+	$('#checkBefore2').toggle();
+}
+
+//Org Account Login Remember me checkbox toggle if image is clicked
+function beforeCheck3() {
+	$('#checkBefore3').toggle();
+}
+
+//For touchscreens - show drop downs on click instead of hover
+function show_menu() {
+	if ($("#program_drop_down").css("display") == "block") {
+		$("#program_drop_down").css("display", "none");
+	} else {
+		$("#program_drop_down").css("display", "block");
+	}
+}
+
+//For touchscreens - shows the drop down menu for orange organizations block on click instead of hover
+function show_org_drop() {
+	if ($("#drop_org").css("display") == "block") {
+		$("#drop_org").css("display", "none");
+	} else {
+		$("#drop_org").css("display", "block");
+	}
+}
+</script>
 
