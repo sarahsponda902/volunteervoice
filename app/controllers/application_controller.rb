@@ -15,61 +15,22 @@ class ApplicationController < ActionController::Base
   end
 
 
-
-
-  ###############
-  #### DEVISE ###
-  ###############
-
-
-  #devise path for "after signing in"
-  def after_sign_in_path_for(resource)
-    if request.referrer && resource.is_a?(User)
-      #unless path is one of the following (which will trigger infinite loops), go to root path
-      case URI(request.referrer).path
-      when '/users/sign_in', '/registrations/mustBe', '/sign_up', '/sign_in', '/users/sign_up', '/contacts' then 
-        root_path
-      else
-        request.referrer
-      end
-    else
-      root_path
-    end
-
-  end
-
-  #devise path for "after signing out"
-  def after_sign_out_path_for(resource)
-    if request.referrer
-      #unless path is one of the following (which will trigger infinite loops), go to root path
-      case URI(request.referrer).path 
-      when '/registrations/mustBe', '/reviews/new', '/users/profile', '/contacts' then
-        root_path
-      else
-        request.referrer
-      end
-    else
-      root_path
-    end
-  end
   
-  # devise path for "after signing up"
+  ####### DEVISE #######
+
+
+  [:sign_in, :sign_out].each do |method|
+    define_method "after_#{method}_path_for" do |resource|
+      (loc = session[:return_to]).present? ? loc : root_path
+    end
+  end
+
   def after_sign_up_path_for(resource)
-         "/users/profile"
+    "#{resource}s/profile"
   end
   
-  # devise path for "after signing up but not confirmed"
   def after_inactive_sign_up_path_for(resource)
-         "/registrations/email_confirm"
-  end
-  
-  # after updating profile, send to "crop" page if new image, else profile
-  def after_update_path_for(resource)
-    if resource.crops
-      "/users/#{resource.id}/crops"
-    else
-      "/users/profile"
-    end
+     "registrations/email_confirm"
   end
   
   
@@ -106,19 +67,12 @@ class ApplicationController < ActionController::Base
 
   private
 
-  #write error to log & render 404 error page (in errors/error_404)
-  def render_not_found(exception)
-    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
-    respond_to do |format|
-      format.html { render 'errors/error_404', layout: 'layouts/application', status: 404 }
-    end
-  end
-
-  #write error to log & render 500 error page (in errors/error_500)
-  def render_error(exception)
-    Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
-    respond_to do |format|
-      format.html { render 'errors/error_500', layout: 'layouts/application', status: 500 }
+  [[:not_found, "404"], [:error, "500"]].each do |msg, error|
+    define_method "render_#{msg}" do |exception|
+      Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
+      respond_to do |format|
+        format.html { render "errors/error_#{error}", layout: 'layouts/application', status: error.to_i }
+      end
     end
   end
 

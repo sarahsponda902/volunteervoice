@@ -45,6 +45,8 @@ gem 'fog'
 
 gem 'yard'
 
+gem 'simple-private-messages', '0.0.0', :git => 'git://github.com/jongilbraith/simple-private-messages.git'
+
 gem 'seed_dump'
 
 gem 'annotate'
@@ -52,6 +54,8 @@ gem 'annotate'
 gem 'mini_magick'
 
 gem 'google-analytics-rails'
+
+gem 'profanity_filter'
 
 gem 'railties'
 

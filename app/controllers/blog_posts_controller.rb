@@ -21,16 +21,12 @@ class BlogPostsController < ApplicationController
   before_filter :require_user, :except => [:index, :show, :tag, :resources, :resources_search]
   before_filter :require_admin, :except => [:index, :show, :tag, :resources, :resources_search]
 
+  respond_to :html, :xml, :atom
 
   # called by the search bar at the top of '/resources'
   # uses sunspot's search
   def resources_search
     @search_words = params[:search] 
-
-
-    ## TWO types of blog posts that are searchable: interesting & our_blog
-    # interesting posts are articles
-    # our_blog are posts written by staff
 
     ## Search blog posts with keywords
     @post_search = Sunspot.search(BlogPost) do
@@ -53,11 +49,6 @@ class BlogPostsController < ApplicationController
     ## Two types of blog posts, interesting (articles) and our_blog (staff written)
     @interesting = BlogPost.where(:is_our_blog => false).sort_by{|e| e[:published_at]}.reverse 
     @our_blog = BlogPost.where(:is_our_blog => true).sort_by{|e| e[:published_at]}.reverse
-
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
 
@@ -66,11 +57,7 @@ class BlogPostsController < ApplicationController
     @blog_posts = BlogPost.published.paginate(:page => params[:page], :order => 'updated_at DESC')
     @index_title = BlogKit.instance.settings['blog_name'] || 'Blog'
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @blog_posts }
-      format.atom
-    end
+    respond_with(@blog_posts)
   end
 
 
@@ -79,21 +66,17 @@ class BlogPostsController < ApplicationController
     @blog_post = BlogPost.find(params[:id])
   end
 
-  ## Admin only tag a blog post
+
   def tag
     @tag = params[:id]
     @blog_tags = BlogTag.find_all_by_tag(params[:id])
 
     if @blog_tags.size > 0
       @blog_posts = BlogPost.published.paginate(:page => params[:page], :conditions => ['id IN (?)', @blog_tags.map(&:blog_post_id)], :per_page => 5, :order => 'published_at DESC')
-      @blog_posts = []
     end
 
     @index_title = 'Tag: ' + @tag
-    respond_to do |format|
-      format.html { render :action => 'index' }
-      format.xml  { render :xml => @blog_posts }
-    end		
+    respond_with(@blog_post)	
   end
 
 
@@ -103,10 +86,7 @@ class BlogPostsController < ApplicationController
     @blog_comment = @blog_post.blog_comments.new
     @blog_comments = @blog_post.blog_comments.paginate(:page => params[:page], :order => 'created_at DESC')
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @blog_post }
-    end
+    respond_with(@blog_post)
   end
 
 
@@ -114,10 +94,7 @@ class BlogPostsController < ApplicationController
   def new
     @blog_post = BlogPost.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @blog_post }
-    end
+    respond_with(@blog_post)
   end
 
 

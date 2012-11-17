@@ -1,3 +1,6 @@
+# Be sure to restart your server when you modify this file.
+
+# Configuration for file uploads with fog, carrierwave, amazon s3
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',       

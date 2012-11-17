@@ -5,7 +5,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new.json
   def new
     @contact = Contact.new
-
+    session[:return_to] = request.referrer
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @contact }

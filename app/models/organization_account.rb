@@ -45,55 +45,24 @@ class OrganizationAccount < ActiveRecord::Base
 
   # attributes
   attr_accessor :login
-  attr_accessible :email, :email_confirmation, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, :username, :notify, :country, :organization_id, :organization_name, :admin_pass, :login
+  attr_accessible :email, :email_confirmation, :password, :password_confirmation, 
+  :remember_me, :first_name, :last_name, :position, :type_of_company, :nonprofit, 
+  :username, :notify, :country, :organization_id, :organization_name, :admin_pass, 
+  :login
 
   # devise modules
   devise :database_authenticatable, :registerable, :lockable,
-  :recoverable, :rememberable, :trackable, :validatable, :invitable, :invite_for => 0, :authentication_keys => [:login]
+  :recoverable, :rememberable, :trackable, :validatable, 
+  :invitable, :invite_for => 0, :authentication_keys => [:login]
 
   # callbacks
-  before_update :validate_presence_of_all_fields
+  validates_presence_of :first_name, :last_name, :position, 
+  :type_of_company, :username, :country
+                         
   validates_uniqueness_of :email
 
 
-  #### callback methods ####
-
-  # only called after org_account has actually edited (or is editing) 
-  #  their account for the first time
-  def validate_presence_of_all_fields
-    @return = true
-    unless invitation_accepted_at.nil? # unless update is called by resent_invitation
-      if first_name.nil?
-        errors.add(:first_name, "must not be blank")
-        @return = false
-      end
-      if last_name.nil?
-        errors.add(:last_name, "must not be blank")
-        @return = false
-      end
-      if position.nil?
-        errors.add(:position, "must not be blank")
-        @return = false
-      end
-      if type_of_company.nil?
-        errors.add(:type_of_company, "must not be blank")
-        @return = false
-      end
-      if username.nil?
-        errors.add(:username, "must not be blank")
-        @return = false
-      end
-      if country.nil?
-        errors.add(:country, "must not be blank")
-        @return = false
-      end
-    end
-    return @return
-  end
-
-
-
-  ####### Other methods ########
+  ####### Methods ########
 
   # override update_with_password (defined in devise)
   # only require password to update when changing password itself

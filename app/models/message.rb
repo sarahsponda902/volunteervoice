@@ -22,7 +22,7 @@ class Message < ActiveRecord::Base
   attr_accessible :recipient_id, :sender_id, :subject, :body
   
   # callbacks
-  validates_not_profane :body, :subject
+  profanity_filter :body, :subject
 
   # for private_messages plugin
   is_private_message

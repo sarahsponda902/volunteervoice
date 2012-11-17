@@ -23,7 +23,7 @@ class Feedback < ActiveRecord::Base
   
   #callbacks
   validates_length_of :body, :minimum => 5
-  validates_not_profane :body
+  profanity_filter :body
   before_save :validates_email
   
   ### callback methods ###

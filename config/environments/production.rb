@@ -39,27 +39,10 @@ RMTest::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = false
   
+  # Actionmailer perform deliveries
   config.action_mailer.perform_deliveries = true
   
-  config.action_mailer.default_url_options = { :host => 'volunteervoice.heroku.com' }
+  # Actionmailer default url
+  config.action_mailer.default_url_options = { :host => 'volunteervoice.org' }
 end
 
-
-
-# Configuration for using SendGrid on Heroku
-ActionMailer::Base.smtp_settings = {
-  :address        => 'smtp.sendgrid.net',
-  :port           => '587',
-  :authentication => :plain,
-  :user_name      => ENV['SENDGRID_USERNAME'],
-  :password       => ENV['SENDGRID_PASSWORD'],
-  :domain         => 'heroku.com'
-}
-ActionMailer::Base.delivery_method = :smtp
-GA.tracker = "UA-31745240-1"
-
-class ActionDispatch::Request
- def local?
-   false
- end
-end

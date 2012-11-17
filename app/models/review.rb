@@ -36,7 +36,6 @@
 #
 
 class Review < ActiveRecord::Base
-  require 'file_size_validator'
   include CarrierWave::MiniMagick
 
   # associations

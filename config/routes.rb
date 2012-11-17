@@ -1,22 +1,7 @@
 RMTest::Application.routes.draw do
-  match "/programs/search_results" => "programs#search_results"
-  get "/contacts/thank_you"
-  get "/feedbacks/thank_you"
-  get "/new_reviews/thank_you_new_review"
-  get "/organization_accounts/thank_you_request"
-  get "/searches/program_browse"
-  match "/blog_posts/resources" => "blog_posts#resources"
-  match "/searches/search_machine" => "searches#search_machine"
-  match "/organizations/show_all" => "organizations#show_all"
-  match "/reviews/show_all" => "reviews#show_all"
-  match "/organizations/:sort_by/show_all" => "organizations#show_all"
-  match "/reviews/:sort_by/show_all" => "reviews#show_all"
-  ##### UPDATE MESSAGES
-  match "update_messages/:id/send_message" => "update_messages#send_message"
-  match "update_messages/:id/send_message_preview" => "udate_messages#send_message_preview"
 
   
-  ##### MESSAGES
+  ###### MESSAGES
   
   match "messages/:id/mark_deleted" => 'messages#mark_deleted'
   
@@ -30,49 +15,36 @@ RMTest::Application.routes.draw do
   
   match "messages/:id/delete" => 'messages#destroy'
   
-  match "/profile_messages_sent" => 'pages#profile_messages_sent'
   
-  match 'users/profile' => "users#profile"
-    
-  match 'users/:id/crop' => 'users#crop'
+  ###### ORGANIZATION ACCOUNTS
   
-  match 'users/:id/change_subscription' => 'users#change_subscription'
-  
-  get 'users/successful_unsubscribe'
-  
-  match "organization_accounts/new_request" => 'organization_accounts#new_request'
-  
-  match 'organization_accounts/:id/change_subscription' => 'users#change_subscription'
+  get "organization_accounts/thank_you_request"
   
   get 'organization_accounts/successful_unsubscribe'
   
-  devise_for :organization_accounts, :controllers => {:invitations => :invitations}
-  devise_scope :organization_account do
-    match "/organization_accounts/sign_out" => "devise/sessions#destroy"
-    match "/organization_accounts/profile" => "organization_accounts#profile"
-    match "/organization_accounts/:user_id/resend_invitation" => "organization_accounts#resend_invitation" 
-    match "/organization_accounts/passwords/:reset_password_token" => 'devise/passwords#edit'
-  end
+  match "organization_accounts/new_request" => 'organization_accounts#new_request'
   
-  resources :organization_accounts do
-    collection do
-      get :send_new_invitation, :as => :send_new_invitation
-    end
-  end
- 
-  resources :messages
+  match 'organization_accounts/:id/change_subscription' => 'organization_accounts#change_subscription'
+  
+  
+  ###### ERRORS
 
   get "errors/error_404"
 
   get "errors/error_500"
-
-  ##### SEARCHES
   
-  match "searches/places" => "searches#places"
+
+  ###### SEARCHES
+  
+  get "searches/program_browse"
+  
+  get "searches/places"
+  
+  get "searches/search_machine"
+  
+  get "searches/error"
   
   match "searches/:subject/program_browse_search" => "searches#program_browse_search"
-  
-  match "searches/error" => "searches#error"
   
   match "/searches/erase_old" => "searches#erase_old"
   
@@ -81,31 +53,14 @@ RMTest::Application.routes.draw do
   match "searches/subject/:subject/create" => "searches#create"
   
   match "searches/:location/create" => "searches#create"
-  
-  resources :searches
 
   ##### FLAGS
   get "flags/thank_you"
   
   ##### CONTACTS
-
-  resources :mad_mimi_emails
-
-  resources :contacts
-
-  resources :flags
-
-  resources :new_reviews
-
-  root :to => 'pages#home'
-
-  resources :feedbacks
   
-  devise_for :users, :controllers => {:registrations => :registrations}
-
-  resources :favorites
+  get "/contacts/thank_you"
   
-  resources :ratings
   
   ##### FAVORITES
   
@@ -117,9 +72,15 @@ RMTest::Application.routes.draw do
   
   ##### NEW REVIEWS
   
+  get "/new_reviews/thank_you_new_review"
+  
   match "new_reviews/:id/changeShow" => 'new_reviews#changeShow'
   
   ##### REVIEWS
+  
+  match "/reviews/:sort_by/show_all" => "reviews#show_all"
+  
+  match "/reviews/show_all" => "reviews#show_all"
   
   match "reviews/:id/changeFlagShow" => "reviews#changeFlagShow"
   
@@ -145,9 +106,13 @@ RMTest::Application.routes.draw do
   
   ##### FEEDBACKS
   
+  get "/feedbacks/thank_you"
+  
   match "feedbacks/:id/changeShow" => 'feedbacks#changeShow'
   
   ##### USERS
+  
+  devise_for :users, :controllers => {:registrations => :registrations, :sessions => :sessions}
   
   devise_scope :user do
   
@@ -175,6 +140,14 @@ RMTest::Application.routes.draw do
   
   end
   
+  match 'users/profile' => "users#profile"
+    
+  match 'users/:id/crop' => 'users#crop'
+  
+  match 'users/:id/change_subscription' => 'users#change_subscription'
+  
+  get 'users/successful_unsubscribe'
+  
   match "users/check_email" => 'users#check_email'
 
   match "users/check_username" => 'users#check_username'
@@ -201,14 +174,6 @@ RMTest::Application.routes.draw do
   match "users/profile/message_deleted" => "users#profile"
   
   match "users/profile/favorite_deleted" => "users#profile"
-  
-  
-  resources :users do 
-    post :send_message, :on => :collection
-    collection do
-      get 'checkname'
-    end
-  end
   
   get "organization_accounts/thank_you_request"
   
@@ -261,14 +226,15 @@ RMTest::Application.routes.draw do
   
   match "searches/:region/program_search" => 'searches#program_search'
   
-  
-  resources :programs do
-  	resources :reviews
-  	post :create_review, :on => :collection
-  end
+  ###### PROGRAMS
+  match "/programs/search_results" => "programs#search_results"
   
   
   ###### ORGANIZATIONS
+  
+  match "/organizations/:sort_by/show_all" => "organizations#show_all"
+  
+  match "/organizations/show_all" => "organizations#show_all"
   
   match 'organizations/:id/changeShow' => 'organizations#changeShow'
   
@@ -282,7 +248,9 @@ RMTest::Application.routes.draw do
   
   get "organizations/program_contents"
   
-  ########## BLOG
+  ########## BLOG POSTS
+  
+  match "/blog_posts/resources" => "blog_posts#resources"
   
   match "blog_posts/:id/destroy/:location" => 'blog_posts#destroy'
   
@@ -293,6 +261,51 @@ RMTest::Application.routes.draw do
   match "blog_posts/:id/crop" => 'blog_posts#crop'
   
   match "blog_posts/:id/square" => 'blog_posts#square'
+  
+  devise_for :organization_accounts, :controllers => {:invitations => :invitations, :sessions => :sessions}
+  devise_scope :organization_account do
+    match "/organization_accounts/sign_out" => "devise/sessions#destroy"
+    match "/organization_accounts/profile" => "organization_accounts#profile"
+    match "/organization_accounts/:user_id/resend_invitation" => "organization_accounts#resend_invitation" 
+    match "/organization_accounts/passwords/:reset_password_token" => 'devise/passwords#edit'
+  end
+  
+  resources :organization_accounts do
+    collection do
+      get :send_new_invitation, :as => :send_new_invitation
+    end
+  end
+  
+  resources :users do 
+    post :send_message, :on => :collection
+    collection do
+      get 'checkname'
+    end
+  end
+  
+  resources :programs do
+  	resources :reviews
+  	post :create_review, :on => :collection
+  end
+ 
+  resources :searches
+ 
+  resources :messages
+
+  resources :mad_mimi_emails
+
+  resources :contacts
+
+  resources :flags
+
+  resources :new_reviews
+
+  resources :feedbacks
+
+  resources :favorites
+  
+  resources :ratings
+  
   
   resources :blog_posts do
 		resources :blog_comments

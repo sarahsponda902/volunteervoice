@@ -31,7 +31,7 @@ class BlogComment < ActiveRecord::Base
   # callbacks #
   before_save :check_for_spam
   before_save :redcloth_body
-  validates_not_profane :body
+  profanity_filter :body
   validates_presence_of :body
 
   #### callback methods (again, part of blog_kit plugin) ####

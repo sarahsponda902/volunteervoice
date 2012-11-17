@@ -1,3 +1,5 @@
+# Be sure to restart your server when you modify this file.
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -10,8 +12,9 @@ Devise.setup do |config|
   # Configure the class responsible to send e-mails.
   config.mailer = "UserMailer"
 
+  ### DEPRECATED: APPLY_SCHEMA
   # Automatically apply schema changes in tableless databases
-  config.apply_schema = false
+  # config.apply_schema = false
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
@@ -112,9 +115,10 @@ Devise.setup do |config|
   # If true, extends the user's remember period when remembered via cookie.
   # config.extend_remember_period = false
 
+  ### DEPRECATED: USE_SALT_AS_REMEMBER_TOKEN ###
   # If true, uses the password salt as remember token. This should be turned
   # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = true
+  # config.use_salt_as_remember_token = true
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.
@@ -185,7 +189,9 @@ Devise.setup do |config|
   # are using only default views.
   config.scoped_views = true
   
-  config.validate_on_invite = true
+  # Do not validate model on invite 
+  # (only validate when resource is editing their account)
+  config.validate_on_invite = false
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

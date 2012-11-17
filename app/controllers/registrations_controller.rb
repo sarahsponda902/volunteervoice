@@ -9,6 +9,11 @@ class RegistrationsController < Devise::RegistrationsController
 
   skip_before_filter :require_no_authentication 
 
+  def new
+    session[:return_to] = request.referrer
+    super
+  end
+  
   def create
     build_resource # devise method
     if resource.save_with_captcha # save if captcha (secret code) is correct on register page
@@ -64,10 +69,9 @@ class RegistrationsController < Devise::RegistrationsController
   # page includes both a register and a login form
   def must_be
     resource = build_resource({})
+    session[:return_to] = request.referrer
     respond_with resource
   end
-
-
-
+      
 
 end

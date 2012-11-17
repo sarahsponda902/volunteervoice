@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/jongilbraith/simple-private-messages.git
+  revision: adf783407d924d3d94f33ec50912c65f8cdf5770
+  specs:
+    simple-private-messages (0.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -130,6 +136,7 @@ GEM
     polyglot (0.3.3)
     pr_geohash (1.0.0)
     profanalyzer (1.2.0)
+    profanity_filter (0.1.1)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -226,10 +233,12 @@ DEPENDENCIES
   mini_magick
   pg
   profanalyzer
+  profanity_filter
   rails (= 3.2.2.rc1)
   railties
   sass-rails (~> 3.2.3)
   seed_dump
+  simple-private-messages (= 0.0.0)!
   sqlite3-ruby
   sunspot_rails (~> 2.0.0.pre.111215)
   thin
