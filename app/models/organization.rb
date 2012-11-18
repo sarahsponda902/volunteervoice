@@ -161,5 +161,16 @@ class Organization < ActiveRecord::Base
     overall ||= 0
     (overall*2).round / 2.0
   end
+  
+  def self.overall(org)
+    @overall = 0
+    if org.reviews.count != 0 # can't divide by zero
+      org.reviews.each do |r|
+        @overall = @overall + r.overall
+      end
+      @overall = @overall / @results.count
+    end
+    @overall
+  end
 
 end
