@@ -56,8 +56,7 @@ class OrganizationAccount < ActiveRecord::Base
   :invitable, :invite_for => 0, :authentication_keys => [:login]
 
   # callbacks
-  validates_presence_of :first_name, :last_name, :position, 
-  :type_of_company, :username, :country
+  validates_presence_of :first_name, :last_name, :position, :type_of_company, :username, :country
                          
   validates_uniqueness_of :email
 

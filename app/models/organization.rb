@@ -114,22 +114,16 @@ class Organization < ActiveRecord::Base
   # add http:// to url if none exists
   #   for "open in new tab" functionality on page
   def add_http_to_url
-    if self.url[0..3] != "http"
-      self.url = "http://"+self.url
-    end
+    self.url = "http://"+self.url if self.url[0..3] != "http"
   end
   
   # textilize all textareas to retain newlines, formatting, etc.
   def textilize_textareas
-    self.description = textilized( untextilized(self.description) )
-    self.headquarters_location = textilized( untextilized(self.headquarters_location) )
-    self.good_to_know = textilized( untextilized(self.good_to_know) )
-    self.training_resources = textilized( untextilized(self.training_resources) )
-    self.misson = textilized( untextilized(self.misson) )
-    self.program_costs_includes = textilized( untextilized(self.program_costs_includes) )
-    self.program_costs_doesnt_include = textilized( untextilized(self.program_costs_doesnt_include) )
-    self.price_breakdown = textilized( untextilized(self.price_breakdown) )
-    self.application_process = textilized( untextilized(self.application_process) )
+    ["description", "headquarters_location", "good_to_know", "training_resources", "misson",
+      "program_costs_includes", "program_costs_doesnt_include", "price_breakdown",
+      "application_process"].each do |attrib|
+      self.send(attrib) = textilized( untextilized(self.send(attrib)) )
+    end
   end
   
   
@@ -150,46 +144,18 @@ class Organization < ActiveRecord::Base
   
   # textilize methods for best_in_place in-place editing on organization's profile
   # (in-place editing of organization profile is only for org accounts and admins)
-  def textilize_misson
-    textilize(misson).html_safe
-  end
-
-  def textilize_headquarters_address
-    textilize(headquarters_location).html_safe
-  end
-
-  def textilize_application_process
-    textilize(application_process).html_safe
-  end
-
-  def textilize_program_costs_includes
-    textilize(program_costs_includes).html_safe
-  end
-
-  def textilize_program_costs_doesnt_include
-    textilize(program_costs_doesnt_include).html_safe
-  end
-
-  def textilize_training_resources
-    textilize(training_resources).html_safe
-  end
-
-  # returns the last created review
-  def latest_review_time
-    if !(reviews.empty? || reviews.last.nil?)
-      reviews.last.created_at
-    else
-      20.years.ago
+  ["description", "headquarters_location", "good_to_know", "training_resources", "misson",
+    "program_costs_includes", "program_costs_doesnt_include", "price_breakdown",
+    "application_process"].each do |attrib|
+    define_method "textilize_#{attrib}" do
+      textilize(self.send(attrib)).html_safe
     end
   end
 
   # rounds the overall review score up
   def roundup(overall)
-    if overall.nil?
-      0
-    else
-      (overall*2).round / 2.0
-    end
+    overall ||= 0
+    (overall*2).round / 2.0
   end
 
 end

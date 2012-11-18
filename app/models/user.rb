@@ -57,7 +57,12 @@ class User < ActiveRecord::Base
 
   # attributes
   attr_accessor :login
-  attr_accessible :email, :email_confirmation, :password, :password_confirmation, :remember_me, :photo, :username, :id, :age, :country, :dob, :notify, :square_photo, :crop_x, :crop_y, :crop_w, :crop_h, :captcha, :captcha_key, :approved, :volunteered_before, :admin_update, :admin_pass, :messages_show, :profile_show, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :confirmation_token, :crops, :square_image, :login, :return_link 
+  attr_accessible :email, :email_confirmation, :password, :password_confirmation, :remember_me, 
+  :photo, :username, :id, :age, :country, :dob, :notify, :square_photo, :crop_x, :crop_y, 
+  :crop_w, :crop_h, :captcha, :captcha_key, :approved, :volunteered_before, :admin_update, 
+  :admin_pass, :messages_show, :profile_show, :confirmation_token, :confirmed_at, 
+  :confirmation_sent_at, :unconfirmed_email, :confirmation_token, :crops, :square_image, 
+  :login, :return_link 
 
   # callbacks
   validates_uniqueness_of :email, :case_sensitive => false, :allow_blank => true, :if => :email_changed?
@@ -71,15 +76,13 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_confirmation_of :email, :on => :create, :message => "did not match confirmation"
   before_save :square_image_crop
-  before_create :set_unread_message_count 
-  after_create :send_message
+  before_create :set_unread_message_count, :send_message
   
   # associations
-  has_many :messages
+  has_many :messages, :flags
   has_many :reviews, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :feedbacks, :dependent => :destroy
-  has_many :flags
   has_many :new_reviews, :dependent => :destroy
   
   #Simple Private Messaging     
@@ -103,15 +106,12 @@ class User < ActiveRecord::Base
   def square_image_crop
     if (self.crops)
       if !(self.crop_x.nil? || self.crop_y.nil? || self.crop_w.nil? || self.crop_h.nil?)
-        image = MiniMagick::Image.open(self.photo.url)
+        @image = MiniMagick::Image.open(self.photo.url)
         # if image is larger than our max screen size, the cropped image will be incorrect (resizing)
-        if image[:width] > 700
-          resize_scale = (700/image[:width].to_f) * 100
-          image.sample(resize_scale.to_s + "%")
-        end
-        image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
-        image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
-        self.square_image = image
+        @image.sample(((700/@image[:width].to_f) * 100).to_s + "%") if @image[:width] > 700
+        @image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
+        @image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
+        self.square_image = @image
       end
     end
   end
