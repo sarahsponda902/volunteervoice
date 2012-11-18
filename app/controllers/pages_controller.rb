@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   [:test, :enable_js, :about, :terms, :privacy, :faq].each do |page|
-    define_method page
+    define_method page do
+    end
   end
 end
