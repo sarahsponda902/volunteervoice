@@ -42,7 +42,7 @@ class ProgramsController < ApplicationController
     @program = Program.find(params[:id])
     ["description", "program_structure", "program_cost_breakdown", "cost_includes", "cost_doesnt_include",
       "accommodations"].each do |attrib|
-      @program.assign_attributes({attrib.to_sym => untextilized(@program.send(attrib)}))
+      @program.assign_attributes({attrib.to_sym => untextilized(@program.send(attrib))})
     end
 
     # subjects, group sizes, cost & lengths of time are objects,
