@@ -60,7 +60,7 @@
 			<% if @can_edit%>
 			&#9998; 
 			<% end %>
-			headquarters address: </p><%= best_in_place_if @can_edit, organization, :headquarters_location, :type => :textarea, :display_as => :textilize_headquarters_address, :nil => "Click to edit"%>
+			headquarters address: </p><%= best_in_place_if @can_edit, organization, :headquarters_location, :type => :textarea, :display_as => :textilize_headquarters_location, :nil => "Click to edit"%>
 		<br />
 		<br />
 		
