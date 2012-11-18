@@ -49445,3 +49445,593 @@ Migrating to ChangeDefaultValueOfOrgsPageViewsToZero (20121118064649)
   [1m[36m (0.0ms)[0m  [1mPRAGMA index_info('index_users_on_email')[0m
   [1m[35m (0.0ms)[0m  PRAGMA index_info('index_users_on_confirmation_token')
   [1m[36m (0.1ms)[0m  [1mPRAGMA index_info('index_users_on_approved')[0m
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-18 09:15:28 -0800
+Processing by PagesController#home as HTML
+
+ErrorPageRendered: SyntaxError (/Users/sarahadams/coding/volunteervoice/app/models/organization.rb:125: syntax error, unexpected '=', expecting keyword_end
+      self.send(attrib) = textilized( untextilized(sel...
+                         ^): app/controllers/pages_controller.rb:4:in `home'
+  Rendered errors/error_500.html.erb within layouts/application (4.2ms)
+  [1m[36mUser Load (13.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 308ms
+
+ActionView::Template::Error (/Users/sarahadams/coding/volunteervoice/app/models/search.rb:33: syntax error, unexpected '=', expecting keyword_end
+      self.send(param) = @search.send(param).nil? [] ...
+                        ^
+/Users/sarahadams/coding/volunteervoice/app/models/search.rb:33: syntax error, unexpected ':', expecting keyword_end
+...= @search.send(param).nil? [] : @search.send(param).split(";...
+...                               ^
+/Users/sarahadams/coding/volunteervoice/app/models/search.rb:36: syntax error, unexpected '=', expecting keyword_end
+      self.send(param) = @search.send(param).nil? ? n...
+                        ^):
+    467: 					<!-- SEARCH BOX -->			
+    468: 					<div class="six columns searchContainer">
+    469: 						<!-- search form -->
+    470: 						<% @search = Search.new%>
+    471: 						<%= form_for @search do |f|%>
+    472: 						
+    473: 						<!-- magnifying glass search/submit button -->
+  app/views/layouts/application.html.erb:470:in `_app_views_layouts_application_html_erb__1496629036435588458_70334235116240'
+  app/controllers/application_controller.rb:74:in `block (4 levels) in <class:ApplicationController>'
+  app/controllers/application_controller.rb:73:in `block (2 levels) in <class:ApplicationController>'
+
+
+
+
+Started GET "/jquery.js" for 127.0.0.1 at 2012-11-18 09:15:29 -0800
+Processing by ErrorsController#error_404 as JS
+  Parameters: {"not_found"=>"jquery"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+  Rendered errors/error_404.html.erb within layouts/application (138.7ms)
+
+ErrorPageRendered: SyntaxError (/Users/sarahadams/coding/volunteervoice/app/models/search.rb:33: syntax error, unexpected '=', expecting keyword_end
+      self.send(param) = @search.send(param).nil? [] ...
+                        ^
+/Users/sarahadams/coding/volunteervoice/app/models/search.rb:33: syntax error, unexpected ':', expecting keyword_end
+...= @search.send(param).nil? [] : @search.send(param).split(";...
+...                               ^
+/Users/sarahadams/coding/volunteervoice/app/models/search.rb:36: syntax error, unexpected '=', expecting keyword_end
+      self.send(param) = @search.send(param).nil? ? n...
+                        ^): app/views/layouts/application.html.erb:470:in `_app_views_layouts_application_html_erb__1496629036435588458_70334235116240'
+Completed 406 Not Acceptable in 237ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-18 09:16:59 -0800
+Processing by PagesController#home as HTML
+
+ErrorPageRendered: SyntaxError (/Users/sarahadams/coding/volunteervoice/app/models/organization.rb:125: syntax error, unexpected '=', expecting keyword_end
+      self.send(attrib) = textilized( untextilized(sel...
+                         ^): app/controllers/pages_controller.rb:4:in `home'
+  Rendered errors/error_500.html.erb within layouts/application (1.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 292ms (Views: 282.1ms | ActiveRecord: 1.5ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 09:16:59 -0800
+Served asset /application.css - 304 Not Modified (14ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 09:16:59 -0800
+Served asset /blog_kit.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /errors.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /foundation.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /lightbox.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /organization_accounts.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /searches.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /smartpaginator.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /style.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /jquery.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /DonateButton.png - 304 Not Modified (2ms)
+
+
+Started GET "/assets/JosefinSlab-Regular-webfont.woff" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /JosefinSlab-Regular-webfont.woff - 304 Not Modified (2ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-11-18 09:17:00 -0800
+Served asset /Museo_Slab_500-webfont.woff - 304 Not Modified (2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-18 09:18:20 -0800
+Processing by PagesController#home as HTML
+
+ErrorPageRendered: SyntaxError (/Users/sarahadams/coding/volunteervoice/app/models/review.rb:72: syntax error, unexpected '=', expecting keyword_end
+...     self.send("photo#{num}") = resize_photos_helper(self.se...
+...                               ^): app/controllers/pages_controller.rb:4:in `home'
+  Rendered errors/error_500.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 374ms (Views: 336.6ms | ActiveRecord: 1.5ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /blog_kit.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /errors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /foundation.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /lightbox.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /organization_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /searches.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /smartpaginator.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 09:18:21 -0800
+Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-18 09:19:01 -0800
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (31.1ms)[0m  [1mSELECT "organizations".* FROM "organizations" [0m
+
+ErrorPageRendered: TypeError (can't convert Range into Array): app/models/review.rb:57:in `concat'
+ app/models/review.rb:57:in `<class:Review>'
+ app/models/review.rb:38:in `<top (required)>'
+ app/controllers/pages_controller.rb:4:in `home'
+  Rendered errors/error_500.html.erb within layouts/application (1.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 453ms (Views: 372.6ms | ActiveRecord: 33.6ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /blog_kit.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /errors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /foundation.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /lightbox.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /organization_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /searches.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /smartpaginator.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 09:19:02 -0800
+Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" [0m
+
+ErrorPageRendered: TypeError (can't convert Range into Array): app/models/review.rb:57:in `concat'
+ app/models/review.rb:57:in `<class:Review>'
+ app/models/review.rb:38:in `<top (required)>'
+ app/controllers/pages_controller.rb:4:in `home'
+  Rendered errors/error_500.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 382ms (Views: 333.3ms | ActiveRecord: 2.7ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /blog_kit.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /errors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /foundation.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /lightbox.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /organization_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /searches.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /smartpaginator.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 09:20:35 -0800
+Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" [0m
+
+ErrorPageRendered: NoMethodError (undefined method `sort_by' for nil:NilClass): app/controllers/pages_controller.rb:7:in `home'
+  Rendered errors/error_500.html.erb within layouts/application (1.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1
+Completed 500 Internal Server Error in 413ms (Views: 284.7ms | ActiveRecord: 2.6ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /application.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /blog_kit.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /errors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /foundation.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /lightbox.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /organization_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /searches.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /smartpaginator.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 09:21:04 -0800
+Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" [0m
+  [1m[35mReview Load (34.9ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (8.6ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered pages/home.html.erb within layouts/application (193.8ms)
+Completed 200 OK in 633ms (Views: 441.5ms | ActiveRecord: 46.8ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /application.css - 304 Not Modified (1ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /blog_kit.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /errors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /foundation.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /lightbox.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /organization_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:42 -0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:43 -0800
+Served asset /searches.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:43 -0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:43 -0800
+Served asset /smartpaginator.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 09:21:43 -0800
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 09:21:43 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-18 09:21:43 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 09:21:43 -0800
+Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-11-18 09:21:43 -0800
+Served asset /BEBAS___-webfont.woff - 304 Not Modified (16ms)

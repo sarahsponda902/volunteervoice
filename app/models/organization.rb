@@ -122,7 +122,7 @@ class Organization < ActiveRecord::Base
     ["description", "headquarters_location", "good_to_know", "training_resources", "misson",
       "program_costs_includes", "program_costs_doesnt_include", "price_breakdown",
       "application_process"].each do |attrib|
-      self.send(attrib) = textilized( untextilized(self.send(attrib)) )
+      self.instance_variable_set(param,textilized( untextilized(self.send(attrib)) ))
     end
   end
   

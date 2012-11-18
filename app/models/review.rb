@@ -54,13 +54,13 @@ class Review < ActiveRecord::Base
   validates_length_of :body, :minimum => 200, :message => "Must contain at least 30 characters."
   validates_length_of :body, :maximum => 10000, :message => "You have entered more than 10,000 characters"
   validates_inclusion_of :organization_name, :in => Organization.all.map(&:name)
-  [nil].concat((2..10)).each do |num|
+  [nil, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num|
       validates "photo#{num}".to_sym, :file_size => {:maximum => 0.5.megabytes.to_i}
   end
   before_create :resize_review_photos
   
   # Carrierwave uploaders
-  [nil].concat((2..10)).each do |num|
+  [nil, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num|
     mount_uploader "photo#{num}".to_sym, ImageUploader
   end
 
@@ -68,8 +68,8 @@ class Review < ActiveRecord::Base
 ###### callback methods #######
 
   def resize_review_photos
-    [nil].concat((2..10)).each do |num|
-      self.send("photo#{num}") = resize_photos_helper(self.send("photo#{num}"))
+    [nil, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num|
+      self.instance_variable_set("photo#{num}",resize_photos_helper(self.send("photo#{num}")))
     end
   end
   

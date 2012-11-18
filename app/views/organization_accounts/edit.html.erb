@@ -30,11 +30,11 @@
 	height:300px;
 	z-index: 99999;
 	box-shadow: 0px 0px 20px #999; /* CSS3 */
-        -moz-box-shadow: 0px 0px 20px #999; /* Firefox */
-        -webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
+	-moz-box-shadow: 0px 0px 20px #999; /* Firefox */
+	-webkit-box-shadow: 0px 0px 20px #999; /* Safari, Chrome */
 	border-radius:3px 3px 3px 3px;
-        -moz-border-radius: 3px; /* Firefox */
-        -webkit-border-radius: 3px; /* Safari, Chrome */
+	-moz-border-radius: 3px; /* Firefox */
+	-webkit-border-radius: 3px; /* Safari, Chrome */
 }
 
 #invitationRegistrationContainer {
@@ -143,163 +143,171 @@ a.question-window {
 
 <div class="container" align="center">
 	<!-- ERROR MESSAGES -->
-	<% if flash.class.name != "String"%>
-	<% flash.each do |key, value| %>
-		<% if value.class.name != "String"%>
-		  <div class="flash <%=key%>">
-	<%= pluralize value.length, "errors"%> prevented your account from being created:<br />
-		<% value.each do |f|%>
-			* <%=f%><br />
+	<% if @organization_account.errors.any? %>
+	<div class="flash alert">
+		<%= pluralize value.length, "errors"%> prevented your account from being created:<br />
+		<% @organization_account.errors.full_messages.each do |e|%>
+		* <%=e%><br />
 		<% end %>
-	  </div>
-	<% end %>
-	<% end %>
+	</div>
 	<% end %><!-- END ERROR MESSAGES -->
 	<div class="row">
-	<div class="six columns" id="invitationRegistrationContainer">
+		<div class="six columns" id="invitationRegistrationContainer">
 
-		<p class="pageTitle">Register Your Organization's Account</p>
+			<p class="pageTitle">Register Your Organization's Account</p>
 
-		<%= form_for @organization_account, :id => "the_form" do |f| %>
+			<%= form_for @organization_account, :id => "the_form" do |f| %>
 
-		  <div  class="firstFieldContainer"><label class="label">Username</label>
-				  <%=f.text_field :username, :class=>"textField" %></div>
-				
-				<div  class="fieldContainer"><label class="label">Email</label>
-				  <%=f.text_field :email, :class=>"textField" %></div>
+			<div  class="firstFieldContainer"><label class="label">Username</label>
+				<%=f.text_field :username, :class=>"textField" %>
+			</div>
+
+			<div  class="fieldContainer"><label class="label">Email</label>
+				<%=f.text_field :email, :class=>"textField" %>
+			</div>
 
 
-				<div  class="fieldContainer"><label class="label">First Name</label>
-				  <%= f.text_field :first_name, :class=>"textField"%></div>
+			<div  class="fieldContainer"><label class="label">First Name</label>
+				<%= f.text_field :first_name, :class=>"textField"%>
+			</div>
 
-				  <div  class="fieldContainer"><label class="label">Last Name</label>
-				  <%= f.text_field :last_name, :class=>"textField"%></div>
+			<div  class="fieldContainer"><label class="label">Last Name</label>
+				<%= f.text_field :last_name, :class=>"textField"%>
+			</div>
 
-				  <div  class="fieldContainer"><label class="label">Position in Organization</label>
-				  <%= f.text_field :position, :class=>"textField"%></div>
-				
-				  <div class="fieldContainer"><label class="label">Nonprofit?</label>
-				  <%= f.check_box :nonprofit%></div>
+			<div  class="fieldContainer"><label class="label">Position in Organization</label>
+				<%= f.text_field :position, :class=>"textField"%>
+			</div>
 
-				
-							 <p class="firstFieldContainer"><label class="label" for="user_country">Country</label>
-								<div class="select-div" id="countrySelectDiv" id="dropArrow">
-							 <select id="user_country" name="organization_account[country]">
-								<option value=""> Select a Country</option>
-								<% THECOUNTRIES.keys.each do |f| %>
-								<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
-								<% end %>
-								</select>
-							</div>
-		<br /><br />
-		
- 			<div  class="fieldContainer"><label class="label">Type of Organization&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#question-box" class="question-window">Which one am I?</a></label>
-	<div>
-	  <%= f.radio_button :type_of_company, "Community Based Organization", :class => "radioButton" %> <p class="radioLabel">Community Based Organization</p><br />
-	  <%= f.radio_button :type_of_company, "Volunteer Placement Organization", :class => "radioButton" %> <p class="radioLabel">Volunteer Placement Organization</p></div></div>
-				<image class="checkMark" id="notifyMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(notifyMeCheck())">
-		<div class="checkBox">
-		<%= f.check_box :notify, :checked => "checked", :onclick => "$(notifyMeCheck())", :class => "hiddenCheckBox" %>
-		<label class="checkBoxLabel">Notify me of important updates and changes</label></div>
+			<div class="fieldContainer"><label class="label">Nonprofit?</label>
+				<%= f.check_box :nonprofit%>
+			</div>
 
-		<br /><br /><br /><br />
+
+			<p class="firstFieldContainer"><label class="label" for="user_country">Country</label>
+				<div class="select-div" id="countrySelectDiv" id="dropArrow">
+					<select id="user_country" name="organization_account[country]">
+						<option value=""> Select a Country</option>
+						<% THECOUNTRIES.keys.each do |f| %>
+						<option value="<%=f%>"><%= THECOUNTRIES[f]%></option>
+						<% end %>
+					</select>
+				</div>
+			</p>
+			<br /><br />
+
+			<div  class="fieldContainer"><label class="label">Type of Organization&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#question-box" class="question-window">Which one am I?</a></label>
+				<div>
+					<%= f.radio_button :type_of_company, "Community Based Organization", :class => "radioButton" %> <p class="radioLabel">Community Based Organization</p><br />
+					<%= f.radio_button :type_of_company, "Volunteer Placement Organization", :class => "radioButton" %> <p class="radioLabel">Volunteer Placement Organization</p>
+				</div>
+			</div>
+			<image class="checkMark" id="notifyMe" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/checkmark.png" onclick="$(notifyMeCheck())" />
+			<div class="checkBox">
+				<%= f.check_box :notify, :checked => "checked", :onclick => "$(notifyMeCheck())", :class => "hiddenCheckBox" %>
+				<label class="checkBoxLabel">Notify me of important updates and changes</label>
+			</div>
+
+			<br /><br /><br /><br />
 		</div>
 
-		  <div class="submitContainer"><%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></div>
+		<div class="submitContainer">
+			<%= image_submit_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/submitGreen.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>
+		</div>
 
-			
+
 		<% end %>
 
-<br />
-<br />
+		<br />
+		<br />
 
 
 	</div>
+</div>
+
+
+<div id="question-box" class="question-popup">
+	<a href="#" class="close"><div class="close_image"></div></a>
+	<p class="questionsPopupTitle"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/VPOvsCBOblurb.png"%></p><br />
+	<div class="overflow">
+		<ol>
+			<li>You are a VOLUNTEER PLACEMENT ORGANIZATION (VPO) if any of these apply...
+				<ul class="bullet"> 
+					<li> You charge volunteers for the service of connecting them with a volunteer program.  This means that your program fee charges for more than just food, water, and accommodations, and likely includes costs for placement services, employee salaries, marketing &amp; outreach, etc.</li>	
+					<li> The Volunteer Programs that you offer are run primarily by partner organizations, and your organization does not actually run its own programs independently. </li>
+					<li> Your main headquarters is not located in the same country or countries where you primarily offer volunteer programs.</li>
+				</ul>
+			</li>
+			<br />
+			<br />
+			<li>You are a COMMUNITY BASED ORGANIZATION (CBO) if...
+				<ul class="bullet">
+					<li>You do NOT charge volunteers for placement services.  Any payments that volunteers make go directly to covering their own costs of food, water, accommodation, and maybe a small donation directly to the project.  </li>
+					<li>The Volunteer Programs that you offer are developed, monitored, and run primarily by your own organization. </li>
+					<li>Your organization is headquartered in the country and/or region where you run volunteer programs.</li>
+				</ul>
+			</li>
+		</ol>
+
 	</div>
-	
-
-	<div id="question-box" class="question-popup">
-		<a href="#" class="close"><div class="close_image"></div></a>
-		<p class="questionsPopupTitle"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/VPOvsCBOblurb.png"%></p><br />
-		<div class="overflow">
-	 <ol>
-		<li>You are a VOLUNTEER PLACEMENT ORGANIZATION (VPO) if any of these apply...
-			<ul class="bullet"> 
-				<li> You charge volunteers for the service of connecting them with a volunteer program.  This means that your program fee charges for more than just food, water, and accommodations, and likely includes costs for placement services, employee salaries, marketing &amp; outreach, etc.</li>	
-				<li> The Volunteer Programs that you offer are run primarily by partner organizations, and your organization does not actually run its own programs independently. </li>
-				<li> Your main headquarters is not located in the same country or countries where you primarily offer volunteer programs.</li>
-			</ul>
-		</li>
-	<br />
-	<br />
-		<li>You are a COMMUNITY BASED ORGANIZATION (CBO) if...
-			<ul class="bullet">
-				<li>You do NOT charge volunteers for placement services.  Any payments that volunteers make go directly to covering their own costs of food, water, accommodation, and maybe a small donation directly to the project.  </li>
-				<li>The Volunteer Programs that you offer are developed, monitored, and run primarily by your own organization. </li>
-				<li>Your organization is headquartered in the country and/or region where you run volunteer programs.</li>
-			</ul>
-		</li>
-	</ol>
-		
-	</div>
-	</div>
+</div>
 
 
-	<script type="text/javascript">
+<script type="text/javascript">
 
-	//toggle the hidden "notify me" check box if the user clicks the check mark
-	function notifyMeCheck() {
-		$('#notifyMe').toggle();
-	}
-	
-	$(document).ready(function() {
-		//Check if org-account already selected to be notified (note: shouldn't happen)
-		<% if @organization_account.notify? %>
-			$('#notifyMe').show();
-		<% else %>
-			$('#notifyMe').hide();
-		<% end %>
+//toggle the hidden "notify me" check box if the user clicks the check mark
+function notifyMeCheck() {
+	$('#notifyMe').toggle();
+}
 
-		//JQuery for question mark's popup
-		$('a.question-window').click(function() {
+$(document).ready(function() {
+	//Check if org-account already selected to be notified (note: shouldn't happen)
+	<% if @organization_account.notify? %>
+	$('#notifyMe').show();
+	<% else %>
+	$('#notifyMe').hide();
+	<% end %>
 
-	                //Getting the variable's value from a link 
-			var questionBox = $(this).attr('href');
+	//JQuery for question mark's popup
+	$('a.question-window').click(function() {
 
-			//Fade in the Popup
-			$(questionBox).fadeIn(300);
+		//Getting the variable's value from a link 
+		var questionBox = $(this).attr('href');
 
-			//Set the center alignment padding + border see css style
-			var popMargTop = ($(questionBox).height() + 24) / 2; 
-			var popMargLeft = ($(questionBox).width() + 24) / 2; 
+		//Fade in the Popup
+		$(questionBox).fadeIn(300);
 
-			$(questionBox).css({ 
-				'margin-top' : -popMargTop,
-				'margin-left' : -popMargLeft
-			});
+		//Set the center alignment padding + border see css style
+		var popMargTop = ($(questionBox).height() + 24) / 2; 
+		var popMargLeft = ($(questionBox).width() + 24) / 2; 
 
-			// Add the mask to body
-			$('body').append('<div id="mask"  style="opacity:.5"></div>');
-			$('#mask').fadeIn(300);
-
-			return false;
+		$(questionBox).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
 		});
 
-		// When clicking on the button close or the mask layer the popup closed
-		$('a.close, #mask').live('click', function() { 
-		  $('#mask , .question-popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
+		// Add the mask to body
+		$('body').append('<div id="mask"  style="opacity:.5"></div>');
+		$('#mask').fadeIn(300);
+
 		return false;
-		});
-
-		$('img.btn_close, #mask').live('click', function() { 
-		  $('#mask , .question-popup').fadeOut(300 , function() {
-			$('#mask').remove();  
-		}); 
-		return false;
-		});
-
 	});
 
-	</script>
+	// When clicking on the button close or the mask layer the popup closed
+	$('a.close, #mask').live('click', function() { 
+		$('#mask , .question-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+	});
+
+	$('img.btn_close, #mask').live('click', function() { 
+		$('#mask , .question-popup').fadeOut(300 , function() {
+			$('#mask').remove();  
+		}); 
+		return false;
+	});
+
+});
+
+</script>

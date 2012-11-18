@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   include ActionView::Helpers::TextHelper
   def home
     [Feedback, Organization, Review].each do |klass|
-      instance_variable_set("@#{klass.name.to_s}s", klass.where(:show => true))
+      instance_variable_set("@#{klass.name.to_s.downcase}s", klass.where(:show => true))
     end
     @show_reviews = @reviews.sort_by(&:created_at).reverse[0..2]
     @show_organizations = @organizations.shuffle[0..1]

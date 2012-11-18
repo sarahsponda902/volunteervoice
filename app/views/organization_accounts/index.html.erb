@@ -57,140 +57,140 @@
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-<p align="center" class="pageTitle">Organization Accounts</p><br />
+			<p align="center" class="pageTitle">Organization Accounts</p><br />
 
-<div align="center" class="three columns" id="inviteOrgBox">
-<p align="center" class="title">Invite an Existing Organization </p><br />
-<%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
-	Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
-	Contact's Email<br /><input name="email" type="email" /><br /><br />
-	<input type="checkbox" name="nonprofit" /> Nonprofit?<br /><br />
-<%= submit_tag "Send New Invitation"%>
-<% end %>
-</div>
-<br /><br />
-<div class="seven columns" id="uninvitedOrgsBox">
-<p class="bigTitle">Uninvited Organizations</p><br />
-<table>
-	<thead>
-	<tr>
-	    <th>Company</th>
-	</tr>
-	</thead>
-	<tdata>
-	<% Organization.where(:will_invite => false).each do |o|%>
-	<tr>
-		<td><%= link_to o.name, o%></td>
-	</tr>
+			<div align="center" class="three columns" id="inviteOrgBox">
+				<p align="center" class="title">Invite an Existing Organization </p><br />
+				<%= form_tag url_for(:action => "send_new_invitation", :controller => "organization_accounts"), :method => "get" do%>
+				Organization Name <br /><input id="tags" name="organization_name" /><br /><br />
+				Contact's Email<br /><input name="email" type="email" /><br /><br />
+				<input type="checkbox" name="nonprofit" /> Nonprofit?<br /><br />
+				<%= submit_tag "Send New Invitation"%>
+				<% end %>
+			</div>
+			<br /><br />
+			<div class="seven columns" id="uninvitedOrgsBox">
+				<p class="bigTitle">Uninvited Organizations</p><br />
+				<table>
+					<thead>
+						<tr>
+							<th>Company</th>
+						</tr>
+					</thead>
+					<tdata>
+						<% Organization.where(:will_invite => false).each do |o|%>
+						<tr>
+							<td><%= link_to o.name, o%></td>
+						</tr>
 
-	<% end %>
-	</tdata>
-</table>
-</div>
+						<% end %>
+					</tdata>
+				</table>
+			</div>
 
-<br /><br /><br />
-<div class="eleven columns" id="unapprovedOrgsBox">
-<p class="bigTitle">Unapproved Organization Accounts</p><br />
-<table>
-	<thead>
-	<tr>
-		<th>Has a Profile?</th>
-		<th>Company Name</th>
-		<th>Country</th>
-		<th>Website URL</th>
-		<th>Main Contact</th>
-		<th>Contact's Position</th>
-		<th>Contact's Email</th>
-		<th>Remove from List?</th>
-	</tr>
-	</thead>
-	<tdata>
-	<% Contact.where(:to_whom => "request").each do |contact|%>
-	<% if OrganizationAccount.where(:email => contact.contact_email).empty? %>
-	<tr>
-		<td>
-			<% if contact.has_profile %>
-			<font class="yes"><%= "Yes" %></font>
-			<% else %>
-			<font class="no"><%= "No" %></font>
-			<% end %>
-		</td>
-		<td><%= contact.organization_name %></td>
-		<td><%= contact.country %></td>
-		<td><%= contact.organization_url unless contact.organization_url.nil? %></td>
-		<td><%= contact.main_contact %></td>
-		<td><%= contact.position_of_contact %></td>
-		<td><%= contact.contact_email %></td>
-		<td><%= button_to "Ignore", contact, :method => :delete %></td>
-	</tr>
-	<% end %>
-	<% end %>
-	</tdata>
-</table>
-</div>
-<br /><br /><br />
-<div class="eleven columns" id="approvedOrgsBox">
-<p class="bigTitle">Approved Organization Accounts</p><br />
-<table>
-	<thead>
-  <tr>
-    <th>Company Name</th>
-    <th>Contact's Name</th>
-    <th>Contact's Email</th>
-    <th>Country</th>
-    <th>Type of Company</th>
-    <th>Date Created</th>
-    <th>Last Updated</th>
-    <th>Last Login</th>
-    <th>Login Count</th>
-    <th>Invitation</th>
-    <th></th>
-    <th></th>
-  </tr>
-</thead>
-<tdata>
-<% @organization_accounts.each do |oa| %>
-  <tr>
-	<td><%= link_to Organization.find(oa.organization_id).name, Organization.find(oa.organization_id)%></td>
-	<td><%= "#{oa.first_name} #{oa.last_name}"%></td>
-	<td><%= mail_to oa.email %></td>
-	<td><%= oa.country %></td>
-	<td><%= oa.type_of_company %></td>
-	<td><%= oa.created_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></td>
-	<td>
-		<% @last_updated_program = Program.where(:organization_id => oa.organization_id).first%>
-		<% Program.where(:organization_id => oa.organization_id).each do |f|%>
-		<% @last_updated_program = f unless @last_updated_program.updated_at > f.updated_at%>
-		<% end %>
-		<% if !(@last_updated_program.nil?)%>
-			<% if Organization.find(oa.organization_id).updated_at > @last_updated_program.updated_at%>
-			<%= Organization.find(oa.organization_id).updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
-			<% else %>
-			<%= @last_updated_program.updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
-			<% end %>
-		<% else %>
-			<%= Organization.find(oa.organization_id).updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
-		<% end %>
-	</td>
-	<td><%= oa.last_sign_in_at.strftime("%m/%e/%Y").gsub(/^0/,'') unless oa.last_sign_in_at.nil?%></td>
-	<td><%= oa.sign_in_count %></td>
-	<td>
-		<% if oa.invitation_accepted_at.nil? %>
-		<%= button_to "Resend", "/organization_accounts/#{oa.id}/resend_invitation"%>
-		<% else %>
-		<%= "Accepted" %>
-		<% end %>
-	</td>
-    <td><%= link_to 'Edit', edit_organization_account_path(oa) %></td>
-    <td><%= button_to 'Delete', oa, method: :delete %></td>
-  </tr>
-<% end %>
-</tdata>
-</table>
-</div>			
-	
-	
-</div>
+			<br /><br /><br />
+			<div class="eleven columns" id="unapprovedOrgsBox">
+				<p class="bigTitle">Unapproved Organization Accounts</p><br />
+				<table>
+					<thead>
+						<tr>
+							<th>Has a Profile?</th>
+							<th>Company Name</th>
+							<th>Country</th>
+							<th>Website URL</th>
+							<th>Main Contact</th>
+							<th>Contact's Position</th>
+							<th>Contact's Email</th>
+							<th>Remove from List?</th>
+						</tr>
+					</thead>
+					<tdata>
+						<% Contact.where(:to_whom => "request").each do |contact|%>
+						<% if OrganizationAccount.where(:email => contact.contact_email).empty? %>
+						<tr>
+							<td>
+								<% if contact.has_profile %>
+								<font class="yes"><%= "Yes" %></font>
+								<% else %>
+								<font class="no"><%= "No" %></font>
+								<% end %>
+							</td>
+							<td><%= contact.organization_name %></td>
+							<td><%= contact.country %></td>
+							<td><%= contact.organization_url unless contact.organization_url.nil? %></td>
+							<td><%= contact.main_contact %></td>
+							<td><%= contact.position_of_contact %></td>
+							<td><%= contact.contact_email %></td>
+							<td><%= button_to "Ignore", contact, :method => :delete %></td>
+						</tr>
+						<% end %>
+						<% end %>
+					</tdata>
+				</table>
+			</div>
+			<br /><br /><br />
+			<div class="eleven columns" id="approvedOrgsBox">
+				<p class="bigTitle">Approved Organization Accounts</p><br />
+				<table>
+					<thead>
+						<tr>
+							<th>Company Name</th>
+							<th>Contact's Name</th>
+							<th>Contact's Email</th>
+							<th>Country</th>
+							<th>Type of Company</th>
+							<th>Date Created</th>
+							<th>Last Updated</th>
+							<th>Last Login</th>
+							<th>Login Count</th>
+							<th>Invitation</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					<tdata>
+					<% @organization_accounts.each do |oa| %>
+					<tr>
+						<td><%= link_to Organization.find(oa.organization_id).name, Organization.find(oa.organization_id)%></td>
+						<td><%= "#{oa.first_name} #{oa.last_name}"%></td>
+						<td><%= mail_to oa.email %></td>
+						<td><%= oa.country %></td>
+						<td><%= oa.type_of_company %></td>
+						<td><%= oa.created_at.strftime("%m/%e/%Y").gsub(/^0/,'')%></td>
+						<td>
+							<% @last_updated_program = Program.where(:organization_id => oa.organization_id).first%>
+							<% Program.where(:organization_id => oa.organization_id).each do |f|%>
+							<% @last_updated_program = f unless @last_updated_program.updated_at > f.updated_at%>
+							<% end %>
+							<% if !(@last_updated_program.nil?)%>
+							<% if Organization.find(oa.organization_id).updated_at > @last_updated_program.updated_at%>
+							<%= Organization.find(oa.organization_id).updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+							<% else %>
+							<%= @last_updated_program.updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+							<% end %>
+							<% else %>
+							<%= Organization.find(oa.organization_id).updated_at.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+							<% end %>
+						</td>
+						<td><%= oa.last_sign_in_at.strftime("%m/%e/%Y").gsub(/^0/,'') unless oa.last_sign_in_at.nil?%></td>
+						<td><%= oa.sign_in_count %></td>
+						<td>
+							<% if oa.invitation_accepted_at.nil? %>
+							<%= button_to "Resend", "/organization_accounts/#{oa.id}/resend_invitation"%>
+							<% else %>
+							<%= "Accepted" %>
+							<% end %>
+						</td>
+						<td><%= link_to 'Edit', edit_organization_account_path(oa) %></td>
+						<td><%= button_to 'Delete', oa, method: :delete %></td>
+					</tr>
+					<% end %>
+				</tdata>
+			</table>
+		</div>			
+
+
+	</div>
 </div>
 </div>
 
@@ -200,12 +200,12 @@
 //Autocomplete of uninvited+unconfirmed organizations
 $(function() {
 	var availableTags = [
-		<% Organization.all.each do |f| %>
-		<% if OrganizationAccount.where(:organization_id => f.id).empty? %>
-		"<%=f.name%>",
-		<% end %>
-		<% end %>
-		];
+	<% Organization.all.each do |f| %>
+	<% if OrganizationAccount.where(:organization_id => f.id).empty? %>
+	"<%=f.name%>",
+	<% end %>
+	<% end %>
+	];
 	$( "#tags" ).autocomplete({
 		source: availableTags
 	});

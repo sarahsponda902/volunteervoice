@@ -26,17 +26,18 @@ class Search < ActiveRecord::Base
   # searches through 3 models: programs, organizations, and cost-length-maps
   def search_results(id)
     @search = Search.find(id)
+    
 
     # set the search parameters for sunspot to use
     keys = @search.keywords
-    ["subjects", "regions", "sizes"].each do |param|
-      self.send(param) = @search.send(param).nil? [] : @search.send(param).split("; ")
-    end
-    [["price_max", 99999], ["price_min",0]].each do |param, num|
-      self.send(param) = @search.send(param).nil? ? num : @search.send(param)
-    end
+    subjects = @search.subjects.nil? ? [] : @search.subjects.split("; ")
+    regions = @search.regions.nil? ? [] : @search.regions.split("; ")
+    sizes = @search.sizes.nil? ? [] : @search.sizes.split("; ")
+    price_max = @search.price_max.nil? ? 0 : @search.price_max
+    price_min = @search.price_min.nil? ? 99999 : @search.price_min
+    
 
-    # set the minimum length
+      # set the minimum length
     @search.length_min_number ||= 0
     @search.length_min_param ||= "weeks"
     length_min = @search.length_min_number.to_i.send(@search.length_min_param).to_f

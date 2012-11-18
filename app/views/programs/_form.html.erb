@@ -174,17 +174,13 @@ a.createInput:hover {
 
 
 <!-- ERROR MESSAGES -->
-<% if flash.class.name != "String"%>
-<% flash.each do |key, value| %>
-	<% if value.class.name != "String"%>
-	  <div class="flash <%=key%>">
-<%= pluralize value.length, "errors"%> prevented your program from being saved:<br />
-	<% value.each do |f|%>
-		* <%=f%><br />
+<% if @program.errors.any? %>
+<div class="flash alert">
+	<%= pluralize value.length, "errors"%> prevented your program from being created:<br />
+	<% @program.errors.full_messages.each do |e|%>
+		* <%=e%><br />
 	<% end %>
-  </div>
-<% end %>
-<% end %>
+</div>
 <% end %><!-- END ERROR MESSAGES -->
 
 <div class="container">
