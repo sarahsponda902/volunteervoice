@@ -41,7 +41,7 @@ class NewReview < ActiveRecord::Base
   validates :terms, :acceptance => {:accept => true}
   validates_length_of :body, :minimum => 200, :message => "Must contain at least 30 characters."
   
-  [nil].concat((2..10)).each do |num|
+  [nil, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num|
       validates "photo#{num}".to_sym, :file_size => {:maximum => 0.5.megabytes.to_i}
   end
   

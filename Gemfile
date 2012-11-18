@@ -33,6 +33,10 @@ end
 
 group :development, :test do
   gem "sqlite3-ruby", :require => "sqlite3"
+  gem "cucumber-rails", :require => false
+  gem "rspec-rails"
+  gem "database_cleaner"
+  gem "webrat"
 end
 
 gem 'bcrypt-ruby', :require => 'bcrypt'
