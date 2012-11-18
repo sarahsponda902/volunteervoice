@@ -148,7 +148,7 @@ class Organization < ActiveRecord::Base
   
   # textilize methods for best_in_place in-place editing on organization's profile
   # (in-place editing of organization profile is only for org accounts and admins)
-  ["description", "headquarters_location", "good_to_know", "training_resources", "misson",
+  ["description", "headquarters_address", "good_to_know", "training_resources", "misson",
     "program_costs_includes", "program_costs_doesnt_include", "price_breakdown",
     "application_process"].each do |attrib|
     define_method "textilize_#{attrib}" do
