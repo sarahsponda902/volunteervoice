@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   # can access this page by clicking "# voices heard" on homepage
   def show_all
     @sort_by = params[:sort_by]
-    Review.order(params[:sort_by])
+    @reviews = Review.order(params[:sort_by])
     @flag = Flag.new
   end
 
