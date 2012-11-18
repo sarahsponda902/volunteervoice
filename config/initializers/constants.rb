@@ -12,8 +12,6 @@
 #                - searches/error
 #############################################################################################
 
-# For a new organization to have all "reviewed_at"s be the same
-REVIEWED_AT_OLD = DateTime.strptime("01-01-1800", "%m-%d-%Y")
 
 # Hash of country-abbreviation => country-name
 THECOUNTRIES = Hash["AF" => "Afghanistan", 

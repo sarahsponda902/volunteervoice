@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118042723) do
+ActiveRecord::Schema.define(:version => 20121118062036) do
 
   create_table "blog_comments", :force => true do |t|
     t.integer  "blog_post_id"
@@ -236,8 +236,8 @@ ActiveRecord::Schema.define(:version => 20121118042723) do
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.datetime "created_at",                                                      :null => false
+    t.datetime "updated_at",                                                      :null => false
     t.integer  "program_id"
     t.boolean  "show",                         :default => false
     t.integer  "page_views"
@@ -278,7 +278,7 @@ ActiveRecord::Schema.define(:version => 20121118042723) do
     t.text     "application_process"
     t.text     "price_breakdown"
     t.boolean  "crops"
-    t.datetime "reviewed_at",                                     :null => false
+    t.datetime "reviewed_at",                  :default => '1800-01-01 00:00:00', :null => false
   end
 
   create_table "pages", :force => true do |t|
