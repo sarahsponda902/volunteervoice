@@ -52,7 +52,7 @@ class NewReview < ActiveRecord::Base
 
 
   # Carrierwave uploaders
-  [nil].concat((2..10)).each do |num|
+  [nil, 2, 3, 4, 5, 6, 7, 8, 9, 10].each do |num|
     mount_uploader "photo#{num}".to_sym, ImageUploader
   end 
 
