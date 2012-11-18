@@ -33,9 +33,9 @@ class SearchesController < ApplicationController
       @locations << f.location unless @locations.include?(f.location)
     end
 
-    @search_regions = regions
-    @search_subjects = subjects
-    @search_sizes = sizes
+    @search_regions = []
+    @search_subjects = []
+    @search_sizes = []
     respond_to do |format|
       format.html
     end

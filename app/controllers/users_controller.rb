@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   
   # a user's own profile
   def profile
-    @presenter = Users::ProfilePresenter.new
+    @presenter = Users::ProfilePresenter.new(current_user.id)
     @message = Message.new
   end
 
