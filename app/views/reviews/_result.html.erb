@@ -49,7 +49,7 @@
 				<td colspan="3"><p class="reviewPopupUsername">-<a href="/users/<%=f.user_id%>" class="usernameLink"><%=truncate User.find(f.user_id).username, :length => 25%></a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<%=image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onclick => "removePopup();$('#flag-link#{f.id}').click();", :style => "float:right; cursor:pointer", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%></p></td></tr>
 			<tr class="reviewPopupBackground"><td colspan="5">	<% @photos.each do |photo| %>
-			  		  <a class="single" rel="lightbox[review<%=f.id%>popup]"><img src="<%=photo.url%>" class="reviewPopupPhotos" alt=""/></a>
+			  		  <a class="single" rel="lightbox[review2<%=f.id%>popup]"><img src="<%=photo.url%>" class="reviewPopupPhotos" alt=""/></a>
 			    <% end %></td></tr>
 			<tr class="reviewPopupFooter reviewPopupBackground">
 				<td><p class="reviewPopupStarLabel">Preparation/Orientation</p></td>
