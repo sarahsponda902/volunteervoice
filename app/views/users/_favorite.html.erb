@@ -3,7 +3,7 @@
 		<tr>
 			<td width="7%"><image class="favoriteBullet" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/astrick.png"></td>
 			<td width="85%"><b><a class="favoriteOrg" href= "/organizations/<%=Program.find(f.program_id).organization_id%>"> <%=(Organization.find((Program.find(f.program_id)).organization_id).name)%></a></b><a class="favoriteProg" href= "/programs/<%= f.program_id%>"> - <%=(Program.find(f.program_id)).name%></a></td>
-		<% if @user == current_user %>
+		<% if presenter.this_user == current_user %>
 			<td><p class="deleteFavoriteContainer" align="center">
 				
 				<form action="/favorites/<%=f.id%>" class="button_to" method="post">

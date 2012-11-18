@@ -24,7 +24,7 @@
 </tr>
 <tr>
 	<td colspan="3"><p class="review-pannel"><%= breaking_word_wrap(f.body.gsub("</p>", "<br />").gsub("<p>", ""), 125).html_safe %>
-		<% if !(user_signed_in? && current_user.id == @presenter.this_user.id)%>
+		<% if !(user_signed_in? && current_user.id == presenter.this_user.id)%>
 		<a href="#flag-box" class="flag-window" id="flag-link<%=f.id%>" onclick="$('#poster_id').val(<%=f.user_id%>); $('#review_id').val(<%=f.id%>)"><%= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/flag.png", :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'" %></a>
 		<% end %>
 		</td>
@@ -38,7 +38,7 @@
 </tr>
 </table>
 
-<% if user_signed_in? && @presenter.this_user.id == current_user.id %>
+<% if user_signed_in? && presenter.this_user.id == current_user.id %>
 	<p class="reviewEditDeleteContainer"><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/editDelete.png"), :controller => "reviews", :action => "edit", :id => f.id, :onmousedown => "this.className = 'shadowed'", :onmouseup => "this.className = 'nothing'"%>  </p>
 <% end %>
 	

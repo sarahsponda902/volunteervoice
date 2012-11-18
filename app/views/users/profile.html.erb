@@ -878,7 +878,7 @@ a.usernameLink:hover {
 									<p class="messagesContainer">
 										<% @presenter.messages.each do |m| %>
 										<div>
-											<%= render :partial => "message", :locals => {:m => m} %>
+											<%= render :partial => "message", :locals => {:m => m, :presenter => @presenter} %>
 										</div>
 										<%end%>
 									</p>
@@ -906,7 +906,7 @@ a.usernameLink:hover {
 											<p class="messagesContainer">
 												<% @presenter.sent_messages.each do |m| %>
 
-												<%= render :partial => "message_sent", :locals => {:m => m} %>
+												<%= render :partial => "message_sent", :locals => {:m => m, :presenter => @presenter} %>
 												<%end%>
 											</p>
 											<%end%>
@@ -927,7 +927,7 @@ a.usernameLink:hover {
 											<% if !((@presenter.favorites).empty?) %>
 											<% (@presenter.favorites).each do |f|%>
 											<div>
-												<%= render :partial => "favorite", :locals => { :f => f }%>
+												<%= render :partial => "favorite", :locals => { :f => f , :presenter => @presenter}%>
 											</div>
 											<% end %>
 											<% else %>
@@ -948,7 +948,7 @@ a.usernameLink:hover {
 											<% if @presenter.reviews.count != 0 %>
 											<% @presenter.reviews.each do |f|%>
 
-											<%= render :partial => "review", :locals => { :f => f } %>
+											<%= render :partial => "review", :locals => { :f => f, :presenter => @presenter} %>
 
 											<% end %>
 											<% else %>

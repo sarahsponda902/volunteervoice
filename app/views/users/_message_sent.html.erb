@@ -20,7 +20,7 @@
 <table id="sent-box<%=m.id%>" class="sent-popup">
 	<tr><td>
 		<span class="sentPopupTo">To: 
-		<% if @presenter.user_ids.include?(m.recipient_id)%>	
+		<% if presenter.user_ids.include?(m.recipient_id)%>	
 		<%= User.find(m.recipient_id).username%>
 		<% else %>
 		<%= "???" %>
