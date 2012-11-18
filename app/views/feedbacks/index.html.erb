@@ -79,13 +79,11 @@
 						<td width="7%">
 							<% if f.show %><!-- if feedback is in showing pool,
 							then show button to hide -->
-							<%= link_to (image_tag 
-							"https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), 	
+							<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/hideReview.png"), 	
 							"/feedbacks/#{f.id}/changeShow" %>
 							<% else %> <!-- otherwise, show button to 
 							add to homepage showing pool-->
-							<%= link_to (image_tag 
-							"https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), 
+							<%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/show_homepage.png"), 
 							"/feedbacks/#{f.id}/changeShow" %>
 							<% end %>
 						</td><!-- end button to show on homepage -->
