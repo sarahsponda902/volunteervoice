@@ -119,11 +119,12 @@ class Organization < ActiveRecord::Base
   
   # textilize all textareas to retain newlines, formatting, etc.
   def textilize_textareas
-    ["description", "headquarters_location", "good_to_know", "training_resources", "misson",
+    ["headquarters_location", "good_to_know", "training_resources", "misson",
       "program_costs_includes", "program_costs_doesnt_include", "price_breakdown",
       "application_process"].each do |attrib|
       self.instance_variable_set(attrib,textilized( untextilized(self.send(attrib)) ))
     end
+    self.description = textilized(untextilized(self.description))
   end
   
   
