@@ -12,6 +12,7 @@ class ContactMailer < ActionMailer::Base
         mail(:subject => "Contact Us: #{message.subject}", :to => "#{mailer_method}@volunteervoice.org")
       else
         mail(:subject => "Contact Us: #{message.subject}", :to => "contact@volunteervoice.org")
+      end
     end
   end
 
