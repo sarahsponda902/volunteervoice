@@ -45,11 +45,11 @@ class Organizations::ShowPresenter
   #return overall = (total overall score) / (total # reviews)
   def overall
     @overall = 0
-    if @organization.reviews.count != 0 # can't divide by zero
+    if (num_reviews = @organization.reviews.count) != 0 # can't divide by zero
       @organization.reviews.each do |r|
         @overall = @overall + r.overall
       end
-      @overall = @overall / @results.count
+      @overall = @overall / num_reviews.count
     end
     @overall
   end
