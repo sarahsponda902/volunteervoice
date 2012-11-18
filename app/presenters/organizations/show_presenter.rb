@@ -1,8 +1,6 @@
 class Organizations::ShowPresenter
   def initialize(org_id)
     @organization = Organization.find(org_id)
-    Rails.logger.info( @organization )
-    Rails.logger.info( org_id )
     # saving page views count
     @organization.page_views = (@organization.page_views + 1)
     @organization.save
