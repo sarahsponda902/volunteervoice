@@ -52,14 +52,9 @@ class BlogPost < ActiveRecord::Base
   
   # callbacks
   validates :image, :file_size => {:maximum => 0.5.megabytes.to_i}
-  validates_presence_of :title
-  validates_presence_of :body
-  before_save :validate_photo_presence_article
-  before_save :check_published, :if => :not_resaving?
-  before_save :save_tags, :if => :not_resaving?
-  before_save :square_image_crop
-  before_save :validate_photo_width
-  before_save :parse_body
+  validates_presence_of :title, :body
+  validate :photo_presence_article, :photo_width
+  before_save :check_published, :save_tags, :square_image_crop, :parse_body
 
   # associations
   belongs_to :user
@@ -69,7 +64,6 @@ class BlogPost < ActiveRecord::Base
   
   # scopes
   scope :published, { :conditions => {:published => true, :blog_link => "" }}
-  scope :drafts, { :conditions => {:published => false }}
 
   # Sunspot search block
   searchable do
@@ -91,7 +85,7 @@ class BlogPost < ActiveRecord::Base
   # validate photo width < 700 pixels
   # to ensure cropping is not skewed 
   # (if image can't fit on page, it will be smaller than actual and mess up the crop parameters)
-  def validate_photo_width
+  def photo_width
     if image.present? && image.url.present?
       @photo = MiniMagick::Image.open(image.url)
       if @photo['width'] > 700
@@ -102,33 +96,23 @@ class BlogPost < ActiveRecord::Base
   end
 
   # validates presence of image (only for article/interesting posts)
-  def validate_photo_presence_article 
-    if !is_our_blog
-      if image.nil? || image.url.nil?
-        errors.add(:image, "must be present for an article post")
-        return false
-      end
+  def photo_presence_article 
+    if !is_our_blog && (image.nil? || image.url.nil?)
+      errors.add(:image, "must be present for an article post")
+      return false
     end
   end
   
   # crops the image to be 3:1 ratio given the parameters from /blog_posts/:id/crop
   def square_image_crop
     if self.crop_x.present? && self.crop_y.present? && self.crop_w.present? && self.crop_h.present?
-      image = MiniMagick::Image.open(self.image.url)
-      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
+      @image = MiniMagick::Image.open(self.image.url)
+      @image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
       
       # remove black space around cropped image (if any)
-      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
+      @image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
       
-      self.square_image = image
-    end
-  end
-  
-  # For drafts. Not in use now, but may be in future
-  def check_published
-    if self.published_change && self.published_change == [false, true]
-      # Moved to published state, update published_on
-      self.published_at = Time.now
+      self.square_image = @image
     end
   end
 
@@ -148,15 +132,10 @@ class BlogPost < ActiveRecord::Base
       end
     end
   end
-  
+
 
 
   ####### Other Methods #######
-  
-  # called by save_tags (above)
-  def not_resaving?
-    !@resaving
-  end
   
   # returns all blog_post's tags
   def tags

@@ -29,7 +29,6 @@ class BlogComment < ActiveRecord::Base
   belongs_to :blog_article
 
   # callbacks #
-  before_save :check_for_spam
   before_save :redcloth_body
   profanity_filter :body
   validates_presence_of :body
@@ -39,18 +38,6 @@ class BlogComment < ActiveRecord::Base
     if !self.user
       self.errors.add(:name, 'is required') if self.name.blank?
     end
-  end
-
-  def check_for_spam
-    if BlogKit.instance.settings['akismet_key'] && BlogKit.instance.settings['blog_url']
-      if Akismetor.spam?(akismet_attributes)
-        self.errors.add_to_base('This comment has been detected as spam')
-        return false
-      else
-        return true
-      end
-    end
-    true
   end
 
 
@@ -66,11 +53,7 @@ class BlogComment < ActiveRecord::Base
 
   def user_name
     name = self.user ? self.user.name : self.name
-    if !self.site_url.blank?
-      return "<a href=\"#{self.site_url}\">#{name}</a>"
-    else
-      return name
-    end
+    "<a href=\"#{self.site_url}\">#{name}</a>" if !self.site_url.blank?
   end
 
   # Used to set more tracking for akismet
@@ -78,19 +61,6 @@ class BlogComment < ActiveRecord::Base
     self.user_ip    = request.remote_ip
     self.user_agent = request.env['HTTP_USER_AGENT']
     self.referrer   = request.env['HTTP_REFERER']
-  end
-
-  def akismet_attributes
-    {
-      :key                  => BlogKit.instance.settings['akismet_key'],
-      :blog                 => BlogKit.instance.settings['blog_url'],
-      :user_ip              => user_ip,
-      :user_agent           => user_agent,
-      :comment_author       => name,
-      :comment_author_email => email,
-      :comment_author_url   => site_url,
-      :comment_content      => body
-    }
   end
 
 

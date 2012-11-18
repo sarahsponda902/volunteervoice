@@ -29,15 +29,10 @@ class Feedback < ActiveRecord::Base
   ### callback methods ###
   # errors if feedback has no email and user is not logged in
   def validates_email
-    if !self.user_id
-      if !self.email
-        errors.add(:email, "must not be blank")
-        return false
-      end
+    unless self.user_id || self.email
+      errors.add(:email, "must not be blank")
+      return false
     end
   end
-  
-
-
-  
+ 
 end

@@ -32,17 +32,16 @@ class Contact < ActiveRecord::Base
   
   def any_errors?
     @errors = []
-    if self.email.nil? 
-      @errors << "Email cannot be blank"
-    end
-    if self.body.nil? 
-      @errors << "Body cannot be blank"
+    ["email", "body"].each do |fld|
+      if self.send(fld).nil?
+        @errors << "#{fld.capitalize} cannot be blank"
+      end
     end
     if self.body.length < 5 
-      @errors < "Body must be more than 4 characters" 
+      @errors << "Body must be more than 4 characters" 
     end
     if self.email.match(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i).nil?
-      @errors < "Email is not valid"
+      @errors << "Email is not valid"
     end
     @errors
   end

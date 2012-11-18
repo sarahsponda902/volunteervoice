@@ -62,16 +62,20 @@ class Organization < ActiveRecord::Base
   has_one :organization_account, :dependent => :destroy
   
   # attributes
-  attr_accessible :image, :name, :description, :show, :overall, :num_reviews, :program_id, :page_views, :misson, :phone, :email, :operating_since, :num_vols_date, :num_vols_yr, :application_process, :business_model, :program_model_string, :good_to_know, :reviews_count, :trining_resources, :price_ranges, :program_costs_breakdown, :program_costs_includes, :url, :run_by, :id_number, :volunteer_program_model, :price_ranges, :training_resources, :crop_x, :crop_y, :crop_w, :crop_h, :square_image, :program_costs_doesnt_include, :price_breakdown, :headquarters_location, :types_of_programs, :will_invite, :invite_email, :published_docs, :additional_fees, :full_time_staff, :crops
+  attr_accessible :image, :name, :description, :show, :overall, :num_reviews, :program_id, 
+  :page_views, :misson, :phone, :email, :operating_since, :num_vols_date, :num_vols_yr, 
+  :application_process, :business_model, :program_model_string, :good_to_know, :reviews_count, 
+  :trining_resources, :price_ranges, :program_costs_breakdown, :program_costs_includes, :url, 
+  :run_by, :id_number, :volunteer_program_model, :price_ranges, :training_resources, :crop_x, 
+  :crop_y, :crop_w, :crop_h, :square_image, :program_costs_doesnt_include, :price_breakdown, 
+  :headquarters_location, :types_of_programs, :will_invite, :invite_email, :published_docs, 
+  :additional_fees, :full_time_staff, :crops
   
   # callbacks
   validates_presence_of :image
   validates_uniqueness_of :name
   validates :image, :file_size => {:maximum => 0.5.megabytes.to_i}
-  before_save :add_http_to_url
-  before_save :square_image_crop
-  before_save :textilize_textareas
-  before_create :set_page_views_to_zero
+  before_save :add_http_to_url, :square_image_crop, :textilize_textareas
 
   # scopes
   scope :random, :order=>'RAND()', :limit=>1
@@ -89,28 +93,21 @@ class Organization < ActiveRecord::Base
 
 
   ###### callback methods ######
-  
-  # set initial # of organization's page views to zero
-  def set_page_views_to_zero
-    self.page_views = 0
-  end
+
   
   # crop image to be square
   def square_image_crop
     if self.crop_x.present? && self.crop_y.present? && self.crop_w.present? && self.crop_h.present?
-      image = MiniMagick::Image.open(self.image.url)
+      @image = MiniMagick::Image.open(self.image.url)
       # if image is too big, resize it before showing on crop page
       # this is to ensure that cropping isn't messed up by the crop selector not being in the right place
-      if image[:width] > 700
-        resize_scale = (700/image[:width].to_f) * 100
-        image.sample(resize_scale.to_s + "%")
-      end
-      image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
+      @image.sample(((700/@image[:width].to_f) * 100).to_s + "%") if @image[:width] > 700
+      @image.crop("#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}")
       
       # get rid of extra black border space
-      image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
+      @image.set("page", "#{self.crop_w}x#{self.crop_h}+#{self.crop_x}+#{self.crop_y}") 
       
-      self.square_image = image
+      self.square_image = @image
     end
   end
 
