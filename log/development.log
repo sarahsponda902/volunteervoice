@@ -52002,3 +52002,214 @@ Served asset /jquery.js - 304 Not Modified (0ms)
 
 Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 12:07:48 -0800
 Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2012-11-18 12:43:18 -0800
+Processing by PagesController#home as HTML
+  [1m[36mOrganization Load (11.3ms)[0m  [1mSELECT "organizations".* FROM "organizations" [0m
+  [1m[35mReview Load (0.9ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."show" = 't'
+  [1m[36mOrganization Load (0.2ms)[0m  [1mSELECT "organizations".* FROM "organizations" WHERE "organizations"."show" = 't'[0m
+  [1m[35mFeedback Load (0.2ms)[0m  SELECT "feedbacks".* FROM "feedbacks" WHERE "feedbacks"."show" = 't'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "organizations" [0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "reviews" 
+  [1m[36mUser Load (11.8ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  Rendered pages/home.html.erb within layouts/application (196.5ms)
+Completed 200 OK in 1017ms (Views: 745.4ms | ActiveRecord: 28.0ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /application.css - 304 Not Modified (20ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /blog_kit.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /errors.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /foundation.css - 304 Not Modified (3ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /lightbox.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /organization_accounts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /searches.css - 304 Not Modified (4ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /smartpaginator.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /style.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /jquery.js - 304 Not Modified (35ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 12:43:19 -0800
+Served asset /DonateButton.png - 304 Not Modified (8ms)
+
+
+Started GET "/assets/JosefinSlab-Regular-webfont.woff" for 127.0.0.1 at 2012-11-18 12:43:20 -0800
+Served asset /JosefinSlab-Regular-webfont.woff - 304 Not Modified (14ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-11-18 12:43:20 -0800
+Served asset /Museo_Slab_500-webfont.woff - 304 Not Modified (11ms)
+
+
+Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-11-18 12:43:20 -0800
+Served asset /BEBAS___-webfont.woff - 304 Not Modified (2ms)
+
+
+Started POST "/searches" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Processing by SearchesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/XemU1la5MWa9ZVZj4kuGgQkP11PBg31A4NvUpfYWj0=", "x"=>"0", "y"=>"0", "search"=>{"keywords"=>"hello"}}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (38.7ms)[0m  [1mINSERT INTO "searches" ("created_at", "keywords", "length_max_number", "length_max_param", "length_min_number", "length_min_param", "price_max", "price_min", "regions", "sent_from", "showing", "sizes", "sort_by", "subjects", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["created_at", Sun, 18 Nov 2012 12:43:22 PST -08:00], ["keywords", "hello"], ["length_max_number", 2], ["length_max_param", "years"], ["length_min_number", 0], ["length_min_param", "weeks"], ["price_max", 99999], ["price_min", 0], ["regions", nil], ["sent_from", nil], ["showing", nil], ["sizes", nil], ["sort_by", nil], ["subjects", nil], ["updated_at", Sun, 18 Nov 2012 12:43:22 PST -08:00]]
+  [1m[35m (6.3ms)[0m  commit transaction
+Redirected to http://localhost:3000/searches/4
+Completed 302 Found in 51ms (ActiveRecord: 45.0ms)
+
+
+Started GET "/searches/4" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Processing by SearchesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mSearch Exists (0.2ms)[0m  [1mSELECT 1 FROM "searches" WHERE "searches"."id" = 4 LIMIT 1[0m
+  [1m[35mSearch Load (0.1ms)[0m  SELECT "searches".* FROM "searches" WHERE "searches"."id" = ? LIMIT 1  [["id", "4"]]
+  [1m[36mProgram Load (6.1ms)[0m  [1mSELECT "programs".* FROM "programs" WHERE ("programs"."id" >= 0) ORDER BY "programs"."id" ASC LIMIT 500[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "searches".* FROM "searches" WHERE "searches"."id" = ? LIMIT 1  [["id", "4"]]
+  [1m[32mSOLR Request (1.8ms)[0m  [ path=#<RSolr::Client:0x007fcbbbcd5cb0> parameters={data: [1m[1mfq=type%3AProgram&q=hello&fl=%2A+score&qf=name_text+organization_name_text+location_name_text+description_text+start_dates_text+program_structure_text+partnered_local_organizations_text+cost_includes_text+accommodations_text+specific_location_text+food_situation_text+program_requirements_text&defType=dismax&start=0&rows=30[0m, method: [1m[1mpost[0m, params: [1m[1m{:wt=>:ruby}[0m, query: [1m[1mwt=ruby[0m, headers: [1m[1m{"Content-Type"=>"application/x-www-form-urlencoded; charset=UTF-8"}[0m, path: [1m[1mselect[0m, uri: [1m[1mhttp://localhost:8982/solr/select?wt=ruby[0m, open_timeout: [1m[1m[0m, read_timeout: [1m[1m[0m} ]
+
+ErrorPageRendered: Errno::ECONNREFUSED (Connection refused - connect(2)): app/models/search.rb:53:in `search_results'
+ app/controllers/searches_controller.rb:56:in `show'
+  Rendered errors/error_500.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+Completed 500 Internal Server Error in 264ms (Views: 101.8ms | ActiveRecord: 7.2ms | Solr: 1.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Served asset /application.css - 304 Not Modified (6ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Served asset /blog_kit.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Served asset /errors.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Served asset /foundation.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:22 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /lightbox.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /organization_accounts.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /searches.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /sessions.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /smartpaginator.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /style.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /DonateButton.png - 304 Not Modified (0ms)
+
+
+Started GET "/assets/JosefinSlab-Regular-webfont.woff" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /JosefinSlab-Regular-webfont.woff - 304 Not Modified (0ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-11-18 12:43:23 -0800
+Served asset /Museo_Slab_500-webfont.woff - 304 Not Modified (0ms)
