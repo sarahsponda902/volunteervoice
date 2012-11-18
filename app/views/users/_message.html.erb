@@ -19,7 +19,7 @@
 <table id="message-box<%=m.id%>" class="m-popup">
 	<tr><td>
 		<span class="mPopupFrom">From: 
-		<% if @user_ids.include?(m.sender_id)%>	
+		<% if @presenter.user_ids.include?(m.sender_id)%>	
 		<%= User.find(m.sender_id).username%>
 		<% else %>
 		<%= "???" %>
@@ -32,7 +32,7 @@
 	
 		<tr><td><span class="mPopupBody"><%= m.body.html_safe%></span ></td></tr>
 
-		<% if @user_ids.include?(m.sender_id)%>
+		<% if @presenter.user_ids.include?(m.sender_id)%>
 		<tr><td><p class="mPopupReplyButton">
 <image id="messageReplyButton" data-sender = "<%= m.sender_id%>" data-subject = "<%= m.subject%>" src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/reply.png"> </p></td></tr>
 		<% else %>
