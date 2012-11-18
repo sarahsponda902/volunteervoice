@@ -357,33 +357,12 @@ a.flag-window {
 				</div>
 			</div>
 			<div class="row" id="secondTop">
-				<!--<div class="three columns" id="userSquareImageContainer">
-					<%# if !(@user.square_image.url.nil?)%>
-				<img src="<%#=@user.square_image.url%>" id = "squareImage" onerror = "$(this).attr('src', '<%#= @user.photo.url %>')">
-					<%# else %>
-					<%#= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
-					<%# end %>
-				</div>-->
+
 		<div class= "eight columns" id="userInfoBox">
-	<!--<p id="username"><%= @user.username %> </p>-->
 	</div>
 		<div class="four columns" id="ageCountryBox">
 			<p id="userAgeCountry">
-<% if !(@user.profile_show)%> 
-	<%if @user.dob != nil%>
-	Age:
-	<% @now = Time.now.utc.to_date%>
-	<%= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
-	<%end%>
-	<br />
-	Country: <%= THECOUNTRIES[@user.country] %>
-	
-	<br />
-<% else%>
-	This user has hidden<br />
-	their age and country
-<% end %>
-	</p>
+			</p>
 	
 	<div id="messagesBox">
 		<% if user_signed_in? %>

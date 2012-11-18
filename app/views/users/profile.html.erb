@@ -790,35 +790,15 @@ a.usernameLink:hover {
 <div class="container" id="top">
 	<div class="row">
 		<div class="eleven columns" id="editChangeTopLinksContainer">
-			<p id="editChangeTopLinks"><a href="#edit-box" class="edit-window">My account</a>	<!--<a href="#upload-box" class="upload-window">Change Profile Image</a> --></p>
+			<p id="editChangeTopLinks"><a href="#edit-box" class="edit-window">My account</a></p>
 		</div>
 	</div>
 	<div class="row" id="userBoxContainer">
-		<!--<div class="three columns" id="userImageContainer">
-		<%#if !(current_user.square_image.url.nil?)%>
-		<img src="<%=current_user.square_image.url%>" id = "userImage" onerror = "$(this).attr('src', '<%= current_user.photo.url %>')">
-		<%# else %>
-		<%#= image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/noImage.png"%>
-		<%# end %>-->
 
 	</div>
 	<div class= "eight columns" id="usernameContainer">
 		<p id="username"><%= current_user.username %> </p>
 	</div>
-	<!--<div class="four columns" id="dobContainer">
-	<p id="dob">
-	<%#if current_user.dob != nil%>
-	Age: 
-	<%# @now = Time.now.utc.to_date%>
-	<%#= @now.year - current_user.dob.year - ((@now.month > current_user.dob.month || (@now.month == current_user.dob.month && @now.day >= current_user.dob.day)) ? 0 : 1) %>
-	<%# end %>
-	<br />
-	Country: <%#= THECOUNTRIES[current_user.country] %><br />
-
-<br />
-<p align="right">
-</p>
-</p>-->
 </div>
 
 
