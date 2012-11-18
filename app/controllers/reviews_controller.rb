@@ -99,7 +99,7 @@ class ReviewsController < ApplicationController
   # change whether the review can be displayed on the home page or not
   def changeShow
     @review = Review.find(params[:id])
-    @review.update_params({:show => !@review.show})
+    @review.update_attributes({:show => !@review.show})
     redirect_to reviews_path
   end
 
@@ -107,7 +107,7 @@ class ReviewsController < ApplicationController
   # change whether the review can be displayed at all 
   def changeFlagShow
     @review = Review.find(params[:id])
-    @review.update_params({:flag_show => !@review.flag_show})
+    @review.update_attributes({:flag_show => !@review.flag_show})
     redirect_to flags_path
   end
 
