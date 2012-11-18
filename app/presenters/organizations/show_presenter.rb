@@ -1,7 +1,8 @@
 class Organizations::ShowPresenter
   def initialize(org_id)
     @organization = Organization.find(org_id)
-
+    puts @organization
+    puts org_id
     # saving page views count
     @organization.page_views = (@organization.page_views + 1)
     @organization.save
@@ -47,8 +48,8 @@ class Organizations::ShowPresenter
   def overall
     @overall = 0
     if @organization.reviews.count != 0 # can't divide by zero
-      @organization.reviews.each do |f|
-        @overall = @overall + f.overall
+      @organization.reviews.each do |r|
+        @overall = @overall + r.overall
       end
       @overall = @overall / @results.count
     end

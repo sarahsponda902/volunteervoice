@@ -21,6 +21,7 @@
 			<br />
 			<br />
 			<p class="starRating"><%= render :partial => "bigStar", :locals => {:star => organization.roundup(overall)}%></p>
+			<%= overall %>
 			<br />
 
 			<p class="starRatingBasedOn">Based on <%= (pluralize @results.count, "reviews") unless @results.nil?%></p> 
