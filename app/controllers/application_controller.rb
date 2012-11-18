@@ -68,11 +68,10 @@ class ApplicationController < ActionController::Base
   private
 
   [[:not_found, "404"], [:error, "500"]].each do |msg, error|
-    define_method "render_#{msg}" do |exception|
+    define_method "render_#{msg.to_s}" do |exception|
       Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
       respond_to do |format|
         format.html { render "errors/error_#{error}", layout: 'layouts/application', status: error.to_i }
-        return
       end
     end
   end
