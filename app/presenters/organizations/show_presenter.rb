@@ -49,7 +49,7 @@ class Organizations::ShowPresenter
       @organization.reviews.each do |r|
         @overall = @overall + r.overall
       end
-      @overall = @overall / num_reviews.count
+      @overall = @overall / num_reviews
     end
     @overall
   end
