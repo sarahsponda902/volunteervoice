@@ -24,7 +24,6 @@ class MadMimiEmail < ActiveRecord::Base
         'position' => resource.position || nil, 
         'email' => resource.email,'country' => resource.country, 
         'organization_name' => resource.name || nil}]}
-      end
     end
   end
 end
