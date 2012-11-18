@@ -5,80 +5,68 @@
 	font-size:3.5em; 
 	line-height:1.5em;
 }
-.dateTime {
+.dateTime { /* date and time of new_review */
 	color:blue;
 }
-.good {
+.good { /* overall rating = good */
 	color:green;
 }
-.fair {
+.fair { /* overall rating = fair */
 	color:orange;
 }
-.poor {
+.poor { /* overall rating = poor */
 	color: red;
 }
-.oops {
-	margin-top:100px;
-	text-align:center;
-	font-size:3em;
-	color:#e67b5a;
-	font-family:architectsDaughterRegular;
-}
-</style>
 
-<% if user_signed_in? && current_user.admin?%>
+</style>
 
 <div class="container">
 	<div class="row">
 		<div class="twelve columns">
-<p align="center" class="pageTitle">Listing new_reviews</p><br />
+			<p align="center" class="pageTitle">Listing new_reviews</p><br />
 
-<table>
-	<thead>
-  <tr>
-	<th style="width:15%">User</th>
-	<th style="width:10%;">Created At</th>
-	<th style="width:5%;">Overall</th>
-    <th style="width:40%;">Truncated Body</th>
-	<th style="width:7%;">Publish?</th>
-    <th style="width:5%">View?</th>
-    <th style="width:5%;">Edit?</th>
-    <th style="width:7%;">Destroy?</th>
-  </tr>
-</thead>
-<tdata>
-<% @new_reviews.each do |new_review| %>
+			<table>
+				<thead>
+					<tr>
+						<th style="width:15%">User</th>
+						<th style="width:10%;">Created At</th>
+						<th style="width:5%;">Overall</th>
+						<th style="width:40%;">Truncated Body</th>
+						<th style="width:7%;">Publish?</th>
+						<th style="width:5%">View?</th>
+						<th style="width:5%;">Edit?</th>
+						<th style="width:7%;">Destroy?</th>
+					</tr>
+				</thead>
+				<tdata>
+				<% @new_reviews.each do |new_review| %>
 
-  <tr>
-	<td><%= link_to User.find(new_review.user_id).username, User.find(new_review.user_id)%></td>
-	<td><p class="dateTime"><%= new_review.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
-	<td>	<% if new_review.overall >= 4%>
-		<p class="good"><%= new_review.overall%></p>
-		<% end %>
-		<% if new_review.overall > 2 && new_review.overall < 4 %>
-		<p class="fair"><%= new_review.overall%></p>
-		<% end %>
-		<% if new_review.overall <= 2 %>
-		<p class="poor"><%= new_review.overall%></p>
-		<% end %></td>
-	<td><%= new_review.truncated100.html_safe%></td>
-	<td><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/publishReview.png"), :controller => "reviews", :action =>"new", :created_at => new_review.created_at, :updated_at => new_review.updated_at, :body => new_review.body, :user_id => new_review.user_id, :photo => new_review.photo, :before => new_review.before, :terms => new_review.terms, :preparation => new_review.preparation, :support => new_review.support, :impact => new_review.impact, :structure => new_review.structure, :overall => new_review.overall, :time_frame => new_review.time_frame%></td>
-		
-		
-    <td><%= link_to 'View', new_review %></td>
-    <td><%= link_to 'Edit', edit_new_review_path(new_review) %></td>
-    <td><%= button_to "Delete", new_review_path(new_review.id), :method => :delete %></td>
-  </tr>
-<% end %>
-</tdata>
-</table>
+				<tr>
+					<td><%= link_to User.find(new_review.user_id).username, User.find(new_review.user_id)%></td>
+					<td><p class="dateTime"><%= new_review.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%></p></td>
+					<td><% if new_review.overall >= 4%>
+						<p class="good"><%= new_review.overall%></p>
+						<% end %>
+						<% if new_review.overall > 2 && new_review.overall < 4 %>
+						<p class="fair"><%= new_review.overall%></p>
+						<% end %>
+						<% if new_review.overall <= 2 %>
+						<p class="poor"><%= new_review.overall%></p>
+						<% end %></td>
+						<td><%= new_review.truncated100.html_safe%></td>
+						<td><%= link_to (image_tag "https://s3-us-west-1.amazonaws.com/volunteervoice/images/publishReview.png"), :controller => "reviews", :action =>"create", :review => new_review %></td>
 
-<br />
 
+						<td><%= link_to 'View', new_review %></td>
+						<td><%= link_to 'Edit', edit_new_review_path(new_review) %></td>
+						<td><%= button_to "Delete", new_review_path(new_review.id), :method => :delete %></td>
+					</tr>
+					<% end %>
+				</tdata>
+			</table>
+
+			<br />
+
+		</div>
+	</div>
 </div>
-</div>
-</div>
-<% else %>
-<p class="oops">
-Oops! This page is only for admins</p>
-<% end %>

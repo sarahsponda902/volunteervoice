@@ -1,6 +1,2 @@
 <%= javascript_include_tag "/assets/jquery.js"%>
-<% if user_signed_in?%>
 <%= render 'form' %>
-<% else %>
-<%= redirect_to :controller => "registrations", :action => "mustBe"%>
-<% end %>

@@ -79,7 +79,8 @@ class User < ActiveRecord::Base
   before_create :set_unread_message_count, :send_message
   
   # associations
-  has_many :messages, :flags
+  has_many :messages
+  has_many :flags
   has_many :reviews, :dependent => :destroy
   has_many :favorites, :dependent => :destroy
   has_many :feedbacks, :dependent => :destroy

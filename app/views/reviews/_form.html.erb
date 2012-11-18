@@ -418,33 +418,14 @@ div.star-rating{background:transparent!important;overflow:hidden!important;}
 
 
 <%= form_for @review do |f| %>
-	<% if params[:user_id].nil? %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<% else %>
-	<%= f.hidden_field :user_id, :value => params[:user_id] %>
-	<% end %>
-	<% if !(params[:created_at].nil?)%>
-	<%= f.hidden_field :created_at, :value => params[:created_at]%>
-	<% end %>
-	<% if !(params[:updated_at].nil?)%>
-	<%= f.hidden_field :updated_at, :value => params[:updated_at]%>
-	<% end %>
-	
-	<% if !(params[:preparation].nil?)%>
-	<%= f.hidden_field :preparation, :value => params[:preparation]%>
-	<% end %>
-	<% if !(params[:support].nil?)%>
-	<%= f.hidden_field :support, :value => params[:support]%>
-	<% end %>
-	<% if !(params[:impact].nil?)%>
-	<%= f.hidden_field :impact, :value => params[:impact]%>
-	<% end %>
-	<% if !(params[:structure].nil?)%>
-	<%= f.hidden_field :structure, :value => params[:structure]%>
-	<% end %>
-	<% if !(params[:overall].nil?)%>
-	<%= f.hidden_field :overall, :value => params[:overall]%>
-	<% end %>
+	<%= f.hidden_field :created_at%>
+	<%= f.hidden_field :updated_at%>
+	<%= f.hidden_field :preparation%>
+	<%= f.hidden_field :support%>
+	<%= f.hidden_field :impact%>
+	<%= f.hidden_field :structure%>
+	<%= f.hidden_field :overall%>
 
 
 

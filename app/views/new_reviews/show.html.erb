@@ -17,58 +17,52 @@ img.userPhoto {
 }
 </style>
 
-
-<% if user_signed_in? && current_user.admin?%>
-
 <div class="container top">
 	<div class="row">
 		<div class="twelve columns">
-<p align="center" class="pageTitle">Showing Review # <%= @new_review.id%></p><br />
+			<p align="center" class="pageTitle">Showing Review # <%= @new_review.id%></p><br />
+		</div>
+		<div class="eleven columns">
+			<p class="subTitle">About the Review</p>
+			Created: <%= @new_review.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%>
+			<br />
+			Last updated: <%= @new_review.updated_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%><br />
+			<br />
+			<p class="subTitle">About the User</p>
+			<%= image_tag @new_review.photo.url, :class => "userPhoto"%> <br />Username (link): <%= link_to User.find(@new_review.user_id).username, User.find(@new_review.user_id)%>
+			<br />
+			Volunteered With This Company Before? <b>
+				<% if(@new_review.before)%> 
+				yes 
+				<%else%>
+				no 
+				<%end%>
+			</b>
+			<br />
+			Agreed to Terms and Conditions? (Should always read "yes"): 	<b>
+				<% if(@new_review.terms)%> 
+				yes 
+				<%else%>
+				no 
+				<%end%>
+			</b>
+			<br /><br />
+			<p class="subTitle">About the Program/Organization</p>
+			Organization: <%= @new_review.organization%>&nbsp;&nbsp;&nbsp; How many NEW orgs with this exact name (self-including): <b><%= NewReview.where(:organization => @new_review.organization).count%></b><br />
+			Program: <%= @new_review.program%><br />
+			Time frame: <%= @new_review.time_frame%><br /><br />
+
+			<p class="subTitle">Review Ratings:</p><br />
+			Preparation/Orientation: <%=@new_review.preparation%><br />
+			Support: <%=@new_review.support%><br />
+			Project Impact: <%=@new_review.impact%><br />
+			Project Structure/Sustainability: <%=@new_review.structure%><br />
+			Overall: <%=@new_review.overall%><br /><br />
+
+
+			<%= link_to 'Edit', edit_new_review_path(@new_review) %> | 
+			<%= link_to 'Destroy', :controller => "new_reviews", :action => "destroy", :id => @new_review.id %> | 
+			<%= link_to 'Publish', :controller => "reviews", :action =>"create", :review => @new_review %>
+		</div>
+	</div>
 </div>
-<div class="eleven columns">
-	<p class="subTitle">About the Review</p>
-Created: <%= @new_review.created_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%>
-<br />
-Last updated: <%= @new_review.updated_at.to_date.strftime("%m/%e/%Y").gsub(/^0/, '')%><br />
-<br />
-	<p class="subTitle">About the User</p>
-<%= image_tag @new_review.photo.url, :class => "userPhoto"%> <br />Username (link): <%= link_to User.find(@new_review.user_id).username, User.find(@new_review.user_id)%>
-<br />
-Volunteered With This Company Before? <b>
-	<% if(@new_review.before)%> 
-		yes 
-	<%else%>
-	 	no 
-	<%end%>
-	</b>
-	<br />
-Agreed to Terms and Conditions? (Should always read "yes"): 	<b>
-		<% if(@new_review.terms)%> 
-			yes 
-		<%else%>
-		 	no 
-		<%end%>
-		</b>
-<br /><br />
-<p class="subTitle">About the Program/Organization</p>
-Organization: <%= @new_review.organization%>&nbsp;&nbsp;&nbsp; How many NEW orgs with this exact name (self-including): <b><%= NewReview.where(:organization => @new_review.organization).count%></b><br />
-Program: <%= @new_review.program%><br />
-Time frame: <%= @new_review.time_frame%><br /><br />
-
-<p class="subTitle">Review Ratings:</p><br />
-Preparation/Orientation: <%=@new_review.preparation%><br />
-Support: <%=@new_review.support%><br />
-Project Impact: <%=@new_review.impact%><br />
-Project Structure/Sustainability: <%=@new_review.structure%><br />
-Overall: <%=@new_review.overall%><br /><br />
-
-
-<%= link_to 'Edit', edit_new_review_path(@new_review) %> | <%= link_to 'Destroy', @new_review, confirm: 'Are you sure?', method: :delete %> | <%= link_to 'Publish', :controller => "reviews", :action =>"new", :created_at => @new_review.created_at, :updated_at => @new_review.updated_at, :body => @new_review.body.html_safe, :user_id => @new_review.user_id, :photo => @new_review.photo, :before => @new_review.before, :terms => @new_review.terms, :preparation => @new_review.preparation, :support => @new_review.support, :impact => @new_review.impact, :structure => @new_review.structure, :overall => @new_review.overall, :time_frame => @new_review.time_frame%>
-</div>
-</div>
-</div>
-
-
-<% else %>
-Sorry, you must be an admin to view this page!
-<% end %>

@@ -59,8 +59,6 @@ class ReviewsController < ApplicationController
   # User only write-a-review page
   def new
     @review = Review.new
-    @review.organization_id = params[:organization_id]
-    @review.program_id = params[:program_id]
     respond_with(@review)
   end
 
