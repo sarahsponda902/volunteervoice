@@ -51687,3 +51687,134 @@ Served asset /DonateButton.png - 304 Not Modified (0ms)
 
 Started GET "/assets/BEBAS___-webfont.woff" for 127.0.0.1 at 2012-11-18 11:19:37 -0800
 Served asset /BEBAS___-webfont.woff - 304 Not Modified (22ms)
+
+
+Started GET "/users/profile" for 127.0.0.1 at 2012-11-18 11:56:46 -0800
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."id" = 1 LIMIT 1[0m
+  [1m[35mUser Load (74.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mMessage Load (0.2ms)[0m  [1mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" = 1 AND "messages"."recipient_deleted" = 'f'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" = 1 AND "messages"."recipient_deleted" = 'f'
+  [1m[36mMessage Load (0.1ms)[0m  [1mSELECT "messages".* FROM "messages" WHERE "messages"."sender_id" = 1 AND "messages"."sender_deleted" = 'f'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "messages".* FROM "messages" WHERE "messages"."sender_id" = 1 AND "messages"."sender_deleted" = 'f'
+  [1m[36mFavorite Load (0.1ms)[0m  [1mSELECT "favorites".* FROM "favorites" WHERE "favorites"."user_id" = 1[0m
+  [1m[35mOrganization Load (0.2ms)[0m  SELECT "organizations".* FROM "organizations" 
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT 1 FROM "users" WHERE ("users"."username" = 'sarahsponda902' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "messages".* FROM "messages" WHERE "messages"."recipient_id" = 1 AND "messages"."recipient_deleted" = 'f'[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "messages".* FROM "messages" WHERE "messages"."sender_id" = 1 AND "messages"."sender_deleted" = 'f'
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT 1 FROM "users" WHERE ("users"."username" = 'sarahsponda902' AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.0ms)[0m  [1mcommit transaction[0m
+  Rendered users/profile.html.erb within layouts/application (531.9ms)
+Completed 200 OK in 903ms (Views: 724.5ms | ActiveRecord: 79.4ms | Solr: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /application.css - 304 Not Modified (27ms)
+
+
+Started GET "/assets/blog_kit.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /blog_kit.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/errors.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /errors.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/foundation.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /foundation.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/imgareaselect-default.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /imgareaselect-default.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jQuery-star-rating.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /jQuery-star-rating.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery-ui-1.8.22.custom.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /jquery-ui-1.8.22.custom.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery.lightbox-0.5.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /jquery.lightbox-0.5.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/lightbox.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /lightbox.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/mega-pull-out-menu-styles.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /mega-pull-out-menu-styles.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/organization_accounts.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /organization_accounts.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:47 -0800
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/searches.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /searches.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /sessions.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/smartpaginator.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /smartpaginator.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /style.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/assets/lightbox.css" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /lightbox.css - 304 Not Modified (34ms)
+
+
+Started GET "/assets/jquery.smooth-scroll.min.js" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /jquery.smooth-scroll.min.js - 304 Not Modified (4ms)
+
+
+Started GET "/assets/lightbox.js" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /lightbox.js - 304 Not Modified (3ms)
+
+
+Started GET "/assets/smartpaginator.css" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /smartpaginator.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/smartpaginator.js" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /smartpaginator.js - 304 Not Modified (29ms)
+
+
+Started GET "/assets/sendTheMessage.png" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /sendTheMessage.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/DonateButton.png" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /DonateButton.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/JosefinSlab-Regular-webfont.woff" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /JosefinSlab-Regular-webfont.woff - 304 Not Modified (5ms)
+
+
+Started GET "/assets/Museo_Slab_500-webfont.woff" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /Museo_Slab_500-webfont.woff - 304 Not Modified (2ms)
+
+
+Started GET "/assets/ArchitectsDaughter-webfont.woff" for 127.0.0.1 at 2012-11-18 11:56:48 -0800
+Served asset /ArchitectsDaughter-webfont.woff - 304 Not Modified (40ms)
