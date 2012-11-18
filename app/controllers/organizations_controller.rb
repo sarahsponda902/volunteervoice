@@ -64,6 +64,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations.json
   def create
     @organization = Organization.new(params[:organization])
+    @organization.reviewed_at = REVIEWED_AT_OLD
     respond_with(@organization) do
       if @organization.save
         if @organization.will_invite && @organization.invite_email.present?
