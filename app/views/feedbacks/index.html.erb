@@ -65,7 +65,7 @@
 
 						<!-- body of feedback (truncated to 100 chars) -->
 						<td width ="50%">
-							<%= textilized(truncate untextilized(f.body), :length => 100).html_safe %>
+							<%= Feedback.textilized(truncate Feedback.untextilized(f.body), :length => 100).html_safe %>
 						</td><!-- end body -->
 
 						<!-- link to view feedback in full -->

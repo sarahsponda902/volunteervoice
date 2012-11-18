@@ -34,5 +34,14 @@ class Feedback < ActiveRecord::Base
       return false
     end
   end
- 
+
+  def self.untextilized(textile)
+    return Nokogiri::HTML.fragment(textile).text
+  end
+
+  # for textilizing plain text from a textarea box
+  # so that newlines and formatting are preserved
+  def self.textilized(text)
+    return RedCloth.new( ActionController::Base.helpers.sanitize( text ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
+  end 
 end

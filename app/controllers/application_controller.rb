@@ -72,6 +72,7 @@ class ApplicationController < ActionController::Base
       Rails.logger.error("\nErrorPageRendered: #{exception.class} (#{exception.message}): #{Rails.backtrace_cleaner.clean(exception.backtrace).join("\n ")}")
       respond_to do |format|
         format.html { render "errors/error_#{error}", layout: 'layouts/application', status: error.to_i }
+        return
       end
     end
   end

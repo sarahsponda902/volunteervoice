@@ -2,7 +2,6 @@ class FeedbacksController < ApplicationController
   before_filter :check_for_admin, :except => [:new, :create, :thank_you]
   respond_to :html, :json
   include ActionView::Helpers::TextHelper
-  include ApplicationHelper
 
   # GET /feedbacks
   # GET /feedbacks.json
