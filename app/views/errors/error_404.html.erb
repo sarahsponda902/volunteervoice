@@ -110,7 +110,7 @@ a.contact-window:hover {
 	margin-top:-30px;
 }
 </style>
-
+<% @contact = Contact.new%>
 <div class="container">
 	<div class="row">
 		<div class="twelve columns" id="top">
@@ -158,7 +158,7 @@ a.contact-window:hover {
 	<p class="popupTitle">Contact Us</p><!-- end popup title -->
 
 	<!-- BEGIN FORM FOR CONTACT EMAIL -->
-	<%= form_for(@contact) do |f| %>
+	<%= form_for (@contact) do |f|%>
 		<!-- hidden form field that tells controller to which mailer method 
 				it should send completed form -->
 		<%= f.hidden_field :to_whom, :value => "contact"%><!-- end hidden field -->
