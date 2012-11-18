@@ -432,7 +432,7 @@ a.bannerLink:hover {
 		<a href="/organizations/<%=f.organization_id%>" class="red-link"> "<%=Organization.find(f.organization_id).name%>"</a>
 	</div>
 	<div>
-		<%= (truncate f.description.gsub(%r{</?[^>]+?>}, ''), :length => 130).html_safe%>
+		<%= (truncate f.body.gsub(%r{</?[^>]+?>}, ''), :length => 130).html_safe%>
 	</div>
 	
 	
