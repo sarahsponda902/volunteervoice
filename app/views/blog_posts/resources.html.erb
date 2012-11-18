@@ -444,8 +444,8 @@ a.leftColumnTitleOfSource:hover {
 			
 			<!-- vvi blog posts -->
 			<div id="divOurBlog">
-				<% @our_blog.each do |f| %>
-					<%= render :partial => "our_blog", :locals => {:blog_post => f}%>
+				<% @our_blog.each do |blog_post| %>
+					<%= render :partial => "our_blog", :locals => {:blog_post => blog_post}%>
 				<% end %>
 			</div><!-- end vvi blog posts -->
 			

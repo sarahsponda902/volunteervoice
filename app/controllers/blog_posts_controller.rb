@@ -12,11 +12,7 @@ class BlogPostsController < ApplicationController
   # for converting textile back to regular text in 'create'
   include ActionView::Helpers::TextHelper
 
-
   helper :blog
-
-  # choose_layout never used, but left in for possible future use
-  layout :choose_layout
 
   before_filter :require_user, :except => [:index, :show, :tag, :resources, :resources_search]
   before_filter :require_admin, :except => [:index, :show, :tag, :resources, :resources_search]
@@ -180,33 +176,18 @@ class BlogPostsController < ApplicationController
 
   ## for before_filter call
   def require_admin
-    if !current_user || !current_user.admin?
+    unless current_user && current_user.admin?
       flash[:notice] = 'You must be an admin to view this page'
       redirect_to blog_posts_path
-      return false
     end
-
-    return true
   end
 
 
   ## for before_filter call
   def require_user
-    if !current_user
+    unless current_user
       flash[:notice] = 'You must be logged in to view this page'
       redirect_to blog_posts_path
-      return false
-    end
-
-    return true
-  end
-
-  ## unused, but might use in future
-  def choose_layout
-    if ['new', 'edit', 'create', 'update'].include?(params[:action])
-      BlogKit.instance.settings['admin_layout'] || 'application'
-    else
-      BlogKit.instance.settings['layout'] || 'application'
     end
   end
 
