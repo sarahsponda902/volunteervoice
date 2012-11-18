@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121105082113) do
+ActiveRecord::Schema.define(:version => 20121118042723) do
 
   create_table "blog_comments", :force => true do |t|
     t.integer  "blog_post_id"
@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(:version => 20121105082113) do
     t.integer  "user_id"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
-    t.boolean  "show"
+    t.boolean  "show",         :default => false
     t.string   "email"
     t.text     "truncated100"
     t.boolean  "admin_read",   :default => false
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(:version => 20121105082113) do
     t.datetime "updated_at",                           :null => false
     t.boolean  "recipient_deleted", :default => false
     t.datetime "read_at"
-    t.boolean  "sender_deleted"
+    t.boolean  "sender_deleted",    :default => false
     t.text     "body"
   end
 
@@ -236,10 +236,10 @@ ActiveRecord::Schema.define(:version => 20121105082113) do
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.integer  "program_id"
-    t.boolean  "show"
+    t.boolean  "show",                         :default => false
     t.integer  "page_views"
     t.decimal  "overall"
     t.integer  "num_reviews"
@@ -278,6 +278,7 @@ ActiveRecord::Schema.define(:version => 20121105082113) do
     t.text     "application_process"
     t.text     "price_breakdown"
     t.boolean  "crops"
+    t.datetime "reviewed_at",                                     :null => false
   end
 
   create_table "pages", :force => true do |t|
@@ -359,7 +360,7 @@ ActiveRecord::Schema.define(:version => 20121105082113) do
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
     t.integer  "user_id"
-    t.boolean  "show"
+    t.boolean  "show",              :default => false
     t.integer  "organization_id"
     t.boolean  "before"
     t.boolean  "terms"
@@ -382,7 +383,7 @@ ActiveRecord::Schema.define(:version => 20121105082113) do
     t.string   "photo10"
     t.text     "truncated100"
     t.text     "truncated200"
-    t.boolean  "flag_show"
+    t.boolean  "flag_show",         :default => true
     t.boolean  "admin_read",        :default => false
   end
 

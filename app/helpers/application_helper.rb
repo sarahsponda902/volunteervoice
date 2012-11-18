@@ -4,9 +4,7 @@ module ApplicationHelper
   ## Taken from mihserf, profile at http://apidock.com/users/mihserf
   def breaking_word_wrap(text, *args)
     options = args.extract_options!
-    unless args.blank?
-      options[:line_width] = args[0] || 80
-    end
+    options[:line_width] = args[0] || 80 unless args.blank?
     options.reverse_merge!(:line_width => 80)
     text = text.split(" ").collect do |word|
       word.length > options[:line_width] ? word.gsub(/(.{1,#{options[:line_width]}})/, "\\1 ") : word

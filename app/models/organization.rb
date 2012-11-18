@@ -138,7 +138,7 @@ class Organization < ActiveRecord::Base
   
   
   ###### Other methods ######
-  
+
   # for un-textilizing textile/html text
   # so that it can be edited without the html tags in a textarea box
   def untextilized(textile)

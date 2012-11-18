@@ -25,14 +25,7 @@ class BlogKit
 	end
 	
 	def load_config
-		if defined?(Rails)
-			rails_root = Rails.root
-		elsif defined?(RAILS_ROOT)
-			rails_root = RAILS_ROOT
-		else
-			puts "Unable to load rails"
-			return
-		end
+		rails_root = RAILS_ROOT
 		file_name = "#{rails_root}/config/blog_kit.yml"
 		if File.exists?(file_name)
 			begin

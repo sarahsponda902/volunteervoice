@@ -1,5 +1,6 @@
 class FeedbacksController < ApplicationController
   before_filter :check_for_admin, :except => [:new, :create, :thank_you]
+  respond_to :html, :json
   include ActionView::Helpers::TextHelper
 
   # GET /feedbacks
@@ -8,11 +9,7 @@ class FeedbacksController < ApplicationController
   # Admin only index page
   def index
     @feedbacks = Feedback.all.sort_by(&:created_at).reverse
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @feedbacks }
-    end
+    respond_with @feedbacks 
   end
 
   # GET /feedbacks/1
@@ -23,11 +20,7 @@ class FeedbacksController < ApplicationController
   #    but keeping it for possible future use)
   def show
     @feedback = Feedback.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @feedback }
-    end
+    respond_with @feedback
   end
 
 
@@ -38,11 +31,7 @@ class FeedbacksController < ApplicationController
   #   note - only gets called when there is an error from popup
   def new
     @feedback = Feedback.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @feedback }
-    end
+    respond_with @feedback
   end
 
 
@@ -51,15 +40,8 @@ class FeedbacksController < ApplicationController
   # POST /feedbacks.json
   def create
     @feedback = Feedback.new(params[:feedback])
-    respond_to do |format|
-      if @feedback.save
-        format.html { redirect_to '/feedbacks/thank_you', notice: 'Feedback was successfully created.' }
-        format.json { render json: @feedback, status: :created, location: @feedback }
-      else
-        flash[:notice] = flash[:notice].to_a.concat @feedback.errors.full_messages
-        format.html { render action: "new" }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
-      end
+    respond_with(@feedback) do
+      redirect_to "/feedbacks/thank_you" if @feedback.save
     end
   end
 
@@ -84,15 +66,9 @@ class FeedbacksController < ApplicationController
   # Admin only
   def changeShow
     @feedback = Feedback.find(params[:id])
-    if @feedback.show
-      @feedback.show = false
-    else
-      @feedback.show = true
-    end
+    @feedback.show = !@feedback.show
     @feedback.save
-    respond_to do |format|
-      format.html { redirect_to feedbacks_url }
-    end
+    redirect_to feedbacks_path
   end
 
   private

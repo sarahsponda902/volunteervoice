@@ -2,22 +2,21 @@ class MessagesController < ApplicationController
   include ActionView::Helpers::TextHelper
   before_filter :authenticate_user!
   before_filter :check_for_admin, :only => [:index]
-
+  respond_to :html, :json
+  
   # GET /messages/new
   # GET /messages/new.json
   def new
     @message = Message.new
     @message.recipient_id = params[:recipient_id]
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @message }
-    end
+    respond_with(@message)
   end
 
   # Admin only index page
   # Shows only the sender ID and recipient ID on the page, no message content
   def index
     @messages = Message.find(:all, :order => "created_at").reverse
+    respond_with(@messages)
   end
 
 
@@ -25,27 +24,16 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
-
-    # textilize body
     @message.body = RedCloth.new( ActionController::Base.helpers.sanitize( @message.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-
-    # update recipient's unread message count
-    @recipient = User.find(@message.recipient_id)
-    @recipient.unread_messages = @recipient.unread_messages + 1
-    @recipient.save
-
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @recipient, :notice =>'Message was sent' }
-        format.json { render :json => @message, :status => :created, :location => @message }
-      else
-        # undo textilization so it appears normal in the textbox
-        @message.body = Nokogiri::HTML.fragment(@message.body).text
-
-        format.html { render :action => "new" }
-        format.json { render :json => @message.errors, :status => :unprocessable_entity }
-      end
+    if @message.save
+      flash[:notice] = "Message was sent"
+      @recipient = User.find(@message.recipient_id)
+      @recipient.unread_messages = @recipient.unread_messages + 1
+      @recipient.save 
+    else
+      @message.body = Nokogiri::HTML.fragment(@message.body).text
     end
+    respond_with(@message)
   end
 
   # DELETE /messages/1
@@ -56,10 +44,8 @@ class MessagesController < ApplicationController
     if user_signed_in? && ((current_user.admin?) || (current_user.id == @message.sender_id) || (current_user.id == @message.recipient_id))
       @message.destroy
     end
-
-    respond_to do |format|
-      format.html { redirect_to "/users/profile" }
-      format.json { head :no_content }
+    respond_with(@message) do
+      redirect_to "/users/profile"
     end
 
   end

@@ -14,5 +14,17 @@
 #  list_names     :text
 #
 
-class MadMimiEmail < ActiveRecord::Base  
+class MadMimiEmail < ActiveRecord::Base
+  [[User, :notify], [User, :admin], [OrganizationAccount, :notify]].each do |klass, column|
+    define_method "get_list_names" do
+      klass.where(column => true).map {|resource| [resource.email, {"username" => resource.username, 
+        "firstname" => resource.first_name if resource.respond_to?(first_name), 
+        "lastname" => resource.last_name if resource.respond_to?(last_name), 
+        "unsubscribe_link" => "volunteervoice.org/#{klass.underscore}s/#{resource.id}/change_subscription",
+        'position' => resource.position if resource.respond_to?(position), 
+        'email' => resource.email,'country' => resource.country, 
+        'organization_name' => resource.name if resource.respond_to?(name)}]}
+      end
+    end
+  end
 end

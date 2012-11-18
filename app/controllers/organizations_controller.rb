@@ -4,27 +4,11 @@ class OrganizationsController < ApplicationController
 
   before_filter :check_for_admin, :only => [:index, :crop, :edit, :create, :changeShow, :new]
   before_filter :check_for_admin_or_org_account, :only => [:update]
+  respond_to :html, :json, :xml
 
-
-  # can get here from home page by clicking "# organizations so far" on home page
-  # shows all organizations we have so far, sorted
-  # default sort is highest rated -> lowest rated
   def show_all
-    @sort_by = params[:sort_by]
-    if @sort_by.nil? || @sort_by == "rating_high"
-      @organizations = Organization.all.sort_by(&:overall).reverse
-    elsif @sort_by == "rating_low"
-      @organizations = Organization.all.sort_by(&:overall)
-    elsif @sort_by == "review_recent"
-      @organizations = Organization.all.sort_by(&:latest_review_time).reverse
-    elsif @sort_by == "profiled_recent"
-      @organizations = Organization.all.sort_by(&:created_at).reverse
-    elsif @sort_by == "alphabetical_az"
-      @organizations = Organization.all.sort_by(&:name)
-    else # if sort_by == 'alphabetical_za'
-      @organizations = Organization.all.sort_by(&:name).reverse
-    end
-
+    @organizations = Organization.order(params[:sort_by] || "overall desc")
+    respond_with(@organizations)
   end
 
 
@@ -34,10 +18,7 @@ class OrganizationsController < ApplicationController
   # Admin only
   def index
     @organizations = Organization.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @organizations }
-    end
+    respond_with(@organizations)
   end
 
 
@@ -45,6 +26,7 @@ class OrganizationsController < ApplicationController
   # Admin only crop organization's image page
   def crop
     @organization = Organization.find(params[:id])
+    respond_with(@organization)
   end
 
 
@@ -56,67 +38,39 @@ class OrganizationsController < ApplicationController
     @presenter = Organizations::ShowPresenter.new(params[:id])
     @flag = Flag.new # for the flagging a review form
 
-    # for the in-place editing (mainly for organization accounts)
-    #  Only Admin & Org Accounts can edit
-    if (user_signed_in? && current_user.admin?) || (current_organization_account.present? && current_organization_account.organization_id == @presenter.this_organization.id)
-      @can_edit = true
-    else
-      @can_edit = false
-    end
-
-    respond_to do |format|
-      format.html
-      format.xml  { render :xml => @organization.to_xml }
-      format.json { render :json => @organization.as_json }
-    end
+    @can_edit = (user_signed_in? && current_user.admin?) || (current_organization_account.present? && current_organization_account.organization_id == @presenter.this_organization.id)
+    respond_with(@presenter.this_organization)
   end
-
-
 
 
   # GET /organizations/new
   # GET /organizations/new.json
   def new
     @organization = Organization.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @organization }
-    end
+    respond_with(@organization)
   end
 
   # GET /organizations/1/edit
   def edit
     @organization = Organization.find(params[:id])
-
-    # Un-textilizing the text fields so they don't appear with <p>, etc.
-    @organization.description = untextilized(@organization.description)
-    @organization.headquarters_location = untextilized(@organization.headquarters_location)
-    @organization.good_to_know = untextilized(@organization.good_to_know)
-    @organization.training_resources = untextilized(@organization.training_resources)
-    @organization.misson = untextilized(@organization.misson)
-    @organization.program_costs_includes = untextilized(@organization.program_costs_includes)
-    @organization.program_costs_doesnt_include = untextilized(@organization.program_costs_doesnt_include)
-    @organization.price_breakdown = untextilized(@organization.price_breakdown)
-    @organization.application_process = untextilized(@organization.application_process)
-
-
+    ["description", "headquarters_location", "good_to_know", "training_resources", "misson", 
+      "program_costs_includes", "program_costs_doesnt_include", "price_breakdown", 
+      "application_process"].each do |param|
+      @organization.assign_attributes({param.to_sym => untextilized(@organization.send(param))})
+    end
   end
 
   # POST /organizations
   # POST /organizations.json
   def create
     @organization = Organization.new(params[:organization])
-
-    if @organization.save
-      # if admin opted to invite organization_account on create, then invite them
-      if @organization.will_invite && @organization.invite_email.present?
-        OrganizationAccount.invite!(:email => @organization.invite_email, :organization_id => @organization.id, :admin_pass => admin_pass)
+    respond_with(@organization) do
+      if @organization.save
+        if @organization.will_invite && @organization.invite_email.present?
+          OrganizationAccount.invite!(:email => @organization.invite_email, :organization_id => @organization.id, :admin_pass => admin_pass)
+        end
+        redirect_to "/organizations/#{@organization.id}/crop"
       end
-      # crop the new image to be square
-      redirect_to "/organizations/#{@organization.id}/crop"
-    else
-      render :action => "new" 
     end
   end
 
@@ -125,24 +79,15 @@ class OrganizationsController < ApplicationController
   def update
     @organization = Organization.find(params[:id])
 
-    # if current org account is owner of the organization they are viewing
-    if (current_organization_account.present? && @organization.id == current_organization_account.organization_id) || (user_signed_in? && current_user.admin?)
-      respond_to do |format|
-        if @organization.update_attributes(params[:organization])
-          if @organization.crops
-            format.html { redirect_to "/organizations/#{@organization.id}/crop" }
-            format.json { respond_with_bip(@organization) } # best_in_place syntax (in-place editing)
-          else
-            format.html { redirect_to @organization }
-            format.json { respond_with_bip(@organization) }
-          end
-        else
-          format.html { render :action => "show" }
-          format.json { respond_with_bip(@organization) } 
-        end
+    respond_to do |format|
+      format.json { respond_with_bip(@organization) }
+      if (upd = @organization.update_attributes(params[:organization])) && @organization.crops
+        format.html { redirect_to "/organizations/#{@organization.id}/crop" }
+      elsif upd
+        format.html { redirect_to @organization }
+      else
+        format.html { render :action => "show" } 
       end
-    else
-      redirect_to root_path
     end
   end
 
@@ -151,11 +96,7 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization = Organization.find(params[:id])
     @organization.destroy
-
-    respond_to do |format|
-      format.html { redirect_to organizations_url }
-      format.json { head :no_content }
-    end
+    respond_with(@organization)
   end
 
   # page that shows all organization's programs
@@ -167,15 +108,9 @@ class OrganizationsController < ApplicationController
   # Admin only
   def changeShow
     @organization = Organization.find(params[:id])
-    if @organization.show
-      @organization.show = false
-    else
-      @organization.show = true
-    end
+    @organization.show = !@organization.show
     @organization.save
-    respond_to do |format|
-      format.html {redirect_to organizations_path}
-    end
+    respond_with(@organization)
   end
 
   private
@@ -188,7 +123,8 @@ class OrganizationsController < ApplicationController
 
   ## check_for_admin_or_org_account called by before_filter
   def check_for_admin_or_org_account
-    unless (user_signed_in? && current_user.admin?) || current_organization_account.present?
+    unless (user_signed_in? && current_user.admin?) || (current_organization_account.present? &&
+      current_organization_account.id == params[:id])
       redirect_to root_path
     end
   end

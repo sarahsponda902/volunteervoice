@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   before_filter :authenticate_user!, :only => [:crop, :profile, :update]
   before_filter :check_for_admin, :only => [:index, :make_admin]
+  before_filter :check_for_user, :only => [:show]
+  respond_to :html, :json
 
   helper :all
   helper_method :age
@@ -19,55 +21,25 @@ class UsersController < ApplicationController
   # GET /users.json
   # Admin only index of users
   def index
-    @users = User.all
-    @users = @users.sort_by(&:created_at).reverse
+    @users = User.order('created_at desc')
     @unapproved_users = User.where(:approved => false)
     @approved_users = User.where(:approved => true)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @users }
-    end
+    respond_with(@users)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show  
-    @user = User.find(params[:id])
     @reviews = @user.reviews
-
-    # if user tries to look at their own user profile, send them to the profile page instead
-    if user_signed_in? && (@user.id == current_user.id)
-      redirect_to "/users/profile"
-    else
-      # setup for another user to send this user a message
-      @message = Message.new
-
-      # setup for another user to flag this user's reviews
-      @flag = Flag.new
-
-      respond_to do |format|
-        format.html # show.html.erb
-        format.json { render :json => @user }
-      end
-
-    end # end if statement
+    @message = Message.new
+    @flag = Flag.new
+    respond_with(@user)
   end
   
   # a user's own profile
   def profile
-    @user = User.find(current_user.id)
-    
-    # setup for a "reply" message to another user
+    @presenter = Users::ProfilePresenter.new
     @message = Message.new
-    
-    # to see if a message can be replied to, check if user_id is in the list of all user ids
-    @user_ids = User.all.map(&:id)
-    
-    # to show 'my reviews', 'my favorites', 'my messages', and 'my sent messages'
-    @reviews = @user.reviews.order("created_at DESC")
-    @favorites = @user.favorites
-    @messages = ::Message.where(:recipient_id => current_user.id, :recipient_deleted => false).sort_by(&:created_at).reverse
-    @sent_messages = ::Message.where(:sender_id => current_user.id, :sender_deleted => nil).sort_by(&:created_at).reverse
   end
 
 
@@ -75,19 +47,13 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
-
-    if (current_user == @user || current_user.admin?) && @user.update_attributes(params[:user])
-      if @user.crops # if new image has been uploaded
-        redirect_to "/users/#{@user.id}/crop" # send to crop page
-      else
+    
+    respond_with(@user) do
+      if (saved = @user.update_attributes(params[:user])) && @user.crops
+        redirect_to "/users/#{@user.id}/crop"
+      elsif saved
         flash[:notice] = 'Your profile was successfully updated.'
         redirect_to("/users/profile")
-      end
-    else
-      flash[:notice] = flash[:notice].to_a.concat @user.errors.full_messages
-      respond_to do |format|
-        format.html { redirect_to "/users/edit" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -99,11 +65,7 @@ class UsersController < ApplicationController
   def destroy
       @user = User.find(params[:id])
       @user.destroy
-
-      respond_to do |format|
-        format.html { redirect_to users_url }
-        format.json { head :no_content }
-      end
+      respond_with(@user)
   end
 
   # called by a user clicking the unsubscribe link in a newsletter email
@@ -113,9 +75,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.notify = !@user.notify
     @user.save
-    respond_to do |format|
-      format.html {render :action => "successful_unsubscribe"}
-      format.json {head :no_content}
+    respond_with(@user) do
+      redirect_to "/users/successful_unsubscribe"
     end
   end
 
@@ -126,10 +87,10 @@ class UsersController < ApplicationController
 
   # Admin only method to make another user an admin
   def make_admin
-      @user = User.find(params[:user_id])
-      @user.admin = !@user.admin
-      @user.save
-      redirect_to users_path
+    @user = User.find(params[:user_id])
+    @user.admin = !@user.admin
+    @user.save
+    redirect_to users_path
   end
 
   private
@@ -137,6 +98,13 @@ class UsersController < ApplicationController
   def check_for_admin
     unless user_signed_in? && current_user.admin?
       redirect_to root_path
+    end
+  end
+  
+  def check_for_user
+    @user = User.find(params[:id])
+    if current_user == @user
+      redirect_to "/pages/profile"
     end
   end
 

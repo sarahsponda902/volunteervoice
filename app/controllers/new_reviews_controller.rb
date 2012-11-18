@@ -5,37 +5,27 @@ class NewReviewsController < ApplicationController
 
   include ActionView::Helpers::TextHelper
   before_filter :check_for_admin, :only => [:index, :show, :destroy]
+  respond_to :html, :json
 
   # GET /new_reviews
   # GET /new_reviews.json
   def index
     @new_reviews = NewReview.all.sort_by(&:created_at).reverse
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @new_reviews }
-    end
+    respond_with(@new_reviews)
   end
 
   # GET /new_reviews/1
   # GET /new_reviews/1.json
   def show
     @new_review = NewReview.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @new_review }
-    end
+    respond_with(@new_review)
   end
 
   # GET /new_reviews/new
   # GET /new_reviews/new.json
   def new
     @new_review = NewReview.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @new_review }
-    end
+    respond_with(@new_review)
   end
 
   ## thank you page called after a user creates a new 'New Review'
@@ -47,16 +37,9 @@ class NewReviewsController < ApplicationController
   def create
     @new_review = NewReview.new(params[:new_review])
     @new_review.body = RedCloth.new( ActionController::Base.helpers.sanitize( @new_review.body ), [:filter_html, :filter_styles, :filter_classes, :filter_ids] ).to_html
-
-    respond_to do |format|
+    respond_with(@new_review) do
       if @new_review.save
-        format.html { redirect_to "/new_reviews/thank_you_new_review" }
-        format.json { render json: @new_review, status: :created, location: @new_review }
-      else
-        @new_review.body = Nokogiri::HTML.fragment(@new_review.body).text
-        flash[:notice] = flash[:notice].to_a.concat @new_review.errors.full_messages
-        format.html { render action: "new" }
-        format.json { render json: @new_review.errors, status: :unprocessable_entity }
+        redirect_to "/new_reviews/thank_you_review"
       end
     end
   end
@@ -67,11 +50,7 @@ class NewReviewsController < ApplicationController
   def destroy
     @new_review = NewReview.find(params[:id])
     @new_review.destroy
-
-    respond_to do |format|
-      format.html { redirect_to new_reviews_url }
-      format.json { head :no_content }
-    end
+    respond_with(@new_review)
   end
 
 

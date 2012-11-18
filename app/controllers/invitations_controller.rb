@@ -1,12 +1,13 @@
 class InvitationsController < Devise::InvitationsController
-  
+  before_filter :check_for_admin, :only => [:create]
   def create
-    # this acts as a before_filter without copying the whole devise_invitable file
-    if user_signed_in? && current_user.admin?
-      super
-    else
+    super
+  end
+  
+  private
+  def check_for_admin
+    unless user_signed_in? && current_user.admin?
       redirect_to root_path
     end
   end
-
 end

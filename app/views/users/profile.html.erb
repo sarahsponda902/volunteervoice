@@ -803,17 +803,17 @@ a.usernameLink:hover {
 
 	</div>
 	<div class= "eight columns" id="usernameContainer">
-		<p id="username"><%= @user.username %> </p>
+		<p id="username"><%= current_user.username %> </p>
 	</div>
 	<!--<div class="four columns" id="dobContainer">
 	<p id="dob">
-	<%#if @user.dob != nil%>
+	<%#if current_user.dob != nil%>
 	Age: 
 	<%# @now = Time.now.utc.to_date%>
-	<%#= @now.year - @user.dob.year - ((@now.month > @user.dob.month || (@now.month == @user.dob.month && @now.day >= @user.dob.day)) ? 0 : 1) %>
+	<%#= @now.year - current_user.dob.year - ((@now.month > current_user.dob.month || (@now.month == current_user.dob.month && @now.day >= current_user.dob.day)) ? 0 : 1) %>
 	<%# end %>
 	<br />
-	Country: <%#= THECOUNTRIES[@user.country] %><br />
+	Country: <%#= THECOUNTRIES[current_user.country] %><br />
 
 <br />
 <p align="right">
@@ -861,7 +861,7 @@ a.usernameLink:hover {
 
 					<div id="messages-contents" class="contents">
 						<div align="right" id="sentsContainer">
-							<%= @messages.count%> Messages
+							<%= @presenter.messages.count%> Messages
 						</div>
 						<div id="divmessages">
 							<ul class="sentInboxTabs">
@@ -871,12 +871,12 @@ a.usernameLink:hover {
 
 
 
-								<% if @messages.empty?%>
+								<% if @presenter.messages.empty?%>
 								<p class="noMessagesMessage">
 									You do not have any messages in your inbox.</p>
 									<% else %>
 									<p class="messagesContainer">
-										<% @messages.each do |m| %>
+										<% @presenter.messages.each do |m| %>
 										<div>
 											<%= render :partial => "message", :locals => {:m => m} %>
 										</div>
@@ -891,7 +891,7 @@ a.usernameLink:hover {
 
 							<div id="sent-contents" class="contents">
 								<div align="right" id="messagesContainer">
-									<%= @sent_messages.count%> Sent Messages
+									<%= @presenter.sent_messages.count%> Sent Messages
 								</div>
 								<div id="divsents">
 									<ul class="sentInboxTabs">
@@ -899,12 +899,12 @@ a.usernameLink:hover {
 										<li class="Sent" id="5">SENT &nbsp;&nbsp;&nbsp;&nbsp;<image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/messagesArrow.png"></li>
 										</ul>
 
-										<% if @sent_messages.empty?%>
+										<% if @presenter.sent_messages.empty?%>
 										<p class="noMessagesMessage">
 											You have not yet sent any messages.</p>
 											<% else %>
 											<p class="messagesContainer">
-												<% @sent_messages.each do |m| %>
+												<% @presenter.sent_messages.each do |m| %>
 
 												<%= render :partial => "message_sent", :locals => {:m => m} %>
 												<%end%>
@@ -921,11 +921,11 @@ a.usernameLink:hover {
 
 									<div id="favorites-contents" class="contents">
 										<div align="right" id="favoritesContainer">
-											<%= @favorites.count%> Favorites
+											<%= @presenter.favorites.count%> Favorites
 										</div>
 										<div id="divfavorites">
-											<% if !((@favorites).empty?) %>
-											<% (@favorites).each do |f|%>
+											<% if !((@presenter.favorites).empty?) %>
+											<% (@presenter.favorites).each do |f|%>
 											<div>
 												<%= render :partial => "favorite", :locals => { :f => f }%>
 											</div>
@@ -942,11 +942,11 @@ a.usernameLink:hover {
 
 									<div id="reviews-contents" class="contents">
 										<div align="right" id="reviewsContainer">
-											<%= pluralize(@reviews.count, "Review")%>
+											<%= pluralize(@presenter.reviews.count, "Review")%>
 										</div>
 										<div id="divreviews">
-											<% if @reviews.count != 0 %>
-											<% @reviews.each do |f|%>
+											<% if @presenter.reviews.count != 0 %>
+											<% @presenter.reviews.each do |f|%>
 
 											<%= render :partial => "review", :locals => { :f => f } %>
 
@@ -1171,7 +1171,7 @@ a.usernameLink:hover {
 				<div id="upload-box" class="upload-popup">
 					<a href="#" class="close"><div class="close_image"></div></a>
 					<p class="maxPhotoWidth">Max photo width: 1 MB</p>
-					<%= form_for @user, :html => {:multipart => true} do |f| %>
+					<%= form_for current_user, :html => {:multipart => true} do |f| %>
 					<div class="fakeFileInputs"><image src="https://s3-us-west-1.amazonaws.com/volunteervoice/images/UploadPhotoButton.png" id="uploadPhotoButton" onclick = "$(clickUserPhoto())" onmousedown="this.className = 'shadowed'" onmouseup="this.className='nothing'"><input id="filename" type="textbox" class="fileName" disabled="true" value="no file selected">
 						<%= f.hidden_field :crops, :value => true%>
 						<%= f.file_field :photo, :id => "user_photo", :onchange => "$(nameFile())"%></div>
@@ -1182,7 +1182,7 @@ a.usernameLink:hover {
 					<div id="edit-box" class="edit-popup">
 						<a href="#" class="close"><div class="close_image"></div></a>
 						<p id="myAccountTitle" align="center">My Account</p>
-						<%= form_for @user, :url => registration_path(@user), :html => { :method => :put } do |f| %>
+						<%= form_for current_user, :url => registration_path(current_user), :html => { :method => :put } do |f| %>
 						<div class="six columns" id="myAccountLeftCol">
 
 							<p id="myInfoTitle">My Info</p>
@@ -1240,8 +1240,8 @@ a.usernameLink:hover {
 
 
 			//define vars for message and profile that represent whether the user wants to be able to receive messages and whether the user wants other users to be able to see their account info
-			var message = <%= @user.messages_show.to_s %>;
-			var profile = <%= @user.profile_show.to_s %>;
+			var message = <%= current_user.messages_show.to_s %>;
+			var profile = <%= current_user.profile_show.to_s %>;
 
 
 
@@ -1616,13 +1616,13 @@ $(document).ready(function () {
 /****************/
 
 //initialize smartpagintaor for each of the tabs
-$('#reviews').smartpaginator({ totalrecords: <%=@reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+$('#reviews').smartpaginator({ totalrecords: <%=@presenter.reviews.count%>, recordsperpage: 1, datacontainer: 'divreviews', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-$('#favorites').smartpaginator({ totalrecords: <%=@favorites.count%>, recordsperpage: 4, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+$('#favorites').smartpaginator({ totalrecords: <%=@presenter.favorites.count%>, recordsperpage: 4, datacontainer: 'divfavorites', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-$('#messages').smartpaginator({ totalrecords: <%=@messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+$('#messages').smartpaginator({ totalrecords: <%=@presenter.messages.count%>, recordsperpage: 5, datacontainer: 'divmessages', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
-$('#sent').smartpaginator({ totalrecords: <%=@sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
+$('#sent').smartpaginator({ totalrecords: <%=@presenter.sent_messages.count%>, recordsperpage: 5, datacontainer: 'divsents', dataelement: 'div', initval: 0, next: 'Next', prev: 'Prev', first: 'First', last: 'Last', theme: 'black' });
 
 });
 
@@ -1674,8 +1674,8 @@ function clickUserPhoto() {
 //set # unread user messages to 0 and save user 
 //called upon navigating to the user messages tab
 function messagesRead() {
-	<% @user.unread_messages = 0 %>
-	<% @user.save %>
+	<% current_user.unread_messages = 0 %>
+	<% current_user.save %>
 }
 
 //set message recipient in the popup window

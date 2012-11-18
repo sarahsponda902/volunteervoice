@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
   include ActionView::Helpers::TextHelper
   before_filter :authenticate_user!
+  respond_to :html, :json
 
   # POST /favorites
   # POST /favorites.json
@@ -8,9 +9,9 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(params[:favorite])
     @favorite.program_id = params[:program_id]
     @favorite.user_id = current_user.id
-    @favorite.save #will never be invalid, so no 'if' statement needed
-    respond_to do |format|
-      format.html { redirect_to Program.find(@favorite.program_id), notice: 'Added to favorites' }
+    flash[:notice] = "Added to favorites" if @favorite.save 
+    respond_with(@favorite) do
+      redirect_to Program.find(@favorite.program_id)
     end
   end
 
@@ -22,17 +23,12 @@ class FavoritesController < ApplicationController
     @program_id = @favorite.program_id
     @favorite.destroy
 
-    respond_to do |format|
-      ## the_place is a parameter passed to instruct where the user should be redirected after unfavoriting
-      #### if the_place is an integer, the 'destroy' was called from the program profile page
-      #### if the_place is a string, the 'destroy' was called from the user's profile page
-
-      if params[:the_place].class.name != "Integer"
-        format.html { redirect_to "/pages/profile/favorite_deleted" }
+    respond_with(@favorite) do
+      if params[:the_place].is_a?(Integer)
+        redirect_to Program.find(@program_id)
       else
-        format.html { redirect_to Program.find(@program_id) }
+        redirect_to "/pages/profile/favorite_deleted"
       end
-      format.json { head :no_content }
     end
   end
 end

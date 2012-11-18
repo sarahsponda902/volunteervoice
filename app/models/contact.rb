@@ -30,4 +30,21 @@ class Contact < ActiveRecord::Base
   validates_length_of :body, :minimum => 5
   validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   
+  def any_errors?
+    @errors = []
+    if self.email.nil? 
+      @errors << "Email cannot be blank"
+    end
+    if self.body.nil? 
+      @errors << "Body cannot be blank"
+    end
+    if self.body.length < 5 
+      @errors < "Body must be more than 4 characters" 
+    end
+    if self.email.match(/^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i).nil?
+      @errors < "Email is not valid"
+    end
+    @errors
+  end
+  
 end

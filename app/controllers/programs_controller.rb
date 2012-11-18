@@ -5,7 +5,7 @@ class ProgramsController < ApplicationController
   require 'aws/s3'
 
   before_filter :check_for_admin_or_org_account, :only => [:new, :create, :edit, :update, :destroy]
-
+  respond_to :html, :json
 
   # in-alpha-stage search results page (TESTING ONLY)
   # testing facets, can get here from pages/test
@@ -26,11 +26,7 @@ class ProgramsController < ApplicationController
     # presenter found in presenters/programs/show_presenter.rb
     @presenter = Programs::ShowPresenter.new(params[:id])
     @flag = Flag.new # for the flagging a review form
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @program }
-    end
+    respond_with(@presenter.this_program)
   end
 
   # GET /programs/new
@@ -38,24 +34,16 @@ class ProgramsController < ApplicationController
   def new
     @program = Program.new
     @costs = []
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @program }
-    end
+    respond_with(@program)
   end
 
   # GET /programs/1/edit
   def edit
     @program = Program.find(params[:id])
-
-    # un-textilize textarea text so that it appears normal in text boxes
-    @program.description = untextilized(@program.description)
-    @program.program_structure = untextilized(@program.program_structure)
-    @program.program_cost_breakdown = untextilized(@program.program_cost_breakdown)
-    @program.cost_includes = untextilized(@program.cost_includes)
-    @program.cost_doesnt_include = untextilized(@program.cost_doesnt_include)
-    @program.accommodations = untextilized(@program.accommodations)
+    ["description", "program_structure", "program_cost_breakdown", "cost_includes", "cost_doesnt_include",
+      "accommodations"].each do |attrib|
+      @program.assign_attributes({attrib.to_sym => untextilized(@program.send(attrib)}))
+    end
 
     # subjects, group sizes, cost & lengths of time are objects,
     #  so need to get string value for appearance in textboxes
@@ -64,7 +52,6 @@ class ProgramsController < ApplicationController
     @costs = @program.program_cost_length_maps.map(&:cost)
     @lengths = @program.program_cost_length_maps.map{|p| "#{p.length_number} #{p.length_name}"}   
   end
-
 
 
   # POST /programs
@@ -83,33 +70,21 @@ class ProgramsController < ApplicationController
 
     # creating program_subject, program_size, and program_cost_length_map objects
     # methods in helpers/program_helper.rb
-    params[:program][:program_subjects] = make_program_subjects(params[:program][:program_subjects], @org_id)
-    params[:program][:program_sizes] = make_program_sizes(params[:program][:program_sizes], @org_id)
-    params[:program][:program_cost_length_maps] = make_program_cost_length_maps(params[:costs], params[:lengths], @org_id)
-
-
-    if @program.save
-      # set program_id for cost_length, save and index
-      @cost_lengths.each do |f|
-        f.program_id = @program.id
-        f.save
-        f.index!
-      end
-      # set program_id for subject, save and index
-      @subjects.each do |s|
-        s.program_id = @program.id
-        s.save
-      end
-      # set program_id for size, save and index
-      @sizes.each do |a|
-        a.program_id = @program.id
-        a.save
-      end
-      redirect_to @program
-    else
-      flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
-      render :action => "new" 
+    [:program_subjects, :program_sizes].each do |attrib|
+      params[:program][attrib] = ApplicationHelper.send("make_#{attrib.to_s}", params[:program][attrib], @org_id, @progr)
     end
+    params[:program][:program_cost_length_maps] = make_program_cost_length_maps(params[:costs], params[:lengths], @org_id, @program.id)
+    
+    if @program.save
+      [@cost_lengths, @subjects, @sizes].each do |arr|
+        arr.each do |inst|
+          inst.program_id = @program.id
+          inst.save
+          inst.index! if arr == @cost_lengths
+        end
+      end
+    end
+    respond_with(@program)
   end
 
 
@@ -119,31 +94,18 @@ class ProgramsController < ApplicationController
   # Admin and Org Account only
   def update
     @program = Program.find(params[:id])
-
-    # creating new subject, size, and cost-length maps
-    params[:program][:program_subjects] = make_program_subjects(params[:program][:program_subjects], @org_id, @program.id)
-    params[:program][:program_sizes] = make_program_sizes(params[:program][:program_sizes], @org_id, @program.id)
-    params[:program][:program_cost_length_maps] = make_program_cost_length_maps(params[:costs], params[:lengths], @org_id, @program.id)
-
-    # union of current {object}s and new {object}s
-    params[:program][:program_subjects] = params[:program][:program_subjects] | @program.program_subjects
-    params[:program][:program_sizes] = params[:program][:program_sizes] | @program.program_sizes
-    params[:program][:program_cost_length_maps] = params[:program][:program_cost_length_maps] | @program.program_cost_length_maps
-
-
-    if @program.update_attributes(params[:program])
-      respond_to do |format|
-        format.html { redirect_to "/programs/#{@program.id}" }
-        format.json { head :no_content }
-      end
-    else
-      flash[:notice] = flash[:notice].to_a.concat @program.errors.full_messages
-      respond_to do |format|
-        format.html { render :action => "edit" }
-        format.json { render json: @program.errors, status: :unprocessable_entity }
-      end 
+    [:program_subjects, :program_sizes].each do |attrib|
+      params[:program][attrib] = ApplicationHelper.send("make_#{attrib.to_s}", params[:program][attrib], @org_id, @progr)
     end
-
+    params[:program][:program_cost_length_maps] = make_program_cost_length_maps(params[:costs], params[:lengths], @org_id, @program.id)
+    
+    # union of current {object}s and new {object}s
+    [:program_subjects, :program_sizes, :program_cost_length_maps].each do |attrib|
+      params[:program][attrib] = params[:program][attrib] | @program.send(attrib.to_s)
+    end
+    
+    @program.update_attributes(params[:program])
+    respond_with(@program)
   end
 
   # DELETE /programs/1
@@ -152,14 +114,12 @@ class ProgramsController < ApplicationController
     @program = Program.find(params[:id])    
     @program.destroy
 
-    respond_to do |format|
-      # if admin logged in, direct to admin org index
+    respond_with(@program) do
       if current_organization_account.nil?
-        format.html { redirect_to "/organizations" }
-      else # if org account logged in, direct to org account program index (org account profile)
-        format.html { redirect_to "/organization_accounts/profile" }
+        redirect_to organizations_path
+      else
+        redirect_to "/organization_accounts/profile"
       end
-      format.json { head :no_content }
     end
   end
 
