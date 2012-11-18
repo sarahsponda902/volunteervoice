@@ -24,7 +24,7 @@
 				<td class="starData"><p align="right" class="reviewStarContainer"><%=render :partial => 'star', :locals => {:star => f.overall}%></p></td>
 			</tr>
 			<tr class="reviewBackground">
-				<td colspan="3"><p class="reviewBodyContainer"><%= f.truncated200.html_safe%> <a href="#review-box<%=f.id%>" class="review-window">See full review</a></p></td>
+				<td colspan="3"><p class="reviewBodyContainer"><%= (truncate f.description.gsub(%r{</?[^>]+?>}, ''), :length =>200).html_safe%> <a href="#review-box<%=f.id%>" class="review-window">See full review</a></p></td>
 			</tr>
 			<tr class="reviewBackground reviewPhotos">
 				<td>
