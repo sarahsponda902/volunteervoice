@@ -37,7 +37,7 @@ RMTest::Application.configure do
   
   # Actionmailer settings
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.delivery_method = :sendmail #:smtp
+  config.action_mailer.delivery_method = :sendmail 
   config.action_mailer.default_url_options = { :host => 'volunteervoice.org' }
   
 end
